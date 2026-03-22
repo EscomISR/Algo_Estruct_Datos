@@ -732,7 +732,7 @@
                     <div class="figure-caption">Figura 3</div>
                     <div class="figure-caption">Representación de algoritmos en pseudocódigo</div>
                     <div class="figura">
-                        <img src="FIGURA3.jpeg" alt="Representación de algoritmos en pseudocódigo" class="imagen-figura1"/>
+                        <img src="FIGURA3.png" alt="Representación de algoritmos en pseudocódigo" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
@@ -743,89 +743,56 @@
         <div class="section" id="seccion-1-1-3">
             <div class="section-header">
                 <div class="section-number">1.1.3</div>
-                <div class="section-title">Tipos</div>
+                <div class="section-title">Abstracción y tipos de datos abstractos</div>
             </div>
             <div class="content">
-                <h4>a) Mainframe</h4>
-                <p>Son equipos de alto rendimiento se utilizan principalmente por empresas u organismos en donde su requerimiento principal es el control y administración de volumen grandes de información y procesamiento de la misma en donde juega un papel muy importante la forma de dar eficacia y seguridad que todas las aplicaciones funcionen correctamente, es por ello que su operatividad son muy importantes para el procesamiento y ejecución de datos.</p>
-
-                <h4>b) Servidor.</h4>
-                <p>Este equipo de cómputo o dispositivo es el que se encarga de administrar, controlar y gestionar todo tipo de tareas estas pueden ser de forma local o en red, en donde aquellas computadoras que se conectan por medio de una dirección IP, se les llama clientes y ellos son los que realizan peticiones de acceso al equipo principal con llamadas al sistema para que puedan acceder a sus recursos y realizar o ejecutar aplicaciones o consulta de los datos que se encuentren almacenados.</p>
-                <p>Por lo que los servidores siempre deben de estar activos para las solicitudes de los cliente además de que ofrezcan seguridad y procesamiento de los datos que los clietes requieran realizar</p>
-
-                <h4>c) Multiprocesador (Sistemas Paralelos)</h4>
-                <p>Son varios procesadores al mismo tiempo y así trabajar más rápido y mejor.</p>
-                <p>Tiene formas de llevarlas a cabo las cuales son:</p>
-                <ul>
-                    <li>En la <strong>multiprocesación simétrica (SMP)</strong>, todos los procesadores comparten recursos y trabajan de manera equilibrada.</li>
-                    <li>En los <strong>clusters</strong>, varios equipos están conectados entre sí mediante una red de alta velocidad para cooperar y ejecutar tareas en conjunto.</li>
-                </ul>
-
-                <h4>d) Embebidos</h4>
-                <p>Estos sistemas tiene una función principal de administrar a todos los dispositivos dándoles recursos específicos y limitados para llevar a cabo su tarea o proceso, ya que sus procesadores son de baja potencia, memoria y almacenamiento, por lo que deben de garantizar que con los recursos limitados que tienen puedan llevar acabo sus tareas tiendo estabilidad y dar respuesta inmediata, en donde todo va a estar focalizado a atender los procesos críticos dentro del espacio que se requiera.</p>
-                <p>Estos sistemas suelen operar bajo condiciones de <strong>tiempo real</strong>, donde las respuestas del sistema deben producirse dentro de plazos estrictamente definidos, por lo que comúnmente se implementan como <strong>RTOS (Real-Time Operating Systems)</strong>.</p>
-
-                <h4>e) Tiempo Real (RTOS)</h4>
-                <p>En este tipo de sistemas, <strong>lo más importante no es la velocidad general</strong>, sino <strong>cumplir con el tiempo exacto que cada tarea necesita</strong> para funcionar correctamente.</p>
-                <p>A diferencia de los sistemas operativos comunes, los RTOS no buscan usar todos los recursos al máximo, sino <strong>garantizar que cada proceso responda de manera puntual y predecible</strong>, especialmente en aplicaciones donde <strong>una demora puede causar un fallo o un riesgo</strong> (Silberschatz, Galvin & Gagne, 2022).</p>
-                <p>Existen dos tipos principales de sistemas de tiempo real: los <strong>Hard Real-Time</strong>, en los cuales el incumplimiento de un plazo es inaceptable porque podría provocar fallos catastróficos (como en el control de aeronaves, equipos médicos o sistemas industriales); y los <strong>Soft Real-Time</strong>, donde los plazos son importantes, pero toleran pequeñas desviaciones, típicos en aplicaciones como la reproducción de video o audio en tiempo real.</p>
-                <p>Un RTOS se caracteriza por su <strong>planificador determinista</strong>, su <strong>bajo tiempo de latencia</strong> y su <strong>eficiente manejo de interrupciones</strong>, lo que le permite responder a eventos externos con precisión.</p>
-                <p>Ejemplos notables incluyen <strong>VxWorks</strong>, <strong>RTLinux</strong> y <strong>QNX Neutrino</strong>, ampliamente utilizados en sectores aeroespaciales, automotrices y de automatización.</p>
                 
+                <p>Es esencial en la informática que se basa en simplificar la representación de un problema o sistema, considerando solo los aspectos más relevantes y dejando de lado los detalles que no son necesarios en ese momento. Su propósito es hacer más fácil el análisis, la comprensión y el diseño de soluciones, permitiendo que quien programa se enfoque en la lógica del problema antes de pensar en la forma en que se implementará. Mediante la abstracción se pueden crear modelos más claros, organizados y sencillos de manejar.</p>
+                <h3>Dentro de los tipos existen:</h3>
+                <h4>a) Tipo de Dato Abstracto (TDA).</h4>
+                <p>Es una forma de definir un conjunto de datos junto con las operaciones que pueden realizarse sobre ellos, sin mostrar la manera en que están implementados internamente. En otras palabras, se describe qué se puede hacer con los datos y cómo deben comportarse, pero no se detalla cómo se programan. Ejemplos como las pilas, colas y listas representan tipos de datos abstractos, ya que permiten trabajar con los datos de manera estructurada y ordenada sin necesidad de conocer su funcionamiento interno en memoria.</p>
+                <h4>b) Tipos de datos abstractos lineales</h4>
+                <p>Son aquellos en los que los elementos se organizan de forma secuencial, es decir, cada dato tiene un único predecesor y un único sucesor, excepto el primero y el último.</p>
+                <h4>c) Tipos de datos abstractos no lineales</h4>
+                <p>Son aquellos en los que los elementos no se organizan de manera secuencial, sino que pueden tener múltiples relaciones entre sí, formando estructuras jerárquicas o en red.</p>
+
                 <div class="quote-box">
-                    Como explica Liu (2019), “un RTOS debe priorizar la predictibilidad sobre el rendimiento bruto”
+                    Como explica Goodrich, Tamassia & Goldwasser, (2014), “uEl uso de tipos de datos abstractos es fundamental en el diseño de algoritmos y en la construcción de programas eficientes, ya que permite separar el comportamiento de los datos de su implementación específica.”
                     <div class="citation">(p. 211).</div>
                 </div>
 
-                <div class="table-container">
-                    <div class="table-caption"><strong>Tabla 1</strong></div>
-                    <div class="table-caption">Comparativa resumida de tipos de sistemas operativos</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Tipo</th>
-                                <th>Enfoque</th>
-                                <th>Ejemplo</th>
-                                <th>Referencia</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Mainframe</strong></td>
-                                <td>Confiabilidad masiva</td>
-                                <td>IBM z/OS</td>
-                                <td>(Silberschatz, 2018)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Servidor</strong></td>
-                                <td>Servicios en red</td>
-                                <td>Linux Server</td>
-                                <td>(Stallings, 2018)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Multiprocesador</strong></td>
-                                <td>Paralelismo</td>
-                                <td>UNIX</td>
-                                <td>(Tanenbaum, 2015)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Embebidos</strong></td>
-                                <td>Eficiencia en recursos</td>
-                                <td>FreeRTOS</td>
-                                <td>(Laplante, 2020)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Tiempo Real</strong></td>
-                                <td>Predictibilidad</td>
-                                <td>VxWorks</td>
-                                <td>(Liu, 2019)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="table-caption">Nota: Silberschatz, 2018; Stallings, 2018; Tanenbaum, 2015; Laplante, 2020; Liu, 2019</div>
+               <div class="figure-container">
+                    <div class="figure-caption">Figura 4</div>
+                    <div class="figure-caption">Abstracción y tipo de dato abstracto</div>
+                    <div class="figura">
+                        <img src="FIGURA4.png" alt="Abstracción y tipo de dato abstracto" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
+
             </div>
         </div>
+        <div class="section" id="seccion-1-1-4">
+            <div class="section-header">
+                <div class="section-number">1.1.4</div>
+                <div class="section-title">Orden de complejidad 𝑂() de un algoritmo</div>
+            </div>
+            <div class="content">
+               <p>Es la métrica que utilizamos en informática para medir la eficiencia de un algoritmo y que es también conocida como Notación Big O, la cual no permite medir el tiempo en segundos ya que eso depende de las características del equipo en donde se realice este proceso,
+                  por lo que si realiza es como crece el número de operaciones necesarias a medida que aumenta la cantidad de datos ($n$).</p>
+                <div class="figure-container">
+                    <div class="figure-caption">Figura 5</div>
+                    <div class="figure-caption">Orden de complejidad 𝑂() de un algoritmo</div>
+                    <div class="figura">
+                        <img src="FIGURA5.png" alt="Orden de complejidad 𝑂() de un algoritmo" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div>
+
+        </div>
+
+
 
         <div class="section" id="video-material">
             <div class="section-header">
@@ -833,7 +800,7 @@
                 <div class="section-title">Material Audiovisual</div>
             </div>
             <div class="content">
-                <p>Para complementar el estudio sobre los aspectos básicos y la estructura del sistema operativo, consulta el siguiente video:</p>
+                <p>Para complementar el estudio sobre la algoritmia, sus tipos y ordenamientos, consulta el siguiente video:</p>
                 
                 <div class="figure-container">
                     <iframe width="100%" height="450" src="https://www.youtube.com/embed/pZOxxGNxWVs" title="Estructura del sistema operativo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
@@ -843,7 +810,7 @@
         </div>
         
         <div class="activity-card">
-            <div class="activity-title">Actividad de Aprendizaje 1.1: Aspectos Básicos</div>
+            <div class="activity-title">Actividad de Aprendizaje 1.1: Algoritmia</div>
             <p>Pon a prueba tus conocimientos sobre los objetivos, evolución y tipos de sistemas operativos.</p>
             <a href="actividad_1_1.html" class="activity-btn">
                 <i class="fas fa-pencil-alt"></i> Realizar Actividad
