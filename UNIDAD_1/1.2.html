@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1.2 Fundamentos del Núcleo del Sistema Operativo</title>
+    <title>1.2 El problema del ordenamiento</title>
     <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -637,8 +637,8 @@
 
     <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
-            <div class="sidebar-title">1.2 Núcleo del SO</div>
-            <div class="sidebar-subtitle">Fundamentos</div>
+            <div class="sidebar-title">1.2 El problema del ordenamiento</div>
+            <div class="sidebar-subtitle">La importancia  de identificar los algoritmos fundamentales de la compuatción con base en sus órdenes de complejidad.</div>
         </div>
         
         <div class="nav-sections">
@@ -648,15 +648,28 @@
                     <i class="fas fa-rocket"></i> Inicio del Tema
                 </a>
                 <a href="1.0.html" class="nav-item">
-                    <i class="fas fa-arrow-left"></i> Menú de Unidad 1
+                    <i class="fas fa-arrow-left"></i> Menú de Unidad 2
                 </a>
             </div>
 
             <div class="nav-section">
                 <div class="nav-section-title">Contenido</div>
                 <a href="#seccion-1-2-1" class="nav-item" data-section="1-2-1">
-                    <i class="fas fa-layer-group"></i> 1.2.1 Tipos de Núcleo
+                    <i class="fas fa-layer-group"></i> 1.2.1 Ordenamiento por inserción
                 </a>
+                 <a href="#seccion-1-2-2" class="nav-item" data-section="1-2-1">
+                    <i class="fas fa-layer-group"></i> 1.2.2 Ordenamiento por selección
+                </a>
+                <a href="#seccion-1-2-3" class="nav-item" data-section="1-2-1">
+                    <i class="fas fa-layer-group"></i> 1.2.3 Ordenamiento por burbuja
+                </a>
+                <a href="#seccion-1-2-4" class="nav-item" data-section="1-2-1">
+                    <i class="fas fa-layer-group"></i> 1.2.4 Ordenamiento por mezcla
+                </a>
+                <a href="#seccion-1-2-5" class="nav-item" data-section="1-2-1">
+                    <i class="fas fa-layer-group"></i> 1.2.5 Comparación de órdenes de complejidad
+                </a>
+              
                 <a href="#seccion-arquitectura" class="nav-item" data-section="arquitectura">
                     <i class="fas fa-sitemap"></i> Arquitectura
                 </a>
@@ -668,7 +681,7 @@
                     <i class="fas fa-tasks"></i> Actividad de aprendizaje
                 </a>
                 <a href="1.3.html" class="nav-item">
-                    <i class="fas fa-arrow-right"></i> Siguiente: Modos de Operación
+                    <i class="fas fa-arrow-right"></i> Siguiente: El problema de la búsqueda
                 </a>
             </div>
         </div>
@@ -685,30 +698,28 @@
                 <span>/</span>
                 <a href="index.html">Unidad 1</a>
                 <span>/</span>
-                <span>1.2 Fundamentos del núcleo del sistema operativo</span>
+                <span>1.2 El problema del ordenamiento</span>
             </div>
-            <h1>1.2 Fundamentos del núcleo del sistema operativo</h1>
+            <h1>1.2 El problema del ordenamiento</h1>
             <div class="subtitle">Control, coordinación y comunicación</div>
         </header>
         
         <div class="intro">
-            <p>Los <strong>fundamentos del núcleo del sistema operativo</strong> forman la base que permite el <strong>control, la coordinación y la comunicación</strong> entre los componentes del hardware y los programas del sistema.</p>
-            <p>El <strong>núcleo</strong> —también llamado <strong>kernel</strong>— es la <strong>parte central del sistema operativo</strong> que siempre está activa. Se encarga de <strong>organizar el uso de la memoria, manejar los procesos, controlar los dispositivos de entrada y salida, y administrar los archivos</strong>, para que cada programa utilice los recursos de manera <strong>ordenada, segura y eficiente</strong>.</p>
-            <p>Su objetivo principal es <strong>mantener la estabilidad y el buen funcionamiento del sistema</strong>, evitando conflictos cuando varios procesos trabajan al mismo tiempo.</p>
-            <p>Para lograrlo, utiliza mecanismos como la <strong>planificación de tareas, la sincronización y la gestión de interrupciones</strong>, que permiten que todas las operaciones se ejecuten de forma equilibrada y sin errores.</p>
-            <div class="citation">(Silberschatz, Galvin & Gagne, 2022).</div>
+            <p>Es cuando se requiere que los datos se encuentren ordenados y en su caso si se encuentran desordenados hay que ordenarlos de tal manera que al ordenarlos se estructuren según un criterio especifico, con ello permite mayor identificación en dicho proceso ya que cada dato contendrá internamente un identificador en cual ayudara a distinguirlo y se puede comparar con los demás y no existirá duplicidad.</p>
+            <p>Este identificador único puede estar como parte de los datos en donde se le puede aplicar reglas en específico, es por lo que se requiere tener reglas de asignación para que sean ordenados de acuerdo con su secuencia de instrucciones en forma ascendente o descendente o por el criterio que se requiera.</p>
+            <div class="citation">(Knuth, 1998).</div>
         </div>
 
         <div class="section" id="seccion-1-2-1">
             <div class="section-header">
                 <div class="section-number">1.2.1</div>
-                <div class="section-title">Tipos</div>
+                <div class="section-title">Ordenamiento por inserción</div>
             </div>
             <div class="content">
-                <p>Existen diversos tipos de núcleos, cada uno con características específicas según su diseño y propósito como son:</p>
-                
+                <p>Este algoritmo inicia considerando el primer elemento del arreglo como punto de referencia inicial, para que cada uno de los siguientes elementos se consideren como finales, esto permite comparar cada de uno de ellos para desplazarse cada uno hacia la posición que le corresponda para que con ello se puedan intercambiar hasta llegar a su lugar correspondiente.</p>
+                <p>Un ejemplo de este ordenamiento es cuando se realiza un orden de cartas en la mano, en donde primero se toma una carta y esta es la referencia de la segunda esto permite que las demás se coloquen en forma continua y ordenadas hasta llegar a la última</p>
                 <div class="type-card">
-                    <div class="type-title">1. Sistema Operativo Monolítico</div>
+                    <div class="type-title">1. aquiSistema Operativo Monolítico</div>
                     <div class="quote-box">
                         "Los sistemas monolíticos son como un gran programa donde cada función puede llamar a cualquier otra sin restricciones"
                         <div class="citation">(Tanenbaum & Bos, 2015, p. 73).</div>
