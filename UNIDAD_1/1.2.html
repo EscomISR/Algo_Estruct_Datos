@@ -701,7 +701,7 @@
                 <span>1.2 El problema del ordenamiento</span>
             </div>
             <h1>1.2 El problema del ordenamiento</h1>
-            <div class="subtitle">Control, coordinación y comunicación</div>
+            <div class="subtitle">La importancia del ordenamiento ayuda a desarrollar un pensamiento lógico más estructurado para resolver problemas de forma óptima y organizada.</div>
         </header>
         
         <div class="intro">
@@ -718,125 +718,42 @@
             <div class="content">
                 <p>Este algoritmo inicia considerando el primer elemento del arreglo como punto de referencia inicial, para que cada uno de los siguientes elementos se consideren como finales, esto permite comparar cada de uno de ellos para desplazarse cada uno hacia la posición que le corresponda para que con ello se puedan intercambiar hasta llegar a su lugar correspondiente.</p>
                 <p>Un ejemplo de este ordenamiento es cuando se realiza un orden de cartas en la mano, en donde primero se toma una carta y esta es la referencia de la segunda esto permite que las demás se coloquen en forma continua y ordenadas hasta llegar a la última</p>
-                <div class="type-card">
-                    <div class="type-title">1. aquiSistema Operativo Monolítico</div>
-                    <div class="quote-box">
-                        "Los sistemas monolíticos son como un gran programa donde cada función puede llamar a cualquier otra sin restricciones"
-                        <div class="citation">(Tanenbaum & Bos, 2015, p. 73).</div>
-                    </div>
-                    <div class="type-definition">
-                        <p>Estructura donde el SO se implementa como un único programa ejecutable en modo kernel, con todas las funcionalidades (gestión de memoria, procesos, E/S, etc.) integradas en un solo módulo.</p>
-                    </div>
-                    <div class="type-characteristics">
-                        <h4>Características:</h4>
-                        <ul>
-                            <li>Alto rendimiento (llamadas directas entre componentes).</li>
-                            <li>Complejidad en mantenimiento y depuración.</li>
-                            <li>Ejemplos: UNIX tradicional, MS-DOS, Linux (parcialmente).</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="type-card">
-                    <div class="type-title">2. Sistema Operativo por Capas (Layered)</div>
-                    <div class="quote-box">
-                        "Las capas proporcionan abstracción progresiva, desde el hardware hasta las aplicaciones de usuario"
-                        <div class="citation">(Silberschatz, Galvin y Gagne, 2018, p. 95).</div>
-                    </div>
-                    <div class="type-definition">
-                        <p>Organización jerárquica donde cada capa solo interactúa con la capa inmediatamente inferior, ocultando complejidad.</p>
-                    </div>
-                    <div class="type-characteristics">
-                        <h4>Características:</h4>
-                        <ul>
-                            <li>Modularidad: Facilita el desarrollo y depuración.</li>
-                            <li>Overhead por comunicación entre capas.</li>
-                            <li>Ejemplo clásico: THE OS (Dijkstra, 1968).</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="type-card">
-                    <div class="type-title">3. Micronúcleo (Microkernel)</div>
-                    <div class="quote-box">
-                        "Un micronúcleo típico solo maneja IPC, memoria básica y planificación, mientras otros servicios son procesos privilegiados"
-                        <div class="citation">(Stallings, 2018, p. 141).</div>
-                    </div>
-                    <div class="type-definition">
-                        <p>Minimiza las funciones ejecutadas en modo kernel, delegando servicios (gestión de archivos, red) a procesos en modo usuario ("servidores").</p>
-                    </div>
-                    <div class="type-characteristics">
-                        <h4>Ventajas:</h4>
-                        <ul>
-                            <li>Mayor estabilidad: Fallos en servicios no colapsan el kernel.</li>
-                            <li>Portabilidad y seguridad.</li>
-                            <li>Ejemplos: QNX, MINIX 3, Mach (base de macOS/iOS).</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="type-card">
-                    <div class="type-title">4. Máquina Virtual (Virtual Machine Monitor)</div>
-                    <div class="quote-box">
-                        "Los hypervisors Tipo 1 (bare-metal) como VMware ESXi actúan como una capa entre el hardware y los SO invitados"
-                        <div class="citation">(Smith & Nair, 2019, p. 208).</div>
-                    </div>
-                    <div class="type-definition">
-                        <p>SO que abstrae el hardware para crear múltiples máquinas virtuales (VMs) independientes, cada una ejecutando su propio SO invitado.</p>
-                    </div>
-                    <div class="type-characteristics">
-                        <h4>Características:</h4>
-                        <ul>
-                            <li>Aislamiento total: Fallos en una VM no afectan otras.</li>
-                            <li>Uso en virtualización (VMware, KVM) y cloud computing.</li>
-                            <li>Ejemplo clásico: IBM CP/CMS (años 1960).</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="table-container">
-                    <div class="table-caption"><strong>Tabla 2</strong></div>
-                    <div class="table-caption">Comparativa de tipos de núcleos del sistema operativo</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Tipo</th>
-                                <th>Ventajas</th>
-                                <th>Desventajas</th>
-                                <th>Ejemplo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Monolítico</td>
-                                <td>Eficiencia, bajo overhead</td>
-                                <td>Difícil escalabilidad</td>
-                                <td>Linux (kernel)</td>
-                            </tr>
-                            <tr>
-                                <td>Por Capas</td>
-                                <td>Modularidad, fácil depuración</td>
-                                <td>Rendimiento reducido</td>
-                                <td>THE OS</td>
-                            </tr>
-                            <tr>
-                                <td>Micronúcleo</td>
-                                <td>Seguridad, estabilidad</td>
-                                <td>Overhead por IPC</td>
-                                <td>QNX, MINIX</td>
-                            </tr>
-                            <tr>
-                                <td>Máquina Virtual</td>
-                                <td>Aislamiento, flexibilidad</td>
-                                <td>Consumo de recursos</td>
-                                <td>VMware, Hyper-V</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="table-caption">Nota: Tanenbaum y Bos, 2015; Silberschatz, Galvin y Gagne, 2022</div>
-                </div>
             </div>
+            <div class="figure-container">
+                <div class="figure-caption">Figura 6</div>
+                <div class="figure-caption">Ordenamiento por inserción</div>
+                <div class="figura">
+                    <img src="FIGURA6.png" alt="Ordenamiento por inserción" class="imagen-figura1"/>
+                </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
+            </div>
+
         </div>
+
+       <div class="section" id="seccion-1-2-2">
+            <div class="section-header">
+                <div class="section-number">1.2.1</div>
+                <div class="section-title">Ordenamiento por selección</div>
+            </div>
+            <div class="content">
+                <p>Este algoritmo se estructura bajo la premisa de los elementos más pequeños o grandes de una determina lista o arreglo para que con ello los coloque en la posición correcta entre los valores de 0 al tamaño -1, esto lo realiza varias veces hasta que todos los datos de la lista se encuentren ordenados. </p>
+                <p>El siguiente ejemplo, establece el ordenamiento por selección en donde consiste en tomar una lista desordenada y buscar el elemento más pequeño para colocarlo en la primera posición. Después se busca el siguiente elemento más pequeño en el resto de la lista y se coloca en la segunda posición. Este procedimiento se repite avanzando una posición cada vez, comparando
+                   los elementos restantes y colocándolos en el lugar correcto. El proceso termina cuando todos los datos han sido ordenados dentro del arreglo, como se muestra en el código siguiente.</p>
+            </div>
+            <div class="figure-container">
+                <div class="figure-caption">Figura 7</div>
+                <div class="figure-caption">Ordenamiento por selección</div>
+                <div class="figura">
+                    <img src="FIGURA7.png" alt="Ordenamiento por selección" class="imagen-figura1"/>
+                </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
+            </div>
+
+ 
+        </div>
+
+
+
 
         <div class="section" id="seccion-arquitectura">
             <div class="section-header">
