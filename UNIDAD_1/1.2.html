@@ -732,7 +732,7 @@
 
        <div class="section" id="seccion-1-2-2">
             <div class="section-header">
-                <div class="section-number">1.2.1</div>
+                <div class="section-number">1.2.2</div>
                 <div class="section-title">Ordenamiento por selección</div>
             </div>
             <div class="content">
@@ -748,38 +748,72 @@
                 </div>
                 <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
-
- 
         </div>
 
-
-
-
-        <div class="section" id="seccion-arquitectura">
+       <div class="section" id="seccion-1-2-3">
             <div class="section-header">
-                <div class="section-title">Arquitectura del sistema operativo</div>
+                <div class="section-number">1.2.3</div>
+                <div class="section-title">Ordenamiento por burbuja</div>
             </div>
             <div class="content">
-                <p>Su estructura y organización de los distintos componentes que se comunican entre los equipos de cómputo y los programas de aplicación garantiza el uso eficiente, seguro y coordinado de los recursos del sistema.</p>
-                <p>El propósito es establecer una distribución lógica de funciones, donde cada capa o módulo cumple una tarea específica y se comunica con las demás mediante interfaces bien definidas.</p>
-                <p>En un sistema operativo moderno, la arquitectura suele dividirse en capas de abstracción:</p>
-                <ul>
-                    <li><strong>Capa de hardware</strong>, que incluye los dispositivos físicos como CPU, memoria, disco y periféricos.</li>
-                    <li><strong>Núcleo o kernel</strong>, encargado de gestionar los recursos principales (procesos, memoria, archivos y dispositivos) y de mantener el control total del sistema.</li>
-                    <li><strong>Llamadas al sistema y bibliotecas</strong>, que actúan como una interfaz entre el kernel y las aplicaciones de usuario, permitiendo el acceso controlado a las funciones del sistema.</li>
-                </ul>
-
-                <div class="figure-container">
-                    <div class="figure-caption">Figura 3</div>
-                    <div class="figure-caption"> Arquitectura general de un sistema operativo</div>
-                    <div class="figura">
-                        <img src="FIGURA3.png" alt="Arquitectura general de un sistema operativo" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Silberschatz et al., 2022</div>
+                <p>Este algoritmo se encarga de realizar la comparación entre pares de elementos consecutivos de una lista y con ello los revisa si se encuentran en un orden incorrecto vuelve a intercambiarlos hasta que se complemente ello, ahora bien, porque se le reconoce como burbuja por que los valores más grandes los va subiendo poco a poco hacia el final de la lista como si estos representaran burbujas que suben a la superficie.</p>
+                    
+                <p>La siguiente imagen muestra el funcionamiento del ordenamiento de burbuja, un algoritmo que ordena los números comparando elementos consecutivos y cambiándolos de posición cuando están en el orden incorrecto. En cada recorrido,
+                   el número más grande se mueve hacia el final de la lista, como si fuera una burbuja que sube.</p>
+                <p>El proceso se repite varias veces, comparando los valores restantes en cada paso, hasta que todos los elementos quedan ordenados de menor a mayor. El algoritmo termina cuando ya no es necesario hacer intercambios y la lista queda completamente ordenada.</p>
+            </div>
+            <div class="figure-container">
+                <div class="figure-caption">Figura 8</div>
+                <div class="figure-caption">Ordenamiento por burbuja</div>
+                <div class="figura">
+                    <img src="FIGURA8.png" alt="Ordenamiento por burbuja" class="imagen-figura1"/>
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
+            </div>
+        </div>
+       <div class="section" id="seccion-1-2-4">
+            <div class="section-header">
+                <div class="section-number">1.2.4</div>
+                <div class="section-title">Ordenamiento por mezcla – Merge Sort</div>
+            </div>
+            <div class="content">
+                <p>Es un algoritmo de ordenamiento que funciona dividiendo la lista en partes más pequeñas, ordenando cada parte por separado y luego uniéndolas nuevamente en el orden correcto. Este método sigue la idea de dividir para ordenar y después mezclar, lo que permite organizar los datos de forma eficiente.</p>
+                <P>Primero, la lista se divide en dos partes iguales hasta que cada parte tenga un solo elemento. Después, se empiezan a unir las partes comparando los valores de cada grupo y colocándolos en orden. Este proceso de dividir y mezclar se repite varias veces hasta que todos los elementos quedan ordenados en una sola lista, como se muestra en la siguiente imagen.</P>  
+                <P>La imagen muestra cómo funciona el ordenamiento por mezcla (Merge Sort). Primero se observa una lista de números desordenados en la parte superior. El algoritmo comienza dividiendo la lista en partes más pequeñas, separándola en dos grupos y después en grupos aún más pequeños, hasta que cada grupo tiene solo un elemento.</P> 
+                <P>Después de dividir, el algoritmo empieza a ordenar y mezclar los grupos, comparando los números de cada lado y colocándolos en el orden correcto. Este proceso de mezclar se repite varias veces hasta formar nuevamente una sola lista, pero ahora completamente ordenada. Por eso se llama ordenamiento por mezcla, porque divide la lista y luego la vuelve a unir en orden.</P> 
+                <p>La siguiente imagen muestra el funcionamiento del ordenamiento de burbuja, un algoritmo que ordena los números comparando elementos consecutivos y cambiándolos de posición cuando están en el orden incorrecto. En cada recorrido,
+            </div>
+            <div class="figure-container">
+                <div class="figure-caption">Figura 9</div>
+                <div class="figure-caption">Ordenamiento por mezcla</div>
+                <div class="figura">
+                    <img src="FIGURA9.png" alt="Ordenamiento por mezcla" class="imagen-figura1"/>
+                </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
+            </div>
+        </div>
+       <div class="section" id="seccion-1-2-5">
+            <div class="section-header">
+                <div class="section-number">1.2.5</div>
+                <div class="section-title">Comparación de órdenes de complejidad</div>
+            </div>
+            <div class="content">
+                <p>La comparación de órdenes de complejidad es el análisis que se realiza para determinar qué tan eficiente es un algoritmo en comparación con otro, considerando el tiempo que tarda en ejecutarse y la cantidad de recursos que utiliza cuando aumenta el número de datos. Esto se expresa mediante la notación Big-O, la cual indica cómo crece el tiempo de ejecución conforme crece el tamaño del problema.</p>
+                <P>Al comparar órdenes de complejidad, se puede saber qué algoritmo es más rápido o eficiente. Por ejemplo, un algoritmo de complejidad O(n) es más eficiente que uno de O(n²) cuando la cantidad de datos es grande, porque el tiempo de ejecución crece más lentamente. Esta comparación es importante para elegir el mejor algoritmo al resolver problemas en programación y estructuras de datos.</P>
+           </div>
+            <div class="figure-container">
+                <div class="figure-caption">Figura 10</div>
+                <div class="figure-caption">Comparación de órdenes de complejidad</div>
+                <div class="figura">
+                    <img src="FIGURA10.png" alt="Comparación de órdenes de complejidad" class="imagen-figura1"/>
+                </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
         </div>
 
+
+
+ 
         <div class="section" id="video-material">
             <div class="section-header">
                 <div class="section-number"><i class="fas fa-play-circle"></i></div>
