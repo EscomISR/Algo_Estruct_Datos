@@ -686,8 +686,15 @@
             <p>Es de suma importancia que en un proceso esencial en la computación se localice la información dentro de un conjunto de datos de manera rápida y eficiente, esto permitirá a comprender cómo funcionan los algoritmos de búsqueda a los estudiante en donde desarrollarán habilidades para optimizar programas,
                mejorar el rendimiento de los sistemas y resolver problemas reales, por lo que su estudio resulta fundamental para fortalecer el pensamiento lógico y la capacidad de análisis.</p>
 
-            
-            
+            <div class="figure-container">
+                <div class="figure-caption">Figura 11</div>
+                <div class="figure-caption">El problema de la búsqueda</div>
+                <div class="figura">
+                    <img src="FIGURA11.png" alt="El problema de la búsqueda" class="imagen-figura1"/>
+                </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
+            </div>
+           
         </div>
         
         <div class="section" id="seccion-1-3-1">
@@ -713,17 +720,6 @@
 
             </div>
 
-            <div style="margin-top: 30px;">
-                <h3><i class="fas fa-play-circle" style="margin-right: 10px;"></i> Material Audiovisual</h3>
-                <p>A continuación, se presenta un recurso audiovisual que detalla el manejo y funcionamiento de las interrupciones:</p>
-                
-                <div class="figure-container">
-                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/EvXrjNJSbMI" title="Interrupciones" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
-                    <div class="figure-caption">Salas, I. (s.f.). <em>Manejo de Interrupciones</em> [Video]. YouTube. https://www.youtube.com/watch?v=EvXrjNJSbMI</div>
-                </div>
-            </div>
-
-        </div>
 
         <div class="section" id="seccion-1-3-2">
             <div class="section-header">
@@ -745,132 +741,77 @@
                                         <div class="figure-caption">Nota: Elaboración propia basada en Stallings, 2018, y Anderson, 2020</div>
                 </div>
             </div>
+            <div class="figure-container">
+                <div class="figure-caption">Figura 12</div>
+                <div class="figure-caption">Búsqueda binaria</div>
+                <div class="figura">
+                    <img src="FIGURA12.png" alt="Búsqueda binaria" class="imagen-figura1"/>
+                </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
+            </div>
         </div>
 
         <div class="section" id="seccion-1-3-3">
             <div class="section-header">
                 <div class="section-number">1.3.3</div>
-                <div class="section-title">Contadores de programa y relojes del sistema</div>
+                <div class="section-title">Búsqueda indexada</div>
             </div>
             <div class="content">
-                <p>Es un registro que se encuentra en la CPU en la cual se almacenan todas las direcciones de una instrucción inicial o en curso con el fin de ejecutar alguna aplicación o programas en tanto el reloj del sistema es un elemento fundamental del sistema ya que se encarga de dar pulsos de tiempos para tener sincronizado las operaciones de los equipos de cómputo, su principal función el contador es majenar la secuencia de las instrucciones de todas las aplicaciones o programas y el reloj coordina y administra la sincronización general de todo el hardware</p>
-
-                <h3>2. Importancia de los Contadores</h3>
-                <p>Es fundamental el entender que la administración, seguridad, planificación son muy importantes para su funcionamiento en los sistemas distribuidos.</p>
-                <ul>
-                    <li>En <strong>rendimiento</strong>, permiten identificar cuellos de botella como un uso excesivo del CPU o retrasos en operaciones de E/S, facilitando la optimización del sistema.</li>
-                    <li>En <strong>seguridad</strong>, registran eventos anómalos, como intentos fallidos de autenticación o accesos inusuales a archivos.</li>
-                    <li>En <strong>planificación</strong>, ayudan a los algoritmos de <em>scheduling</em> a ajustar la prioridad de los procesos según su consumo de recursos.</li>
-                    <li>En <strong>facturación</strong>, se aplican en servicios en la nube para contabilizar el uso de CPU, memoria o almacenamiento.</li>
-                </ul>
-
-                <div class="table-container">
-                    <div class="table-caption"><strong>Tabla 4</strong></div>
-                    <div class="table-caption">Clasificación de contadores por medida</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Tipo</th>
-                                <th>Ejemplo</th>
-                                <th>Uso</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Absolutos</strong></td>
-                                <td>Número total de fallos de página</td>
-                                <td>Análisis históricos y tendencias</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Incrementales</strong></td>
-                                <td>Llamadas al sistema por segundo</td>
-                                <td>Monitorización en tiempo real</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Promedios</strong></td>
-                                <td>Uso promedio de CPU (1, 5 y 15 min)</td>
-                                <td>Balanceo de carga y rendimiento</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="table-caption">Nota: Stallings (2018)</div>
+                <p>dentro de la algoritmia es un método que sirve para localizar información de manera más rápida dentro de un conjunto grande de datos, utilizando una estructura auxiliar llamada índice. Su función principal es evitar recorrer todos los elementos uno por uno,
+                   como ocurre en la búsqueda secuencial, permitiendo identificar primero la sección donde probablemente se encuentra el dato y después realizar la búsqueda únicamente en esa parte. Este tipo de búsqueda se utiliza cuando la cantidad de información es grande y
+                   se requiere mejorar el tiempo de respuesta del algoritmo (Weiss, 2014).</p>
+                <p>Una de sus características principales es que los datos deben estar organizados previamente en bloques o grupos, y cada bloque contiene un índice que representa los valores principales de cada sección. La búsqueda se realiza en dos etapas: primero se consulta
+                   el índice para determinar el bloque donde puede encontrarse el dato y posteriormente se realiza la búsqueda dentro de ese bloque. Este procedimiento reduce el número de comparaciones y mejora la eficiencia del
+                   algoritmo en comparación con la búsqueda secuencial (Sahni, Horowitz & Anderson-Freed, 2008).</p>   
+                <p>Otra característica importante de la búsqueda indexada es que requiere memoria adicional para almacenar el índice, pero permite acelerar considerablemente el acceso a la información. Por esta razón, este método es utilizado en archivos organizados, bases de datos y
+                   estructuras de datos, donde se necesita recuperar registros de forma rápida y eficiente. La búsqueda indexada se considera una técnica intermedia entre la búsqueda secuencial y la búsqueda binaria, ya que combina organización previa con rapidez en la localización
+                   de datos.</p>                
+            </div>
+            <div class="figure-container">
+                <div class="figure-caption">Figura 13</div>
+                <div class="figure-caption">Búsqueda indexada</div>
+                <div class="figura">
+                    <img src="FIGURA13.png" alt="Búsqueda indexada" class="imagen-figura1"/>
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
+            </div>
 
-                <div class="table-container">
-                    <div class="table-caption"><strong>Tabla 5</strong></div>
-                    <div class="table-caption">Monitoreo del rendimiento por nivel de abstracción</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Nivel</th>
-                                <th>Ejemplo</th>
-                                <th>Acceso</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Hardware</strong></td>
-                                <td>Contadores de rendimiento (PMCs)</td>
-                                <td>Instrucciones RDPMC (x86)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Kernel</strong></td>
-                                <td>Estadísticas de memoria (vmstat)</td>
-                                <td>Llamadas al sistema</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Usuario</strong></td>
-                                <td>Tiempo de CPU por proceso (top)</td>
-                                <td>Interfaces como /proc</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="table-caption">Nota: Silberschatz, Galvin y Gagne (2022)</em></div>
-                </div>
 
-                <div class="table-container">
-                    <div class="table-caption"><strong>Tabla 6</strong></div>
-                    <div class="table-caption">Clasificación del monitoreo del sistema por persistencia</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Tipo</th>
-                                <th>Ejemplo</th>
-                                <th>Ventaja</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Volátiles</strong></td>
-                                <td>Contadores de CPU en RAM</td>
-                                <td>Bajo <em>overhead</em> y respuesta inmediata</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Persistentes</strong></td>
-                                <td>Registros en /var/log</td>
-                                <td>Auditoría y análisis forense</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Híbridos</strong></td>
-                                <td>Buffer de estadísticas de red</td>
-                                <td>Equilibrio entre rendimiento y registro</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="table-caption">Nota: Silberschatz, Galvin y Gagne (2022); Intel (2020)</div>
+            <div style="margin-top: 30px;">
+                <h3><i class="fas fa-play-circle" style="margin-right: 10px;"></i> Material Audiovisual</h3>
+                <p>Para complementar el tema, visualiza el siguiente video sobre el problema de la búsqueda</p>
+                
+                <div class="figure-container">
+                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/RX8jsfJwQlc" title="El problema de la búsqueda" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
+                    <div class="figure-caption">Salas, I. (s.f.). <em>El problema de la búsqueda</em> [Video]. YouTube. https://www.youtube.com/watch?v=RX8jsfJwQlc</div>
                 </div>
+            </div>
+
+        <div class="section" id="seccion-1-3-4">
+            <div class="section-header">
+                <div class="section-number">1.3.4</div>
+                <div class="section-title">Comparación de órdenes de complejidad.</div>
+            </div>
+            <div class="content">
+                <p>se utiliza para analizar y evaluar la eficiencia de diferentes algoritmos, determinando cuánto tiempo o cuántos recursos necesitan para ejecutarse conforme aumenta el tamaño de los datos de entrada. Esta comparación se expresa mediante la notación Big-O (𝑂),
+                   la cual permite clasificar los algoritmos según su crecimiento, por ejemplo: constante, lineal, cuadrático o exponencial. Gracias a este análisis, es posible seleccionar el algoritmo más adecuado para resolver un problema de manera eficiente.</p>
+                <p>Una característica importante de la comparación de órdenes de complejidad es que no se enfoca en el tiempo exacto de ejecución, sino en el comportamiento del algoritmo cuando la cantidad de datos aumenta. Por ejemplo, un algoritmo de orden O(n) crece de forma proporcional al número de elementos,
+                   mientras que uno de O(n²) aumenta mucho más rápido, lo que provoca que sea menos eficiente cuando se trabaja con grandes volúmenes de información. Por esta razón, comparar órdenes de complejidad permite entender cuál algoritmo es más rápido y cuál consume más recursos en diferentes situaciones (Weiss, 2014).</p>
+                <p>Otra característica relevante es que la comparación de complejidad se usa ampliamente en el estudio de algoritmos de búsqueda, ordenamiento y estructuras de datos, ya que ayuda a elegir la mejor solución antes de programarla. En la práctica, algoritmos con complejidad menor como O(log n) u O(n) son preferibles
+                   frente a algoritmos O(n²) o O(2ⁿ) cuando el tamaño del problema es grande. Por ello, el análisis y la comparación de órdenes de complejidad es fundamental en la formación de nivel superior, porque desarrolla la capacidad de diseñar programas más eficientes y optimizados (Sahni, Horowitz & Anderson-Freed, 2008).</p>
+
+              
             </div>
 
             <div style="margin-top: 30px;">
                 <h3><i class="fas fa-play-circle" style="margin-right: 10px;"></i> Material Audiovisual</h3>
-                <p>Para complementar el tema, visualiza el siguiente video sobre la implementación de contadores en el sistema:</p>
+                <p>Para complementar el tema, visualiza el siguiente video sobre el problema de la búsqueda</p>
                 
                 <div class="figure-container">
-                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/v40mP-w8Lnk" title="Contadores" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
-                    <div class="figure-caption">Salas, I. (s.f.). <em>Contadores del sistema</em> [Video]. YouTube. https://www.youtube.com/watch?v=v40mP-w8Lnk</div>
+                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/RX8jsfJwQlc" title="El problema de la búsqueda" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
+                    <div class="figure-caption">Salas, I. (s.f.). <em>El problema de la búsqueda</em> [Video]. YouTube. https://www.youtube.com/watch?v=RX8jsfJwQlc</div>
                 </div>
-            </div>
-
+            </div>            
         </div>
 
         <div class="activity-card">
