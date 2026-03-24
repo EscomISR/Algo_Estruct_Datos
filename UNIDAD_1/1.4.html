@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1.4 Exploración exhasutiva y vuelta atrás</title>
+    <title>1.4 Exploración exhaustiva y vuelta atrás</title>
     <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -369,20 +369,97 @@
             margin: 10px 0 0 0;
             padding-left: 0;
         }
-
-        .code-block {
-            background: #1e1e1e;
-            color: #dcdcdc;
-            border-radius: 8px;
-            padding: 15px;
+        
+        .mode-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
             margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .mode-title {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .table-container {
+            max-width: 100%;
+            margin: 30px auto;
             overflow-x: auto;
-            font-family: 'Courier New', monospace;
-            border-left: 4px solid var(--warning);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            vertical-align: top;
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        
+        .table-caption {
+            text-align: center;
+            padding: 15px;
+            color: var(--gray);
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
         }
 
-        .code-block .comment {
-            color: #6a9955;
+        .figure-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .imagen-figura1 {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain; 
+            border-radius: 8px;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: zoom-in;
+            transform-origin: center center;
+        }
+        
+        /* Efecto al pasar el mouse */
+        .imagen-figura1:hover {
+            transform: scale(1.4); 
+            border-radius: 8px;
+        }
+        
+        .figure-caption {
+            color: var(--gray);
+            margin-top: 10px;
         }
         
         .nav-buttons {
@@ -412,11 +489,6 @@
             margin: 0 8px;
         }
         
-        .figure-caption {
-            color: var(--gray);
-            margin-top: 10px;
-        }
-
         footer {
             text-align: center;
             margin-top: 60px;
@@ -551,7 +623,7 @@
     <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
             <div class="sidebar-title">1.4 Exploración exhaustiva y vuelta atrás</div>
-            <div class="sidebar-subtitle">La importancia de analizar todas las posibles soluciones de un problema</div>
+            <div class="sidebar-subtitle">La importancia de analizar todas las posibles soluciones de un problema.</div>
         </div>
         
         <div class="nav-sections">
@@ -568,21 +640,23 @@
             <div class="nav-section">
                 <div class="nav-section-title">Contenido</div>
                 <a href="#seccion-1-4-1" class="nav-item" data-section="1-4-1">
-                    <i class="fas fa-cogs"></i> 1.4.1 Exploración exhaustiva
+                    <i class="fas fa-bolt"></i> 1.4.1 Exploración exhaustiva
                 </a>
-                <a href="#seccion-1-4-2" class="nav-item" data-section="1-4-2">
-                    <i class="fas fa-folder"></i> 1.4.2 Programación por vuelta atrás
+                <a href="#seccion-1-4-2" class="nav-item" data-section="1-3-2">
+                    <i class="fas fa-users"></i> 1.4.2 Programación vuelta atrás
                 </a>
-                <a href="#seccion-1-4-3" class="nav-item" data-section="1-4-3">
-                    <i class="fas fa-shield-alt"></i> 1.4.3 Nociones de complejidad de la exploración exhaustiva y vuelta atrás
+                <a href="#seccion-1-4-3" class="nav-item" data-section="1-3-3">
+                    <i class="fas fa-tachometer-alt"></i> 1.4.3 Nociones de complejidad de la exploración exhaustiva y vuelta atrás
                 </a>
-
             </div>
 
             <div class="nav-section">
                 <div class="nav-section-title">Recursos</div>
-                <a href="actividad_1_4.html" class="nav-item">
+                <a href="actividad_1_3.html" class="nav-item">
                     <i class="fas fa-tasks"></i> Actividad de aprendizaje
+                </a>
+                <a href="1.4.html" class="nav-item">
+                    <i class="fas fa-arrow-right"></i> Siguiente: Exploración exhaustiva y vuelta atrás
                 </a>
             </div>
         </div>
@@ -602,54 +676,55 @@
                 <span>1.4 Exploración exhaustiva y vuelta atrás</span>
             </div>
             <h1>1.4 Exploración exhaustiva y vuelta atrás</h1>
-            <div class="subtitle">La importancia de analizar todas las posibles soluciones de un problema</div>
+            <div class="subtitle">La importancia de analizar todas las posibles soluciones de un problema.</div>
         </header>
-        
+
         <div class="intro">
            <p>La exploración exhaustiva y vuelta atrás es importante porque permite analizar todas las posibles soluciones de un problema de manera ordenada, hasta encontrar la opción correcta o la mejor alternativa disponible.
               Este enfoque resulta fundamental en algoritmia, ya que garantiza que no se omitan caminos posibles dentro de un problema, especialmente en situaciones donde existen muchas combinaciones, como en laberintos, rompecabezas, asignación de tareas o búsqueda de rutas.</p>
            <p>Además, la vuelta atrás o backtracking aporta eficiencia lógica, porque cuando una decisión no conduce a una solución válida, el algoritmo regresa al paso anterior y prueba otra posibilidad sin repetir todo el proceso desde cero. Su estudio es importante para las y los estudiantes porque fortalece el pensamiento lógico, la resolución de problemas y la comprensión de cómo los algoritmos evalúan alternativas antes de llegar a una respuesta final.</p>   
            <p>Es la forma en que las aplicaciones o programas que el usuario requiere hace la petición de algún proceso al sistema operativo, es por ello que actuara como una interfaz para que están puedan acceder a los recursos y puedan con ello realizar las tareas solicitada, esto dependerá principalmente de los privilegios que se tengan en las llamadas ya que pueden ser desde la lectura de un archivo o hasta escribir en él y van a depender de la evaluación
               que el kernel realice a todas estas peticiones o llamadas del usuario al sistema.</p>
-            
-            <div class="quote-box">
-                “Según Knuth (2011), la exploración exhaustiva y vuelta atrás es una estrategia algorítmica que consiste en analizar todas las posibles soluciones de un problema, retrocediendo cuando una opción no cumple con las condiciones necesarias, lo que permite encontrar resultados correctos de manera sistemática. Esta técnica es fundamental en la programación porque facilita la resolución de problemas complejos mediante un proceso lógico y ordenado.”
-                <div class="citation">(Knuth, 2011).</div>
+
+            <div class="figure-container">
+                <div class="figure-caption">Figura 14</div>
+                <div class="figure-caption">Exploración exhaustiva y vuelta atrás</div>
+                <div class="figura">
+                    <img src="FIGURA14a.png" alt="Exploración exhaustiva y vuelta atrás" class="imagen-figura1"/>
+                </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
-
+           
         </div>
-
+        
         <div class="section" id="seccion-1-4-1">
             <div class="section-header">
                 <div class="section-number">1.4.1</div>
-                <div class="section-title">Exploración exhaustiva.</div>
+                <div class="section-title">Exploración exhaustiva</div>
             </div>
             <div class="content">
-                <p>Es aquella técnica algorítmica que consiste en probar todas las soluciones posibles de un problema hasta encontrar la correcta o la mejor opción. Se utiliza cuando no existe un método más
-                   directo o eficiente para resolverlo, por lo que el algoritmo revisa cada alternativa de manera sistemática. Su importancia radica en que garantiza que ninguna posibilidad quede sin analizar, aunque puede requerir más tiempo de ejecución cuando el número de opciones es muy grande.</p>
-
-                <h4>Características de la exploración exhaustiva</h4>
-                <ul>
-                    <li><strong>Analiza todas las posibles soluciones de un problema sin omitir ninguna alternativa.</strong></li>
-                    <li><strong>Se aplica cuando no existe un método más eficiente para encontrar la respuesta</strong></li>
-                    <li><strong>Garantiza obtener la solución correcta o la mejor solución posible.</strong></li>
-                    <li><strong>Puede tener alto costo computacional, ya que el tiempo de ejecución aumenta cuando crece el número de opciones.</strong></li>
-                    <li><strong>Se utiliza en problemas de búsqueda, combinaciones, optimización y toma de decisiones dentro de la algoritmia.</strong></li>
-                    <li><strong>Sirve como base para técnicas más avanzadas como vuelta atrás (backtracking) y ramificación y poda</strong></li>
-                </ul>
+                <p>Es una técnica de resolución de problemas que consiste en evaluar todas las posibles soluciones hasta encontrar la correcta o la más adecuada. En algoritmia, este enfoque garantiza que ninguna alternativa sea ignorada,
+                   por lo que se utiliza cuando se requiere obtener resultados exactos o cuando el número de opciones es limitado (Aho et al., 2006).</p>
+                <p>Una característica importante de este método es que analiza cada combinación o camino sin aplicar filtros previos, lo que lo convierte en un procedimiento sencillo de implementar. Sin embargo, su principal desventaja
+                   es que puede requerir mucho tiempo de ejecución cuando el número de posibilidades crece, ya que el algoritmo debe revisar cada caso de manera sistemática (Goodrich et al., 2014).</p>
+                <p>Es por ello que el estudio de la exploración exhaustiva es fundamental en la formación en algoritmia, porque permite comprender los principios básicos del diseño de algoritmos y sirve como punto de partida para el desarrollo de técnicas más eficientes,
+                   como la poda, la programación dinámica o la vuelta atrás, que buscan reducir el número de soluciones que deben evaluarse</p>
             </div>
-        </div>
+
+
         <div class="section" id="seccion-1-4-2">
             <div class="section-header">
                 <div class="section-number">1.4.2</div>
                 <div class="section-title">Programación por vuelta atrás</div>
             </div>
             <div class="content">
-                <p>es una técnica de diseño de algoritmos que se utiliza para resolver problemas en los que es necesario probar múltiples combinaciones hasta encontrar una solución correcta. El algoritmo construye la solución paso a paso y, cuando detecta que una opción no cumple las condiciones del problema, regresa al paso anterior para intentar otra alternativa. Este método es común en problemas como el de las ocho reinas,
-                   los laberintos o la generación de combinaciones, donde se requiere analizar diferentes posibilidades antes de obtener el resultado correcto.</p>
-                <p>Una de las características principales de la programación por vuelta atrás es que realiza una exploración exhaustiva controlada, ya que revisa todas las posibles soluciones, pero detiene el proceso cuando detecta que un camino no llevará a una respuesta válida. De esta manera se evita realizar cálculos innecesarios y se mejora la eficiencia del algoritmo en comparación con una búsqueda completamente desordenada.
-                   Este enfoque es fundamental en el estudio de la algoritmia porque permite resolver problemas complejos mediante procedimientos sistemáticos.</p>
-                <p>Según Donald Knuth (2011), los métodos de búsqueda con retroceso forman parte de las técnicas clásicas de la computación para explorar espacios de soluciones de manera sistemática, garantizando que se encuentre una solución correcta cuando existe.</p>
+                <p>Es conocida también como backtracking, es una técnica de diseño de algoritmos que consiste en explorar todas las posibles soluciones de un problema paso a paso, retrocediendo cuando una opción no cumple las condiciones necesarias. Este método construye las soluciones
+                   de forma incremental y, cuando detecta que un camino no conducirá a una solución válida, regresa al punto anterior para probar otra alternativa (Sedgewick & Wayne, 2011).</p>
+                <p>Tiene importantes características de la vuelta atrás en donde reduce el número de combinaciones que se deben analizar, ya que evita continuar con opciones que ya se sabe que no funcionarán. Este procedimiento se utiliza con frecuencia en problemas de combinatoria,
+                   búsqueda de caminos, resolución de laberintos, problemas de las N-reinas, generación de permutaciones y en la resolución de rompecabezas, donde es necesario probar diferentes configuraciones hasta encontrar la correcta</p>
+                <p>Por lo que el estudio de la programación por vuelta atrás es fundamental en la algoritmia porque permite comprender cómo optimizar la exploración exhaustiva mediante el descarte anticipado de soluciones inválidas. Gracias a esta técnica, es posible resolver problemas complejos
+                   de manera más eficiente que probando todas las combinaciones sin control, lo que la convierte en una estrategia clave en el diseño de algoritmos y en el análisis de la complejidad computacional.</p>
+
             </div>
             <div class="figure-container">
                 <div class="figure-caption">Figura 15</div>
@@ -659,43 +734,29 @@
                 </div>
                 <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
-
         </div>
 
         <div class="section" id="seccion-1-4-3">
             <div class="section-header">
                 <div class="section-number">1.4.3</div>
-                <div class="section-title">Protección y control de acceso</div>
+                <div class="section-title">Nociones de complejidad de la exploración exhaustiva y vuelta atrás</div>
             </div>
             <div class="content">
-                <p>Este proceso va a establecer los mecanismos necesario para que los usuarios que tengan privilegios puedan acceder a datos, aplicaciones y recursos mediante procedimientos bien específicos bajo contraseñas y accesos que el usuario tenga así como lista de control de acceso, los más autorizados son aquellos que tengan autentificación, que tenga acciones para el uso de la aplicación por el usuario realizando autorización para llevarlo a cabo, listas de control, control basado en roles, estado de mejor acceso dependiendo de su privilegio, contrafuegos y programas de seguridad y por último es muy importante sus actualizaciones para funcionar adecuadamente ante el sistema.</p>
-                <p>El <strong>control de acceso</strong> también se extiende al ámbito de la memoria y los dispositivos. El kernel utiliza <strong>tablas de páginas con permisos</strong>, asegurando que cada proceso acceda solo a las direcciones de memoria asignadas, y bloqueando operaciones de lectura o escritura no autorizadas. De manera similar, las llamadas relacionadas con la administración de archivos verifican los <strong>identificadores de usuario (UID)</strong> y <strong>grupos (GID)</strong> antes de ejecutar cualquier operación. Este modelo refuerza la seguridad en entornos multiusuario y protege los datos del sistema ante accesos indebidos.</p>
+                <p>Sirven para analizar cuánto tiempo y cuántos recursos requiere un algoritmo al intentar resolver un problema. En la exploración exhaustiva, el algoritmo revisa todas las posibilidades posibles, por lo que su costo de ejecución suele crecer muy rápido conforme
+                   aumenta el tamaño del problema; por ello, con frecuencia se asocia con complejidades exponenciales o factoriales. Su función principal es mostrar que, aunque este enfoque garantiza encontrar una solución si existe, puede volverse poco eficiente en problemas grandes.</p>
+                <p>En el caso de la vuelta atrás (backtracking), la noción de complejidad permite comprender que este método también explora múltiples posibilidades, pero con una ventaja importante: descarta caminos inválidos antes de seguir avanzando. Su función, entonces, es reducir parte
+                   del trabajo innecesario de la exploración exhaustiva pura, haciendo más eficiente la búsqueda en ciertos problemas combinatorios, como laberintos, sudoku, árboles de decisión o el problema de las reinas. Aun así, en el peor de los casos, su complejidad también puede ser muy alta,
+                   porque depende del número de combinaciones que deban revisarse (Skiena, 2008).</p>
+          </div>
+            <div class="figure-container">
+                <div class="figure-caption">Figura 16</div>
+                <div class="figure-caption">Nociones de complejidad de la exploración exhaustiva y vuelta atrás</div>
+                <div class="figura">
+                    <img src="FIGURA16.png" alt="Nociones de complejidad de la exploración exhaustiva y vuelta atrás" class="imagen-figura1"/>
+                </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
 
-
-        </div>
-
-        <div class="section" id="seccion-1-4-4">
-            <div class="section-header">
-                <div class="section-number">1.4.4</div>
-                <div class="section-title">Diversas (llamadas misceláneas)</div>
-            </div>
-            <div class="content">
-                <p>Son un grupo de funciones, aplicaciones o herramientas en donde se visualizan los servicios esenciales del sistema por lo que no se relacionan con la memoria, procesos o archivos solo se usan para que todo funcione en forma general correctamente y tiene su función de interactuar con el usuario y su forma de comunicarse con el sistema realizando llamadas al sistema, interfaces de programación uso de bibliotecas, servicios de procesos en segundo plano, uso de herramientas e interacciones con el hardware.</p>
-                <p>Por lo que existen una categoría para las llamas que son:</p>
-                
-                <ul>
-                    <li><strong>Gestión del tiempo y fecha:</strong> <code>time()</code>, <code>gettimeofday()</code>, <code>clock_gettime()</code> permiten consultar y modificar la hora del sistema o medir intervalos temporales.</li>
-                    <li><strong>Gestión del entorno:</strong> <code>getenv()</code>, <code>setenv()</code> — acceden o modifican variables de entorno que influyen en el comportamiento de los procesos.</li>
-                    <li><strong>Gestión del sistema:</strong> <code>uname()</code> — obtiene información del sistema operativo (nombre, versión, arquitectura).</li>
-                    <li><strong>Sincronización:</strong> <code>sleep()</code>, <code>usleep()</code> — suspenden temporalmente la ejecución de un proceso.</li>
-                    <li><strong>Gestión de recursos:</strong> <code>getrlimit()</code>, <code>setrlimit()</code> — consultan o establecen límites de uso de recursos como CPU, memoria o archivos abiertos.</li>
-                    <li><strong>Depuración y monitoreo:</strong> <code>ptrace()</code> — permite observar y controlar la ejecución de otros procesos, útil para depuradores.</li>
-                </ul>
-
-                <p>Estas llamadas desempeñan un papel complementario en la administración del sistema, proporcionando herramientas que permiten <strong>monitorizar, ajustar y sincronizar</strong> el funcionamiento del sistema operativo con las aplicaciones.</p>
-            </div>
-        </div>
 
         <div class="section" id="video-material">
             <div class="section-header">
@@ -712,9 +773,10 @@
             </div>
         </div>        
 
+
         <div class="activity-card">
-            <div class="activity-title">Actividad de Aprendizaje 1.4: Exploración exhuastiva y vuelta atrás</div>
-            <p>Pon a prueba lo aprendido sobre exploración exhuastiva y vuelta atrás.</p>
+            <div class="activity-title">Actividad de Aprendizaje 1.4: Exploración exhaustiva y vuelta atrás.</div>
+            <p>Repasa los conceptos de algoritmos fundamentales y sus problemas.</p>
             <a href="actividad_1_4.html" class="activity-btn">
                 <i class="fas fa-pencil-alt"></i> Realizar Actividad
             </a>
