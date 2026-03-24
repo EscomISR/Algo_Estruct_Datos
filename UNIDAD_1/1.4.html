@@ -551,7 +551,7 @@
     <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
             <div class="sidebar-title">1.4 Exploración exhaustiva y vuelta atrás</div>
-            <div class="sidebar-subtitle">System Calls</div>
+            <div class="sidebar-subtitle">La importancia de analizar todas las posibles soluciones de un problema</div>
         </div>
         
         <div class="nav-sections">
@@ -602,25 +602,19 @@
                 <span>1.4 Exploración exhaustiva y vuelta atrás</span>
             </div>
             <h1>1.4 Exploración exhaustiva y vuelta atrás</h1>
-            <div class="subtitle">aqui Técnicas de resolución de problemas</div>
+            <div class="subtitle">La importancia de analizar todas las posibles soluciones de un problema</div>
         </header>
         
         <div class="intro">
-            <p>Es la forma en que las aplicaciones o programas que el usuario requiere hace la petición de algún proceso al sistema operativo, es por ello que actuara como una interfaz para que están puedan acceder a los recursos y puedan con ello realizar las tareas solicitada, esto dependerá principalmente de los privilegios que se tengan en las llamadas ya que pueden ser desde la lectura de un archivo o hasta escribir en él y van a depender de la evaluación que el kernel realice a todas estas peticiones o llamadas del usuario al sistema.</p>
+           <p>La exploración exhaustiva y vuelta atrás es importante porque permite analizar todas las posibles soluciones de un problema de manera ordenada, hasta encontrar la opción correcta o la mejor alternativa disponible.
+              Este enfoque resulta fundamental en algoritmia, ya que garantiza que no se omitan caminos posibles dentro de un problema, especialmente en situaciones donde existen muchas combinaciones, como en laberintos, rompecabezas, asignación de tareas o búsqueda de rutas.</p>
+           <p>Además, la vuelta atrás o backtracking aporta eficiencia lógica, porque cuando una decisión no conduce a una solución válida, el algoritmo regresa al paso anterior y prueba otra posibilidad sin repetir todo el proceso desde cero. Su estudio es importante para las y los estudiantes porque fortalece el pensamiento lógico, la resolución de problemas y la comprensión de cómo los algoritmos evalúan alternativas antes de llegar a una respuesta final.</p>   
+           <p>Es la forma en que las aplicaciones o programas que el usuario requiere hace la petición de algún proceso al sistema operativo, es por ello que actuara como una interfaz para que están puedan acceder a los recursos y puedan con ello realizar las tareas solicitada, esto dependerá principalmente de los privilegios que se tengan en las llamadas ya que pueden ser desde la lectura de un archivo o hasta escribir en él y van a depender de la evaluación
+              que el kernel realice a todas estas peticiones o llamadas del usuario al sistema.</p>
             
             <div class="quote-box">
-                “las llamadas al sistema representan el punto de transición entre los programas de usuario y el núcleo, proporcionando los medios mediante los cuales los procesos solicitan servicios del sistema operativo”
-                <div class="citation">(Silberschatz, Galvin y Gagne, 2022, p. 140).</div>
-            </div>
-
-            <div style="margin-top: 30px;">
-                <h3><i class="fas fa-play-circle" style="margin-right: 10px;"></i> Material Audiovisual</h3>
-                <p>Para comprender mejor cómo los programas solicitan servicios al núcleo, revisa el siguiente video sobre llamadas al sistema:</p>
-                
-                <div class="figure-container">
-                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/KDXZkv2ROkU" title="Llamadas a sistema" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
-                    <div class="figure-caption">Salas, I. (s.f.). <em>Llamadas a sistema</em> [Video]. YouTube. https://www.youtube.com/watch?v=KDXZkv2ROkU</div>
-                </div>
+                “Según Knuth (2011), la exploración exhaustiva y vuelta atrás es una estrategia algorítmica que consiste en analizar todas las posibles soluciones de un problema, retrocediendo cuando una opción no cumple con las condiciones necesarias, lo que permite encontrar resultados correctos de manera sistemática. Esta técnica es fundamental en la programación porque facilita la resolución de problemas complejos mediante un proceso lógico y ordenado.”
+                <div class="citation">(Knuth, 2011).</div>
             </div>
 
         </div>
@@ -628,29 +622,31 @@
         <div class="section" id="seccion-1-4-1">
             <div class="section-header">
                 <div class="section-number">1.4.1</div>
-                <div class="section-title">Procesos y señales</div>
+                <div class="section-title">Exploración exhaustiva.</div>
             </div>
             <div class="content">
-                <p>Representan dos de los mecanismos más importantes para la administración y comunicación dentro del sistema operativo.</p>
-                <p>Ambos elementos son gestionados directamente por el <strong>kernel</strong>, a través de un conjunto específico de llamadas al sistema que garantizan su control seguro y eficiente.</p>
-                <p>Estos se deben de realizar, aplicar, sincronizan y finalizan mediante la aplicación de las llamadas en donde el kernel evaluara su ejecución o función para llevarla a cabo.</p>
+                <p>Es aquella técnica algorítmica que consiste en probar todas las soluciones posibles de un problema hasta encontrar la correcta o la mejor opción. Se utiliza cuando no existe un método más
+                   directo o eficiente para resolverlo, por lo que el algoritmo revisa cada alternativa de manera sistemática. Su importancia radica en que garantiza que ninguna posibilidad quede sin analizar, aunque puede requerir más tiempo de ejecución cuando el número de opciones es muy grande.</p>
 
+                <h4>Características de la exploración exhaustiva</h4>
                 <ul>
-                    <li><strong>Este comando forma nuevos procesos llamado Fork ().</strong></li>
-                    <li><strong>execve():</strong> reemplaza el espacio de memoria del proceso actual por un nuevo programa.</li>
-                    <li><strong>wait() y waitpid():</strong> permiten que un proceso padre espere la finalización de sus hijos.</li>
-                    <li><strong>Este comando termina cualquier proceso y se escribe como exit ()</strong></li>
+                    <li><strong>Analiza todas las posibles soluciones de un problema sin omitir ninguna alternativa.</strong></li>
+                    <li><strong>Se aplica cuando no existe un método más eficiente para encontrar la respuesta</strong></li>
+                    <li><strong>Garantiza obtener la solución correcta o la mejor solución posible.</strong></li>
+                    <li><strong>Puede tener alto costo computacional, ya que el tiempo de ejecución aumenta cuando crece el número de opciones.</strong></li>
+                    <li><strong>Se utiliza en problemas de búsqueda, combinaciones, optimización y toma de decisiones dentro de la algoritmia.</strong></li>
+                    <li><strong>Sirve como base para técnicas más avanzadas como vuelta atrás (backtracking) y ramificación y poda</strong></li>
                 </ul>
 
-                <p>Cada una de estas llamadas activa rutinas del <strong>planificador de procesos (scheduler)</strong>, encargado de asignar el tiempo de CPU y administrar el cambio de contexto entre procesos. Gracias a estas operaciones, el sistema operativo puede mantener múltiples tareas activas de forma concurrente, distribuyendo los recursos según políticas de prioridad y equidad.</p>
-
-                <div class="quote-box">
-                    “el kernel administra los procesos a través de un conjunto de llamadas al sistema que permiten su creación, suspensión, reanudación y finalización de manera controlada”
-                    <div class="citation">(Tanenbaum y Bos, 2015, p. 154).</div>
+            <div class="figure-container">
+                <div class="figure-caption">Figura 15</div>
+                <div class="figure-caption">Exploración exhaustiva</div>
+                <div class="figura">
+                    <img src="FIGURA15.png" alt="Exploración exhaustiva" class="imagen-figura1"/>
                 </div>
-
-                <p>Por otro lado, las <strong>señales</strong> constituyen un mecanismo de comunicación y control entre procesos o entre el sistema y un proceso específico. Son eventos asincrónicos generados por el kernel o por otros procesos para notificar sucesos importantes, como errores, interrupciones o solicitudes de terminación. Por ejemplo, señales como <strong>SIGINT</strong> interrumpen un proceso (generalmente mediante la combinación Ctrl + C), mientras que <strong>SIGKILL</strong> fuerza su terminación inmediata. Otras señales, como <strong>SIGCHLD</strong>, informan al proceso padre sobre la finalización de un hijo.</p>
-                <p>Las llamadas al sistema encargadas de manejar señales incluyen <strong>signal(), kill(), sigaction() y sigprocmask()</strong>, que permiten enviar, recibir y bloquear señales según el contexto.</p>
+                <div class="figure-caption">Nota: Elaboración propia</div>
+            </div>
+ 
             </div>
 
             <div style="margin-top: 30px;">
