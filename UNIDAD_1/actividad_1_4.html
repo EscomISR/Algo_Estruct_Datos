@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 1.4: Llamadas a Sistema</title>
+    <title>Actividad 1.4: Exploración exhaustiva y vuelta atrás</title>
     <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -84,7 +84,7 @@
         }
         .sidebar-overlay.active{ opacity:1; visibility:visible }
 
-        .container{ max-width:1200px; margin:0 90px; padding:20px; transition: margin-left .3s ease, margin-right .3s ease; }
+        .container{ max-width:1200px; margin:0 auto; padding:20px; transition: margin-left .3s ease, margin-right .3s ease; }
         .header{ text-align:center; padding:30px 20px; background:rgba(0,0,0,.3); border-radius:15px; margin-bottom:30px }
         .breadcrumb{ display:flex; justify-content:center; margin-bottom:20px; color:var(--gray); font-size:1rem }
         .breadcrumb a{ color:var(--secondary); text-decoration:none; transition:.3s }
@@ -217,23 +217,18 @@
     </style>
 </head>
 <body>
-    <!-- Indicador de progreso de lectura -->
     <div class="reading-progress"><div class="reading-progress-bar" id="readingProgressBar"></div></div>
 
-    <!-- Botón toggle del menú -->
     <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
 
-    <!-- Botón flotante de inicio -->
     <a href="index.html" class="floating-home-btn" title="Ir al inicio"><i class="fas fa-home"></i></a>
 
-    <!-- Overlay para cerrar el menú -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- Menú de navegación lateral -->
     <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
-            <div class="sidebar-title">Llamadas a Sistema</div>
-            <div class="sidebar-subtitle">Interfaz entre aplicaciones y kernel</div>
+            <div class="sidebar-title">1.4 Exploración exhaustiva</div>
+            <div class="sidebar-subtitle">Búsqueda completa y backtracking</div>
         </div>
         <div class="nav-sections">
             <div class="nav-section">
@@ -246,12 +241,10 @@
                 <a href="actividad_1_1.html" class="nav-item"><i class="fas fa-tasks"></i> Actividad 1.1</a>
                 <a href="actividad_1_2.html" class="nav-item"><i class="fas fa-tasks"></i> Actividad 1.2</a>
                 <a href="actividad_1_3.html" class="nav-item"><i class="fas fa-tasks"></i> Actividad 1.3</a>
-                <a href="actividad_1_5.html" class="nav-item"><i class="fas fa-tasks"></i> Actividad 1.5</a>
             </div>
         </div>
     </nav>
 
-    <!-- Botón de ir arriba -->
     <button class="scroll-to-top" id="scrollToTop"><i class="fas fa-chevron-up"></i></button>
 
     <div class="container">
@@ -261,18 +254,18 @@
                 <span>/</span>
                 <a href="index.html">Unidad 1</a>                
                 <span>/</span>
-                <a href="1.4.html">1.4 Llamadas a Sistema</a>
+                <a href="1.4.html">1.4 Exploración exhaustiva y vuelta atrás</a>
                 <span>/</span>
-                <span>Batalla de Llamadas a Sistema</span>
+                <span>Batalla de Exploración</span>
             </div>
-            <h1>🛠️ Batalla de Llamadas a Sistema</h1>
-            <div class="subtitle">¡Derrota al Guardián del Kernel acertando las preguntas!</div>
+            <h1>🧭 Batalla de Exploración y Vuelta Atrás</h1>
+            <div class="subtitle">¡Derrota al Laberinto Viviente evaluando todas las opciones!</div>
         </div>
 
         <div class="instructions">
             <h3><i class="fas fa-gamepad"></i> Instrucciones de Batalla</h3>
             <ul>
-                <li><strong>Misión:</strong> Responde correctamente preguntas sobre <em>system calls</em> (interfaz usuario–kernel).</li>
+                <li><strong>Misión:</strong> Responde correctamente preguntas sobre exploración exhaustiva y programación por vuelta atrás.</li>
                 <li><strong>Mecánica:</strong> Cada respuesta correcta hace 1 punto de daño. Cada incorrecta suma un error.</li>
                 <li><strong>Victoria:</strong> Reduce la vida del guardián a 0 HP contestando correctamente las 8 preguntas.</li>
                 <li><strong>Derrota:</strong> Llegas a 3 errores antes de derrotarlo.</li>
@@ -281,17 +274,15 @@
         </div>
 
         <div class="battle-arena">
-            <!-- Monster Section -->
             <div class="monster-section">
-                <div class="monster-avatar" id="monsterAvatar">🧰</div>
-                <div class="monster-name">Guardián del Kernel</div>
+                <div class="monster-avatar" id="monsterAvatar">🧩</div>
+                <div class="monster-name">Laberinto Viviente</div>
                 <div class="health-bar-container">
                     <div class="health-bar" id="healthBar" style="width: 100%;"></div>
                 </div>
                 <div class="health-text" id="healthText">8 / 8 HP</div>
             </div>
 
-            <!-- Player Stats -->
             <div class="player-stats">
                 <div class="stat-card">
                     <div class="stat-value" id="timerValue">0s</div>
@@ -312,15 +303,13 @@
                 </div>
             </div>
 
-            <!-- Questions Section -->
             <div class="questions-section">
-                <h3><i class="fas fa-scroll"></i> Desafíos de Llamadas a Sistema</h3>
+                <h3><i class="fas fa-route"></i> Desafíos de Exploración</h3>
                 <div id="questionsContainer"></div>
             </div>
 
             <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
-            <!-- Battle Controls -->
             <div class="battle-controls">
                 <button class="btn btn-attack" onclick="attack()" id="attackBtn">
                     <i class="fas fa-bolt"></i> ¡ATACAR!
@@ -333,7 +322,6 @@
                 </button>
             </div>
 
-            <!-- Game Status -->
             <div class="game-status" id="gameStatus"></div>
         </div>
 
@@ -346,8 +334,8 @@
                     <i class="fas fa-home"></i> Menú Principal
                 </a>
             </div>
-            <a href="1.5.html" class="btn btn-success">
-                Siguiente Tema <i class="fas fa-arrow-right"></i>
+            <a href="index.html" class="btn btn-success">
+                Finalizar Unidad <i class="fas fa-flag-checkered"></i>
             </a>
         </div>
     </div>
@@ -485,9 +473,9 @@
   function updateMonsterAvatar() {
     const avatar = document.getElementById('monsterAvatar');
     const healthPercentage = (monsterHP / maxHP) * 100;
-    if (healthPercentage > 70) avatar.textContent = '🧰';
-    else if (healthPercentage > 40) avatar.textContent = '🖥️';
-    else if (healthPercentage > 0) avatar.textContent = '⚙️';
+    if (healthPercentage > 70) avatar.textContent = '🧩';
+    else if (healthPercentage > 40) avatar.textContent = '🌀';
+    else if (healthPercentage > 0) avatar.textContent = '🛤️';
     else avatar.textContent = '💥';
   }
 

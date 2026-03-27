@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 1.1: Batalla del Sistema Operativo</title>
+    <title>Actividad 1.1: Batalla de Algoritmos</title>
     <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -802,29 +802,24 @@
     </style>
 </head>
 <body>
-    <!-- Indicador de progreso de lectura -->
     <div class="reading-progress">
         <div class="reading-progress-bar" id="readingProgressBar"></div>
     </div>
 
-    <!-- Botón toggle del menú -->
     <button class="menu-toggle" id="menuToggle">
         <i class="fas fa-bars"></i>
     </button>
 
-    <!-- Botón flotante de inicio -->
     <a href="index.html" class="floating-home-btn" title="Ir al inicio">
         <i class="fas fa-home"></i>
     </a>
 
-    <!-- Overlay para cerrar el menú -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- Menú de navegación lateral -->
     <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
-            <div class="sidebar-title">Aspectos Basicos</div>
-            <div class="sidebar-subtitle">Aspectos Basicos del Sistema Operativo.</div>
+            <div class="sidebar-title">1.1 Algoritmia</div>
+            <div class="sidebar-subtitle">Algoritmos fundamentales.</div>
         </div>
         
         <div class="nav-sections">
@@ -862,7 +857,6 @@
         </div>
     </nav>
 
-    <!-- Botón de ir arriba -->
     <button class="scroll-to-top" id="scrollToTop">
         <i class="fas fa-chevron-up"></i>
     </button>
@@ -874,18 +868,18 @@
                 <span>/</span>
                 <a href="index.html">Unidad 1</a>                
                 <span>/</span>
-                <a href="1.1.html">1.1 Aspectos Basicos del Sistema Operativo</a>
+                <a href="1.1.html">1.1 Algoritmia</a>
                 <span>/</span>
-                <span>Batalla Aspectos Basicos del Sistema</span>
+                <span>Batalla de Algoritmos</span>
             </div>
-            <h1>⚡ Batalla del Sistema</h1>
-            <div class="subtitle">¡Derrota al Guardián del Sistema con tus conocimientos!</div>
+            <h1>⚡ Batalla de Algoritmos</h1>
+            <div class="subtitle">¡Derrota al Guardián del Código con tus conocimientos en algoritmia!</div>
         </div>
 
         <div class="instructions">
             <h3><i class="fas fa-gamepad"></i> Instrucciones de Batalla</h3>
             <ul>
-                <li><strong>Misión:</strong> Derrota al Guardián del Sistema respondiendo correctamente las preguntas sobre principios de E/S.</li>
+                <li><strong>Misión:</strong> Derrota al Guardián del Código respondiendo correctamente las preguntas sobre algoritmos, pseudocódigo, abstracción y complejidad.</li>
                 <li><strong>Mecánica:</strong> Cada respuesta correcta inflige 1 punto de daño. Cada respuesta incorrecta cuenta como un error.</li>
                 <li><strong>Victoria:</strong> Reduce la vida del guardián a 0 HP respondiendo las 8 preguntas correctamente.</li>
                 <li><strong>Derrota:</strong> Cometes más de 3 errores antes de derrotar al guardián.</li>
@@ -894,17 +888,15 @@
         </div>
 
         <div class="battle-arena">
-            <!-- Monster Section -->
             <div class="monster-section">
                 <div class="monster-avatar" id="monsterAvatar">🤖</div>
-                <div class="monster-name">Guardián del Sistema</div>
+                <div class="monster-name">Guardián del Código</div>
                 <div class="health-bar-container">
                     <div class="health-bar" id="healthBar" style="width: 100%;"></div>
                 </div>
                 <div class="health-text" id="healthText">8 / 8 HP</div>
             </div>
 
-            <!-- Player Stats -->
             <div class="player-stats">
                 <div class="stat-card">
                     <div class="stat-value" id="timerValue">0s</div>
@@ -925,9 +917,8 @@
                 </div>
             </div>
 
-            <!-- Questions Section -->
             <div class="questions-section">
-                <h3><i class="fas fa-scroll"></i> Desafíos del Sistema Operativo</h3>
+                <h3><i class="fas fa-scroll"></i> Desafíos de Algoritmia</h3>
                 <div id="questionsContainer"></div>
             </div>
 
@@ -935,7 +926,6 @@
                 <div class="progress-fill" id="progressFill"></div>
             </div>
 
-            <!-- Battle Controls -->
             <div class="battle-controls">
                 <button class="btn btn-attack" onclick="attack()" id="attackBtn">
                     <i class="fas fa-bolt"></i> ¡ATACAR!
@@ -948,7 +938,6 @@
                 </button>
             </div>
 
-            <!-- Game Status -->
             <div class="game-status" id="gameStatus"></div>
         </div>
 

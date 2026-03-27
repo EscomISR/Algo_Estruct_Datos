@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 1.2: Fundamentos del Núcleo del Sistema Operativo</title>
+    <title>Actividad 1.2: Batalla del Ordenamiento</title>
     <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -181,23 +181,18 @@
     </style>
 </head>
 <body>
-    <!-- Progreso -->
     <div class="reading-progress"><div class="reading-progress-bar" id="readingProgressBar"></div></div>
 
-    <!-- Toggle menú -->
     <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
 
-    <!-- Botón inicio -->
     <a href="index.html" class="floating-home-btn" title="Ir al inicio"><i class="fas fa-home"></i></a>
 
-    <!-- Overlay -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- Menú lateral -->
     <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
-            <div class="sidebar-title">Fundamentos del Núcleo</div>
-            <div class="sidebar-subtitle">Aspectos del Sistema Operativo</div>
+            <div class="sidebar-title">1.2 El problema del ordenamiento</div>
+            <div class="sidebar-subtitle">Algoritmos de ordenamiento y complejidad</div>
         </div>
         <div class="nav-sections">
             <div class="nav-section">
@@ -215,7 +210,6 @@
         </div>
     </nav>
 
-    <!-- Botón arriba -->
     <button class="scroll-to-top" id="scrollToTop"><i class="fas fa-chevron-up"></i></button>
 
     <div class="container">
@@ -225,18 +219,18 @@
                 <span>/</span>
                 <a href="index.html">Unidad 1</a>                
                 <span>/</span>
-                <a href="1.2.html">1.2 Fundamentos del Núcleo del Sistema Operativo</a>
+                <a href="1.2.html">1.2 El problema del ordenamiento</a>
                 <span>/</span>
-                <span>Batalla de Fundamentos</span>
+                <span>Batalla del Ordenamiento</span>
             </div>
-            <h1>💻 Batalla del Núcleo del Sistema Operativo</h1>
-            <div class="subtitle">¡Derrota al Maestro de los Núcleos con tus conocimientos!</div>
+            <h1>📊 Batalla del Ordenamiento</h1>
+            <div class="subtitle">¡Derrota al Señor del Caos ordenando tus conocimientos!</div>
         </div>
 
         <div class="instructions">
             <h3><i class="fas fa-gamepad"></i> Instrucciones de Batalla</h3>
             <ul>
-                <li><strong>Misión:</strong> Derrota al Maestro de los Núcleos respondiendo correctamente las preguntas sobre el núcleo del SO.</li>
+                <li><strong>Misión:</strong> Derrota al Señor del Caos respondiendo correctamente las preguntas sobre algoritmos de ordenamiento (inserción, selección, burbuja, mezcla) y complejidad.</li>
                 <li><strong>Mecánica:</strong> Cada respuesta correcta inflige 1 punto de daño. Cada error suma un fallo.</li>
                 <li><strong>Victoria:</strong> Reduce la vida del maestro a 0 HP respondiendo las 8 preguntas correctamente.</li>
                 <li><strong>Derrota:</strong> Cometes más de 3 errores antes de derrotarlo.</li>
@@ -245,15 +239,13 @@
         </div>
 
         <div class="battle-arena">
-            <!-- Enemigo -->
             <div class="monster-section">
-                <div class="monster-avatar" id="monsterAvatar">🧠</div>
-                <div class="monster-name">Maestro de los Núcleos</div>
+                <div class="monster-avatar" id="monsterAvatar">🔀</div>
+                <div class="monster-name">Señor del Caos</div>
                 <div class="health-bar-container"><div class="health-bar" id="healthBar" style="width: 100%;"></div></div>
                 <div class="health-text" id="healthText">8 / 8 HP</div>
             </div>
 
-            <!-- Stats -->
             <div class="player-stats">
                 <div class="stat-card">
                     <div class="stat-value" id="timerValue">0s</div>
@@ -274,15 +266,13 @@
                 </div>
             </div>
 
-            <!-- Preguntas -->
             <div class="questions-section">
-                <h3><i class="fas fa-scroll"></i> Desafíos del Núcleo</h3>
+                <h3><i class="fas fa-sort-amount-down"></i> Desafíos de Ordenamiento</h3>
                 <div id="questionsContainer"></div>
             </div>
 
             <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
-            <!-- Controles -->
             <div class="battle-controls">
                 <button class="btn btn-attack" onclick="attack()" id="attackBtn">
                     <i class="fas fa-bolt"></i> ¡ATACAR!
@@ -295,7 +285,6 @@
                 </button>
             </div>
 
-            <!-- Estado -->
             <div class="game-status" id="gameStatus"></div>
         </div>
 
@@ -401,7 +390,7 @@
         function endGame(status){
             gameOver = true; clearInterval(timerInterval);
             const statusDiv = document.getElementById('gameStatus'); statusDiv.style.display = 'block';
-            if (status === 'victory') statusDiv.className = 'game-status victory', statusDiv.textContent = '¡Victoria! Has derrotado al Maestro de los Núcleos.';
+            if (status === 'victory') statusDiv.className = 'game-status victory', statusDiv.textContent = '¡Victoria! Has derrotado al Señor del Caos.';
             else if (status === 'defeat') statusDiv.className = 'game-status defeat', statusDiv.textContent = '¡Derrota! Intenta de nuevo.';
         }
         function showSolutions(){
