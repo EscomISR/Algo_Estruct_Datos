@@ -1,202 +1,352 @@
 [
   {
-    "question": "¿Cuál es la función principal del sistema operativo dentro de una computadora?",
-    "options": [
-      "Conectar hardware y software gestionando recursos",
-      "Acelerar la tarjeta gráfica",
-      "Ejecutar programas sin usar memoria",
-      "Sustituir al procesador en tareas críticas"
+    "pregunta": "¿Por qué los algoritmos son fundamentales para las ciencias de la computación según el texto?",
+    "opciones": [
+      "Porque representan un conjunto de instrucciones bien específicas, ordenadas y limitadas que ayudan en la solución de tareas.",
+      "Porque permiten crear hardware más rápido y eficiente.",
+      "Porque son la única forma de conectar una computadora a internet.",
+      "Porque eliminan la necesidad de usar memoria en los programas."
     ],
-    "answer": "Conectar hardware y software gestionando recursos"
+    "respuesta_correcta": "Porque representan un conjunto de instrucciones bien específicas, ordenadas y limitadas que ayudan en la solución de tareas."
   },
   {
-    "question": "¿Qué aspecto básico del sistema operativo administra dónde se guardan datos y programas mientras están en uso?",
-    "options": [
-      "Control de programas",
-      "Uso de la memoria",
-      "Seguridad y permisos",
-      "Comunicación con el usuario"
+    "pregunta": "¿Qué permite obtener correctamente el resultado esperado en un algoritmo?",
+    "opciones": [
+      "La ejecución de instrucciones de forma aleatoria.",
+      "La secuencia de instrucciones realizada en forma lógica.",
+      "El uso de una supercomputadora.",
+      "Tener una conexión a red estable."
     ],
-    "answer": "Uso de la memoria"
+    "respuesta_correcta": "La secuencia de instrucciones realizada en forma lógica."
   },
   {
-    "question": "¿Qué abstracción proporciona el sistema operativo para ocultar la complejidad del uso físico de la memoria?",
-    "options": [
-      "Espacio de direcciones",
-      "Planificador de discos",
-      "Interfaz de usuario",
-      "Controlador DMA"
+    "pregunta": "Según Weiss (2014), ¿qué permite determinar el análisis de algoritmos?",
+    "opciones": [
+      "Su eficiencia en función del tiempo de ejecución y el uso de memoria.",
+      "El costo comercial del software.",
+      "El número de usuarios que pueden usar el programa.",
+      "El lenguaje de programación más moderno."
     ],
-    "answer": "Espacio de direcciones"
+    "respuesta_correcta": "Su eficiencia en función del tiempo de ejecución y el uso de memoria."
   },
   {
-    "question": "¿Qué componente actúa como la abstracción de la CPU que administra la ejecución de programas?",
-    "options": [
-      "Archivo ejecutable",
-      "Proceso",
-      "Unidad lógica aritmética",
-      "Planificador gráfico"
+    "pregunta": "¿En qué se dividen los algoritmos según la naturaleza de su sistema de representación?",
+    "opciones": [
+      "Cualitativos y cuantitativos.",
+      "Lineales y no lineales.",
+      "Finitos e infinitos.",
+      "Simples y estructurados."
     ],
-    "answer": "Proceso"
+    "respuesta_correcta": "Cualitativos y cuantitativos."
   },
   {
-    "question": "¿Qué función del sistema operativo organiza y permite acceder a la información en almacenamiento?",
-    "options": [
-      "Gestión de archivos",
-      "Gestión de memoria virtual",
-      "Controlador de interrupciones",
-      "Interpretación de comandos"
+    "pregunta": "¿Cómo se definen los algoritmos cualitativos?",
+    "opciones": [
+      "Por secuencias de pasos lógicos.",
+      "A través de cálculos numéricos.",
+      "Por el uso de inteligencia artificial.",
+      "Mediante el uso de colores en el código."
     ],
-    "answer": "Gestión de archivos"
+    "respuesta_correcta": "Por secuencias de pasos lógicos."
   },
   {
-    "question": "¿Cuál de los siguientes es un ejemplo de abstracción del sistema operativo relacionada con el hardware?",
-    "options": [
-      "Controladores de dispositivos de E/S",
-      "Compilador",
-      "Librería gráfica",
-      "Ventanas emergentes"
+    "pregunta": "¿Cómo se articulan los algoritmos cuantitativos?",
+    "opciones": [
+      "A través de cálculos numéricos para la obtención de soluciones.",
+      "Mediante descripciones poéticas de los pasos.",
+      "A través de dibujos y diagramas de flujo únicamente.",
+      "Por medio de comandos de voz."
     ],
-    "answer": "Controladores de dispositivos de E/S"
+    "respuesta_correcta": "A través de cálculos numéricos para la obtención de soluciones."
   },
   {
-    "question": "¿Qué tipo de sistema se caracteriza por manejar enormes volúmenes de datos con alta confiabilidad?",
-    "options": [
-      "Servidor",
-      "Tiempo real",
-      "Mainframe",
-      "Embebido"
+    "pregunta": "¿A qué se refiere la característica de 'Exactitud'?",
+    "opciones": [
+      "A que cada indicación o instrucción debe ser clara y coherente.",
+      "A que el algoritmo debe tardar exactamente un segundo.",
+      "A que no puede tener más de diez pasos.",
+      "A que el resultado debe ser siempre un número decimal."
     ],
-    "answer": "Mainframe"
+    "respuesta_correcta": "A que cada indicación o instrucción debe ser clara y coherente."
   },
   {
-    "question": "¿Qué tipo de sistema operativo debe garantizar que el tiempo de respuesta sea exacto y predecible?",
-    "options": [
-      "Multiprocesador",
-      "Servidor web",
-      "Tiempo Real",
-      "Sistema distribuido"
+    "pregunta": "¿Qué significa que un algoritmo tenga 'limitación'?",
+    "opciones": [
+      "Que siempre tendrá un inicio y un final, ya que sus pasos son finitos.",
+      "Que no puede procesar más de 1 GB de datos.",
+      "Que solo puede ser leído por una persona a la vez.",
+      "Que el código debe ser corto."
     ],
-    "answer": "Tiempo Real"
+    "respuesta_correcta": "Que siempre tendrá un inicio y un final, ya que sus pasos son finitos."
   },
   {
-    "question": "¿Qué tipo de sistema operativo se utiliza en dispositivos con recursos limitados como sensores o electrodomésticos?",
-    "options": [
-      "Mainframe",
-      "Embebido",
-      "Multiprocesador",
-      "Servidor"
+    "pregunta": "¿Cuál es la definición de un algoritmo 'Determinístico'?",
+    "opciones": [
+      "Siempre que se lleve a cabo con los mismos datos de entrada obtendrás los mismos resultados.",
+      "El algoritmo determina por sí solo cuál es el mejor lenguaje para programar.",
+      "Es un algoritmo que nunca termina de ejecutarse.",
+      "El resultado varía cada vez que se presiona un botón."
     ],
-    "answer": "Embebido"
+    "respuesta_correcta": "Siempre que se lleve a cabo con los mismos datos de entrada obtendrás los mismos resultados."
   },
   {
-    "question": "¿Qué característica distingue a un sistema multiprocesador?",
-    "options": [
-      "Trabaja con un único hilo de ejecución",
-      "Opera con varios procesadores en paralelo",
-      "Solo maneja una tarea a la vez",
-      "No utiliza memoria compartida"
+    "pregunta": "¿De qué se encarga un 'Algoritmo de búsqueda'?",
+    "opciones": [
+      "De establecer un procedimiento lógico paso a paso para ubicar un dato concreto dentro de un grupo.",
+      "De buscar errores en el sistema operativo.",
+      "De encontrar virus en la computadora.",
+      "De organizar carpetas en el escritorio."
     ],
-    "answer": "Opera con varios procesadores en paralelo"
+    "respuesta_correcta": "De establecer un procedimiento lógico paso a paso para ubicar un dato concreto dentro de un grupo."
   },
   {
-    "question": "¿Cuál es una función esencial del sistema operativo al comunicarse con el usuario?",
-    "options": [
-      "Generar señales eléctricas",
-      "Proveer interfaz gráfica o de comandos",
-      "Compilar programas automáticamente",
-      "Controlar velocidades de reloj"
+    "pregunta": "¿En qué formas existen los algoritmos de búsqueda según el texto?",
+    "opciones": [
+      "Búsqueda secuencial (lineal) e intervalo (binario).",
+      "Búsqueda por nombre y búsqueda por fecha.",
+      "Búsqueda manual y búsqueda automática.",
+      "Búsqueda local y búsqueda en la nube."
     ],
-    "answer": "Proveer interfaz gráfica o de comandos"
+    "respuesta_correcta": "Búsqueda secuencial (lineal) e intervalo (binario)."
   },
   {
-    "question": "¿Qué tipo de sistema operativo usa clusters conectados mediante redes de alta velocidad?",
-    "options": [
-      "Embebido",
-      "Multiprocesador",
-      "Servidor web",
-      "Mainframe"
+    "pregunta": "¿Cuál es la función de los 'Algoritmos de ordenamiento'?",
+    "opciones": [
+      "Reorganizar los elementos de un listado en un orden específico.",
+      "Borrar elementos repetidos de una lista.",
+      "Cambiar el nombre de los archivos de un listado.",
+      "Sumar todos los números de una lista."
     ],
-    "answer": "Multiprocesador"
+    "respuesta_correcta": "Reorganizar los elementos de un listado en un orden específico."
   },
   {
-    "question": "¿Qué elemento controla quién puede acceder o modificar recursos en un sistema operativo?",
-    "options": [
-      "Interfaz de usuario",
-      "Seguridad y permisos",
-      "Archivos temporales",
-      "Gestor de energía"
+    "pregunta": "¿Qué estrategia sigue un 'Algoritmo voraz'?",
+    "opciones": [
+      "Tomar la mejor decisión disponible en el momento presente sin preocuparse por las consecuencias futuras.",
+      "Analizar todas las opciones y elegir la más lenta.",
+      "Esperar a que el usuario decida el siguiente paso.",
+      "Repetir el primer paso hasta que el resultado sea correcto."
     ],
-    "answer": "Seguridad y permisos"
+    "respuesta_correcta": "Tomar la mejor decisión disponible en el momento presente sin preocuparse por las consecuencias futuras."
   },
   {
-    "question": "¿Qué tipo de RTOS considera inaceptable incumplir un plazo?",
-    "options": [
-      "Soft Real-Time",
-      "Hard Real-Time",
-      "Batch RTOS",
-      "Predictive RTOS"
+    "pregunta": "¿Cómo utiliza la lógica un 'Algoritmo probabilístico'?",
+    "opciones": [
+      "Utiliza el azar como parte de su lógica para resolver un problema.",
+      "Utiliza fórmulas matemáticas exactas y fijas.",
+      "Se basa en la opinión del programador.",
+      "No utiliza lógica, solo comandos de entrada."
     ],
-    "answer": "Hard Real-Time"
+    "respuesta_correcta": "Utiliza el azar como parte de su lógica para resolver un problema."
   },
   {
-    "question": "¿Qué característica define a los sistemas embebidos?",
-    "options": [
-      "Tienen recursos limitados y son especializados",
-      "Son los más rápidos del mercado",
-      "Siempre funcionan conectados a servidores",
-      "Requieren gran capacidad gráfica"
+    "pregunta": "¿Qué herramienta permite a un algoritmo probabilístico tomar decisiones diferentes?",
+    "opciones": [
+      "Un generador de números aleatorios.",
+      "Un sensor de movimiento.",
+      "Un temporizador de cuenta regresiva.",
+      "Una base de datos de resultados anteriores."
     ],
-    "answer": "Tienen recursos limitados y son especializados"
+    "respuesta_correcta": "Un generador de números aleatorios."
   },
   {
-    "question": "¿Qué abstracción del SO permite que los programas no conozcan la estructura física del disco?",
-    "options": [
-      "Procesos",
-      "Archivos",
-      "Interrupciones",
-      "Tablas de páginas"
+    "pregunta": "¿Qué es un 'Algoritmo informático' según el documento?",
+    "opciones": [
+      "Una 'receta' digital: secuencia lógica, finita y definida que transforma un input en un output.",
+      "Un programa que solo sirve para navegar en internet.",
+      "Una pieza física dentro del disco duro.",
+      "Un manual impreso de instrucciones de oficina."
     ],
-    "answer": "Archivos"
+    "respuesta_correcta": "Una 'receta' digital: secuencia lógica, finita y definida que transforma un input en un output."
   },
   {
-    "question": "¿Qué característica hace únicos a los sistemas de tiempo real?",
-    "options": [
-      "Son los más rápidos",
-      "Su prioridad es la predictibilidad",
-      "Utilizan gráficos avanzados",
-      "Operan solo sin red"
+    "pregunta": "En el ejemplo de la suma, ¿qué se hace primero tras solicitar los números?",
+    "opciones": [
+      "Se almacenan en variables.",
+      "Se borran de la memoria.",
+      "Se imprimen directamente sin calcular.",
+      "Se envían por correo electrónico."
     ],
-    "answer": "Su prioridad es la predictibilidad"
+    "respuesta_correcta": "Se almacenan en variables."
   },
   {
-    "question": "¿Cuál es el objetivo general del sistema operativo?",
-    "options": [
-      "Ser un puente entre usuario y hardware",
-      "Guardar capturas de pantalla",
-      "Optimizar videojuegos",
-      "Administrar redes sociales"
+    "pregunta": "¿Qué hace el algoritmo de suma una vez que tiene ambos valores almacenados?",
+    "opciones": [
+      "Realiza la operación de suma entre los dos números.",
+      "Pide al usuario que ingrese un tercer número.",
+      "Apaga la pantalla para ahorrar energía.",
+      "Ordena los números de mayor a menor."
     ],
-    "answer": "Ser un puente entre usuario y hardware"
+    "respuesta_correcta": "Realiza la operación de suma entre los dos números."
   },
   {
-    "question": "¿Qué aspecto básico del SO se encarga de manejar varios programas a la vez?",
-    "options": [
-      "Control de programas",
-      "Administración de archivos",
-      "Abstracción de memoria",
-      "Planificación multimedia"
+    "pregunta": "¿Cuál es el propósito final del ejemplo del algoritmo de suma?",
+    "opciones": [
+      "Asegurar que cada paso se haya ejecutado en el orden establecido.",
+      "Hacer la suma lo más lento posible para que el usuario vea el proceso.",
+      "Demostrar que los números no se pueden sumar.",
+      "Crear una base de datos de sumas."
     ],
-    "answer": "Control de programas"
+    "豆respuesta_correcta": "Asegurar que cada paso se haya ejecutado en el orden establecido."
   },
   {
-    "question": "¿Qué concepto permite al usuario dar instrucciones al sistema mediante ventanas íconos o comandos?",
-    "options": [
-      "Interfaz de usuario",
-      "Memoria virtual",
-      "Controlador PCI",
-      "Hiperprocesamiento"
+    "pregunta": "¿Qué es el pseudocódigo según el apartado 1.1.2?",
+    "opciones": [
+      "Un recurso que permite representar de manera abstracta y simplificada las etapas de un algoritmo.",
+      "Un lenguaje de programación de alta complejidad.",
+      "Una forma de ocultar el código a otros programadores.",
+      "Un sistema de archivos para guardar algoritmos."
     ],
-    "answer": "Interfaz de usuario"
+    "respuesta_correcta": "Un recurso que permite representar de manera abstracta y simplificada las etapas de un algoritmo."
+  },
+  {
+    "pregunta": "¿Cuál es la finalidad del pseudocódigo?",
+    "opciones": [
+      "Facilitar la comprensión para cualquier persona con conocimientos técnicos.",
+      "Que la computadora ejecute el código más rápido.",
+      "Generar gráficos automáticamente.",
+      "Sustituir al lenguaje Python."
+    ],
+    "respuesta_correcta": "Facilitar la comprensión para cualquier persona con conocimientos técnicos."
+  },
+  {
+    "pregunta": "¿Por qué se utiliza el pseudocódigo en la fase de diseño de software?",
+    "opciones": [
+      "Permite visualizar de forma clara el flujo del programa antes de codificar.",
+      "Porque es el único momento donde no se necesita lógica.",
+      "Para ahorrar papel al imprimir el diseño.",
+      "Para que el cliente no entienda la solución técnica."
+    ],
+    "respuesta_correcta": "Permite visualizar de forma clara el flujo del programa antes de codificar."
+  },
+  {
+    "pregunta": "¿En qué se basa la 'Abstracción' en informática?",
+    "opciones": [
+      "En simplificar la representación considerando solo aspectos relevantes y dejando detalles no necesarios.",
+      "En hacer el problema lo más difícil posible.",
+      "En usar solo números imaginarios en el código.",
+      "En no usar ninguna estructura de datos."
+    ],
+    "respuesta_correcta": "En simplificar la representación considerando solo aspectos relevantes y dejando detalles no necesarios."
+  },
+  {
+    "pregunta": "¿Cuál es el propósito de la abstracción?",
+    "opciones": [
+      "Hacer más fácil el análisis, comprensión y diseño de soluciones.",
+      "Ocultar quién programó el algoritmo.",
+      "Hacer que el programa ocupe menos espacio en el monitor.",
+      "Aumentar el número de variables innecesarias."
+    ],
+    "respuesta_correcta": "Hacer más fácil el análisis, comprensión y diseño de soluciones."
+  },
+  {
+    "pregunta": "¿Qué permite la abstracción al programador?",
+    "opciones": [
+      "Enfocarse en la lógica del problema antes de pensar en la implementación.",
+      "Escribir el código sin tener que pensar.",
+      "Eliminar la fase de diseño del software.",
+      "No tener que usar computadoras para resolver problemas."
+    ],
+    "respuesta_correcta": "Enfocarse en la lógica del problema antes de pensar en la implementación."
+  },
+  {
+    "pregunta": "¿Qué es un Tipo de Dato Abstracto (TDA)?",
+    "opciones": [
+      "Una forma de definir datos y operaciones sin mostrar su implementación interna.",
+      "Un dato que no tiene valor real.",
+      "Un tipo de dato que solo se usa en diagramas de flujo.",
+      "Un conjunto de números que no se pueden sumar."
+    ],
+    "respuesta_correcta": "Una forma de definir datos y operaciones sin mostrar su implementación interna."
+  },
+  {
+    "pregunta": "¿Qué describen los TDA?",
+    "opciones": [
+      "Qué se puede hacer con los datos y cómo deben comportarse, pero no cómo se programan.",
+      "El nombre de la memoria donde se guardan.",
+      "El color que tendrán en la pantalla.",
+      "La velocidad a la que se borran."
+    ],
+    "respuesta_correcta": "Qué se puede hacer con los datos y cómo deben comportarse, pero no cómo se programan."
+  },
+  {
+    "pregunta": "¿Cuáles son ejemplos de TDA mencionados en el texto?",
+    "opciones": [
+      "Pilas, colas y listas.",
+      "Suma, resta y multiplicación.",
+      "Monitor, teclado y ratón.",
+      "Cualitativo, cuantitativo y determinístico."
+    ],
+    "respuesta_correcta": "Pilas, colas y listas."
+  },
+  {
+    "pregunta": "¿Cómo se organizan los elementos en los TDA lineales?",
+    "opciones": [
+      "De forma secuencial, donde cada dato tiene un único predecesor y sucesor.",
+      "En forma de red compleja.",
+      "De manera aleatoria sin orden.",
+      "En una estructura circular infinita."
+    ],
+    "respuesta_correcta": "De forma secuencial, donde cada dato tiene un único predecesor y sucesor."
+  },
+  {
+    "pregunta": "¿Qué caracteriza a los TDA no lineales?",
+    "opciones": [
+      "Forman estructuras jerárquicas o en red con múltiples relaciones.",
+      "Tienen un solo camino de principio a fin.",
+      "No permiten guardar más de dos datos.",
+      "Solo pueden usarse para cálculos de suma."
+    ],
+    "respuesta_correcta": "Forman estructuras jerárquicas o en red con múltiples relaciones."
+  },
+  {
+    "pregunta": "¿Qué es el Orden de complejidad O() de un algoritmo?",
+    "opciones": [
+      "La métrica utilizada para medir la eficiencia de un algoritmo (Notación Big O).",
+      "El orden alfabético de los pasos del algoritmo.",
+      "La cantidad de personas que diseñaron el programa.",
+      "El número de veces que se repite el título del tema."
+    ],
+    "respuesta_correcta": "La métrica utilizada para medir la eficiencia de un algoritmo (Notación Big O)."
+  },
+  {
+    "pregunta": "¿Por qué el Orden de complejidad no mide el tiempo en segundos?",
+    "opciones": [
+      "Porque depende de las características del equipo donde se realice el proceso.",
+      "Porque los segundos son muy difíciles de contar.",
+      "Porque los algoritmos no tienen tiempo de ejecución.",
+      "Porque la Notación Big O solo usa letras."
+    ],
+    "respuesta_correcta": "Porque depende de las características del equipo donde se realice el proceso."
+  },
+  {
+    "pregunta": "¿Qué analiza realmente la Notación Big O?",
+    "opciones": [
+      "Cómo crece el número de operaciones necesarias al aumentar la cantidad de datos (n).",
+      "Cuánta electricidad consume la computadora.",
+      "El tamaño del archivo en el disco duro.",
+      "La calidad de la imagen del diagrama de flujo."
+    ],
+    "respuesta_correcta": "Cómo crece el número de operaciones necesarias al aumentar la cantidad de datos (n)."
+  },
+  {
+    "pregunta": "En la Figura 3, ¿cuál es el uso común del Diagrama de Flujo y el Pseudocódigo?",
+    "opciones": [
+      "Definir lógica de algoritmos.",
+      "Imprimir fotos.",
+      "Crear bases de datos.",
+      "Navegar en redes sociales."
+    ],
+    "respuesta_correcta": "Definir lógica de algoritmos."
+  },
+  {
+    "pregunta": "¿Qué indica el término 'finitos' en relación con los resultados de un algoritmo?",
+    "opciones": [
+      "Que se obtiene un resultado concreto al final del proceso.",
+      "Que el resultado es infinito.",
+      "Que no hay un final definido.",
+      "Que el resultado es secreto."
+    ],
+    "respuesta_correcta": "Que se obtiene un resultado concreto al final del proceso."
   }
 ]

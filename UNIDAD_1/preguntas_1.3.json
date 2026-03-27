@@ -1,202 +1,352 @@
 [
   {
-    "question": "¿Cuáles son los dos modos principales en los que opera un sistema operativo?",
-    "options": [
-      "Modo seguro y modo depuración",
-      "Modo usuario y modo kernel",
-      "Modo eficiente y modo avanzado",
-      "Modo supervisor y modo administrador"
+    "pregunta": "¿Cuál es el objetivo principal del problema de la búsqueda en algoritmia?",
+    "opciones": [
+      "Encontrar un dato específico dentro de un conjunto de información de la manera más rápida y eficiente posible.",
+      "Borrar datos que no se han usado en mucho tiempo.",
+      "Cambiar el orden de los elementos de una lista al azar.",
+      "Multiplicar todos los valores de una base de datos."
     ],
-    "answer": "Modo usuario y modo kernel"
+    "respuesta_correcta": "Encontrar un dato específico dentro de un conjunto de información de la manera más rápida y eficiente posible."
   },
   {
-    "question": "¿Qué caracteriza al modo kernel dentro del sistema operativo?",
-    "options": [
-      "Es un modo sin privilegios dedicado a aplicaciones comunes",
-      "Posee acceso total a la CPU, memoria y dispositivos",
-      "Solo ejecuta aplicaciones del usuario",
-      "Opera únicamente cuando ocurre una interrupción"
+    "pregunta": "¿Qué habilidades desarrollan los estudiantes al comprender los algoritmos de búsqueda?",
+    "opciones": [
+      "Optimizar programas, mejorar el rendimiento de sistemas y fortalecer el pensamiento lógico.",
+      "Aprender a escribir correos electrónicos profesionales.",
+      "Reparar físicamente componentes de hardware.",
+      "Diseñar interfaces gráficas con muchos colores."
     ],
-    "answer": "Posee acceso total a la CPU, memoria y dispositivos"
+    "respuesta_correcta": "Optimizar programas, mejorar el rendimiento de sistemas y fortalecer el pensamiento lógico."
   },
   {
-    "question": "¿Cuál es la principal función del modo usuario?",
-    "options": [
-      "Ejecutar aplicaciones con privilegios restringidos",
-      "Reiniciar la CPU ante fallos",
-      "Configurar los controladores del sistema",
-      "Gestionar directamente dispositivos de E/S"
+    "pregunta": "¿En qué consiste el algoritmo de búsqueda secuencial?",
+    "opciones": [
+      "En recorrer uno a uno los elementos de una lista hasta encontrar el dato o terminar el recorrido.",
+      "En dividir la lista en dos partes iguales repetidamente.",
+      "En usar un índice auxiliar para saltar directamente al dato.",
+      "En preguntar al usuario en qué posición cree que está el dato."
     ],
-    "answer": "Ejecutar aplicaciones con privilegios restringidos"
+    "respuesta_correcta": "En recorrer uno a uno los elementos de una lista hasta encontrar el dato o terminar el recorrido."
   },
   {
-    "question": "¿Cómo solicita el modo usuario acceso a recursos privilegiados?",
-    "options": [
-      "A través de interrupciones manuales",
-      "Mediante llamadas al sistema",
-      "Desactivando el contador de programa",
-      "Usando accesos directos de la CPU"
+    "pregunta": "¿Requiere la búsqueda secuencial que los datos estén ordenados?",
+    "opciones": [
+      "No, puede aplicarse en cualquier conjunto de información, ya que compara los datos en el orden en que se encuentran.",
+      "Sí, es obligatorio que estén ordenados de menor a mayor.",
+      "Solo si la lista tiene más de 100 elementos.",
+      "Sí, pero solo si son datos de tipo numérico."
     ],
-    "answer": "Mediante llamadas al sistema"
+    "respuesta_correcta": "No, puede aplicarse en cualquier conjunto de información, ya que compara los datos en el orden en que se encuentran."
   },
   {
-    "question": "¿Qué señala Tanenbaum y Bos (2015) sobre los cambios entre modo usuario y modo kernel?",
-    "options": [
-      "Aumentan significativamente el rendimiento",
-      "Son innecesarios en sistemas modernos",
-      "Tienen costo en rendimiento pero son indispensables",
-      "Se eliminan mediante optimización avanzada"
+    "pregunta": "¿Qué sucede con el tiempo de ejecución de la búsqueda secuencial conforme crece el número de elementos?",
+    "opciones": [
+      "Su tiempo de ejecución aumenta proporcionalmente.",
+      "Su tiempo de ejecución disminuye.",
+      "El tiempo de ejecución se mantiene constante.",
+      "El algoritmo deja de funcionar automáticamente."
     ],
-    "answer": "Tienen costo en rendimiento pero son indispensables"
+    "respuesta_correcta": "Su tiempo de ejecución aumenta proporcionalmente."
   },
   {
-    "question": "¿Qué es una interrupción en un sistema operativo?",
-    "options": [
-      "Una orden que apaga el sistema inmediatamente",
-      "Una pausa en la ejecución para atender una acción no viable o un evento externo",
-      "Un error crítico que obliga a reiniciar el sistema",
-      "Un proceso que deshabilita el modo kernel temporalmente"
+    "pregunta": "Según Weiss (2014), ¿cuándo se utiliza principalmente la búsqueda secuencial?",
+    "opciones": [
+      "Cuando se trabaja con colecciones pequeñas de datos o no es posible ordenarlos previamente.",
+      "En bases de datos de millones de registros.",
+      "Cuando se requiere la máxima velocidad posible en supercomputadoras.",
+      "Solo para buscar nombres de personas."
     ],
-    "answer": "Una pausa en la ejecución para atender una acción no viable o un evento externo"
+    "respuesta_correcta": "Cuando se trabaja con colecciones pequeñas de datos o no es posible ordenarlos previamente."
   },
   {
-    "question": "¿Cuál de las siguientes puede generar una interrupción?",
-    "options": [
-      "Un proceso que se ejecuta correctamente",
-      "Un dispositivo de E/S o una instrucción inválida",
-      "Una actualización gráfica de la interfaz",
-      "Una llamada al sistema sin argumentos"
+    "pregunta": "¿Por qué es importante estudiar la búsqueda secuencial en la formación de nivel superior?",
+    "opciones": [
+      "Sirve como base para analizar métodos más eficientes dentro de las estructuras de datos.",
+      "Es el único algoritmo que se usa en la industria actualmente.",
+      "Porque no requiere el uso de computadoras para ejecutarse.",
+      "Para aprender a memorizar listas de números."
     ],
-    "answer": "Un dispositivo de E/S o una instrucción inválida"
+    "respuesta_correcta": "Sirve como base para analizar métodos más eficientes dentro de las estructuras de datos."
   },
   {
-    "question": "¿Qué hace la CPU cuando ocurre una interrupción?",
-    "options": [
-      "Ignora el proceso en ejecución",
-      "Detiene temporalmente la ejecución y llama al manejador de interrupciones",
-      "Reinicia el sistema operativo",
-      "Bloquea todos los procesos del usuario"
+    "pregunta": "¿Cuál es una característica principal de la búsqueda secuencial respecto a su implementación?",
+    "opciones": [
+      "Es uno de los algoritmos más simples y fáciles de implementar.",
+      "Requiere conocimientos avanzados de cálculo integral.",
+      "Es extremadamente difícil de programar en Python.",
+      "Necesita hardware especial para funcionar."
     ],
-    "answer": "Detiene temporalmente la ejecución y llama al manejador de interrupciones"
+    "respuesta_correcta": "Es uno de los algoritmos más simples y fáciles de implementar."
   },
   {
-    "question": "¿Qué componente identifica y procesa adecuadamente una interrupción?",
-    "options": [
-      "El planificador de tareas",
-      "El manejador de interrupciones",
-      "El sistema de archivos",
-      "El reloj del sistema"
+    "pregunta": "¿Cuál es la mayor desventaja de la búsqueda secuencial mencionada en el texto?",
+    "opciones": [
+      "Menor eficiencia en listas grandes.",
+      "Que solo funciona con números enteros.",
+      "Que borra los datos después de encontrarlos.",
+      "Que requiere demasiada memoria RAM."
     ],
-    "answer": "El manejador de interrupciones"
+    "respuesta_correcta": "Menor eficiencia en listas grandes."
   },
   {
-    "question": "¿Qué distingue al modo usuario respecto al modo kernel?",
-    "options": [
-      "Puede acceder directamente al hardware",
-      "Opera con permisos limitados",
-      "Controla totalmente la CPU",
-      "Administra la memoria del sistema"
+    "pregunta": "¿Qué elemento es fundamental para que la búsqueda binaria funcione correctamente?",
+    "opciones": [
+      "La lista debe estar ordenada.",
+      "La lista debe contener solo números primos.",
+      "El usuario debe ingresar la posición media.",
+      "Se debe usar un generador de números aleatorios."
     ],
-    "answer": "Opera con permisos limitados"
+    "respuesta_correcta": "La lista debe estar ordenada."
   },
   {
-    "question": "¿Qué capacidad tiene el modo kernel que el modo usuario no?",
-    "options": [
-      "Modificar interfaces gráficas",
-      "Acceder a toda la memoria y controlar hardware",
-      "Ejecutar aplicaciones web",
-      "Regular procesos de usuario sin permiso"
+    "pregunta": "¿Cuál es la complejidad algorítmica de la búsqueda binaria según la Figura 12?",
+    "opciones": [
+      "O(log n)",
+      "O(n)",
+      "O(n²)",
+      "O(1)"
     ],
-    "answer": "Acceder a toda la memoria y controlar hardware"
+    "respuesta_correcta": "O(log n)"
   },
   {
-    "question": "¿Qué ocurre durante la transición entre modo usuario y modo kernel?",
-    "options": [
-      "La CPU libera todos los procesos",
-      "Se revisan permisos y se garantiza seguridad y estabilidad",
-      "Se detiene el reloj del sistema",
-      "El sistema operativo entra en suspensión"
+    "pregunta": "¿Cómo se describe la eficiencia de la búsqueda binaria en comparación con la secuencial?",
+    "opciones": [
+      "Es más eficiente porque busca en logaritmo, reduciendo el área de búsqueda.",
+      "Es menos eficiente porque divide demasiado el arreglo.",
+      "Tienen la misma eficiencia.",
+      "Es más lenta pero más segura."
     ],
-    "answer": "Se revisan permisos y se garantiza seguridad y estabilidad"
+    "respuesta_correcta": "Es más eficiente porque busca en logaritmo, reduciendo el área de búsqueda."
   },
   {
-    "question": "¿Qué es el contador de programa?",
-    "options": [
-      "Un registro que almacena direcciones de instrucciones en ejecución",
-      "Una herramienta para medir la velocidad del CPU",
-      "Un proceso que controla conexiones de red",
-      "Un módulo que limita el acceso a la memoria"
+    "pregunta": "¿Qué sucede en el modo kernel respecto a los recursos del sistema?",
+    "opciones": [
+      "Tiene acceso total de la CPU y privilegios en todos los recursos del sistema operativo.",
+      "No tiene acceso al hardware.",
+      "Tiene menos privilegios que el modo usuario.",
+      "Solo puede leer archivos de texto."
     ],
-    "answer": "Un registro que almacena direcciones de instrucciones en ejecución"
+    "respuesta_correcta": "Tiene acceso total de la CPU y privilegios en todos los recursos del sistema operativo."
   },
   {
-    "question": "¿Cuál es la función principal del reloj del sistema?",
-    "options": [
-      "Almacenar datos temporales",
-      "Sincronizar y coordinar operaciones del hardware",
-      "Acelerar procesos del usuario",
-      "Eliminar procesos bloqueados"
+    "pregunta": "¿Quién controla el acceso a la memoria en el modo kernel?",
+    "opciones": [
+      "La CPU, permitiendo o deteniendo la ejecución de programas y lectura/escritura.",
+      "El usuario final mediante el teclado.",
+      "Un algoritmo probabilístico.",
+      "Un archivo de Excel externo."
     ],
-    "answer": "Sincronizar y coordinar operaciones del hardware"
+    "respuesta_correcta": "La CPU, permitiendo o deteniendo la ejecución de programas y lectura/escritura."
   },
   {
-    "question": "¿Qué permite el contador de programa?",
-    "options": [
-      "Ejecutar procesos sin restricciones",
-      "Administrar la E/S avanzada",
-      "Mantener la secuencia de instrucciones en ejecución",
-      "Medir la temperatura del hardware"
+    "pregunta": "¿Qué es la búsqueda indexada?",
+    "opciones": [
+      "Un método que utiliza una estructura auxiliar llamada índice para localizar información rápido.",
+      "Un sistema para buscar libros en una biblioteca física.",
+      "Un algoritmo que busca datos basándose en su color.",
+      "Una forma de búsqueda que solo funciona en internet."
     ],
-    "answer": "Mantener la secuencia de instrucciones en ejecución"
+    "respuesta_correcta": "Un método que utiliza una estructura auxiliar llamada índice para localizar información rápido."
   },
   {
-    "question": "¿Cuál es un uso importante de los contadores en sistemas distribuidos?",
-    "options": [
-      "Detectar errores en tarjetas gráficas",
-      "Identificar cuellos de botella y optimizar rendimiento",
-      "Reemplazar el kernel por procesos seguros",
-      "Eliminar interrupciones innecesarias"
+    "pregunta": "¿Cuál es la función principal del índice en la búsqueda indexada?",
+    "opciones": [
+      "Evitar recorrer todos los elementos uno por uno e identificar la sección probable del dato.",
+      "Ordenar la lista cada vez que se hace una búsqueda.",
+      "Contar cuántas veces se ha buscado el mismo dato.",
+      "Traducir los datos a código binario."
     ],
-    "answer": "Identificar cuellos de botella y optimizar rendimiento"
+    "respuesta_correcta": "Evitar recorrer todos los elementos uno por uno e identificar la sección probable del dato."
   },
   {
-    "question": "¿Qué papel tienen los contadores en la seguridad del sistema?",
-    "options": [
-      "Simulan accesos para pruebas",
-      "Registran eventos anómalos como intentos fallidos de autenticación",
-      "Bloquean automáticamente procesos del usuario",
-      "Verifican configuraciones del BIOS"
+    "pregunta": "¿Qué requisito previo tienen los datos en la búsqueda indexada?",
+    "opciones": [
+      "Deben estar organizados previamente en bloques o grupos.",
+      "Deben estar cifrados con una contraseña.",
+      "Deben ser todos del mismo tamaño en bytes.",
+      "Deben ser números impares."
     ],
-    "answer": "Registran eventos anómalos como intentos fallidos de autenticación"
+    "respuesta_correcta": "Deben estar organizados previamente en bloques o grupos."
   },
   {
-    "question": "¿Cómo ayudan los contadores a la planificación de procesos?",
-    "options": [
-      "Asignando prioridad según consumo de recursos",
-      "Eliminando procesos inactivos",
-      "Desactivando interrupciones",
-      "Reduciendo el tamaño de la memoria virtual"
+    "pregunta": "¿Cuáles son las dos etapas de la búsqueda indexada?",
+    "opciones": [
+      "Consultar el índice para determinar el bloque y buscar dentro de ese bloque.",
+      "Pedir el dato al usuario y luego buscarlo en Google.",
+      "Dividir la lista a la mitad y luego unirla.",
+      "Borrar el índice y crear uno nuevo en cada búsqueda."
     ],
-    "answer": "Asignando prioridad según consumo de recursos"
+    "respuesta_correcta": "Consultar el índice para determinar el bloque y buscar dentro de ese bloque."
   },
   {
-    "question": "¿Para qué se utilizan contadores en servicios de nube?",
-    "options": [
-      "Para medir el uso de CPU, memoria y almacenamiento",
-      "Para limitar el acceso de los usuarios",
-      "Para crear máquinas virtuales",
-      "Para sincronizar relojes de los clientes"
+    "pregunta": "¿Qué recurso adicional requiere la búsqueda indexada en comparación con la secuencial?",
+    "opciones": [
+      "Memoria adicional para almacenar el índice.",
+      "Un procesador de más núcleos.",
+      "Más tiempo de espera por parte del usuario.",
+      "Una conexión a internet permanente."
     ],
-    "answer": "Para medir el uso de CPU, memoria y almacenamiento"
+    "respuesta_correcta": "Memoria adicional para almacenar el índice."
   },
   {
-    "question": "¿Qué aspecto general destaca la importancia de los contadores en un sistema operativo?",
-    "options": [
-      "Simplificar la interfaz gráfica del usuario",
-      "Mejorar la administración, seguridad y planificación del sistema",
-      "Reducir el tamaño del kernel",
-      "Desactivar funciones avanzadas de hardware"
+    "pregunta": "¿Dónde es común utilizar el método de búsqueda indexada?",
+    "opciones": [
+      "En archivos organizados, bases de datos y estructuras de datos.",
+      "En el diseño de calculadoras simples.",
+      "Para ordenar iconos en el escritorio.",
+      "En juegos de azar únicamente."
     ],
-    "answer": "Mejorar la administración, seguridad y planificación del sistema"
+    "respuesta_correcta": "En archivos organizados, bases de datos y estructuras de datos."
+  },
+  {
+    "pregunta": "¿Cómo se clasifica técnicamente a la búsqueda indexada?",
+    "opciones": [
+      "Como una técnica intermedia entre la búsqueda secuencial y la binaria.",
+      "Como el algoritmo más lento de todos.",
+      "Como una búsqueda de tipo voraz.",
+      "Como una búsqueda puramente probabilística."
+    ],
+    "respuesta_correcta": "Como una técnica intermedia entre la búsqueda secuencial y la binaria."
+  },
+  {
+    "pregunta": "¿Para qué se utiliza la comparación de órdenes de complejidad en búsqueda?",
+    "opciones": [
+      "Para evaluar la eficiencia de diferentes algoritmos conforme aumenta el tamaño de los datos.",
+      "Para saber qué programador cobra más por su trabajo.",
+      "Para medir la temperatura del servidor durante la búsqueda.",
+      "Para contar cuántas palabras tiene el código fuente."
+    ],
+    "respuesta_correcta": "Para evaluar la eficiencia de diferentes algoritmos conforme aumenta el tamaño de los datos."
+  },
+  {
+    "pregunta": "¿Qué notación se usa para clasificar algoritmos según su crecimiento (constante, lineal, etc.)?",
+    "opciones": [
+      "Notación Big-O (O).",
+      "Notación de flechas.",
+      "Notación decimal.",
+      "Notación de ingeniería de hardware."
+    ],
+    "respuesta_correcta": "Notación Big-O (O)."
+  },
+  {
+    "pregunta": "¿En qué NO se enfoca la comparación de órdenes de complejidad?",
+    "opciones": [
+      "En el tiempo exacto de ejecución.",
+      "En el comportamiento del algoritmo al aumentar los datos.",
+      "En la cantidad de recursos necesarios.",
+      "En la selección del mejor algoritmo."
+    ],
+    "respuesta_correcta": "En el tiempo exacto de ejecución."
+  },
+  {
+    "pregunta": "¿Cómo crece un algoritmo de orden O(n)?",
+    "opciones": [
+      "De forma proporcional al número de elementos.",
+      "De forma exponencial.",
+      "Se mantiene siempre igual sin importar los datos.",
+      "Crece mucho más rápido que uno de O(n²)."
+    ],
+    "respuesta_correcta": "De forma proporcional al número de elementos."
+  },
+  {
+    "pregunta": "¿Qué sucede con un algoritmo O(n²) cuando se trabaja con grandes volúmenes de información?",
+    "opciones": [
+      "Se vuelve menos eficiente porque aumenta mucho más rápido que uno lineal.",
+      "Se vuelve el más rápido de todos.",
+      "Optimiza automáticamente el espacio en disco.",
+      "No cambia su comportamiento."
+    ],
+    "respuesta_correcta": "Se vuelve menos eficiente porque aumenta mucho más rápido que uno lineal."
+  },
+  {
+    "pregunta": "¿Qué tipo de complejidad es preferible cuando el tamaño del problema es grande?",
+    "opciones": [
+      "O(log n) u O(n).",
+      "O(n²).",
+      "O(2ⁿ).",
+      "Complejidad factorial."
+    ],
+    "respuesta_correcta": "O(log n) u O(n)."
+  },
+  {
+    "pregunta": "¿Por qué es fundamental el análisis de complejidad en la formación de nivel superior?",
+    "opciones": [
+      "Desarrolla la capacidad de diseñar programas más eficientes y optimizados.",
+      "Es requisito para poder usar lenguajes como Python.",
+      "Para saber cuántos gigabytes comprar de memoria RAM.",
+      "Para poder dibujar gráficas de colores en las presentaciones."
+    ],
+    "respuesta_correcta": "Desarrolla la capacidad de diseñar programas más eficientes y optimizados."
+  },
+  {
+    "pregunta": "En la Figura 14, ¿qué representa el eje vertical de la gráfica?",
+    "opciones": [
+      "Tiempo de ejecución.",
+      "Tamaño del problema (n).",
+      "Número de variables.",
+      "Costo del software."
+    ],
+    "respuesta_correcta": "Tiempo de ejecución."
+  },
+  {
+    "pregunta": "Según la Figura 14, ¿cuál es la complejidad de O(1)?",
+    "opciones": [
+      "Constante.",
+      "Lineal.",
+      "Exponencial.",
+      "Logarítmica."
+    ],
+    "respuesta_correcta": "Constante."
+  },
+  {
+    "pregunta": "¿Qué representa O(2ⁿ) en la comparación de complejidades?",
+    "opciones": [
+      "Complejidad Exponencial.",
+      "Complejidad Lineal.",
+      "Complejidad Cuadrática.",
+      "Complejidad Constante."
+    ],
+    "respuesta_correcta": "Complejidad Exponencial."
+  },
+  {
+    "pregunta": "En la Figura 13 (Búsqueda Indexada), ¿qué bloques se muestran como ejemplo?",
+    "opciones": [
+      "Bloque A, Bloque B y Bloque C.",
+      "Bloque 1, Bloque 2 y Bloque 3.",
+      "Bloque Inicial y Bloque Final.",
+      "No hay bloques, solo una lista larga."
+    ],
+    "respuesta_correcta": "Bloque A, Bloque B y Bloque C."
+  },
+  {
+    "pregunta": "¿Qué indica el cronómetro con datos binarios (01010101) en la Figura 14?",
+    "opciones": [
+      "La medición del tiempo y recursos en relación a la complejidad.",
+      "Que el tiempo se ha agotado.",
+      "La velocidad de descarga de internet.",
+      "El número de bits del procesador."
+    ],
+    "respuesta_correcta": "La medición del tiempo y recursos en relación a la complejidad."
+  },
+  {
+    "pregunta": "¿Qué sucede si un dato NO se encuentra en una búsqueda secuencial?",
+    "opciones": [
+      "Se termina el recorrido de toda la lista.",
+      "El algoritmo borra la lista completa.",
+      "La computadora se reinicia.",
+      "Se añade el dato automáticamente al final."
+    ],
+    "respuesta_correcta": "Se termina el recorrido de toda la lista."
+  },
+  {
+    "pregunta": "¿Cuál es la eficiencia de la búsqueda en logaritmo comparada con la lineal?",
+    "opciones": [
+      "Es mejor rendimiento porque crece más lentamente.",
+      "Es peor porque requiere más cálculos.",
+      "Es igual porque n es el mismo.",
+      "Depende de si el usuario es administrador o kernel."
+    ],
+    "respuesta_correcta": "Es mejor rendimiento porque crece más lentamente."
   }
 ]

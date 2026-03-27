@@ -1,302 +1,352 @@
 [
-    {
-        "pregunta": "¿Qué caracteriza a un núcleo monolítico?",
-        "opciones": [
-            "a) Está dividido en capas independientes.",
-            "b) Contiene todo el sistema operativo en un único bloque ejecutable.",
-            "c) Solo ejecuta drivers de usuario.",
-            "d) Emula múltiples máquinas virtuales."
-        ],
-        "respuesta_correcta": "b) Contiene todo el sistema operativo en un único bloque ejecutable."
-    },
-    {
-        "pregunta": "¿Cuál es una ventaja de los núcleos monolíticos?",
-        "opciones": [
-            "a) Son lentos pero seguros.",
-            "b) Su alta velocidad de ejecución.",
-            "c) Su capacidad de emular hardware.",
-            "d) Evitan fallos en cascada."
-        ],
-        "respuesta_correcta": "b) Su alta velocidad de ejecución."
-    },
-    {
-        "pregunta": "¿Cuál es una desventaja de los núcleos monolíticos?",
-        "opciones": [
-            "a) Son muy modulares.",
-            "b) Son fáciles de mantener.",
-            "c) Si falla un componente, puede caer todo el sistema.",
-            "d) No permiten multitarea."
-        ],
-        "respuesta_correcta": "c) Si falla un componente, puede caer todo el sistema."
-    },
-    {
-        "pregunta": "¿Cuál es un ejemplo clásico de núcleo monolítico?",
-        "opciones": [
-            "a) Minix.",
-            "b) UNIX clásico.",
-            "c) THE de Dijkstra.",
-            "d) VMware."
-        ],
-        "respuesta_correcta": "b) UNIX clásico."
-    },
-    {
-        "pregunta": "¿Qué organización presentan los sistemas operativos por capas?",
-        "opciones": [
-            "a) Un solo bloque de ejecución.",
-            "b) Jerarquía donde cada capa depende de la inferior.",
-            "c) Un microkernel con drivers en espacio de usuario.",
-            "d) Un hipervisor que emula hardware."
-        ],
-        "respuesta_correcta": "b) Jerarquía donde cada capa depende de la inferior."
-    },
-    {
-        "pregunta": "¿Cuál es una ventaja del modelo por capas?",
-        "opciones": [
-            "a) Evita sobrecarga de comunicación.",
-            "b) Facilita diseño y depuración.",
-            "c) Es el más rápido.",
-            "d) Elimina la necesidad de memoria virtual."
-        ],
-        "respuesta_correcta": "b) Facilita diseño y depuración."
-    },
-    {
-        "pregunta": "¿Qué desventaja tiene el modelo por capas?",
-        "opciones": [
-            "a) Inestabilidad ante fallos.",
-            "b) Dificultad de depuración.",
-            "c) Pérdida de rendimiento por comunicación entre capas.",
-            "d) No soporta multitarea."
-        ],
-        "respuesta_correcta": "c) Pérdida de rendimiento por comunicación entre capas."
-    },
-    {
-        "pregunta": "¿Qué sistema educativo ejemplifica el modelo por capas?",
-        "opciones": [
-            "a) THE de Dijkstra.",
-            "b) Minix.",
-            "c) QNX.",
-            "d) Hyper-V."
-        ],
-        "respuesta_correcta": "a) THE de Dijkstra."
-    },
-    {
-        "pregunta": "¿Qué funciones mantiene un microkernel en su interior?",
-        "opciones": [
-            "a) Gestión de memoria completa y sistemas de archivos.",
-            "b) Solo lo mínimo: procesos, IPC e interrupciones.",
-            "c) Todos los drivers de dispositivo.",
-            "d) Hipervisores."
-        ],
-        "respuesta_correcta": "b) Solo lo mínimo: procesos, IPC e interrupciones."
-    },
-    {
-        "pregunta": "¿Cuál es una ventaja de los microkernels?",
-        "opciones": [
-            "a) Mejor rendimiento que los monolíticos.",
-            "b) Mayor seguridad y estabilidad.",
-            "c) Eliminar la multitarea.",
-            "d) No requiere drivers en espacio de usuario."
-        ],
-        "respuesta_correcta": "b) Mayor seguridad y estabilidad."
-    },
-    {
-        "pregunta": "¿Qué desventaja presentan los microkernels?",
-        "opciones": [
-            "a) No soportan drivers externos.",
-            "b) Son más lentos por los intercambios núcleo-usuario.",
-            "c) No permiten multitarea.",
-            "d) Son difíciles de depurar."
-        ],
-        "respuesta_correcta": "b) Son más lentos por los intercambios núcleo-usuario."
-    },
-    {
-        "pregunta": "¿Qué sistema es un ejemplo de microkernel?",
-        "opciones": [
-            "a) GNU Hurd.",
-            "b) MS-DOS.",
-            "c) THE.",
-            "d) VMware."
-        ],
-        "respuesta_correcta": "a) GNU Hurd."
-    },
-    {
-        "pregunta": "¿En qué tipo de núcleo se inspiró macOS moderno?",
-        "opciones": [
-            "a) Monolítico puro.",
-            "b) Microkernel híbrido.",
-            "c) Por capas.",
-            "d) Máquina virtual."
-        ],
-        "respuesta_correcta": "b) Microkernel híbrido."
-    },
-    {
-        "pregunta": "¿Qué modelo permite ejecutar múltiples sistemas operativos simultáneamente en el mismo hardware?",
-        "opciones": [
-            "a) Monolítico.",
-            "b) Por capas.",
-            "c) Microkernel.",
-            "d) Máquina virtual."
-        ],
-        "respuesta_correcta": "d) Máquina virtual."
-    },
-    {
-        "pregunta": "¿Cuál es la principal ventaja de la máquina virtual?",
-        "opciones": [
-            "a) Bajo consumo de recursos.",
-            "b) Aislamiento completo.",
-            "c) Rapidez sin módulos externos.",
-            "d) Elimina la sobrecarga de drivers."
-        ],
-        "respuesta_correcta": "b) Aislamiento completo."
-    },
-    {
-        "pregunta": "¿Qué desventaja tiene el enfoque de máquina virtual?",
-        "opciones": [
-            "a) Dificultad para la multitarea.",
-            "b) No soporta emulación de hardware.",
-            "c) Requiere más recursos.",
-            "d) No es seguro."
-        ],
-        "respuesta_correcta": "c) Requiere más recursos."
-    },
-    {
-        "pregunta": "¿Cuál es un ejemplo moderno de máquina virtual?",
-        "opciones": [
-            "a) VMware.",
-            "b) UNIX.",
-            "c) Minix.",
-            "d) THE."
-        ],
-        "respuesta_correcta": "a) VMware."
-    },
-    {
-        "pregunta": "¿Qué modelo de núcleo usa VirtualBox?",
-        "opciones": [
-            "a) Microkernel.",
-            "b) Máquina virtual.",
-            "c) Monolítico.",
-            "d) Por capas."
-        ],
-        "respuesta_correcta": "b) Máquina virtual."
-    },
-    {
-        "pregunta": "¿Qué característica distingue a IBM VM/370?",
-        "opciones": [
-            "a) Fue un sistema de tiempo real.",
-            "b) Emulaba múltiples máquinas virtuales.",
-            "c) Fue un microkernel educativo.",
-            "d) Implementó capas estrictas."
-        ],
-        "respuesta_correcta": "b) Emulaba múltiples máquinas virtuales."
-    },
-    {
-        "pregunta": "¿Qué ventaja tienen los sistemas modulares frente a monolíticos?",
-        "opciones": [
-            "a) Mejor aislamiento y mantenimiento.",
-            "b) Mayor rapidez siempre.",
-            "c) Menor necesidad de memoria.",
-            "d) Ausencia de drivers."
-        ],
-        "respuesta_correcta": "a) Mejor aislamiento y mantenimiento."
-    },
-    {
-        "pregunta": "¿Qué tipo de núcleo se asocia más a fallos en cascada?",
-        "opciones": [
-            "a) Por capas.",
-            "b) Máquina virtual.",
-            "c) Monolítico.",
-            "d) Microkernel."
-        ],
-        "respuesta_correcta": "c) Monolítico."
-    },
-    {
-        "pregunta": "¿Cuál modelo ofrece el mejor entorno para pruebas seguras?",
-        "opciones": [
-            "a) Monolítico.",
-            "b) Microkernel.",
-            "c) Máquina virtual.",
-            "d) Por capas."
-        ],
-        "respuesta_correcta": "c) Máquina virtual."
-    },
-    {
-        "pregunta": "¿Qué modelo sufre sobrecarga por comunicación entre capas?",
-        "opciones": [
-            "a) Microkernel.",
-            "b) Máquina virtual.",
-            "c) Por capas.",
-            "d) Monolítico."
-        ],
-        "respuesta_correcta": "c) Por capas."
-    },
-    {
-        "pregunta": "¿Cuál es el riesgo principal en un sistema monolítico?",
-        "opciones": [
-            "a) El consumo energético.",
-            "b) Que un fallo comprometa todo el sistema.",
-            "c) No poder emular hardware.",
-            "d) Incompatibilidad de drivers."
-        ],
-        "respuesta_correcta": "b) Que un fallo comprometa todo el sistema."
-    },
-    {
-        "pregunta": "¿Qué característica del microkernel mejora la tolerancia a fallos?",
-        "opciones": [
-            "a) La ejecución de componentes en espacio de usuario.",
-            "b) La falta de drivers externos.",
-            "c) La jerarquía de capas.",
-            "d) La emulación de hardware."
-        ],
-        "respuesta_correcta": "a) La ejecución de componentes en espacio de usuario."
-    },
-    {
-        "pregunta": "¿Qué sistema buscó demostrar el valor de los microkernels en la práctica?",
-        "opciones": [
-            "a) Minix.",
-            "b) Linux.",
-            "c) Windows 95.",
-            "d) THE."
-        ],
-        "respuesta_correcta": "a) Minix."
-    },
-    {
-        "pregunta": "¿Cuál es un beneficio del modelo por capas en enseñanza?",
-        "opciones": [
-            "a) Ayuda a comprender la jerarquía de servicios.",
-            "b) Garantiza mayor velocidad.",
-            "c) Elimina errores de drivers.",
-            "d) Impide multitarea."
-        ],
-        "respuesta_correcta": "a) Ayuda a comprender la jerarquía de servicios."
-    },
-    {
-        "pregunta": "¿Qué tipo de núcleo es GNU Hurd?",
-        "opciones": [
-            "a) Máquina virtual.",
-            "b) Microkernel.",
-            "c) Monolítico.",
-            "d) Por capas."
-        ],
-        "respuesta_correcta": "b) Microkernel."
-    },
-    {
-        "pregunta": "¿Cuál es una limitación de las máquinas virtuales respecto al rendimiento?",
-        "opciones": [
-            "a) Menor seguridad.",
-            "b) Necesidad de más recursos y sobrecarga de gestión.",
-            "c) Inestabilidad ante fallos.",
-            "d) Falta de aislamiento."
-        ],
-        "respuesta_correcta": "b) Necesidad de más recursos y sobrecarga de gestión."
-    },
-    {
-        "pregunta": "¿Qué modelo de núcleo combina rapidez y modularidad en distintas versiones modernas?",
-        "opciones": [
-            "a) Monolítico con módulos dinámicos.",
-            "b) Por capas puras.",
-            "c) Microkernel estricto.",
-            "d) Máquina virtual ligera."
-        ],
-        "respuesta_correcta": "a) Monolítico con módulos dinámicos."
-    }
+  {
+    "pregunta": "¿Por qué es importante el ordenamiento según el documento?",
+    "opciones": [
+      "Ayuda a desarrollar un pensamiento lógico más estructurado para resolver problemas de forma óptima.",
+      "Permite que la computadora use menos electricidad al procesar datos.",
+      "Es el único requisito para que un programa sea considerado Inteligencia Artificial.",
+      "Sirve para eliminar todos los datos duplicados automáticamente sin reglas."
+    ],
+    "respuesta_correcta": "Ayuda a desarrollar un pensamiento lógico más estructurado para resolver problemas de forma óptima."
+  },
+  {
+    "pregunta": "¿Qué se requiere cuando los datos se encuentran desordenados en un proceso esencial?",
+    "opciones": [
+      "Ordenarlos de tal manera que se estructuren según un criterio específico.",
+      "Borrar la lista y empezar de nuevo.",
+      "Ignorar el desorden si la cantidad de datos es pequeña.",
+      "Cambiar el hardware de la computadora."
+    ],
+    "respuesta_correcta": "Ordenarlos de tal manera que se estructuren según un criterio específico."
+  },
+  {
+    "pregunta": "¿Qué beneficio ofrece el uso de un identificador interno en cada dato durante el ordenamiento?",
+    "opciones": [
+      "Permite mayor identificación, ayuda a distinguirlo, compararlo y evita la duplicidad.",
+      "Hace que el dato ocupe menos espacio en el disco duro.",
+      "Permite que el usuario cambie el color del dato en la pantalla.",
+      "Oculta la información para que otros programas no la vean."
+    ],
+    "respuesta_correcta": "Permite mayor identificación, ayuda a distinguirlo, compararlo y evita la duplicidad."
+  },
+  {
+    "pregunta": "¿Qué se necesita para que los datos sean ordenados en forma ascendente o descendente?",
+    "opciones": [
+      "Tener reglas de asignación de acuerdo con su secuencia de instrucciones.",
+      "Tener una conexión a internet de alta velocidad.",
+      "Que el usuario adivine el orden correcto.",
+      "Usar un generador de números aleatorios."
+    ],
+    "respuesta_correcta": "Tener reglas de asignación de acuerdo con su secuencia de instrucciones."
+  },
+  {
+    "pregunta": "¿Cuál es el punto de referencia inicial en el algoritmo de ordenamiento por inserción?",
+    "opciones": [
+      "El primer elemento del arreglo.",
+      "El último elemento del arreglo.",
+      "El elemento central del arreglo.",
+      "Un número aleatorio elegido por el sistema."
+    ],
+    "respuesta_correcta": "El primer elemento del arreglo."
+  },
+  {
+    "pregunta": "En el ordenamiento por inserción, ¿cómo se mueven los elementos?",
+    "opciones": [
+      "Se desplazan hacia la posición que les corresponda para intercambiarse hasta llegar a su lugar.",
+      "Se eliminan y se vuelven a escribir al final de la lista.",
+      "Se multiplican por dos antes de cambiar de lugar.",
+      "Solo se mueven si son números negativos."
+    ],
+    "respuesta_correcta": "Se desplazan hacia la posición que les corresponda para intercambiarse hasta llegar a su lugar."
+  },
+  {
+    "pregunta": "¿Qué ejemplo de la vida cotidiana se usa para explicar el ordenamiento por inserción?",
+    "opciones": [
+      "El orden de cartas en la mano.",
+      "Organizar personas por estatura en una fila.",
+      "Llenar un vaso con agua.",
+      "Repartir volantes en la calle."
+    ],
+    "respuesta_correcta": "El orden de cartas en la mano."
+  },
+  {
+    "pregunta": "¿Bajo qué premisa se estructura el algoritmo de ordenamiento por selección?",
+    "opciones": [
+      "Bajo la premisa de buscar los elementos más pequeños o grandes para colocarlos en la posición correcta.",
+      "Bajo la premisa de dividir la lista en dos partes iguales siempre.",
+      "Bajo la premisa de comparar solo el primer y el último dato.",
+      "Bajo la premisa de mover los datos como si fueran burbujas."
+    ],
+    "respuesta_correcta": "Bajo la premisa de buscar los elementos más pequeños o grandes para colocarlos en la posición correcta."
+  },
+  {
+    "pregunta": "¿En qué rango de posiciones trabaja el ordenamiento por selección?",
+    "opciones": [
+      "Entre los valores de 0 al tamaño -1.",
+      "Solo en las posiciones pares.",
+      "Desde la mitad de la lista hasta el final.",
+      "Únicamente en la posición 0."
+    ],
+    "respuesta_correcta": "Entre los valores de 0 al tamaño -1."
+  },
+  {
+    "pregunta": "¿Cuándo termina el procedimiento del algoritmo de selección?",
+    "opciones": [
+      "Cuando todos los datos han sido ordenados dentro del arreglo.",
+      "Después de realizar exactamente tres intercambios.",
+      "Cuando se encuentra el número cero.",
+      "Cuando el usuario detiene el programa manualmente."
+    ],
+    "respuesta_correcta": "Cuando todos los datos han sido ordenados dentro del arreglo."
+  },
+  {
+    "pregunta": "¿De qué se encarga el algoritmo de ordenamiento por burbuja?",
+    "opciones": [
+      "De realizar la comparación entre pares de elementos consecutivos e intercambiarlos si están incorrectos.",
+      "De seleccionar el número más grande y borrarlo.",
+      "De dividir la lista en grupos de tres elementos.",
+      "De buscar un dato usando un índice auxiliar."
+    ],
+    "respuesta_correcta": "De realizar la comparación entre pares de elementos consecutivos e intercambiarlos si están incorrectos."
+  },
+  {
+    "pregunta": "¿Por qué se le reconoce como 'burbuja' a este algoritmo?",
+    "opciones": [
+      "Porque los valores más grandes suben poco a poco hacia el final de la lista.",
+      "Porque el código desaparece al terminar como una burbuja.",
+      "Porque solo funciona con datos de tipo flotante.",
+      "Porque fue inventado en un laboratorio de química."
+    ],
+    "respuesta_correcta": "Porque los valores más grandes suben poco a poco hacia el final de la lista."
+  },
+  {
+    "pregunta": "¿Qué sucede en cada recorrido del ordenamiento de burbuja según la descripción?",
+    "opciones": [
+      "El número más grande se mueve hacia el final de la lista.",
+      "Todos los números se multiplican por el anterior.",
+      "La lista se hace más pequeña.",
+      "Se solicita una nueva entrada de datos."
+    ],
+    "respuesta_correcta": "El número más grande se mueve hacia el final de la lista."
+  },
+  {
+    "pregunta": "¿Cuándo termina oficialmente el algoritmo de burbuja?",
+    "opciones": [
+      "Cuando ya no es necesario hacer intercambios y la lista queda ordenada.",
+      "Después del primer recorrido completo.",
+      "Cuando se comparan los primeros dos elementos.",
+      "Cuando el tiempo de ejecución llega a un segundo."
+    ],
+    "respuesta_correcta": "Cuando ya no es necesario hacer intercambios y la lista queda ordenada."
+  },
+  {
+    "pregunta": "¿Cómo funciona el algoritmo Merge Sort (Ordenamiento por mezcla)?",
+    "opciones": [
+      "Dividiendo la lista en partes pequeñas, ordenándolas por separado y luego uniéndolas.",
+      "Comparando solo los extremos de la lista.",
+      "Tomando decisiones al azar para mover los números.",
+      "Usando una estructura de tipo pila únicamente."
+    ],
+    "respuesta_correcta": "Dividiendo la lista en partes pequeñas, ordenándolas por separado y luego uniéndolas."
+  },
+  {
+    "pregunta": "¿Qué idea fundamental sigue el método de Merge Sort?",
+    "opciones": [
+      "Dividir para ordenar y después mezclar.",
+      "Sumar para luego restar.",
+      "Buscar para luego borrar.",
+      "Copiar para luego pegar."
+    ],
+    "respuesta_correcta": "Dividir para ordenar y después mezclar."
+  },
+  {
+    "pregunta": "¿Hasta qué punto se divide la lista en el algoritmo de mezcla?",
+    "opciones": [
+      "Hasta que cada parte tenga un solo elemento.",
+      "Hasta que queden solo dos grupos de diez elementos.",
+      "Hasta que la computadora se quede sin memoria.",
+      "No se divide, solo se desordena más."
+    ],
+    "respuesta_correcta": "Hasta que cada parte tenga un solo elemento."
+  },
+  {
+    "pregunta": "¿Qué se hace después de dividir la lista en el Merge Sort?",
+    "opciones": [
+      "Se empiezan a unir las partes comparando los valores de cada grupo y colocándolos en orden.",
+      "Se seleccionan los elementos pares para eliminarlos.",
+      "Se detiene el proceso y se muestra la lista dividida.",
+      "Se multiplican las partes entre sí."
+    ],
+    "respuesta_correcta": "Se empiezan a unir las partes comparando los valores de cada grupo y colocándolos en orden."
+  },
+  {
+    "pregunta": "¿Por qué se llama 'ordenamiento por mezcla'?",
+    "opciones": [
+      "Porque divide la lista y luego la vuelve a unir en orden.",
+      "Porque mezcla números con letras aleatoriamente.",
+      "Porque usa diferentes lenguajes de programación al mismo tiempo.",
+      "Porque los datos se mezclan con ruido visual."
+    ],
+    "respuesta_correcta": "Porque divide la lista y luego la vuelve a unir en orden."
+  },
+  {
+    "pregunta": "¿Qué es la comparación de órdenes de complejidad en ordenamiento?",
+    "opciones": [
+      "Análisis para determinar qué tan eficiente es un algoritmo frente a otro en tiempo y recursos.",
+      "Una competencia para ver qué programador escribe más rápido.",
+      "Comparar el tamaño físico de los manuales de cada algoritmo.",
+      "Ver qué algoritmo tiene el nombre más corto."
+    ],
+    "respuesta_correcta": "Análisis para determinar qué tan eficiente es un algoritmo frente a otro en tiempo y recursos."
+  },
+  {
+    "pregunta": "¿Qué indica la notación Big-O en el crecimiento del problema?",
+    "opciones": [
+      "Cómo crece el tiempo de ejecución conforme crece el tamaño de los datos.",
+      "Cuántas veces se ha guardado el archivo en el disco.",
+      "El número de veces que el usuario ha reiniciado la computadora.",
+      "La cantidad de comentarios que tiene el código."
+    ],
+    "respuesta_correcta": "Cómo crece el tiempo de ejecución conforme crece el tamaño de los datos."
+  },
+  {
+    "pregunta": "¿Qué complejidad es más eficiente cuando la cantidad de datos es grande según el ejemplo del texto?",
+    "opciones": [
+      "O(n) es más eficiente que O(n²).",
+      "O(n²) es más eficiente que O(n).",
+      "O(2ⁿ) es la más eficiente de todas.",
+      "Todas las complejidades son iguales si el procesador es rápido."
+    ],
+    "respuesta_correcta": "O(n) es más eficiente que O(n²)."
+  },
+  {
+    "pregunta": "¿Por qué un algoritmo O(n) es preferible a uno O(n²) en listas grandes?",
+    "opciones": [
+      "Porque su tiempo de ejecución crece más lentamente.",
+      "Porque usa menos colores en la interfaz gráfica.",
+      "Porque fue escrito por Knuth en 1998.",
+      "Porque no requiere el uso de variables."
+    ],
+    "respuesta_correcta": "Porque su tiempo de ejecución crece más lentamente."
+  },
+  {
+    "pregunta": "Según la Figura 10, ¿qué curva representa el 'peor rendimiento'?",
+    "opciones": [
+      "La curva más alta.",
+      "La curva más baja.",
+      "La línea recta horizontal.",
+      "La que tiene color verde."
+    ],
+    "respuesta_correcta": "La curva más alta."
+  },
+  {
+    "pregunta": "¿Qué algoritmo se menciona en el código de la Figura 6?",
+    "opciones": [
+      "Ordenamiento por inserción.",
+      "Ordenamiento de burbuja.",
+      "Merge Sort.",
+      "Búsqueda binaria."
+    ],
+    "respuesta_correcta": "Ordenamiento por inserción."
+  },
+  {
+    "pregunta": "En el código de la Figura 7, ¿para qué sirve la variable 'indice_mayor' o 'indice_menor'?",
+    "opciones": [
+      "Para suponer que el menor está en la posición actual y buscarlo en el resto de la lista.",
+      "Para contar cuántos números hay en total.",
+      "Para guardar el resultado de una suma.",
+      "Para salir del ciclo for prematuramente."
+    ],
+    "respuesta_correcta": "Para suponer que el menor está en la posición actual y buscarlo en el resto de la lista."
+  },
+  {
+    "pregunta": "En la Figura 8 (Burbuja), ¿qué sucede con el número 8 en el Paso 1?",
+    "opciones": [
+      "Se compara con sus vecinos y se mueve hacia la derecha por ser mayor.",
+      "Se elimina por ser un número par.",
+      "Se queda estático en la primera posición.",
+      "Se divide entre dos."
+    ],
+    "respuesta_correcta": "Se compara con sus vecinos y se mueve hacia la derecha por ser mayor."
+  },
+  {
+    "pregunta": "En el Merge Sort (Figura 9), ¿qué se observa en la parte superior de la imagen?",
+    "opciones": [
+      "Una lista de números desordenados.",
+      "Una lista ya ordenada de menor a mayor.",
+      "Un solo número gigante.",
+      "Un gráfico de barras."
+    ],
+    "respuesta_correcta": "Una lista de números desordenados."
+  },
+  {
+    "pregunta": "¿Qué autor se cita al hablar de la importancia del identificador único en los datos?",
+    "opciones": [
+      "Knuth (1998).",
+      "Weiss (2014).",
+      "Salas (s.f.).",
+      "Aho (2006)."
+    ],
+    "respuesta_correcta": "Knuth (1998)."
+  },
+  {
+    "pregunta": "¿Qué ocurre si los datos ya están ordenados y aplicamos el algoritmo de burbuja?",
+    "opciones": [
+      "El algoritmo termina cuando detecta que ya no es necesario hacer intercambios.",
+      "El algoritmo desordena la lista y vuelve a empezar.",
+      "La computadora se bloquea por falta de instrucciones.",
+      "Se borran todos los datos por seguridad."
+    ],
+    "respuesta_correcta": "El algoritmo termina cuando detecta que ya no es necesario hacer intercambios."
+  },
+  {
+    "pregunta": "¿Qué se compara en el algoritmo de inserción para desplazar los elementos?",
+    "opciones": [
+      "Cada uno de los elementos siguientes con los anteriores.",
+      "Solo el primer número con el último.",
+      "Los números con su propia sombra en memoria.",
+      "Únicamente los números que son mayores a 100."
+    ],
+    "respuesta_correcta": "Cada uno de los elementos siguientes con los anteriores."
+  },
+  {
+    "pregunta": "En la comparación de órdenes de complejidad, ¿cuál es el objetivo final?",
+    "opciones": [
+      "Elegir el mejor algoritmo para resolver problemas en programación y estructuras de datos.",
+      "Hacer que el código sea más largo y difícil de entender.",
+      "Demostrar que todos los algoritmos tardan lo mismo.",
+      "Evitar el uso de la notación Big-O."
+    ],
+    "respuesta_correcta": "Elegir el mejor algoritmo para resolver problemas en programación y estructuras de datos."
+  },
+  {
+    "pregunta": "¿Qué representa la variable 'j' en el código de ordenamiento por inserción (Figura 6)?",
+    "opciones": [
+      "La posición que se va comparando hacia atrás con la carta anterior.",
+      "El valor total de la suma de las cartas.",
+      "El nombre de la lista de cartas.",
+      "Un generador de números aleatorios."
+    ],
+    "respuesta_correcta": "La posición que se va comparando hacia atrás con la carta anterior."
+  },
+  {
+    "pregunta": "En el ordenamiento por selección, ¿qué se busca en el 'resto de la lista'?",
+    "opciones": [
+      "El siguiente elemento más pequeño.",
+      "El número más grande para borrarlo.",
+      "Un número que sea igual al primero.",
+      "La palabra 'Fin'."
+    ],
+    "respuesta_correcta": "El siguiente elemento más pequeño."
+  },
+  {
+    "pregunta": "¿Cómo se describe la eficiencia de un algoritmo según el texto?",
+    "opciones": [
+      "Considerando el tiempo que tarda y la cantidad de recursos que utiliza al aumentar los datos.",
+      "Basándose únicamente en la marca de la computadora.",
+      "Midiendo cuántas personas pueden leer el código al mismo tiempo.",
+      "Contando cuántos colores diferentes tiene el diagrama de flujo."
+    ],
+    "respuesta_correcta": "Considerando el tiempo que tarda y la cantidad de recursos que utiliza al aumentar los datos."
+  }
 ]
