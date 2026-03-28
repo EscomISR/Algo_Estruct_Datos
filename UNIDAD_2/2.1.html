@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2.1 Modelo de procesos</title>
+    <title>2.1 Pila</title>
     <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -615,8 +615,8 @@
 
     <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
-            <div class="sidebar-title">2.1 Modelo de procesos</div>
-            <div class="sidebar-subtitle">Administración de procesos</div>
+            <div class="sidebar-title">2.1 Pila</div>
+            <div class="sidebar-subtitle">Es aquella que facilita la resolución de problemas como llamadas a funciones, evaluación de expresiones y manejo de memoria, fortaleciendo la lógica y la estructuración de algoritmos.mas.</div>
         </div>
         
         <div class="nav-sections">
@@ -633,16 +633,19 @@
             <div class="nav-section">
                 <div class="nav-section-title">Contenido</div>
                 <a href="#seccion-2-1-1" class="nav-item" data-section="2-1-1">
-                    <i class="fas fa-sitemap"></i> 2.1.1 Fundamentos: jerarquía, BCP
+                    <i class="fas fa-sitemap"></i> 2.1.1 Especificación genérica
                 </a>
                 <a href="#seccion-2-1-2" class="nav-item" data-section="2-1-2">
-                    <i class="fas fa-cogs"></i> 2.1.2 Operaciones: creación, ejecución y terminación
+                    <i class="fas fa-cogs"></i> 2.1.2 Implementación estática
                 </a>
                 <a href="#seccion-2-1-3" class="nav-item" data-section="2-1-3">
-                    <i class="fas fa-exchange-alt"></i> 2.1.3 Estados del proceso
+                    <i class="fas fa-exchange-alt"></i> 2.1.3 Implementación dinámica
                 </a>
                 <a href="#seccion-2-1-4" class="nav-item" data-section="2-1-4">
-                    <i class="fas fa-code"></i> 2.1.4 Implementación en el kernel
+                    <i class="fas fa-code"></i> 2.1.4 Nociones de complejidad de las operaciones
+                </a>
+                <a href="#seccion-2-1-5" class="nav-item" data-section="2-1-5">
+                    <i class="fas fa-code"></i> 2.1.5 Aplicaciones
                 </a>
             </div>
 
@@ -652,7 +655,7 @@
                     <i class="fas fa-tasks"></i> Actividad de aprendizaje
                 </a>
                 <a href="2.2.html" class="nav-item">
-                    <i class="fas fa-arrow-right"></i> Siguiente: Modelo multi-hilo
+                    <i class="fas fa-arrow-right"></i> Siguiente: Cola
                 </a>
             </div>
         </div>
@@ -669,22 +672,28 @@
                 <span>/</span>
                 <a href="index.html">Unidad 2</a>
                 <span>/</span>
-                <span>2.1 Modelo de procesos</span>
+                <span>2.1 Pila</span>
             </div>
-            <h1>2.1 Modelo de procesos</h1>
-            <div class="subtitle">Administración de procesos</div>            
+            <h1>2.1 Pila</h1>
+            <div class="subtitle">La pila es una estructura de datos lineal que organiza la información siguiendo el principio LIFO (último en entrar, primero en salir).</div>            
         </header>
         
         <div class="intro">
-            <p>Un modelo de procesos en sistemas operativos describe la manera en que los procesos (programas en ejecución) son organizados, gestionados y ejecutados por el sistema. Esta organización es fundamental para asegurar la eficiencia, la concurrencia y la estabilidad del sistema durante la ejecución del software</p>
-            <div class="citation">(Silberschatz, Galvin & Gagne, 2018).</div>
+            <p>Los conocimientos adquiridos hasta ahora representan el punto de partida para adentrarte en el mundo de las estructuras de datos. A partir de tu formación en fundamentos de programación, ya cuentas con habilidades esenciales como el análisis,
+               la abstracción de problemas, el diseño y la codificación, mismas que te han permitido desarrollar programas desde los más simples hasta aquellos de complejidad intermedia. Además, has explorado conceptos clave como struct, memoria dinámica y
+               manejo de archivos, acercándote cada vez más a escenarios reales de desarrollo.</p>
+            <p>Ahora es momento de dar el siguiente paso: comprender cómo se organizan y gestionan los datos dentro de una aplicación. Imagina, por ejemplo, un sistema que registre las ventas de una cafetería, donde cada producto se representa mediante una
+               estructura con atributos como precio, descripción y existencia. Esta forma de modelar la información, conocida como abstracción de datos, es fundamental, ya que en todo programa existe un elemento en común: los datos se almacenan, se procesan y
+               se recuperan para dar solución a problemas reales.</p>   
+            <div class="citation">(Weiss, 2014).</div>
         </div>
         <div class="section" id="seccion-2-1">
             <div class="content">
-                <p>El modelo de procesos explica cómo el sistema operativo organiza, lleva a cabo y administra los programas en operación. Cada proceso es una unidad que se ejecuta de manera independiente e incluye un contador del programa, un estado de ejecución, un espacio para las direcciones de la memoria y un grupo de recursos que el sistema asigna. Este modelo posibilita que varios programas se ejecuten de manera simultánea sin afectar a los demás, sentando así las bases para la multitarea y la concurrencia</p>                
+                <p>Por lo que las estructuras de datos funcionan como medios para almacenar y organizar la información dentro de un programa, permitiendo guardar datos durante su ejecución y recuperarlos cuando se necesitan. Cada una organiza los elementos de
+                   manera distinta, lo que influye en su comportamiento y operaciones, por lo que es fundamental que el programador elija la estructura adecuada para cada funcionalidad, logrando así un desarrollo más eficiente y ordenado.</p>
                 <p>En su estructura, un proceso está compuesto por:</p>
                 <ul>
-                    <li><strong>Código del programa (texto)</strong>: instrucciones a ejecutar.</li>
+                    <li><strong>aqui voy Código del programa (texto)</strong>: instrucciones a ejecutar.</li>
                     <li><strong>Datos</strong>: variables globales y estructuras utilizadas por el programa.</li>
                     <li><strong>Pila (stack)</strong>: donde se almacenan las llamadas a funciones y variables locales.</li>
                     <li><strong>Heap</strong>: área dinámica donde se crean objetos o estructuras de datos durante la ejecución.</li>
