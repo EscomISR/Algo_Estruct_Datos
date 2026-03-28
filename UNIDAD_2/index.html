@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unidad 2: Administración de procesos</title>
+    <title>Unidad 2: Estructuras de datos lineales</title>
     <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -556,9 +556,9 @@
                 <h1 style="margin: 0; text-align: center;">Unidad temática 2</h1>
                 <img src="ESCOMB.png" alt="Logo ESCOM" style="height: 80px; max-width: 120px; object-fit: contain;">
             </div>
-            <div class="subtitle">Administración de procesos</div>
+            <div class="subtitle">Estructuras de datos lineales</div>
             <div class="description">
-                <p>Esta unidad aborda los conceptos fundamentales de la administración de procesos en sistemas operativos, incluyendo el modelo de procesos, hilos, comunicación entre procesos, sincronización y algoritmos de planificación para optimizar el rendimiento del sistema.</p>
+                <p>Esta unidad aborda como se construye las estructuras de datos lineales a partir de especificaciones genéricas, considerando la pila, cola, listas y tablas hash.</p>
             </div>
 
             <div class="hardware-icons">
@@ -580,7 +580,7 @@
                 <div class="card-header" onclick="toggleCard('2-1')">
                     <div class="card-header-content">
                         <div class="card-number">2.1</div>
-                        <div class="card-title">Modelo de procesos</div>
+                        <div class="card-title">Pila</div>
                     </div>
                     <div class="card-icon"><i class="fas fa-chevron-down"></i></div>
                 </div>
@@ -589,28 +589,35 @@
                         <li class="subtopic-item">
                             <a href="2.1.html#seccion-2-1-1" class="subtopic-link">
                                 <div class="subtopic-number">2.1.1</div>
-                                <div class="subtopic-name">Fundamentos: jerarquía, bloque de control de proceso (BCP)</div>
+                                <div class="subtopic-name">Especificación genérica</div>
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
                         </li>
                         <li class="subtopic-item">
                             <a href="2.1.html#seccion-2-1-2" class="subtopic-link">
                                 <div class="subtopic-number">2.1.2</div>
-                                <div class="subtopic-name">Operaciones</div>
+                                <div class="subtopic-name">Implementación estática</div>
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
                         </li>
                         <li class="subtopic-item">
                             <a href="2.1.html#seccion-2-1-3" class="subtopic-link">
                                 <div class="subtopic-number">2.1.3</div>
-                                <div class="subtopic-name">Estados</div>
+                                <div class="subtopic-name">Implementación dinámica</div>
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
                         </li>
                         <li class="subtopic-item">
                             <a href="2.1.html#seccion-2-1-4" class="subtopic-link">
                                 <div class="subtopic-number">2.1.4</div>
-                                <div class="subtopic-name">Implementación</div>
+                                <div class="subtopic-name">Noción de complejidad de operaciones</div>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </li>
+                        <li class="subtopic-item">
+                            <a href="2.1.html#seccion-2-1-5" class="subtopic-link">
+                                <div class="subtopic-number">2.1.5</div>
+                                <div class="subtopic-name">Aplicaciones</div>
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
                         </li>
@@ -625,7 +632,7 @@
                 <div class="card-header" onclick="toggleCard('2-2')">
                     <div class="card-header-content">
                         <div class="card-number">2.2</div>
-                        <div class="card-title">Modelo multi-hilo</div>
+                        <div class="card-title">Cola</div>
                     </div>
                     <div class="card-icon"><i class="fas fa-chevron-down"></i></div>
                 </div>
@@ -634,21 +641,42 @@
                         <li class="subtopic-item">
                             <a href="2.2.html#seccion-2-2-1" class="subtopic-link">
                                 <div class="subtopic-number">2.2.1</div>
-                                <div class="subtopic-name">Bibliotecas</div>
+                                <div class="subtopic-name">Especificación genérica</div>
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
                         </li>
                         <li class="subtopic-item">
                             <a href="2.2.html#seccion-2-2-2" class="subtopic-link">
                                 <div class="subtopic-number">2.2.2</div>
-                                <div class="subtopic-name">Implementación</div>
+                                <div class="subtopic-name">Implementación estática</div>
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
                         </li>
                         <li class="subtopic-item">
                             <a href="2.2.html#seccion-2-2-3" class="subtopic-link">
                                 <div class="subtopic-number">2.2.3</div>
-                                <div class="subtopic-name">Hilos en modo usuario y kernel</div>
+                                <div class="subtopic-name">Implementación dinámica</div>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </li>
+                        <li class="subtopic-item">
+                            <a href="2.2.html#seccion-2-2-4" class="subtopic-link">
+                                <div class="subtopic-number">2.2.4</div>
+                                <div class="subtopic-name">Colas de prioridad</div>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </li>
+                        <li class="subtopic-item">
+                            <a href="2.2.html#seccion-2-2-5" class="subtopic-link">
+                                <div class="subtopic-number">2.2.5</div>
+                                <div class="subtopic-name">Nociones de complejidad de las operaciones</div>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </li>
+                        <li class="subtopic-item">
+                            <a href="2.2.html#seccion-2-2-6" class="subtopic-link">
+                                <div class="subtopic-number">2.2.6</div>
+                                <div class="subtopic-name">Aplicaciones</div>
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
                         </li>
@@ -663,7 +691,7 @@
                 <div class="card-header" onclick="toggleCard('2-3')">
                     <div class="card-header-content">
                         <div class="card-number">2.3</div>
-                        <div class="card-title">Comunicación entre procesos</div>
+                        <div class="card-title">Listas</div>
                     </div>
                     <div class="card-icon"><i class="fas fa-chevron-down"></i></div>
                 </div>
@@ -672,21 +700,49 @@
                         <li class="subtopic-item">
                             <a href="2.3.html#seccion-2-3-1" class="subtopic-link">
                                 <div class="subtopic-number">2.3.1</div>
-                                <div class="subtopic-name">Memoria compartida</div>
+                                <div class="subtopic-name">Especificaciones genéricas</div>
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
                         </li>
                         <li class="subtopic-item">
                             <a href="2.3.html#seccion-2-3-2" class="subtopic-link">
                                 <div class="subtopic-number">2.3.2</div>
-                                <div class="subtopic-name">Paso de mensajes</div>
+                                <div class="subtopic-name">Listas simples enlazadas</div>
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
                         </li>
                         <li class="subtopic-item">
                              <a href="2.3.html#seccion-2-3-3" class="subtopic-link">
                                 <div class="subtopic-number">2.3.3</div>
-                                <div class="subtopic-name">Tuberías</div>
+                                <div class="subtopic-name">Listas doblemente enlazadas</div>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </li>
+                        <li class="subtopic-item">
+                             <a href="2.3.html#seccion-2-3-4" class="subtopic-link">
+                                <div class="subtopic-number">2.3.4</div>
+                                <div class="subtopic-name">Listas circulares</div>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </li>
+                        <li class="subtopic-item">
+                             <a href="2.3.html#seccion-2-3-5" class="subtopic-link">
+                                <div class="subtopic-number">2.3.5</div>
+                                <div class="subtopic-name">Arreglos y vectores vs listas</div>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </li>
+                        <li class="subtopic-item">
+                             <a href="2.3.html#seccion-2-3-6" class="subtopic-link">
+                                <div class="subtopic-number">2.3.6</div>
+                                <div class="subtopic-name">Nociones de complejidad de las operaciones</div>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </li>
+                        <li class="subtopic-item">
+                             <a href="2.3.html#seccion-2-3-7" class="subtopic-link">
+                                <div class="subtopic-number">2.3.7</div>
+                                <div class="subtopic-name">Implementaciones y aplicaciones</div>
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
                         </li>
@@ -701,7 +757,7 @@
                 <div class="card-header" onclick="toggleCard('2-4')">
                     <div class="card-header-content">
                         <div class="card-number">2.4</div>
-                        <div class="card-title">Sincronización entre procesos/hilos</div>
+                        <div class="card-title">Tablas hash</div>
                     </div>
                     <div class="card-icon"><i class="fas fa-chevron-down"></i></div>
                 </div>
@@ -710,21 +766,49 @@
                         <li class="subtopic-item">
                             <a href="2.4.html#seccion-2-4-1" class="subtopic-link">
                                 <div class="subtopic-number">2.4.1</div>
-                                <div class="subtopic-name">Principios de la sincronización: condición de carrera, sección crítica, exclusión mutua, atomicidad, abrazo mortal</div>
+                                <div class="subtopic-name">Especificación genérica</div>
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
                         </li>
                         <li class="subtopic-item">
                             <a href="2.4.html#seccion-2-4-2" class="subtopic-link">
                                 <div class="subtopic-number">2.4.2</div>
-                                <div class="subtopic-name">Semáforos y mutex</div>
+                                <div class="subtopic-name">Función hash</div>
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
                         </li>
                          <li class="subtopic-item">
                             <a href="2.4.html#seccion-2-4-3" class="subtopic-link">
                                 <div class="subtopic-number">2.4.3</div>
-                                <div class="subtopic-name">Monitores</div>
+                                <div class="subtopic-name">Resolución de colisiones</div>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </li>
+                         <li class="subtopic-item">
+                            <a href="2.4.html#seccion-2-4-4" class="subtopic-link">
+                                <div class="subtopic-number">2.4.4</div>
+                                <div class="subtopic-name">Tablas hash cerradas</div>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </li>
+                         <li class="subtopic-item">
+                            <a href="2.4.html#seccion-2-4-5" class="subtopic-link">
+                                <div class="subtopic-number">2.4.5</div>
+                                <div class="subtopic-name">Tablas hash abiertas</div>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </li>
+                         <li class="subtopic-item">
+                            <a href="2.4.html#seccion-2-4-6" class="subtopic-link">
+                                <div class="subtopic-number">2.4.6</div>
+                                <div class="subtopic-name">Nociones de complejidad de las operaciones</div>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </li>
+                         <li class="subtopic-item">
+                            <a href="2.4.html#seccion-2-4-7" class="subtopic-link">
+                                <div class="subtopic-number">2.4.7</div>
+                                <div class="subtopic-name">Implementaciones y aplicaciones</div>
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
                         </li>
@@ -735,44 +819,7 @@
                 </div>
             </div>
 
-            <div class="card" id="card-2-5">
-                <div class="card-header" onclick="toggleCard('2-5')">
-                    <div class="card-header-content">
-                        <div class="card-number">2.5</div>
-                        <div class="card-title">Planificación</div>
-                    </div>
-                    <div class="card-icon"><i class="fas fa-chevron-down"></i></div>
-                </div>
-                <div class="subtopics">
-                    <ul class="subtopic-list">
-                        <li class="subtopic-item">
-                            <a href="2.5.html#seccion-2-5-1" class="subtopic-link">
-                                <div class="subtopic-number">2.5.1</div>
-                                <div class="subtopic-name">Criterios</div>
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </li>
-                        <li class="subtopic-item">
-                            <a href="2.5.html#seccion-2-5-2" class="subtopic-link">
-                                <div class="subtopic-number">2.5.2</div>
-                                <div class="subtopic-name">Algoritmos</div>
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </li>
-                        <li class="subtopic-item">
-                             <a href="2.5.html#seccion-2-5-3" class="subtopic-link">
-                                <div class="subtopic-number">2.5.3</div>
-                                <div class="subtopic-name">Planificación de hilos</div>
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="card-footer">
-                    <a href="2.5.html" class="btn">Ver tema completo</a>
-                </div>
-            </div>
-            
+          
             <div class="card">
                 <div class="card-header">
                     <div class="card-header-content">
@@ -800,35 +847,28 @@
                         <li class="activity-item">
                             <a href="actividad_2_1.html" class="activity-link">
                                 <div class="activity-number">ACT 1</div>
-                                <div class="activity-name">Modelo de procesos</div>
+                                <div class="activity-name">Pila</div>
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
                         </li>
                         <li class="activity-item">
                             <a href="actividad_2_2.html" class="activity-link">
                                 <div class="activity-number">ACT 2</div>
-                                <div class="activity-name">Modelo multi-hilo</div>
+                                <div class="activity-name">Cola</div>
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
                         </li>
                         <li class="activity-item">
                             <a href="actividad_2_3.html" class="activity-link">
                                 <div class="activity-number">ACT 3</div>
-                                <div class="activity-name">Comunicación entre procesos</div>
+                                <div class="activity-name">Listas</div>
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
                         </li>
                         <li class="activity-item">
                             <a href="actividad_2_4.html" class="activity-link">
                                 <div class="activity-number">ACT 4</div>
-                                <div class="activity-name">Sincronización entre procesos/hilos</div>
-                                <i class="fas fa-pencil-alt"></i>
-                            </a>
-                        </li>
-                        <li class="activity-item">
-                            <a href="actividad_2_5.html" class="activity-link">
-                                <div class="activity-number">ACT 5</div>
-                                <div class="activity-name">Planificación</div>
+                                <div class="activity-name">Tablas hash</div>
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
                         </li>
@@ -858,11 +898,11 @@
         <div id="videoModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title">Video introducción - Administración de procesos</h2>
+                    <h2 class="modal-title">Video introducción - Estructura de datos lineales</h2>
                     <button class="close-btn" onclick="closeVideoModal()">&times;</button>
                 </div>
                 <div class="description">
-                    <p>Salas, I. (2025, 28 de noviembre). <em>General: Procesos, hilos y planificación</em> [Video]. YouTube. https://www.youtube.com/watch?v=T9Xit0OAayo</p>
+                    <p>Salas, I. (2025, 28 de noviembre). <em>Introducción: Pila, cola, listas y tablas hash</em> [Video]. YouTube. https://www.youtube.com/watch?v=T9Xit0OAayo</p>
                 </div>
                 <div class="video-container">
                     <iframe id="videoFrame" 
@@ -879,8 +919,8 @@
     </div>
 
     <footer>
-        <p>El pulso silencioso de los sistemas operativos (Polilibro Académico) - Unidad 2: Administración de procesos</p>
-        <p>Desarrollado para fines educativos - © 2025</p>
+            <p>Algoritmos almacena y recupera Datos (polilibro académico) - Unidad 1: Algoritmos fundamentales</p>
+            <p>Desarrollado para fines educativos - © 2026</p>
     </footer>
     
     <script>
