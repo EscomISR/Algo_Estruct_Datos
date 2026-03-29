@@ -792,35 +792,19 @@
                 <p>En este contexto, la especificación genérica de una pila incluye</p>
                 <h4>Operaciones básicas:</h4>
                 <ul>
-                    <li><strong>Identificación del proceso</strong>: PID, PPID (padre), UID (usuario).</li>
-                    <li><strong>Estado del proceso</strong>: nuevo, listo, en ejecución, bloqueado o terminado.</li>
-                    <li><strong>Registros de CPU</strong>: valores almacenados cuando el proceso es interrumpido.</li>
-                    <li><strong>Información de memoria</strong>: punteros a tablas de páginas y espacio asignado.</li>
-                    <li><strong>Contabilidad</strong>: tiempo de CPU utilizado, prioridad y estadísticas.</li>
-                    <li><strong>Información de control</strong>: recursos abiertos (archivos, dispositivos, sockets).</li>
-                </ul>
-                <p>El BCP permite al sistema <strong>interrumpir y reanudar procesos</strong> sin pérdida de información, garantizando una conmutación de contexto (<i>context switch</i>) correcta y eficiente.</p>
-                
-                <h4>Funcionalidad del BCP</h4>
-                <p>El BCP es el corazón de la gestión de procesos. Su funcionalidad principal es permitir al sistema operativo:</p>
-                <ul>
-                    <li>Supervisar y controlar el estado actual del proceso, determinando si está activo, en cola de espera, suspendido o listo para ser ejecutado</li>
-                    <li>Se refiere a guardar todos los datos esenciales del proceso en curso, como los valores de los registros y la posición actual en el programa, para poder reanudarlo sin pérdida de información</li>
-                    <li><strong>Administrar recursos:</strong> Mantener un registro de los recursos (memoria, archivos abiertos, dispositivos I/O) asignados al proceso.</li>
-                    <li><strong>Controlar la identificación del proceso:</strong> Otorgar un identificador exclusivo a cada proceso.</li>
+                    <li><strong>push(T elemento)</strong>: Inserta un elemento en la cima..</li>
+                    <li><strong>pop()</strong>: Elimina y devuelve el elemento en la cima.</li>
+                    <li><strong>top() o peek()</strong>: Consulta el elemento en la cima sin eliminarlo.</li>
+                    <li><strong>isEmpty()</strong>: Verifica si la pila está vacía.</li>
                 </ul>
 
-                <h4>Características del BCP</h4>
-                <p>El BCP tiene principalmente la siguiente información:</p>
                 <ul>
-                    <li><strong>Estado del proceso:</strong> Indica la etapa actual del proceso, como, por ejemplo: recién creado, preparado para ejecutarse, ejecutándose, en espera o finalizado.</li>
-                    <li><strong>Contador de programa:</strong> Indica la dirección de la siguiente instrucción que debe ser ejecutada por el procesador.</li>
-                    <li><strong>Registros de CPU:</strong> Comprende los registros esenciales del procesador, tales como acumuladores, registros de propósito general, índices y punteros de pila.</li>
-                    <li><strong>Información para la planificación del CPU:</strong> Incluye elementos como la prioridad del proceso y referencias a las estructuras utilizadas en las colas de planificación.</li>
-                    <li><strong>Datos de administración de memoria:</strong> Contiene datos como los valores de los registros base y límite, así como las tablas que administran la paginación o segmentación de la memoria.</li>
-                    <li><strong>Información de contabilidad:</strong> Registra estadísticas del uso del proceso, incluyendo tiempo de CPU consumido, restricciones temporales y su identificador numérico.</li>
-                    <li><strong>Información de estado de I/O:</strong> Lista de dispositivos I/O asignados al proceso, lista de archivos abiertos.</li>
+                    <li><strong>Regla de funcionamiento:</strong> Sigue el principio LIFO (último en entrar, primero en salir).</li>
+                    <li><strong>Restricciones:</strong> No se puede extraer un elemento si la pila está vacía..</li>
                 </ul>
+            </div>
+                <p>De esta manera, la pila queda definida de forma general y flexible, permitiendo que cualquier implementación respete estas reglas, sin importar el lenguaje o la estructura interna utilizada.</p>
+
                 <div class="figure-container">
                     <div class="figure-caption">Figura 3</div>
                     <div class="figure-caption">Ciclo de vida de un proceso: creación, ejecución y terminación</div>
