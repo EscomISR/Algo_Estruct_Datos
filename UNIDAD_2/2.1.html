@@ -781,16 +781,14 @@
         <div class="section" id="seccion-2-1-1">
             <div class="section-header">
                 <div class="section-number">2.1.1</div>
-                <div class="section-title">Fundamentos: jerarquía, BCP</div>
+                <div class="section-title">Especificación genérica </div>
             </div>
             <div class="content">
-                <p>La gestión de procesos se basa en principios de organización que posibilitan la supervisión eficaz de la ejecución de diversos programas por parte del sistema operativo. La jerarquía de procesos y el bloque de control del proceso (BCP) son algunos de los principios que se destacan, ya que son fundamentales para la supervisión y coordinación del ciclo vital de cada proceso en el sistema.</p>
-                <h3>Orden jerárquico de procesos</h3>
-                <p>Los sistemas operativos actuales organizan los procesos en una jerarquía, en la que cada proceso tiene la capacidad de generar uno o más subprocesos o procesos hijos. Cuando un proceso padre emplea una llamada al sistema, como fork () en Unix/Linux, para crear un nuevo proceso, se establece esta relación de dependencia.
-El proceso hijo, aunque retiene su propia ejecución de manera independiente, recibe parte del ambiente del padre (por ejemplo, directorios, permisos o variables). Esta jerarquía posibilita que el trabajo esté organizado de manera ordenada, lo cual simplifica la gestión, la sincronización y la finalización controlada de los procesos.
+                <p>Dentro de una pila, la especificación genérica se aplica al definir su comportamiento de manera abstracta, sin depender de cómo esté implementada (arreglo, lista enlazada, etc.).
+                   Es decir, se describe qué hace la pila, no cómo se construye.</p>
 
-                </p>
-                <h3>Bloque de Control de Proceso (BCP)</h3>
+                <h3>En este contexto, la especificación genérica de una pila incluye</h3>
+
                 <p>El BCP se utiliza como una organización de datos interna por el sistema y esto incluye lo siguiente:</p>
                 <ul>
                     <li><strong>Identificación del proceso</strong>: PID, PPID (padre), UID (usuario).</li>
