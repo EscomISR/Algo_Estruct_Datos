@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2.2 Modelo multi-hilo</title>
+    <title>2.2 Cola</title>
     <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -615,8 +615,8 @@
 
     <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
-            <div class="sidebar-title">2.2 Modelo multihilo</div>
-            <div class="sidebar-subtitle">Administración de procesos</div>
+            <div class="sidebar-title">2.2 Cola</div>
+            <div class="sidebar-subtitle">Permite organizar y procesar información siguiendo el principio FIFO (First In, First Out), el primer elemento en entrar es el primero en salir.</div>
         </div>
         
         <div class="nav-sections">
@@ -633,13 +633,22 @@
             <div class="nav-section">
                 <div class="nav-section-title">Contenido</div>
                 <a href="#seccion-2-2-1" class="nav-item" data-section="2-2-1">
-                    <i class="fas fa-book"></i> 2.2.1 Bibliotecas POSIX y Win32
+                    <i class="fas fa-book"></i> 2.2.1 Especificación genérica
                 </a>
                 <a href="#seccion-2-2-2" class="nav-item" data-section="2-2-2">
-                    <i class="fas fa-cogs"></i> 2.2.2 Implementación de hilos
+                    <i class="fas fa-cogs"></i> 2.2.2 Implementación estática
                 </a>
                 <a href="#seccion-2-2-3" class="nav-item" data-section="2-2-3">
-                    <i class="fas fa-layer-group"></i> 2.2.3 Hilos en modo usuario vs kernel
+                    <i class="fas fa-layer-group"></i> 2.2.3 Implementación dinámica
+                </a>
+                <a href="#seccion-2-2-4" class="nav-item" data-section="2-2-4">
+                    <i class="fas fa-layer-group"></i> 2.2.4 Colas de prioridad
+                </a>
+                <a href="#seccion-2-2-5" class="nav-item" data-section="2-2-5">
+                    <i class="fas fa-layer-group"></i> 2.2.5 Nociones de complejidad de las operaciones
+                </a>
+                <a href="#seccion-2-2-6" class="nav-item" data-section="2-2-6">
+                    <i class="fas fa-layer-group"></i> 2.2.6 Aplicaciones
                 </a>
             </div>
 
@@ -649,7 +658,7 @@
                     <i class="fas fa-tasks"></i> Actividad de aprendizaje
                 </a>
                 <a href="2.3.html" class="nav-item">
-                    <i class="fas fa-arrow-right"></i> Siguiente: Comunicación entre procesos (IPC)
+                    <i class="fas fa-arrow-right"></i> Siguiente: Listas
                 </a>
             </div>
         </div>
@@ -666,17 +675,16 @@
                 <span>/</span>
                 <a href="index.html">Unidad 2</a>
                 <span>/</span>
-                <span>2.2 Modelo multihilo</span>
+                <span>2.2 Colas</span>
             </div>
-            <h1>2.2 Modelo multihilo</h1>
-            <div class="subtitle">Administración de procesos</div>
+            <h1>2.2 Colas</h1>
+            <div class="subtitle">Permite organizar y procesar información siguiendo el principio FIFO (First In, First Out), el primer elemento en entrar es el primero en salir.</div>
         </header>
         
         <div class="intro">
-            <p>El <strong>modelo multihilo</strong> constituye una extensión del modelo tradicional de procesos, donde un mismo proceso puede contener <strong>múltiples hilos de ejecución</strong> que comparten los mismos recursos, pero operan de forma concurrente. Cada hilo  representa una secuencia independiente de instrucciones que puede ejecutarse en paralelo, lo que permite <strong>aprovechar mejor los recursos del sistema y mejorar el rendimiento </strong>en tareas que pueden dividirse en subtareas independientes.</p>
-            <p>A diferencia de los procesos, los hilos comparten el <strong>espacio de direcciones, los archivos abiertos y las variables globales </strong>de su proceso padre, lo que facilita la comunicación y reduce el consumo de memoria. Sin embargo, esta compartición también introduce riesgos de <strong>condiciones de carrera</strong> y conflictos en el acceso a recursos, por lo que es necesario aplicar <strong>mecanismos de sincronización</strong> como semáforos o mutex.</p>
-            <p>Según <strong>Silberschatz, Galvin y Gagne (2022)</strong>, “<i>un hilo es la unidad básica de utilización de la CPU; comparte el estado del proceso al que pertenece, pero mantiene su propio contador de programa, pila y registros</i>” (p. 254). Esto significa que varios hilos dentro del mismo proceso pueden ejecutarse simultáneamente en distintos núcleos del procesador, lo que optimiza el paralelismo y la capacidad de respuesta del sistema operativo.</p>
-            <p>Los tres enfoques principales para implementar el multihilo son:</p>
+            <p>Una <strong>cola</strong> es una estructura de datos lineal que sigue el principio de <strong>primero en entrar, primero en salir (FIFO)</strong>. En el contexto de los sistemas operativos, las colas se utilizan para gestionar tareas y recursos, permitiendo una administración eficiente de los procesos en ejecución.</p>
+            <p>Las colas pueden implementarse de manera estática o dinámica. En la implementación estática, se utiliza un arreglo fijo para almacenar los elementos, mientras que en la dinámica se emplea una lista enlazada, lo que permite una mayor flexibilidad en la gestión del espacio de memoria.</p>
+            <p>Las operaciones básicas sobre una cola son:</p>
             <p>
             <ol>
                 <li><strong>Modelo de Muchos a Uno</strong>: múltiples hilos de usuario se asignan a un solo hilo del kernel. Es eficiente en memoria, pero no permite ejecutar varios hilos simultáneamente en múltiples procesadores.</li>
