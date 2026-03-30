@@ -851,7 +851,7 @@
              <div class="content">
                 <p></p>
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 22</div>
+                    <div class="figure-caption">Figura 21</div>
                     <div class="figure-caption">Código implementación estática</div>
                     <div class="figura">
                         <img src="FIGURA21.png" alt="Código implementación estática" class="imagen-figura1"/>
@@ -882,9 +882,9 @@
                     <p>la implementación dinámica ofrece mayor adaptabilidad que la estática, ya que permite manejar colecciones de datos cuyo tamaño no se conoce previamente, siendo muy útil en aplicaciones donde los datos cambian constantemente.</p>   
 
                 <div class="figure-container">
-                    <div class="figure-caption">Figura 23</div>
+                    <div class="figure-caption">Figura 22</div>
                     <div class="figure-caption">Implementación dinámica</div>
-                    <img src="Figura23.png" alt="Implementación dinámica" class="imagen-figura1">
+                    <img src="Figura22.png" alt="Implementación dinámica" class="imagen-figura1">
                     <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
                 </div>                                               
             </div>
@@ -894,19 +894,24 @@
                 <div class="section-title">Nociones de complejidad de las operaciones </div>
             </div>
             <div class="content">
-                    <p>Es la forma a la forma de construir una estructura de datos utilizando memoria que se asigna durante la ejecución del programa, en lugar de definir un tamaño fijo desde el inicio.</p>
-                    <p>En el caso de una pila, esto significa que no se usa un arreglo de tamaño limitado, sino estructuras como listas enlazadas, donde cada elemento (nodo) se crea cuando se necesita y se enlaza con el anterior. Esto permite que la pila crezca o disminuya según la cantidad de datos, evitando problemas como el desbordamiento por tamaño fijo.</p>
-                    
-                <h3>Sus principales caracteristicas son:</h3>
-                    <p> <strong>Tamaño flexible:</strong> la estructura puede expandirse o reducirse dinámicamente.</p>    
-                    <p> <strong>Uso eficiente de memoria:</strong> solo se utiliza el espacio necesario en cada momento.</p>    
-                    <p> <strong>Mayor complejidad:</strong> requiere manejo de punteros y memoria dinámica.</p>    
-                    <p>la implementación dinámica ofrece mayor adaptabilidad que la estática, ya que permite manejar colecciones de datos cuyo tamaño no se conoce previamente, siendo muy útil en aplicaciones donde los datos cambian constantemente.</p>   
+                    <p>Es el al análisis del costo computacional que implica ejecutar una operación dentro de un algoritmo o estructura de datos. Este costo se mide principalmente en términos de tiempo (cuántas operaciones se realizan) y espacio (cuánta memoria se utiliza), especialmente cuando el tamaño de los datos crece.</p>
+                    <p>En estructuras como pilas, colas o listas, cada operación (por ejemplo, insertar, eliminar o buscar) tiene un comportamiento distinto. Algunas son muy rápidas y constantes, mientras que otras dependen de la cantidad de elementos. Para representar esto.</p>
+                   
+                <h3>Notación de orden de complejidad son:</h3>
+                    <p> <strong>O(1):</strong> tiempo constante (la operación siempre tarda lo mismo).</p>    
+                    <p> <strong>O(n):</strong> tiempo lineal (depende del número de elementos).</p>    
+                    <p> <strong>O(log n):</strong> tiempo logarítmico (crece lentamente con los datos).</p> 
+
+                <h4>Por ejemplo, en una pila</h4>
+                   <p><strong>La operación push (insertar)</strong>: tiene complejidad O(1).</p>
+                   <p><strong>La operación pop (eliminar)</strong>: también es O(1).</p>
+
+                   <p>Esto significa que, sin importar cuántos elementos tenga la pila, estas operaciones se realizan de manera eficiente, es por ello que comprender las nociones de complejidad permite evaluar la eficiencia de un algoritmo, comparar distintas soluciones y elegir la estructura de datos más adecuada para resolver un problema de manera óptima (Robert Sedgewick & Wayne, 2011).</p>   
 
                 <div class="figure-container">
-                    <div class="figure-caption">Figura 24 </div>
-                    <div class="figure-caption">Implementación dinámica</div>
-                    <img src="Figura24.png" alt="Implementación dinámica" class="imagen-figura1">
+                    <div class="figure-caption">Figura 23</div>
+                    <div class="figure-caption">Nociones de complejidad de las operaciones</div>
+                    <img src="Figura23.png" alt="Nociones de complejidad de las operaciones" class="imagen-figura1">
                     <div class="figure-caption">Nota: Elaboración propia basada en Stallings, (2018)</div>
                 </div>                                               
             </div>
