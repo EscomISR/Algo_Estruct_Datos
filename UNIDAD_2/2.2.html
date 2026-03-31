@@ -681,34 +681,59 @@
             <div class="subtitle">Permite organizar y procesar información siguiendo el principio FIFO (First In, First Out), el primer elemento en entrar es el primero en salir.</div>
         </header>
         
+        
         <div class="intro">
-            <p>Una <strong>cola</strong> es una estructura de datos lineal que sigue el principio de <strong>primero en entrar, primero en salir (FIFO)</strong>. En el contexto de los sistemas operativos, las colas se utilizan para gestionar tareas y recursos, permitiendo una administración eficiente de los procesos en ejecución.</p>
-            <p>Las colas pueden implementarse de manera estática o dinámica. En la implementación estática, se utiliza un arreglo fijo para almacenar los elementos, mientras que en la dinámica se emplea una lista enlazada, lo que permite una mayor flexibilidad en la gestión del espacio de memoria.</p>
-            <p>Las operaciones básicas sobre una cola son:</p>
-            <p>
-            <ol>
-                <li><strong>Modelo de Muchos a Uno</strong>: múltiples hilos de usuario se asignan a un solo hilo del kernel. Es eficiente en memoria, pero no permite ejecutar varios hilos simultáneamente en múltiples procesadores.</li>
-                <li><strong>Modelo de Uno a Uno</strong>: cada hilo de usuario corresponde directamente a un hilo del kernel. Aumenta el paralelismo, pero requiere más recursos del sistema.</li>
-                <li><strong>3.	Modelo de Muchos a Muchos</strong>: varios hilos de usuario se asignan dinámicamente a varios hilos del kernel, combinando flexibilidad y rendimiento.</li>
-            </ol>     
-            </p>
-        </p>
+            <p>En el desarrollo de algoritmos, gestionar correctamente los datos marca la diferencia en la eficiencia de un sistema. La estructura de cola,
+               basada en el principio FIFO (First In, First Out), permite procesar la información en el mismo orden en que llega, garantizando organización, equidad y control en aplicaciones como sistemas operativos y manejo de solicitudes,
+               lo que la convierte en un recurso esencial para optimizar el flujo de datos (Mark Allen Weiss, 2014).</p>
         </div>
         
         <div class="section" id="seccion-2-2-1">
             <div class="section-header">
                 <div class="section-number">2.2.1</div>
-                <div class="section-title">Bibliotecas POSIX y Win32</div>
+                <div class="section-title">Especificación genérica</div>
             </div>
             <div class="content">
-                <p>Los estándares más comunes para la implementación y gestión de multihilo en los sistemas operativos actuales son las bibliotecas de hilos Win32 Threads y POSIX. Aunque son diferentes en su diseño, compatibilidad y campo de aplicación, ambas posibilitan la creación, sincronización y terminación de hilos.</p>
-                <p>Para el caso de POSIX, se trata de una interfaz estandarizada que fue establecida por la norma IEEE POSIX 1003.1c, la cual es muy común en sistemas Linux, Unix y macOS. Estas bibliotecas ofrecen funciones para crear hilos, sincronizarlos a través de mutex  y supervisar su terminación. Su diseño busca la eficiencia y la portabilidad, lo que posibilita la creación de aplicaciones concurrentes que pueden ejecutarse en diversas plataformas sin alterar de manera importante el código fuente.</p>
-                <p>Como señalan <strong>Silberschatz, Galvin y Gagne (2022)</strong>, “<i>las bibliotecas de hilos como POSIX y Win32 proporcionan las herramientas necesarias para la programación concurrente, facilitando la creación de aplicaciones más reactivas, eficientes y escalables</i>” (p. 261). Estas bibliotecas, en conjunto, permiten que los desarrolladores elijan el modelo más adecuado según los requerimientos del sistema, optimizando el uso de los procesadores y la respuesta ante múltiples tareas simultáneas.</p>
+                <p>La cola es una estructura de datos lineal que organiza los elementos bajo el principio FIFO (First In, First Out), donde el primer dato en ingresar es el primero en salir, lo que garantiza un procesamiento ordenado y equitativo de la información</p>
+                <h4>Características:</h4> 
+                <ul>
+                    <li><strong>Opera bajo el principio FIFO</strong>: El primer elemento en entrar es el primero en salir.</li>
+                    <li><strong>Tiene dos extremos definidos</strong>: front (salida) y rear (entrada).</li>
+                    <li><strong>Utiliza operaciones básicas como</strong>: enqueue (insertar) y dequeue (eliminar).</li>
+                    <li>Permite un control eficiente y ordenado del flujo de datos.</li>
+                    <li>Se aplica en sistemas operativos, gestión de procesos y simulación de filas.</li>
+                </ul>        
                 <div class="figure-container">
-                    <div class="figure-caption">Figura 6</div>
-                    <div class="figure-caption">Modelo multihilo</div>
-                    <img src="Figura6.png" alt="Modelo multihilo " class="imagen-figura1">
-                    <div class="figure-caption">Nota: Elaboración propia basada en Silberschatz et al., 2022</div>
+                    <div class="figure-caption">Figura 25</div>
+                    <div class="figure-caption">Especificación genérica de una cola</div>
+                    <img src="Figura25.png" alt="Especificación genérica de una cola" class="imagen-figura1">
+                    <div class="figure-caption">Nota: Elaboración propia basada en Estructura de datos y algoritmos Weiss, 2014.</div>
+                </div>                                
+            </div>
+        <div class="section" id="seccion-2-2-2">
+            <div class="section-header">
+                <div class="section-number">2.2.2</div>
+                <div class="section-title">Implementación en estática</div>
+            </div>
+            <div class="content">
+                <p>Es la forma de representación mediante un arreglo de tamaño fijo definido desde el inicio del programa. En este enfoque, los elementos se insertan en el extremo rear (final) y
+                   se eliminan del front (frente), respetando el principio FIFO (First In, First Out). Para su control se utilizan índices que permiten gestionar las operaciones de enqueue (inserción) y dequeue (eliminación).
+                   No obstante, presenta limitaciones como el desbordamiento (overflow) cuando se alcanza la capacidad máxima y el posible desperdicio de memoria; aun así, ofrece simplicidad y rapidez en su implementación (Seymour Lipschutz, 2014).</p>
+                <h4>Las características de la implementación estática de una cola son:</h4> 
+                <ul>
+                    <li>Utiliza un arreglo de tamaño fijo definido desde el inicio del programa.</li>
+                    <li>Opera bajo el principio FIFO (First In, First Out), respetando el orden de llegada de los elementos.</li>
+                    <li>Emplea dos índices o variables: front (frente) y rear (final) para controlar la inserción y eliminación.</li>
+                    <li>Permite operaciones básicas como enqueue (insertar) y dequeue (eliminar).</li>
+                    <li>Puede presentar overflow cuando la cola alcanza su capacidad máxima.</li> 
+                    <li>Puede generar desperdicio de memoria si no se aprovechan espacios liberados.</li>
+                    <li>Ofrece una implementación sencilla y acceso rápido a los elementos.</li>                                       
+                </ul>        
+                <div class="figure-container">
+                    <div class="figure-caption">Figura 26</div>
+                    <div class="figure-caption">Implementación en estática de una cola</div>
+                    <img src="Figura26.png" alt="Implementación en estática de una cola" class="imagen-figura1">
+                    <div class="figure-caption">Nota: Elaboración propia basada en Estructura de datos y algoritmos Weiss, 2014.</div>
                 </div>                                
             </div>
 
