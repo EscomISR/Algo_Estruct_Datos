@@ -760,19 +760,17 @@
                 <div class="section-title">Implementación dinámica en cola</div>
             </div>
             <div class="content">
-                <p>Es la forma de representación mediante un arreglo de tamaño fijo definido desde el inicio del programa. En este enfoque, los elementos se insertan en el extremo rear (final) y
-                   se eliminan del front (frente), respetando el principio FIFO (First In, First Out). Para su control se utilizan índices que permiten gestionar las operaciones de enqueue (inserción) y dequeue (eliminación).
-                   No obstante, presenta limitaciones como el desbordamiento (overflow) cuando se alcanza la capacidad máxima y el posible desperdicio de memoria; aun así, ofrece simplicidad y rapidez en su implementación (Seymour Lipschutz, 2014).</p>
-                <h4>Las características de la implementación estática de una cola son:</h4> 
-                <ul>
-                    <li>Utiliza un arreglo de tamaño fijo definido desde el inicio del programa.</li>
-                    <li>Opera bajo el principio FIFO (First In, First Out), respetando el orden de llegada de los elementos.</li>
-                    <li>Emplea dos índices o variables: front (frente) y rear (final) para controlar la inserción y eliminación.</li>
-                    <li>Permite operaciones básicas como enqueue (insertar) y dequeue (eliminar).</li>
-                    <li>Puede presentar overflow cuando la cola alcanza su capacidad máxima.</li> 
-                    <li>Puede generar desperdicio de memoria si no se aprovechan espacios liberados.</li>
-                    <li>Ofrece una implementación sencilla y acceso rápido a los elementos.</li>                                       
-                </ul>        
+                <p>Se basa en el uso de un arreglo de tamaño fijo en el que los elementos se almacenan de manera contigua en memoria, respetando el principio FIFO (primero en entrar, primero en salir).</p>
+                <p>Su funcionamiento se emplean dos variables de control: el índice frente, que señala el primer elemento disponible para ser eliminado, y el índice final, que indica la posición donde se
+                   insertará un nuevo dato. Inicialmente, ambos índices suelen establecerse en valores que representen una cola vacía, y conforme se realizan operaciones, estos se actualizan de manera secuencial.</p>
+                <p>La operación de inserción (enqueue) consiste en incrementar el índice final e insertar el elemento en esa posición, siempre que la cola no esté llena; mientras que la eliminación (dequeue) implica
+                   extraer el elemento apuntado por frente y posteriormente avanzar dicho índice.</p>
+                <p>Esta estructura presenta condiciones importantes como el desbordamiento, cuando el arreglo alcanza su capacidad máxima, y el subdesbordamiento, cuando se intenta eliminar un elemento de una cola vacía.
+                   Aunque su principal ventaja radica en la eficiencia de sus operaciones, que se ejecutan en tiempo constante, una de sus limitaciones es el posible desperdicio de espacio, ya que las posiciones liberadas
+                   al inicio no se reutilizan en una implementación simple</p>   
+                <p>Según Thomas H. Cormen et al. (2009), este tipo de estructuras permite organizar y gestionar datos de forma ordenada mediante operaciones básicas bien definidas, facilitando su manipulación
+                   dentro de los sistemas computacionales.</p>    
+                    
         <div class="section" id="seccion-2-1">
             <div class="section-header">
             </div>
@@ -789,6 +787,36 @@
              </div> 
         </div> 
 
+        <div class="section" id="seccion-2-2-4">
+            <div class="section-header">
+                <div class="section-number">2.2.4</div>
+                <div class="section-title">Colas de prioridad</div>
+            </div>
+            <div class="content">
+                <p>constituyen una variante de las estructuras de datos tipo cola en la que cada elemento no solo se inserta, sino que además se le asigna un nivel de prioridad, determinando el orden en el que será atendido o eliminado.</p>
+                <p>A diferencia de una cola tradicional que sigue el principio FIFO (primero en entrar, primero en salir), en una cola de prioridad los elementos se procesan de acuerdo con su importancia,
+                   de modo que aquel con mayor (o menor, según el criterio) prioridad será el primero en salir, independientemente de su orden de llegada.</p>
+                <p>En su implementación, pueden utilizarse arreglos, listas enlazadas o estructuras más eficientes como montículos (heaps), donde la organización interna permite acceder rápidamente al elemento prioritario. Las operaciones
+                   fundamentales incluyen la inserción de un elemento con su prioridad asociada y la eliminación del elemento con mayor prioridad, manteniendo siempre el orden establecido. Este tipo de estructura es ampliamente utilizado
+                   en sistemas operativos, algoritmos de planificación de tareas y problemas de optimización, donde es necesario gestionar elementos bajo criterios de relevancia.</p>
+                <p>De acuerdo con Thomas H. Cormen et al. (2009), las colas de prioridad permiten seleccionar eficientemente el siguiente elemento a procesar en función de una clave, optimizando así el rendimiento en diversos algoritmos y
+                   aplicaciones computacionales.</p>   
+
+        <div class="section" id="seccion-2-1">
+            <div class="section-header">
+            </div>
+            <div class="content">
+                <p></p>
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 28</div>
+                    <div class="figure-caption">Colas de prioridad</div>
+                    <div class="figura">
+                        <img src="FIGURA28.png" alt="Colas de prioridad" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div> 
+        </div> 
 
 
 
