@@ -401,6 +401,60 @@
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
         }
+
+        .figure-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .imagen-figura1 {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain; 
+            border-radius: 8px;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: zoom-in;
+            transform-origin: center center;
+        }
+        
+        /* Efecto al pasar el mouse */
+        .imagen-figura1:hover {
+            transform: scale(1.4); 
+            border-radius: 8px;
+        }
+        
+        .figure-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin: 15px 0;
+            color: var(--gray);
+            font-style: italic;
+            flex-direction: column;
+        }
+        
+        .figure-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .figure-caption {
+            color: var(--gray);
+            margin-top: 10px;
+        }
         
         .nav-buttons {
             display: flex;
@@ -468,7 +522,7 @@
             background: #c0392b;
             transform: translateY(-3px);
         }
-        
+
         .activity-card {
             background: rgba(46, 204, 113, 0.1);
             border-radius: 15px;
@@ -502,7 +556,7 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
         }
-
+        
         @media (max-width: 768px) {
             .sidebar-nav {
                 width: 100%;
@@ -617,7 +671,7 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <div class="container">
+   <div class="container">
         <header id="inicio">
             <div class="breadcrumb">
                 <a href="https://escomisr.github.io/Libro_Digital_SO/index.html"><i class="fas fa-home"></i> Inicio</a>
@@ -673,13 +727,12 @@
                     <li><strong>Facilita el análisis de algoritmos</strong>: permite estudiar la eficiencia (tiempo y espacio) de las operaciones sin depender de detalles de implementación.</li>                    
                 </ul>
                 <p>Estas características hacen que la especificación genérica de las listas sea un elemento clave en la algoritmia, ya que proporciona una base sólida para el diseño de estructuras de datos eficientes y soluciones bien estructuradas (Luis Joyanes Aguilar, 2013).</p>
-
         <div class="section" id="seccion-2-1">
             <div class="section-header">
             </div>
             <div class="content">
                 <p></p>
-                 <div class="figure-container">
+                <div class="figure-container">
                     <div class="figure-caption">Figura 35</div>
                     <div class="figure-caption">Caracteristicas de las listas</div>
                     <div class="figura">
@@ -687,72 +740,176 @@
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
+             </div> 
+        </div>       
+
+        <div class="section" id="seccion-2-2-2">
+            <div class="section-header">
+                <div class="section-number">2.2.2</div>
+                <div class="section-title">Implementación en estática</div>
             </div>
+            <div class="content">
+                <p>Es la forma de representación mediante un arreglo de tamaño fijo definido desde el inicio del programa. En este enfoque, los elementos se insertan en el extremo rear (final) y
+                   se eliminan del front (frente), respetando el principio FIFO (First In, First Out). Para su control se utilizan índices que permiten gestionar las operaciones de enqueue (inserción) y dequeue (eliminación).
+                   No obstante, presenta limitaciones como el desbordamiento (overflow) cuando se alcanza la capacidad máxima y el posible desperdicio de memoria; aun así, ofrece simplicidad y rapidez en su implementación (Seymour Lipschutz, 2014).</p>
+                <h4>Las características de la implementación estática de una cola son:</h4> 
+                <ul>
+                    <li>Utiliza un arreglo de tamaño fijo definido desde el inicio del programa.</li>
+                    <li>Opera bajo el principio FIFO (First In, First Out), respetando el orden de llegada de los elementos.</li>
+                    <li>Emplea dos índices o variables: front (frente) y rear (final) para controlar la inserción y eliminación.</li>
+                    <li>Permite operaciones básicas como enqueue (insertar) y dequeue (eliminar).</li>
+                    <li>Puede presentar overflow cuando la cola alcanza su capacidad máxima.</li> 
+                    <li>Puede generar desperdicio de memoria si no se aprovechan espacios liberados.</li>
+                    <li>Ofrece una implementación sencilla y acceso rápido a los elementos.</li>                                       
+                </ul>        
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 26</div>
+                    <div class="figure-caption">Implementación en estática de una cola</div>
+                    <div class="figura">
+                        <img src="FIGURA26.png" alt="Implementación en estática de una cola" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                 </div>
+             </div> 
+        </div> 
+
+       <div class="section" id="seccion-2-2-3">
+            <div class="section-header">
+                <div class="section-number">2.2.3</div>
+                <div class="section-title">Implementación dinámica en cola</div>
+            </div>
+            <div class="content">
+                <p>Se basa en el uso de un arreglo de tamaño fijo en el que los elementos se almacenan de manera contigua en memoria, respetando el principio FIFO (primero en entrar, primero en salir).</p>
+                <p>Su funcionamiento se emplean dos variables de control: el índice frente, que señala el primer elemento disponible para ser eliminado, y el índice final, que indica la posición donde se
+                   insertará un nuevo dato. Inicialmente, ambos índices suelen establecerse en valores que representen una cola vacía, y conforme se realizan operaciones, estos se actualizan de manera secuencial.</p>
+                <p>La operación de inserción (enqueue) consiste en incrementar el índice final e insertar el elemento en esa posición, siempre que la cola no esté llena; mientras que la eliminación (dequeue) implica
+                   extraer el elemento apuntado por frente y posteriormente avanzar dicho índice.</p>
+                <p>Esta estructura presenta condiciones importantes como el desbordamiento, cuando el arreglo alcanza su capacidad máxima, y el subdesbordamiento, cuando se intenta eliminar un elemento de una cola vacía.
+                   Aunque su principal ventaja radica en la eficiencia de sus operaciones, que se ejecutan en tiempo constante, una de sus limitaciones es el posible desperdicio de espacio, ya que las posiciones liberadas
+                   al inicio no se reutilizan en una implementación simple</p>   
+                <p>Según Thomas H. Cormen et al. (2009), este tipo de estructuras permite organizar y gestionar datos de forma ordenada mediante operaciones básicas bien definidas, facilitando su manipulación
+                   dentro de los sistemas computacionales.</p>    
+                    
+
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 27</div>
+                    <div class="figure-caption">Implementación en dinámica de una cola</div>
+                    <div class="figura">
+                        <img src="FIGURA27.png" alt="Implementación en dinámica de una cola" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                  </div>
+             </div> 
+        </div> 
+
+        <div class="section" id="seccion-2-2-4">
+            <div class="section-header">
+                <div class="section-number">2.2.4</div>
+                <div class="section-title">Colas de prioridad</div>
+            </div>
+            <div class="content">
+                <p>constituyen una variante de las estructuras de datos tipo cola en la que cada elemento no solo se inserta, sino que además se le asigna un nivel de prioridad, determinando el orden en el que será atendido o eliminado.</p>
+                <p>A diferencia de una cola tradicional que sigue el principio FIFO (primero en entrar, primero en salir), en una cola de prioridad los elementos se procesan de acuerdo con su importancia,
+                   de modo que aquel con mayor (o menor, según el criterio) prioridad será el primero en salir, independientemente de su orden de llegada.</p>
+                <p>En su implementación, pueden utilizarse arreglos, listas enlazadas o estructuras más eficientes como montículos (heaps), donde la organización interna permite acceder rápidamente al elemento prioritario. Las operaciones
+                   fundamentales incluyen la inserción de un elemento con su prioridad asociada y la eliminación del elemento con mayor prioridad, manteniendo siempre el orden establecido. Este tipo de estructura es ampliamente utilizado
+                   en sistemas operativos, algoritmos de planificación de tareas y problemas de optimización, donde es necesario gestionar elementos bajo criterios de relevancia.</p>
+                <p>De acuerdo con Thomas H. Cormen et al. (2009), las colas de prioridad permiten seleccionar eficientemente el siguiente elemento a procesar en función de una clave, optimizando así el rendimiento en diversos algoritmos y
+                   aplicaciones computacionales.</p>   
+
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 28</div>
+                    <div class="figure-caption">Colas de prioridad</div>
+                    <div class="figura">
+                        <img src="FIGURA28.png" alt="Colas de prioridad" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div> 
+        </div> 
+       <div class="section" id="seccion-2-2-5">
+            <div class="section-header">
+                <div class="section-number">2.2.5</div>
+                <div class="section-title">Nociones de complejidad de las operaciones</div>
+            </div>
+            <div class="content">
+                <p>permiten analizar qué tan eficiente es una estructura de datos o un algoritmo en función del tiempo que tarda en ejecutar sus operaciones básicas, como insertar, eliminar o buscar elementos. Este análisis se expresa generalmente mediante la notación Big O (O),
+                   la cual describe el comportamiento del algoritmo conforme crece el tamaño de los datos (n), sin enfocarse en tiempos exactos, sino en su tendencia de crecimiento. De esta forma, es posible comparar distintas implementaciones y
+                   determinar cuál resulta más adecuada según el problema a resolver.</p>
+                <p>Permiten analizar qué tan eficiente es una estructura de datos o un algoritmo en función del tiempo que tarda en ejecutar sus operaciones básicas, como insertar, eliminar o buscar elementos. Este análisis se expresa generalmente mediante la notación Big O (O),
+                   la cual describe el comportamiento del algoritmo conforme crece el tamaño de los datos (n), sin enfocarse en tiempos exactos, sino en su tendencia de crecimiento. De esta forma, es posible comparar distintas implementaciones y
+                   determinar cuál resulta más adecuada según el problema a resolver.</p>
+                <p>En el caso de las estructuras de datos lineales, como las colas, las operaciones principales suelen tener una complejidad constante O(1) cuando se implementan de forma eficiente, ya que tanto la inserción (enqueue) como la eliminación (dequeue) solo requieren
+                   actualizar índices como frente y final. Sin embargo, en algunas implementaciones menos optimizadas, ciertas operaciones pueden implicar desplazamientos de elementos, lo que incrementa la complejidad a O(n). Por ello,
+                   el diseño de la estructura influye directamente en su rendimiento.</p>
+                <p>Comprender estas nociones resulta fundamental en el desarrollo de software, ya que permite anticipar el comportamiento de los sistemas cuando manejan grandes volúmenes de información. Una elección adecuada de la estructura de datos y su implementación puede
+                   reducir significativamente el tiempo de ejecución y el consumo de recursos. Como señala Donald Knuth (2011), el análisis de la eficiencia de los algoritmos es clave para diseñar soluciones óptimas y escalables dentro de la computación.</p>
+
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 29</div>
+                    <div class="figure-caption">Nociones de complejidad de las operaciones</div>
+                    <div class="figura">
+                        <img src="FIGURA29.png" alt="Nociones de complejidad de las operaciones" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div> 
+        </div> 
+       <div class="section" id="seccion-2-2-6">
+            <div class="section-header">
+                <div class="section-number">2.2.6</div>
+                <div class="section-title">Aplicaciones</div>
+            </div>
+            <div class="content">
+                <p>Las colas tienen múltiples aplicaciones en el ámbito de la computación debido a su capacidad para organizar y procesar elementos en orden secuencial. Una de sus aplicaciones más comunes se encuentra en los sistemas operativos,
+                   donde se utilizan para la gestión de procesos y tareas. Por ejemplo, los procesos que esperan ser ejecutados por el CPU se almacenan en colas, permitiendo que el sistema los atienda en el orden en que llegan o según ciertas
+                   políticas de planificación, lo que garantiza un uso eficiente de los recursos del sistema</p>
+                <p>Otra aplicación importante de las colas se observa en el manejo de estructuras de entrada y salida (E/S), como la impresión de documentos. En este caso, los trabajos de impresión se organizan en una cola, donde el primero
+                   en enviarse es el primero en procesarse, evitando conflictos y asegurando un flujo ordenado de operaciones. De manera similar, en redes de computadoras, las colas se emplean para gestionar paquetes de datos que deben ser
+                   transmitidos, permitiendo regular el tráfico y evitar la congestión en los sistemas de comunicación.</p>
+                <p>Según Mark Allen Weiss (2014), las colas facilitan la organización y procesamiento eficiente de datos en diversos contextos computacionales, siendo esenciales para el desarrollo de soluciones estructuradas.</p>
+
+
+                <div class="figure-container">
+                    <div class="figure-caption">Figura 30</div>
+                    <div class="figure-caption">Aplicaciones de colas</div>
+                    <div class="figura">
+                        <img src="FIGURA30.png" alt="Aplicaciones de colas" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div> 
+        </div> 
+
+            <div style="margin-top: 30px;">
+                <h3><i class="fas fa-play-circle" style="margin-right: 10px;"></i> Material Audiovisual</h3>
+                <p>A continuación, se explican la funcionalidad de las colas:</p>
+                
+                <div class="figure-container">
+                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/RVtUR8DvpFw" title="Modelos multihilos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
+                    <div class="figure-caption">Salas, I. (2025, 24 de noviembre). <em>Modelo multi-hilo</em> [Video]. YouTube. https://www.youtube.com/watch?v=RVtUR8DvpFw</div>
+                </div>
+            </div>
+
         </div>
         
-        <div class="section" id="seccion-2-3-2">
-            <div class="section-header">
-                <div class="section-number">2.3.2</div>
-                <div class="section-title">Listas simples enlazadas</div>
-            </div>
-            <div class="content">
-                <p>aqui voy A diferencia de la <strong>memoria compartida</strong>, donde varios procesos acceden a la misma región de memoria, el paso de mensajes realiza transferencias controladas y seguras que mantienen el aislamiento entre procesos y evitan accesos directos a los datos compartidos <strong>(Silberschatz, Galvin y Gagne, 2022)</strong>.</p>
-                <p>En este modelo, los procesos emplean operaciones primarias como envió y recepción para enviar mensajes que pueden incluir señales de sincronización, comandos o datos. El sistema operativo tiene como función ser intermediario, administrando las colas de mensajes, regulando el orden en que se entregan y gestionando los procesos que están bloqueados o en espera.</p>
-                <p>Las modalidades son:</p>                
-                <ol>
-                    <li><strong>Síncrono</strong>: el proceso emisor se detiene hasta que el receptor valide la llegada del mensaje, lo que asegura la sincronización, aunque con latencia más elevada.</li>
-                    <li><strong>Asíncrono</strong>: el emisor sigue ejecutando sin esperar una respuesta inmediata, lo cual mejora el rendimiento, pero necesita mecanismos de control extra.</li>                    
-                </ol>                
-            </div>
-        </div>
-
-        <div class="section" id="seccion-2-3-3">
-            <div class="section-header">
-                <div class="section-number">2.3.3</div>
-                <div class="section-title">Tuberías y colas</div>
-            </div>            
-            <div class="content">
-                <p>Las colas de mensajes y las tuberías (<i>pipes</i>) son métodos tradicionales de <strong>IPC</strong> que posibilitan que los programas en ejecución intercambien información, asegurando la sincronización y el aislamiento de los flujos de datos. A pesar de que ambos procedimientos son muy empleados en sistemas operativos como Windows y Unix/Linux, se distinguen por su estructura, grado de control y flexibilidad.</p>
-                <h4>Tuberías (<i>Pipes</i>)</h4>
-
-                <p>Las tuberías son canales de comunicación unidireccionales que posibilitan la transmisión constante de datos entre procesos asociados, generalmente entre el proceso padre y el hijo. Actúan como un buffer de memoria gestionado por el kernel, en el cual un proceso realiza una escritura y otro la lectura siguiendo el orden <strong>FIFO</strong>.</p>
-                <p>Su clasificación es:</p>
-                <ul>
-                    <li><strong>Tuberías anónimas</strong>, creadas temporalmente mediante la llamada al sistema <i>pipe()</i>, ideales para comunicación entre procesos con una relación jerárquica directa.</li>                    
-                    <li><strong>Tuberías con nombre (named pipes o FIFOs)</strong>, creadas mediante <i>mkfifo</i>, que permiten la comunicación entre procesos no relacionados, incluso de distintos usuarios.</li>                    
-                </ul>                
-                <div class="quote-box">
-                    "Las tuberías proporcionan un método simple de comunicación entre procesos conectados en una cadena, permitiendo el paso de información sin necesidad de almacenamiento intermedio en disco".
-                    <div class="citation">(Silberschatz Galvin y Gagne, 2022).</div>
-                </div>
-                <h3>Colas de Mensajes </h3>
-                <p>Las <strong>colas de mensajes</strong> permiten una comunicación <strong>estructurada y asíncrona</strong> entre procesos, gestionando los mensajes a través de una <strong>cola en el kernel</strong>. Cada mensaje contiene un identificador, una prioridad y los datos transmitidos, lo que permite que varios procesos se comuniquen sin bloquearse entre sí.</p>
-                <p>Su principal ventaja es la capacidad de <strong>enviar y recibir mensajes de manera ordenada</strong>, sin requerir una relación jerárquica entre los procesos. Además, permiten un control más preciso sobre el flujo de datos, ya que los mensajes pueden clasificarse o priorizarse.</p>  
-                <p>En sistemas Unix, las funciones <i>msgget()</i>, <i>msgsnd()</i> y <i>msgrcv()</i> implementan este mecanismo, mientras que en Windows se utilizan APIs específicas del sistema.</p>
-                <div class="quote-box">
-                    "Las colas de mensajes ofrecen una forma segura y flexible de intercambio de información, especialmente útil en aplicaciones concurrentes y sistemas distribuidos donde los procesos deben comunicarse sin compartir memoria".
-                    <div class="citation">(Tanenbaum y Bos, 2015).</div>                    
-                </div>
-                <p>En conjunto, <strong>las tuberías y colas</strong> constituyen herramientas esenciales para la cooperación entre procesos, facilitando la <strong>sincronización</strong>, <strong>modularidad</strong> y <strong>eficiencia</strong> en la ejecución concurrente de programas.</p>
-            </div>
-        </div>
-
+ 
         <div class="activity-card">
-            <div class="activity-title">Actividad de Aprendizaje 2.3: Tuberías y colas</div>
-            <p>Evalúa tu comprensión sobre las tuberías y colas en sistemas operativos.</p>
-            <a href="actividad_2_3.html" class="activity-btn">
+            <div class="activity-title">Actividad de Aprendizaje 2.2: Colas</div>
+            <p>Evalúa tu comprensión sobre colas y sus características.</p>
+            <a href="actividad_2_2.html" class="activity-btn">
                 <i class="fas fa-pencil-alt"></i> Realizar Actividad
             </a>
         </div>
         
         <div class="nav-buttons">
-            <a href="2.2.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Anterior: 2.2 Modelo multihilo</a>
-            <a href="2.4.html" class="nav-btn">Continuar a 2.4: Sincronización entre procesos/hilos<i class="fas fa-arrow-right"></i></a>
+            <a href="2.1.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Anterior: 2.1 Pila</a>
+            <a href="2.3.html" class="nav-btn">Continuar a 2.3: Listas<i class="fas fa-arrow-right"></i></a>
         </div>
         
-        <footer>
-            <p>Sistemas Operativos - Unidad 2: Administración de procesos</p>
-            <p>Desarrollado para fines educativos - © 2025</p>
+       <footer>
+            <p>Algoritmos almacena y recupera Datos (polilibro académico) - Unidad 1: Algoritmos fundamentales</p>
+            <p>Desarrollado para fines educativos - © 2026</p>
         </footer>
     </div>
 
