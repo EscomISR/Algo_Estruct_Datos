@@ -648,25 +648,52 @@
         <div class="section" id="seccion-2-3-1">
             <div class="section-header">
                 <div class="section-number">2.3.1</div>
-                <div class="section-title">aqui vamos Especificación genérica</div>
+                <div class="section-title">Especificación genérica</div>
             </div>
             <div class="content">
-                <p>La memoria compartida (<i>shared memory</i>) es uno de los mecanismos más eficientes de <strong>IPC</strong>, ya que permite que <strong>dos o más procesos accedan directamente a una misma región de memoria física</strong>. A diferencia de otros métodos de comunicación, como las tuberías o las colas de mensajes, la memoria compartida <strong>no requiere transferencia de datos a través del kernel</strong>, lo que reduce la sobrecarga y acelera el intercambio de información.</p>
-                <p>En <strong>Windows</strong>, se utilizan las funciones <i>CreateFileMapping()</i> y <i>MapViewOfFile()</i> para lograr el mismo propósito.</p>                     
-                <div class="quote-box">
-                    "La memoria compartida ofrece el método más rápido de comunicación entre procesos, ya que evita la intervención del kernel durante el intercambio de datos, aunque requiere sincronización explícita por parte del programador".
-                    <div class="citation">(Silberschatz, Galvin, & Gagne, 2022).</div>
+                <p>Radica en que permiten definir de manera abstracta y formal cómo debe comportarse esta estructura de datos, sin depender de un lenguaje de programación o de una implementación específica. Esto significa que, al trabajar con una especificación genérica, el programador se enfoca en las operaciones y el comportamiento lógico de la lista (qué hace), en lugar de preocuparse por los detalles internos (cómo lo hace).
+                   Esta separación facilita el diseño de algoritmos más claros, reutilizables y fáciles de mantener, ya que la misma especificación puede aplicarse a distintas implementaciones como arreglos o listas enlazadas.</p>
+                <p>Además, las especificaciones genéricas de las listas son fundamentales porque establecen un conjunto estándar de operaciones (insertar, eliminar, buscar, acceder, etc.) que garantizan consistencia en el manejo de los datos. Esto permite que diferentes desarrolladores trabajen con una misma estructura conceptual sin ambigüedades, favoreciendo la interoperabilidad y la comprensión del código. Asimismo, al establcer contratos
+                   claros sobre el comportamiento de la lista, se mejora la calidad del software, ya que se pueden validar las operaciones independientemente de su implementación concreta.</p>
+                <p>Por otro lado, esta abstracción es clave en la algoritmia porque permite evaluar la eficiencia y complejidad de las operaciones sin depender del detalle técnico de la estructura subyacente. De esta manera, el programador puede elegir la mejor implementación según las necesidades del problema, optimizando recursos como tiempo y memoria. En consecuencia, las listas, a través de sus especificaciones genéricas, se convierten en
+                   una herramienta esencial para el desarrollo de soluciones eficientes, modulares y escalables dentro de la informática (Luis Joyanes Aguilar, 2013).</p>
+                
+                <p>Las listas, desde su especificación genérica, presentan un conjunto de características que permiten comprender su comportamiento abstracto y su utilidad dentro de la algoritmia:</p>   
+                <h3>Características de las listas en su especificación genérica</h3>
+                <ul>
+                    <li><strong>Abstracción de la implementación</strong>: establece el comportamiento de la lista sin depender de cómo está construida (arreglo o lista enlazada), enfocándose en las operaciones que se pueden realizar.</li>
+                    <li><strong>Tipo de dato genérico (T)</strong>: Permite trabajar con cualquier tipo de dato, lo que hace a la lista reutilizable en distintos contextos.</li>                    
+                    <li><strong>Colección ordenada</strong>: los elementos mantienen un orden lógico, donde cada uno ocupa una posición específica dentro de la estructura.</li>
+                    <li><strong>Acceso mediante posición</strong>: cada elemento puede ser localizado a través de un índice o posición, facilitando su manipulación.</li>                    
+                    <li><strong>Conjunto de operaciones definidas</strong>: incluye operaciones estándar como insertar, eliminar, buscar, obtener, modificar, tamaño y verificación de lista vacía.</li>                    
+                    <li><strong>Independencia del lenguaje de programación</strong>: puede ser aplicada en cualquier lenguaje, ya que su definición es conceptual y no depende de una sintaxis específica.</li>                    
+                    <li><strong>Flexibilidad de implementación</strong>: puede implementarse de forma estática o dinámica sin alterar su comportamiento lógico..</li>                    
+                    <li><strong>Base para otras estructuras de datos</strong>: sirve como fundamento para estructuras como pilas, colas y listas enlazadas.</li>                    
+                    <li><strong>Consistencia en el manejo de datos</strong>: establece reglas claras para manipular los elementos, evitando ambigüedades en su uso.</li>                    
+                    <li><strong>Facilita el análisis de algoritmos</strong>: permite estudiar la eficiencia (tiempo y espacio) de las operaciones sin depender de detalles de implementación.</li>                    
+                </ul>
+                <p>Estas características hacen que la especificación genérica de las listas sea un elemento clave en la algoritmia, ya que proporciona una base sólida para el diseño de estructuras de datos eficientes y soluciones bien estructuradas (Luis Joyanes Aguilar, 2013).</p>
+
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 35</div>
+                    <div class="figure-caption">Caracteristicas de las listas</div>
+                    <div class="figura">
+                        <img src="FIGURA35.png" alt="Caracteristicas de las listas" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
+               
+ 
             </div>
         </div>
         
         <div class="section" id="seccion-2-3-2">
             <div class="section-header">
                 <div class="section-number">2.3.2</div>
-                <div class="section-title">Paso de mensajes</div>
+                <div class="section-title">Listas simples enlazadas</div>
             </div>
             <div class="content">
-                <p>A diferencia de la <strong>memoria compartida</strong>, donde varios procesos acceden a la misma región de memoria, el paso de mensajes realiza transferencias controladas y seguras que mantienen el aislamiento entre procesos y evitan accesos directos a los datos compartidos <strong>(Silberschatz, Galvin y Gagne, 2022)</strong>.</p>
+                <p>aqui voy A diferencia de la <strong>memoria compartida</strong>, donde varios procesos acceden a la misma región de memoria, el paso de mensajes realiza transferencias controladas y seguras que mantienen el aislamiento entre procesos y evitan accesos directos a los datos compartidos <strong>(Silberschatz, Galvin y Gagne, 2022)</strong>.</p>
                 <p>En este modelo, los procesos emplean operaciones primarias como envió y recepción para enviar mensajes que pueden incluir señales de sincronización, comandos o datos. El sistema operativo tiene como función ser intermediario, administrando las colas de mensajes, regulando el orden en que se entregan y gestionando los procesos que están bloqueados o en espera.</p>
                 <p>Las modalidades son:</p>                
                 <ol>
