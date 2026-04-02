@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3.1 Abstracción de Memoria</title>
+    <title>3.1 Estructura de datos no lineales</title>
     <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /*
-        Aquí comienza un bloque de estilos CSS para definir la apariencia de la página.
-        */
         :root {
             --primary: #2c3e50;
             --secondary: #3498db;
@@ -36,7 +33,6 @@
             line-height: 1.7;
         }
 
-        /* Botón flotante de inicio */
         .floating-home-btn {
             position: fixed;
             top: 20px;
@@ -62,7 +58,6 @@
             box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
         }
 
-        /* Menú de navegación lateral */
         .sidebar-nav {
             position: fixed;
             left: 0;
@@ -144,7 +139,6 @@
             text-align: center;
         }
 
-        /* Botón toggle del menú */
         .menu-toggle {
             position: fixed;
             top: 20px;
@@ -174,7 +168,6 @@
             background: var(--accent);
         }
 
-        /* Indicador de progreso de lectura */
         .reading-progress {
             position: fixed;
             top: 0;
@@ -192,7 +185,6 @@
             transition: width 0.1s ease;
         }
 
-        /* Overlay para cerrar el menú */
         .sidebar-overlay {
             position: fixed;
             top: 0;
@@ -211,7 +203,6 @@
             visibility: visible;
         }
         
-        /* Contenedor principal con espaciado para botones flotantes */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -319,7 +310,7 @@
             border-left: 3px solid var(--accent);
         }
 
-        .content h4, .intro h4 {
+        .content h4 {
             font-size: 1.3rem;
             color: var(--warning);
             margin: 25px 0 12px;
@@ -331,12 +322,12 @@
             text-align: justify;
         }
         
-        .content ul, .content ol, .intro ul, .intro ul {
+        .content ul, .content ol {
             padding-left: 30px;
             margin: 20px 0;
         }
         
-        .content li, .intro li{
+        .content li {
             margin-bottom: 12px;
         }
         
@@ -354,8 +345,8 @@
             border-left: 2px solid var(--secondary);
             padding-left: 10px;
         }
-
-         .quote-box {
+        
+        .quote-box {
             background: rgba(52, 152, 219, 0.1);
             border-left: 4px solid var(--secondary);
             padding: 20px;
@@ -442,7 +433,7 @@
         
         .figure-placeholder {
             width: 100%;
-            min-height: 300px;
+            height: 300px;
             background: linear-gradient(135deg, #2c3e50, #34495e);
             display: flex;
             align-items: center;
@@ -453,55 +444,18 @@
             font-style: italic;
             flex-direction: column;
         }
-
-        /* Clase para imágenes reales si se incorporan */
-        .figure-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        
+        .figure-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
         }
         
         .figure-caption {
             color: var(--gray);
             margin-top: 10px;
-            font-size: 0.9rem;
         }
-        
-        .activity-card {
-            background: rgba(46, 204, 113, 0.1);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 40px 0;
-            border-left: 4px solid var(--success);
-            text-align: center;
-        }
-        
-        .activity-title {
-            font-size: 1.8rem;
-            color: var(--success);
-            margin-bottom: 20px;
-        }
-        
-        .activity-btn {
-            display: inline-block;
-            background: var(--success);
-            color: white;
-            padding: 15px 35px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-        }
-        
-        .activity-btn:hover {
-            background: #27ae60;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
-        }
-        
+
         .nav-buttons {
             display: flex;
             justify-content: space-between;
@@ -538,7 +492,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Botón de ir arriba */
         .scroll-to-top {
             position: fixed;
             bottom: 20px;
@@ -570,6 +523,40 @@
             transform: translateY(-3px);
         }
         
+        .activity-card {
+            background: rgba(46, 204, 113, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            border-left: 4px solid var(--success);
+            text-align: center;
+        }
+
+        .activity-title {
+            font-size: 1.8rem;
+            color: var(--success);
+            margin-bottom: 20px;
+        }
+
+        .activity-btn {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .activity-btn:hover {
+            background: #27ae60;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+        }
+
         @media (max-width: 768px) {
             .sidebar-nav {
                 width: 100%;
@@ -620,16 +607,16 @@
         <i class="fas fa-bars"></i>
     </button>
 
-    <a href="index.html" class="floating-home-btn" title="Ir al inicio de Unidades">
+    <a href="index.html" class="floating-home-btn" title="Ir al índice de unidades">
         <i class="fas fa-home"></i>
     </a>
 
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <nav class="sidebar-nav" id="sidebarNav">
+   <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
-            <div class="sidebar-title">CAPÍTULO III</div>
-            <div class="sidebar-subtitle">Administración de memoria</div>
+            <div class="sidebar-title">Estructura de datos no lineales</div>
+            <div class="sidebar-subtitle">Permiten organizar la información de forma jerárquica o interconectada</div>
         </div>
         
         <div class="nav-sections">
@@ -645,32 +632,45 @@
                 </a>
             </div>
 
-            <div class="nav-section">
+             <div class="nav-section">
                 <div class="nav-section-title">Contenido</div>
                 <a href="#seccion-3-1" class="nav-item" data-section="3-1">
                     <i class="fas fa-layer-group"></i>
-                    3.1 Abstracción
+                    3.1 Árboles binarios
                 </a>
                 <a href="#seccion-3-1-1" class="nav-item" data-section="3-1-1">
                     <i class="fas fa-sitemap"></i>
-                    3.1.1 Organización
+                    3.1.1 Transformación de árboles generales a binarios
                 </a>
                 <a href="#seccion-3-1-2" class="nav-item" data-section="3-1-2">
                     <i class="fas fa-tasks"></i>
-                    3.1.2 Administración
+                    3.1.2 Recorridos en un árbol binario
                 </a>
                 <a href="#seccion-3-1-3" class="nav-item" data-section="3-1-3">
                     <i class="fas fa-exchange-alt"></i>
-                    3.1.3 Intercambio (Swap)
+                    3.1.3 Árbol binario de búsqueda
                 </a>
                 <a href="#seccion-3-1-4" class="nav-item" data-section="3-1-4">
                     <i class="fas fa-th"></i>
-                    3.1.4 Mapa de Bits
+                    3.1.4 Árbol balanceado rojo-negro
                 </a>
                 <a href="#seccion-3-1-5" class="nav-item" data-section="3-1-5">
                     <i class="fas fa-link"></i>
-                    3.1.5 Listas Ligadas
+                    3.1.5 Montículo
                 </a>
+                <a href="#seccion-3-1-6" class="nav-item" data-section="3-1-6">
+                    <i class="fas fa-link"></i>
+                    3.1.6 Implementaciones y aplicaciones
+                </a>
+                <a href="#seccion-3-1-7" class="nav-item" data-section="3-1-7">
+                    <i class="fas fa-link"></i>
+                    3.1.7 Nociones de complejidad de las implementaciones
+                </a>
+                <a href="#seccion-3-1-8" class="nav-item" data-section="3-1-8">
+                    <i class="fas fa-link"></i>
+                    3.1.8 Otros tipos de árboles
+                </a>
+                
             </div>
 
             <div class="nav-section">
@@ -681,7 +681,7 @@
                 </a>
                 <a href="3.2.html" class="nav-item">
                     <i class="fas fa-arrow-right"></i>
-                    Siguiente: Memoria Virtual
+                    Siguiente: Grafos
                 </a>
             </div>
         </div>
@@ -698,230 +698,326 @@
                 <span>/</span>
                 <a href="index.html">Unidad 3</a>
                 <span>/</span>
-                <span>Administración de Memoria</span>
+                <span>3.1Árboles binarios</span>
             </div>
-            <h1>3.1 Abstracción de Memoria</h1>
-            <div class="subtitle">Gestión eficiente del espacio en memoria</div>
+            <h1>3.1 Árboles binarios</h1>
+            <div class="subtitle">Los árboles binarios permiten organizar la información de forma jerárquica o interconectada.</div>            
         </header>
         
-        <div class="intro">            
-            <p>Es la tarea que presenta el sistema operativo para administrar y gestionar el espacio en la memoria principal recordemos que es la RAM, además de utilizar la memoria virtual, estableciendo una asignación y soltando la memoria de procesos ya que recordemos que esta se requiere ejecutar.</p>
-            <p>El objetivo es que se utilice la memoria en una manera eficiente, asegurando que todos los procesos que se ejecuten no se interfieran entre sí y se visualice como si tuviéramos una memoria muy grande para llevar a cabo todos estos, aplicando técnicas que nos ayuden como es la memoria virtual.</p>
-            <p>Por lo que el sistema operativo tiene un control especifico de cómo están utilizadas los elementos de la memoria y quien las está utilizando para saber cuánto se tiene disponible y se puede utilizar.</p>
-            <p>Existen tres técnicas que son:</p>
-            <ul>
-                <li><strong>Asignación continua:</strong> Es cuando la memoria retiene espacios contiguos para cada ejecución que realiza, esto permite el acceso a los mismos con riesgo de que se genere división externa en los procesos.</li>
-                <li><strong>Segmentación:</strong> Es cuando dividimos la memoria en pequeños espacios lógicos debido a que necesitamos una distribución mas ordenada, flexible y estructurada a cada una de las aplicaciones que se requieran.</li>
-                <li><strong>Paginación:</strong> En esta parte se divide la memoria física en bloques con el mismo tamaño para evitar la desintegración de estos, con ello lograremos hacer eficiente el espacio asignado a cada bloque.</li>
-            </ul>
+        <div class="intro">
+            <p>Los árboles binarios son una estructura de datos no lineal en la que cada elemento, llamado nodo, puede tener como máximo dos hijos: uno izquierdo y uno derecho. Esta organización jerárquica parte de un nodo principal conocido como raíz, desde el cual se derivan los demás nodos formando niveles.
+               Su diseño permite representar relaciones ordenadas y facilita la organización eficiente de la información en distintos sistemas computacionales (Weiss, 2014).</p>
+            <p>Una de las principales características de los árboles binarios es que permiten realizar operaciones de búsqueda, inserción y eliminación de manera eficiente, especialmente cuando están balanceados. En particular, el árbol binario de búsqueda organiza los datos de forma que los valores menores se
+               ubican a la izquierda y los mayores a la derecha, lo que reduce significativamente el tiempo de búsqueda en comparación con estructuras lineales.</p>
+            <p>Además, los árboles binarios pueden recorrerse de distintas formas, conocidas como recorridos: preorden, inorden y postorden. Cada uno de estos métodos define un orden específico para visitar los nodos, lo cual es útil en diversas aplicaciones como la evaluación de expresiones, la generación de
+               código o la manipulación de datos estructurados. Estos recorridos son fundamentales para comprender cómo se procesan los datos dentro de esta estructura.</p>
+            <p>Por lo que los árboles binarios tienen múltiples aplicaciones en la informática, como en sistemas de archivos, bases de datos, inteligencia artificial y algoritmos de compresión. Su capacidad para estructurar información de manera eficiente los convierte en una herramienta esencial en el 
+               desarrollo de software, ya que permiten modelar problemas complejos de forma clara y optimizar el rendimiento de diversas operaciones (Weiss, 2014).</p>
+
             
             <div class="figure-container">
-                <p class="figure-caption">Figura 01</p>
-                <p class="figure-caption">Gestión de memoria en sistemas</p>
-                <img src="FIGURA6.png" alt="Gestión de memoria en sistemas" class="imagen-figura1">
+                <p class="figure-caption">Figura 47</p>
+                <p class="figure-caption">Árboles binarios</p>
+                <img src="FIGURA50.png" alt="Árboles binarios" class="imagen-figura1">
                 <p class="figure-caption">Nota: Imagen elaborada con IA</p>
             </div>
-
-            <h4>Objetivo general:</h4>
-            <div class="quote-box">
-                Comprender y explicar los principios teóricos y prácticos de la administración de memoria como elemento prioritario para el sistema operativo, así como qué papel juegan los dos tipos de memoria principal y secundaria en los procesos, gestiones de recursos, así como las técnicas de paginación, segmentación y swapping, de la misma manera tendrá todos los elementos para intercambiar conocimientos con sus compañeros para determinar el impacto en el rendimiento, estabilidad y seguridad del sistema.
-            </div>
-        </div>
-        
-        <div class="section" id="seccion-3-1">
-            <div class="section-header">
-                <div class="section-number">3.1</div>
-                <div class="section-title">Abstracción de la memoria</div>
-            </div>
+            
+        <div class="section" id="seccion-2-1">
             <div class="content">
-                <p>De acuerdo con Tanenbaum y Bos, 2015, p. 198. Es un principio en el cual se dan a los procesos una visión lógica y un espacio de memoria, todo ello es independiente de la estructura física del equipo de cómputo.</p>
-                <p>Por lo que la capa de abstracción permite que todos los programas se ejecuten sin requerir de ubicar los datos o la secuencia de instrucciones, derivado de ello facilita la portabilidad, seguridad y eficiencia del sistema operativo.</p>
-                <p>La abstracción se crea mediante el uso de direcciones lógicas o virtuales, en donde estas se generarán dinámicamente en direcciones físicas a través de la paginación, segmentación o dicha memoria virtual de modo que cada proceso tendrá un espacio de memoria continua y exclusivo, además de permitir que se comparta memoria física entre cada proceso.</p>
+                <p>Por lo que las estructuras de datos funcionan como medios para almacenar y organizar la información dentro de un programa, permitiendo guardar datos durante su ejecución y recuperarlos cuando se necesitan. Cada una organiza los elementos de
+                   manera distinta, lo que influye en su comportamiento y operaciones, por lo que es fundamental que el programador elija la estructura adecuada para cada funcionalidad, logrando así un desarrollo más eficiente y ordenado.</p>
+                <p>La clasificación de las estructuras de datos se puede abordar desde diferentes criterios técnicos, dependiendo de su forma de organización, representación en memoria y comportamiento. A continuación te la explico de manera clara y estructurada::</p>
+                <H3>Organización lógica</H3>
                 <ul>
-                    <li><strong>Aislamiento y protección:</strong> evita que un proceso acceda a la memoria de otro.</li>
-                    <li><strong>Flexibilidad:</strong> facilita la reubicación y ejecución de procesos en distintas áreas de memoria.</li>
-                    <li><strong>Eficiencia:</strong> aprovecha mejor la memoria física mediante técnicas de asignación dinámica y memoria virtual.</li>
-                </ul>
-                <p>Por lo anterior se puede establecer que la abstracción de memoria permite tener un espacio físico limitado para su función lógica y flexible además de garantizar la estabilidad, seguridad y realizar multitareas en forma eficiente en los sistemas operativos.</p>
-                <p>Representa cómo el sistema operativo gestiona los recursos de memoria proporcionando al programador una visión abstracta del espacio de direcciones, ocultando los detalles físicos y facilitando un entorno lógico continuo y seguro.</p>
-                
-                <div class="figure-container">
-                    <p class="figure-caption">Figura 02</p>
-                    <p class="figure-caption">Abstracción de la memoria en un sistema operativo</p>
-                    <img src="FIGURA11.png" alt="Abstracción de la memoria en un sistema operativo" class="imagen-figura1">
-                    <p class="figure-caption">Nota: Adaptado de Tanenbaum y Bos (2015).</p>
-                </div>
-            </div>
-        </div>
+                    <li><strong>Estructuras de datos lineales</strong>: Son aquellas que organizan los elementos de información en secuencia uno detrás de otro, aparentando que se forma un segmento de recta (parecido a un arreglo). Este tipo de estructuras son:</li>
+                    <h4>Características:</h4>
+                    <li>Existe un único camino de recorrido</li>
+                    <li>Cada elemento (excepto extremos) tiene un predecesor y un sucesor</li>
+                    <h4>Ejemplos</h4>
+                    <li>Arreglos (arrays)</li>
+                    <li>Listas enlazadas</li>
+                    <li>Pilas (LIFO)</li>
+                    <li>Colas (FIFO)</li>
+                    <li><strong>Estructuras de datos no lineales</strong>: Los elementos no siguen una secuencia única, sino que pueden tener múltiples relaciones:</li>
+                    <h4>Características</h4>
+                    <li>Permiten jerarquías o conexiones complejas</li>
+                    <li>No hay un único recorrido lineal</li>
+                    <h4>Ejemplos</h4>
+                    <li>Árboles (binarios, AVL, B)</li>
+                    <li>Grafos</li>
+                </ul>        
 
-        <div class="section" id="seccion-3-1-1">
+        <div class="section" id="seccion-2-1">
             <div class="section-header">
-                <div class="section-number">3.1.1</div>
-                <div class="section-title">Organización de la memoria</div>
             </div>
             <div class="content">
-                <p>Según Tanenbaum (2015), es cuando se establece la forma en que el sistema operativo y el hardware organizan la forma de gestionar en espacio de la memoria principal y secundaria en donde se busca garantizar un acceso seguro, estructurado y eficiente para ejecutar los procesos.</p>
-                <p>Esta organización se realiza en forma jerárquica buscando equilibrar la velocidad, capacidad y su costo en donde se relacionan los registros, la cache y la memoria principal RAM, así como todos los dispositivos de almacenamiento, esto permite que entonces cada nivel realice tareas en específico en donde los registros y cache permite el acceso inmediato, aunque tengan espacio limitado, pero esto no afecta a que la memoria principal y secundaria permitían mayor almacenamiento en tiempos muy largos estos procesos que se ejecutan.</p>
+                <p></p>
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 17</div>
+                    <div class="figure-caption">Organización lógica</div>
+                    <div class="figura">
+                        <img src="FIGURA17.png" alt="Organización lógica" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div>
                 <ul>
-                    <li><strong>Mono programación:</strong> un solo proceso reside en memoria; sencillo pero ineficiente en el uso de recursos.</li>
-                    <li><strong>Multiprogramación:</strong> varios procesos comparten la memoria principal de manera controlada, incrementando la utilización de la CPU.</li>
-                    <li><strong>Memoria virtual:</strong> combina memoria principal y secundaria, ofreciendo a cada proceso un espacio lógico mayor al físico disponible.</li>
-                </ul>
-                <p>Por lo que la organización es indispensable para minimizar la fragmentación, acceso a los datos y asegurara la protección de los procesos, teniendo estabilidad en el sistema, como se muestra en la siguiente figura 12. Organización de la memoria.</p>
+                    <li><strong>Estructuras de datos no lineales</strong>: Los elementos no siguen una secuencia única, sino que pueden tener múltiples relaciones</li>
+                    <h4>Características:</h4>
+                    <li>Permiten jerarquías o conexiones complejas</li>
+                    <li>No hay un único recorrido lineal</li>
+                    <h4>Ejemplos</h4>
+                    <li>Árboles (binarios, AVL, B)</li>
+                    <li>Grafos</li>
+                </ul> 
 
-                <div class="figure-container">
-                    <p class="figure-caption">Figura 03</p>
-                    <p class="figure-caption">Organización de la memoria</p>
-                    <img src="FIGURA12.png" alt="Organización de la memoria" class="imagen-figura1">
-                    <p class="figure-caption">Nota: Adaptado de Conceptos de sistemas operativos (9.ª ed.) por A. S. Tanenbaum, 2017.</p>
-                </div>
-            </div>
-
-            <div style="margin-top: 30px;">
-                <h3><i class="fas fa-play-circle" style="margin-right: 10px;"></i> Material Audiovisual</h3>
-                <p>Para profundizar en los conceptos de abstracción y organización de la memoria, consulta el siguiente recurso:</p>
-                
-                <div class="figure-container">
-                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/MgSrUlrXO6I" title="Abstracción de memoria y organización" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
-                    <div class="figure-caption">Salas, I. (2025, 26 de noviembre). <em>Abstracción de memoria y organización</em> [Video]. YouTube. https://www.youtube.com/watch?v=MgSrUlrXO6I</div>
-                </div>
-            </div>
-
-        </div>
-        
-        <div class="section" id="seccion-3-1-2">
+        <div class="section" id="seccion-2-1">
             <div class="section-header">
-                <div class="section-number">3.1.2</div>
-                <div class="section-title">Administración del almacenamiento</div>
             </div>
             <div class="content">
-                <p>Según Tanenbaum y Bos (2015), la administración del almacenamiento (gestión de memoria).</p>
-                <p>Es un elemento muy importante para el sistema operativo ya que se encarga de administrar y gestionar el uso eficiente, seguro y estructurado de la memoria principal y secundaria para la ejecución de cualquier proceso.</p>
-                <p>En donde el sistema operativo gestiona el almacenamiento a través de varios niveles de control:</p>
+                <p></p>
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 18</div>
+                    <div class="figure-caption">Estructuras de datos no lineales</div>
+                    <div class="figura">
+                        <img src="FIGURA18.png" alt="Estructuras de datos no lineales" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div> 
+        </div>             
+            <p>Ya que la forma en que opera una pila implica que el orden de los elementos se invierte al momento de retirarlos respecto a como fueron insertados,
+               se le identifica como una estructura LIFO (Last In, First Out), donde el último elemento en ingresar es el primero en salir. Esta propiedad se puede
+               apreciar de manera visual en la imagen siguiente.</p>
+        <div class="section" id="seccion-2-1">
+            <div class="section-header">
+            </div>
+            <div class="content">
+                <p></p>
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 19</div>
+                    <div class="figure-caption">Estructura y funcionamiento de una pila</div>
+                    <div class="figura">
+                        <img src="FIGURA19.png" alt="Estructura y funcionamiento de una pilaa" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div> 
+        </div>
+        </div>
+        </div>
+        
+        <div class="section" id="seccion-2-1-1">
+            <div class="section-header">
+                <div class="section-number">2.1.1</div>
+                <div class="section-title">Especificación genérica </div>
+            </div>
+            <div class="content">
+                <p>Dentro de una pila, la especificación genérica se aplica al definir su comportamiento de manera abstracta, sin depender de cómo esté implementada (arreglo, lista enlazada, etc.).
+                   Es decir, se describe qué hace la pila y no cómo se construye.</p>
+
+                <h3>Tipo de dato genérico (T): la pila puede almacenar cualquier tipo de elemento (enteros, cadenas, objetos, etc.)</h3>
+
+                <p>En este contexto, la especificación genérica de una pila incluye</p>
+                <h4>Operaciones básicas:</h4>
                 <ul>
-                    <li><strong>Asignación de espacio:</strong> determina cómo se distribuyen los bloques de almacenamiento entre los diferentes archivos y procesos.</li>
-                    <li>Entre los métodos más comunes se encuentran la asignación contigua, enlazada e indexada.</li>
-                    <li><strong>Gestión de archivos:</strong> administra la creación, modificación, lectura y eliminación de archivos, así como la estructura de directorios que los organiza jerárquicamente.</li>
-                    <li><strong>Control de dispositivos:</strong> coordina las operaciones de entrada/salida mediante controladores y búferes, asegurando la comunicación entre el hardware y el software.</li>
-                    <li><strong>Seguridad y protección:</strong> establece mecanismos de control de acceso, permisos y recuperación ante fallos o pérdidas de información.</li>
+                    <li><strong>push(T elemento)</strong>: Inserta un elemento en la cima..</li>
+                    <li><strong>pop()</strong>: Elimina y devuelve el elemento en la cima.</li>
+                    <li><strong>top() o peek()</strong>: Consulta el elemento en la cima sin eliminarlo.</li>
+                    <li><strong>isEmpty()</strong>: Verifica si la pila está vacía.</li>
                 </ul>
-                <p>Con ello se incorporan técnicas como caché de disco, RAID (Matriz redundante de discos independientes) y sistemas de archivos distribuidos, que mejoran la fiabilidad, el rendimiento y la tolerancia a fallos.</p>
-                <p>Esta función logra que los sistemas operativos transformen los dispositivos físicos de almacenamiento en entornos lógicos organizados y seguros, facilitando la gestión de grandes volúmenes de datos y la integridad de la información, como se muestra en la siguiente figura 13, donde despliega los cuatro elementos esenciales de la administración del almacenamiento en un sistema operativo.</p>
 
-                <div class="figure-container">
-                    <p class="figure-caption">Figura 04</p>
-                    <p class="figure-caption">Administración del almacenamiento</p>
-                    <img src="FIGURA13.png" alt="Administración del almacenamiento" class="imagen-figura1">
-                    <p class="figure-caption">Nota: Adaptado de Sistemas operativos modernos (4.ª ed.), por A. S. Tanenbaum y H. Bos, 2015, Pearson Educación</p>
-                </div>
+                <ul>
+                    <li><strong>Regla de funcionamiento:</strong> Sigue el principio LIFO (último en entrar, primero en salir).</li>
+                    <li><strong>Restricciones:</strong> No se puede extraer un elemento si la pila está vacía..</li>
+                </ul>
             </div>
+                <p>De esta manera, la pila queda definida de forma general y flexible, permitiendo que cualquier implementación respete estas reglas, sin importar el lenguaje o la estructura interna utilizada.</p>
+
+        <div class="section" id="seccion-2-1">
+            <div class="section-header">
+            </div>
+            <div class="content">
+                <p></p>
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 20</div>
+                    <div class="figure-caption">Estructuras Operaciones básicas</div>
+                    <div class="figura">
+                        <img src="FIGURA20.png" alt="Estructuras Operaciones básicas" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
+                </div>
+             </div> 
+        </div>             
+
+        </div>
+ 
+        
+        <div class="section" id="seccion-2-1-2">
+            <div class="section-header">
+                <div class="section-number">2.1.2</div>
+                <div class="section-title">Implementación estática</div>
+            </div>
+            <div class="content">
+                   <p>La implementación estática de una pila consiste en utilizar una estructura de tamaño fijo, generalmente un arreglo (vector), para almacenar los elementos. En este enfoque, la capacidad de la pila se define desde el inicio y no puede cambiar durante la ejecución del programa.</p>
+                   <p>A diferencia de la implementación estática (que usa un arreglo de tamaño fijo), en la implementación dinámica:</p>
+                <h4>En una pila con implementación dinámica se consideran los siguientes aspectos:</h4>
+                   <p><strong>No existe un tamaño límite predefinido</strong>: ya que la memoria se asigna conforme se necesitan nuevos elementos.</p>
+                   <p><strong>Cada elemento de la pila se almacena en un nodo,</strong> que contiene el dato y una referencia al siguiente nodo.</p>
+                   <p><strong>El acceso principal sigue siendo mediante la cima (top),</strong>espetando el principio LIFO.</p>
+                <h4>Funcionamiento</h4>
+                   <p><strong>push:</strong>: crea un nuevo nodo y lo coloca al inicio de la pila (lo convierte en el nuevo tope).</p>
+                   <p><strong>pop</strong>: elimina el nodo del tope y libera la memoria.</p>
+                <h4>Ventajas:</h4>
+                    <p>Uso eficiente de la memoria.</p>
+                    <p>Flexibilidad en el tamaño de la pila.</p>
+                <h4>Desventajas:</h4>
+                <p>Mayor complejidad en la implementación.</p>
+                <p>Requiere manejo de memoria dinámica (reservar y liberar memoria).</p>
+
+                <p>Es por ello que, la implementación dinámica permite que la pila se adapte al tamaño de los datos en tiempo real, siendo ideal cuando no se conoce previamente cuántos elementos se almacenarán.</p>
+
+             <div class="content">
+                <p></p>
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 21</div>
+                    <div class="figure-caption">Código implementación estática</div>
+                    <div class="figura">
+                        <img src="FIGURA21.png" alt="Código implementación estática" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
+                </div>
+             </div> 
+
+                                             
+            </div>
+
+
         </div>
         
-        <div class="section" id="seccion-3-1-3">
+        <div class="section" id="seccion-2-1-3">
             <div class="section-header">
-                <div class="section-number">3.1.3</div>
-                <div class="section-title">Memoria de intercambio (swapping)</div>
+                <div class="section-number">2.1.3</div>
+                <div class="section-title">Implementación dinámica</div>
             </div>
             <div class="content">
-                <p>Según Tanenbaum y Bos (2015), Es un procedimiento que se utiliza por el sistema operativo para administrar y gestionar el funcionamiento de la memoria principal, en el cual se basa en desplazar temporalmente los procesos en su totalidad a un espacio de almacenamiento secundario y tenerlos a la vista para cuando se requieran traerlos y utilizarlos, esto permite la optimización del uso de la memoria física que se encuentre disponible y permite con ello la ejecución simultanea y estructurada de múltiples procesos.</p>
-                <p>Por lo que el swapping conforma ser un elemento elemental dentro del procedimiento de la memoria virtual, al aportar una forma de flexibilidad que permita ejecutar a los programas con mayor requerimientos de la memoria física que se encuentre disponible, con ello gestionara un equilibrio de cargas para el sistema operativo mejorando la disponibilidad de recursos, como se muestra en la siguiente figura 14. Memoria de intercambio ( swapping ).</p>
+                    <p>Es la forma a la forma de construir una estructura de datos utilizando memoria que se asigna durante la ejecución del programa, en lugar de definir un tamaño fijo desde el inicio.</p>
+                    <p>En el caso de una pila, esto significa que no se usa un arreglo de tamaño limitado, sino estructuras como listas enlazadas, donde cada elemento (nodo) se crea cuando se necesita y se enlaza con el anterior. Esto permite que la pila crezca o disminuya según la cantidad de datos, evitando problemas como el desbordamiento por tamaño fijo.</p>
+                    
+                <h3>Sus principales caracteristicas son:</h3>
+                    <p> <strong>Tamaño flexible:</strong> la estructura puede expandirse o reducirse dinámicamente.</p>    
+                    <p> <strong>Uso eficiente de memoria:</strong> solo se utiliza el espacio necesario en cada momento.</p>    
+                    <p> <strong>Mayor complejidad:</strong> requiere manejo de punteros y memoria dinámica.</p>    
+                    <p>la implementación dinámica ofrece mayor adaptabilidad que la estática, ya que permite manejar colecciones de datos cuyo tamaño no se conoce previamente, siendo muy útil en aplicaciones donde los datos cambian constantemente.</p>   
 
-                <div class="figure-container">
-                    <p class="figure-caption">Figura 05</p>
-                    <p class="figure-caption">Memoria de intercambio (swapping)</p>
-                    <img src="FIGURA14.png" alt="Memoria de intercambio (swapping)" class="imagen-figura1">
-                    <p class="figure-caption">Nota: Adaptado de Sistemas operativos modernos (4.ª ed.) por A. S. Tanenbaum y H. Bos, 2015; Pearson Educación</p>
+             <div class="content">
+                <p></p>
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 22</div>
+                    <div class="figure-caption">Implementación dinámica</div>
+                    <div class="figura">
+                        <img src="FIGURA22.png" alt="Implementación dinámica" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
                 </div>
             </div>
+ 
+        </div> 
 
-            <div style="margin-top: 30px;">
-                <h3><i class="fas fa-play-circle" style="margin-right: 10px;"></i> Material Audiovisual</h3>
-                <p>Este video explica cómo el sistema operativo administra el almacenamiento y gestiona la memoria de intercambio (swapping):</p>
-                
-                <div class="figure-container">
-                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/lJWXDgA41uM" title="Administración de almacenamiento y memoria de intercambio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
-                    <div class="figure-caption">Salas, I. (2025, 26 de noviembre). <em>Admin. almacenamiento e intercambio</em> [Video]. YouTube. https://www.youtube.com/watch?v=lJWXDgA41uM</div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="section" id="seccion-3-1-4">
+        <div class="section" id="seccion-2-1-4">
             <div class="section-header">
-                <div class="section-number">3.1.4</div>
-                <div class="section-title">Manejo con mapa de bits</div>
+                <div class="section-number">2.1.4</div>
+                <div class="section-title">Nociones de complejidad de las operaciones </div>
             </div>
             <div class="content">
-                <p>Según Andrew S. Tanenbaum y Herbert Bos (2015), es un método que se utiliza por los sistemas operativos para tener una administración y control del espacio libre y asignado en memoria principal, así como el almacenamiento secundario, es indispensable considerar que se utiliza una matriz de bits, en donde cada bit describe una unidad de asignación con un valor 0 el cual siempre indicará que el espacio se encuentra libre y cuando ese valor sea 1 será porque se encuentra ocupado.</p>
-                <p>Por lo que es importante establecer que esta técnica representa la simplicidad, eficiencia y bajo consumo de espacio, estableciendo búsquedas más rápidas de los bloques que se encuentren disponibles para que la gestión en la administración sea ordenada de acuerdo con los recursos existentes.</p>
-                <p>Es por ello que, en discos o memorias de gran tamaño, el recorrido completo del mapa puede volverse costoso en tiempo, especialmente si se necesitan encontrar múltiples bloques contiguos.</p>
-                <p>Para mejorar su rendimiento, se utilizan estrategias de búsqueda secuencial o tablas auxiliares que reducen el tiempo de localización.</p>
-                
-                <div class="figure-container">
-                    <p class="figure-caption">Figura 06</p>
-                    <p class="figure-caption">Manejo con mapa de bits</p>
-                    <img src="FIGURA15.png" alt="Manejo con mapa de bits" class="imagen-figura1">
-                    <p class="figure-caption">Nota: Adaptado de Sistemas operativos modernos (4.ª ed.) por A. S. Tanenbaum y H. Bos, 2015; Pearson Educación</p>
+                    <p>Es el al análisis del costo computacional que implica ejecutar una operación dentro de un algoritmo o estructura de datos. Este costo se mide principalmente en términos de tiempo (cuántas operaciones se realizan) y espacio (cuánta memoria se utiliza), especialmente cuando el tamaño de los datos crece.</p>
+                    <p>En estructuras como pilas, colas o listas, cada operación (por ejemplo, insertar, eliminar o buscar) tiene un comportamiento distinto. Algunas son muy rápidas y constantes, mientras que otras dependen de la cantidad de elementos. Para representar esto.</p>
+                   
+                <h3>Notación de orden de complejidad son:</h3>
+                    <p> <strong>O(1):</strong> tiempo constante (la operación siempre tarda lo mismo).</p>    
+                    <p> <strong>O(n):</strong> tiempo lineal (depende del número de elementos).</p>    
+                    <p> <strong>O(log n):</strong> tiempo logarítmico (crece lentamente con los datos).</p> 
+
+                <h4>Por ejemplo, en una pila</h4>
+                   <p><strong>La operación push (insertar)</strong>: tiene complejidad O(1).</p>
+                   <p><strong>La operación pop (eliminar)</strong>: también es O(1).</p>
+
+                   <p>Esto significa que, sin importar cuántos elementos tenga la pila, estas operaciones se realizan de manera eficiente, es por ello que comprender las nociones de complejidad permite evaluar la eficiencia de un algoritmo, comparar distintas soluciones y elegir la estructura de datos más adecuada para resolver un problema de manera óptima (Robert Sedgewick & Wayne, 2011).</p>   
+
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 23</div>
+                    <div class="figure-caption">Nociones de complejidad de las operaciones</div>
+                    <div class="figura">
+                        <img src="FIGURA23.png" alt="Nociones de complejidad de las operaciones" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
                 </div>
             </div>
-        </div>
-        
-        <div class="section" id="seccion-3-1-5">
+        </div>   
+
+        <div class="section" id="seccion-2-1-5">
             <div class="section-header">
-                <div class="section-number">3.1.5</div>
-                <div class="section-title">Manejo con listas ligadas</div>
+                <div class="section-number">2.1.5</div>
+                <div class="section-title">Aplicaciones </div>
             </div>
             <div class="content">
-                <p>Según Tanenbaum y Bos, (2015) Establece que es un método utilizado por los sistemas operativos para gestionar y distribuir de forma dinámica aquellos bloques de memoria o almacenamiento.</p>
-                <p>Por lo que marca la diferencia entre estructuras fijas como son los mapas de bits, a ellas ya que este permite asignar los bloques libres en una lista enlazada donde cada nodo tiene determinada su dirección del siguiente bloque disponible y así consecutivamente.</p>
-                <p>Es importante visualizar que esta técnica mantiene un puntero que ayuda a identificar el primer bloque libre para que cuando un proceso requiera espacio lo utilice ya que se libera dicho proceso se actualiza la lista y elimina todas las referencias utilizadas para mantener el espacio disponible y pueda ser reutilizado por algún otro proceso.</p>
-                <p>Ahora bien, esto puede tener desventajas dependiendo del volumen que presente el proceso ya que al ser una técnica que asigna los espacios secuencialmente se pueden incrementar los tiempos de acceso cuando se requiere ubicar algún bloque contiguo que se pueda estar almacenado es espacios de gran tamaño.</p>
-                <p>Por lo que ayuda mucho a este proceso la gestión de memoria secundaria y los sistemas de archivos, donde la eficiencia y optimización del espacio libre son factores que determinan el buen rendimiento del sistema.</p>
+                    <p>Son aquellas que permiten organizar y controlar la ejecución de procesos siguiendo el principio LIFO (Last In, First Out), es decir, el último elemento en entrar es el primero en salir.</p>
+                    <p>Se caracteriza por operar bajo el principio LIFO (último en entrar, primero en salir), lo que implica que solo se puede acceder al elemento ubicado en la parte superior mediante operaciones
+                       básicas como inserción (push) y eliminación (pop), garantizando un control ordenado y eficiente de los datos.</p>
+                    <p>Su estructura es lineal, dinámica o estática según su implementación, y permite un manejo temporal de la información durante la ejecución de un programa.</p>
+                    <p>Se utiliza en la evaluación de expresiones matemáticas, la conversión de notaciones (como de infija a postfija), la implementación de la recursividad mediante el almacenamiento de llamadas
+                       a funciones (call stack) y el control del flujo de ejecución de los procesos en un programa, facilitando así la organización, seguimiento y resolución de problemas computacionales de manera
+                       estructurada y eficiente (Thomas H. Cormen et al., 2009).</p>
+                    
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 24</div>
+                    <div class="figure-caption">Aplicaciones</div>
+                    <div class="figura">
+                        <img src="FIGURA24.png" alt="Aplicaciones" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
+                </div>
+
+           </div>
+        </div>   
+       <div class="section" id="video-material">
+            <div class="section-header">
+                <div class="section-number"><i class="fas fa-play-circle"></i></div>
+                <div class="section-title">Material Audiovisual</div>
+            </div>
+            <div class="content">
+                <p>Este video explica cómo funciona la pila</p>
                 
                 <div class="figure-container">
-                    <p class="figure-caption">Figura 07</p>
-                    <p class="figure-caption">Manejo con listas ligadas en la asignación de bloques en memoria del sistema operativo</p>
-                    <img src="FIGURA16.png" alt="Manejo con listas ligadas en la asignación de bloques en memoria del sistema operativo" class="imagen-figura1">
-                    <p class="figure-caption">Nota: Adaptado de Sistemas operativos modernos (4.ª ed.) de A. S. Tanenbaum y H. Bos, 2015, Pearson Educación.</p>
+                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/7kfUmsBW4dA" title="Algoritmia en la estructura de datos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
+                    <div class="figure-caption">Salas, I. (2025, 26 de noviembre). <em>Pila</em> [Video]. https://www.youtube.com/watch?v=7kfUmsBW4dA</div>
                 </div>
             </div>
-
-            <div style="margin-top: 30px;">
-                <h3><i class="fas fa-play-circle" style="margin-right: 10px;"></i> Material Audiovisual</h3>
-                <p>Para visualizar cómo el sistema operativo gestiona los bloques de memoria libres y ocupados mediante estas dos estructuras, revisa el siguiente video:</p>
-                
-                <div class="figure-container">
-                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/I7o-0Dn8v-g" title="Manejo de memoria con mapas de bits y listas ligadas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
-                    <div class="figure-caption">Salas, I. (2025, 27 de noviembre). <em>Mapas de bits y listas ligadas</em> [Video]. YouTube. https://www.youtube.com/watch?v=I7o-0Dn8v-g</div>
-                </div>
-            </div>
-
-        </div>
+        </div>        
 
         <div class="activity-card">
-            <div class="activity-title">Actividad de Aprendizaje 3.1: Abstracción de Memoria</div>
-            <p>Pon a prueba tus conocimientos sobre los conceptos fundamentales de la gestión de memoria en sistemas operativos.</p>
-            <a href="Actividad_3_1.html" class="activity-btn">
+            <div class="activity-title">Actividad de Aprendizaje 2.1: Pila</div>
+            <p>Evalúa tu comprensión sobre la pila, su estructura de datos, especificaciones, implementaciones, nociones de complejidad de las operaciones y sus aplicaciones.</p>
+            <a href="actividad_2_1.html" class="activity-btn">
                 <i class="fas fa-pencil-alt"></i> Realizar Actividad
             </a>
         </div>
-        
+
         <div class="nav-buttons">
-            <a href="index.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
-            <a href="3.2.html" class="nav-btn">Continuar a 3.2: Memoria Virtual <i class="fas fa-arrow-right"></i></a>
+            <a href="index.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Volver al Menú de Unidad</a>
+            <a href="2.2.html" class="nav-btn">Continuar a 2.2: Cola<i class="fas fa-arrow-right"></i></a>
         </div>
         
         <footer>
-            <p>Sistemas Operativos - Unidad 3: Administración de Memoria</p>
-            <p>Desarrollado para fines educativos - © 2025 | Referencias: Tanenbaum y Bos (2015), Tanenbaum (2017).</p>
+            <p>Algoritmos almacena y recupera Datos (polilibro académico) - Unidad 1: Algoritmos fundamentales</p>
+            <p>Desarrollado para fines educativos - © 2026</p>
         </footer>
+
     </div>
 
     <script>
-        // Variables globales
         let sidebarOpen = false;
 
-        // Toggle del menú lateral
         const menuToggle = document.getElementById('menuToggle');
         const sidebarNav = document.getElementById('sidebarNav');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
@@ -949,7 +1045,6 @@
         menuToggle.addEventListener('click', toggleSidebar);
         sidebarOverlay.addEventListener('click', toggleSidebar);
 
-        // Cerrar menú al hacer clic en un enlace de navegación
         document.querySelectorAll('.nav-item[data-section]').forEach(item => {
             item.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
@@ -958,56 +1053,46 @@
             });
         });
 
-        // Ajustar espaciado del contenedor dinámicamente
         function updateContainerSpacing() {
             const container = document.querySelector('.container');
             
             if (window.innerWidth <= 768) {
-                // En móviles, usar márgenes mínimos y padding reducido
                 container.style.marginLeft = '20px';
                 container.style.marginRight = '20px';
                 container.style.padding = '10px';
             } else if (sidebarOpen && window.innerWidth > 768) {
-                // Cuando el menú está abierto en desktop/tablet
-                container.style.marginLeft = '370px'; // 280px (ancho menú) + 90px (espaciado)
-                container.style.marginRight = '90px';
-                container.style.padding = '20px';
-            } else if (window.innerWidth > 1024) {
-                // Desktop normal
-                container.style.marginLeft = '90px';
+                container.style.marginLeft = '370px';
                 container.style.marginRight = '90px';
                 container.style.padding = '20px';
             } else {
-                // Tablet normal
-                container.style.marginLeft = '70px';
-                container.style.marginRight = '70px';
+                container.style.marginLeft = '90px';
+                container.style.marginRight = '90px';
                 container.style.padding = '20px';
             }
         }
 
-        // Resaltar sección activa en el menú
         function updateActiveSection() {
             const sections = document.querySelectorAll('.section');
             const navItems = document.querySelectorAll('.nav-item[data-section]');
-            
-            let currentSection = '';
-            
+            let currentSectionId = '';
+
             sections.forEach(section => {
                 const rect = section.getBoundingClientRect();
                 if (rect.top <= 150 && rect.bottom >= 150) {
-                    currentSection = section.id.replace('seccion-', '');
+                    currentSectionId = section.id;
                 }
             });
-            
+
             navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.dataset.section === currentSection) {
+                const sectionId = 'seccion-' + item.dataset.section;
+                if (sectionId === currentSectionId) {
                     item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
                 }
             });
         }
 
-        // Indicador de progreso de lectura
         function updateReadingProgress() {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -1015,7 +1100,6 @@
             document.getElementById('progressBar').style.width = scrolled + '%';
         }
 
-        // Botón de ir arriba
         const scrollToTopBtn = document.getElementById('scrollToTop');
 
         function toggleScrollToTopBtn() {
@@ -1033,14 +1117,12 @@
             });
         });
 
-        // Event listeners
         window.addEventListener('scroll', () => {
             updateActiveSection();
             updateReadingProgress();
             toggleScrollToTopBtn();
         });
 
-        // Desplazamiento suave para enlaces del menú
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1056,7 +1138,6 @@
             });
         });
 
-        // Cerrar menú al redimensionar ventana (para tablets/móviles)
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768 && sidebarOpen) {
                 toggleSidebar();
@@ -1064,28 +1145,21 @@
             updateContainerSpacing();
         });
 
-        // Inicialización
         document.addEventListener('DOMContentLoaded', function() {
             updateActiveSection();
             updateReadingProgress();
             updateContainerSpacing();
-            
-            // Auto-cerrar menú en dispositivos móviles
             if (window.innerWidth <= 768) {
                 sidebarNav.classList.remove('active');
             }
         });
 
-        // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
-            // ESC para cerrar menú
             if (e.key === 'Escape' && sidebarOpen) {
                 toggleSidebar();
             }
-            
-            // M para toggle menú
             if (e.key === 'm' || e.key === 'M') {
-                if (!e.ctrlKey && !e.altKey) {
+                if (!e.ctrlKey && !e.altKey) { 
                     toggleSidebar();
                 }
             }
