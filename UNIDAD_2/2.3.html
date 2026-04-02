@@ -641,16 +641,16 @@
                 <a href="#seccion-2-3-3" class="nav-item" data-section="2-3-3">
                     <i class="fas fa-pipe"></i> 2.3.3 Listas doblemente enlazadas
                 </a>
-                <a href="#seccion-2-3-4" class="nav-item" data-section="2-3-3">
+                <a href="#seccion-2-3-4" class="nav-item" data-section="2-3-4">
                     <i class="fas fa-pipe"></i> 2.3.4 Listas circulares
                 </a>
-                <a href="#seccion-2-3-5" class="nav-item" data-section="2-3-3">
+                <a href="#seccion-2-3-5" class="nav-item" data-section="2-3-5">
                     <i class="fas fa-pipe"></i> 2.3.5 Arreglos y vectores vs listas
                 </a>
-                <a href="#seccion-2-3-6" class="nav-item" data-section="2-3-3">
+                <a href="#seccion-2-3-6" class="nav-item" data-section="2-3-6">
                     <i class="fas fa-pipe"></i> 2.3.6 Nociones de complejidad de las operaciones
                 </a>
-                <a href="#seccion-2-3-7" class="nav-item" data-section="2-3-3">
+                <a href="#seccion-2-3-7" class="nav-item" data-section="2-3-7">
                     <i class="fas fa-pipe"></i> 2.3.7 Implementaciones y aplicaciones
                 </a>
             </div>
@@ -743,151 +743,203 @@
              </div> 
         </div>       
 
-        <div class="section" id="seccion-2-2-2">
-            <div class="section-header">
-                <div class="section-number">2.2.2</div>
-                <div class="section-title">Implementación en estática</div>
-            </div>
-            <div class="content">
-                <p>Es la forma de representación mediante un arreglo de tamaño fijo definido desde el inicio del programa. En este enfoque, los elementos se insertan en el extremo rear (final) y
-                   se eliminan del front (frente), respetando el principio FIFO (First In, First Out). Para su control se utilizan índices que permiten gestionar las operaciones de enqueue (inserción) y dequeue (eliminación).
-                   No obstante, presenta limitaciones como el desbordamiento (overflow) cuando se alcanza la capacidad máxima y el posible desperdicio de memoria; aun así, ofrece simplicidad y rapidez en su implementación (Seymour Lipschutz, 2014).</p>
-                <h4>Las características de la implementación estática de una cola son:</h4> 
-                <ul>
-                    <li>Utiliza un arreglo de tamaño fijo definido desde el inicio del programa.</li>
-                    <li>Opera bajo el principio FIFO (First In, First Out), respetando el orden de llegada de los elementos.</li>
-                    <li>Emplea dos índices o variables: front (frente) y rear (final) para controlar la inserción y eliminación.</li>
-                    <li>Permite operaciones básicas como enqueue (insertar) y dequeue (eliminar).</li>
-                    <li>Puede presentar overflow cuando la cola alcanza su capacidad máxima.</li> 
-                    <li>Puede generar desperdicio de memoria si no se aprovechan espacios liberados.</li>
-                    <li>Ofrece una implementación sencilla y acceso rápido a los elementos.</li>                                       
-                </ul>        
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 26</div>
-                    <div class="figure-caption">Implementación en estática de una cola</div>
-                    <div class="figura">
-                        <img src="FIGURA26.png" alt="Implementación en estática de una cola" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Elaboración propia</div>
-                 </div>
-             </div> 
-        </div> 
 
-       <div class="section" id="seccion-2-2-3">
+       <div class="section" id="seccion-2-3-2">
             <div class="section-header">
-                <div class="section-number">2.2.3</div>
-                <div class="section-title">Implementación dinámica en cola</div>
+                <div class="section-number">2.3.2</div>
+                <div class="section-title">Listas simples enlazadas</div>
             </div>
             <div class="content">
-                <p>Se basa en el uso de un arreglo de tamaño fijo en el que los elementos se almacenan de manera contigua en memoria, respetando el principio FIFO (primero en entrar, primero en salir).</p>
-                <p>Su funcionamiento se emplean dos variables de control: el índice frente, que señala el primer elemento disponible para ser eliminado, y el índice final, que indica la posición donde se
-                   insertará un nuevo dato. Inicialmente, ambos índices suelen establecerse en valores que representen una cola vacía, y conforme se realizan operaciones, estos se actualizan de manera secuencial.</p>
-                <p>La operación de inserción (enqueue) consiste en incrementar el índice final e insertar el elemento en esa posición, siempre que la cola no esté llena; mientras que la eliminación (dequeue) implica
-                   extraer el elemento apuntado por frente y posteriormente avanzar dicho índice.</p>
-                <p>Esta estructura presenta condiciones importantes como el desbordamiento, cuando el arreglo alcanza su capacidad máxima, y el subdesbordamiento, cuando se intenta eliminar un elemento de una cola vacía.
-                   Aunque su principal ventaja radica en la eficiencia de sus operaciones, que se ejecutan en tiempo constante, una de sus limitaciones es el posible desperdicio de espacio, ya que las posiciones liberadas
-                   al inicio no se reutilizan en una implementación simple</p>   
-                <p>Según Thomas H. Cormen et al. (2009), este tipo de estructuras permite organizar y gestionar datos de forma ordenada mediante operaciones básicas bien definidas, facilitando su manipulación
-                   dentro de los sistemas computacionales.</p>    
+                <p>Son una estructura de datos lineal formada por nodos. Cada nodo contiene dos partes: un dato y un enlace o puntero que apunta al siguiente nodo de la lista. Se llaman “simples” porque cada nodo solo conoce la dirección del elemento que sigue.</p>
+                <p>Su funcionamiento permite que los elementos no estén almacenados de manera continua en memoria, como ocurre en un arreglo. Gracias a ello, resulta más fácil agregar o eliminar elementos sin necesidad de mover todos los datos. La lista comienza con
+                   un nodo llamado cabeza o inicio, y termina cuando el último nodo apunta a nulo.</p>
+                <h4>Las características principales son:</h4> 
+                <ul>
+                    <li>Está formada por nodos enlazados uno tras otro..</li>
+                    <li>Cada nodo almacena un dato y un puntero al siguiente nodo.</li>
+                    <li>El último nodo apunta a nulo.</li>
+                    <li>Permite inserciones y eliminaciones de manera dinámica.</li>
+                    <li>El acceso a los elementos es secuencial</li> 
+
+                </ul> 
+                <h4>Ventajas</h4> 
+                <p>Las listas simples enlazadas son útiles porque aprovechan mejor la memoria cuando la cantidad de elementos cambia constantemente. Además, facilitan operaciones como insertar o eliminar nodos en posiciones específicas.</p>
+                <h4>Desventajas</h4> 
+                <p>No permiten acceso directo a un elemento específico, ya que para llegar a él se debe recorrer la lista desde el inicio. También requieren memoria adicional para guardar los punteros.</p>
+                <h4>Aplicaciones</h4> 
+                <p>Se utilizan en pilas, colas, administración de memoria, recorridos de información y representación dinámica de datos.</p>
                     
 
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 27</div>
-                    <div class="figure-caption">Implementación en dinámica de una cola</div>
+                    <div class="figure-caption">Figura 36</div>
+                    <div class="figure-caption">Listas simples enlazadas</div>
                     <div class="figura">
-                        <img src="FIGURA27.png" alt="Implementación en dinámica de una cola" class="imagen-figura1"/>
+                        <img src="FIGURA36.png" alt="Listas simples enlazadas" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                   </div>
              </div> 
         </div> 
 
-        <div class="section" id="seccion-2-2-4">
+        <div class="section" id="seccion-2-3-3">
             <div class="section-header">
-                <div class="section-number">2.2.4</div>
-                <div class="section-title">Colas de prioridad</div>
+                <div class="section-number">2.3.3</div>
+                <div class="section-title">Listas doblemente enlazadas</div>
             </div>
             <div class="content">
-                <p>constituyen una variante de las estructuras de datos tipo cola en la que cada elemento no solo se inserta, sino que además se le asigna un nivel de prioridad, determinando el orden en el que será atendido o eliminado.</p>
-                <p>A diferencia de una cola tradicional que sigue el principio FIFO (primero en entrar, primero en salir), en una cola de prioridad los elementos se procesan de acuerdo con su importancia,
-                   de modo que aquel con mayor (o menor, según el criterio) prioridad será el primero en salir, independientemente de su orden de llegada.</p>
-                <p>En su implementación, pueden utilizarse arreglos, listas enlazadas o estructuras más eficientes como montículos (heaps), donde la organización interna permite acceder rápidamente al elemento prioritario. Las operaciones
-                   fundamentales incluyen la inserción de un elemento con su prioridad asociada y la eliminación del elemento con mayor prioridad, manteniendo siempre el orden establecido. Este tipo de estructura es ampliamente utilizado
-                   en sistemas operativos, algoritmos de planificación de tareas y problemas de optimización, donde es necesario gestionar elementos bajo criterios de relevancia.</p>
-                <p>De acuerdo con Thomas H. Cormen et al. (2009), las colas de prioridad permiten seleccionar eficientemente el siguiente elemento a procesar en función de una clave, optimizando así el rendimiento en diversos algoritmos y
-                   aplicaciones computacionales.</p>   
+                <p>Son una estructura de datos lineal donde cada nodo contiene tres partes: un dato, un puntero al nodo anterior y un puntero al nodo siguiente. Esto permite recorrer la lista en ambos sentidos: hacia adelante y hacia atrás.</p>
+                <p>Las listas doblemente enlazadas no solo almacenan datos, sino que permiten una gestión dinámica y eficiente de la información gracias a sus dos enlaces por nodo: uno al anterior y otro al siguiente.</p>
+                <h4>Características principales</h4>
+                <ul>
+                    <li>Cada nodo tiene dos enlaces (anterior y siguiente).</li>
+                    <li>Permite recorrido en ambos sentidos.</li>
+                    <li>El primer nodo apunta a NULL en su parte anterior.</li>
+                    <li>El último nodo apunta a NULL en su parte siguiente</li>
+                    <li>Mayor control en inserciones y eliminaciones.</li>    
+                </ul>
+                <h4>Ventajas:</h4>
+                <ul>
+                    <li>Permite recorrer la lista hacia adelante y hacia atrás.</li>
+                    <li>Facilita la eliminación de nodos sin necesidad de recorrer desde el inicio.</li>
+                    <li>Mayor eficiencia en ciertas operaciones.</li>
+                 </ul>
+                <h4>Desventajas:</h4>
+                <ul>
+                    <li>Usa más memoria (dos punteros por nodo).</li>
+                    <li>Mayor complejidad en su implementación.</li>
+                </ul>
+
+                <p>Las listas doblemente enlazadas constituyen una estructura de datos fundamental en la programación debido a su importancia en el manejo dinámico de información, ya que permiten organizar y modificar datos de forma eficiente
+                   sin necesidad de desplazamientos masivos; su funcionalidad radica en que cada nodo posee enlaces al elemento anterior y siguiente, lo que posibilita un recorrido bidireccional y facilita operaciones como inserción y
+                   eliminación en cualquier punto de la estructura; en cuanto a su desarrollo, implican una implementación más estructurada al gestionar correctamente los punteros, lo que contribuye a la creación de algoritmos más flexibles
+                   y eficientes (Goodrich, Tamassia, & Goldwasser, 2013).</p>
+
 
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 28</div>
-                    <div class="figure-caption">Colas de prioridad</div>
+                    <div class="figure-caption">Figura 37</div>
+                    <div class="figure-caption">Listas doblemente enlazadas</div>
                     <div class="figura">
-                        <img src="FIGURA28.png" alt="Colas de prioridad" class="imagen-figura1"/>
+                        <img src="FIGURA37.png" alt="Listas doblemente enlazadas" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
              </div> 
         </div> 
-       <div class="section" id="seccion-2-2-5">
+       <div class="section" id="seccion-2-3-4">
             <div class="section-header">
-                <div class="section-number">2.2.5</div>
+                <div class="section-number">2.3.4</div>
+                <div class="section-title">Listas circulares</div>
+            </div>
+            <div class="content">
+                <p>Las listas circulares son una estructura de datos lineal en la que los nodos están enlazados de tal forma que el último nodo no apunta a NULL, sino que vuelve a enlazarse con el primer nodo, formando un ciclo cerrado. Esto significa que no existe un inicio ni un final absoluto,
+                   ya que la lista puede recorrerse continuamente.</p>
+                <p>La función principal de las listas circulares es permitir un manejo continuo de los datos sin un final definido, lo que facilita la ejecución de procesos repetitivos. Al estar conectados en forma de ciclo, los nodos pueden recorrerse indefinidamente sin necesidad de reiniciar la estructura,
+                   lo cual resulta ideal en algoritmos donde las operaciones deben ejecutarse de manera constante y cíclica.</p>
+                <p>Esta forma de operar se basa en que cada nodo apunta al siguiente y el último nodo enlaza nuevamente con el primero. Esto permite que las operaciones de recorrido, inserción y eliminación se realicen manteniendo siempre la estructura circular. Gracias a ello, es posible optimizar procesos donde
+                   se requiere rotar entre elementos, como la asignación de turnos o la distribución de recursos.</p>
+                <p>Su implementación contribuye al desarrollo de algoritmos más eficientes en escenarios donde se necesita equidad y continuidad, ya que ningún elemento queda fuera del ciclo. Esta característica las hace especialmente útiles en aplicaciones como sistemas de planificación, buffers circulares y
+                   simulaciones, donde los datos deben reutilizarse de manera ordenada y permanente (Sedgewick & Wayne, 2011).</p>
+
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 38</div>
+                    <div class="figure-caption">Listas circulares</div>
+                    <div class="figura">
+                        <img src="FIGURA38.png" alt="Listas circulares" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div> 
+        </div> 
+       <div class="section" id="seccion-2-3-5">
+            <div class="section-header">
+                <div class="section-number">2.3.5</div>
+                <div class="section-title">Arreglos y vectores vs listas</div>
+            </div>
+            <div class="content">
+                <p>Los arreglos (arrays) y vectores son estructuras de datos lineales que almacenan elementos del mismo tipo en posiciones contiguas de memoria. Su principal característica es que permiten acceder a cualquier elemento de forma directa
+                   mediante un índice, lo que los hace muy eficientes en operaciones de lectura. Los vectores, en muchos lenguajes, representan una versión dinámica de los arreglos, ya que pueden cambiar su tamaño durante la ejecución.</p>
+                <p>Por otro lado, las listas enlazadas almacenan los elementos de forma no contigua en memoria y los conectan mediante punteros. Esto permite insertar o eliminar elementos sin necesidad de mover los demás, lo que resulta más eficiente en operaciones dinámicas. Sin embargo,
+                   su acceso es secuencial, por lo que encontrar un elemento específico puede requerir recorrer toda la lista.</p>
+                <p>En comparación, los arreglos y vectores destacan por su rapidez en el acceso directo y simplicidad de implementación, mientras que las listas enlazadas ofrecen mayor flexibilidad en la gestión de datos. La elección entre estas estructuras depende del
+                   tipo de problema: si se requiere acceso rápido, se prefieren arreglos o vectores; si se necesita modificar constantemente la estructura, las listas enlazadas son más adecuadas (Sedgewick & Wayne, 2011).</p>
+
+                <div class="figure-container">
+                    <div class="figure-caption">Figura 39</div>
+                    <div class="figure-caption">Arreglos y vectores vs listas</div>
+                    <div class="figura">
+                        <img src="FIGURA40.png" alt="Arreglos y vectores vs listas" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div> 
+        </div> 
+
+
+       <div class="section" id="seccion-2-3-6">
+            <div class="section-header">
+                <div class="section-number">2.3.6</div>
                 <div class="section-title">Nociones de complejidad de las operaciones</div>
             </div>
             <div class="content">
-                <p>permiten analizar qué tan eficiente es una estructura de datos o un algoritmo en función del tiempo que tarda en ejecutar sus operaciones básicas, como insertar, eliminar o buscar elementos. Este análisis se expresa generalmente mediante la notación Big O (O),
-                   la cual describe el comportamiento del algoritmo conforme crece el tamaño de los datos (n), sin enfocarse en tiempos exactos, sino en su tendencia de crecimiento. De esta forma, es posible comparar distintas implementaciones y
-                   determinar cuál resulta más adecuada según el problema a resolver.</p>
-                <p>Permiten analizar qué tan eficiente es una estructura de datos o un algoritmo en función del tiempo que tarda en ejecutar sus operaciones básicas, como insertar, eliminar o buscar elementos. Este análisis se expresa generalmente mediante la notación Big O (O),
-                   la cual describe el comportamiento del algoritmo conforme crece el tamaño de los datos (n), sin enfocarse en tiempos exactos, sino en su tendencia de crecimiento. De esta forma, es posible comparar distintas implementaciones y
-                   determinar cuál resulta más adecuada según el problema a resolver.</p>
-                <p>En el caso de las estructuras de datos lineales, como las colas, las operaciones principales suelen tener una complejidad constante O(1) cuando se implementan de forma eficiente, ya que tanto la inserción (enqueue) como la eliminación (dequeue) solo requieren
-                   actualizar índices como frente y final. Sin embargo, en algunas implementaciones menos optimizadas, ciertas operaciones pueden implicar desplazamientos de elementos, lo que incrementa la complejidad a O(n). Por ello,
-                   el diseño de la estructura influye directamente en su rendimiento.</p>
-                <p>Comprender estas nociones resulta fundamental en el desarrollo de software, ya que permite anticipar el comportamiento de los sistemas cuando manejan grandes volúmenes de información. Una elección adecuada de la estructura de datos y su implementación puede
-                   reducir significativamente el tiempo de ejecución y el consumo de recursos. Como señala Donald Knuth (2011), el análisis de la eficiencia de los algoritmos es clave para diseñar soluciones óptimas y escalables dentro de la computación.</p>
+                <p>Las nociones de complejidad de las operaciones permiten analizar el rendimiento de un algoritmo o estructura de datos en función del tiempo y los recursos que utiliza para ejecutarse. Su función principal es medir cuántas operaciones
+                   se requieren conforme aumenta el tamaño de los datos, lo cual se expresa comúnmente mediante la notación Big-O (O). Esta herramienta es fundamental para comparar algoritmos y elegir el más eficiente según el problema a resolver.</p>
+                <p>En cuanto a su funcionamiento, la complejidad se centra en evaluar operaciones básicas como inserción, eliminación, búsqueda y acceso. Por ejemplo, en un arreglo el acceso a un elemento es O(1), mientras que en una lista enlazada es O(n),
+                   ya que se debe recorrer la estructura. Estas diferencias permiten identificar qué estructura es más adecuada dependiendo del tipo de operación que se realizará con mayor frecuencia.</p>
+                <p>Entre sus características principales, la complejidad se clasifica en distintos tipos como tiempo y espacio, además de analizarse en casos mejor, promedio y peor. También se representa mediante funciones matemáticas como O(1), O(n), O(log n) y O(n²),
+                   las cuales describen el crecimiento del costo computacional. Estas representaciones ayudan a comprender el comportamiento de los algoritmos sin depender del hardware o lenguaje de programación utilizado.</p>
+                <p>Por lo que la importancia de estas nociones radica en que permiten desarrollar algoritmos más eficientes y optimizados, reduciendo tiempos de ejecución y consumo de memoria. Su aplicación es clave en el diseño de software, ya que facilita la toma de 
+                   decisiones informadas sobre qué estructuras y métodos utilizar en función de la escala del problema, garantizando un mejor desempeño en sistemas reales (Weiss, 2014).</p>
 
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 29</div>
+                <div class="figure-container">
+                    <div class="figure-caption">Figura 40</div>
                     <div class="figure-caption">Nociones de complejidad de las operaciones</div>
                     <div class="figura">
-                        <img src="FIGURA29.png" alt="Nociones de complejidad de las operaciones" class="imagen-figura1"/>
+                        <img src="FIGURA41.png" alt="Nociones de complejidad de las operaciones" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
              </div> 
         </div> 
-       <div class="section" id="seccion-2-2-6">
+
+
+       <div class="section" id="seccion-2-3-7">
             <div class="section-header">
-                <div class="section-number">2.2.6</div>
-                <div class="section-title">Aplicaciones</div>
+                <div class="section-number">2.3.7</div>
+                <div class="section-title">Implementaciones y aplicaciones</div>
             </div>
             <div class="content">
-                <p>Las colas tienen múltiples aplicaciones en el ámbito de la computación debido a su capacidad para organizar y procesar elementos en orden secuencial. Una de sus aplicaciones más comunes se encuentra en los sistemas operativos,
-                   donde se utilizan para la gestión de procesos y tareas. Por ejemplo, los procesos que esperan ser ejecutados por el CPU se almacenan en colas, permitiendo que el sistema los atienda en el orden en que llegan o según ciertas
-                   políticas de planificación, lo que garantiza un uso eficiente de los recursos del sistema</p>
-                <p>Otra aplicación importante de las colas se observa en el manejo de estructuras de entrada y salida (E/S), como la impresión de documentos. En este caso, los trabajos de impresión se organizan en una cola, donde el primero
-                   en enviarse es el primero en procesarse, evitando conflictos y asegurando un flujo ordenado de operaciones. De manera similar, en redes de computadoras, las colas se emplean para gestionar paquetes de datos que deben ser
-                   transmitidos, permitiendo regular el tráfico y evitar la congestión en los sistemas de comunicación.</p>
-                <p>Según Mark Allen Weiss (2014), las colas facilitan la organización y procesamiento eficiente de datos en diversos contextos computacionales, siendo esenciales para el desarrollo de soluciones estructuradas.</p>
+                <p>Las implementaciones y aplicaciones en estructuras de datos y algoritmos cumplen la función de llevar los conceptos teóricos a soluciones prácticas dentro de los sistemas informáticos. Su propósito principal es definir cómo se organizan
+                   los datos en memoria y cómo se ejecutan las operaciones sobre ellos, permitiendo resolver problemas de manera eficiente. A través de la implementación, se selecciona la estructura más adecuada según las necesidades del sistema,
+                   optimizando el uso de recursos.</p>
+                <p>En cuanto a su funcionamiento, una implementación implica traducir una estructura abstracta, como listas, pilas o colas, en código que pueda ejecutarse en un lenguaje de programación. Esto puede realizarse mediante enfoques estáticos (como arreglos) o dinámicos (como listas enlazadas),
+                   dependiendo de si se requiere flexibilidad o rapidez en el acceso. Cada tipo de implementación influye directamente en el rendimiento de las operaciones (Weiss, 2014).</p>
+                <p>Entre sus características principales se encuentra la capacidad de adaptarse a distintos contextos, la eficiencia en el manejo de datos y la relación directa con la complejidad de las operaciones. Además, permiten evaluar aspectos como el tiempo de ejecución y el consumo de memoria,
+                   lo cual es esencial para diseñar algoritmos óptimos. También destacan por su modularidad, ya que pueden reutilizarse en diferentes aplicaciones.</p>
+                <p>Por otro lado, las aplicaciones de estas implementaciones se observan en múltiples áreas de la informática, como la gestión de bases de datos, sistemas operativos, inteligencia artificial y desarrollo de software. Por ejemplo, las listas enlazadas se utilizan en la gestión dinámica de memoria,
+                   las colas en la planificación de procesos y los árboles en la organización jerárquica de información.</p>
+                <p>Por lo que su importancia de comprender las implementaciones y sus aplicaciones radica en que permiten desarrollar soluciones eficientes y escalables. Elegir correctamente una estructura de datos e implementarla de forma adecuada impacta directamente en el desempeño del sistema,
+                   facilitando la resolución de problemas complejos y mejorando la calidad del software (Knuth, 2011).</p>
 
 
                 <div class="figure-container">
-                    <div class="figure-caption">Figura 30</div>
-                    <div class="figure-caption">Aplicaciones de colas</div>
+                    <div class="figure-caption">Figura 39</div>
+                    <div class="figure-caption">Arreglos y vectores vs listas</div>
                     <div class="figura">
-                        <img src="FIGURA30.png" alt="Aplicaciones de colas" class="imagen-figura1"/>
+                        <img src="FIGURA42.png" alt="Arreglos y vectores vs listas" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
              </div> 
         </div> 
+
 
             <div style="margin-top: 30px;">
                 <h3><i class="fas fa-play-circle" style="margin-right: 10px;"></i> Material Audiovisual</h3>
-                <p>A continuación, se explican la funcionalidad de las colas:</p>
+                <p>A continuación, se explican la funcionalidad de las listas:</p>
                 
                 <div class="figure-container">
-                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/RVtUR8DvpFw" title="Modelos multihilos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
-                    <div class="figure-caption">Salas, I. (2025, 24 de noviembre). <em>Modelo multi-hilo</em> [Video]. YouTube. https://www.youtube.com/watch?v=RVtUR8DvpFw</div>
+                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/ptTt8BIayEI" title="Modelos multihilos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
+                    <div class="figure-caption">Salas, I. (2025, 24 de noviembre). <em>Modelo multi-hilo</em> [Video]. YouTube. https://www.youtube.com/watch?v=ptTt8BIayEI</div>
                 </div>
             </div>
 
@@ -895,16 +947,16 @@
         
  
         <div class="activity-card">
-            <div class="activity-title">Actividad de Aprendizaje 2.2: Colas</div>
-            <p>Evalúa tu comprensión sobre colas y sus características.</p>
-            <a href="actividad_2_2.html" class="activity-btn">
+            <div class="activity-title">Actividad de Aprendizaje 2.3: listas</div>
+            <p>Evalúa tu comprensión sobre listas y sus características.</p>
+            <a href="actividad_2_3.html" class="activity-btn">
                 <i class="fas fa-pencil-alt"></i> Realizar Actividad
             </a>
         </div>
         
         <div class="nav-buttons">
-            <a href="2.1.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Anterior: 2.1 Pila</a>
-            <a href="2.3.html" class="nav-btn">Continuar a 2.3: Listas<i class="fas fa-arrow-right"></i></a>
+            <a href="2.2.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Anterior: 2.2 cola</a>
+            <a href="2.4.html" class="nav-btn">Continuar a 2.4: Tablas hash<i class="fas fa-arrow-right"></i></a>
         </div>
         
        <footer>
