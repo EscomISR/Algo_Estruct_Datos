@@ -401,6 +401,60 @@
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
         }
+
+        .figure-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .imagen-figura1 {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain; 
+            border-radius: 8px;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: zoom-in;
+            transform-origin: center center;
+        }
+        
+        /* Efecto al pasar el mouse */
+        .imagen-figura1:hover {
+            transform: scale(1.4); 
+            border-radius: 8px;
+        }
+        
+        .figure-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin: 15px 0;
+            color: var(--gray);
+            font-style: italic;
+            flex-direction: column;
+        }
+        
+        .figure-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .figure-caption {
+            color: var(--gray);
+            margin-top: 10px;
+        }
         
         .nav-buttons {
             display: flex;
@@ -459,40 +513,6 @@
             z-index: 999;
         }
 
-        .figure-container {
-            margin: 30px 0;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            overflow: hidden; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .imagen-figura1 {
-            max-width: 100%;
-            height: auto;
-            object-fit: contain; 
-            border-radius: 8px;
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: zoom-in;
-            transform-origin: center center;
-        }
-        
-        /* Efecto al pasar el mouse */
-        .imagen-figura1:hover {
-            transform: scale(1.4); 
-            border-radius: 8px;
-        }
-
-        .figure-caption {
-            color: var(--gray);
-            margin-top: 10px;
-        }
-
         .scroll-to-top.visible {
             opacity: 1;
             visibility: visible;
@@ -537,26 +557,6 @@
             box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
         }
         
-        .imagen-figura1 {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
-            cursor: zoom-in;
-            position: relative;
-            z-index: 10;
-            transform-origin: center center;
-        }
-        
-        /* Efecto al pasar el mouse */
-        .imagen-figura1:hover {
-            transform: scale(1.7);
-            z-index: 1000;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-            border-radius: 12px;
-            background-color: var(--card-bg);
-        }
-
         @media (max-width: 768px) {
             .sidebar-nav {
                 width: 100%;
@@ -615,8 +615,8 @@
 
     <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
-            <div class="sidebar-title">2.4 Sincronización entre procesos/hilos</div>
-            <div class="sidebar-subtitle">Administración de procesos</div>
+            <div class="sidebar-title">2.4. Tablas hash
+            <div class="sidebar-subtitle">estructura de datos que permite almacenar y recuperar información de forma muy rápida.</div>
         </div>
         
         <div class="nav-sections">
@@ -633,13 +633,25 @@
             <div class="nav-section">
                 <div class="nav-section-title">Contenido</div>
                 <a href="#seccion-2-4-1" class="nav-item" data-section="2-4-1">
-                    <i class="fas fa-shield-alt"></i> 2.4.1 Condición de carrera, sección crítica, exclusión mutua, atomicidad y abrazo mortal
+                    <i class="fas fa-memory"></i> 2.4.1 Especificación genérica
                 </a>
                 <a href="#seccion-2-4-2" class="nav-item" data-section="2-4-2">
-                    <i class="fas fa-lock"></i> 2.4.2 Semáforos y mutex
+                    <i class="fas fa-envelope"></i> 2.4.2 Funciones de hash
                 </a>
                 <a href="#seccion-2-4-3" class="nav-item" data-section="2-4-3">
-                    <i class="fas fa-eye"></i> 2.4.3 Monitores
+                    <i class="fas fa-pipe"></i> 2.4.3 Resolución de colisiones
+                </a>
+                <a href="#seccion-2-4-4" class="nav-item" data-section="2-4-4">
+                    <i class="fas fa-pipe"></i> 2.4.4 Tablas hash cerradas
+                </a>
+                <a href="#seccion-2-4-5" class="nav-item" data-section="2-4-5">
+                    <i class="fas fa-pipe"></i> 2.4.5 Tablas hash abiertas
+                </a>
+                <a href="#seccion-2-4-6" class="nav-item" data-section="2-4-6">
+                    <i class="fas fa-pipe"></i> 2.4.6 Nociones de complejidad de las operaciones
+                </a>
+                <a href="#seccion-2-4-7" class="nav-item" data-section="2-4-7">
+                    <i class="fas fa-pipe"></i> 2.4.7 Implementaciones y aplicaciones
                 </a>
             </div>
 
@@ -648,8 +660,8 @@
                 <a href="actividad_2.4.html" class="nav-item">
                     <i class="fas fa-tasks"></i> Actividad de aprendizaje
                 </a>
-                <a href="2.5.html" class="nav-item">
-                    <i class="fas fa-arrow-right"></i> Siguiente: Planificación
+                <a href="2.4.html" class="nav-item">
+                    <i class="fas fa-arrow-right"></i> Siguiente: Tablas hash
                 </a>
             </div>
         </div>
@@ -659,148 +671,278 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <div class="container">
+   <div class="container">
         <header id="inicio">
             <div class="breadcrumb">
                 <a href="https://escomisr.github.io/Libro_Digital_SO/index.html"><i class="fas fa-home"></i> Inicio</a>
                 <span>/</span>
                 <a href="index.html">Unidad 2</a>
                 <span>/</span>
-                <span>2.4 Sincronización entre procesos/hilos</span>
+                <span>2.4 Tablas hash
             </div>
-            <h1>2.4 Sincronización entre procesos/hilos</h1>
-            <div class="subtitle">Administración de procesos</div>
+            <h1>2.4 Tablas hash
+            <div class="subtitle">estructura de datos que permite almacenar y recuperar información de forma muy rápida.</div>
         </header>
         
         <div class="intro">
-            <p>La sincronización entre procesos e hilos asegura que varias tareas concurrentes accedan a los recursos compartidos de manera ordenada y segura, previniendo errores como las condiciones de carrera o los bloqueos mutuos. Su propósito fundamental es mantener la coherencia de los datos y la estabilidad del sistema operativo durante la ejecución simultánea de procesos (<strong>Silberschatz, Galvin y Gagne, 2022</strong>).</p>
-            <p>Entre los mecanismos más comunes destacan:</p>
+            <p>Las tablas hash se basan en aplicar una función hash a una clave, como un número, una palabra o un identificador, para transformarla en una posición dentro de un arreglo. Gracias a ello,
+               en muchos casos las operaciones de búsqueda, inserción y eliminación pueden realizarse en tiempo casi constante, lo que las vuelve muy útiles en sistemas que manejan grandes volúmenes de datos.</p>
+            
+            <p>Su idea principal consiste en asociar cada dato con una clave única. Por ejemplo, si se desea guardar el nombre de un estudiante a partir de su matrícula, la función hash toma esa matrícula y calcula
+               en qué posición debe guardarse el dato. Así, cuando se requiere consultarlo después, no es necesario recorrer toda la estructura, sino acudir directamente a la posición generada. Esto hace que las tablas
+               hash sean muy eficientes en aplicaciones como diccionarios, bases de datos, compiladores y sistemas de caché.</p>
 
-            <Ul>
-                <li><strong>Semáforos</strong>, que controlan el acceso a recursos limitados mediante operaciones de espera y señal.</li>
-                <li><strong>Mutex (exclusión mutua)</strong>, que permite que solo un hilo acceda a una sección crítica a la vez.</li>
-                <li><strong>Monitores</strong>, que combinan sincronización y gestión automática de bloqueos.</li>
-                <li><strong>Barreras y variables de condición</strong>, que coordinan el avance de múltiples hilos dependientes.</li>                              
-            </Ul>            
-            <div class="quote-box">
-                "Los sistemas operativos incluyen herramientas como semáforos, exclusión mutua (mutex), monitores y barreras para permitir la sincronización adecuada entre procesos e hilos concurrentes"
-                <div class="citation">(Silberschatz, Galvin, & Gagne, 2018).</div>
-            </div>
-            <p>La sincronización es un componente clave para lograr <strong>concurrencia eficiente, comunicación segura y ejecución estable</strong> en los sistemas operativos modernos.</p>
-        </div>
+
         
         <div class="section" id="seccion-2-4-1">
             <div class="section-header">
                 <div class="section-number">2.4.1</div>
-                <div class="section-title">Condición de carrera, sección crítica, exclusión mutua, atomicidad y abrazo mortal</div>
+                <div class="section-title">Especificación genérica</div>
             </div>
             <div class="content">
-                <p>En los sistemas operativos, los <strong>procesos e hilos </strong>que se ejecutan simultáneamente pueden competir por los mismos recursos, lo que genera desafíos de <strong>sincronización</strong>. Para garantizar la coherencia y estabilidad del sistema, se aplican principios que regulan cómo y cuándo acceden los procesos a los recursos compartidos.</p>
-                <h3>Condición de carrera (Race condition)</h3>
-                <p>Ocurre cuando <strong>dos o más procesos acceden simultáneamente a un recurso compartido </strong>y el resultado final depende del orden de ejecución. Estas situaciones suelen provocar resultados impredecibles o errores en los programas.</p>
+                <p>La especificación genérica en tablas hash se refiere a la forma abstracta en que se define esta estructura de datos sin depender de un lenguaje de programación específico. En este nivel, se establecen los tipos de datos,
+                   las operaciones básicas y las reglas de comportamiento que debe cumplir una tabla hash, permitiendo su implementación en distintos contextos manteniendo su funcionalidad esencial. En otras palabras, describe qué hace la estructura y
+                   no cómo se implementa (Goodrich et al., 2014).</p>
+                <p>Desde esta perspectiva, una tabla hash se define como un tipo de dato abstracto (TDA) que almacena pares (clave, valor). La especificación incluye operaciones fundamentales como: insertar (put), buscar (get), eliminar (remove) y, en algunos casos, verificar si una clave existe. Estas operaciones deben comportarse de manera eficiente, idealmente en tiempo constante,
+                   lo que implica que la estructura debe estar diseñada para acceder directamente a los datos a partir de una clave (Weiss, 2014).</p>
+                <p>Además, la especificación genérica contempla el uso de una función hash, la cual es responsable de transformar una clave en una posición dentro de la tabla. Aunque no se define una función específica, sí se establecen sus propiedades deseables, como distribuir uniformemente las claves para evitar concentraciones que generen colisiones. También se consideran mecanismos
+                   generales para el manejo de colisiones, como el encadenamiento o el direccionamiento abierto, sin entrar en detalles de implementación (Cormen et al., 2009).</p>
 
-                <div class="quote-box">
-                    "Las condiciones de carrera aparecen cuando varios hilos modifican datos compartidos sin la debida coordinación, generando comportamientos erráticos"
-                    <div class="citation">(Tanenbaum y Bos, 2015).</div>
-                </div>
-
-                <h3>Sección crítica</h3>
-                <p>Es el <strong>bloque de código donde un proceso accede a recursos compartidos</strong>, como variables o archivos. Solo un proceso debe ejecutar la sección crítica a la vez, para evitar conflictos o corrupción de datos.</p>
-                <h3>Exclusión mutua </h3>
-                <p>Es la técnica que asegura que <strong>solo un proceso o hilo acceda a la sección crítica en un momento dado</strong>. Se implementa mediante mecanismos como semáforos, mutex o monitores. Su correcta aplicación evita condiciones de carrera, pero debe diseñarse cuidadosamente para no causar bloqueos.</p>
-                <h3>Atomicidad</h3>
-                <p>Implica que una operación <strong>se ejecuta completamente o no se ejecuta en absoluto</strong>, sin ser interrumpida por otros procesos. Esto garantiza que las transacciones o actualizaciones sobre recursos compartidos sean seguras y consistentes, incluso en presencia de fallos o interrupciones.</p>
-                <h3>Abrazo mortal</h3>
-                <p>Ocurre cuando <strong>dos o más procesos quedan bloqueados esperando recursos que el otro posee</strong>, de manera que ninguno puede continuar. Los abrazos mortales pueden prevenirse mediante algoritmos que detecten y gestionen la asignación de recursos.</p>
-                <div class="quote-box">
-                    "El abrazo mortal es una condición en la que un conjunto de procesos espera indefinidamente por recursos que nunca se liberarán"
-                    <div class="citation">(Silberschatz, Galvin y Gagne , 2022).</div>
-                </div>
-                <p>En conjunto, estos conceptos forman la base del <strong>control de concurrencia</strong> en los sistemas operativos, asegurando que la ejecución paralela de procesos sea <strong>ordenada, segura y predecible</strong>.</p>
+        <div class="section" id="seccion-2-1">
+            <div class="section-header">
             </div>
-        </div>
-        
-        <div class="section" id="seccion-2-4-2">
+            <div class="content">
+                <p></p>
+                <div class="figure-container">
+                    <div class="figure-caption">Figura 40</div>
+                    <div class="figure-caption">Especificación genérica</div>
+                    <div class="figura">
+                        <img src="FIGURA43.png" alt="Especificación genéricas" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div> 
+        </div>       
+
+
+       <div class="section" id="seccion-2-4-2">
             <div class="section-header">
                 <div class="section-number">2.4.2</div>
-                <div class="section-title">Semáforos y mutex</div>
+                <div class="section-title">Función hash</div>
             </div>
             <div class="content">
-                <p>Los <strong>semáforos</strong> y el <strong>mutex</strong> son mecanismos esenciales de sincronización en los sistemas operativos modernos. Su función principal es regular el acceso concurrente a los recursos compartidos, evitando conflictos y garantizando la correcta coordinación entre procesos o hilos <strong>(Silberschatz, Galvin y Gagne, 2022)</strong>.</p>
-                <p><strong>Un semáforo </strong>es una variable entera protegida que se emplea para coordinar el acceso a recursos limitados, garantizando que varios procesos o hilos no los utilicen simultáneamente. Existen dos tipos principales de semáforos: binarios, que solo permiten los valores 0 y 1, y contadores, que pueden tomar valores mayores para controlar múltiples instancias de un mismo recurso (<strong>Silberschatz, Galvin y Gagne, 2022)</strong>.</p>
+                <p>aqui voy a escribir sobre la función hash. Es una función que toma una clave y devuelve un índice en una tabla hash, donde se almacena el valor asociado a esa clave.</p>
+                <p>Su funcionamiento permite que los elementos no estén almacenados de manera continua en memoria, como ocurre en un arreglo. Gracias a ello, resulta más fácil agregar o eliminar elementos sin necesidad de mover todos los datos. La lista comienza con
+                   un nodo llamado cabeza o inicio, y termina cuando el último nodo apunta a nulo.</p>
+                <h4>Las características principales son:</h4> 
                 <ul>
-                    <li><strong>Semáforo binario</strong>: solo permite dos valores (0 y 1), funcionando de manera similar a un candado.</li>
-                    <li><strong>Semáforo contable</strong>: mantiene un conteo del número de recursos disponibles; si el valor llega a 0, los procesos que soliciten acceso deben esperar.</li>
-                </ul>
-                <p>El control de acceso se realiza mediante dos operaciones atómicas:</p>
-                <ul>
-                    <li><strong>wait() (o P)</strong>: solicita acceso al recurso y bloquea al proceso si no hay disponibilidad.</li>
-                    <li><strong>signal() (o V)</strong>: libera el recurso y despierta a los procesos en espera.</li>                    
-                </ul>
-                <div class="quote-box">
-                    "Los semáforos son un mecanismo flexible para resolver problemas de sincronización, aunque su manejo incorrecto puede causar bloqueos o inanición de procesos"
-                    <div class="citation">(Silberschatz, Galvin, y Gagne, 2022).</div>
-                </div>
-                <h3>Mutex</h3>
-                <p>El <strong>mutex</strong> es una versión más simple del semáforo binario, utilizada principalmente en entornos <strong>multi-hilo</strong>. Solo un hilo puede poseer el mutex a la vez; si otro intenta adquirirlo, debe esperar a que sea liberado. A diferencia del semáforo, un mutex es <strong>propiedad exclusiva del hilo que lo bloqueó</strong>, y solo ese hilo puede liberarlo, lo que evita errores de sincronización.</p>
-                <div class="quote-box">
-                    "El mutex proporciona un método eficiente para garantizar la exclusión mutua en secciones críticas, reduciendo la posibilidad de condiciones de carrera"
-                    <div class="citation">(Tanenmbaum y Bos, 2015).</div>
-                </div>
-                <p>Los <strong>semáforos</strong> son más generales y permiten controlar varios recursos, mientras que los <strong>mutex</strong> son más ligeros y seguros para la <strong>sincronización entre hilos</strong> en una misma aplicación. Ambos constituyen la base del control de concurrencia en los sistemas operativos.</p>
-                <div class="figure-container">
-                    <div class="figure-caption">Figura 7</div>  
-                    <div class="figure-caption">Representación del semáforo y el Mutex</div>  
-                    <img src="Figura7.png" alt="Semáforo y Mutex" class="imagen-figura1">
-                    <div class="figure-caption">Nota: Elaboración propia basada en Silberschatz et al., 2022</div>                    
-                </div>                 
+                    <li>Está formada por nodos enlazados uno tras otro..</li>
+                    <li>Cada nodo almacena un dato y un puntero al siguiente nodo.</li>
+                    <li>El último nodo apunta a nulo.</li>
+                    <li>Permite inserciones y eliminaciones de manera dinámica.</li>
+                    <li>El acceso a los elementos es secuencial</li> 
+
+                </ul> 
+                <h4>Ventajas</h4> 
+                <p>Las listas simples enlazadas son útiles porque aprovechan mejor la memoria cuando la cantidad de elementos cambia constantemente. Además, facilitan operaciones como insertar o eliminar nodos en posiciones específicas.</p>
+                <h4>Desventajas</h4> 
+                <p>No permiten acceso directo a un elemento específico, ya que para llegar a él se debe recorrer la lista desde el inicio. También requieren memoria adicional para guardar los punteros.</p>
+                <h4>Aplicaciones</h4> 
+                <p>Se utilizan en pilas, colas, administración de memoria, recorridos de información y representación dinámica de datos.</p>
+                    
+
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 36</div>
+                    <div class="figure-caption">Listas simples enlazadas</div>
+                    <div class="figura">
+                        <img src="FIGURA36.png" alt="Listas simples enlazadas" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                  </div>
+             </div> 
+        </div> 
+
+        <div class="section" id="seccion-2-3-3">
+            <div class="section-header">
+                <div class="section-number">2.3.3</div>
+                <div class="section-title">Listas doblemente enlazadas</div>
             </div>
+            <div class="content">
+                <p>Son una estructura de datos lineal donde cada nodo contiene tres partes: un dato, un puntero al nodo anterior y un puntero al nodo siguiente. Esto permite recorrer la lista en ambos sentidos: hacia adelante y hacia atrás.</p>
+                <p>Las listas doblemente enlazadas no solo almacenan datos, sino que permiten una gestión dinámica y eficiente de la información gracias a sus dos enlaces por nodo: uno al anterior y otro al siguiente.</p>
+                <h4>Características principales</h4>
+                <ul>
+                    <li>Cada nodo tiene dos enlaces (anterior y siguiente).</li>
+                    <li>Permite recorrido en ambos sentidos.</li>
+                    <li>El primer nodo apunta a NULL en su parte anterior.</li>
+                    <li>El último nodo apunta a NULL en su parte siguiente</li>
+                    <li>Mayor control en inserciones y eliminaciones.</li>    
+                </ul>
+                <h4>Ventajas:</h4>
+                <ul>
+                    <li>Permite recorrer la lista hacia adelante y hacia atrás.</li>
+                    <li>Facilita la eliminación de nodos sin necesidad de recorrer desde el inicio.</li>
+                    <li>Mayor eficiencia en ciertas operaciones.</li>
+                 </ul>
+                <h4>Desventajas:</h4>
+                <ul>
+                    <li>Usa más memoria (dos punteros por nodo).</li>
+                    <li>Mayor complejidad en su implementación.</li>
+                </ul>
+
+                <p>Las listas doblemente enlazadas constituyen una estructura de datos fundamental en la programación debido a su importancia en el manejo dinámico de información, ya que permiten organizar y modificar datos de forma eficiente
+                   sin necesidad de desplazamientos masivos; su funcionalidad radica en que cada nodo posee enlaces al elemento anterior y siguiente, lo que posibilita un recorrido bidireccional y facilita operaciones como inserción y
+                   eliminación en cualquier punto de la estructura; en cuanto a su desarrollo, implican una implementación más estructurada al gestionar correctamente los punteros, lo que contribuye a la creación de algoritmos más flexibles
+                   y eficientes (Goodrich, Tamassia, & Goldwasser, 2013).</p>
+
+
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 37</div>
+                    <div class="figure-caption">Listas doblemente enlazadas</div>
+                    <div class="figura">
+                        <img src="FIGURA37.png" alt="Listas doblemente enlazadas" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div> 
+        </div> 
+       <div class="section" id="seccion-2-3-4">
+            <div class="section-header">
+                <div class="section-number">2.3.4</div>
+                <div class="section-title">Listas circulares</div>
+            </div>
+            <div class="content">
+                <p>Las listas circulares son una estructura de datos lineal en la que los nodos están enlazados de tal forma que el último nodo no apunta a NULL, sino que vuelve a enlazarse con el primer nodo, formando un ciclo cerrado. Esto significa que no existe un inicio ni un final absoluto,
+                   ya que la lista puede recorrerse continuamente.</p>
+                <p>La función principal de las listas circulares es permitir un manejo continuo de los datos sin un final definido, lo que facilita la ejecución de procesos repetitivos. Al estar conectados en forma de ciclo, los nodos pueden recorrerse indefinidamente sin necesidad de reiniciar la estructura,
+                   lo cual resulta ideal en algoritmos donde las operaciones deben ejecutarse de manera constante y cíclica.</p>
+                <p>Esta forma de operar se basa en que cada nodo apunta al siguiente y el último nodo enlaza nuevamente con el primero. Esto permite que las operaciones de recorrido, inserción y eliminación se realicen manteniendo siempre la estructura circular. Gracias a ello, es posible optimizar procesos donde
+                   se requiere rotar entre elementos, como la asignación de turnos o la distribución de recursos.</p>
+                <p>Su implementación contribuye al desarrollo de algoritmos más eficientes en escenarios donde se necesita equidad y continuidad, ya que ningún elemento queda fuera del ciclo. Esta característica las hace especialmente útiles en aplicaciones como sistemas de planificación, buffers circulares y
+                   simulaciones, donde los datos deben reutilizarse de manera ordenada y permanente (Sedgewick & Wayne, 2011).</p>
+
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 38</div>
+                    <div class="figure-caption">Listas circulares</div>
+                    <div class="figura">
+                        <img src="FIGURA38.png" alt="Listas circulares" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div> 
+        </div> 
+       <div class="section" id="seccion-2-3-5">
+            <div class="section-header">
+                <div class="section-number">2.3.5</div>
+                <div class="section-title">Arreglos y vectores vs listas</div>
+            </div>
+            <div class="content">
+                <p>Los arreglos (arrays) y vectores son estructuras de datos lineales que almacenan elementos del mismo tipo en posiciones contiguas de memoria. Su principal característica es que permiten acceder a cualquier elemento de forma directa
+                   mediante un índice, lo que los hace muy eficientes en operaciones de lectura. Los vectores, en muchos lenguajes, representan una versión dinámica de los arreglos, ya que pueden cambiar su tamaño durante la ejecución.</p>
+                <p>Por otro lado, las listas enlazadas almacenan los elementos de forma no contigua en memoria y los conectan mediante punteros. Esto permite insertar o eliminar elementos sin necesidad de mover los demás, lo que resulta más eficiente en operaciones dinámicas. Sin embargo,
+                   su acceso es secuencial, por lo que encontrar un elemento específico puede requerir recorrer toda la lista.</p>
+                <p>En comparación, los arreglos y vectores destacan por su rapidez en el acceso directo y simplicidad de implementación, mientras que las listas enlazadas ofrecen mayor flexibilidad en la gestión de datos. La elección entre estas estructuras depende del
+                   tipo de problema: si se requiere acceso rápido, se prefieren arreglos o vectores; si se necesita modificar constantemente la estructura, las listas enlazadas son más adecuadas (Sedgewick & Wayne, 2011).</p>
+
+                <div class="figure-container">
+                    <div class="figure-caption">Figura 39</div>
+                    <div class="figure-caption">Arreglos y vectores vs listas</div>
+                    <div class="figura">
+                        <img src="FIGURA40.png" alt="Arreglos y vectores vs listas" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div> 
+        </div> 
+
+
+       <div class="section" id="seccion-2-3-6">
+            <div class="section-header">
+                <div class="section-number">2.3.6</div>
+                <div class="section-title">Nociones de complejidad de las operaciones</div>
+            </div>
+            <div class="content">
+                <p>Las nociones de complejidad de las operaciones permiten analizar el rendimiento de un algoritmo o estructura de datos en función del tiempo y los recursos que utiliza para ejecutarse. Su función principal es medir cuántas operaciones
+                   se requieren conforme aumenta el tamaño de los datos, lo cual se expresa comúnmente mediante la notación Big-O (O). Esta herramienta es fundamental para comparar algoritmos y elegir el más eficiente según el problema a resolver.</p>
+                <p>En cuanto a su funcionamiento, la complejidad se centra en evaluar operaciones básicas como inserción, eliminación, búsqueda y acceso. Por ejemplo, en un arreglo el acceso a un elemento es O(1), mientras que en una lista enlazada es O(n),
+                   ya que se debe recorrer la estructura. Estas diferencias permiten identificar qué estructura es más adecuada dependiendo del tipo de operación que se realizará con mayor frecuencia.</p>
+                <p>Entre sus características principales, la complejidad se clasifica en distintos tipos como tiempo y espacio, además de analizarse en casos mejor, promedio y peor. También se representa mediante funciones matemáticas como O(1), O(n), O(log n) y O(n²),
+                   las cuales describen el crecimiento del costo computacional. Estas representaciones ayudan a comprender el comportamiento de los algoritmos sin depender del hardware o lenguaje de programación utilizado.</p>
+                <p>Por lo que la importancia de estas nociones radica en que permiten desarrollar algoritmos más eficientes y optimizados, reduciendo tiempos de ejecución y consumo de memoria. Su aplicación es clave en el diseño de software, ya que facilita la toma de 
+                   decisiones informadas sobre qué estructuras y métodos utilizar en función de la escala del problema, garantizando un mejor desempeño en sistemas reales (Weiss, 2014).</p>
+
+                <div class="figure-container">
+                    <div class="figure-caption">Figura 40</div>
+                    <div class="figure-caption">Nociones de complejidad de las operaciones</div>
+                    <div class="figura">
+                        <img src="FIGURA41.png" alt="Nociones de complejidad de las operaciones" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div> 
+        </div> 
+
+
+       <div class="section" id="seccion-2-3-7">
+            <div class="section-header">
+                <div class="section-number">2.3.7</div>
+                <div class="section-title">Implementaciones y aplicaciones</div>
+            </div>
+            <div class="content">
+                <p>Las implementaciones y aplicaciones en estructuras de datos y algoritmos cumplen la función de llevar los conceptos teóricos a soluciones prácticas dentro de los sistemas informáticos. Su propósito principal es definir cómo se organizan
+                   los datos en memoria y cómo se ejecutan las operaciones sobre ellos, permitiendo resolver problemas de manera eficiente. A través de la implementación, se selecciona la estructura más adecuada según las necesidades del sistema,
+                   optimizando el uso de recursos.</p>
+                <p>En cuanto a su funcionamiento, una implementación implica traducir una estructura abstracta, como listas, pilas o colas, en código que pueda ejecutarse en un lenguaje de programación. Esto puede realizarse mediante enfoques estáticos (como arreglos) o dinámicos (como listas enlazadas),
+                   dependiendo de si se requiere flexibilidad o rapidez en el acceso. Cada tipo de implementación influye directamente en el rendimiento de las operaciones (Weiss, 2014).</p>
+                <p>Entre sus características principales se encuentra la capacidad de adaptarse a distintos contextos, la eficiencia en el manejo de datos y la relación directa con la complejidad de las operaciones. Además, permiten evaluar aspectos como el tiempo de ejecución y el consumo de memoria,
+                   lo cual es esencial para diseñar algoritmos óptimos. También destacan por su modularidad, ya que pueden reutilizarse en diferentes aplicaciones.</p>
+                <p>Por otro lado, las aplicaciones de estas implementaciones se observan en múltiples áreas de la informática, como la gestión de bases de datos, sistemas operativos, inteligencia artificial y desarrollo de software. Por ejemplo, las listas enlazadas se utilizan en la gestión dinámica de memoria,
+                   las colas en la planificación de procesos y los árboles en la organización jerárquica de información.</p>
+                <p>Por lo que su importancia de comprender las implementaciones y sus aplicaciones radica en que permiten desarrollar soluciones eficientes y escalables. Elegir correctamente una estructura de datos e implementarla de forma adecuada impacta directamente en el desempeño del sistema,
+                   facilitando la resolución de problemas complejos y mejorando la calidad del software (Knuth, 2011).</p>
+
+
+                <div class="figure-container">
+                    <div class="figure-caption">Figura 39</div>
+                    <div class="figure-caption">Arreglos y vectores vs listas</div>
+                    <div class="figura">
+                        <img src="FIGURA42.png" alt="Arreglos y vectores vs listas" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div> 
+        </div> 
+
 
             <div style="margin-top: 30px;">
                 <h3><i class="fas fa-play-circle" style="margin-right: 10px;"></i> Material Audiovisual</h3>
-                <p>Para profundizar en los mecanismos de sincronización, revisa este video sobre semáforos e hilos:</p>
+                <p>A continuación, se explican la funcionalidad de las listas:</p>
                 
                 <div class="figure-container">
-                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/v6UNbhdhdO0" title="Semáforos e hilos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
-                    <div class="figure-caption">Salas, I. (2025, 25 de noviembre). <em>Semáforos e hilos (Sincronización)</em> [Video]. YouTube. https://www.youtube.com/watch?v=v6UNbhdhdO0</div>
+                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/ptTt8BIayEI" title="Modelos multihilos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
+                    <div class="figure-caption">Salas, I. (2025, 24 de noviembre). <em>Modelo multi-hilo</em> [Video]. YouTube. https://www.youtube.com/watch?v=ptTt8BIayEI</div>
                 </div>
             </div>
 
-        </div>
-
-        <div class="section" id="seccion-2-4-3">
-            <div class="section-header">
-                <div class="section-number">2.4.3</div>
-                <div class="section-title">Monitores</div>
-            </div>
-            <div class="content">
-                <p>Los <strong>monitores</strong> son una <strong>abstracción de alto nivel para la sincronización de procesos e hilos</strong>, diseñada para simplificar el manejo de secciones críticas y evitar errores comunes asociados al uso directo de semáforos o mutex. Un monitor combina en una sola estructura los <strong>métodos (procedimientos)</strong>, las <strong>variables compartidas</strong> y los <strong>mecanismos de exclusión mutua</strong>, garantizando que <strong>solo un proceso o hilo pueda ejecutar código dentro del monitor a la vez</strong>.</p>
-                <p>Cada monitor contiene <strong>variables de condición</strong>, que permiten suspender temporalmente un proceso hasta que se cumpla una determinada condición, mediante las operaciones <i>wait()</i> y <i>signal()</i>. Así, el monitor no solo protege el acceso a los recursos, sino que también gestiona la sincronización entre las tareas que los utilizan.</p>
-                <p>Por ejemplo, en un problema clásico como el del <strong>productor-consumidor</strong>, los monitores permiten coordinar el acceso al búfer compartido sin necesidad de que el programador gestione manualmente los bloqueos, ya que el propio monitor controla cuándo cada proceso puede acceder a la región crítica.</p>
-                <div class="quote-box">
-                    "los monitores ofrecen un mecanismo estructurado para la sincronización, combinando exclusión mutua y comunicación condicional, reduciendo la complejidad y los errores en los programas concurrentes"
-                    <div class="citation">(Silberschatz, Galvin, y Gagne, 2022).</div>                    
-                </div>
-                <p>En síntesis, los monitores son una <strong>evolución de los semáforos y mutex</strong>, proporcionando un entorno más seguro, legible y mantenible para la programación concurrente, especialmente en entornos multi-hilo y sistemas distribuidos.</p>    
-            </div>
         </div>
         
+ 
         <div class="activity-card">
-            <div class="activity-title">Actividad de Aprendizaje 2.4: Semáforos y Mutex</div>
-            <p>Evalúa tu comprensión sobre los semáforos y el Mutex en sistemas operativos.</p>
-            <a href="actividad_2_4.html" class="activity-btn">
+            <div class="activity-title">Actividad de Aprendizaje 2.3: listas</div>
+            <p>Evalúa tu comprensión sobre listas y sus características.</p>
+            <a href="actividad_2_3.html" class="activity-btn">
                 <i class="fas fa-pencil-alt"></i> Realizar Actividad
             </a>
         </div>
         
         <div class="nav-buttons">
-            <a href="2.3.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Anterior: 2.3 Comunicación entre procesos (IPC)</a>
-            <a href="2.5.html" class="nav-btn">Continuar a 2.5: Planificación<i class="fas fa-arrow-right"></i></a>
+            <a href="2.2.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Anterior: 2.2 cola</a>
+            <a href="2.4.html" class="nav-btn">Continuar a 2.4: Tablas hash<i class="fas fa-arrow-right"></i></a>
         </div>
         
-        <footer>
-            <p>Sistemas Operativos - Unidad 2: Administración de procesos</p>
-            <p>Desarrollado para fines educativos - © 2025</p>
+       <footer>
+            <p>Algoritmos almacena y recupera Datos (polilibro académico) - Unidad 1: Algoritmos fundamentales</p>
+            <p>Desarrollado para fines educativos - © 2026</p>
         </footer>
     </div>
 
