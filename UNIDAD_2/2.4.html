@@ -731,110 +731,126 @@
                 <div class="section-title">Función hash</div>
             </div>
             <div class="content">
-                <p>aqui voy a escribir sobre la función hash. Es una función que toma una clave y devuelve un índice en una tabla hash, donde se almacena el valor asociado a esa clave.</p>
-                <p>Su funcionamiento permite que los elementos no estén almacenados de manera continua en memoria, como ocurre en un arreglo. Gracias a ello, resulta más fácil agregar o eliminar elementos sin necesidad de mover todos los datos. La lista comienza con
-                   un nodo llamado cabeza o inicio, y termina cuando el último nodo apunta a nulo.</p>
+                <p>Son una estructura de datos que permite almacenar información en pares clave–valor, donde cada clave es transformada mediante una función hash en una posición específica dentro de un arreglo. Este mecanismo facilita un acceso directo a los datos,
+                   evitando recorrer toda la estructura como sucede en listas o arreglos tradicionales. Gracias a esta característica, las tablas hash se consideran una de las estructuras más eficientes para la gestión de grandes volúmenes de información (Cormen, Leiserson, Rivest & Stein, 2009).</p>
+                <p>El funcionamiento de una tabla hash se basa en tres componentes principales: la clave, la función hash y el arreglo donde se almacenan los datos. Cuando se inserta un elemento, la clave se procesa mediante la función hash, generando un índice que
+                   indica la posición exacta donde se guardará el valor. Este proceso también se utiliza para la búsqueda y eliminación, lo que permite realizar estas operaciones de manera rápida y eficiente sin necesidad de recorrer toda la estructura.</p>
+                <p>Una de las principales ventajas de las tablas hash es su eficiencia en términos de tiempo, ya que en condiciones ideales las operaciones de inserción, búsqueda y eliminación se realizan en tiempo constante O(1). Esta eficiencia las convierte en una
+                   herramienta fundamental en aplicaciones como bases de datos, compiladores, sistemas de caché y estructuras como diccionarios o mapas en distintos lenguajes de programación.</p>
+                <p>Las tablas hash presentan un problema conocido como colisiones, el cual ocurre cuando dos claves diferentes generan el mismo índice dentro de la tabla. Para resolver este inconveniente, existen técnicas como el encadenamiento, que utiliza listas enlazadas en cada posición, y
+                   el direccionamiento abierto, que busca espacios alternativos dentro del arreglo. Estas estrategias permiten mantener la eficiencia del sistema incluso cuando ocurren conflictos en la asignación de posiciones (Knuth, 2011).</p>
+                <p>Es por ello que las tablas hash son una herramienta esencial en la algoritmia y las estructuras de datos debido a su capacidad para optimizar el almacenamiento y la recuperación de información. Su implementación adecuada permite mejorar
+                   significativamente el rendimiento de los sistemas informáticos, especialmente en aplicaciones donde la rapidez y la eficiencia son factores críticos. Por ello, su estudio resulta fundamental en la formación de estudiantes y profesionales en el área de la computación.</p>
+
+
+
+
                 <h4>Las características principales son:</h4> 
                 <ul>
-                    <li>Está formada por nodos enlazados uno tras otro..</li>
-                    <li>Cada nodo almacena un dato y un puntero al siguiente nodo.</li>
-                    <li>El último nodo apunta a nulo.</li>
-                    <li>Permite inserciones y eliminaciones de manera dinámica.</li>
-                    <li>El acceso a los elementos es secuencial</li> 
+                    <li>Organizan la información en pares clave–valor.</li>
+                    <li>Utilizan una función hash para transformar la clave en un índice.</li>
+                    <li>Permiten operaciones de inserción, búsqueda y eliminación en tiempo O(1) en condiciones ideales.</li>
+                    <li>Su eficiencia depende de una buena distribución de la función hash.</li>
+                    <li>Manejan colisiones mediante técnicas como encadenamiento o direccionamiento abierto.</li>
+                    <li>No mantienen un orden secuencial de los elementos almacenados.</li> 
 
                 </ul> 
                 <h4>Ventajas</h4> 
-                <p>Las listas simples enlazadas son útiles porque aprovechan mejor la memoria cuando la cantidad de elementos cambia constantemente. Además, facilitan operaciones como insertar o eliminar nodos en posiciones específicas.</p>
+                <p>Acceso rápido y directo a los datos sin recorrer toda la estructura.</p>
+                <p>Alta eficiencia en aplicaciones que requieren búsquedas frecuentes.</p>
+                <p>Ideales para estructuras como diccionarios, mapas y bases de datos.</p>
+                <p>Permiten manejar grandes volúmenes de información de manera eficiente.</p>
+                <p>Simplifican la organización de datos mediante el uso de claves únicas.</p>
+
                 <h4>Desventajas</h4> 
-                <p>No permiten acceso directo a un elemento específico, ya que para llegar a él se debe recorrer la lista desde el inicio. También requieren memoria adicional para guardar los punteros.</p>
-                <h4>Aplicaciones</h4> 
-                <p>Se utilizan en pilas, colas, administración de memoria, recorridos de información y representación dinámica de datos.</p>
-                    
+                <p>Pueden presentarse colisiones, afectando el rendimiento.</p>
+                <p>Dependen de una función hash adecuada para evitar problemas de distribución.</p>
+                <p>Requieren definir un tamaño adecuado de la tabla (puede haber desperdicio de memoria).</p>
+                <p>No mantienen un orden, lo que dificulta recorridos ordenados.</p>
+                <p>En el peor caso, el rendimiento puede degradarse a O(n).</p>
 
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 36</div>
-                    <div class="figure-caption">Listas simples enlazadas</div>
+                    <div class="figure-caption">Figura 41</div>
+                    <div class="figure-caption">Función hash</div>
                     <div class="figura">
-                        <img src="FIGURA36.png" alt="Listas simples enlazadas" class="imagen-figura1"/>
+                        <img src="FIGURA44.png" alt="Función hash" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                   </div>
              </div> 
         </div> 
 
-        <div class="section" id="seccion-2-3-3">
+        <div class="section" id="seccion-2-4-3">
             <div class="section-header">
-                <div class="section-number">2.3.3</div>
-                <div class="section-title">Listas doblemente enlazadas</div>
+                <div class="section-number">2.4.3</div>
+                <div class="section-title">Resolución de colisiones</div>
             </div>
             <div class="content">
-                <p>Son una estructura de datos lineal donde cada nodo contiene tres partes: un dato, un puntero al nodo anterior y un puntero al nodo siguiente. Esto permite recorrer la lista en ambos sentidos: hacia adelante y hacia atrás.</p>
-                <p>Las listas doblemente enlazadas no solo almacenan datos, sino que permiten una gestión dinámica y eficiente de la información gracias a sus dos enlaces por nodo: uno al anterior y otro al siguiente.</p>
-                <h4>Características principales</h4>
-                <ul>
-                    <li>Cada nodo tiene dos enlaces (anterior y siguiente).</li>
-                    <li>Permite recorrido en ambos sentidos.</li>
-                    <li>El primer nodo apunta a NULL en su parte anterior.</li>
-                    <li>El último nodo apunta a NULL en su parte siguiente</li>
-                    <li>Mayor control en inserciones y eliminaciones.</li>    
-                </ul>
-                <h4>Ventajas:</h4>
-                <ul>
-                    <li>Permite recorrer la lista hacia adelante y hacia atrás.</li>
-                    <li>Facilita la eliminación de nodos sin necesidad de recorrer desde el inicio.</li>
-                    <li>Mayor eficiencia en ciertas operaciones.</li>
-                 </ul>
-                <h4>Desventajas:</h4>
-                <ul>
-                    <li>Usa más memoria (dos punteros por nodo).</li>
-                    <li>Mayor complejidad en su implementación.</li>
-                </ul>
-
-                <p>Las listas doblemente enlazadas constituyen una estructura de datos fundamental en la programación debido a su importancia en el manejo dinámico de información, ya que permiten organizar y modificar datos de forma eficiente
-                   sin necesidad de desplazamientos masivos; su funcionalidad radica en que cada nodo posee enlaces al elemento anterior y siguiente, lo que posibilita un recorrido bidireccional y facilita operaciones como inserción y
-                   eliminación en cualquier punto de la estructura; en cuanto a su desarrollo, implican una implementación más estructurada al gestionar correctamente los punteros, lo que contribuye a la creación de algoritmos más flexibles
-                   y eficientes (Goodrich, Tamassia, & Goldwasser, 2013).</p>
+                <p>Tiene un proceso fundamental en las tablas hash que se utiliza cuando dos o más claves diferentes generan el mismo índice dentro de la estructura. Este fenómeno, conocido como colisión, es inevitable debido a que el número
+                   de posibles claves suele ser mayor que el tamaño de la tabla. Por ello, se han desarrollado distintas estrategias que permiten almacenar y recuperar los datos sin perder eficiencia, garantizando así el correcto funcionamiento de la estructura.</p>
+                <p>Una de las técnicas más comunes es el encadenamiento, en la cual cada posición de la tabla hash contiene una lista (generalmente enlazada) donde se almacenan todos los elementos que comparten el mismo índice. De esta forma, cuando ocurre una colisión,
+                   el nuevo elemento no reemplaza al anterior, sino que se agrega a la lista correspondiente. Esta estrategia es sencilla de implementar y permite manejar múltiples colisiones, aunque puede afectar el rendimiento si las listas crecen demasiado (Goodrich, Tamassia & Goldwasser, 2013).</p>
+                <p>Otra técnica ampliamente utilizada es el direccionamiento abierto, donde, en lugar de usar estructuras adicionales, se buscan posiciones alternativas dentro de la misma tabla cuando ocurre una colisión. Métodos como el sondeo lineal, cuadrático o la doble dispersión permiten encontrar
+                   espacios disponibles para almacenar los datos. Aunque esta técnica optimiza el uso de memoria, puede generar agrupamientos que disminuyen la eficiencia en las búsquedas, especialmente cuando la tabla se encuentra muy llena (Knuth, 2011).</p>
+                
+                
 
 
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 37</div>
-                    <div class="figure-caption">Listas doblemente enlazadas</div>
+                    <div class="figure-caption">Figura 42</div>
+                    <div class="figure-caption">Resolución de colisiones</div>
                     <div class="figura">
-                        <img src="FIGURA37.png" alt="Listas doblemente enlazadas" class="imagen-figura1"/>
+                        <img src="FIGURA45.png" alt="Resolución de colisiones" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
-             </div> 
+            <p>Es importante considerar que genera la resolución de colisiones tinene diversas consecuencias que afectan directamente el rendimiento de los algoritmos. Una de las principales es la degradación en el tiempo de acceso, ya que las operaciones que normalmente se realizan
+               en tiempo constante O(1) pueden llegar a comportarse como O(n) en el peor de los casos. Esto ocurre porque se requiere recorrer estructuras adicionales o buscar espacios alternativos, lo que incrementa el tiempo de procesamiento y reduce la eficiencia del sistema.</p>
+            <p>Estas colisiones son provocadas principalmente por una mala función hash o una distribución inadecuada de los datos dentro de la tabla. Si la función hash no dispersa uniformemente las claves, es más probable que múltiples elementos se asignen al mismo índice.
+               Asimismo, un tamaño de tabla insuficiente o una alta carga de elementos (factor de carga elevado) incrementa la probabilidad de colisiones, ya que hay menos espacios disponibles para almacenar nuevos datos.</p>
+            <p>Se debe de considerar que el incremento en el uso de memoria o complejidad del sistema, dependiendo de la técnica de resolución empleada. Por ejemplo, el encadenamiento requiere estructuras adicionales como listas enlazadas, mientras que el direccionamiento
+               abierto puede provocar agrupamientos que dificultan las búsquedas. Estas situaciones no solo afectan el rendimiento, sino también la escalabilidad de la aplicación, especialmente en sistemas que manejan grandes volúmenes de información (Knuth, 2011).</p>
+
+            </div> 
         </div> 
-       <div class="section" id="seccion-2-3-4">
+       <div class="section" id="seccion-2-4-4">
             <div class="section-header">
-                <div class="section-number">2.3.4</div>
-                <div class="section-title">Listas circulares</div>
+                <div class="section-number">2.4.4</div>
+                <div class="section-title">Tablas hash cerradas</div>
             </div>
             <div class="content">
-                <p>Las listas circulares son una estructura de datos lineal en la que los nodos están enlazados de tal forma que el último nodo no apunta a NULL, sino que vuelve a enlazarse con el primer nodo, formando un ciclo cerrado. Esto significa que no existe un inicio ni un final absoluto,
-                   ya que la lista puede recorrerse continuamente.</p>
-                <p>La función principal de las listas circulares es permitir un manejo continuo de los datos sin un final definido, lo que facilita la ejecución de procesos repetitivos. Al estar conectados en forma de ciclo, los nodos pueden recorrerse indefinidamente sin necesidad de reiniciar la estructura,
-                   lo cual resulta ideal en algoritmos donde las operaciones deben ejecutarse de manera constante y cíclica.</p>
-                <p>Esta forma de operar se basa en que cada nodo apunta al siguiente y el último nodo enlaza nuevamente con el primero. Esto permite que las operaciones de recorrido, inserción y eliminación se realicen manteniendo siempre la estructura circular. Gracias a ello, es posible optimizar procesos donde
-                   se requiere rotar entre elementos, como la asignación de turnos o la distribución de recursos.</p>
-                <p>Su implementación contribuye al desarrollo de algoritmos más eficientes en escenarios donde se necesita equidad y continuidad, ya que ningún elemento queda fuera del ciclo. Esta característica las hace especialmente útiles en aplicaciones como sistemas de planificación, buffers circulares y
-                   simulaciones, donde los datos deben reutilizarse de manera ordenada y permanente (Sedgewick & Wayne, 2011).</p>
+                <p>Estas tablas que son también conocidas como tablas con direccionamiento abierto, son una variante de las tablas hash en la que todos los elementos se almacenan directamente dentro del arreglo principal, sin utilizar estructuras auxiliares como listas enlazadas. En este enfoque,
+                   cuando ocurre una colisión, el sistema busca otra posición disponible dentro de la misma tabla siguiendo una secuencia de exploración determinada. Este tipo de implementación optimiza el uso del espacio al concentrar todos los datos en un solo arreglo.</p>
+                <p>El funcionamiento de las tablas hash cerradas se basa en aplicar una función hash para obtener un índice inicial y, en caso de colisión, emplear técnicas como el sondeo lineal, sondeo cuadrático o la doble dispersión para encontrar una nueva posición libre. Estas estrategias
+                   permiten recorrer la tabla de manera sistemática hasta ubicar un espacio disponible, garantizando así que cada elemento sea almacenado sin necesidad de estructuras externas (Weiss, 2014).</p>
+                <p>Las tablas hash cerradas sirven principalmente para optimizar el almacenamiento y la recuperación de datos cuando se busca eficiencia en el uso de memoria. Son ampliamente utilizadas en aplicaciones donde el espacio es limitado y se requiere rapidez en las operaciones de búsqueda,
+                   inserción y eliminación. Además, su estructura compacta favorece el aprovechamiento de la memoria caché, lo que puede mejorar el rendimiento en sistemas computacionales modernos.</p>
+                <p>En cuanto a su función dentro de la algoritmia, las tablas hash cerradas permiten gestionar grandes volúmenes de información de manera eficiente, siempre que se controle adecuadamente el factor de carga para evitar saturación. No obstante, si la tabla se llena demasiado, el rendimiento
+                   puede degradarse debido al aumento en el número de intentos para encontrar posiciones libres. Por ello, su correcta implementación y dimensionamiento son fundamentales para mantener un equilibrio entre eficiencia y rendimiento (Knuth, 2011).</p>
+
 
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 38</div>
-                    <div class="figure-caption">Listas circulares</div>
+                    <div class="figure-caption">Figura 43</div>
+                    <div class="figure-caption">Tablas hash cerradas</div>
                     <div class="figura">
-                        <img src="FIGURA38.png" alt="Listas circulares" class="imagen-figura1"/>
+                        <img src="FIGURA46.png" alt="Tablas hash cerradas" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
-             </div> 
+                <p>Se clasifican principalmente según el método de exploración utilizado para resolver colisiones dentro del mismo arreglo. Entre las más comunes se encuentran el sondeo lineal, que busca la siguiente posición disponible de manera secuencial; el sondeo cuadrático, que utiliza incrementos
+                   no lineales para evitar agrupamientos; y la doble dispersión (double hashing), que aplica una segunda función hash para determinar el salto entre posiciones. Estas clasificaciones surgen debido a la necesidad de encontrar ubicaciones alternativas eficientes cuando múltiples claves
+                   generan el mismo índice inicial.</p>
+                <p>El uso de estas técnicas es provocado principalmente por la presencia de colisiones, las cuales ocurren cuando diferentes claves se asignan al mismo índice en la tabla. Factores como una función hash deficiente, una mala distribución de datos o un factor de carga elevado incrementan la
+                   frecuencia de estas colisiones, obligando al sistema a aplicar métodos de exploración para ubicar espacios disponibles. Además, el crecimiento del volumen de datos dentro de la tabla puede generar fenómenos como el agrupamiento (clustering), que afecta negativamente el rendimiento.</p>
+                <p>Entre las ventajas de las tablas hash cerradas se destaca su eficiente uso de memoria, ya que no requieren estructuras adicionales como listas enlazadas, y su buen rendimiento cuando el factor de carga es bajo. Sin embargo, presentan desventajas importantes, como la degradación del
+                   rendimiento cuando la tabla se llena, la dificultad para eliminar elementos sin afectar la estructura, y la posibilidad de clustering que incrementa el tiempo de búsqueda. Por ello, su implementación requiere un balance adecuado entre tamaño de la tabla y cantidad de elementos para mantener su eficiencia (Knuth, 2011).</p>
+   
+            </div> 
         </div> 
        <div class="section" id="seccion-2-3-5">
             <div class="section-header">
                 <div class="section-number">2.3.5</div>
-                <div class="section-title">Arreglos y vectores vs listas</div>
+                <div class="section-title">aqui voy</div>
             </div>
             <div class="content">
                 <p>Los arreglos (arrays) y vectores son estructuras de datos lineales que almacenan elementos del mismo tipo en posiciones contiguas de memoria. Su principal característica es que permiten acceder a cualquier elemento de forma directa
