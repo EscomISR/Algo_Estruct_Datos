@@ -847,92 +847,107 @@
    
             </div> 
         </div> 
-       <div class="section" id="seccion-2-3-5">
+       <div class="section" id="seccion-2-4-5">
             <div class="section-header">
-                <div class="section-number">2.3.5</div>
-                <div class="section-title">aqui voy</div>
+                <div class="section-number">2.4.5</div>
+                <div class="section-title">Tablas hash abiertas</div>
             </div>
             <div class="content">
-                <p>Los arreglos (arrays) y vectores son estructuras de datos lineales que almacenan elementos del mismo tipo en posiciones contiguas de memoria. Su principal característica es que permiten acceder a cualquier elemento de forma directa
-                   mediante un índice, lo que los hace muy eficientes en operaciones de lectura. Los vectores, en muchos lenguajes, representan una versión dinámica de los arreglos, ya que pueden cambiar su tamaño durante la ejecución.</p>
-                <p>Por otro lado, las listas enlazadas almacenan los elementos de forma no contigua en memoria y los conectan mediante punteros. Esto permite insertar o eliminar elementos sin necesidad de mover los demás, lo que resulta más eficiente en operaciones dinámicas. Sin embargo,
-                   su acceso es secuencial, por lo que encontrar un elemento específico puede requerir recorrer toda la lista.</p>
-                <p>En comparación, los arreglos y vectores destacan por su rapidez en el acceso directo y simplicidad de implementación, mientras que las listas enlazadas ofrecen mayor flexibilidad en la gestión de datos. La elección entre estas estructuras depende del
-                   tipo de problema: si se requiere acceso rápido, se prefieren arreglos o vectores; si se necesita modificar constantemente la estructura, las listas enlazadas son más adecuadas (Sedgewick & Wayne, 2011).</p>
-
+                <p>Las tablas hash abiertas, también conocidas como hashing con encadenamiento, son una técnica de implementación en la que cada posición de la tabla contiene una estructura adicional (generalmente una lista enlazada) para almacenar múltiples elementos que comparten el mismo índice. Esto permite que, cuando ocurre una colisión,
+                   los nuevos datos no se sobrescriban ni se busquen otras posiciones dentro del arreglo, sino que se agreguen a la lista correspondiente. De esta manera, se facilita la gestión de múltiples claves que generan el mismo valor hash (Cormen, Leiserson, Rivest & Stein, 2009).</p>
+                <p>Su principal función es mantener la eficiencia en las operaciones de inserción, búsqueda y eliminación, incluso cuando hay colisiones frecuentes. Las tablas hash abiertas son especialmente útiles cuando se manejan grandes volúmenes de datos, ya que permiten una mayor flexibilidad y reducen el problema del agrupamiento que ocurre
+                   en las tablas hash cerradas. Sin embargo, su rendimiento puede verse afectado si las listas crecen demasiado, lo que incrementa el tiempo de acceso. A pesar de ello, siguen siendo una solución eficaz y ampliamente utilizada en estructuras de datos modernas.</p>
+ 
                 <div class="figure-container">
-                    <div class="figure-caption">Figura 39</div>
-                    <div class="figure-caption">Arreglos y vectores vs listas</div>
+                    <div class="figure-caption">Figura 44</div>
+                    <div class="figure-caption">Tablas hash abiertas</div>
                     <div class="figura">
-                        <img src="FIGURA40.png" alt="Arreglos y vectores vs listas" class="imagen-figura1"/>
+                        <img src="FIGURA47.png" alt="Tablas hash abiertas" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
-             </div> 
+            <p>Se clasifican principalmente por la forma en que gestionan las colisiones mediante encadenamiento. La más común utiliza listas enlazadas, donde cada posición de la tabla almacena una lista de elementos que comparten el mismo índice. También pueden emplearse variantes como árboles o listas dinámicas más complejas para mejorar
+               el rendimiento en casos de alta densidad de datos. Esta clasificación surge de la necesidad de manejar múltiples claves que coinciden en un mismo valor hash sin sobrescribir información.</p>
+            <p>El uso de tablas hash abiertas es provocado por la presencia de colisiones, las cuales ocurren debido a factores como una función hash poco eficiente, una distribución no uniforme de las claves o un volumen elevado de datos. A diferencia de las tablas cerradas, en este modelo no se buscan nuevas posiciones dentro del arreglo,
+               sino que se agrupan los elementos en una misma ubicación mediante estructuras auxiliares. Esto permite manejar mejor los conflictos, especialmente cuando el número de elementos supera el tamaño de la tabla.</p>
+            <p>Entre sus ventajas destaca su flexibilidad para manejar colisiones sin afectar significativamente la estructura principal, así como su facilidad de implementación y buen rendimiento cuando las listas no son muy largas. Sin embargo, presentan desventajas como el incremento en el uso de memoria debido a las estructuras adicionales y
+               la posible degradación del rendimiento si las listas crecen demasiado, lo que aumenta el tiempo de búsqueda. Aun así, son ampliamente utilizadas por su capacidad de adaptarse a grandes volúmenes de información (Goodrich, Tamassia & Goldwasser, 2013).</p>
+
+
+            </div> 
         </div> 
 
 
-       <div class="section" id="seccion-2-3-6">
+       <div class="section" id="seccion-2-4-6">
             <div class="section-header">
-                <div class="section-number">2.3.6</div>
+                <div class="section-number">2.4.6</div>
                 <div class="section-title">Nociones de complejidad de las operaciones</div>
             </div>
             <div class="content">
-                <p>Las nociones de complejidad de las operaciones permiten analizar el rendimiento de un algoritmo o estructura de datos en función del tiempo y los recursos que utiliza para ejecutarse. Su función principal es medir cuántas operaciones
-                   se requieren conforme aumenta el tamaño de los datos, lo cual se expresa comúnmente mediante la notación Big-O (O). Esta herramienta es fundamental para comparar algoritmos y elegir el más eficiente según el problema a resolver.</p>
-                <p>En cuanto a su funcionamiento, la complejidad se centra en evaluar operaciones básicas como inserción, eliminación, búsqueda y acceso. Por ejemplo, en un arreglo el acceso a un elemento es O(1), mientras que en una lista enlazada es O(n),
-                   ya que se debe recorrer la estructura. Estas diferencias permiten identificar qué estructura es más adecuada dependiendo del tipo de operación que se realizará con mayor frecuencia.</p>
-                <p>Entre sus características principales, la complejidad se clasifica en distintos tipos como tiempo y espacio, además de analizarse en casos mejor, promedio y peor. También se representa mediante funciones matemáticas como O(1), O(n), O(log n) y O(n²),
-                   las cuales describen el crecimiento del costo computacional. Estas representaciones ayudan a comprender el comportamiento de los algoritmos sin depender del hardware o lenguaje de programación utilizado.</p>
-                <p>Por lo que la importancia de estas nociones radica en que permiten desarrollar algoritmos más eficientes y optimizados, reduciendo tiempos de ejecución y consumo de memoria. Su aplicación es clave en el diseño de software, ya que facilita la toma de 
-                   decisiones informadas sobre qué estructuras y métodos utilizar en función de la escala del problema, garantizando un mejor desempeño en sistemas reales (Weiss, 2014).</p>
+                <p>Las nociones de complejidad de las operaciones en estructuras de datos y algoritmos se refieren al análisis del tiempo y espacio que requiere un procedimiento para ejecutarse en función del tamaño de los datos de entrada. Este análisis permite evaluar
+                   la eficiencia de operaciones como búsqueda, inserción y eliminación, utilizando notaciones como O(1), O(n) u O(log n). Comprender estas nociones es fundamental para seleccionar la estructura de datos más adecuada y optimizar el rendimiento de los sistemas informáticos.</p>
+                <p>En el caso de las tablas hash, las operaciones básicas presentan una complejidad promedio de tiempo constante O(1), lo que significa que su desempeño no depende directamente del número de elementos almacenados. Sin embargo, esta eficiencia se mantiene solo cuando la función
+                   hash distribuye adecuadamente los datos y el factor de carga es controlado. Cuando ocurren muchas colisiones, el tiempo de las operaciones puede aumentar, acercándose a una complejidad lineal O(n), especialmente en implementaciones con encadenamiento o direccionamiento abierto.</p>
+                <p>Considerando el tiempo, también se considera la complejidad espacial, que analiza la cantidad de memoria utilizada por la estructura. En las tablas hash, esta depende del tamaño del arreglo y de las estructuras adicionales empleadas para resolver colisiones. Un buen equilibrio
+                   entre tiempo y espacio es clave para lograr un sistema eficiente, ya que un uso excesivo de memoria o una mala distribución de datos puede afectar negativamente el rendimiento general de las operaciones (Goodrich, Tamassia & Goldwasser, 2013).</p>
+
+
 
                 <div class="figure-container">
-                    <div class="figure-caption">Figura 40</div>
+                    <div class="figure-caption">Figura 45</div>
                     <div class="figure-caption">Nociones de complejidad de las operaciones</div>
                     <div class="figura">
-                        <img src="FIGURA41.png" alt="Nociones de complejidad de las operaciones" class="imagen-figura1"/>
+                        <img src="FIGURA48.png" alt="Nociones de complejidad de las operaciones" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
-             </div> 
+                <p>Las nociones de complejidad de las operaciones se clasifican principalmente según el comportamiento del algoritmo en distintos escenarios: mejor caso, caso promedio y peor caso. Estas clasificaciones permiten analizar cómo varía el rendimiento dependiendo de la entrada de datos. Además,
+                   se expresan mediante notaciones como O(1) (tiempo constante), O(log n) (logarítmico) y O(n) (lineal), las cuales describen el crecimiento del tiempo de ejecución conforme aumenta el tamaño de los datos. Esta clasificación es fundamental para comparar algoritmos y elegir la mejor solución en términos de eficiencia.</p>
+                <p>El comportamiento de la complejidad es provocado por diversos factores, como el tamaño de los datos de entrada, la estructura utilizada y la eficiencia del algoritmo. En estructuras como las tablas hash, por ejemplo, la complejidad depende del manejo de colisiones y del factor de carga; cuando estos no se controlan adecuadamente,
+                   el rendimiento puede deteriorarse. Asimismo, la forma en que se implementan las operaciones (búsqueda, inserción o eliminación) influye directamente en el tiempo de ejecución, ya que algunas requieren recorrer más elementos que otras.</p>
+                <p>Entre las ventajas del análisis de complejidad se encuentra la posibilidad de optimizar algoritmos, mejorar el uso de recursos y prever el comportamiento de un sistema ante grandes volúmenes de datos. Sin embargo, también presenta desventajas, como el hecho de que se basa en modelos teóricos que no siempre reflejan
+                   completamente el comportamiento real en hardware específico. Además, puede simplificar factores importantes como constantes o condiciones particulares, lo que podría llevar a interpretaciones incompletas si no se analiza adecuadamente (Goodrich, Tamassia & Goldwasser, 2013).</p>
+
+            </div> 
         </div> 
 
 
-       <div class="section" id="seccion-2-3-7">
+       <div class="section" id="seccion-2-4-7">
             <div class="section-header">
-                <div class="section-number">2.3.7</div>
+                <div class="section-number">2.4.7</div>
                 <div class="section-title">Implementaciones y aplicaciones</div>
             </div>
             <div class="content">
-                <p>Las implementaciones y aplicaciones en estructuras de datos y algoritmos cumplen la función de llevar los conceptos teóricos a soluciones prácticas dentro de los sistemas informáticos. Su propósito principal es definir cómo se organizan
-                   los datos en memoria y cómo se ejecutan las operaciones sobre ellos, permitiendo resolver problemas de manera eficiente. A través de la implementación, se selecciona la estructura más adecuada según las necesidades del sistema,
-                   optimizando el uso de recursos.</p>
-                <p>En cuanto a su funcionamiento, una implementación implica traducir una estructura abstracta, como listas, pilas o colas, en código que pueda ejecutarse en un lenguaje de programación. Esto puede realizarse mediante enfoques estáticos (como arreglos) o dinámicos (como listas enlazadas),
-                   dependiendo de si se requiere flexibilidad o rapidez en el acceso. Cada tipo de implementación influye directamente en el rendimiento de las operaciones (Weiss, 2014).</p>
-                <p>Entre sus características principales se encuentra la capacidad de adaptarse a distintos contextos, la eficiencia en el manejo de datos y la relación directa con la complejidad de las operaciones. Además, permiten evaluar aspectos como el tiempo de ejecución y el consumo de memoria,
-                   lo cual es esencial para diseñar algoritmos óptimos. También destacan por su modularidad, ya que pueden reutilizarse en diferentes aplicaciones.</p>
-                <p>Por otro lado, las aplicaciones de estas implementaciones se observan en múltiples áreas de la informática, como la gestión de bases de datos, sistemas operativos, inteligencia artificial y desarrollo de software. Por ejemplo, las listas enlazadas se utilizan en la gestión dinámica de memoria,
-                   las colas en la planificación de procesos y los árboles en la organización jerárquica de información.</p>
-                <p>Por lo que su importancia de comprender las implementaciones y sus aplicaciones radica en que permiten desarrollar soluciones eficientes y escalables. Elegir correctamente una estructura de datos e implementarla de forma adecuada impacta directamente en el desempeño del sistema,
-                   facilitando la resolución de problemas complejos y mejorando la calidad del software (Knuth, 2011).</p>
-
-
+                <p>Las implementaciones de las estructuras de datos, como las tablas hash, pueden realizarse de diferentes formas según las necesidades del sistema. Principalmente, se distinguen implementaciones estáticas, donde el tamaño de la estructura es fijo desde el inicio, y dinámicas, donde la estructura puede crecer o reducirse conforme
+                   se insertan o eliminan elementos. En el caso de las tablas hash, también se consideran variantes como las tablas abiertas (con encadenamiento) y cerradas (con direccionamiento abierto), cada una con diferentes estrategias para gestionar colisiones y optimizar el rendimiento (Weiss, 2014).</p>
+                <p>En cuanto a sus aplicaciones, las tablas hash son ampliamente utilizadas en múltiples áreas de la informática debido a su eficiencia. Se emplean en estructuras como diccionarios, mapas y conjuntos en lenguajes de programación, así como en sistemas de bases de datos para indexar información y acelerar consultas. También son
+                   fundamentales en aplicaciones de seguridad informática, como el almacenamiento de contraseñas mediante funciones hash, y en sistemas de caché donde se requiere acceso rápido a los datos.</p>
+                <p>La función principal de estas implementaciones es optimizar el almacenamiento y la recuperación de información, permitiendo que las operaciones se realicen de manera rápida y eficiente. Sin embargo, su desempeño depende de factores como la elección de la función hash, el control del factor de carga y la estrategia de resolución
+                   de colisiones. Por ello, una correcta implementación no solo mejora el rendimiento del sistema, sino que también garantiza su escalabilidad y estabilidad en aplicaciones que manejan grandes volúmenes de datos.</p>
                 <div class="figure-container">
-                    <div class="figure-caption">Figura 39</div>
+                    <div class="figure-caption">Figura 46</div>
                     <div class="figure-caption">Arreglos y vectores vs listas</div>
                     <div class="figura">
-                        <img src="FIGURA42.png" alt="Arreglos y vectores vs listas" class="imagen-figura1"/>
+                        <img src="FIGURA49.png" alt="Arreglos y vectores vs listas" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
-             </div> 
+                <p>Las implementaciones y aplicaciones de las tablas hash pueden clasificarse principalmente en dos tipos: implementaciones estáticas y dinámicas. Las implementaciones estáticas utilizan un tamaño fijo de arreglo definido desde el inicio, lo que limita la cantidad de elementos que pueden almacenarse. En cambio, las implementaciones
+                   dinámicas permiten redimensionar la tabla según la cantidad de datos, mejorando la flexibilidad y el rendimiento. Asimismo, dentro de estas implementaciones se incluyen las tablas hash abiertas (encadenamiento) y cerradas (direccionamiento abierto), que representan distintas estrategias para resolver colisiones.</p>
+                <p>El uso de estas implementaciones es provocado por la necesidad de optimizar el almacenamiento y acceso a grandes volúmenes de información. Factores como el crecimiento de los datos, la frecuencia de búsqueda y la necesidad de rapidez en las operaciones impulsan el uso de tablas hash en sistemas informáticos. Además,
+                   la elección de una implementación específica depende de condiciones como el espacio disponible en memoria, el tipo de datos y el nivel de eficiencia requerido en la aplicación.</p>
+                <p>Entre las ventajas de estas implementaciones se encuentra su alta eficiencia en operaciones básicas como búsqueda, inserción y eliminación, generalmente en tiempo constante O(1) en condiciones ideales. También permiten una organización eficiente de los datos mediante claves, lo que facilita su manejo en aplicaciones
+                   como bases de datos, sistemas de caché y estructuras como diccionarios o mapas. Además, las versiones dinámicas ofrecen mayor adaptabilidad al crecimiento de la información (Goodrich, Tamassia & Goldwasser, 2013).</p>
+                <p>Presentan desventajas importantes. Su rendimiento depende en gran medida de una buena función hash y de un control adecuado del factor de carga; de lo contrario, pueden generarse colisiones que degraden la eficiencia. Las implementaciones estáticas pueden desperdiciar memoria o quedarse sin espacio, mientras que las dinámicas
+                   implican un costo adicional por redimensionamiento. Asimismo, no mantienen un orden natural de los datos, lo que limita su uso en aplicaciones que requieren estructuras ordenadas.</p>
+
+            </div> 
         </div> 
 
 
             <div style="margin-top: 30px;">
                 <h3><i class="fas fa-play-circle" style="margin-right: 10px;"></i> Material Audiovisual</h3>
-                <p>A continuación, se explican la funcionalidad de las listas:</p>
+                <p>FALTA VIDEO A continuación, se explican la funcionalidad de las listas:</p>
                 
                 <div class="figure-container">
                     <iframe width="100%" height="450" src="https://www.youtube.com/embed/ptTt8BIayEI" title="Modelos multihilos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
@@ -944,15 +959,15 @@
         
  
         <div class="activity-card">
-            <div class="activity-title">Actividad de Aprendizaje 2.3: listas</div>
-            <p>Evalúa tu comprensión sobre listas y sus características.</p>
-            <a href="actividad_2_3.html" class="activity-btn">
+            <div class="activity-title">Actividad de Aprendizaje 2.4: Tablas hash</div>
+            <p>Evalúa tu comprensión sobre tablas hash y sus características.</p>
+            <a href="actividad_2_4.html" class="activity-btn">
                 <i class="fas fa-pencil-alt"></i> Realizar Actividad
             </a>
         </div>
         
         <div class="nav-buttons">
-            <a href="2.2.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Anterior: 2.2 cola</a>
+            <a href="2.3.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Anterior: 2.3 listas</a>
             <a href="2.4.html" class="nav-btn">Continuar a 2.4: Tablas hash<i class="fas fa-arrow-right"></i></a>
         </div>
         
