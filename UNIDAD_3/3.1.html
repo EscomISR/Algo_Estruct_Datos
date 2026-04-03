@@ -784,49 +784,41 @@
                 <div class="section-title">Recorridos en un árbol binario</div>
             </div>
             <div class="content">
-                   <p>La implementación estática de una pila consiste en utilizar una estructura de tamaño fijo, generalmente un arreglo (vector), para almacenar los elementos. En este enfoque, la capacidad de la pila se define desde el inicio y no puede cambiar durante la ejecución del programa.</p>
-                   <p>A diferencia de la implementación estática (que usa un arreglo de tamaño fijo), en la implementación dinámica:</p>
-                <h4>En una pila con implementación dinámica se consideran los siguientes aspectos:</h4>
-                   <p><strong>No existe un tamaño límite predefinido</strong>: ya que la memoria se asigna conforme se necesitan nuevos elementos.</p>
-                   <p><strong>Cada elemento de la pila se almacena en un nodo,</strong> que contiene el dato y una referencia al siguiente nodo.</p>
-                   <p><strong>El acceso principal sigue siendo mediante la cima (top),</strong>espetando el principio LIFO.</p>
-                <h4>Funcionamiento</h4>
-                   <p><strong>push:</strong>: crea un nuevo nodo y lo coloca al inicio de la pila (lo convierte en el nuevo tope).</p>
-                   <p><strong>pop</strong>: elimina el nodo del tope y libera la memoria.</p>
-                <h4>Ventajas:</h4>
-                    <p>Uso eficiente de la memoria.</p>
-                    <p>Flexibilidad en el tamaño de la pila.</p>
-                <h4>Desventajas:</h4>
-                <p>Mayor complejidad en la implementación.</p>
-                <p>Requiere manejo de memoria dinámica (reservar y liberar memoria).</p>
-
-                <p>Es por ello que, la implementación dinámica permite que la pila se adapte al tamaño de los datos en tiempo real, siendo ideal cuando no se conoce previamente cuántos elementos se almacenarán.</p>
+                   <p>Los recorridos en un árbol binario son estrategias que permiten visitar cada nodo de manera ordenada para procesar la información almacenada. Estas técnicas son esenciales en la manipulación de estructuras jerárquicas, ya que facilitan operaciones como la búsqueda, evaluación y
+                      visualización de datos. Los recorridos más utilizados son preorden, inorden y postorden, los cuales se distinguen por el orden en que se visita la raíz en relación con sus subárboles (Tenenbaum, Langsam & Augenstein, 1990).</p>
+                   <p>En cuanto a su funcionamiento, el recorrido en preorden visita primero la raíz, después el subárbol izquierdo y finalmente el derecho; el inorden recorre primero el subárbol izquierdo, luego la raíz y al final el derecho; mientras que el postorden procesa primero ambos subárboles y
+                      deja la raíz al final. Estos recorridos suelen implementarse mediante recursividad, lo que permite recorrer toda la estructura de forma lógica y eficiente.</p>
 
              <div class="content">
                 <p></p>
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 21</div>
-                    <div class="figure-caption">Código implementación estática</div>
+                    <div class="figure-caption">Figura 49</div>
+                    <div class="figure-caption">Recorridos en un árbol binario</div>
                     <div class="figura">
-                        <img src="FIGURA21.png" alt="Código implementación estática" class="imagen-figura1"/>
+                        <img src="FIGURA52.png" alt="Recorridos en un árbol binario" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
                 </div>
+                <p>Los recorridos en un árbol binario presentan características fundamentales que los hacen esenciales en el manejo de estructuras jerárquicas. Se basan en un proceso sistemático para visitar todos los nodos sin omitir ninguno, siguiendo órdenes específicos como preorden, inorden y postorden. Además,
+                   se apoyan comúnmente en la recursividad, lo que permite que el algoritmo se aplique de forma repetitiva en cada subárbol, garantizando un acceso organizado a los datos (Knuth, 1998).</p>
+                <p>En cuanto a su funcionalidad, los recorridos permiten realizar diversas operaciones sobre los datos almacenados en el árbol, como imprimir valores, evaluar expresiones matemáticas o buscar información. Por ejemplo, el recorrido inorden es ampliamente utilizado en árboles binarios de búsqueda porque permite obtener
+                   los datos en orden ascendente, mientras que el preorden y postorden se aplican en tareas como la copia o eliminación de estructuras (Sahni, 2005).</p>
+                <p>Entre sus ventajas destaca su eficiencia para recorrer estructuras complejas de manera ordenada, permitiendo procesar grandes cantidades de datos de forma lógica. También facilitan la implementación de algoritmos importantes y son relativamente sencillos de programar debido a su naturaleza recursiva, lo que los
+                   convierte en herramientas fundamentales dentro de la algoritmia.</p>
+                <p>Sin embargo, también presentan desventajas. El uso de recursividad puede implicar un mayor consumo de memoria en la pila de ejecución, especialmente en árboles muy profundos. Asimismo, si el árbol no está balanceado, los recorridos pueden volverse menos eficientes, y no siempre son la mejor opción para búsquedas rápidas sin estructuras optimizadas.</p>
              </div> 
-
-                                             
+                                            
             </div>
-
 
         </div>
         
-        <div class="section" id="seccion-2-1-3">
+        <div class="section" id="seccion-3-1-3">
             <div class="section-header">
-                <div class="section-number">2.1.3</div>
-                <div class="section-title">Implementación dinámica</div>
+                <div class="section-number">3.1.3</div>
+                <div class="section-title">Árbol binario de búsqueda</div>
             </div>
             <div class="content">
-                    <p>Es la forma a la forma de construir una estructura de datos utilizando memoria que se asigna durante la ejecución del programa, en lugar de definir un tamaño fijo desde el inicio.</p>
+                    <p>aqui voy Es la forma a la forma de construir una estructura de datos utilizando memoria que se asigna durante la ejecución del programa, en lugar de definir un tamaño fijo desde el inicio.</p>
                     <p>En el caso de una pila, esto significa que no se usa un arreglo de tamaño limitado, sino estructuras como listas enlazadas, donde cada elemento (nodo) se crea cuando se necesita y se enlaza con el anterior. Esto permite que la pila crezca o disminuya según la cantidad de datos, evitando problemas como el desbordamiento por tamaño fijo.</p>
                     
                 <h3>Sus principales caracteristicas son:</h3>
