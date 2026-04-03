@@ -725,43 +725,53 @@
 
 
         
-        <div class="section" id="seccion-2-1-1">
+        <div class="section" id="seccion-3-1-1">
             <div class="section-header">
-                <div class="section-number">2.1.1</div>
-                <div class="section-title">Especificación genérica </div>
+                <div class="section-number">3.1.1</div>
+                <div class="section-title">Transformación de árboles generales a binarios </div>
             </div>
             <div class="content">
-                <p>Dentro de una pila, la especificación genérica se aplica al definir su comportamiento de manera abstracta, sin depender de cómo esté implementada (arreglo, lista enlazada, etc.).
-                   Es decir, se describe qué hace la pila y no cómo se construye.</p>
-
-                <h3>Tipo de dato genérico (T): la pila puede almacenar cualquier tipo de elemento (enteros, cadenas, objetos, etc.)</h3>
-
-                <p>En este contexto, la especificación genérica de una pila incluye</p>
-                <h4>Operaciones básicas:</h4>
+                <p>La transformación de árboles generales a árboles binarios es una técnica utilizada en las estructuras de datos para representar un árbol con cualquier número
+                   de hijos por nodo mediante una estructura binaria, en la cual cada nodo tiene como máximo dos hijos. Esta conversión conserva la información y la jerarquía del árbol original, cambiando únicamente su forma de representación para facilitar su implementación en sistemas computacionales.</p>
+                <p>El método más común para realizar esta transformación es la representación de “hijo izquierdo - hermano derecho”. En este enfoque, el primer hijo de un nodo en el árbol general se convierte en su hijo izquierdo en el árbol binario, mientras que sus hermanos se enlazan mediante
+                   punteros derechos. Esta técnica permite mantener la relación entre nodos y aplicar algoritmos de recorrido propios de los árboles binarios (Goodrich, Tamassia & Goldwasser, 2014).</p>
+                <p>Entre las principales ventajas de esta transformación se encuentra la optimización en el uso de memoria y la simplificación de algoritmos para el procesamiento de estructuras jerárquicas. No obstante, la interpretación visual puede resultar menos intuitiva en comparación con el árbol
+                   general original. A pesar de ello, su uso es frecuente en áreas como compiladores y sistemas de archivos, donde se requiere eficiencia y uniformidad en la representación de datos.</p>
+                <p></p>
+                <h4>Árbol general</h4>
                 <ul>
-                    <li><strong>push(T elemento)</strong>: Inserta un elemento en la cima..</li>
-                    <li><strong>pop()</strong>: Elimina y devuelve el elemento en la cima.</li>
-                    <li><strong>top() o peek()</strong>: Consulta el elemento en la cima sin eliminarlo.</li>
-                    <li><strong>isEmpty()</strong>: Verifica si la pila está vacía.</li>
+                    <li>Tiene<strong>más de dos hijos por nodo (sin límite fijo).</strong></li>
+                    <li>Presenta una<strong>estructura flexible y adaptable.</strong></li>
+                    <li>Su implementación<strong>es más compleja (puede requerir listas o múltiples enlaces).</strong></li>
+                    <li>Se utiliza en<strong>estructuras jerárquicas reales como sistemas de archivos o organigramas.</strong></li>
+                    <li>No cuenta con recorridos estándar universales definidos.</li>
+                    <li>Su representación es<strong>más natural para problemas del mundo real.</strong></li>
                 </ul>
 
+                <h4>Árbol binario</h4>
                 <ul>
-                    <li><strong>Regla de funcionamiento:</strong> Sigue el principio LIFO (último en entrar, primero en salir).</li>
-                    <li><strong>Restricciones:</strong> No se puede extraer un elemento si la pila está vacía..</li>
+                    <li>Tiene<strong> máximo dos hijos por nodo (izquierdo y derecho).</strong></li>
+                    <li>Presenta una<strong> estructura rígida y ordenada.</strong></li>
+                    <li>Su implementacion es <strong>más sencilla (dos referencias por nodo).</strong></li>
+                    <li>Permite recorridos definidos como<strong> preorden, inorden y postorden.</strong></li>
+                    <li>Se utiliza en<strong>algoritmos eficientes como búsqueda y ordenamiento.</strong></li>
+                    <li>Es base para estructuras como <strong>árboles AVL, heaps y árboles de búsqueda binaria.</strong></li>
                 </ul>
-            </div>
-                <p>De esta manera, la pila queda definida de forma general y flexible, permitiendo que cualquier implementación respete estas reglas, sin importar el lenguaje o la estructura interna utilizada.</p>
 
-        <div class="section" id="seccion-2-1">
+                <p>Las diferencias entre un árbol general y árbol binario radica en la cantidad de hijos que puede tener cada nodo y en la forma en que se organiza su estructura: mientras que el árbol general permite que un nodo tenga cualquier número de hijos,
+                   ofreciendo mayor flexibilidad para representar jerarquías complejas, el árbol binario limita a cada nodo a un máximo de dos hijos (izquierdo y derecho), lo que lo hace más estructurado, sencillo de implementar y eficiente
+                   para aplicar algoritmos de búsqueda y recorrido.</p>
+
+        <div class="section" id="seccion-3-1">
             <div class="section-header">
             </div>
             <div class="content">
                 <p></p>
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 20</div>
-                    <div class="figure-caption">Estructuras Operaciones básicas</div>
+                    <div class="figure-caption">Figura 48</div>
+                    <div class="figure-caption">Transformación de árboles generales a binarios</div>
                     <div class="figura">
-                        <img src="FIGURA20.png" alt="Estructuras Operaciones básicas" class="imagen-figura1"/>
+                        <img src="FIGURA51.png" alt="Transformación de árboles generales a binarios" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
                 </div>
@@ -771,10 +781,10 @@
         </div>
  
         
-        <div class="section" id="seccion-2-1-2">
+        <div class="section" id="seccion-3-1-2">
             <div class="section-header">
-                <div class="section-number">2.1.2</div>
-                <div class="section-title">Implementación estática</div>
+                <div class="section-number">3.1.2</div>
+                <div class="section-title">Recorridos en un árbol binario</div>
             </div>
             <div class="content">
                    <p>La implementación estática de una pila consiste en utilizar una estructura de tamaño fijo, generalmente un arreglo (vector), para almacenar los elementos. En este enfoque, la capacidad de la pila se define desde el inicio y no puede cambiar durante la ejecución del programa.</p>
