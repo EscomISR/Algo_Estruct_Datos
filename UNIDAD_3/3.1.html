@@ -712,9 +712,9 @@
 
             
             <div class="figure-container">
-                <p class="figure-caption">Figura 47</p>
+                <p class="figure-caption">Figura 1</p>
                 <p class="figure-caption">Árboles binarios</p>
-                <img src="FIGURA50.png" alt="Árboles binarios" class="imagen-figura1">
+                <img src="FIGURA1.png" alt="Árboles binarios" class="imagen-figura1">
                 <p class="figure-caption">Nota: Imagen elaborada con IA</p>
             </div>
         </div>
@@ -765,10 +765,10 @@
                 <div class="content">
                 <p></p>
                 <div class="figure-container">
-                    <div class="figure-caption">Figura 48</div>
+                    <div class="figure-caption">Figura 2</div>
                     <div class="figure-caption">Transformación de árboles generales a binarios</div>
                     <div class="figura">
-                        <img src="FIGURA51.png" alt="Transformación de árboles generales a binarios" class="imagen-figura1"/>
+                        <img src="FIGURA2.png" alt="Transformación de árboles generales a binarios" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
                 </div>
@@ -792,10 +792,10 @@
              <div class="content">
                 <p></p>
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 49</div>
+                    <div class="figure-caption">Figura 3</div>
                     <div class="figure-caption">Recorridos en un árbol binario</div>
                     <div class="figura">
-                        <img src="FIGURA52.png" alt="Recorridos en un árbol binario" class="imagen-figura1"/>
+                        <img src="FIGURA3.png" alt="Recorridos en un árbol binario" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
                 </div>
@@ -818,22 +818,40 @@
                 <div class="section-title">Árbol binario de búsqueda</div>
             </div>
             <div class="content">
-                    <p>aqui voy Es la forma a la forma de construir una estructura de datos utilizando memoria que se asigna durante la ejecución del programa, en lugar de definir un tamaño fijo desde el inicio.</p>
-                    <p>En el caso de una pila, esto significa que no se usa un arreglo de tamaño limitado, sino estructuras como listas enlazadas, donde cada elemento (nodo) se crea cuando se necesita y se enlaza con el anterior. Esto permite que la pila crezca o disminuya según la cantidad de datos, evitando problemas como el desbordamiento por tamaño fijo.</p>
+                    <p>Un árbol binario de búsqueda (BST) es una estructura de datos no lineal que organiza los elementos de forma jerárquica mediante nodos, donde cada nodo puede tener como máximo dos hijos. Su propiedad principal indica que los valores menores se almacenan en el subárbol izquierdo y los mayores en el derecho, lo que permite mantener los datos ordenados automáticamente y
+                       facilita su acceso dentro de los algoritmos (Sedgewick & Wayne, 2011). Esta característica lo convierte en una herramienta eficiente para el manejo de información.</p>
+                    <p>El funcionamiento del BST se basa en comparaciones sucesivas para realizar operaciones como búsqueda, inserción y eliminación. En la búsqueda, se inicia desde la raíz y se recorre hacia la izquierda o derecha según el valor; la inserción sigue el mismo principio hasta ubicar el nuevo elemento; y la eliminación puede implicar distintos casos dependiendo de la estructura del
+                       nodo eliminado. Cuando el árbol se encuentra balanceado, estas operaciones se ejecutan con gran eficiencia.</p>
+                    <p>La importancia del árbol binario de búsqueda radica en que permite optimizar el procesamiento de datos, logrando tiempos promedio de O(log n) en sus operaciones principales. Además, es la base de estructuras más avanzadas utilizadas en sistemas complejos, como bases de datos y motores de búsqueda, siendo esencial en el diseño de algoritmos eficientes</p>    
                     
                 <h3>Sus principales caracteristicas son:</h3>
-                    <p> <strong>Tamaño flexible:</strong> la estructura puede expandirse o reducirse dinámicamente.</p>    
-                    <p> <strong>Uso eficiente de memoria:</strong> solo se utiliza el espacio necesario en cada momento.</p>    
-                    <p> <strong>Mayor complejidad:</strong> requiere manejo de punteros y memoria dinámica.</p>    
-                    <p>la implementación dinámica ofrece mayor adaptabilidad que la estática, ya que permite manejar colecciones de datos cuyo tamaño no se conoce previamente, siendo muy útil en aplicaciones donde los datos cambian constantemente.</p>   
+                    <p>Estructura jerárquica compuesta por nodos enlazados.</p>    
+                    <p>Cada nodo tiene como máximo <strong>dos hijos (izquierdo y derecho).</strong> </p>    
+                    <p>Permite recorridos como <strong>inorden, preorden y postorden.</strong></p>    
+                    <p>Su eficiencia depende de si el árbol está <strong>balanceado o no.</strong></p>   
+
+                    
+                <h3>Sus principales ventajas son:</h3>
+                    <p>Búsqueda eficiente en tiempo promedio <strog>O(log n).</strog></p>    
+                    <p>Mantiene los datos ordenados <strong>ordenados automáticamente.</strong> </p>    
+                    <p>Inserción y eliminación <strong>relativamente rápidas.</strong></p>    
+                    <p>Base para estructuras avanzadas como <strong>árboles AVL y rojo-negro.</strong></p>   
+                    <p>Útil en aplicaciones como <strong>bases de datos, compiladores y sistemas de búsqueda.</strong></p>
+                    
+                <h3>Sus Desventajas son:</h3>
+                    <p>Puede volverse ineficiente (O(n)) si el árbol está desbalanceado.</p>
+                    <p>Requiere operaciones adicionales para mantenerse balanceado.</p>
+                    <p>Implementación más compleja que estructuras lineales simples.</p>
+                    <p>Mayor consumo de memoria debido a punteros o referencias.</p>
+                    <p>El rendimiento depende del orden de inserción de los datos.</p>
 
              <div class="content">
                 <p></p>
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 22</div>
-                    <div class="figure-caption">Implementación dinámica</div>
+                    <div class="figure-caption">Figura 4</div>
+                    <div class="figure-caption">Árbol binario de búsqueda</div>
                     <div class="figura">
-                        <img src="FIGURA22.png" alt="Implementación dinámica" class="imagen-figura1"/>
+                        <img src="FIGURA4.png" alt="Árbol binario de búsqueda" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
                 </div>
@@ -841,69 +859,163 @@
  
         </div> 
 
-        <div class="section" id="seccion-2-1-4">
+        <div class="section" id="seccion-3-1-4">
             <div class="section-header">
-                <div class="section-number">2.1.4</div>
-                <div class="section-title">Nociones de complejidad de las operaciones </div>
+                <div class="section-number">3.1.4</div>
+                <div class="section-title">Árbol balanceado rojo-negro </div>
             </div>
             <div class="content">
-                    <p>Es el al análisis del costo computacional que implica ejecutar una operación dentro de un algoritmo o estructura de datos. Este costo se mide principalmente en términos de tiempo (cuántas operaciones se realizan) y espacio (cuánta memoria se utiliza), especialmente cuando el tamaño de los datos crece.</p>
-                    <p>En estructuras como pilas, colas o listas, cada operación (por ejemplo, insertar, eliminar o buscar) tiene un comportamiento distinto. Algunas son muy rápidas y constantes, mientras que otras dependen de la cantidad de elementos. Para representar esto.</p>
-                   
-                <h3>Notación de orden de complejidad son:</h3>
-                    <p> <strong>O(1):</strong> tiempo constante (la operación siempre tarda lo mismo).</p>    
-                    <p> <strong>O(n):</strong> tiempo lineal (depende del número de elementos).</p>    
-                    <p> <strong>O(log n):</strong> tiempo logarítmico (crece lentamente con los datos).</p> 
-
-                <h4>Por ejemplo, en una pila</h4>
-                   <p><strong>La operación push (insertar)</strong>: tiene complejidad O(1).</p>
-                   <p><strong>La operación pop (eliminar)</strong>: también es O(1).</p>
-
-                   <p>Esto significa que, sin importar cuántos elementos tenga la pila, estas operaciones se realizan de manera eficiente, es por ello que comprender las nociones de complejidad permite evaluar la eficiencia de un algoritmo, comparar distintas soluciones y elegir la estructura de datos más adecuada para resolver un problema de manera óptima (Robert Sedgewick & Wayne, 2011).</p>   
+                    <p>Un árbol rojo-negro se considera como la estructura de datos derivada del árbol binario de búsqueda que se mantiene balanceada mediante reglas de color asignadas a sus nodos. En este tipo de árbol, cada nodo puede ser rojo o negro, la raíz siempre debe ser negra, no puede haber dos nodos rojos consecutivos y
+                       todos los caminos desde la raíz hasta las hojas deben contener la misma cantidad de nodos negros. Estas propiedades permiten controlar la altura del árbol y evitan que se deforme como una lista lineal, conservando así un comportamiento eficiente en las operaciones fundamentales</p>
+                    <p>Su funcionamiento del árbol rojo-negro se centra en conservar sus propiedades después de cada inserción o eliminación. Cuando se agrega un nuevo nodo, este normalmente se inserta como rojo y, si se rompe alguna regla, se corrige el árbol mediante rotaciones y recoloreos. En la eliminación ocurre algo similar,
+                       ya que puede ser necesario reorganizar la estructura para restablecer el equilibrio. Gracias a este mecanismo, el árbol mantiene una altura aproximadamente logarítmica, lo cual favorece que las operaciones de búsqueda, inserción y borrado se ejecuten con buen rendimiento</p>
+                    <p>La importancia del árbol rojo-negro radica en que ofrece una forma práctica de mantener ordenados los datos sin sacrificar eficiencia, incluso en el peor de los casos. Por esta razón, se utiliza como base en implementaciones de diccionarios, conjuntos, tablas asociativas y diversos componentes internos de bibliotecas y
+                       sistemas de software. Su estudio dentro de algoritmos y estructuras de datos resulta fundamental porque muestra cómo el balanceo automático mejora notablemente el desempeño de las operaciones sobre colecciones dinámicas de información (Goodrich et al., 2014).</p> 
 
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 23</div>
-                    <div class="figure-caption">Nociones de complejidad de las operaciones</div>
+                    <div class="figure-caption">Figura 5</div>
+                    <div class="figure-caption">Árbol balanceado rojo-negro</div>
                     <div class="figura">
-                        <img src="FIGURA23.png" alt="Nociones de complejidad de las operaciones" class="imagen-figura1"/>
+                        <img src="FIGURA5.png" alt="Árbol balanceado rojo-negro" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
                 </div>
+                    <p>Se caracteriza por ser un árbol binario de búsqueda auto-balanceado que utiliza colores (rojo y negro) para mantener su estructura equilibrada. Entre sus propiedades principales destacan: la raíz siempre es negra, no pueden existir dos nodos rojos consecutivos y todos los caminos desde la raíz hasta las hojas
+                      contienen el mismo número de nodos negros. Estas reglas garantizan que el árbol mantenga una altura controlada y evitan que se degrade en estructuras ineficientes.</p>
+                    <p>Sus beneficios más relevantes se encuentra su capacidad para mantener un rendimiento eficiente en todas las operaciones básicas como búsqueda, inserción y eliminación, con una complejidad de O(log n) incluso en el peor de los casos. Además, permite un ordenamiento dinámico de los datos sin necesidad
+                      de reorganizaciones completas, lo que lo hace ideal para aplicaciones donde la información cambia constantemente. También reduce el riesgo de degradación que presentan otros árboles no balanceados.</p>
+                    <p>La importancia del árbol rojo-negro radica en su uso extendido dentro de la informática moderna, ya que sirve como base para implementar estructuras como diccionarios, conjuntos y tablas asociativas en múltiples lenguajes de programación. Asimismo, es utilizado en sistemas operativos y bases de datos debido
+                       a su eficiencia y estabilidad. Su estudio es fundamental en algoritmos y estructuras de datos porque demuestra cómo el balanceo automático mejora significativamente el rendimiento en el manejo de grandes volúmenes de información.</p>   
             </div>
         </div>   
 
-        <div class="section" id="seccion-2-1-5">
+        <div class="section" id="seccion-3-1-5">
             <div class="section-header">
-                <div class="section-number">2.1.5</div>
-                <div class="section-title">Aplicaciones </div>
+                <div class="section-number">3.1.5</div>
+                <div class="section-title">Montículo </div>
             </div>
             <div class="content">
-                    <p>Son aquellas que permiten organizar y controlar la ejecución de procesos siguiendo el principio LIFO (Last In, First Out), es decir, el último elemento en entrar es el primero en salir.</p>
-                    <p>Se caracteriza por operar bajo el principio LIFO (último en entrar, primero en salir), lo que implica que solo se puede acceder al elemento ubicado en la parte superior mediante operaciones
-                       básicas como inserción (push) y eliminación (pop), garantizando un control ordenado y eficiente de los datos.</p>
-                    <p>Su estructura es lineal, dinámica o estática según su implementación, y permite un manejo temporal de la información durante la ejecución de un programa.</p>
-                    <p>Se utiliza en la evaluación de expresiones matemáticas, la conversión de notaciones (como de infija a postfija), la implementación de la recursividad mediante el almacenamiento de llamadas
-                       a funciones (call stack) y el control del flujo de ejecución de los procesos en un programa, facilitando así la organización, seguimiento y resolución de problemas computacionales de manera
-                       estructurada y eficiente (Thomas H. Cormen et al., 2009).</p>
-                    
+                    <p>Un montículo (heap) es una estructura de datos basada en un árbol binario completo que cumple una propiedad de orden específica. En un max-heap, cada nodo padre es mayor o igual que sus hijos, mientras que en un min-heap, el padre es menor o igual que sus hijos.
+                       Esta organización no mantiene un orden total como otras estructuras, pero sí garantiza que el elemento más importante (máximo o mínimo) se encuentre en la raíz, facilitando su acceso inmediato (Sahni, 2005).</p>
+                    <p>El funcionamiento del montículo se centra en mantener su propiedad mediante operaciones como inserción y eliminación. Cuando se inserta un nuevo elemento, este se coloca en la última posición disponible y luego se ajusta hacia arriba (heapify up). En la eliminación,
+                       generalmente se retira la raíz y se sustituye por el último elemento, reorganizándose hacia abajo (heapify down). Además, los montículos suelen implementarse mediante arreglos, lo que permite una representación eficiente sin necesidad de estructuras complejas.</p>
+                    <p>La importancia del montículo radica en su eficiencia para gestionar datos con prioridad, permitiendo operaciones en tiempo O(log n) y acceso al elemento principal en O(1). Es ampliamente utilizado en algoritmos como HeapSort, en colas de prioridad y en problemas
+                       de optimización dentro de grafos, como el algoritmo de Dijkstra. Por ello, constituye una estructura fundamental en el diseño de algoritmos eficientes.</p>
+
+                
+                     
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 24</div>
-                    <div class="figure-caption">Aplicaciones</div>
+                    <div class="figure-caption">Figura 6</div>
+                    <div class="figure-caption">Montículo</div>
                     <div class="figura">
-                        <img src="FIGURA24.png" alt="Aplicaciones" class="imagen-figura1"/>
+                        <img src="FIGURA6.png" alt="Montículo" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
+                </div>
+                    <p>Su importancia radica en que garantiza un acceso inmediato al elemento más relevante (máximo o mínimo) en tiempo constante O(1), lo cual resulta esencial en aplicaciones como colas de prioridad, algoritmos de grafos (por ejemplo, Dijkstra) y sistemas operativos donde se
+                       requiere tomar decisiones rápidas basadas en prioridades. Además, su representación mediante arreglos optimiza el uso de memoria y facilita su implementación en distintos lenguajes de programación.</p>
+                    <p>Entre sus principales ventajas destaca su eficiencia en operaciones como inserción y eliminación, las cuales se realizan en tiempo O(log n) gracias a los procesos de reorganización (heapify). También permite ordenar datos de manera eficiente mediante algoritmos como HeapSort, y
+                       mantiene una estructura parcialmente ordenada sin necesidad de reorganizar todos los elementos. Estas características hacen del montículo una herramienta clave para el diseño de algoritmos eficientes, especialmente en problemas donde el rendimiento y la optimización son
+                       factores críticos (Sedgewick, 2011).</p>
+           </div>
+        </div>   
+
+        <div class="section" id="seccion-3-1-6">
+            <div class="section-header">
+                <div class="section-number">3.1.6</div>
+                <div class="section-title">Implementaciones y aplicaciones </div>
+            </div>
+            <div class="content">
+                    <p>Las implementaciones y aplicaciones en estructuras de datos se refieren a la manera en que estas se construyen y utilizan dentro de programas reales para resolver problemas específicos. La implementación consiste en traducir estructuras abstractas como listas, árboles o montículos
+                       a código ejecutable, definiendo cómo se almacenan los datos y cómo operan sus funciones. Por su parte, las aplicaciones muestran el uso de estas estructuras en contextos reales como bases de datos, sistemas operativos y software empresarial, donde permiten organizar la información
+                       de forma eficiente (Goodrich et al., 2014).</p>
+                    <p>La funcionalidad, las implementaciones permiten realizar operaciones como inserción, eliminación, búsqueda y recorrido de datos de manera eficiente según la estructura utilizada. Cada estructura se adapta a necesidades específicas; por ejemplo, los árboles optimizan búsquedas y
+                       los montículos gestionan prioridades. Esto permite desarrollar soluciones eficientes que mejoran el rendimiento de los sistemas y optimizan el uso de recursos computacionales.</p>
+                    <p>Entre sus características principales destacan su adaptabilidad a diferentes lenguajes de programación, su enfoque en la eficiencia y su capacidad para resolver problemas concretos. Además, permiten construir sistemas escalables y organizados, ya que cada estructura aporta ventajas particulares
+                       según el contexto de uso. Comprender sus implementaciones y aplicaciones es esencial para diseñar software robusto y eficiente en distintos entornos tecnológicos.</p>
+
+                
+                     
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 7</div>
+                    <div class="figure-caption">Implementaciones y aplicaciones</div>
+                    <div class="figura">
+                        <img src="FIGURA7.png" alt="Implementaciones y aplicaciones" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
+                </div>
+
+           </div>
+
+
+
+        <div class="section" id="seccion-3-1-7">
+            <div class="section-header">
+                <div class="section-number">3.1.7</div>
+                <div class="section-title">Nociones de complejidad de las implementaciones </div>
+            </div>
+            <div class="content">
+                    <p>se refieren al análisis del rendimiento de una estructura de datos o algoritmo en función de los recursos que utiliza, principalmente tiempo y memoria. Este análisis permite estimar cómo crece el costo de ejecución conforme aumenta el tamaño de los datos de entrada, utilizando
+                       notaciones como O(n), O(log n) o O(n²). Estas medidas describen el comportamiento teórico del algoritmo, lo que facilita comparar distintas soluciones de manera objetiva (Knuth, 2011).</p>
+                    <p>El funcionamiento de este análisis se basa en estudiar las operaciones fundamentales que realiza una implementación, como comparaciones, asignaciones o recorridos. A partir de ello, se determinan distintos escenarios como el mejor caso, el caso promedio y el peor caso, lo cual
+                       permite comprender de forma más completa el desempeño del algoritmo. Por ejemplo, algunas estructuras pueden operar en O(log n), mientras que otras requieren O(n) para realizar la misma tarea dependiendo de su organización.</p>
+                    <p>Entre sus características principales destacan que es una herramienta teórica, independiente del hardware y del lenguaje de programación, y fundamental para optimizar soluciones. Permite identificar ineficiencias, seleccionar la estructura de datos más adecuada y diseñar algoritmos
+                       escalables capaces de manejar grandes volúmenes de información sin afectar significativamente su rendimiento. Por ello, es un concepto clave en el desarrollo de software eficiente.</p>
+
+                
+                     
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 8</div>
+                    <div class="figure-caption">Nociones de complejidad de las implementaciones</div>
+                    <div class="figura">
+                        <img src="FIGURA8.png" alt="Nociones de complejidad de las implementaciones" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
+                </div>
+                    <p>Entre sus principales ventajas destaca que facilitan la selección de algoritmos más eficientes, permitiendo comparar distintas soluciones de manera objetiva. También ayudan a identificar cuellos de botella en los sistemas y favorecen el diseño de aplicaciones escalables, capaces de manejar
+                       grandes volúmenes de información. Gracias a este análisis, los desarrolladores pueden optimizar el rendimiento de sus programas y mejorar la calidad de sus implementaciones.</p>
+                    <p>Sin embargo, también presentan algunas desventajas, ya que se trata de un análisis teórico que no siempre refleja el comportamiento real en entornos específicos. Puede resultar complejo de comprender para quienes inician en el área, y no considera factores como el hardware, el lenguaje
+                       de programación o constantes ocultas en la implementación. Además, un algoritmo con buena complejidad no siempre es el más práctico en escenarios con pocos datos o cuando su implementación es demasiado compleja.</p>
+
+           </div>
+        </div>   
+
+        <div class="section" id="seccion-3-1-8">
+            <div class="section-header">
+                <div class="section-number">3.1.8</div>
+                <div class="section-title">Otros tipos de árboles </div>
+            </div>
+            <div class="content">
+                    <p>Los otros tipos de árboles en estructuras de datos son variantes del árbol binario de búsqueda diseñadas para resolver problemas específicos y mejorar el rendimiento en distintos contextos. Entre los más utilizados se encuentran los árboles AVL, que mantienen un balance estricto; los árboles rojo-negro,
+                       que equilibran de forma más flexible; los árboles B, ampliamente usados en bases de datos; y los tries, empleados para el manejo de cadenas. Cada uno de estos árboles adapta su estructura para optimizar operaciones según el tipo de información y su aplicación.</p>
+                    <p>Entre sus principales características destaca que muchos de estos árboles son auto-balanceados, lo que garantiza eficiencia en operaciones como búsqueda, inserción y eliminación. Algunos, como los árboles B, permiten múltiples hijos por nodo, favoreciendo su uso en almacenamiento externo; mientras que otros,
+                       como los tries, organizan los datos por prefijos en lugar de valores numéricos. Estas estructuras están diseñadas para reducir la altura del árbol y mejorar el rendimiento general del sistema (Sahni, 2005).</p>
+                    <p>En cuanto a sus funciones, estos árboles permiten gestionar datos de forma eficiente en diversos escenarios: los árboles AVL y rojo-negro optimizan búsquedas en memoria, los árboles B se utilizan en sistemas de bases de datos y archivos, y los tries son clave en aplicaciones como autocompletado y
+                       procesamiento de texto. Su uso demuestra cómo la adaptación de estructuras permite resolver problemas complejos de manera eficiente.</p>
+
+                
+                     
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 9</div>
+                    <div class="figure-caption">Otros tipos de árboles</div>
+                    <div class="figura">
+                        <img src="FIGURA9.png" alt="Otros tipos de árboles" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
                 </div>
 
            </div>
         </div>   
-       <div class="section" id="video-material">
+
+
+
+        <div class="section" id="video-material">
             <div class="section-header">
                 <div class="section-number"><i class="fas fa-play-circle"></i></div>
                 <div class="section-title">Material Audiovisual</div>
             </div>
             <div class="content">
-                <p>Este video explica cómo funciona la pila</p>
+                <p>Este video explica cómo funciona Estructura de datos no lineales PENDIENTE</p>
                 
                 <div class="figure-container">
                     <iframe width="100%" height="450" src="https://www.youtube.com/embed/7kfUmsBW4dA" title="Algoritmia en la estructura de datos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
