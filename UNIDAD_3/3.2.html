@@ -732,65 +732,45 @@
              </div> 
         </div>       
  
- 
-                <h4>Características:</h4> 
-                <ul>
-                    <li><strong>Opera bajo el principio FIFO</strong>: El primer elemento en entrar es el primero en salir.</li>
-                    <li><strong>Tiene dos extremos definidos</strong>: front (salida) y rear (entrada).</li>
-                    <li><strong>Utiliza operaciones básicas como</strong>: enqueue (insertar) y dequeue (eliminar).</li>
-                    <li>Permite un control eficiente y ordenado del flujo de datos.</li>
-                    <li>Se aplica en sistemas operativos, gestión de procesos y simulación de filas.</li>
-                </ul>        
-        <div class="section" id="seccion-2-1">
-            <div class="section-header">
-            </div>
-            <div class="content">
-                <p></p>
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 25</div>
-                    <div class="figure-caption">Especificación genérica de una cola</div>
-                    <div class="figura">
-                        <img src="FIGURA25.png" alt="Especificación genérica de una cola" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Elaboración propia</div>
-                </div>
-             </div> 
-        </div>       
+                <p>Las representaciones basadas en listas utilizan listas de adyacencia, donde cada vértice almacena una lista de los nodos a los que está conectado. Este enfoque resulta más eficiente en términos de memoria cuando el grafo es disperso,
+                   ya que solo se almacenan las conexiones existentes. Además, facilita recorrer los vecinos de un nodo de manera eficiente, lo que es clave en algoritmos como BFS y DFS. No obstante, comprobar si existe una arista específica puede ser
+                   más lento en comparación con la matriz. En conjunto, la elección entre ambas representaciones depende del tipo de grafo y de las operaciones que se requieran realizar (Goodrich et al., 2014).</p>
+                <p></p> 
 
-        <div class="section" id="seccion-2-2-2">
+                     
+ 
+        <div class="section" id="seccion-3-2-2">
             <div class="section-header">
-                <div class="section-number">2.2.2</div>
-                <div class="section-title">Implementación en estática</div>
+                <div class="section-number">3.2.2</div>
+                <div class="section-title">Búsqueda en amplitud</div>
             </div>
             <div class="content">
-                <p>Es la forma de representación mediante un arreglo de tamaño fijo definido desde el inicio del programa. En este enfoque, los elementos se insertan en el extremo rear (final) y
-                   se eliminan del front (frente), respetando el principio FIFO (First In, First Out). Para su control se utilizan índices que permiten gestionar las operaciones de enqueue (inserción) y dequeue (eliminación).
-                   No obstante, presenta limitaciones como el desbordamiento (overflow) cuando se alcanza la capacidad máxima y el posible desperdicio de memoria; aun así, ofrece simplicidad y rapidez en su implementación (Seymour Lipschutz, 2014).</p>
-                <h4>Las características de la implementación estática de una cola son:</h4> 
-                <ul>
-                    <li>Utiliza un arreglo de tamaño fijo definido desde el inicio del programa.</li>
-                    <li>Opera bajo el principio FIFO (First In, First Out), respetando el orden de llegada de los elementos.</li>
-                    <li>Emplea dos índices o variables: front (frente) y rear (final) para controlar la inserción y eliminación.</li>
-                    <li>Permite operaciones básicas como enqueue (insertar) y dequeue (eliminar).</li>
-                    <li>Puede presentar overflow cuando la cola alcanza su capacidad máxima.</li> 
-                    <li>Puede generar desperdicio de memoria si no se aprovechan espacios liberados.</li>
-                    <li>Ofrece una implementación sencilla y acceso rápido a los elementos.</li>                                       
-                </ul>        
+                <p>Según Cormen et al., 2009, la búsqueda en amplitud (BFS, por sus siglas en inglés) es un algoritmo utilizado en grafos para recorrer o explorar todos los nodos de manera ordenada, comenzando desde un nodo inicial y visitando primero
+                   todos sus vecinos más cercanos antes de avanzar a niveles más profundos. Es decir, explora el grafo por “capas” o niveles, lo que permite analizar la estructura de conexiones de forma progresiva. Este método es ampliamente utilizado
+                   en problemas donde se requiere encontrar la distancia mínima en grafos no ponderados.</p>
+                
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 26</div>
-                    <div class="figure-caption">Implementación en estática de una cola</div>
+                    <div class="figure-caption">Figura 12</div>
+                    <div class="figure-caption">Búsqueda en amplitud</div>
                     <div class="figura">
-                        <img src="FIGURA26.png" alt="Implementación en estática de una cola" class="imagen-figura1"/>
+                        <img src="FIGURA12.png" alt="Búsqueda en amplitud" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                  </div>
              </div> 
+                <p>El funcionamiento de BFS se basa en el uso de una cola (queue) como estructura auxiliar. Primero se visita el nodo inicial, luego se agregan sus vecinos a la cola, y posteriormente se van procesando en el mismo orden en
+                   que fueron insertados. A medida que se visita cada nodo, se marcan como explorados para evitar repeticiones. Este proceso continúa hasta que todos los nodos alcanzables han sido recorridos, garantizando que los nodos más
+                   cercanos al inicio se visiten antes que los más lejanos.</p>
+                <p>Entre sus principales características, la búsqueda en amplitud garantiza encontrar el camino más corto en términos de número de aristas en grafos no ponderados, lo que la hace muy útil en aplicaciones como rutas, redes y juegos.
+                   Sin embargo, puede requerir mayor uso de memoria debido al almacenamiento de nodos en la cola. A pesar de ello, su simplicidad y eficiencia la convierten en uno de los algoritmos fundamentales en la teoría de grafos y
+                   en el diseño de soluciones computacionales (Goodrich et al., 2014).</p>
+
         </div> 
 
-       <div class="section" id="seccion-2-2-3">
+       <div class="section" id="seccion-3-2-3">
             <div class="section-header">
-                <div class="section-number">2.2.3</div>
-                <div class="section-title">Implementación dinámica en cola</div>
+                <div class="section-number">3.2.3</div>
+                <div class="section-title"> Búsqueda en profundidad</div>
             </div>
             <div class="content">
                 <p>Se basa en el uso de un arreglo de tamaño fijo en el que los elementos se almacenan de manera contigua en memoria, respetando el principio FIFO (primero en entrar, primero en salir).</p>
