@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2.2 Cola</title>
+    <title>3.2 Grafos</title>
     <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -615,8 +615,8 @@
 
     <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
-            <div class="sidebar-title">2.2 Cola</div>
-            <div class="sidebar-subtitle">Permite organizar y procesar información siguiendo el principio FIFO (First In, First Out), el primer elemento en entrar es el primero en salir.</div>
+            <div class="sidebar-title">3.2 Grafos</div>
+            <div class="sidebar-subtitle">Los grafos en los modelos matemáticos establecen en su capacidad para representar de manera clara y estructurada las relaciones entre elementos dentro de un sistema.</div>
         </div>
         
         <div class="nav-sections">
@@ -626,29 +626,29 @@
                     <i class="fas fa-rocket"></i> Inicio del Tema
                 </a>
                 <a href="index.html" class="nav-item">
-                    <i class="fas fa-arrow-left"></i> Menú de Unidad 2
+                    <i class="fas fa-arrow-left"></i> Menú de Unidad 3
                 </a>
             </div>
 
             <div class="nav-section">
                 <div class="nav-section-title">Contenido</div>
-                <a href="#seccion-2-2-1" class="nav-item" data-section="2-2-1">
-                    <i class="fas fa-book"></i> 2.2.1 Especificación genérica
+                <a href="#seccion-3-2-1" class="nav-item" data-section="3-2-1">
+                    <i class="fas fa-book"></i> 3.2.1 Representaciones matriciales y basadas en listas
                 </a>
-                <a href="#seccion-2-2-2" class="nav-item" data-section="2-2-2">
-                    <i class="fas fa-cogs"></i> 2.2.2 Implementación estática
+                <a href="#seccion-3-2-2" class="nav-item" data-section="3-2-2">
+                    <i class="fas fa-cogs"></i> 3.2.2 Búsqueda en amplitud
                 </a>
-                <a href="#seccion-2-2-3" class="nav-item" data-section="2-2-3">
-                    <i class="fas fa-layer-group"></i> 2.2.3 Implementación dinámica
+                <a href="#seccion-3-2-3" class="nav-item" data-section="3-2-3">
+                    <i class="fas fa-layer-group"></i> 3.2.3 Búsqueda en profundidad
                 </a>
-                <a href="#seccion-2-2-4" class="nav-item" data-section="2-2-4">
-                    <i class="fas fa-layer-group"></i> 2.2.4 Colas de prioridad
+                <a href="#seccion-3-2-4" class="nav-item" data-section="3-2-4">
+                    <i class="fas fa-layer-group"></i> 3.2.4 Distancia más corta
                 </a>
-                <a href="#seccion-2-2-5" class="nav-item" data-section="2-2-5">
-                    <i class="fas fa-layer-group"></i> 2.2.5 Nociones de complejidad de las operaciones
+                <a href="#seccion-3-2-5" class="nav-item" data-section="3-2-5">
+                    <i class="fas fa-layer-group"></i> 3.2.5 Implementaciones y aplicaciones 
                 </a>
-                <a href="#seccion-2-2-6" class="nav-item" data-section="2-2-6">
-                    <i class="fas fa-layer-group"></i> 2.2.6 Aplicaciones
+                <a href="#seccion-3-2-6" class="nav-item" data-section="3-2-6">
+                    <i class="fas fa-layer-group"></i> 3.2.6 Nociones de complejidad de los algoritmos sobre grafos
                 </a>
             </div>
 
@@ -673,28 +673,66 @@
             <div class="breadcrumb">
                 <a href="https://escomisr.github.io/Libro_Digital_SO/index.html"><i class="fas fa-home"></i> Inicio</a>
                 <span>/</span>
-                <a href="index.html">Unidad 2</a>
+                <a href="index.html">Unidad 3</a>
                 <span>/</span>
-                <span>2.2 Colas</span>
+                <span>3.2 Grafos</span>
             </div>
-            <h1>2.2 Colas</h1>
-            <div class="subtitle">Permite organizar y procesar información siguiendo el principio FIFO (First In, First Out), el primer elemento en entrar es el primero en salir.</div>
+            <h1>3.2 Grafos</h1>
+            <div class="subtitle">Los grafos en los modelos matemáticos establecen en su capacidad para representar de manera clara y estructurada las relaciones entre elementos dentro de un sistema.</div>
         </header>
         
         
         <div class="intro">
-            <p>En el desarrollo de algoritmos, gestionar correctamente los datos marca la diferencia en la eficiencia de un sistema. La estructura de cola,
-               basada en el principio FIFO (First In, First Out), permite procesar la información en el mismo orden en que llega, garantizando organización, equidad y control en aplicaciones como sistemas operativos y manejo de solicitudes,
-               lo que la convierte en un recurso esencial para optimizar el flujo de datos (Mark Allen Weiss, 2014).</p>
+            <p>Los grafos constituyen una de las estructuras fundamentales dentro de la algoritmia y las estructuras de datos, ya que permiten representar relaciones entre distintos elementos de manera flexible y no lineal. A diferencia de
+               otras estructuras más simples, los grafos están formados por nodos (vértices) y conexiones (aristas), lo que facilita modelar situaciones donde los datos están interconectados, como redes sociales, sistemas de transporte o
+               redes de comunicación. Esta capacidad de representar relaciones complejas los convierte en una herramienta esencial para comprender y analizar problemas del mundo real (Sedgewick & Wayne, 2011).</p>
+            <P></P>
+
         </div>
-        
-        <div class="section" id="seccion-2-2-1">
+        <div class="section" id="seccion-3-2">
             <div class="section-header">
-                <div class="section-number">2.2.1</div>
-                <div class="section-title">Especificación genérica</div>
             </div>
             <div class="content">
-                <p>La cola es una estructura de datos lineal que organiza los elementos bajo el principio FIFO (First In, First Out), donde el primer dato en ingresar es el primero en salir, lo que garantiza un procesamiento ordenado y equitativo de la información</p>
+                <p></p>
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 10</div>
+                    <div class="figure-caption">Grafos</div>
+                    <div class="figura">
+                        <img src="FIGURA10.png" alt="Grafos" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div> 
+        </div>       
+        
+        <div class="section" id="seccion-3-2-1">
+            <div class="section-header">
+                <div class="section-number">3.2.1</div>
+                <div class="section-title">Representaciones matriciales y basadas en listas</div>
+            </div>
+            <div class="content">
+                <p>Las representaciones matriciales en grafos se basan en el uso de una matriz de adyacencia, donde las filas y columnas representan los vértices del grafo, y cada celda indica si existe o no una conexión entre dos nodos. En grafos no dirigidos,
+                   la matriz suele ser simétrica, mientras que en grafos dirigidos los valores pueden variar según la dirección de la arista.</p>
+                <p>Esta representación es especialmente útil cuando el grafo es denso, ya que permite verificar rápidamente si existe una conexión entre dos vértices en tiempo constante. Sin embargo, su principal desventaja es el alto consumo de memoria,
+                   ya que requiere un espacio de n2 posiciones, incluso si hay pocas conexiones (Cormen et al., 2009).</p>   
+ 
+        <div class="section" id="seccion-3-2">
+            <div class="section-header">
+            </div>
+            <div class="content">
+                <p></p>
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 11</div>
+                    <div class="figure-caption">Representaciones matriciales y basadas en listas</div>
+                    <div class="figura">
+                        <img src="FIGURA11.png" alt="Representaciones matriciales y basadas en listas" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+             </div> 
+        </div>       
+ 
+ 
                 <h4>Características:</h4> 
                 <ul>
                     <li><strong>Opera bajo el principio FIFO</strong>: El primer elemento en entrar es el primero en salir.</li>
