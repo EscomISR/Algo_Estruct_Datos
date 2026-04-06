@@ -773,111 +773,127 @@
                 <div class="section-title"> Búsqueda en profundidad</div>
             </div>
             <div class="content">
-                <p>Se basa en el uso de un arreglo de tamaño fijo en el que los elementos se almacenan de manera contigua en memoria, respetando el principio FIFO (primero en entrar, primero en salir).</p>
-                <p>Su funcionamiento se emplean dos variables de control: el índice frente, que señala el primer elemento disponible para ser eliminado, y el índice final, que indica la posición donde se
-                   insertará un nuevo dato. Inicialmente, ambos índices suelen establecerse en valores que representen una cola vacía, y conforme se realizan operaciones, estos se actualizan de manera secuencial.</p>
-                <p>La operación de inserción (enqueue) consiste en incrementar el índice final e insertar el elemento en esa posición, siempre que la cola no esté llena; mientras que la eliminación (dequeue) implica
-                   extraer el elemento apuntado por frente y posteriormente avanzar dicho índice.</p>
-                <p>Esta estructura presenta condiciones importantes como el desbordamiento, cuando el arreglo alcanza su capacidad máxima, y el subdesbordamiento, cuando se intenta eliminar un elemento de una cola vacía.
-                   Aunque su principal ventaja radica en la eficiencia de sus operaciones, que se ejecutan en tiempo constante, una de sus limitaciones es el posible desperdicio de espacio, ya que las posiciones liberadas
-                   al inicio no se reutilizan en una implementación simple</p>   
-                <p>Según Thomas H. Cormen et al. (2009), este tipo de estructuras permite organizar y gestionar datos de forma ordenada mediante operaciones básicas bien definidas, facilitando su manipulación
-                   dentro de los sistemas computacionales.</p>    
-                    
+                <p>La búsqueda en profundidad (DFS, Depth-First Search) es un algoritmo utilizado en grafos que explora los nodos siguiendo un camino lo más profundo posible antes de retroceder. A partir de un nodo inicial, el algoritmo avanza
+                   hacia uno de sus vecinos y continúa descendiendo por ese camino hasta que no puede avanzar más; en ese momento, regresa (backtracking) para explorar otras rutas disponibles. Este enfoque permite recorrer
+                   completamente un grafo o árbol, siendo muy útil para analizar su estructura (Cormen et al., 2009).</p>
+                <p>El funcionamiento de DFS se basa en el uso de una pila (stack), que puede implementarse de forma explícita o mediante recursividad. El algoritmo visita un nodo, lo marca como explorado y continúa con el siguiente,
+                   este proceso se repite hasta llegar a un nodo sin vecinos disponibles. Luego, el algoritmo retrocede al nodo anterior para explorar otros caminos pendientes. Este mecanismo de exploración permite recorrer todos
+                   los nodos alcanzables del grafo de manera sistemática.</p>
+                <p></p>
+                    <div class="figure-container">
+                        <div class="figure-caption">Figura 13</div>
+                        <div class="figure-caption">Búsqueda en profundidad</div>
+                        <div class="figura">
+                            <img src="FIGURA13.png" alt="Búsqueda en profundidad" class="imagen-figura1"/>
+                        </div>
+                        <div class="figure-caption">Nota: Elaboración propia</div>
+                    </div>
+                <p>Entre sus características, la búsqueda en profundidad es eficiente en memoria en comparación con BFS, ya que no necesita almacenar todos los nodos de un nivel. Además, es ampliamente utilizada en problemas como detección de ciclos,
+                   ordenamiento topológico y generación de laberintos. Sin embargo, no garantiza encontrar el camino más corto en grafos no ponderados. A pesar de ello, DFS es un algoritmo fundamental en la teoría de grafos por su simplicidad y versatilidad.</p>
+
+            <div style="margin-top: 30px;">
+                <h3><i class="fas fa-play-circle" style="margin-right: 10px;"></i> Material Audiovisual</h3>
+                <p>A continuación, se explican la funcionalidad de los grafos, búsqueda en amplitud y profundidad</p>
+                
+                <div class="figure-container">
+                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/vDe8e0W8Cps" title="Modelos multihilos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
+                    <div class="figure-caption">Salas, I. (2025, 24 de noviembre). <em>Modelo multi-hilo</em> [Video]. YouTube. https://www.youtube.com/watch?v=vDe8e0W8Cps</div>
+                </div>
+            </div>
+
+
+       <div class="section" id="seccion-3-2-4">
+            <div class="section-header">
+                <div class="section-number">3.2.4</div>
+                <div class="section-title"> Distancia más corta</div>
+            </div>
+            <div class="content">
+                <p>La distancia más corta en grafos es un problema central en la algoritmia que consiste en determinar el camino óptimo entre dos nodos, ya sea minimizando el número de aristas o el costo total cuando existen pesos asociados. Esta noción permite modelar
+                   situaciones reales como rutas de transporte, flujo de información o conexiones en redes, facilitando la toma de decisiones eficientes dentro de sistemas complejos (Sedgewick & Wayne, 2011).</p>
+                <p>Para resolver este problema, se emplean algoritmos especializados como el algoritmo de Dijkstra, que permite encontrar el camino más corto desde un nodo origen hacia todos los demás en grafos con pesos positivos. Asimismo, el algoritmo de Bellman-Ford
+                   amplía esta capacidad al permitir trabajar con pesos negativos, lo que resulta útil en escenarios más complejos donde existen variaciones en los costos de las conexiones.</p>
+
+                   <div class="figure-container">
+                        <div class="figure-caption">Figura 14</div>
+                        <div class="figure-caption">Distancia más corta</div>
+                        <div class="figura">
+                            <img src="FIGURA14.png" alt="Distancia más corta" class="imagen-figura1"/>
+                        </div>
+                        <div class="figure-caption">Nota: Elaboración propia</div>
+                    </div>
+                 <p>Desde el punto de vista funcional, estos algoritmos analizan múltiples rutas posibles y seleccionan aquella que minimiza el costo acumulado, garantizando resultados óptimos bajo ciertas condiciones. Este proceso implica comparar distancias, actualizar
+                    valores y recorrer el grafo de manera sistemática, lo que convierte al problema de la distancia más corta en una herramienta clave para la optimización computacional (Kleinberg & Tardos, 2006).</p>
+                 <p>Por lo que la distancia más corta tiene aplicaciones directas en áreas como la logística, las telecomunicaciones, la inteligencia artificial y los sistemas de navegación. Su estudio permite mejorar la eficiencia en el uso de recursos, reducir tiempos de
+                    operación y resolver problemas complejos de manera estructurada. Por ello, es considerada una de las aplicaciones más relevantes de la teoría de grafos dentro de la ciencia de la computación.</p>
+                   
 
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 27</div>
-                    <div class="figure-caption">Implementación en dinámica de una cola</div>
+                    <div class="figure-caption">Figura 15</div>
+                    <div class="figure-caption">Ventajas y desventajas de la distancia más corta</div>
                     <div class="figura">
-                        <img src="FIGURA27.png" alt="Implementación en dinámica de una cola" class="imagen-figura1"/>
+                        <img src="FIGURA15.png" alt="Ventajas y desventajas de la distancia más corta" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                   </div>
              </div> 
         </div> 
 
-        <div class="section" id="seccion-2-2-4">
+        <div class="section" id="seccion-3-2-5">
             <div class="section-header">
-                <div class="section-number">2.2.4</div>
-                <div class="section-title">Colas de prioridad</div>
+                <div class="section-number">3.2.5</div>
+                <div class="section-title">Implementaciones y aplicaciones</div>
             </div>
             <div class="content">
-                <p>constituyen una variante de las estructuras de datos tipo cola en la que cada elemento no solo se inserta, sino que además se le asigna un nivel de prioridad, determinando el orden en el que será atendido o eliminado.</p>
-                <p>A diferencia de una cola tradicional que sigue el principio FIFO (primero en entrar, primero en salir), en una cola de prioridad los elementos se procesan de acuerdo con su importancia,
-                   de modo que aquel con mayor (o menor, según el criterio) prioridad será el primero en salir, independientemente de su orden de llegada.</p>
-                <p>En su implementación, pueden utilizarse arreglos, listas enlazadas o estructuras más eficientes como montículos (heaps), donde la organización interna permite acceder rápidamente al elemento prioritario. Las operaciones
-                   fundamentales incluyen la inserción de un elemento con su prioridad asociada y la eliminación del elemento con mayor prioridad, manteniendo siempre el orden establecido. Este tipo de estructura es ampliamente utilizado
-                   en sistemas operativos, algoritmos de planificación de tareas y problemas de optimización, donde es necesario gestionar elementos bajo criterios de relevancia.</p>
-                <p>De acuerdo con Thomas H. Cormen et al. (2009), las colas de prioridad permiten seleccionar eficientemente el siguiente elemento a procesar en función de una clave, optimizando así el rendimiento en diversos algoritmos y
-                   aplicaciones computacionales.</p>   
+                <p>Las implementaciones de grafos en algoritmia hacen referencia a la manera en que estas estructuras se representan dentro de un sistema computacional para poder ser manipuladas mediante algoritmos.
+                   Las formas más comunes son la matriz de adyacencia y la lista de adyacencia, cada una adecuada según el tipo de problema: la matriz facilita el acceso directo a las conexiones, mientras que la
+                   lista optimiza el uso de memoria en grafos dispersos. Estas representaciones permiten ejecutar de forma eficiente algoritmos fundamentales para el análisis de grafos (Weiss, 2014).</p>
+                <p>Sus aplicaciones, los grafos son utilizados en múltiples áreas como las redes de computadoras, donde modelan la interconexión de dispositivos; en sistemas de transporte,
+                   para encontrar rutas óptimas; y en bases de datos o redes sociales, para analizar relaciones entre entidades. Además, en el ámbito de la inteligencia artificial, los grafos son esenciales para resolver
+                   problemas de búsqueda, planificación y toma de decisiones en entornos complejos (Tanenbaum & Van Steen, 2007).</p>
+                <p></p>
 
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 28</div>
-                    <div class="figure-caption">Colas de prioridad</div>
+                    <div class="figure-caption">Figura 16</div>
+                    <div class="figure-caption">Implementaciones y aplicaciones</div>
                     <div class="figura">
-                        <img src="FIGURA28.png" alt="Colas de prioridad" class="imagen-figura1"/>
+                        <img src="FIGURA16.png" alt="Implementaciones y aplicaciones" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
+                <p>Es por ello que su funcionalidad de los grafos radica en su capacidad para representar y analizar relaciones entre distintos elementos mediante nodos y aristas. Esta estructura permite
+                   modelar sistemas complejos donde los datos no siguen un orden lineal, facilitando la implementación de algoritmos como BFS, DFS o Dijkstra para recorrer, buscar o encontrar rutas óptimas. Gracias a ello, los grafos permiten resolver problemas relacionados con conectividad, caminos mínimos y organización de datos de forma eficiente.</p>
+                <p>Los grafos permiten que los sistemas sean más inteligentes y eficientes, ya que pueden adaptarse a cambios y analizar múltiples posibilidades antes de ejecutar una acción. Esto es clave en áreas como la inteligencia artificial, donde los grafos ayudan a modelar conocimiento, o en sistemas distribuidos, donde optimizan la comunicación
+                   entre múltiples dispositivos. En conjunto, los grafos actúan como una base estructural que permite a los sistemas operar de manera organizada, dinámica y eficiente.</p>
              </div> 
         </div> 
-       <div class="section" id="seccion-2-2-5">
+       <div class="section" id="seccion-3-2-6">
             <div class="section-header">
-                <div class="section-number">2.2.5</div>
+                <div class="section-number">3.2.6</div>
                 <div class="section-title">Nociones de complejidad de las operaciones</div>
             </div>
             <div class="content">
-                <p>permiten analizar qué tan eficiente es una estructura de datos o un algoritmo en función del tiempo que tarda en ejecutar sus operaciones básicas, como insertar, eliminar o buscar elementos. Este análisis se expresa generalmente mediante la notación Big O (O),
-                   la cual describe el comportamiento del algoritmo conforme crece el tamaño de los datos (n), sin enfocarse en tiempos exactos, sino en su tendencia de crecimiento. De esta forma, es posible comparar distintas implementaciones y
-                   determinar cuál resulta más adecuada según el problema a resolver.</p>
-                <p>Permiten analizar qué tan eficiente es una estructura de datos o un algoritmo en función del tiempo que tarda en ejecutar sus operaciones básicas, como insertar, eliminar o buscar elementos. Este análisis se expresa generalmente mediante la notación Big O (O),
-                   la cual describe el comportamiento del algoritmo conforme crece el tamaño de los datos (n), sin enfocarse en tiempos exactos, sino en su tendencia de crecimiento. De esta forma, es posible comparar distintas implementaciones y
-                   determinar cuál resulta más adecuada según el problema a resolver.</p>
-                <p>En el caso de las estructuras de datos lineales, como las colas, las operaciones principales suelen tener una complejidad constante O(1) cuando se implementan de forma eficiente, ya que tanto la inserción (enqueue) como la eliminación (dequeue) solo requieren
-                   actualizar índices como frente y final. Sin embargo, en algunas implementaciones menos optimizadas, ciertas operaciones pueden implicar desplazamientos de elementos, lo que incrementa la complejidad a O(n). Por ello,
-                   el diseño de la estructura influye directamente en su rendimiento.</p>
-                <p>Comprender estas nociones resulta fundamental en el desarrollo de software, ya que permite anticipar el comportamiento de los sistemas cuando manejan grandes volúmenes de información. Una elección adecuada de la estructura de datos y su implementación puede
-                   reducir significativamente el tiempo de ejecución y el consumo de recursos. Como señala Donald Knuth (2011), el análisis de la eficiencia de los algoritmos es clave para diseñar soluciones óptimas y escalables dentro de la computación.</p>
+                <p>Las nociones de complejidad de los algoritmos sobre grafos se refieren al análisis del tiempo y espacio que requieren los algoritmos para procesar estructuras de grafos. Este análisis se expresa comúnmente mediante la notación Big-O, considerando el número de vértices (V) y aristas (E).</p>
+                <p>Se caracterizan por analizar el rendimiento en función de dos elementos principales: el número de vértices (V) y el número de aristas (E). Esto permite medir con mayor precisión el comportamiento del algoritmo en estructuras no lineales, donde las conexiones influyen directamente en el tiempo de ejecución. A diferencia de otras estructuras,
+                   en los grafos no solo importa la cantidad de datos, sino también cómo están interconectados, lo que hace que su análisis sea más completo y representativo.</p>
+                <p>La complejidad en grafos se distingue por su enfoque en la eficiencia y escalabilidad, lo que permite seleccionar el algoritmo más adecuado según el tamaño y la densidad del grafo. Esta característica es fundamental en aplicaciones reales, donde se manejan grandes volúmenes de información, ya que un análisis adecuado evita el uso excesivo de
+                   recursos y mejora el rendimiento general del sistema. Por ello, comprender estas nociones es clave para diseñar soluciones óptimas y eficientes en la práctica computacional (Kleinberg & Tardos, 2006).</p>
+
 
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 29</div>
+                    <div class="figure-caption">Figura 17</div>
                     <div class="figure-caption">Nociones de complejidad de las operaciones</div>
                     <div class="figura">
-                        <img src="FIGURA29.png" alt="Nociones de complejidad de las operaciones" class="imagen-figura1"/>
+                        <img src="FIGURA17.png" alt="Nociones de complejidad de las operaciones" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
-             </div> 
-        </div> 
-       <div class="section" id="seccion-2-2-6">
-            <div class="section-header">
-                <div class="section-number">2.2.6</div>
-                <div class="section-title">Aplicaciones</div>
-            </div>
-            <div class="content">
-                <p>Las colas tienen múltiples aplicaciones en el ámbito de la computación debido a su capacidad para organizar y procesar elementos en orden secuencial. Una de sus aplicaciones más comunes se encuentra en los sistemas operativos,
-                   donde se utilizan para la gestión de procesos y tareas. Por ejemplo, los procesos que esperan ser ejecutados por el CPU se almacenan en colas, permitiendo que el sistema los atienda en el orden en que llegan o según ciertas
-                   políticas de planificación, lo que garantiza un uso eficiente de los recursos del sistema</p>
-                <p>Otra aplicación importante de las colas se observa en el manejo de estructuras de entrada y salida (E/S), como la impresión de documentos. En este caso, los trabajos de impresión se organizan en una cola, donde el primero
-                   en enviarse es el primero en procesarse, evitando conflictos y asegurando un flujo ordenado de operaciones. De manera similar, en redes de computadoras, las colas se emplean para gestionar paquetes de datos que deben ser
-                   transmitidos, permitiendo regular el tráfico y evitar la congestión en los sistemas de comunicación.</p>
-                <p>Según Mark Allen Weiss (2014), las colas facilitan la organización y procesamiento eficiente de datos en diversos contextos computacionales, siendo esenciales para el desarrollo de soluciones estructuradas.</p>
-
-
-                <div class="figure-container">
-                    <div class="figure-caption">Figura 30</div>
-                    <div class="figure-caption">Aplicaciones de colas</div>
-                    <div class="figura">
-                        <img src="FIGURA30.png" alt="Aplicaciones de colas" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Elaboración propia</div>
-                </div>
-             </div> 
+             </div>
+ 
         </div> 
 
             <div style="margin-top: 30px;">
                 <h3><i class="fas fa-play-circle" style="margin-right: 10px;"></i> Material Audiovisual</h3>
-                <p>A continuación, se explican la funcionalidad de las colas:</p>
+                <p>A continuación, se explican la funcionalidad de los grafos distancia corta </p>
                 
                 <div class="figure-container">
                     <iframe width="100%" height="450" src="https://www.youtube.com/embed/RVtUR8DvpFw" title="Modelos multihilos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
