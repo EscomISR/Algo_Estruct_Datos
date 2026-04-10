@@ -733,7 +733,7 @@
                 <div class="section-title">Ordenamiento por selección</div>
             </div>
             <div class="content">
-                <p>Este algoritmo se estructura bajo la premisa de los elementos más pequeños o grandes de una determina lista o arreglo para que con ello los coloque en la posición correcta entre los valores de 0 al tamaño -1, esto lo realiza varias veces hasta que todos los datos de la lista se encuentren ordenados. </p>
+                <p>Este algoritmo se estructura bajo la premisa de los elementos más pequeños o grandes de una lista determinada en el ordenamiento de mezcla o arreglo para que con ello los coloque en la posición correcta entre los valores de 0 al tamaño -1, esto lo realiza varias veces hasta que todos los datos de la lista se encuentren ordenados. </p>
                 <p>El siguiente ejemplo, establece el ordenamiento por selección en donde consiste en tomar una lista desordenada y buscar el elemento más pequeño para colocarlo en la primera posición. Después se busca el siguiente elemento más pequeño en el resto de la lista y se coloca en la segunda posición. Este procedimiento se repite avanzando una posición cada vez, comparando
                    los elementos restantes y colocándolos en el lugar correcto. El proceso termina cuando todos los datos han sido ordenados dentro del arreglo, como se muestra en el código siguiente.</p>
             </div>
@@ -778,7 +778,8 @@
                 <P>Primero, la lista se divide en dos partes iguales hasta que cada parte tenga un solo elemento. Después, se empiezan a unir las partes comparando los valores de cada grupo y colocándolos en orden. Este proceso de dividir y mezclar se repite varias veces hasta que todos los elementos quedan ordenados en una sola lista, como se muestra en la siguiente imagen.</P>  
                 <P>La imagen muestra cómo funciona el ordenamiento por mezcla (Merge Sort). Primero se observa una lista de números desordenados en la parte superior. El algoritmo comienza dividiendo la lista en partes más pequeñas, separándola en dos grupos y después en grupos aún más pequeños, hasta que cada grupo tiene solo un elemento.</P> 
                 <P>Después de dividir, el algoritmo empieza a ordenar y mezclar los grupos, comparando los números de cada lado y colocándolos en el orden correcto. Este proceso de mezclar se repite varias veces hasta formar nuevamente una sola lista, pero ahora completamente ordenada. Por eso se llama ordenamiento por mezcla, porque divide la lista y luego la vuelve a unir en orden.</P> 
-                <p>La siguiente imagen muestra el funcionamiento del ordenamiento de burbuja, un algoritmo que ordena los números comparando elementos consecutivos y cambiándolos de posición cuando están en el orden incorrecto. En cada recorrido,
+                <p>La siguiente imagen muestra el funcionamiento del ordenamiento de mezcla, un algoritmo que ordena los números de manera recursiva dividiendo el arreglo a la mitad, este proceso se continua haciendo hasta llegar al caso base de un arreglo de un elemento, el cual como es el único elemento se encuentra ordenado. Teniendo las dos partes de los subarreglos ordenadas se procede
+                   en el regreso de la recursividad a mezclarlos para obtener un único arreglo ordenado. Consecutivamente se va realizando las mezclas hasta que se hace sobre los dos primeros subarreglos, lo que conduce a tener ordenado el Arreglo original. </p>
             </div>
             <div class="figure-container">
                 <div class="figure-caption">Figura 9</div>
