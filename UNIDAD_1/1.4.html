@@ -642,10 +642,10 @@
                 <a href="#seccion-1-4-1" class="nav-item" data-section="1-4-1">
                     <i class="fas fa-bolt"></i> 1.4.1 Exploración exhaustiva
                 </a>
-                <a href="#seccion-1-4-2" class="nav-item" data-section="1-3-2">
+                <a href="#seccion-1-4-2" class="nav-item" data-section="1-4-2">
                     <i class="fas fa-users"></i> 1.4.2 Programación vuelta atrás
                 </a>
-                <a href="#seccion-1-4-3" class="nav-item" data-section="1-3-3">
+                <a href="#seccion-1-4-3" class="nav-item" data-section="1-4-3">
                     <i class="fas fa-tachometer-alt"></i> 1.4.3 Nociones de complejidad de la exploración exhaustiva y vuelta atrás
                 </a>
             </div>
@@ -669,7 +669,7 @@
     <div class="container">
         <header id="inicio">
             <div class="breadcrumb">
-                <a href="https://escomisr.github.io/Libro_Digital_SO/index.html"><i class="fas fa-home"></i> Inicio</a>
+                <a href="https://escomisr.github.io/Algo_Estruct_Datos/UNIDAD_1/index.html"><i class="fas fa-home"></i> Inicio</a>
                 <span>/</span>
                 <a href="index.html">Unidad 1</a>
                 <span>/</span>
@@ -719,10 +719,11 @@
             <div class="content">
                 <p>Es conocida también como backtracking, es una técnica de diseño de algoritmos que consiste en explorar todas las posibles soluciones de un problema paso a paso, retrocediendo cuando una opción no cumple las condiciones necesarias. Este método construye las soluciones
                    de forma incremental y, cuando detecta que un camino no conducirá a una solución válida, regresa al punto anterior para probar otra alternativa (Sedgewick & Wayne, 2011).</p>
-                <p>Tiene importantes características de la vuelta atrás en donde reduce el número de combinaciones que se deben analizar, ya que evita continuar con opciones que ya se sabe que no funcionarán. Este procedimiento se utiliza con frecuencia en problemas de combinatoria,
+                <p></p>   
+                <p>Este procedimiento se utiliza con frecuencia en problemas de combinatoria,
                    búsqueda de caminos, resolución de laberintos, problemas de las N-reinas, generación de permutaciones y en la resolución de rompecabezas, donde es necesario probar diferentes configuraciones hasta encontrar la correcta</p>
-                <p>Por lo que el estudio de la programación por vuelta atrás es fundamental en la algoritmia porque permite comprender cómo optimizar la exploración exhaustiva mediante el descarte anticipado de soluciones inválidas. Gracias a esta técnica, es posible resolver problemas complejos
-                   de manera más eficiente que probando todas las combinaciones sin control, lo que la convierte en una estrategia clave en el diseño de algoritmos y en el análisis de la complejidad computacional.</p>
+                <p><strong>¿Por qué el estudio del desarrollo de algoritmos por vuelta atrás es fundamental?</strong> Porque permite comprender cómo optimizar la solución de un problema de exploración exhaustiva mediante el descarte anticipado de soluciones inválidas. Gracias a esta técnica, es posible resolver
+                   problemas que requieren mucho tiempo de computo al no probar todas las posibles combinaciones sin control, por lo que la convierte en una estrategia clave en el diseño de algoritmos y en el análisis de la complejidad computacional.</p>
 
             </div>
             <div class="figure-container">
@@ -741,11 +742,10 @@
                 <div class="section-title">Nociones de complejidad de la exploración exhaustiva y vuelta atrás</div>
             </div>
             <div class="content">
-                <p>Sirven para analizar cuánto tiempo y cuántos recursos requiere un algoritmo al intentar resolver un problema. En la exploración exhaustiva, el algoritmo revisa todas las posibilidades posibles, por lo que su costo de ejecución suele crecer muy rápido conforme
+                <p>En la exploración exhaustiva, el algoritmo revisa todas las posibilidades posibles, por lo que su costo de ejecución suele crecer muy rápido conforme
                    aumenta el tamaño del problema; por ello, con frecuencia se asocia con complejidades exponenciales o factoriales. Su función principal es mostrar que, aunque este enfoque garantiza encontrar una solución si existe, puede volverse poco eficiente en problemas grandes.</p>
-                <p>En el caso de la vuelta atrás (backtracking), la noción de complejidad permite comprender que este método también explora múltiples posibilidades, pero con una ventaja importante: descarta caminos inválidos antes de seguir avanzando. Su función, entonces, es reducir parte
-                   del trabajo innecesario de la exploración exhaustiva pura, haciendo más eficiente la búsqueda en ciertos problemas combinatorios, como laberintos, sudoku, árboles de decisión o el problema de las reinas. Aun así, en el peor de los casos, su complejidad también puede ser muy alta,
-                   porque depende del número de combinaciones que deban revisarse (Skiena, 2008).</p>
+                <p>En el caso de la vuelta atrás (backtracking), también se exploran múltiples posibilidades, pero con una ventaja importante: se descartan caminos inválidos antes de seguir avanzando para reducir parte del trabajo innecesario de la exploración exhaustiva pura, haciendo más
+                   eficiente la búsqueda en ciertos problemas combinatorios, como laberintos, sudoku, árboles de decisión o el problema de las reinas. Aun así, en el peor de los casos, su complejidad también puede ser muy alta, porque depende del número de combinaciones que deban revisarse (Skiena, 2008).</p>
           </div>
             <div class="figure-container">
                 <div class="figure-caption">Figura 16</div>
