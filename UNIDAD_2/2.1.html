@@ -685,7 +685,6 @@
             <p>Ahora es momento de dar el siguiente paso: comprender cómo se organizan y gestionan los datos dentro de una aplicación. Imagina, por ejemplo, un sistema que registre las ventas de una cafetería, donde cada producto se representa mediante una
                estructura con atributos como precio, descripción y existencia. Esta forma de modelar la información, conocida como abstracción de datos, es fundamental, ya que en todo programa existe un elemento en común: los datos se almacenan, se procesan y
                se recuperan para dar solución a problemas reales.</p>   
-            <div class="citation">(Weiss, 2014).</div>
         </div>
         <div class="section" id="seccion-2-1">
             <div class="content">
@@ -694,7 +693,7 @@
                 <p>La clasificación de las estructuras de datos se puede abordar desde diferentes criterios técnicos, dependiendo de su forma de organización, representación en memoria y comportamiento. A continuación te la explico de manera clara y estructurada::</p>
                 <H3>Organización lógica</H3>
                 <ul>
-                    <li><strong>Estructuras de datos lineales</strong>: Son aquellas que organizan los elementos de información en secuencia uno detrás de otro, aparentando que se forma un segmento de recta (parecido a un arreglo). Este tipo de estructuras son:</li>
+                    <p><strong>Estructuras de datos lineales</strong>: Son aquellas que organizan los elementos de información en secuencia uno detrás de otro, aparentando que se forma un segmento de recta (parecido a un arreglo). Este tipo de estructuras son:</p>
                     <h4>Características:</h4>
                     <li>Existe un único camino de recorrido</li>
                     <li>Cada elemento (excepto extremos) tiene un predecesor y un sucesor</li>
@@ -703,13 +702,6 @@
                     <li>Listas enlazadas</li>
                     <li>Pilas (LIFO)</li>
                     <li>Colas (FIFO)</li>
-                    <li><strong>Estructuras de datos no lineales</strong>: Los elementos no siguen una secuencia única, sino que pueden tener múltiples relaciones:</li>
-                    <h4>Características</h4>
-                    <li>Permiten jerarquías o conexiones complejas</li>
-                    <li>No hay un único recorrido lineal</li>
-                    <h4>Ejemplos</h4>
-                    <li>Árboles (binarios, AVL, B)</li>
-                    <li>Grafos</li>
                 </ul>        
 
         <div class="section" id="seccion-2-1">
@@ -727,7 +719,7 @@
                 </div>
              </div>
                 <ul>
-                    <li><strong>Estructuras de datos no lineales</strong>: Los elementos no siguen una secuencia única, sino que pueden tener múltiples relaciones</li>
+                    <p><strong>Estructuras de datos no lineales</strong>: Los elementos no siguen una secuencia única, sino que pueden tener múltiples relaciones</p>
                     <h4>Características:</h4>
                     <li>Permiten jerarquías o conexiones complejas</li>
                     <li>No hay un único recorrido lineal</li>
@@ -751,9 +743,6 @@
                 </div>
              </div> 
         </div>             
-            <p>Ya que la forma en que opera una pila implica que el orden de los elementos se invierte al momento de retirarlos respecto a como fueron insertados,
-               se le identifica como una estructura LIFO (Last In, First Out), donde el último elemento en ingresar es el primero en salir. Esta propiedad se puede
-               apreciar de manera visual en la imagen siguiente.</p>
         <div class="section" id="seccion-2-1">
             <div class="section-header">
             </div>
@@ -778,6 +767,11 @@
                 <div class="section-title">Especificación genérica </div>
             </div>
             <div class="content">
+               <h4>Pila</h4>
+               <p>Ya que la forma en que opera una pila implica que el orden de los elementos se invierte al momento de retirarlos respecto a como fueron insertados,
+                  se le identifica como una estructura LIFO (Last In, First Out), donde el último elemento en ingresar es el primero en salir. Esta propiedad se puede
+                  apreciar de manera visual en la imagen siguiente.</p>
+
                 <p>Dentro de una pila, la especificación genérica se aplica al definir su comportamiento de manera abstracta, sin depender de cómo esté implementada (arreglo, lista enlazada, etc.).
                    Es decir, se describe qué hace la pila y no cómo se construye.</p>
 
@@ -794,7 +788,7 @@
 
                 <ul>
                     <li><strong>Regla de funcionamiento:</strong> Sigue el principio LIFO (último en entrar, primero en salir).</li>
-                    <li><strong>Restricciones:</strong> No se puede extraer un elemento si la pila está vacía..</li>
+                    <li><strong>Restricciones:</strong> No se puede extraer un elemento si la pila está vacía o uno que este por debajo del que se encuentra en la cima.</li>
                 </ul>
             </div>
                 <p>De esta manera, la pila queda definida de forma general y flexible, permitiendo que cualquier implementación respete estas reglas, sin importar el lenguaje o la estructura interna utilizada.</p>
@@ -824,21 +818,21 @@
                 <div class="section-title">Implementación estática</div>
             </div>
             <div class="content">
-                   <p>La implementación estática de una pila consiste en utilizar una estructura de tamaño fijo, generalmente un arreglo (vector), para almacenar los elementos. En este enfoque, la capacidad de la pila se define desde el inicio y no puede cambiar durante la ejecución del programa.</p>
-                   <p>A diferencia de la implementación estática (que usa un arreglo de tamaño fijo), en la implementación dinámica:</p>
-                <h4>En una pila con implementación dinámica se consideran los siguientes aspectos:</h4>
-                   <p><strong>No existe un tamaño límite predefinido</strong>: ya que la memoria se asigna conforme se necesitan nuevos elementos.</p>
-                   <p><strong>Cada elemento de la pila se almacena en un nodo,</strong> que contiene el dato y una referencia al siguiente nodo.</p>
-                   <p><strong>El acceso principal sigue siendo mediante la cima (top),</strong>espetando el principio LIFO.</p>
-                <h4>Funcionamiento</h4>
-                   <p><strong>push:</strong>: crea un nuevo nodo y lo coloca al inicio de la pila (lo convierte en el nuevo tope).</p>
-                   <p><strong>pop</strong>: elimina el nodo del tope y libera la memoria.</p>
+                   <p>La implementación estática de una pila consiste en utilizar una estructura de tamaño fijo, generalmente un arreglo (vector), para almacenar los elementos. En este enfoque, la capacidad de la pila se define desde el inicio y no puede cambiar durante la ejecución del programa.</p>                   
+                   
+                 <h4>Funcionamiento</h4>
+                   <p>Siempre hay que tomar en cuenta la capacidad de cuantos elementos se pueden agregar a la pila</p>
+                   <p><strong>Tope</strong>: es una variable entera que indica el índice del arreglo donde encuentra el último elemento agregado a la pila. Su valor inicial es -1 indicando que la pila está vacía y después adquiere el índice del último elemento agregado a la pila.</p>
+                   <p><strong>push</strong>: si no se ha sobrepasado el tamaño de la pila, entonces se asignan datos en el valor de tope+1, el cual es el siguiente lugar en la pila donde se puede apilar un elemento.</p>
+                   <p><strong>pop</strong>: si la pila no está vacía, entonces elimina el elemento marcado por el valor del tope que es un índice del arreglo.</p>
+                   <p><strong>top o peek</strong>: si la pila no está vacía, entonces devuelve el valor del elemento marcado por tope sin eliminar el elemento de la pila.</p>
+
                 <h4>Ventajas:</h4>
                     <p>Uso eficiente de la memoria.</p>
-                    <p>Flexibilidad en el tamaño de la pila.</p>
+                    <p>Implementación simple basada en el manejo de un arreglo.</p>
                 <h4>Desventajas:</h4>
-                <p>Mayor complejidad en la implementación.</p>
-                <p>Requiere manejo de memoria dinámica (reservar y liberar memoria).</p>
+                <p>Su tamaño estático, si la pila está llena, entonces ya no se puede agregar un nuevo elemento.</p>
+                <p>Antes de agregar un elemento, siempre se debe validar si la pila está llena.</p>
 
                 <p>Es por ello que, la implementación dinámica permite que la pila se adapte al tamaño de los datos en tiempo real, siendo ideal cuando no se conoce previamente cuántos elementos se almacenarán.</p>
 
@@ -895,19 +889,10 @@
                 <div class="section-title">Nociones de complejidad de las operaciones </div>
             </div>
             <div class="content">
-                    <p>Es el al análisis del costo computacional que implica ejecutar una operación dentro de un algoritmo o estructura de datos. Este costo se mide principalmente en términos de tiempo (cuántas operaciones se realizan) y espacio (cuánta memoria se utiliza), especialmente cuando el tamaño de los datos crece.</p>
-                    <p>En estructuras como pilas, colas o listas, cada operación (por ejemplo, insertar, eliminar o buscar) tiene un comportamiento distinto. Algunas son muy rápidas y constantes, mientras que otras dependen de la cantidad de elementos. Para representar esto.</p>
-                   
-                <h3>Notación de orden de complejidad son:</h3>
-                    <p> <strong>O(1):</strong> tiempo constante (la operación siempre tarda lo mismo).</p>    
-                    <p> <strong>O(n):</strong> tiempo lineal (depende del número de elementos).</p>    
-                    <p> <strong>O(log n):</strong> tiempo logarítmico (crece lentamente con los datos).</p> 
-
-                <h4>Por ejemplo, en una pila</h4>
                    <p><strong>La operación push (insertar)</strong>: tiene complejidad O(1).</p>
                    <p><strong>La operación pop (eliminar)</strong>: también es O(1).</p>
 
-                   <p>Esto significa que, sin importar cuántos elementos tenga la pila, estas operaciones se realizan de manera eficiente, es por ello que comprender las nociones de complejidad permite evaluar la eficiencia de un algoritmo, comparar distintas soluciones y elegir la estructura de datos más adecuada para resolver un problema de manera óptima (Robert Sedgewick & Wayne, 2011).</p>   
+                   <p>Esto significa que, sin importar cuántos elementos tenga la pila, las operaciones se realizan de manera eficiente debido a que se insertan(push) o eliminan(pop) datos del lugar indicado por tope.</p>   
 
                  <div class="figure-container">
                     <div class="figure-caption">Figura 23</div>
@@ -926,13 +911,12 @@
                 <div class="section-title">Aplicaciones </div>
             </div>
             <div class="content">
-                    <p>Son aquellas que permiten organizar y controlar la ejecución de procesos siguiendo el principio LIFO (Last In, First Out), es decir, el último elemento en entrar es el primero en salir.</p>
-                    <p>Se caracteriza por operar bajo el principio LIFO (último en entrar, primero en salir), lo que implica que solo se puede acceder al elemento ubicado en la parte superior mediante operaciones
-                       básicas como inserción (push) y eliminación (pop), garantizando un control ordenado y eficiente de los datos.</p>
-                    <p>Su estructura es lineal, dinámica o estática según su implementación, y permite un manejo temporal de la información durante la ejecución de un programa.</p>
-                    <p>Se utiliza en la evaluación de expresiones matemáticas, la conversión de notaciones (como de infija a postfija), la implementación de la recursividad mediante el almacenamiento de llamadas
-                       a funciones (call stack) y el control del flujo de ejecución de los procesos en un programa, facilitando así la organización, seguimiento y resolución de problemas computacionales de manera
-                       estructurada y eficiente (Thomas H. Cormen et al., 2009).</p>
+                    <p>Son aquellas que permiten organizar y controlar la ejecución de procesos siguiendo el principio LIFO (Last In, First Out), es decir, el último elemento en entrar es el primero en salir, por ejemplo: </p>
+                    <li>Evaluación de expresiones matemáticas</li>
+                    <li>Conversión de notaciones (como de infija a postfija)</li>
+                    <li>La implementación de la recursividad mediante el almacenamiento de llamadas a funciones (call stack)</li>
+                    <li>El control del flujo de ejecución de los procesos en un programa, facilitando así la organización, seguimiento y resolución de problemas computacionales de manera estructurada y eficiente (Thomas H. Cormen et al., 2009).</li>
+
                     
                  <div class="figure-container">
                     <div class="figure-caption">Figura 24</div>
