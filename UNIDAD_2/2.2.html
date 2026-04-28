@@ -838,15 +838,9 @@
                 <div class="section-title">Nociones de complejidad de las operaciones</div>
             </div>
             <div class="content">
-                <p>permiten analizar qué tan eficiente es una estructura de datos o un algoritmo en función del tiempo que tarda en ejecutar sus operaciones básicas, como insertar, eliminar o buscar elementos. Este análisis se expresa generalmente mediante la notación Big O (O),
-                   la cual describe el comportamiento del algoritmo conforme crece el tamaño de los datos (n), sin enfocarse en tiempos exactos, sino en su tendencia de crecimiento. De esta forma, es posible comparar distintas implementaciones y
-                   determinar cuál resulta más adecuada según el problema a resolver.</p>
-                <p>Permiten analizar qué tan eficiente es una estructura de datos o un algoritmo en función del tiempo que tarda en ejecutar sus operaciones básicas, como insertar, eliminar o buscar elementos. Este análisis se expresa generalmente mediante la notación Big O (O),
-                   la cual describe el comportamiento del algoritmo conforme crece el tamaño de los datos (n), sin enfocarse en tiempos exactos, sino en su tendencia de crecimiento. De esta forma, es posible comparar distintas implementaciones y
-                   determinar cuál resulta más adecuada según el problema a resolver.</p>
                 <p>En el caso de las estructuras de datos lineales, como las colas, las operaciones principales suelen tener una complejidad constante O(1) cuando se implementan de forma eficiente, ya que tanto la inserción (enqueue) como la eliminación (dequeue) solo requieren
-                   actualizar índices como frente y final. Sin embargo, en algunas implementaciones menos optimizadas, ciertas operaciones pueden implicar desplazamientos de elementos, lo que incrementa la complejidad a O(n). Por ello,
-                   el diseño de la estructura influye directamente en su rendimiento.</p>
+                   actualizar índices como frente y final. ya que ambas variables se encuentran haciendo referencia tanto al elemento que se va a eliminar como el último elemento agregado. En el caso de la cola de prioridad, la operación de insertar tiene una complejidad O(n) debido
+                   a que se debe buscar el lugar donde se va a insertar(encolar) el siguiente elemento.</p>
                 <p>Comprender estas nociones resulta fundamental en el desarrollo de software, ya que permite anticipar el comportamiento de los sistemas cuando manejan grandes volúmenes de información. Una elección adecuada de la estructura de datos y su implementación puede
                    reducir significativamente el tiempo de ejecución y el consumo de recursos. Como señala Donald Knuth (2011), el análisis de la eficiencia de los algoritmos es clave para diseñar soluciones óptimas y escalables dentro de la computación.</p>
 
