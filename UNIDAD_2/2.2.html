@@ -748,7 +748,7 @@
                    arreglo esto significa que la cantidad de elementos encolados es menor a la cantidad máxima de elementos que se pueden encolar, esto significa que hay lugares desocupados en la cola pero por el manejo que se le está dando al arreglo esos lugares
                    disponibles no se podrían utilizar, por lo tanto, se recurre a utilizar el arreglo como si fuera un arreglo circular, esto implica una variable más que mantenga la cantidad de elementos encolados llamada contador, por lo tanto, quedaría de la
                    siguiente forma:</p>
-                   
+
                  <div class="figure-container">
                     <div class="figure-caption">Imagen 1</div>
                     <div class="figure-caption">Representación gráfica de una cola estática</div>
@@ -768,17 +768,27 @@
             </div>
             <div class="content">
                 <p>Una cola dinámica se construye a partir de una lista, se utilizan dos apuntadores llamados frente y final, donde frente va a apuntar al nodo o elemento que se va a eliminar y final va a apuntar al último nodo insertado a la cola.</p>
-                
-                <p>Se basa en el uso de un arreglo de tamaño fijo en el que los elementos se almacenan de manera contigua en memoria, respetando el principio FIFO (primero en entrar, primero en salir).</p>
-                <p>Su funcionamiento se emplean dos variables de control: el índice frente, que señala el primer elemento disponible para ser eliminado, y el índice final, que indica la posición donde se
-                   insertará un nuevo dato. Inicialmente, ambos índices suelen establecerse en valores que representen una cola vacía, y conforme se realizan operaciones, estos se actualizan de manera secuencial.</p>
-                <p>La operación de inserción (enqueue) consiste en incrementar el índice final e insertar el elemento en esa posición, siempre que la cola no esté llena; mientras que la eliminación (dequeue) implica
-                   extraer el elemento apuntado por frente y posteriormente avanzar dicho índice.</p>
-                <p>Esta estructura presenta condiciones importantes como el desbordamiento, cuando el arreglo alcanza su capacidad máxima, y el subdesbordamiento, cuando se intenta eliminar un elemento de una cola vacía.
-                   Aunque su principal ventaja radica en la eficiencia de sus operaciones, que se ejecutan en tiempo constante, una de sus limitaciones es el posible desperdicio de espacio, ya que las posiciones liberadas
-                   al inicio no se reutilizan en una implementación simple</p>   
-                <p>Según Thomas H. Cormen et al. (2009), este tipo de estructuras permite organizar y gestionar datos de forma ordenada mediante operaciones básicas bien definidas, facilitando su manipulación
-                   dentro de los sistemas computacionales.</p>    
+ 
+                 <h4>Las características de la implementación dinámica de una cola son:</h4> 
+                <ul>
+                    <li>Utiliza una lista.</li>
+                    <li>Opera bajo el principio FIFO (First In, First Out), respetando el orden de llegada de los elementos.</li>
+                    <li>Emplea dos apuntadores: front (frente) y rear (final) para controlar la inserción y eliminación.</li>
+                    <li>Permite operaciones básicas como enqueue (insertar) y dequeue (eliminar).</li>
+                    <li>Antes de realizar la operación de eliminar se debe verificar si esta vacía para evitar un subdesbordamiento.</li>
+                    <li>No es necesario validar si esta llena al insertar un nodo ya que su tamaño se puede decir que es infinito.</li>
+                    <li></li>
+                </ul>        
+                 <div class="figure-container">
+                    <div class="figure-caption">Imagen 2</div>
+                    <div class="figure-caption">Representación gráfica de una cola dinámica</div>
+                    <div class="figura">
+                        <img src="Imagen2.png" alt="Representación gráfica de una cola dinámica" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+               
+     
                     
 
                  <div class="figure-container">
