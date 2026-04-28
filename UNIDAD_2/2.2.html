@@ -694,13 +694,12 @@
                 <div class="section-title">Especificación genérica</div>
             </div>
             <div class="content">
-                <p>La cola es una estructura de datos lineal que organiza los elementos bajo el principio FIFO (First In, First Out), donde el primer dato en ingresar es el primero en salir, lo que garantiza un procesamiento ordenado y equitativo de la información</p>
+                <p>Es una estructura de datos lineal donde el primer elemento al ingresar es el primero en salir</p>
                 <h4>Características:</h4> 
                 <ul>
                     <li><strong>Opera bajo el principio FIFO</strong>: El primer elemento en entrar es el primero en salir.</li>
                     <li><strong>Tiene dos extremos definidos</strong>: front (salida) y rear (entrada).</li>
                     <li><strong>Utiliza operaciones básicas como</strong>: enqueue (insertar) y dequeue (eliminar).</li>
-                    <li>Permite un control eficiente y ordenado del flujo de datos.</li>
                     <li>Se aplica en sistemas operativos, gestión de procesos y simulación de filas.</li>
                 </ul>        
         <div class="section" id="seccion-2-1">
@@ -725,9 +724,15 @@
                 <div class="section-title">Implementación en estática</div>
             </div>
             <div class="content">
-                <p>Es la forma de representación mediante un arreglo de tamaño fijo definido desde el inicio del programa. En este enfoque, los elementos se insertan en el extremo rear (final) y
-                   se eliminan del front (frente), respetando el principio FIFO (First In, First Out). Para su control se utilizan índices que permiten gestionar las operaciones de enqueue (inserción) y dequeue (eliminación).
-                   No obstante, presenta limitaciones como el desbordamiento (overflow) cuando se alcanza la capacidad máxima y el posible desperdicio de memoria; aun así, ofrece simplicidad y rapidez en su implementación (Seymour Lipschutz, 2014).</p>
+                <p>Se basa en el uso de un arreglo de tamaño fijo en el que los elementos se almacenan de manera contigua en memoria.</p>
+                <p>Para su funcionamiento se emplean dos variables de control llamadas frente y final: para la operación de dequeue (eliminación) se hace referencia
+                   al índice controlado por frente, que señala el primer elemento disponible para ser eliminado, y para la operación enqueue (inserción) se hacer referencia
+                   al índice controlado por final, que indica la posición donde se insertará un nuevo dato. Inicialmente, ambos índices suelen establecerse en valores que representen una cola vacía, y conforme se realizan operaciones,
+                   estos se actualizan de manera secuencial.</p>
+                <p>Esta estructura presenta condiciones importantes como el desbordamiento, cuando el arreglo alcanza su capacidad máxima, y el subdesbordamiento, cuando se intenta eliminar un elemento de una cola vacía. Aunque su principal 
+                   ventaja radica en la eficiencia de sus operaciones, que se ejecutan en tiempo constante, una de sus limitaciones es el possible desperdicio de espacio, ya que las posiciones liberadas al inicio no se reutilizan en una implementación simple.</p>
+                <p>Según Thomas H. Cormen et al. (2009), este tipo de estructuras permite organizar y gestionar datos de forma ordenada mediante operaciones básicas bien definidas, facilitando su manipulación dentro de los sistemas computacionales.</p>
+
                 <h4>Las características de la implementación estática de una cola son:</h4> 
                 <ul>
                     <li>Utiliza un arreglo de tamaño fijo definido desde el inicio del programa.</li>
@@ -738,15 +743,22 @@
                     <li>Puede generar desperdicio de memoria si no se aprovechan espacios liberados.</li>
                     <li>Ofrece una implementación sencilla y acceso rápido a los elementos.</li>                                       
                 </ul>        
+                <p>Hay un problema al representar una cola a través de un arreglo de forma convencional y es que se caería en un mal uso del arreglo al momento de estar haciendo operaciones de insertar (enqueue) y eliminar (dequeue), esto es porque en algún momento
+                   se podría tener el caso la variable final haya llegado al índice máximo del arreglo, esto significaría que ya no se van a poder agregar nuevos elementos a la cola, por otro lado, si la variable inicio tiene un valor entre los índices [1, n-1] del
+                   arreglo esto significa que la cantidad de elementos encolados es menor a la cantidad máxima de elementos que se pueden encolar, esto significa que hay lugares desocupados en la cola pero por el manejo que se le está dando al arreglo esos lugares
+                   disponibles no se podrían utilizar, por lo tanto, se recurre a utilizar el arreglo como si fuera un arreglo circular, esto implica una variable más que mantenga la cantidad de elementos encolados llamada contador, por lo tanto, quedaría de la
+                   siguiente forma:</p>
+                   
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 26</div>
-                    <div class="figure-caption">Implementación en estática de una cola</div>
+                    <div class="figure-caption">Imagen 1</div>
+                    <div class="figure-caption">Representación gráfica de una cola estática</div>
                     <div class="figura">
-                        <img src="FIGURA26.png" alt="Implementación en estática de una cola" class="imagen-figura1"/>
+                        <img src="Imagen1a.png" alt="Representación gráfica de una cola estática" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
-                 </div>
-             </div> 
+                </div>
+
+            </div> 
         </div> 
 
        <div class="section" id="seccion-2-2-3">
@@ -755,6 +767,8 @@
                 <div class="section-title">Implementación dinámica en cola</div>
             </div>
             <div class="content">
+                <p>Una cola dinámica se construye a partir de una lista, se utilizan dos apuntadores llamados frente y final, donde frente va a apuntar al nodo o elemento que se va a eliminar y final va a apuntar al último nodo insertado a la cola.</p>
+                
                 <p>Se basa en el uso de un arreglo de tamaño fijo en el que los elementos se almacenan de manera contigua en memoria, respetando el principio FIFO (primero en entrar, primero en salir).</p>
                 <p>Su funcionamiento se emplean dos variables de control: el índice frente, que señala el primer elemento disponible para ser eliminado, y el índice final, que indica la posición donde se
                    insertará un nuevo dato. Inicialmente, ambos índices suelen establecerse en valores que representen una cola vacía, y conforme se realizan operaciones, estos se actualizan de manera secuencial.</p>
@@ -768,14 +782,31 @@
                     
 
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 27</div>
-                    <div class="figure-caption">Implementación en dinámica de una cola</div>
+                    <div class="figure-caption">Figura 26</div>
+                    <div class="figure-caption">Representación gráfica de una cola estática</div>
                     <div class="figura">
-                        <img src="FIGURA27.png" alt="Implementación en dinámica de una cola" class="imagen-figura1"/>
+                        <img src="FIGURA26.png" alt="Representación gráfica de una cola estática" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                   </div>
-             </div> 
+                <p>Hay un problema al representar una cola a través de un arreglo de forma convencional y es que se caería en un mal uso del arreglo al momento de estar haciendo operaciones de insertar (enqueue) y eliminar (dequeue), esto es porque en algún momento
+                   se podría tener el caso la variable final haya llegado al índice máximo del arreglo, esto significaría que ya no se van a poder agregar nuevos elementos a la cola, por otro lado, si la variable inicio tiene un valor entre los índices [1, n-1] del
+                   arreglo esto significa que la cantidad de elementos encolados es menor a la cantidad máxima de elementos que se pueden encolar, esto significa que hay lugares desocupados en la cola pero por el manejo que se le está dando al arreglo esos lugares 
+                   disponibles no se podrían utilizar, por lo tanto, se recurre a utilizar el arreglo como si fuera un arreglo circular, esto implica una variable más que mantenga la cantidad de elementos encolados llamada contador, por lo tanto, quedaría de la siguiente forma:</p>  
+
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 27</div>
+                    <div class="figure-caption">Representación gráfica de una cola estática</div>
+                    <div class="figura">
+                        <img src="FIGURA27A.png" alt="Representación gráfica de una cola estática" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Elaboración propia</div>
+                  </div>
+
+
+
+
+                </div> 
         </div> 
 
         <div class="section" id="seccion-2-2-4">
