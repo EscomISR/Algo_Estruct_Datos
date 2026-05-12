@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 2.4: Batalla de Sincronización</title>
+    <title>Actividad 2.4: Batalla de las Tablas Hash</title>
     <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -16,7 +16,7 @@
             --light: #ecf0f1;
             --dark: #1a2a3a;
             --gray: #95a5a6;
-            --monster-color: #9b59b6; /* Morado para Unidad 2 */
+            --monster-color: #8e44ad; /* Morado/Violeta para el tema de Tablas Hash */
         }
 
         * {
@@ -26,7 +26,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0a0f3d, #1a2a3a, #2c3e50);
+            background: linear-gradient(135deg, #190a28, #1a2a3a, #2c3e50);
             color: var(--light);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -42,9 +42,9 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 20%, rgba(155, 89, 182, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 20% 20%, rgba(142, 68, 173, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 60%, rgba(231, 76, 60, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 40% 60%, rgba(46, 204, 113, 0.05) 0%, transparent 50%);
             z-index: -1;
             animation: backgroundShift 12s ease-in-out infinite;
         }
@@ -285,8 +285,8 @@
         }
 
         .instructions {
-            background: rgba(155, 89, 182, 0.15); /* Morado Unidad 2 */
-            border: 1px solid rgba(155, 89, 182, 0.3);
+            background: rgba(142, 68, 173, 0.15); 
+            border: 1px solid rgba(142, 68, 173, 0.3);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 30px;
@@ -315,7 +315,7 @@
             padding: 30px;
             margin-bottom: 30px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(155, 89, 182, 0.2);
+            border: 1px solid rgba(142, 68, 173, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -328,7 +328,7 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 50% 50%, rgba(155, 89, 182, 0.05) 0%, transparent 70%);
+                radial-gradient(circle at 50% 50%, rgba(142, 68, 173, 0.05) 0%, transparent 70%);
             z-index: -1;
             animation: arenaGlow 4s ease-in-out infinite;
         }
@@ -342,9 +342,9 @@
             text-align: center;
             margin-bottom: 30px;
             padding: 25px;
-            background: rgba(155, 89, 182, 0.15);
+            background: rgba(142, 68, 173, 0.15);
             border-radius: 15px;
-            border: 2px solid rgba(155, 89, 182, 0.4);
+            border: 2px solid rgba(142, 68, 173, 0.4);
             position: relative;
             overflow: hidden;
         }
@@ -356,7 +356,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(155, 89, 182, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(142, 68, 173, 0.1) 0%, transparent 70%);
             animation: monsterAura 3s linear infinite;
             z-index: -1;
         }
@@ -391,7 +391,7 @@
             border-radius: 10px;
             margin: 0 auto 15px;
             overflow: hidden;
-            border: 2px solid rgba(155, 89, 182, 0.5);
+            border: 2px solid rgba(142, 68, 173, 0.5);
         }
 
         .health-bar {
@@ -810,8 +810,8 @@
 
     <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
-            <div class="sidebar-title">Sincronización</div>
-            <div class="sidebar-subtitle">Unidad 2: Administración de procesos</div>
+            <div class="sidebar-title">2.4 Tablas Hash</div>
+            <div class="sidebar-subtitle">Unidad 2: Estructuras de Datos</div>
         </div>
         
         <div class="nav-sections">
@@ -823,7 +823,7 @@
                 </a>
                 <a href="2.4.html" class="nav-item">
                     <i class="fas fa-book-open"></i>
-                    Volver al material
+                    Volver al material de Tablas Hash
                 </a>
             </div>
 
@@ -831,11 +831,7 @@
                 <div class="nav-section-title">Otras Secciones</div>
                 <a href="2.3.html" class="nav-item">
                     <i class="fas fa-arrow-left"></i>
-                    2.3 Comunicación IPC
-                </a>
-                <a href="2.5.html" class="nav-item">
-                    <i class="fas fa-arrow-right"></i>
-                    2.5 Planificación
+                    2.3 Listas
                 </a>
             </div>
         </div>
@@ -850,29 +846,29 @@
             <div class="breadcrumb">
                 <a href="index.html"><i class="fas fa-home"></i> Unidad 2</a>
                 <span>/</span>
-                <a href="2.4.html">2.4 Sincronización</a>
+                <a href="2.4.html">2.4 Tablas Hash</a>
                 <span>/</span>
-                <span>Batalla de Sincronización</span>
+                <span>Batalla de las Tablas Hash</span>
             </div>
-            <h1>⚡ Batalla de Sincronización</h1>
-            <div class="subtitle">¡Coordina los hilos y vence al Espectro del Bloqueo!</div>
+            <h1>⚡ Batalla de las Tablas Hash</h1>
+            <div class="subtitle">¡Domina los índices y derrota al Señor de las Colisiones!</div>
         </div>
 
         <div class="instructions">
             <h3><i class="fas fa-gamepad"></i> Instrucciones de Batalla</h3>
             <ul>
-                <li><strong>Misión:</strong> Derrota al Espectro respondiendo correctamente sobre semáforos, mutex y condiciones de carrera.</li>
-                <li><strong>Mecánica:</strong> Cada acierto es un ataque efectivo. Los errores te debilitan.</li>
+                <li><strong>Misión:</strong> Derrota al Señor de las Colisiones respondiendo correctamente sobre funciones hash, complejidad y técnicas de resolución.</li>
+                <li><strong>Mecánica:</strong> Responde para lanzar ataques eficientes. Los errores aumentan la carga y dañan tu integridad.</li>
                 <li><strong>Victoria:</strong> Reduce la vida del espectro a 0 HP respondiendo 8 preguntas.</li>
                 <li><strong>Derrota:</strong> Cometes más de 3 errores antes de ganar.</li>
-                <li><strong>Estrategia:</strong> Piensa en secciones críticas, atomicidad y exclusión mutua.</li>
+                <li><strong>Estrategia:</strong> Recuerda las diferencias entre tablas hash abiertas y cerradas, y su impacto en la complejidad de O(1).</li>
             </ul>
         </div>
 
         <div class="battle-arena">
             <div class="monster-section">
-                <div class="monster-avatar" id="monsterAvatar">🔒</div>
-                <div class="monster-name">Espectro del Bloqueo</div>
+                <div class="monster-avatar" id="monsterAvatar">👾</div>
+                <div class="monster-name">Señor de las Colisiones</div>
                 <div class="health-bar-container">
                     <div class="health-bar" id="healthBar" style="width: 100%;"></div>
                 </div>
@@ -900,7 +896,7 @@
             </div>
 
             <div class="questions-section">
-                <h3><i class="fas fa-scroll"></i> Desafíos de Concurrencia</h3>
+                <h3><i class="fas fa-scroll"></i> Desafíos de Indexación</h3>
                 <div id="questionsContainer"></div>
             </div>
 
@@ -925,16 +921,13 @@
 
         <div class="navigation">
             <a href="2.4.html" class="btn btn-success">
-                <i class="fas fa-arrow-left"></i> Volver al Material
+                <i class="fas fa-arrow-left"></i> Volver a 2.4 Tablas hash
             </a>
             <div class="nav-center">
                 <a href="index.html" class="btn btn-secondary">
                     <i class="fas fa-home"></i> Menú Unidad 2
                 </a>
             </div>
-            <a href="2.5.html" class="btn btn-success">
-                Siguiente Tema <i class="fas fa-arrow-right"></i>
-            </a>
         </div>
     </div>
 
@@ -962,55 +955,53 @@
     const container = document.getElementById('questionsContainer');
 
     try {
-      // Intenta cargar el JSON externo
       const response = await fetch('preguntas_2_4.json');
       
       if (response.ok) {
           const allQuestionsRaw = await response.json();
           processQuestions(allQuestionsRaw, container);
       } else {
-         // Fallback por si no existe el archivo JSON aún
-         console.warn("No se encontró preguntas_2_4.json, usando preguntas de respaldo.");
+         // Fallback garantizado sobre el contenido de 2.4 Tablas Hash
          const fallbackQuestions = [
             {
-                "question": "¿Qué problema ocurre cuando varios procesos acceden simultáneamente a datos compartidos y el resultado depende del orden de ejecución?",
-                "options": ["Bloqueo mutuo", "Condición de carrera", "Inanición", "Fragmentación"],
-                "answer": "Condición de carrera"
+                "question": "¿Cuál es la función principal de una 'función hash' dentro de una tabla hash?",
+                "options": ["Transformar una clave en un índice o posición dentro de un arreglo", "Cifrar la información para que sea ilegible", "Ordenar todos los elementos de la tabla alfabéticamente", "Duplicar la memoria para evitar que se borren los datos"],
+                "answer": "Transformar una clave en un índice o posición dentro de un arreglo"
             },
             {
-                "question": "¿Cómo se llama la sección de código donde un proceso accede a un recurso compartido?",
-                "options": ["Sección crítica", "Sección de entrada", "Sección restante", "Sección de salida"],
-                "answer": "Sección crítica"
+                "question": "En condiciones ideales y con una buena distribución, ¿cuál es la complejidad de tiempo para operaciones de búsqueda e inserción en una tabla hash?",
+                "options": ["Tiempo constante O(1)", "Tiempo lineal O(n)", "Tiempo logarítmico O(log n)", "Tiempo cuadrático O(n^2)"],
+                "answer": "Tiempo constante O(1)"
             },
             {
-                "question": "¿Qué mecanismo de sincronización utiliza una variable entera y dos operaciones atómicas (wait y signal)?",
-                "options": ["Monitor", "Semáforo", "Mutex", "Barrera"],
-                "answer": "Semáforo"
+                "question": "¿Qué ocurre cuando dos claves diferentes generan exactamente el mismo índice en la tabla?",
+                "options": ["Una colisión", "Un desbordamiento de pila (Stack overflow)", "Un error de compilación", "Una recolección de basura automática"],
+                "answer": "Una colisión"
             },
             {
-                "question": "¿Qué garantiza que una operación se ejecute completamente o no se ejecute en absoluto?",
-                "options": ["Exclusión mutua", "Atomicidad", "Multiprogramación", "Paginación"],
-                "answer": "Atomicidad"
+                "question": "¿Qué técnica de resolución de colisiones almacena todos los elementos directamente en el arreglo principal buscando secuencias alternativas (ej. sondeo lineal)?",
+                "options": ["Tablas hash cerradas (Direccionamiento abierto)", "Tablas hash abiertas (Encadenamiento)", "Árboles binarios de búsqueda balanceados", "Vectores de interrupciones"],
+                "answer": "Tablas hash cerradas (Direccionamiento abierto)"
             },
             {
-                "question": "¿Qué es un 'Mutex'?",
-                "options": ["Un semáforo binario simplificado", "Un tipo de memoria compartida", "Una cola de mensajes", "Un algoritmo de planificación"],
-                "answer": "Un semáforo binario simplificado"
+                "question": "¿Qué técnica de resolución de colisiones utiliza estructuras auxiliares, como listas enlazadas, en cada posición del arreglo?",
+                "options": ["Tablas hash abiertas (Encadenamiento)", "Sondeo cuadrático", "Doble dispersión (Double hashing)", "Pilas LIFO recursivas"],
+                "answer": "Tablas hash abiertas (Encadenamiento)"
             },
             {
-                "question": "¿Qué estructura de alto nivel agrupa procedimientos y variables compartidas garantizando exclusión mutua automática?",
-                "options": ["Semáforo", "Monitor", "Spinlock", "Socket"],
-                "answer": "Monitor"
+                "question": "¿Qué factor puede degradar severamente el rendimiento de las tablas hash, llevando su complejidad al peor caso O(n)?",
+                "options": ["Una mala función hash y un factor de carga demasiado elevado", "El uso de claves numéricas en lugar de cadenas de texto", "Implementar la tabla usando memoria estática", "Mantener la tabla con muy pocos elementos insertados"],
+                "answer": "Una mala función hash y un factor de carga demasiado elevado"
             },
             {
-                "question": "¿Qué condición describe un conjunto de procesos bloqueados esperando recursos que poseen otros procesos del mismo conjunto?",
-                "options": ["Condición de carrera", "Abrazo mortal (Deadlock)", "Busy waiting", "Interrupción"],
-                "answer": "Abrazo mortal (Deadlock)"
+                "question": "Dentro de las tablas hash cerradas, ¿qué método de exploración busca la siguiente posición libre de manera secuencial tras una colisión?",
+                "options": ["Sondeo lineal", "Doble dispersión", "Sondeo cuadrático", "Hashing perfecto"],
+                "answer": "Sondeo lineal"
             },
             {
-                "question": "¿Cuál es el objetivo principal de la exclusión mutua?",
-                "options": ["Evitar que dos procesos entren a su sección crítica al mismo tiempo", "Aumentar la velocidad del CPU", "Reducir el uso de memoria", "Eliminar procesos zombis"],
-                "answer": "Evitar que dos procesos entren a su sección crítica al mismo tiempo"
+                "question": "¿Cuál de las siguientes es una aplicación común y muy eficiente de las tablas hash mencionada en el material?",
+                "options": ["Sistemas de bases de datos, caché y diccionarios/mapas", "Cálculo de trayectorias en grafos no ponderados", "Evaluación de expresiones matemáticas (Notación Postfija)", "Planificación de trabajos de impresión (Sistemas operativos)"],
+                "answer": "Sistemas de bases de datos, caché y diccionarios/mapas"
             }
          ];
          processQuestions(fallbackQuestions, container);
@@ -1030,7 +1021,6 @@
         throw new Error('El JSON no contiene un arreglo de preguntas.');
       }
 
-      // Mezclar y seleccionar 8 preguntas aleatorias
       shuffleArray(allQuestionsRaw);
       questions = allQuestionsRaw.slice(0, 8).map((q, idx) => {
         const questionText = q.question;
@@ -1053,13 +1043,12 @@
         };
       });
 
-      // Renderizar
       container.innerHTML = '';
       questions.forEach((q, index) => {
         const questionDiv = document.createElement('div');
         questionDiv.className = 'question';
         questionDiv.innerHTML = `
-          <div class="question-number">Desafío ${index + 1}</div>
+          <div class="question-number">Registro ${index + 1}</div>
           <div class="question-text">${q.question}</div>
           <div class="options">
             ${q.options.map((option, optIndex) => `
@@ -1103,10 +1092,10 @@
   function updateMonsterAvatar() {
     const avatar = document.getElementById('monsterAvatar');
     const healthPercentage = (monsterHP / maxHP) * 100;
-    if (healthPercentage > 70) avatar.textContent = '🔒';
-    else if (healthPercentage > 40) avatar.textContent = '🔓';
-    else if (healthPercentage > 0) avatar.textContent = '🗝️';
-    else avatar.textContent = '🚪';
+    if (healthPercentage > 70) avatar.textContent = '👾';
+    else if (healthPercentage > 40) avatar.textContent = '👿';
+    else if (healthPercentage > 0) avatar.textContent = '💥';
+    else avatar.textContent = '✨';
   }
 
   function updateUI() {
@@ -1134,7 +1123,7 @@
   function attack() {
     if (gameOver) return;
     if (completed < questions.length) {
-      return showGameStatus("⚠️ ¡Responde todas las preguntas antes de atacar!", "continue");
+      return showGameStatus("⚠️ ¡Completa todos los registros antes de atacar!", "continue");
     }
     attempts++;
     let correct = 0;
@@ -1163,13 +1152,13 @@
     if (monsterHP <= 0) {
       gameOver = true;
       clearInterval(timerInterval);
-      showGameStatus(`<i class='fas fa-trophy'></i> ¡VICTORIA! Tiempo: ${time}s`, 'victory');
+      showGameStatus(`<i class='fas fa-trophy'></i> ¡VICTORIA! Desintegraste al Señor de las Colisiones en ${time}s.`, 'victory');
       btn.disabled = true;
       document.body.style.animation = 'victoryGlow 2s infinite';
     } else if (errors >= maxErrors) {
       gameOver = true;
       clearInterval(timerInterval);
-      showGameStatus(`<i class='fas fa-skull'></i> ¡DERROTA! Demasiados errores`, 'defeat');
+      showGameStatus(`<i class='fas fa-skull'></i> ¡DERROTA! Tuviste un colapso en el arreglo...`, 'defeat');
       btn.disabled = true;
       document.body.style.animation = 'defeatPulse 1s infinite';
     }

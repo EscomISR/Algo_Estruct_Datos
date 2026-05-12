@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 2.2: Desafío Multihilo</title>
+    <title>Actividad 2.2: Batalla de la Cola</title>
     <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -16,7 +16,7 @@
             --light: #ecf0f1;
             --dark: #1a2a3a;
             --gray: #95a5a6;
-            --monster-color: #9b59b6; /* Morado para Unidad 2 */
+            --monster-color: #1abc9c; /* Turquesa para el tema de Cola */
         }
 
         * {
@@ -26,7 +26,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0a0f3d, #1a2a3a, #2c3e50);
+            background: linear-gradient(135deg, #0a1f2d, #1a2a3a, #2c3e50);
             color: var(--light);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -42,9 +42,9 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 20%, rgba(155, 89, 182, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 20% 20%, rgba(26, 188, 156, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 60%, rgba(231, 76, 60, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 40% 60%, rgba(46, 204, 113, 0.05) 0%, transparent 50%);
             z-index: -1;
             animation: backgroundShift 12s ease-in-out infinite;
         }
@@ -285,8 +285,8 @@
         }
 
         .instructions {
-            background: rgba(155, 89, 182, 0.15); /* Morado Unidad 2 */
-            border: 1px solid rgba(155, 89, 182, 0.3);
+            background: rgba(26, 188, 156, 0.15); /* Turquesa Unidad 2 Cola */
+            border: 1px solid rgba(26, 188, 156, 0.3);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 30px;
@@ -315,7 +315,7 @@
             padding: 30px;
             margin-bottom: 30px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(155, 89, 182, 0.2);
+            border: 1px solid rgba(26, 188, 156, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -328,7 +328,7 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 50% 50%, rgba(155, 89, 182, 0.05) 0%, transparent 70%);
+                radial-gradient(circle at 50% 50%, rgba(26, 188, 156, 0.05) 0%, transparent 70%);
             z-index: -1;
             animation: arenaGlow 4s ease-in-out infinite;
         }
@@ -342,9 +342,9 @@
             text-align: center;
             margin-bottom: 30px;
             padding: 25px;
-            background: rgba(155, 89, 182, 0.15);
+            background: rgba(26, 188, 156, 0.15);
             border-radius: 15px;
-            border: 2px solid rgba(155, 89, 182, 0.4);
+            border: 2px solid rgba(26, 188, 156, 0.4);
             position: relative;
             overflow: hidden;
         }
@@ -356,7 +356,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(155, 89, 182, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(26, 188, 156, 0.1) 0%, transparent 70%);
             animation: monsterAura 3s linear infinite;
             z-index: -1;
         }
@@ -391,7 +391,7 @@
             border-radius: 10px;
             margin: 0 auto 15px;
             overflow: hidden;
-            border: 2px solid rgba(155, 89, 182, 0.5);
+            border: 2px solid rgba(26, 188, 156, 0.5);
         }
 
         .health-bar {
@@ -810,8 +810,8 @@
 
     <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
-            <div class="sidebar-title">Modelo Multihilo</div>
-            <div class="sidebar-subtitle">Unidad 2: Administración de procesos</div>
+            <div class="sidebar-title">2.2 Cola</div>
+            <div class="sidebar-subtitle">Unidad 2: Estructuras de Datos</div>
         </div>
         
         <div class="nav-sections">
@@ -823,7 +823,7 @@
                 </a>
                 <a href="2.2.html" class="nav-item">
                     <i class="fas fa-book-open"></i>
-                    Volver al material
+                    Volver al material de Cola
                 </a>
             </div>
 
@@ -831,11 +831,11 @@
                 <div class="nav-section-title">Otras Secciones</div>
                 <a href="2.1.html" class="nav-item">
                     <i class="fas fa-arrow-left"></i>
-                    2.1 Modelo de procesos
+                    2.1 Pila
                 </a>
                 <a href="2.3.html" class="nav-item">
                     <i class="fas fa-arrow-right"></i>
-                    2.3 Comunicación IPC
+                    2.3 Listas
                 </a>
             </div>
         </div>
@@ -850,29 +850,29 @@
             <div class="breadcrumb">
                 <a href="index.html"><i class="fas fa-home"></i> Unidad 2</a>
                 <span>/</span>
-                <a href="2.2.html">2.2 Modelo multihilo</a>
+                <a href="2.2.html">2.2 Cola</a>
                 <span>/</span>
-                <span>Desafío Multihilo</span>
+                <span>Batalla de la Cola</span>
             </div>
-            <h1>⚡ Desafío Multihilo</h1>
-            <div class="subtitle">¡Demuestra tu maestría en la concurrencia y vence al Espectro de los Hilos!</div>
+            <h1>⚡ Batalla de la Cola (Queue)</h1>
+            <div class="subtitle">¡Domina el principio FIFO y derrota al Espectro del Subdesbordamiento!</div>
         </div>
 
         <div class="instructions">
             <h3><i class="fas fa-gamepad"></i> Instrucciones de Batalla</h3>
             <ul>
-                <li><strong>Misión:</strong> Derrota al Espectro respondiendo preguntas sobre POSIX, hilos de usuario/kernel y modelos de hilos.</li>
+                <li><strong>Misión:</strong> Derrota al Espectro respondiendo correctamente sobre operaciones enqueue/dequeue, el principio FIFO y arreglos circulares.</li>
                 <li><strong>Mecánica:</strong> Responde correctamente para atacar. Los errores reducen tu salud.</li>
                 <li><strong>Victoria:</strong> Reduce la vida del espectro a 0 HP respondiendo 8 preguntas.</li>
                 <li><strong>Derrota:</strong> Cometes más de 3 errores antes de ganar.</li>
-                <li><strong>Estrategia:</strong> Recuerda las diferencias entre procesos e hilos y los modelos Many-to-One, One-to-One.</li>
+                <li><strong>Estrategia:</strong> Recuerda el funcionamiento de los apuntadores (frente y final) y las aplicaciones de la cola.</li>
             </ul>
         </div>
 
         <div class="battle-arena">
             <div class="monster-section">
-                <div class="monster-avatar" id="monsterAvatar">👻</div>
-                <div class="monster-name">Espectro de los Hilos</div>
+                <div class="monster-avatar" id="monsterAvatar">🚦</div>
+                <div class="monster-name">Espectro del Subdesbordamiento</div>
                 <div class="health-bar-container">
                     <div class="health-bar" id="healthBar" style="width: 100%;"></div>
                 </div>
@@ -900,7 +900,7 @@
             </div>
 
             <div class="questions-section">
-                <h3><i class="fas fa-scroll"></i> Pruebas de Concurrencia</h3>
+                <h3><i class="fas fa-scroll"></i> Desafíos FIFO</h3>
                 <div id="questionsContainer"></div>
             </div>
 
@@ -925,7 +925,7 @@
 
         <div class="navigation">
             <a href="2.2.html" class="btn btn-success">
-                <i class="fas fa-arrow-left"></i> Volver al Material
+                <i class="fas fa-arrow-left"></i> Volver a 2.2 Cola
             </a>
             <div class="nav-center">
                 <a href="index.html" class="btn btn-secondary">
@@ -933,7 +933,7 @@
                 </a>
             </div>
             <a href="2.3.html" class="btn btn-success">
-                Siguiente Tema <i class="fas fa-arrow-right"></i>
+                Siguiente: 2.3 Listas <i class="fas fa-arrow-right"></i>
             </a>
         </div>
     </div>
@@ -962,55 +962,54 @@
     const container = document.getElementById('questionsContainer');
 
     try {
-      // Intenta cargar el JSON externo
+      // Intenta cargar el JSON externo si existiera (opcional)
       const response = await fetch('preguntas_2_2.json');
       
       if (response.ok) {
           const allQuestionsRaw = await response.json();
           processQuestions(allQuestionsRaw, container);
       } else {
-         // Fallback por si no existe el archivo JSON aún
-         console.warn("No se encontró preguntas_2_2.json, usando preguntas de respaldo.");
+         // Fallback garantizado con preguntas sobre COLAS
          const fallbackQuestions = [
             {
-                "question": "¿Cuál es la unidad básica de utilización de la CPU?",
-                "options": ["Proceso", "Hilo", "Programa", "Instrucción"],
-                "answer": "Hilo"
+                "question": "¿Cuál es el principio fundamental que rige el funcionamiento de una cola?",
+                "options": ["FIFO (Primero en entrar, primero en salir)", "LIFO (Último en entrar, primero en salir)", "Acceso Aleatorio (Random Access)", "Acceso Jerárquico"],
+                "answer": "FIFO (Primero en entrar, primero en salir)"
             },
             {
-                "question": "¿Qué recurso NO comparten los hilos de un mismo proceso?",
-                "options": ["Archivos abiertos", "Sección de código", "Contador de programa (PC)", "Variables globales"],
-                "answer": "Contador de programa (PC)"
+                "question": "¿Cuáles son las dos operaciones básicas principales de una cola?",
+                "options": ["Enqueue (insertar) y Dequeue (eliminar)", "Push (insertar) y Pop (eliminar)", "Insert (insertar) y Delete (eliminar)", "Add (agregar) y Remove (quitar)"],
+                "answer": "Enqueue (insertar) y Dequeue (eliminar)"
             },
             {
-                "question": "¿Qué modelo de multihilo asigna múltiples hilos de usuario a un solo hilo del kernel?",
-                "options": ["Uno a Uno", "Muchos a Uno", "Muchos a Muchos", "Uno a Muchos"],
-                "answer": "Muchos a Uno"
+                "question": "En una cola, ¿qué variables de control se utilizan típicamente para gestionar las operaciones?",
+                "options": ["Frente (front) y Final (rear)", "Cima (top) y Base (bottom)", "Índice (index) y Longitud (length)", "Izquierda (left) y Derecha (right)"],
+                "answer": "Frente (front) y Final (rear)"
             },
             {
-                "question": "¿Qué estándar de hilos es común en sistemas UNIX/Linux?",
-                "options": ["Win32 Threads", "Green Threads", "POSIX Pthreads", "Java Threads"],
-                "answer": "POSIX Pthreads"
+                "question": "¿Cuál es la complejidad computacional típica de las operaciones enqueue y dequeue en una cola estándar eficiente?",
+                "options": ["O(1)", "O(n)", "O(log n)", "O(n^2)"],
+                "answer": "O(1)"
             },
             {
-                "question": "¿Qué ventaja principal ofrece el modelo Uno a Uno?",
-                "options": ["Mayor eficiencia en memoria", "Mayor concurrencia y uso de multiprocesadores", "Gestión exclusiva en espacio de usuario", "Menor sobrecarga del kernel"],
-                "answer": "Mayor concurrencia y uso de multiprocesadores"
+                "question": "¿Qué problema común se resuelve al implementar una cola estática como un 'arreglo circular'?",
+                "options": ["El desperdicio de espacio cuando se liberan posiciones al inicio del arreglo", "La lentitud al eliminar elementos", "La limitación del tamaño máximo", "La pérdida de datos por desbordamiento de memoria caché"],
+                "answer": "El desperdicio de espacio cuando se liberan posiciones al inicio del arreglo"
             },
             {
-                "question": "¿Dónde se gestionan los hilos a nivel de usuario?",
-                "options": ["En el núcleo del SO", "En una biblioteca en espacio de usuario", "En el hardware", "En la BIOS"],
-                "answer": "En una biblioteca en espacio de usuario"
+                "question": "¿Qué variante de cola procesa los elementos según su nivel de importancia en lugar de su estricto orden de llegada?",
+                "options": ["Cola de prioridad", "Cola circular", "Cola doblemente terminada (Deque)", "Pila-Cola híbrida"],
+                "answer": "Cola de prioridad"
             },
             {
-                "question": "¿Qué sucede si un hilo a nivel de usuario realiza una llamada al sistema bloqueante en un modelo Muchos a Uno?",
-                "options": ["Solo ese hilo se bloquea", "Todo el proceso se bloquea", "El kernel crea un nuevo hilo", "El hilo se elimina"],
-                "answer": "Todo el proceso se bloquea"
+                "question": "En una implementación dinámica de una cola, ¿qué estructura subyacente se utiliza generalmente para no tener límite fijo de tamaño?",
+                "options": ["Una lista (nodos y apuntadores)", "Un arreglo estático", "Un árbol binario", "Un grafo dirigido"],
+                "answer": "Una lista (nodos y apuntadores)"
             },
             {
-                "question": "¿Qué característica define a los hilos en modo kernel?",
-                "options": ["Son invisibles para el SO", "El SO los gestiona directamente", "Son más rápidos de crear que los de usuario", "No permiten paralelismo"],
-                "answer": "El SO los gestiona directamente"
+                "question": "¿Cuál de las siguientes es una aplicación clásica de las colas en los sistemas de computación?",
+                "options": ["Gestión de trabajos de impresión (E/S) y planificación de procesos", "Evaluación de expresiones matemáticas (Infija a Postfija)", "Navegación del historial web (Botón atrás)", "Implementación de la recursividad (Call stack)"],
+                "answer": "Gestión de trabajos de impresión (E/S) y planificación de procesos"
             }
          ];
          processQuestions(fallbackQuestions, container);
@@ -1059,7 +1058,7 @@
         const questionDiv = document.createElement('div');
         questionDiv.className = 'question';
         questionDiv.innerHTML = `
-          <div class="question-number">Prueba ${index + 1}</div>
+          <div class="question-number">Desafío ${index + 1}</div>
           <div class="question-text">${q.question}</div>
           <div class="options">
             ${q.options.map((option, optIndex) => `
@@ -1103,10 +1102,10 @@
   function updateMonsterAvatar() {
     const avatar = document.getElementById('monsterAvatar');
     const healthPercentage = (monsterHP / maxHP) * 100;
-    if (healthPercentage > 70) avatar.textContent = '👻';
-    else if (healthPercentage > 40) avatar.textContent = '💀';
-    else if (healthPercentage > 0) avatar.textContent = '☠️';
-    else avatar.textContent = '💨';
+    if (healthPercentage > 70) avatar.textContent = '🚦';
+    else if (healthPercentage > 40) avatar.textContent = '🛑';
+    else if (healthPercentage > 0) avatar.textContent = '⚠️';
+    else avatar.textContent = '✨';
   }
 
   function updateUI() {
@@ -1169,7 +1168,7 @@
     } else if (errors >= maxErrors) {
       gameOver = true;
       clearInterval(timerInterval);
-      showGameStatus(`<i class='fas fa-skull'></i> ¡DERROTA! Demasiados errores`, 'defeat');
+      showGameStatus(`<i class='fas fa-skull'></i> ¡DERROTA! Te has quedado fuera de la cola...`, 'defeat');
       btn.disabled = true;
       document.body.style.animation = 'defeatPulse 1s infinite';
     }

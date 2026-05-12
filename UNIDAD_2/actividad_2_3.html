@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 2.3: Desafío de Comunicación IPC</title>
+    <title>Actividad 2.3: Batalla de las Listas</title>
     <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -16,7 +16,7 @@
             --light: #ecf0f1;
             --dark: #1a2a3a;
             --gray: #95a5a6;
-            --monster-color: #9b59b6; /* Morado para Unidad 2 */
+            --monster-color: #9b59b6; /* Morado/Amatista para el tema de Listas */
         }
 
         * {
@@ -26,7 +26,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0a0f3d, #1a2a3a, #2c3e50);
+            background: linear-gradient(135deg, #130f26, #1a2a3a, #2c3e50);
             color: var(--light);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -285,7 +285,7 @@
         }
 
         .instructions {
-            background: rgba(155, 89, 182, 0.15); /* Morado Unidad 2 */
+            background: rgba(155, 89, 182, 0.15); 
             border: 1px solid rgba(155, 89, 182, 0.3);
             border-radius: 10px;
             padding: 20px;
@@ -810,8 +810,8 @@
 
     <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
-            <div class="sidebar-title">Comunicación IPC</div>
-            <div class="sidebar-subtitle">Unidad 2: Administración de procesos</div>
+            <div class="sidebar-title">2.3 Listas</div>
+            <div class="sidebar-subtitle">Unidad 2: Estructuras de Datos</div>
         </div>
         
         <div class="nav-sections">
@@ -823,7 +823,7 @@
                 </a>
                 <a href="2.3.html" class="nav-item">
                     <i class="fas fa-book-open"></i>
-                    Volver al material
+                    Volver al material de Listas
                 </a>
             </div>
 
@@ -831,11 +831,11 @@
                 <div class="nav-section-title">Otras Secciones</div>
                 <a href="2.2.html" class="nav-item">
                     <i class="fas fa-arrow-left"></i>
-                    2.2 Modelo Multihilo
+                    2.2 Cola
                 </a>
                 <a href="2.4.html" class="nav-item">
                     <i class="fas fa-arrow-right"></i>
-                    2.4 Sincronización
+                    2.4 Tablas hash
                 </a>
             </div>
         </div>
@@ -850,29 +850,29 @@
             <div class="breadcrumb">
                 <a href="index.html"><i class="fas fa-home"></i> Unidad 2</a>
                 <span>/</span>
-                <a href="2.3.html">2.3 Comunicación IPC</a>
+                <a href="2.3.html">2.3 Listas</a>
                 <span>/</span>
-                <span>Desafío de Comunicación</span>
+                <span>Batalla de las Listas</span>
             </div>
-            <h1>⚡ Desafío de Comunicación IPC</h1>
-            <div class="subtitle">¡Conecta los procesos y derrota al Guardián del Intercambio!</div>
+            <h1>⚡ Batalla de las Listas</h1>
+            <div class="subtitle">¡Domina los punteros y derrota al Dragón de los Nodos!</div>
         </div>
 
         <div class="instructions">
             <h3><i class="fas fa-gamepad"></i> Instrucciones de Batalla</h3>
             <ul>
-                <li><strong>Misión:</strong> Derrota al Guardián respondiendo correctamente sobre memoria compartida, pipes y colas de mensajes.</li>
-                <li><strong>Mecánica:</strong> Responde para lanzar ataques. Los errores dañan tu integridad.</li>
-                <li><strong>Victoria:</strong> Reduce la vida del Guardián a 0 HP respondiendo 8 preguntas.</li>
+                <li><strong>Misión:</strong> Derrota al Dragón respondiendo correctamente sobre listas simples, doblemente enlazadas y circulares.</li>
+                <li><strong>Mecánica:</strong> Responde para lanzar ataques mágicos. Los errores dañan tu integridad.</li>
+                <li><strong>Victoria:</strong> Reduce la vida del Dragón a 0 HP respondiendo 8 preguntas correctamente.</li>
                 <li><strong>Derrota:</strong> Cometes más de 3 errores antes de ganar.</li>
-                <li><strong>Estrategia:</strong> Recuerda la diferencia entre comunicación síncrona y asíncrona.</li>
+                <li><strong>Estrategia:</strong> Recuerda cómo funcionan los punteros de los nodos, la diferencia con los arreglos y su complejidad Big-O.</li>
             </ul>
         </div>
 
         <div class="battle-arena">
             <div class="monster-section">
-                <div class="monster-avatar" id="monsterAvatar">📡</div>
-                <div class="monster-name">Guardián del IPC</div>
+                <div class="monster-avatar" id="monsterAvatar">🐉</div>
+                <div class="monster-name">Dragón de los Nodos</div>
                 <div class="health-bar-container">
                     <div class="health-bar" id="healthBar" style="width: 100%;"></div>
                 </div>
@@ -900,7 +900,7 @@
             </div>
 
             <div class="questions-section">
-                <h3><i class="fas fa-scroll"></i> Protocolos de Intercambio</h3>
+                <h3><i class="fas fa-scroll"></i> Desafíos de Enlaces</h3>
                 <div id="questionsContainer"></div>
             </div>
 
@@ -925,7 +925,7 @@
 
         <div class="navigation">
             <a href="2.3.html" class="btn btn-success">
-                <i class="fas fa-arrow-left"></i> Volver al Material
+                <i class="fas fa-arrow-left"></i> Volver a 2.3 Listas
             </a>
             <div class="nav-center">
                 <a href="index.html" class="btn btn-secondary">
@@ -933,7 +933,7 @@
                 </a>
             </div>
             <a href="2.4.html" class="btn btn-success">
-                Siguiente Tema <i class="fas fa-arrow-right"></i>
+                Siguiente: 2.4 Tablas hash <i class="fas fa-arrow-right"></i>
             </a>
         </div>
     </div>
@@ -962,55 +962,54 @@
     const container = document.getElementById('questionsContainer');
 
     try {
-      // Intenta cargar el JSON externo
+      // Intenta cargar el JSON externo si existe (opcional)
       const response = await fetch('preguntas_2_3.json');
       
       if (response.ok) {
           const allQuestionsRaw = await response.json();
           processQuestions(allQuestionsRaw, container);
       } else {
-         // Fallback por si no existe el archivo JSON aún
-         console.warn("No se encontró preguntas_2_3.json, usando preguntas de respaldo.");
+         // Fallback asegurado para que el juego siempre funcione con preguntas sobre Listas
          const fallbackQuestions = [
             {
-                "question": "¿Qué mecanismo de IPC permite a dos procesos acceder directamente a la misma región de memoria física?",
-                "options": ["Tuberías (Pipes)", "Colas de mensajes", "Memoria compartida", "Sockets"],
-                "answer": "Memoria compartida"
+                "question": "¿Cuál es la principal ventaja de la especificación genérica de una lista?",
+                "options": ["Define el comportamiento abstracto sin depender de la implementación", "Fuerza el uso de arreglos estáticos de tamaño fijo", "Limita la lista a almacenar un solo tipo de dato numérico", "Exige conocer la dirección de memoria exacta de cada nodo"],
+                "answer": "Define el comportamiento abstracto sin depender de la implementación"
             },
             {
-                "question": "¿Cuál es la principal característica de una tubería (pipe) tradicional?",
-                "options": ["Es bidireccional por defecto", "Es unidireccional y FIFO", "Permite acceso aleatorio a los datos", "No requiere que los procesos estén relacionados"],
-                "answer": "Es unidireccional y FIFO"
+                "question": "En una lista simple enlazada, ¿hacia dónde apunta el enlace del último nodo?",
+                "options": ["A nulo (NULL)", "Al primer nodo (cabeza)", "Al nodo inmediatamente anterior", "A un índice aleatorio en la memoria"],
+                "answer": "A nulo (NULL)"
             },
             {
-                "question": "¿Qué mecanismo de IPC es gestionado por el kernel y permite enviar estructuras de datos con prioridades?",
-                "options": ["Señales", "Archivos mapeados en memoria", "Colas de mensajes", "Semáforos"],
-                "answer": "Colas de mensajes"
+                "question": "¿Qué característica define estructuralmente a una lista doblemente enlazada?",
+                "options": ["Cada nodo tiene un puntero al nodo anterior y otro al siguiente", "Los nodos se guardan estrictamente en bloques contiguos de memoria", "El último nodo siempre apunta de regreso al primero", "Solo permite recorrerse secuencialmente desde el final hacia el inicio"],
+                "answer": "Cada nodo tiene un puntero al nodo anterior y otro al siguiente"
             },
             {
-                "question": "¿Qué tipo de comunicación implica que el emisor se bloquea hasta que el receptor recibe el mensaje?",
-                "options": ["Comunicación asíncrona", "Comunicación síncrona", "Comunicación por interrupción", "Comunicación no bloqueante"],
-                "answer": "Comunicación síncrona"
+                "question": "¿Qué hace que una lista sea considerada estructuralmente 'circular'?",
+                "options": ["El último nodo se enlaza nuevamente con el primer nodo formando un ciclo", "Los datos de los nodos se rotan en cada iteración del programa", "Solo puede contener números o coordenadas de circunferencias", "El primer nodo siempre apunta a NULL sin importar su tamaño"],
+                "answer": "El último nodo se enlaza nuevamente con el primer nodo formando un ciclo"
             },
             {
-                "question": "¿Qué mecanismo se utiliza para notificar a un proceso sobre un evento asíncrono (como Ctrl+C)?",
-                "options": ["Socket", "Señal (Signal)", "Memoria compartida", "Pipe con nombre"],
-                "answer": "Señal (Signal)"
+                "question": "Al comparar arreglos estáticos con listas enlazadas dinámicas, ¿qué ventaja fundamental tienen las listas?",
+                "options": ["Son más eficientes para insertar y eliminar elementos dinámicamente sin desplazar datos", "Permiten un acceso directo y rápido a cualquier posición indexada", "Ocupan exactamente la misma cantidad de memoria que los arreglos", "Siempre tienen un tamaño fijo y predecible e inalterable"],
+                "answer": "Son más eficientes para insertar y eliminar elementos dinámicamente sin desplazar datos"
             },
             {
-                "question": "¿Qué es necesario agregar al usar memoria compartida para evitar condiciones de carrera?",
-                "options": ["Mecanismos de sincronización", "Más memoria RAM", "Un disco duro más rápido", "Protocolos de red"],
-                "answer": "Mecanismos de sincronización"
+                "question": "En términos de complejidad (Big-O), ¿cuál es el costo de acceder a un elemento específico por índice en un arreglo en comparación con una lista enlazada?",
+                "options": ["O(1) en el arreglo y O(n) en la lista", "O(n) en ambos", "O(log n) en el arreglo y O(1) en la lista", "O(n^2) en la lista y O(n) en el arreglo"],
+                "answer": "O(1) en el arreglo y O(n) en la lista"
             },
             {
-                "question": "¿Qué llamada al sistema crea una tubería anónima en sistemas Unix?",
-                "options": ["mkfifo()", "open()", "pipe()", "socket()"],
-                "answer": "pipe()"
+                "question": "¿Qué desventaja principal tienen las listas enlazadas frente a los arreglos o vectores?",
+                "options": ["No permiten acceso directo a una posición y requieren más memoria para los punteros", "No pueden crecer dinámicamente durante la ejecución del programa", "Solo pueden almacenar datos de tipo entero o booleano", "Sus operaciones de inserción al inicio son extremadamente lentas"],
+                "answer": "No permiten acceso directo a una posición y requieren más memoria para los punteros"
             },
             {
-                "question": "¿Qué mecanismo de IPC permite la comunicación entre procesos en diferentes máquinas a través de una red?",
-                "options": ["Sockets", "Pipes anónimos", "Señales locales", "Memoria compartida local"],
-                "answer": "Sockets"
+                "question": "Según el material, ¿qué otras estructuras de datos utilizan comúnmente a las listas como base para su implementación dinámica?",
+                "options": ["Pilas y colas", "Solo grafos no dirigidos", "Exclusivamente matrices multidimensionales", "Bases de datos relacionales puras"],
+                "answer": "Pilas y colas"
             }
          ];
          processQuestions(fallbackQuestions, container);
@@ -1059,7 +1058,7 @@
         const questionDiv = document.createElement('div');
         questionDiv.className = 'question';
         questionDiv.innerHTML = `
-          <div class="question-number">Protocolo ${index + 1}</div>
+          <div class="question-number">Enlace ${index + 1}</div>
           <div class="question-text">${q.question}</div>
           <div class="options">
             ${q.options.map((option, optIndex) => `
@@ -1103,10 +1102,10 @@
   function updateMonsterAvatar() {
     const avatar = document.getElementById('monsterAvatar');
     const healthPercentage = (monsterHP / maxHP) * 100;
-    if (healthPercentage > 70) avatar.textContent = '📡';
-    else if (healthPercentage > 40) avatar.textContent = '📶';
-    else if (healthPercentage > 0) avatar.textContent = '📵';
-    else avatar.textContent = '💥';
+    if (healthPercentage > 70) avatar.textContent = '🐉';
+    else if (healthPercentage > 40) avatar.textContent = '🦖';
+    else if (healthPercentage > 0) avatar.textContent = '🦎';
+    else avatar.textContent = '✨';
   }
 
   function updateUI() {
@@ -1163,13 +1162,13 @@
     if (monsterHP <= 0) {
       gameOver = true;
       clearInterval(timerInterval);
-      showGameStatus(`<i class='fas fa-trophy'></i> ¡VICTORIA! Tiempo: ${time}s`, 'victory');
+      showGameStatus(`<i class='fas fa-trophy'></i> ¡VICTORIA! Venciste al Dragón de los Nodos. Tiempo: ${time}s`, 'victory');
       btn.disabled = true;
       document.body.style.animation = 'victoryGlow 2s infinite';
     } else if (errors >= maxErrors) {
       gameOver = true;
       clearInterval(timerInterval);
-      showGameStatus(`<i class='fas fa-skull'></i> ¡DERROTA! Demasiados errores`, 'defeat');
+      showGameStatus(`<i class='fas fa-skull'></i> ¡DERROTA! Te has perdido entre los punteros...`, 'defeat');
       btn.disabled = true;
       document.body.style.animation = 'defeatPulse 1s infinite';
     }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unidad 3 - Tema 3.1: Abstracción de Memoria</title>
+    <title>Actividad 3.1: Batalla del Bosque Binario</title>
     <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -16,7 +16,7 @@
             --light: #ecf0f1;
             --dark: #1a2a3a;
             --gray: #95a5a6;
-            --monster-color: #e67e22;
+            --monster-color: #27ae60; /* Verde bosque para el tema de Árboles */
         }
 
         * {
@@ -26,7 +26,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0a0f3d, #1a2a3a, #2c3e50);
+            background: linear-gradient(135deg, #0f2b1d, #1a2a3a, #2c3e50);
             color: var(--light);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -42,9 +42,9 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 20%, rgba(230, 126, 34, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 20% 20%, rgba(39, 174, 96, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 60%, rgba(231, 76, 60, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 40% 60%, rgba(46, 204, 113, 0.05) 0%, transparent 50%);
             z-index: -1;
             animation: backgroundShift 12s ease-in-out infinite;
         }
@@ -54,7 +54,6 @@
             50% { opacity: 1; }
         }
 
-        /* Efectos de victoria y derrota con menos intensidad */
         @keyframes victoryGlow {
             0%, 100% { filter: brightness(1); }
             50% { filter: brightness(1.05) hue-rotate(8deg); }
@@ -83,19 +82,12 @@
             transition: all 0.3s ease;
             z-index: 1000;
             font-size: 1.5rem;
-            opacity: 1;
-            visibility: visible;
         }
 
         .floating-home-btn:hover {
             background: #2980b9;
             transform: translateY(-3px);
             box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
-        }
-
-        .floating-home-btn.hidden {
-            opacity: 0;
-            visibility: hidden;
         }
 
         /* Menú de navegación lateral */
@@ -120,8 +112,8 @@
 
         .sidebar-header {
             padding: 20px;
-            background: rgba(52, 152, 219, 0.1);
-            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            background: rgba(39, 174, 96, 0.1);
+            border-bottom: 1px solid rgba(39, 174, 96, 0.3);
         }
 
         .sidebar-title {
@@ -293,16 +285,16 @@
         }
 
         .instructions {
-            background: rgba(52, 152, 219, 0.15);
-            border: 1px solid rgba(52, 152, 219, 0.3);
+            background: rgba(39, 174, 96, 0.15); /* Verde árbol */
+            border: 1px solid rgba(39, 174, 96, 0.3);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 30px;
-            border-left: 4px solid var(--secondary);
+            border-left: 4px solid var(--monster-color);
         }
 
         .instructions h3 {
-            color: var(--secondary);
+            color: var(--monster-color);
             margin-bottom: 15px;
             font-size: 1.3rem;
         }
@@ -323,7 +315,7 @@
             padding: 30px;
             margin-bottom: 30px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(230, 126, 34, 0.2);
+            border: 1px solid rgba(39, 174, 96, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -336,7 +328,7 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 50% 50%, rgba(230, 126, 34, 0.05) 0%, transparent 70%);
+                radial-gradient(circle at 50% 50%, rgba(39, 174, 96, 0.05) 0%, transparent 70%);
             z-index: -1;
             animation: arenaGlow 4s ease-in-out infinite;
         }
@@ -350,9 +342,9 @@
             text-align: center;
             margin-bottom: 30px;
             padding: 25px;
-            background: rgba(230, 126, 34, 0.15);
+            background: rgba(39, 174, 96, 0.15);
             border-radius: 15px;
-            border: 2px solid rgba(230, 126, 34, 0.4);
+            border: 2px solid rgba(39, 174, 96, 0.4);
             position: relative;
             overflow: hidden;
         }
@@ -364,7 +356,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(230, 126, 34, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(39, 174, 96, 0.1) 0%, transparent 70%);
             animation: monsterAura 3s linear infinite;
             z-index: -1;
         }
@@ -399,12 +391,12 @@
             border-radius: 10px;
             margin: 0 auto 15px;
             overflow: hidden;
-            border: 2px solid rgba(230, 126, 34, 0.5);
+            border: 2px solid rgba(39, 174, 96, 0.5);
         }
 
         .health-bar {
             height: 100%;
-            background: linear-gradient(90deg, var(--accent), var(--warning));
+            background: linear-gradient(90deg, var(--accent), var(--monster-color));
             transition: width 0.5s ease;
             border-radius: 8px;
         }
@@ -802,29 +794,24 @@
     </style>
 </head>
 <body>
-    <!-- Indicador de progreso de lectura -->
     <div class="reading-progress">
         <div class="reading-progress-bar" id="readingProgressBar"></div>
     </div>
 
-    <!-- Botón toggle del menú -->
     <button class="menu-toggle" id="menuToggle">
         <i class="fas fa-bars"></i>
     </button>
 
-    <!-- Botón flotante de inicio -->
-    <a href="index.html" class="floating-home-btn" title="Ir al inicio">
+    <a href="index.html" class="floating-home-btn" title="Ir al índice de Unidad 3">
         <i class="fas fa-home"></i>
     </a>
 
-    <!-- Overlay para cerrar el menú -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- Menú de navegación lateral -->
     <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
-            <div class="sidebar-title">Batalla Hardware</div>
-            <div class="sidebar-subtitle">Principios de E/S</div>
+            <div class="sidebar-title">3.1 Árboles binarios</div>
+            <div class="sidebar-subtitle">Unidad 3: Estructuras no lineales</div>
         </div>
         
         <div class="nav-sections">
@@ -832,29 +819,24 @@
                 <div class="nav-section-title">Navegación</div>
                 <a href="index.html" class="nav-item">
                     <i class="fas fa-home"></i>
-                    Menú principal
+                    Menú Unidad 3
                 </a>
                 <a href="3.1.html" class="nav-item">
                     <i class="fas fa-book-open"></i>
-                    Volver al material
+                    Volver al material de Árboles
                 </a>
             </div>
 
             <div class="nav-section">
-                <div class="nav-section-title">Otras Actividades</div>
-                <a href="actividad_5_2.html" class="nav-item">
-                    <i class="fas fa-tasks"></i>
-                    Actividad 3.2
-                </a>
-                <a href="actividad_5_3.html" class="nav-item">
-                    <i class="fas fa-tasks"></i>
-                    Actividad 3.3
+                <div class="nav-section-title">Otras Secciones</div>
+                <a href="3.2.html" class="nav-item">
+                    <i class="fas fa-arrow-right"></i>
+                    3.2 Grafos
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Botón de ir arriba -->
     <button class="scroll-to-top" id="scrollToTop">
         <i class="fas fa-chevron-up"></i>
     </button>
@@ -862,39 +844,37 @@
     <div class="container">
         <div class="header">
             <div class="breadcrumb">
-                <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+                <a href="index.html"><i class="fas fa-home"></i> Unidad 3</a>
                 <span>/</span>
-                <a href="3.1.html">3.1 Abstracción de Memoria</a>
+                <a href="3.1.html">3.1 Árboles binarios</a>
                 <span>/</span>
-                <span>Batalla de la Memoria</span>
+                <span>Batalla del Bosque Binario</span>
             </div>
-            <h1>⚡Tema 3.1: Abstracción de Memoria</h1>
-            <div class="subtitle">¡Derrota al Maestro de Memoria respondiendo correctamente!</div>
+            <h1>⚡ Batalla del Bosque Binario</h1>
+            <div class="subtitle">¡Domina los nodos y recorridos para derrotar al Ent del Desbalanceo!</div>
         </div>
 
         <div class="instructions">
             <h3><i class="fas fa-gamepad"></i> Instrucciones de Batalla</h3>
             <ul>
-                <li><strong>Misión:</strong> Derrota al Guardián del Hardware respondiendo correctamente las preguntas sobre principios de E/S.</li>
-                <li><strong>Mecánica:</strong> Cada respuesta correcta inflige 1 punto de daño. Cada respuesta incorrecta cuenta como un error.</li>
-                <li><strong>Victoria:</strong> Reduce la vida del guardián a 0 HP respondiendo las 8 preguntas correctamente.</li>
-                <li><strong>Derrota:</strong> Cometes más de 3 errores antes de derrotar al guardián.</li>
-                <li><strong>Estrategia:</strong> Lee cuidadosamente cada pregunta. ¡Solo tienes una oportunidad por batalla!</li>
+                <li><strong>Misión:</strong> Derrota al Ent del Desbalanceo respondiendo correctamente sobre árboles binarios, árboles de búsqueda (BST), montículos y recorridos.</li>
+                <li><strong>Mecánica:</strong> Responde cada pregunta para podar las defensas del enemigo. Los errores dañan tu integridad.</li>
+                <li><strong>Victoria:</strong> Reduce la vida del Ent a 0 HP respondiendo 8 preguntas.</li>
+                <li><strong>Derrota:</strong> Cometes más de 3 errores antes de ganar.</li>
+                <li><strong>Estrategia:</strong> Recuerda cómo funcionan las raíces, las ramas (hijos izquierdo/derecho), las reglas Rojo-Negro y la complejidad O(log n).</li>
             </ul>
         </div>
 
         <div class="battle-arena">
-            <!-- Monster Section -->
             <div class="monster-section">
-                <div class="monster-avatar" id="monsterAvatar">🤖</div>
-                <div class="monster-name">Guardián del Hardware</div>
+                <div class="monster-avatar" id="monsterAvatar">🌳</div>
+                <div class="monster-name">Ent del Desbalanceo</div>
                 <div class="health-bar-container">
                     <div class="health-bar" id="healthBar" style="width: 100%;"></div>
                 </div>
                 <div class="health-text" id="healthText">8 / 8 HP</div>
             </div>
 
-            <!-- Player Stats -->
             <div class="player-stats">
                 <div class="stat-card">
                     <div class="stat-value" id="timerValue">0s</div>
@@ -915,9 +895,8 @@
                 </div>
             </div>
 
-            <!-- Questions Section -->
             <div class="questions-section">
-                <h3><i class="fas fa-scroll"></i> Desafíos del Hardware</h3>
+                <h3><i class="fas fa-scroll"></i> Desafíos Estructurales</h3>
                 <div id="questionsContainer"></div>
             </div>
 
@@ -925,7 +904,6 @@
                 <div class="progress-fill" id="progressFill"></div>
             </div>
 
-            <!-- Battle Controls -->
             <div class="battle-controls">
                 <button class="btn btn-attack" onclick="attack()" id="attackBtn">
                     <i class="fas fa-bolt"></i> ¡ATACAR!
@@ -938,238 +916,336 @@
                 </button>
             </div>
 
-            <!-- Game Status -->
             <div class="game-status" id="gameStatus"></div>
         </div>
 
         <div class="navigation">
             <a href="3.1.html" class="btn btn-success">
-                <i class="fas fa-arrow-left"></i> Volver al Material
+                <i class="fas fa-arrow-left"></i> Volver a 3.1 Árboles
             </a>
             <div class="nav-center">
                 <a href="index.html" class="btn btn-secondary">
-                    <i class="fas fa-home"></i> Menú Principal
+                    <i class="fas fa-home"></i> Menú Unidad 3
                 </a>
             </div>
             <a href="3.2.html" class="btn btn-success">
-                Siguiente Tema <i class="fas fa-arrow-right"></i>
+                Siguiente: 3.2 Grafos <i class="fas fa-arrow-right"></i>
             </a>
         </div>
     </div>
 
     <script>
-      // ========================
-      // VARIABLES DEL JUEGO
-      // ========================
-      let time = 0;
-      let attempts = 0;
-      let errors = 0;
-      let monsterHP = 8;
-      let maxHP = 8;
-      let maxErrors = 3;
-      let gameOver = false;
-      let timerInterval;
-      let sidebarOpen = false;
-      let selectedAnswers = {};
-      let completed = 0;
-      let questions = []; // Se cargarán desde archivo externo JSON
+  // ========================
+  // VARIABLES DEL JUEGO
+  // ========================
+  let time = 0;
+  let attempts = 0;
+  let errors = 0;
+  let monsterHP = 8;
+  const maxHP = 8;
+  const maxErrors = 3;
+  let gameOver = false;
+  let timerInterval;
+  let sidebarOpen = false;
+  let selectedAnswers = {};
+  let completed = 0;
+  let questions = []; 
 
-      // ========================
-      // FUNCIÓN PARA INICIAR EL JUEGO
-      // ========================
-      async function initGame() {
+  // ========================
+  // FUNCIÓN PARA INICIAR EL JUEGO
+  // ========================
+  async function initGame() {
     const container = document.getElementById('questionsContainer');
 
-    // Cargar preguntas desde archivo JSON de 3.1
-    const response = await fetch('preguntas_3.1.json'); // <--- cambio aquí
-    const allQuestions = await response.json();
+    try {
+      const response = await fetch('preguntas_3.1.json');
+      
+      if (response.ok) {
+          const allQuestionsRaw = await response.json();
+          processQuestions(allQuestionsRaw, container);
+      } else {
+         // Fallback garantizado con el contenido exacto de 3.1 Árboles Binarios
+         const fallbackQuestions = [
+            {
+                "question": "¿Qué método es el más común para transformar un árbol general a un árbol binario?",
+                "options": ["Representación de 'hijo izquierdo - hermano derecho'", "Asignación de punteros circulares por niveles", "Inserción de nodos por niveles secuenciales", "Duplicación de la raíz principal"],
+                "answer": "Representación de 'hijo izquierdo - hermano derecho'"
+            },
+            {
+                "question": "¿En qué recorrido de un árbol binario se visita primero el subárbol izquierdo, luego la raíz y al final el derecho?",
+                "options": ["Inorden", "Preorden", "Postorden", "Búsqueda a lo ancho"],
+                "answer": "Inorden"
+            },
+            {
+                "question": "En un árbol binario de búsqueda (BST), ¿cómo se organizan los valores respecto a la raíz?",
+                "options": ["Los menores a la izquierda y los mayores a la derecha", "Los mayores a la izquierda y los menores a la derecha", "Se ordenan aleatoriamente para balancear la carga", "Los nodos pares a la izquierda e impares a la derecha"],
+                "answer": "Los menores a la izquierda y los mayores a la derecha"
+            },
+            {
+                "question": "¿Cuál es una regla fundamental del árbol balanceado rojo-negro para evitar deformarse?",
+                "options": ["La raíz siempre debe ser negra y no puede haber dos nodos rojos consecutivos", "Todos los nodos hoja deben ser de color rojo estrictamente", "El subárbol izquierdo debe tener siempre más nodos que el derecho", "No se permiten nodos que tengan dos hijos"],
+                "answer": "La raíz siempre debe ser negra y no puede haber dos nodos rojos consecutivos"
+            },
+            {
+                "question": "¿Qué propiedad cumple un 'max-heap' (montículo de máximos)?",
+                "options": ["Cada nodo padre es mayor o igual que sus hijos", "Cada nodo padre es estrictamente menor que sus hijos", "La raíz siempre contiene el valor cero", "Todos los nodos hoja son mayores que la raíz"],
+                "answer": "Cada nodo padre es mayor o igual que sus hijos"
+            },
+            {
+                "question": "En condiciones donde el árbol binario de búsqueda está balanceado, ¿cuál es su tiempo promedio para búsqueda, inserción y eliminación?",
+                "options": ["O(log n)", "O(1)", "O(n^2)", "O(n)"],
+                "answer": "O(log n)"
+            },
+            {
+                "question": "De acuerdo con el material, ¿qué estructura se utiliza ampliamente en bases de datos y sistemas de archivos al permitir múltiples hijos por nodo?",
+                "options": ["Árboles B", "Tries", "Montículos (Heaps)", "Árboles Rojo-Negro"],
+                "answer": "Árboles B"
+            },
+            {
+                "question": "¿Cuál es la diferencia principal entre un árbol general y un árbol binario?",
+                "options": ["El general no tiene límite fijo de hijos por nodo, el binario permite máximo dos", "El general solo puede almacenar cadenas de texto, el binario solo números", "El binario siempre tiene mayor altura que el general", "El binario no permite la existencia de nodos hoja"],
+                "answer": "El general no tiene límite fijo de hijos por nodo, el binario permite máximo dos"
+            }
+         ];
+         processQuestions(fallbackQuestions, container);
+      }
 
-    // Mezclar y seleccionar 8 preguntas aleatorias
-    shuffleArray(allQuestions);
-    questions = allQuestions.slice(0, 8).map(q => {
-        const optionsShuffled = shuffleArray([...q.options]);
+    } catch (err) {
+      console.error(err);
+      container.innerHTML = `
+        <div class="question">
+          ⚠️ <strong>Error al iniciar:</strong><br>${err.message}
+        </div>`;
+    }
+  }
+
+  function processQuestions(allQuestionsRaw, container) {
+      if (!Array.isArray(allQuestionsRaw) || allQuestionsRaw.length === 0) {
+        throw new Error('El JSON no contiene un arreglo de preguntas.');
+      }
+
+      shuffleArray(allQuestionsRaw);
+      questions = allQuestionsRaw.slice(0, 8).map((q, idx) => {
+        const questionText = q.question;
+        const optionsOrig = q.options;
+        const answerOrig  = q.answer;
+
+        const optionsShuffled = shuffleArray([...optionsOrig]);
+        let correctIndex = optionsShuffled.indexOf(answerOrig);
+
+        if (correctIndex === -1) {
+          const norm = s => String(s).trim();
+          const normAnswer = norm(answerOrig);
+          correctIndex = optionsShuffled.findIndex(o => norm(o) === normAnswer);
+        }
+
         return {
-            question: q.question,
-            options: optionsShuffled,
-            correct: optionsShuffled.indexOf(q.answer)
+          question: questionText,
+          options: optionsShuffled,
+          correct: correctIndex
         };
-    });
+      });
 
-    // Limpiar el contenedor y renderizar preguntas
-    container.innerHTML = '';
-    questions.forEach((q, index) => {
+      container.innerHTML = '';
+      questions.forEach((q, index) => {
         const questionDiv = document.createElement('div');
         questionDiv.className = 'question';
         questionDiv.innerHTML = `
-            <div class="question-number">Desafío ${index + 1}</div>
-            <div class="question-text">${q.question}</div>
-            <div class="options">
-                ${q.options.map((option, optIndex) => `
-                    <div class="option" onclick="selectOption(${index}, ${optIndex})" id="q${index}opt${optIndex}">
-                        <div class="option-letter">${String.fromCharCode(97 + optIndex)})</div>
-                        <div class="option-text">${option}</div>
-                    </div>
-                `).join('')}
-            </div>
+          <div class="question-number">Nivel ${index + 1}</div>
+          <div class="question-text">${q.question}</div>
+          <div class="options">
+            ${q.options.map((option, optIndex) => `
+              <div class="option" onclick="selectOption(${index}, ${optIndex})" id="q${index}opt${optIndex}">
+                <div class="option-letter">${String.fromCharCode(97 + optIndex)})</div>
+                <div class="option-text">${option}</div>
+              </div>
+            `).join('')}
+          </div>
         `;
         container.appendChild(questionDiv);
+      });
+
+      resetBattleState();
+  }
+
+  // ========================
+  // UTILIDADES Y LÓGICA DE JUEGO
+  // ========================
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  function startTimer() {
+    timerInterval = setInterval(() => {
+      time++;
+      document.getElementById('timerValue').textContent = `${time}s`;
+    }, 1000);
+  }
+
+  function updateProgress() {
+    completed = Object.keys(selectedAnswers).length;
+    const percentage = (completed / questions.length) * 100;
+    document.getElementById('progressFill').style.width = `${percentage}%`;
+  }
+
+  function updateMonsterAvatar() {
+    const avatar = document.getElementById('monsterAvatar');
+    const healthPercentage = (monsterHP / maxHP) * 100;
+    if (healthPercentage > 70) avatar.textContent = '🌳';
+    else if (healthPercentage > 40) avatar.textContent = '🌲';
+    else if (healthPercentage > 0) avatar.textContent = '🪵';
+    else avatar.textContent = '✨';
+  }
+
+  function updateUI() {
+    document.getElementById('healthBar').style.width = `${(monsterHP / maxHP) * 100}%`;
+    document.getElementById('healthText').textContent = `${monsterHP} / ${maxHP} HP`;
+    const dots = document.querySelectorAll('.error-dot');
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('filled', i < errors);
+    });
+    document.getElementById('attemptsValue').textContent = attempts;
+    document.getElementById('errorsValue').textContent = `${errors} / ${maxErrors}`;
+    updateMonsterAvatar();
+  }
+
+  function selectOption(qIndex, oIndex) {
+    if(gameOver) return; 
+    for (let i = 0; i < questions[qIndex].options.length; i++) {
+      document.getElementById(`q${qIndex}opt${i}`).classList.remove('selected');
+    }
+    document.getElementById(`q${qIndex}opt${oIndex}`).classList.add('selected');
+    selectedAnswers[qIndex] = oIndex;
+    updateProgress();
+  }
+
+  function attack() {
+    if (gameOver) return;
+    if (completed < questions.length) {
+      return showGameStatus("⚠️ ¡Responde todas las preguntas de los nodos antes de atacar!", "continue");
+    }
+    attempts++;
+    let correct = 0;
+
+    questions.forEach((q, i) => {
+      const userAns = selectedAnswers[i];
+      const correctAns = q.correct;
+
+      for (let j = 0; j < q.options.length; j++) {
+        const optEl = document.getElementById(`q${i}opt${j}`);
+        optEl.classList.remove('selected', 'correct', 'incorrect');
+        if (j === correctAns) optEl.classList.add('correct');
+        else if (j === userAns) optEl.classList.add('incorrect');
+      }
+      if (userAns === correctAns) correct++;
     });
 
+    monsterHP = Math.max(0, monsterHP - correct);
+    errors = Math.min(maxErrors, questions.length - correct);
+    updateUI();
+    checkGameEnd();
+  }
+
+  function checkGameEnd() {
+    const btn = document.getElementById('attackBtn');
+    if (monsterHP <= 0) {
+      gameOver = true;
+      clearInterval(timerInterval);
+      showGameStatus(`<i class='fas fa-trophy'></i> ¡VICTORIA! Equilibraste el bosque en ${time}s.`, 'victory');
+      btn.disabled = true;
+      document.body.style.animation = 'victoryGlow 2s infinite';
+    } else if (errors >= maxErrors) {
+      gameOver = true;
+      clearInterval(timerInterval);
+      showGameStatus(`<i class='fas fa-skull'></i> ¡DERROTA! El Ent desbalanceó tus conocimientos...`, 'defeat');
+      btn.disabled = true;
+      document.body.style.animation = 'defeatPulse 1s infinite';
+    }
+  }
+
+  function resetBattleState() {
+    time = attempts = errors = completed = 0;
+    monsterHP = maxHP;
+    gameOver = false;
+    selectedAnswers = {};
+    document.getElementById('timerValue').textContent = '0s';
+    document.getElementById('attemptsValue').textContent = '0';
+    document.getElementById('errorsValue').textContent = '0 / 3';
+    document.getElementById('gameStatus').style.display = 'none';
+    const attackBtn = document.getElementById('attackBtn');
+    if(attackBtn) attackBtn.disabled = false;
+    document.getElementById('progressFill').style.width = '0%';
+    document.body.style.animation = 'none';
+    updateUI();
+    clearInterval(timerInterval);
     startTimer();
-}
+  }
 
-      // ========================
-      // FUNCIÓN PARA MEZCLAR ARRAY (Fisher-Yates)
-      // ========================
-      function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-      }
+  function resetBattle() {
+    resetBattleState();
+    questions.forEach((q, i) => {
+      q.options.forEach((_, j) => {
+        const el = document.getElementById(`q${i}opt${j}`);
+        if (el) el.classList.remove('selected', 'correct', 'incorrect');
+      });
+    });
+  }
 
-      // ========================
-      // FUNCIONES DE JUEGO (temporizador, UI, ataques, progreso, estado)
-      // ========================
+  function showGameStatus(msg, type) {
+    const div = document.getElementById('gameStatus');
+    div.innerHTML = msg;
+    div.className = `game-status ${type}`;
+    div.style.display = 'block';
+    if (type === 'continue') setTimeout(() => div.style.display = 'none', 4000);
+  }
 
-      function startTimer() {
-        timerInterval = setInterval(() => {
-          time++;
-          document.getElementById('timerValue').textContent = `${time}s`;
-        }, 1000);
-      }
+  function showSolutions() {
+    const answers = questions.map((q, i) => `${i + 1}. ${q.options[q.correct]}`).join('\n');
+    alert(`💡 Respuestas Correctas:\n\n${answers}`);
+  }
 
-      function updateProgress() {
-        completed = Object.keys(selectedAnswers).length;
-        const percentage = (completed / questions.length) * 100;
-        document.getElementById('progressFill').style.width = `${percentage}%`;
-      }
+  // UI lateral y scroll
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebarNav = document.getElementById('sidebarNav');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+  
+  menuToggle.addEventListener('click', () => {
+      sidebarNav.classList.add('active');
+      sidebarOverlay.classList.add('active');
+      menuToggle.classList.add('active');
+      menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+      document.body.style.overflow = 'hidden';
+  });
 
-      function updateMonsterAvatar() {
-        const avatar = document.getElementById('monsterAvatar');
-        const healthPercentage = (monsterHP / maxHP) * 100;
-        if (healthPercentage > 70) avatar.textContent = '🤖';
-        else if (healthPercentage > 40) avatar.textContent = '⚙️';
-        else if (healthPercentage > 0) avatar.textContent = '🔧';
-        else avatar.textContent = '💥';
-      }
+  sidebarOverlay.addEventListener('click', () => {
+      sidebarNav.classList.remove('active');
+      sidebarOverlay.classList.remove('active');
+      menuToggle.classList.remove('active');
+      menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      document.body.style.overflow = 'auto';
+  });
 
-      function updateUI() {
-        document.getElementById('healthBar').style.width = `${(monsterHP / maxHP) * 100}%`;
-        document.getElementById('healthText').textContent = `${monsterHP} / ${maxHP} HP`;
-        const dots = document.querySelectorAll('.error-dot');
-        dots.forEach((dot, i) => {
-          dot.classList.toggle('filled', i < errors);
-        });
-        document.getElementById('attemptsValue').textContent = attempts;
-        document.getElementById('errorsValue').textContent = `${errors} / ${maxErrors}`;
-        updateMonsterAvatar();
-      }
+  const scrollToTopBtn = document.getElementById('scrollToTop');
+  window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) scrollToTopBtn.classList.add('visible');
+      else scrollToTopBtn.classList.remove('visible');
+      
+      const scroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const percent = Math.min((scroll / height) * 100, 100);
+      document.getElementById('readingProgressBar').style.width = `${percent}%`;
+  });
+  
+  scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
-      function selectOption(qIndex, oIndex) {
-        for (let i = 0; i < questions[qIndex].options.length; i++) {
-          document.getElementById(`q${qIndex}opt${i}`).classList.remove('selected');
-        }
-        document.getElementById(`q${qIndex}opt${oIndex}`).classList.add('selected');
-        selectedAnswers[qIndex] = oIndex;
-        updateProgress();
-      }
+  document.addEventListener('DOMContentLoaded', initGame);
+</script>
 
-      function attack() {
-        if (gameOver) return;
-        if (completed < questions.length) return showGameStatus("⚠️ ¡Responde todas las preguntas antes de atacar!", "continue");
-        attempts++;
-        let correct = 0;
-        questions.forEach((q, i) => {
-          const userAns = selectedAnswers[i];
-          const correctAns = q.correct;
-          for (let j = 0; j < q.options.length; j++) {
-            const optEl = document.getElementById(`q${i}opt${j}`);
-            optEl.classList.remove('selected', 'correct', 'incorrect');
-            if (j === correctAns) optEl.classList.add('correct');
-            else if (j === userAns) optEl.classList.add('incorrect');
-          }
-          if (userAns === correctAns) correct++;
-        });
-        monsterHP = Math.max(0, monsterHP - correct);
-        errors = Math.min(maxErrors, questions.length - correct);
-        updateUI();
-        checkGameEnd();
-      }
-
-      function checkGameEnd() {
-        const btn = document.getElementById('attackBtn');
-        if (monsterHP <= 0) {
-          gameOver = true;
-          clearInterval(timerInterval);
-          showGameStatus(`<i class='fas fa-trophy'></i> ¡VICTORIA! Tiempo: ${time}s`, 'victory');
-          btn.disabled = true;
-          document.body.style.animation = 'victoryGlow 2s infinite';
-        } else if (errors >= maxErrors) {
-          gameOver = true;
-          clearInterval(timerInterval);
-          showGameStatus(`<i class='fas fa-skull'></i> ¡DERROTA! Demasiados errores`, 'defeat');
-          btn.disabled = true;
-          document.body.style.animation = 'defeatPulse 1s infinite';
-        }
-      }
-
-      function resetBattle() {
-        time = attempts = errors = completed = 0;
-        monsterHP = maxHP;
-        gameOver = false;
-        selectedAnswers = {};
-        document.getElementById('timerValue').textContent = '0s';
-        document.getElementById('attemptsValue').textContent = '0';
-        document.getElementById('errorsValue').textContent = '0 / 3';
-        document.getElementById('gameStatus').style.display = 'none';
-        document.getElementById('attackBtn').disabled = false;
-        document.getElementById('progressFill').style.width = '0%';
-        document.body.style.animation = 'none';
-        questions.forEach((q, i) => {
-          q.options.forEach((_, j) => {
-            const el = document.getElementById(`q${i}opt${j}`);
-            if (el) el.classList.remove('selected', 'correct', 'incorrect');
-          });
-        });
-        updateUI();
-        clearInterval(timerInterval);
-        startTimer();
-      }
-
-      function showGameStatus(msg, type) {
-        const div = document.getElementById('gameStatus');
-        div.innerHTML = msg;
-        div.className = `game-status ${type}`;
-        div.style.display = 'block';
-        if (type === 'continue') setTimeout(() => div.style.display = 'none', 4000);
-      }
-
-      function showSolutions() {
-        const answers = questions.map((q, i) => `${i + 1}. ${q.options[q.correct]}`).join('\n');
-        alert(`💡 Respuestas Correctas:\n\n${answers}`);
-      }
-
-      function updateContainerSpacing() {
-        const container = document.querySelector('.container');
-        if (window.innerWidth <= 768) {
-          container.style.margin = '0 20px';
-        } else {
-          container.style.margin = sidebarOpen ? '0 90px 0 370px' : '0 90px';
-        }
-      }
-
-      function updateReadingProgress() {
-        const scroll = document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const percent = Math.min((scroll / height) * 100, 100);
-        document.getElementById('readingProgressBar').style.width = `${percent}%`;
-      }
-
-      // Iniciar juego al cargar la página
-        document.addEventListener('DOMContentLoaded', initGame);
-
-      </script>
 </body>
 </html>

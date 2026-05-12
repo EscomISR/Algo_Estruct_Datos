@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unidad 3 - Tema 3.2: Memoria Virtual</title>
+    <title>Actividad 3.2: Batalla de los Grafos</title>
     <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -16,7 +16,7 @@
             --light: #ecf0f1;
             --dark: #1a2a3a;
             --gray: #95a5a6;
-            --monster-color: #8e44ad; /* Color morado para el monstruo de la 3.2 */
+            --monster-color: #8e44ad; /* Color morado para el tema de Grafos */
         }
 
         * {
@@ -256,16 +256,16 @@
         }
 
         .instructions {
-            background: rgba(52, 152, 219, 0.15);
-            border: 1px solid rgba(52, 152, 219, 0.3);
+            background: rgba(142, 68, 173, 0.15);
+            border: 1px solid rgba(142, 68, 173, 0.3);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 30px;
-            border-left: 4px solid var(--secondary);
+            border-left: 4px solid var(--monster-color);
         }
 
         .instructions h3 {
-            color: var(--secondary);
+            color: var(--monster-color);
             margin-bottom: 15px;
         }
 
@@ -274,14 +274,14 @@
             color: var(--light);
         }
 
-        /* Battle Arena - Estilo 3.1 */
+        /* Battle Arena - Estilo 3.2 */
         .battle-arena {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(142, 68, 173, 0.2); /* Color ajustado a tema morado */
+            border: 1px solid rgba(142, 68, 173, 0.2); 
             position: relative;
             overflow: hidden;
         }
@@ -379,7 +379,7 @@
             box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
         }
 
-        /* Questions Section - Estilo 3.1 */
+        /* Questions Section */
         .questions-section {
             margin-top: 30px;
         }
@@ -632,8 +632,8 @@
 
     <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
-            <div class="sidebar-title">Batalla Virtual</div>
-            <div class="sidebar-subtitle">Memoria Virtual (3.2)</div>
+            <div class="sidebar-title">Batalla de Grafos</div>
+            <div class="sidebar-subtitle">Tema 3.2: Grafos</div>
         </div>
         
         <div class="nav-sections">
@@ -652,9 +652,6 @@
                 <a href="actividad_3_1.html" class="nav-item">
                     <i class="fas fa-tasks"></i> Actividad 3.1
                 </a>
-                <a href="actividad_3_3.html" class="nav-item">
-                    <i class="fas fa-tasks"></i> Actividad 3.3
-                </a>
             </div>
         </div>
     </nav>
@@ -668,28 +665,28 @@
             <div class="breadcrumb">
                 <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
                 <span>/</span>
-                <a href="3.2.html">3.2 Memoria Virtual</a>
+                <a href="3.2.html">3.2 Grafos</a>
                 <span>/</span>
-                <span>Batalla de la Memoria</span>
+                <span>Batalla de los Grafos</span>
             </div>
-            <h1>⚡Tema 3.2: Memoria Virtual</h1>
-            <div class="subtitle">¡Derrota al Monstruo de la Fragmentación!</div>
+            <h1>⚡Tema 3.2: Grafos</h1>
+            <div class="subtitle">¡Derrota al Señor de las Aristas!</div>
         </div>
 
         <div class="instructions">
             <h3><i class="fas fa-gamepad"></i> Instrucciones de Batalla</h3>
             <ul>
-                <li><strong>Misión:</strong> Derrota al Monstruo respondiendo correctamente sobre Paginación, TLB y Reemplazo de Páginas.</li>
-                <li><strong>Mecánica:</strong> Cada respuesta correcta inflige 1 punto de daño. Selecciona la mejor opción.</li>
-                <li><strong>Victoria:</strong> Reduce la vida del monstruo a 0 HP respondiendo las 8 preguntas.</li>
-                <li><strong>Derrota:</strong> Cometes más de 3 errores antes de derrotar al monstruo.</li>
+                <li><strong>Misión:</strong> Derrota al enemigo respondiendo correctamente sobre matrices, algoritmos BFS/DFS, caminos cortos y complejidad.</li>
+                <li><strong>Mecánica:</strong> Cada respuesta correcta asesta un golpe. Tus errores reducirán tus oportunidades de ganar.</li>
+                <li><strong>Victoria:</strong> Reduce la vida del enemigo a 0 HP completando las 8 preguntas con éxito.</li>
+                <li><strong>Derrota:</strong> Cometes más de 3 errores antes de derrotarlo.</li>
             </ul>
         </div>
 
         <div class="battle-arena">
             <div class="monster-section">
-                <div class="monster-avatar" id="monsterAvatar">👾</div>
-                <div class="monster-name">Monstruo de Fragmentación</div>
+                <div class="monster-avatar" id="monsterAvatar">🕸️</div>
+                <div class="monster-name">Señor de las Aristas</div>
                 <div class="health-bar-container">
                     <div class="health-bar" id="healthBar" style="width: 100%;"></div>
                 </div>
@@ -717,7 +714,7 @@
             </div>
 
             <div class="questions-section">
-                <h3><i class="fas fa-scroll"></i> Desafíos de Memoria Virtual</h3>
+                <h3><i class="fas fa-scroll"></i> Desafíos de Conectividad</h3>
                 <div id="questionsContainer"></div>
             </div>
 
@@ -749,9 +746,6 @@
                     <i class="fas fa-home"></i> Menú Principal
                 </a>
             </div>
-            <a href="3.3.html" class="btn btn-success">
-                Siguiente Tema <i class="fas fa-arrow-right"></i>
-            </a>
         </div>
     </div>
 
@@ -773,48 +767,48 @@
       let questions = [];
 
       // ========================
-      // DATOS DE RESPALDO (Por si falla el JSON)
+      // DATOS DE RESPALDO (GRAFOS 3.2)
       // ========================
       const fallbackQuestions = [
           {
-              question: "La ________ permite ejecutar programas más grandes que la memoria física disponible.",
-              options: ["memoria virtual", "memoria caché", "memoria ROM", "segmentación"],
-              answer: "memoria virtual"
+              question: "¿Qué tipo de matriz se utiliza para representar las conexiones entre los nodos de un grafo indicando si existe o no una arista?",
+              options: ["Matriz de adyacencia", "Matriz de identidad", "Matriz transpuesta", "Matriz dispersa"],
+              answer: "Matriz de adyacencia"
           },
           {
-              question: "El proceso de dividir la memoria en porciones de tamaño fijo se llama:",
-              options: ["paginación", "particionamiento", "fragmentación", "intercambio"],
-              answer: "paginación"
+              question: "¿Qué representación es más eficiente en consumo de memoria cuando el grafo es disperso (tiene pocas conexiones)?",
+              options: ["Listas de adyacencia", "Matriz de adyacencia", "Árbol binario", "Pila simple"],
+              answer: "Listas de adyacencia"
           },
           {
-              question: "La estructura de datos que mapea direcciones virtuales a físicas es:",
-              options: ["tabla de páginas", "TLB", "contador de programa", "MMU"],
-              answer: "tabla de páginas"
+              question: "¿Qué estructura de datos auxiliar utiliza el algoritmo de Búsqueda en Amplitud (BFS)?",
+              options: ["Una cola (queue)", "Una pila (stack)", "Un montículo (heap)", "Una tabla hash"],
+              answer: "Una cola (queue)"
           },
           {
-              question: "Cuando se referencia una página que no está en memoria, ocurre un:",
-              options: ["fallo de página", "fallo de segmento", "error de bus", "interrupción de E/S"],
-              answer: "fallo de página"
+              question: "¿Qué algoritmo explora los nodos siguiendo un camino lo más profundo posible antes de retroceder (backtracking)?",
+              options: ["Búsqueda en profundidad (DFS)", "Búsqueda en amplitud (BFS)", "Algoritmo de Dijkstra", "Ordenamiento topológico"],
+              answer: "Búsqueda en profundidad (DFS)"
           },
           {
-              question: "El algoritmo ________ reemplaza la página que no se ha usado por más tiempo.",
-              options: ["LRU", "FIFO", "Óptimo", "Reloj"],
-              answer: "LRU"
+              question: "¿Qué algoritmo se utiliza para encontrar el camino más corto desde un nodo origen hacia todos los demás en grafos con pesos positivos?",
+              options: ["Algoritmo de Dijkstra", "Búsqueda en profundidad (DFS)", "Algoritmo de Bellman-Ford", "Ordenamiento Burbuja"],
+              answer: "Algoritmo de Dijkstra"
           },
           {
-              question: "El tiempo dedicado a intercambiar páginas entre memoria y disco se conoce como:",
-              options: ["sobrecarga (overhead)", "latencia", "throughput", "buffer"],
-              answer: "sobrecarga (overhead)"
+              question: "Además de Dijkstra, ¿qué otro algoritmo resuelve el problema del camino más corto y permite trabajar con pesos negativos?",
+              options: ["Algoritmo de Bellman-Ford", "Algoritmo de Kruskal", "Búsqueda en Amplitud", "Búsqueda Binaria"],
+              answer: "Algoritmo de Bellman-Ford"
           },
           {
-              question: "La ________ ocurre cuando el sistema pasa más tiempo intercambiando páginas que ejecutando procesos.",
-              options: ["paginación excesiva (thrashing)", "fragmentación externa", "deadlock", "inanición"],
-              answer: "paginación excesiva (thrashing)"
+              question: "En el análisis de complejidad de algoritmos sobre grafos, ¿qué representan habitualmente las variables V y E?",
+              options: ["Número de vértices (V) y número de aristas (E)", "Velocidad y Ejecución", "Variables y Elementos", "Valores y Entradas"],
+              answer: "Número de vértices (V) y número de aristas (E)"
           },
           {
-              question: "El ________ permite acceder directamente a las traducciones de páginas sin consultar la tabla en memoria.",
-              options: ["TLB (Translation Lookaside Buffer)", "Cache L1", "Registro base", "PTBR"],
-              answer: "TLB (Translation Lookaside Buffer)"
+              question: "¿Cuál es una de las principales aplicaciones de los grafos mencionadas en el material?",
+              options: ["Modelar redes de computadoras, sistemas de transporte y redes sociales", "Compilar código fuente a lenguaje máquina", "Renderizar gráficos 3D en tiempo real", "Acelerar la lectura secuencial de discos duros"],
+              answer: "Modelar redes de computadoras, sistemas de transporte y redes sociales"
           }
       ];
 
@@ -827,14 +821,14 @@
 
         try {
             // Intentamos cargar el JSON si existe
-            const response = await fetch('preguntas_3.2.json');
+            const response = await fetch('preguntas_3_2.json');
             if (response.ok) {
                 allQuestions = await response.json();
             } else {
                 throw new Error("JSON no encontrado");
             }
         } catch (error) {
-            console.log("Usando preguntas de respaldo (Fallback).");
+            console.log("Usando preguntas de respaldo para Grafos.");
             allQuestions = fallbackQuestions;
         }
 
@@ -842,13 +836,20 @@
         shuffleArray(allQuestions);
         // Tomar las primeras 8
         questions = allQuestions.slice(0, 8).map(q => {
-            // Si el objeto ya tiene 'correct' como índice, lo usamos.
-            // Si tiene 'answer' (texto), buscamos el índice en options.
             const optionsShuffled = shuffleArray([...q.options]);
+            
+            // Buscar el índice correcto basándonos en el texto, eliminando espacios extra si es necesario
+            let correctIndex = optionsShuffled.indexOf(q.answer);
+            if (correctIndex === -1) {
+              const norm = s => String(s).trim();
+              const normAnswer = norm(q.answer);
+              correctIndex = optionsShuffled.findIndex(o => norm(o) === normAnswer);
+            }
+
             return {
-                question: q.question || q.text, // Compatibilidad con ambos formatos
+                question: q.question || q.text, 
                 options: optionsShuffled,
-                correct: optionsShuffled.indexOf(q.answer)
+                correct: correctIndex
             };
         });
 
@@ -858,7 +859,7 @@
             const questionDiv = document.createElement('div');
             questionDiv.className = 'question';
             questionDiv.innerHTML = `
-                <div class="question-number">Desafío ${index + 1}</div>
+                <div class="question-number">Interconexión ${index + 1}</div>
                 <div class="question-text">${q.question}</div>
                 <div class="options">
                     ${q.options.map((option, optIndex) => `
@@ -903,11 +904,11 @@
       function updateMonsterAvatar() {
         const avatar = document.getElementById('monsterAvatar');
         const healthPercentage = (monsterHP / maxHP) * 100;
-        // Emojis de 3.2
-        if (healthPercentage > 70) avatar.textContent = '👾';
-        else if (healthPercentage > 40) avatar.textContent = '🤖';
-        else if (healthPercentage > 0) avatar.textContent = '💀';
-        else avatar.textContent = '💥';
+        
+        if (healthPercentage > 70) avatar.textContent = '🕸️';
+        else if (healthPercentage > 40) avatar.textContent = '🕷️';
+        else if (healthPercentage > 0) avatar.textContent = '🌌';
+        else avatar.textContent = '✨';
       }
 
       function updateUI() {
@@ -937,7 +938,7 @@
 
       function attack() {
         if (gameOver) return;
-        if (completed < questions.length) return showGameStatus("⚠️ ¡Responde todas las preguntas antes de atacar!", "continue");
+        if (completed < questions.length) return showGameStatus("⚠️ ¡Resuelve todas las rutas antes de atacar!", "continue");
         
         attempts++;
         let correct = 0;
@@ -969,13 +970,13 @@
         if (monsterHP <= 0) {
           gameOver = true;
           clearInterval(timerInterval);
-          showGameStatus(`<i class='fas fa-trophy'></i> ¡VICTORIA! Tiempo: ${time}s`, 'victory');
+          showGameStatus(`<i class='fas fa-trophy'></i> ¡VICTORIA! Desconectaste al Señor de las Aristas en ${time}s.`, 'victory');
           btn.disabled = true;
           document.body.style.animation = 'victoryGlow 2s infinite';
         } else if (errors >= maxErrors) {
           gameOver = true;
           clearInterval(timerInterval);
-          showGameStatus(`<i class='fas fa-skull'></i> ¡DERROTA! Demasiados errores`, 'defeat');
+          showGameStatus(`<i class='fas fa-skull'></i> ¡DERROTA! Te perdiste en la red...`, 'defeat');
           btn.disabled = true;
           document.body.style.animation = 'defeatPulse 1s infinite';
         }

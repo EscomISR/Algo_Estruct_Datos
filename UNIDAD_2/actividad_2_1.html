@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 2.1: Batalla del Modelo de Procesos</title>
+    <title>Actividad 2.1: Batalla de la Pila</title>
     <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -16,7 +16,7 @@
             --light: #ecf0f1;
             --dark: #1a2a3a;
             --gray: #95a5a6;
-            --monster-color: #9b59b6; /* Color morado para diferenciar la unidad 2 */
+            --monster-color: #e67e22; /* Color naranja para el tema de Pila */
         }
 
         * {
@@ -26,7 +26,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0a0f3d, #1a2a3a, #2c3e50);
+            background: linear-gradient(135deg, #1a2a3a, #2c3e50, #1a2a3a);
             color: var(--light);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -42,7 +42,7 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 20%, rgba(155, 89, 182, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 20% 20%, rgba(230, 126, 34, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 40% 60%, rgba(231, 76, 60, 0.05) 0%, transparent 50%);
             z-index: -1;
@@ -285,8 +285,8 @@
         }
 
         .instructions {
-            background: rgba(155, 89, 182, 0.15); /* Tono morado para Unidad 2 */
-            border: 1px solid rgba(155, 89, 182, 0.3);
+            background: rgba(230, 126, 34, 0.15); /* Tono naranja */
+            border: 1px solid rgba(230, 126, 34, 0.3);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 30px;
@@ -315,7 +315,7 @@
             padding: 30px;
             margin-bottom: 30px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(155, 89, 182, 0.2);
+            border: 1px solid rgba(230, 126, 34, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -328,7 +328,7 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 50% 50%, rgba(155, 89, 182, 0.05) 0%, transparent 70%);
+                radial-gradient(circle at 50% 50%, rgba(230, 126, 34, 0.05) 0%, transparent 70%);
             z-index: -1;
             animation: arenaGlow 4s ease-in-out infinite;
         }
@@ -342,9 +342,9 @@
             text-align: center;
             margin-bottom: 30px;
             padding: 25px;
-            background: rgba(155, 89, 182, 0.15);
+            background: rgba(230, 126, 34, 0.15);
             border-radius: 15px;
-            border: 2px solid rgba(155, 89, 182, 0.4);
+            border: 2px solid rgba(230, 126, 34, 0.4);
             position: relative;
             overflow: hidden;
         }
@@ -356,7 +356,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(155, 89, 182, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(230, 126, 34, 0.1) 0%, transparent 70%);
             animation: monsterAura 3s linear infinite;
             z-index: -1;
         }
@@ -391,7 +391,7 @@
             border-radius: 10px;
             margin: 0 auto 15px;
             overflow: hidden;
-            border: 2px solid rgba(155, 89, 182, 0.5);
+            border: 2px solid rgba(230, 126, 34, 0.5);
         }
 
         .health-bar {
@@ -810,8 +810,8 @@
 
     <nav class="sidebar-nav" id="sidebarNav">
         <div class="sidebar-header">
-            <div class="sidebar-title">Modelo de Procesos</div>
-            <div class="sidebar-subtitle">Unidad 2: Administración de procesos</div>
+            <div class="sidebar-title">2.1 Pila</div>
+            <div class="sidebar-subtitle">Unidad 2: Estructuras de Datos</div>
         </div>
         
         <div class="nav-sections">
@@ -823,7 +823,7 @@
                 </a>
                 <a href="2.1.html" class="nav-item">
                     <i class="fas fa-book-open"></i>
-                    Volver al material
+                    Volver al material de Pila
                 </a>
             </div>
 
@@ -831,7 +831,7 @@
                 <div class="nav-section-title">Otras Secciones</div>
                 <a href="2.2.html" class="nav-item">
                     <i class="fas fa-arrow-right"></i>
-                    2.2 Modelo Multihilo
+                    2.2 Cola
                 </a>
             </div>
         </div>
@@ -846,29 +846,29 @@
             <div class="breadcrumb">
                 <a href="index.html"><i class="fas fa-home"></i> Unidad 2</a>
                 <span>/</span>
-                <a href="2.1.html">2.1 Modelo de procesos</a>
+                <a href="2.1.html">2.1 Pila</a>
                 <span>/</span>
-                <span>Batalla de Procesos</span>
+                <span>Batalla de la Pila</span>
             </div>
-            <h1>⚡ Batalla del Modelo de Procesos</h1>
-            <div class="subtitle">¡Domina la administración de la CPU y derrota al Demonio de los Procesos!</div>
+            <h1>⚡ Batalla de la Pila (Stack)</h1>
+            <div class="subtitle">¡Domina el principio LIFO y derrota al Demonio del Desbordamiento!</div>
         </div>
 
         <div class="instructions">
             <h3><i class="fas fa-gamepad"></i> Instrucciones de Batalla</h3>
             <ul>
-                <li><strong>Misión:</strong> Derrota al Demonio de los Procesos respondiendo correctamente sobre estados, BCP y jerarquías.</li>
+                <li><strong>Misión:</strong> Derrota al Demonio del Desbordamiento respondiendo correctamente sobre especificaciones y operaciones de la Pila.</li>
                 <li><strong>Mecánica:</strong> Cada respuesta correcta inflige 1 punto de daño. Cada error reduce tus oportunidades.</li>
                 <li><strong>Victoria:</strong> Reduce la vida del demonio a 0 HP respondiendo las preguntas correctamente.</li>
                 <li><strong>Derrota:</strong> Cometes más de 3 errores antes de ganar.</li>
-                <li><strong>Estrategia:</strong> Recuerda los conceptos de fork(), estados y PCB.</li>
+                <li><strong>Estrategia:</strong> Recuerda el principio LIFO, la complejidad O(1), y las diferencias entre implementación estática y dinámica.</li>
             </ul>
         </div>
 
         <div class="battle-arena">
             <div class="monster-section">
-                <div class="monster-avatar" id="monsterAvatar">🧟</div>
-                <div class="monster-name">Demonio de Procesos</div>
+                <div class="monster-avatar" id="monsterAvatar">🥞</div>
+                <div class="monster-name">Demonio del Desbordamiento</div>
                 <div class="health-bar-container">
                     <div class="health-bar" id="healthBar" style="width: 100%;"></div>
                 </div>
@@ -896,7 +896,7 @@
             </div>
 
             <div class="questions-section">
-                <h3><i class="fas fa-scroll"></i> Desafíos de Ejecución</h3>
+                <h3><i class="fas fa-scroll"></i> Desafíos de Estructura LIFO</h3>
                 <div id="questionsContainer"></div>
             </div>
 
@@ -921,7 +921,7 @@
 
         <div class="navigation">
             <a href="2.1.html" class="btn btn-success">
-                <i class="fas fa-arrow-left"></i> Volver al Material
+                <i class="fas fa-arrow-left"></i> Volver a 2.1 Pila
             </a>
             <div class="nav-center">
                 <a href="index.html" class="btn btn-secondary">
@@ -929,7 +929,7 @@
                 </a>
             </div>
             <a href="2.2.html" class="btn btn-success">
-                Siguiente Tema <i class="fas fa-arrow-right"></i>
+                Siguiente: 2.2 Cola <i class="fas fa-arrow-right"></i>
             </a>
         </div>
     </div>
@@ -958,55 +958,54 @@
     const container = document.getElementById('questionsContainer');
 
     try {
-      // Intenta cargar el JSON externo
+      // Intenta cargar el JSON externo si existiera uno específico (opcional)
       const response = await fetch('preguntas_2_1.json');
       
       if (response.ok) {
           const allQuestionsRaw = await response.json();
           processQuestions(allQuestionsRaw, container);
       } else {
-         // Fallback por si no existe el archivo JSON aún (útil para pruebas inmediatas)
-         console.warn("No se encontró preguntas_2_1.json, usando preguntas de respaldo.");
+         // Fallback asegurado para que el juego siempre funcione con las preguntas de la Pila
          const fallbackQuestions = [
             {
-                "question": "¿Qué es un proceso en el contexto de sistemas operativos?",
-                "options": ["Un programa en ejecución", "Un archivo en disco", "Un dispositivo de hardware", "Una carpeta del sistema"],
-                "answer": "Un programa en ejecución"
+                "question": "¿Cuál es el principio fundamental que sigue una pila para organizar sus elementos?",
+                "options": ["LIFO (Último en entrar, primero en salir)", "FIFO (Primero en entrar, primero en salir)", "Acceso aleatorio", "Organización jerárquica"],
+                "answer": "LIFO (Último en entrar, primero en salir)"
             },
             {
-                "question": "¿Qué estructura de datos almacena toda la información de un proceso (estado, registros, PID)?",
-                "options": ["Tabla de archivos", "Bloque de Control de Proceso (BCP)", "Vector de interrupciones", "Pila del kernel"],
-                "answer": "Bloque de Control de Proceso (BCP)"
+                "question": "¿Qué operación de la pila se encarga de insertar un nuevo elemento en la cima?",
+                "options": ["push()", "pop()", "top()", "isEmpty()"],
+                "answer": "push()"
             },
             {
-                "question": "¿Qué estado tiene un proceso cuando está esperando a que el planificador le asigne la CPU?",
-                "options": ["En ejecución (Running)", "Bloqueado (Waiting)", "Listo (Ready)", "Terminado (Terminated)"],
-                "answer": "Listo (Ready)"
+                "question": "¿Qué operación se utiliza para eliminar y devolver el elemento que se encuentra en la cima de la pila?",
+                "options": ["pop()", "push()", "peek()", "remove()"],
+                "answer": "pop()"
             },
             {
-                "question": "¿Qué parte de la memoria de un proceso almacena las variables locales y llamadas a funciones?",
-                "options": ["Heap", "Código (Texto)", "Datos", "Pila (Stack)"],
-                "answer": "Pila (Stack)"
+                "question": "En la clasificación lógica, ¿a qué tipo de estructura de datos pertenece la pila?",
+                "options": ["Estructura de datos lineal", "Estructura de datos no lineal", "Estructura arborescente", "Grafo bidireccional"],
+                "answer": "Estructura de datos lineal"
             },
             {
-                "question": "¿Qué operación realiza el SO para detener un proceso y ejecutar otro, guardando su estado?",
-                "options": ["Compilación", "Conmutación de contexto", "Fragmentación", "Paginación"],
-                "answer": "Conmutación de contexto"
+                "question": "En una implementación estática de la pila, ¿qué valor inicial suele tener la variable 'tope' para indicar que está vacía?",
+                "options": ["-1", "0", "1", "null"],
+                "answer": "-1"
             },
             {
-                "question": "¿Qué llamada al sistema se usa comúnmente en sistemas tipo Unix para crear un nuevo proceso?",
-                "options": ["create()", "new()", "fork()", "start()"],
-                "answer": "fork()"
+                "question": "¿Cuál es la complejidad computacional de las operaciones básicas push() y pop() en una pila?",
+                "options": ["O(1)", "O(n)", "O(log n)", "O(n^2)"],
+                "answer": "O(1)"
             },
             {
-                "question": "¿A qué estado pasa un proceso si necesita esperar una operación de E/S?",
-                "options": ["Listo", "Bloqueado", "Ejecución", "Nuevo"],
-                "answer": "Bloqueado"
+                "question": "¿Qué ventaja principal ofrece la implementación dinámica de una pila frente a la estática?",
+                "options": ["Tamaño flexible y adaptabilidad en tiempo real", "Uso de arreglos simples y contiguos", "Mayor velocidad de procesamiento", "No requiere manejo de punteros"],
+                "answer": "Tamaño flexible y adaptabilidad en tiempo real"
             },
             {
-                "question": "¿Qué elemento del BCP indica la siguiente instrucción a ejecutar?",
-                "options": ["Contador de programa", "Registro acumulador", "Puntero de pila", "PID"],
-                "answer": "Contador de programa"
+                "question": "¿Cuál de las siguientes NO es una aplicación común de las pilas?",
+                "options": ["Búsqueda de caminos más cortos en grafos (Dijkstra)", "Evaluación de expresiones matemáticas", "Implementación de recursividad (call stack)", "Conversión de notaciones (infija a postfija)"],
+                "answer": "Búsqueda de caminos más cortos en grafos (Dijkstra)"
             }
          ];
          processQuestions(fallbackQuestions, container);
@@ -1026,7 +1025,7 @@
         throw new Error('El JSON no contiene un arreglo de preguntas.');
       }
 
-      // Mezclar y seleccionar 8 preguntas aleatorias (si hay más)
+      // Mezclar y seleccionar 8 preguntas aleatorias
       shuffleArray(allQuestionsRaw);
       questions = allQuestionsRaw.slice(0, 8).map((q, idx) => {
         const questionText = q.question;
@@ -1101,10 +1100,10 @@
   function updateMonsterAvatar() {
     const avatar = document.getElementById('monsterAvatar');
     const healthPercentage = (monsterHP / maxHP) * 100;
-    if (healthPercentage > 70) avatar.textContent = '🧟';
-    else if (healthPercentage > 40) avatar.textContent = '🧟‍♂️';
-    else if (healthPercentage > 0) avatar.textContent = '💀';
-    else avatar.textContent = '⚰️';
+    if (healthPercentage > 70) avatar.textContent = '🥞';
+    else if (healthPercentage > 40) avatar.textContent = '📚';
+    else if (healthPercentage > 0) avatar.textContent = '🗑️';
+    else avatar.textContent = '✨';
   }
 
   function updateUI() {
@@ -1161,13 +1160,13 @@
     if (monsterHP <= 0) {
       gameOver = true;
       clearInterval(timerInterval);
-      showGameStatus(`<i class='fas fa-trophy'></i> ¡VICTORIA! Tiempo: ${time}s`, 'victory');
+      showGameStatus(`<i class='fas fa-trophy'></i> ¡VICTORIA! Derrotaste al Desbordamiento. Tiempo: ${time}s`, 'victory');
       btn.disabled = true;
       document.body.style.animation = 'victoryGlow 2s infinite';
     } else if (errors >= maxErrors) {
       gameOver = true;
       clearInterval(timerInterval);
-      showGameStatus(`<i class='fas fa-skull'></i> ¡DERROTA! Demasiados errores`, 'defeat');
+      showGameStatus(`<i class='fas fa-skull'></i> ¡DERROTA! La pila se ha desbordado...`, 'defeat');
       btn.disabled = true;
       document.body.style.animation = 'defeatPulse 1s infinite';
     }
