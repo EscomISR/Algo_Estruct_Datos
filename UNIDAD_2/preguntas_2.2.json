@@ -1,202 +1,202 @@
 [
   {
-    "question": "¿Cuál es la unidad básica de utilización de la CPU según el modelo multihilo?",
+    "question": "¿Qué principio rige la organización y procesamiento de información en una cola?",
     "options": [
-      "El proceso",
-      "El hilo",
-      "El registro",
-      "La página de memoria"
+      "LIFO (Last In, First Out)",
+      "FIFO (First In, First Out)",
+      "LILO (Last In, Last Out)",
+      "Aleatorio"
     ],
-    "answer": "El hilo"
+    "answer": "FIFO (First In, First Out)"
   },
   {
-    "question": "¿Qué recursos comparten los hilos que pertenecen al mismo proceso?",
+    "question": "¿Qué significan las siglas FIFO en español de acuerdo con el comportamiento de una cola?",
     "options": [
-      "Registros y Pila",
-      "Contador de programa y Estado",
-      "Sección de código, sección de datos y archivos abiertos",
-      "No comparten ningún recurso"
+      "Primero en entrar, último en salir",
+      "Último en entrar, primero en salir",
+      "Primero en entrar, primero en salir",
+      "Último en entrar, último en salir"
     ],
-    "answer": "Sección de código, sección de datos y archivos abiertos"
+    "answer": "Primero en entrar, primero en salir"
   },
   {
-    "question": "¿Qué elementos son propios y privados de cada hilo?",
+    "question": "¿Cómo se le llama al extremo de la cola por donde salen o se eliminan los elementos?",
     "options": [
-      "Variables globales y archivos",
-      "Código fuente y librerías",
-      "Contador de programa, registros y pila",
-      "Memoria heap y descriptores de archivo"
+      "Rear (entrada)",
+      "Top (cima)",
+      "Front (salida)",
+      "Root (raíz)"
     ],
-    "answer": "Contador de programa, registros y pila"
+    "answer": "Front (salida)"
   },
   {
-    "question": "¿Cuál es una ventaja principal del uso de hilos frente a la creación de nuevos procesos?",
+    "question": "¿Cómo se le denomina al extremo de la cola por donde ingresan o se insertan los nuevos elementos?",
     "options": [
-      "Mayor aislamiento y seguridad",
-      "Economía y menor tiempo de creación/cambio de contexto",
-      "Independencia total de memoria",
-      "No requieren sincronización"
+      "Rear (entrada o final)",
+      "Front (frente)",
+      "Bottom (fondo)",
+      "Top (cima)"
     ],
-    "answer": "Economía y menor tiempo de creación/cambio de contexto"
+    "answer": "Rear (entrada o final)"
   },
   {
-    "question": "¿Qué modelo de multihilo asigna varios hilos de usuario a un único hilo del kernel?",
+    "question": "¿Cuál es la operación básica utilizada para insertar un elemento en una cola?",
     "options": [
-      "Modelo de Uno a Uno",
-      "Modelo de Muchos a Uno",
-      "Modelo de Muchos a Muchos",
-      "Modelo Distribuido"
+      "pop",
+      "push",
+      "dequeue",
+      "enqueue"
     ],
-    "answer": "Modelo de Muchos a Uno"
+    "answer": "enqueue"
   },
   {
-    "question": "¿Cuál es la principal desventaja del modelo de Muchos a Uno?",
+    "question": "¿Cuál es la operación básica empleada para eliminar un elemento de una cola?",
     "options": [
-      "Es difícil de implementar",
-      "Si un hilo realiza una llamada al sistema bloqueante, se bloquea todo el proceso",
-      "Consume demasiados recursos del kernel",
-      "No permite la creación de hilos de usuario"
+      "dequeue",
+      "enqueue",
+      "pop",
+      "peek"
     ],
-    "answer": "Si un hilo realiza una llamada al sistema bloqueante, se bloquea todo el proceso"
+    "answer": "dequeue"
   },
   {
-    "question": "¿Qué modelo de multihilo permite la mayor concurrencia real en sistemas multiprocesador al asignar cada hilo de usuario a un hilo del kernel?",
+    "question": "En la implementación estática de una cola, ¿qué limitación se presenta cuando la estructura alcanza su capacidad máxima?",
     "options": [
-      "Modelo de Muchos a Uno",
-      "Modelo de Uno a Uno",
-      "Modelo de Hilos Verdes",
-      "Modelo Monolítico"
+      "Subdesbordamiento (underflow)",
+      "Desbordamiento (overflow)",
+      "Segmentación de memoria",
+      "Fragmentación externa"
     ],
-    "answer": "Modelo de Uno a Uno"
+    "answer": "Desbordamiento (overflow)"
   },
   {
-    "question": "¿Qué desventaja presenta el modelo de Uno a Uno?",
+    "question": "¿Qué estructura se utiliza generalmente desde el inicio del programa en la implementación estática de una cola?",
     "options": [
-      "No permite ejecutar hilos en paralelo",
-      "La creación de cada hilo de usuario requiere crear un hilo de kernel, lo que puede afectar el rendimiento",
-      "Bloquea todo el proceso ante una llamada al sistema",
-      "Solo funciona en sistemas monoprocesador"
+      "Un árbol binario",
+      "Una lista enlazada dinámica",
+      "Un arreglo de tamaño fijo",
+      "Un montículo"
     ],
-    "answer": "La creación de cada hilo de usuario requiere crear un hilo de kernel, lo que puede afectar el rendimiento"
+    "answer": "Un arreglo de tamaño fijo"
   },
   {
-    "question": "¿Qué modelo intenta combinar lo mejor de los mundos multiplexando hilos de usuario sobre un número menor o igual de hilos del kernel?",
+    "question": "¿Qué ocurre cuando se intenta eliminar un elemento de una cola que está vacía, de acuerdo con las condiciones de la estructura?",
     "options": [
-      "Modelo de Muchos a Uno",
-      "Modelo de Uno a Uno",
-      "Modelo de Muchos a Muchos",
-      "Modelo de Dos Niveles"
+      "Overflow",
+      "Subdesbordamiento",
+      "Se crea un nuevo nodo",
+      "El programa ignora la instrucción"
     ],
-    "answer": "Modelo de Muchos a Muchos"
+    "answer": "Subdesbordamiento"
   },
   {
-    "question": "¿Qué estándar define una API para la creación y sincronización de hilos en sistemas tipo Unix (Linux, macOS)?",
+    "question": "¿En qué variante de cola el elemento que sale primero no depende de su orden de llegada, sino de su nivel de importancia?",
     "options": [
-      "Win32 API",
-      "POSIX Pthreads (IEEE 1003.1c)",
-      "Java Threads",
-      "Green Threads"
+      "Cola circular",
+      "Cola estática",
+      "Cola dinámica",
+      "Cola de prioridad"
     ],
-    "answer": "POSIX Pthreads (IEEE 1003.1c)"
+    "answer": "Cola de prioridad"
   },
   {
-    "question": "¿Dónde se implementan y gestionan los hilos a nivel de usuario (ULT)?",
+    "question": "¿Qué estructura interna más eficiente suele utilizarse en la implementación de colas de prioridad para acceder rápidamente al elemento prioritario?",
     "options": [
-      "En el hardware del procesador",
-      "En el núcleo del sistema operativo",
-      "En una biblioteca en el espacio de usuario",
-      "En el BIOS"
+      "Montículos (heaps)",
+      "Pilas (stacks)",
+      "Arreglos circulares",
+      "Vectores fijos"
     ],
-    "answer": "En una biblioteca en el espacio de usuario"
+    "answer": "Montículos (heaps)"
   },
   {
-    "question": "¿Cuál es una característica de los hilos a nivel de kernel (KLT)?",
+    "question": "Cuando una cola lineal se implementa de forma eficiente, ¿cuál suele ser la complejidad de sus operaciones principales (inserción y eliminación)?",
     "options": [
-      "El sistema operativo no sabe que existen",
-      "Son gestionados directamente por el sistema operativo",
-      "Son mucho más rápidos de crear que los hilos de usuario",
-      "No permiten el multiprocesamiento"
+      "O(log n)",
+      "O(n)",
+      "O(1)",
+      "O(n^2)"
     ],
-    "answer": "Son gestionados directamente por el sistema operativo"
+    "answer": "O(1)"
   },
   {
-    "question": "¿Qué API de hilos es la nativa y principal para sistemas operativos Windows?",
+    "question": "¿Qué situación puede hacer que la complejidad de las operaciones en una cola se incremente a O(n)?",
     "options": [
-      "Pthreads",
-      "Win32 Threads",
-      "Solaris Threads",
-      "Cocoa Threads"
+      "Implementaciones menos optimizadas que implican desplazamientos de elementos",
+      "Usar arreglos demasiado grandes",
+      "Insertar solo números enteros",
+      "Acceder al front y al rear simultáneamente"
     ],
-    "answer": "Win32 Threads"
+    "answer": "Implementaciones menos optimizadas que implican desplazamientos de elementos"
   },
   {
-    "question": "¿Por qué los hilos mejoran la 'capacidad de respuesta' de una aplicación interactiva?",
+    "question": "¿Para qué se utiliza principalmente la notación Big O (O) al analizar las nociones de complejidad?",
     "options": [
-      "Porque eliminan los errores de programación",
-      "Porque permiten que una parte del programa siga ejecutándose aunque otra esté bloqueada",
-      "Porque aumentan la velocidad del reloj del procesador",
-      "Porque reducen el tamaño del programa en disco"
+      "Para medir la cantidad exacta de milisegundos que tarda un programa",
+      "Para contar cuántas variables tiene el código",
+      "Para describir el comportamiento del algoritmo conforme crece el tamaño de los datos",
+      "Para definir el tamaño de la memoria ROM necesaria"
     ],
-    "answer": "Porque permiten que una parte del programa siga ejecutándose aunque otra esté bloqueada"
+    "answer": "Para describir el comportamiento del algoritmo conforme crece el tamaño de los datos"
   },
   {
-    "question": "¿Qué problema fundamental introduce el uso de hilos que comparten memoria?",
+    "question": "¿Cuál es una aplicación común de las colas dentro de los sistemas operativos?",
     "options": [
-      "Fragmentación del disco",
-      "Necesidad de sincronización para evitar condiciones de carrera",
-      "Incompatibilidad con el hardware",
-      "Pérdida de datos al apagar el equipo"
+      "Edición de imágenes",
+      "Gestión de procesos y tareas que esperan el CPU",
+      "Compresión de archivos de audio",
+      "Renderizado de gráficos 3D"
     ],
-    "answer": "Necesidad de sincronización para evitar condiciones de carrera"
+    "answer": "Gestión de procesos y tareas que esperan el CPU"
   },
   {
-    "question": "¿Qué ocurre con los hilos de un proceso si este proceso termina abruptamente?",
+    "question": "En el manejo de estructuras de entrada y salida (E/S), ¿cuál es un ejemplo clásico del uso de colas?",
     "options": [
-      "Los hilos continúan ejecutándose en segundo plano",
-      "Los hilos se mueven a otro proceso",
-      "Todos los hilos del proceso terminan inmediatamente",
-      "Los hilos se guardan en el disco"
+      "La organización de carpetas en Windows",
+      "Los trabajos de impresión enviados a una impresora",
+      "La reproducción aleatoria de música",
+      "El guardado automático en Word"
     ],
-    "answer": "Todos los hilos del proceso terminan inmediatamente"
+    "answer": "Los trabajos de impresión enviados a una impresora"
   },
   {
-    "question": "¿Qué beneficio aporta el multihilo en una arquitectura multiprocesador?",
+    "question": "¿Cómo se aplican las colas en las redes de computadoras?",
     "options": [
-      "Escalabilidad: los hilos pueden ejecutarse en paralelo en distintos núcleos",
-      "Reducción del uso de memoria RAM",
-      "Simplificación del código fuente",
-      "Eliminación de las interrupciones de hardware"
+      "Para encriptar contraseñas",
+      "Para gestionar paquetes de datos y evitar la congestión",
+      "Para dibujar la topología de la red",
+      "Para aumentar la velocidad física del cableado"
     ],
-    "answer": "Escalabilidad: los hilos pueden ejecutarse en paralelo en distintos núcleos"
+    "answer": "Para gestionar paquetes de datos y evitar la congestión"
   },
   {
-    "question": "¿En qué espacio de memoria se gestionan los hilos en el modelo 'Muchos a Uno'?",
+    "question": "¿Qué tipo de procesamiento permite mantener el principio FIFO en una cola, asegurando que se procesen en el orden en que llegan?",
     "options": [
-      "Espacio de Kernel",
-      "Espacio de Usuario",
-      "Memoria Virtual Swap",
-      "Memoria Caché L1"
+      "Procesamiento desordenado y aleatorio",
+      "Procesamiento jerárquico",
+      "Procesamiento ordenado y equitativo",
+      "Procesamiento probabilístico"
     ],
-    "answer": "Espacio de Usuario"
+    "answer": "Procesamiento ordenado y equitativo"
   },
   {
-    "question": "¿Qué mecanismo se utiliza para evitar que dos hilos modifiquen la misma variable al mismo tiempo?",
+    "question": "¿Qué desventaja presenta la implementación estática de una cola si no se aprovechan los espacios liberados al inicio?",
     "options": [
-      "Compresión ZIP",
-      "Mecanismos de Sincronización (ej. Mutex, Semáforos)",
-      "Desfragmentación",
-      "Clustering"
+      "El código no compila",
+      "Desperdicio de memoria",
+      "Corrupción de la base de datos",
+      "Pérdida de la interfaz gráfica"
     ],
-    "answer": "Mecanismos de Sincronización (ej. Mutex, Semáforos)"
+    "answer": "Desperdicio de memoria"
   },
   {
-    "question": "¿Qué biblioteca permite crear hilos que pueden ser gestionados por la JVM (Java Virtual Machine)?",
+    "question": "¿Qué variables o índices de control se emplean comúnmente para gestionar las operaciones en una cola estática?",
     "options": [
-      "Java Threads",
-      "Win16 Threads",
-      "OS/2 Threads",
-      "BeOS Threads"
+      "Left y Right",
+      "Up y Down",
+      "Front (frente) y Rear (final)",
+      "Top y Base"
     ],
-    "answer": "Java Threads"
+    "answer": "Front (frente) y Rear (final)"
   }
 ]

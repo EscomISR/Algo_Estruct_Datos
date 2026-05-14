@@ -1,202 +1,202 @@
 [
   {
-    "question": "¿Qué término describe la situación donde varios procesos acceden y manipulan datos compartidos concurrentemente y el resultado depende del orden de ejecución?",
+    "question": "¿Cuál es el propósito principal de una tabla hash como estructura de datos?",
     "options": [
-      "Interbloqueo",
-      "Condición de carrera",
-      "Inanición",
-      "Exclusión mutua"
+      "Almacenar datos en orden jerárquico estricto",
+      "Ejecutar procesos en orden LIFO",
+      "Almacenar y recuperar información de forma muy rápida",
+      "Ordenar archivos en el disco duro de manera secuencial"
     ],
-    "answer": "Condición de carrera"
+    "answer": "Almacenar y recuperar información de forma muy rápida"
   },
   {
-    "question": "¿Cómo se denomina el segmento de código en el cual un proceso accede a un recurso compartido?",
+    "question": "¿Qué operación se aplica a una clave para transformarla en una posición dentro de un arreglo en una tabla hash?",
     "options": [
-      "Sección crítica",
-      "Sección de entrada",
-      "Sección restante",
-      "Sección de salida"
+      "Derivada parcial",
+      "Función hash",
+      "Sondeo lineal",
+      "Búsqueda binaria"
     ],
-    "answer": "Sección crítica"
+    "answer": "Función hash"
   },
   {
-    "question": "¿Qué requisito de la solución al problema de la sección crítica asegura que solo un proceso a la vez pueda estar ejecutando su sección crítica?",
+    "question": "Según su especificación genérica, ¿cómo organiza la información una tabla hash?",
     "options": [
-      "Progreso",
-      "Espera limitada",
-      "Exclusión mutua",
-      "Atomicidad"
+      "En nodos de tres punteros",
+      "En arreglos bidimensionales",
+      "En pares (clave, valor)",
+      "En listas LIFO o FIFO"
     ],
-    "answer": "Exclusión mutua"
+    "answer": "En pares (clave, valor)"
   },
   {
-    "question": "¿Qué significa que una operación sea 'atómica'?",
+    "question": "¿Cuáles son las operaciones fundamentales que incluye la especificación genérica de una tabla hash?",
     "options": [
-      "Que utiliza energía nuclear",
-      "Que se ejecuta como una unidad indivisible, sin interrupciones",
-      "Que es muy pequeña",
-      "Que se ejecuta repetidamente"
+      "Push, pop y top",
+      "Insertar (put), buscar (get) y eliminar (remove)",
+      "Enqueue y dequeue",
+      "Recorrido inorden y postorden"
     ],
-    "answer": "Que se ejecuta como una unidad indivisible, sin interrupciones"
+    "answer": "Insertar (put), buscar (get) y eliminar (remove)"
   },
   {
-    "question": "¿Qué es un semáforo en el contexto de sistemas operativos?",
+    "question": "En condiciones ideales, ¿cuál es la complejidad de tiempo para las operaciones de búsqueda, inserción y eliminación en una tabla hash?",
     "options": [
-      "Una señal de tráfico en la interfaz gráfica",
-      "Una variable entera utilizada para la sincronización mediante operaciones atómicas",
-      "Un tipo de memoria caché",
-      "Un driver de dispositivo"
+      "O(n)",
+      "O(log n)",
+      "O(1)",
+      "O(n^2)"
     ],
-    "answer": "Una variable entera utilizada para la sincronización mediante operaciones atómicas"
+    "answer": "O(1)"
   },
   {
-    "question": "¿Cuáles son las dos operaciones atómicas estándar para manipular un semáforo?",
+    "question": "¿Cómo se le llama al problema que ocurre cuando dos claves diferentes generan el mismo índice dentro de la tabla hash?",
     "options": [
-      "read() y write()",
-      "start() y stop()",
-      "wait() y signal() (o P y V)",
-      "open() y close()"
+      "Fragmentación",
+      "Desbordamiento",
+      "Colisión",
+      "Subdesbordamiento"
     ],
-    "answer": "wait() y signal() (o P y V)"
+    "answer": "Colisión"
   },
   {
-    "question": "¿Qué diferencia principal existe entre un Mutex y un Semáforo binario?",
+    "question": "¿Qué técnicas principales se utilizan para manejar y resolver el problema de las colisiones en tablas hash?",
     "options": [
-      "El Mutex no tiene estado",
-      "El Mutex tiene un concepto de propiedad (ownership), solo quien lo bloquea puede desbloquearlo",
-      "El semáforo es más rápido",
-      "No hay diferencia"
+      "Encadenamiento y direccionamiento abierto",
+      "Paginación y segmentación",
+      "Árboles AVL y Tries",
+      "Ordenamiento burbuja y Quicksort"
     ],
-    "answer": "El Mutex tiene un concepto de propiedad (ownership), solo quien lo bloquea puede desbloquearlo"
+    "answer": "Encadenamiento y direccionamiento abierto"
   },
   {
-    "question": "¿Qué es un 'Abrazo Mortal' (Deadlock)?",
+    "question": "¿En qué técnica de resolución de colisiones cada posición de la tabla hash contiene una estructura adicional (como una lista enlazada)?",
     "options": [
-      "Cuando un proceso termina inesperadamente",
-      "Una situación donde un conjunto de procesos están bloqueados esperando recursos que poseen otros procesos del mismo conjunto",
-      "Un error de compilación",
-      "Cuando la CPU se sobrecalienta"
+      "Direccionamiento abierto",
+      "Doble dispersión",
+      "Encadenamiento",
+      "Sondeo cuadrático"
     ],
-    "answer": "Una situación donde un conjunto de procesos están bloqueados esperando recursos que poseen otros procesos del mismo conjunto"
+    "answer": "Encadenamiento"
   },
   {
-    "question": "¿Qué estructura de sincronización de alto nivel encapsula datos y procedimientos, garantizando que solo un proceso esté activo dentro de ella a la vez?",
+    "question": "¿En qué variante de tablas hash los elementos se almacenan directamente dentro del arreglo principal sin estructuras auxiliares?",
     "options": [
-      "Semáforo",
-      "Monitor",
-      "Spinlock",
-      "Barrera"
+      "Tablas hash abiertas",
+      "Tablas hash cerradas (direccionamiento abierto)",
+      "Árboles rojo-negro",
+      "Listas doblemente enlazadas"
     ],
-    "answer": "Monitor"
+    "answer": "Tablas hash cerradas (direccionamiento abierto)"
   },
   {
-    "question": "¿Qué sucede cuando un proceso ejecuta la operación wait() en un semáforo cuyo valor es 0?",
+    "question": "¿Cuáles son los métodos de exploración más comunes utilizados en las tablas hash cerradas (direccionamiento abierto)?",
     "options": [
-      "El proceso continúa su ejecución",
-      "El semáforo incrementa su valor",
-      "El proceso se bloquea hasta que el semáforo sea mayor que 0",
-      "El sistema operativo se reinicia"
+      "Recorrido preorden e inorden",
+      "Búsqueda en amplitud y profundidad",
+      "Sondeo lineal, sondeo cuadrático y doble dispersión",
+      "Grafos dirigidos y no dirigidos"
     ],
-    "answer": "El proceso se bloquea hasta que el semáforo sea mayor que 0"
+    "answer": "Sondeo lineal, sondeo cuadrático y doble dispersión"
   },
   {
-    "question": "¿Qué tipo de semáforo puede tomar valores enteros no negativos para controlar el acceso a múltiples instancias de un recurso?",
+    "question": "Si ocurren muchas colisiones y no se controlan adecuadamente, ¿a qué complejidad de tiempo pueden degradarse las operaciones en una tabla hash?",
     "options": [
-      "Semáforo binario",
-      "Semáforo contador",
-      "Mutex",
-      "Spinlock"
+      "Logarítmica O(log n)",
+      "Constante O(1)",
+      "Exponencial O(2^n)",
+      "Lineal O(n)"
     ],
-    "answer": "Semáforo contador"
+    "answer": "Lineal O(n)"
   },
   {
-    "question": "¿Qué es la 'espera activa' (busy waiting)?",
+    "question": "¿Qué factor incrementa significativamente la probabilidad de colisiones en una tabla hash?",
     "options": [
-      "Cuando un proceso se suspende y libera la CPU",
-      "Cuando un proceso consume ciclos de CPU en un bucle comprobando una condición",
-      "Cuando el planificador asigna prioridades dinámicas",
-      "Cuando un proceso espera una E/S de disco"
+      "Almacenar pares clave-valor numéricos",
+      "Una mala función hash o un factor de carga elevado",
+      "Implementar la tabla de forma estática",
+      "Utilizar lenguaje ensamblador"
     ],
-    "answer": "Cuando un proceso consume ciclos de CPU en un bucle comprobando una condición"
+    "answer": "Una mala función hash o un factor de carga elevado"
   },
   {
-    "question": "¿Qué mecanismo se utiliza dentro de los monitores para suspender procesos hasta que se cumpla un requisito específico?",
+    "question": "¿Con qué otro nombre se les conoce a las tablas hash cerradas?",
     "options": [
-      "Variables de condición",
-      "Punteros de pila",
-      "Registros de segmento",
-      "Interrupciones de hardware"
+      "Hashing con encadenamiento",
+      "Tablas con direccionamiento abierto",
+      "Árboles binarios cerrados",
+      "Colas de prioridad"
     ],
-    "answer": "Variables de condición"
+    "answer": "Tablas con direccionamiento abierto"
   },
   {
-    "question": "¿Cuál es el objetivo principal de sincronizar procesos?",
+    "question": "¿Con qué otro nombre se les conoce a las tablas hash abiertas?",
     "options": [
-      "Acelerar el hardware",
-      "Mantener la consistencia de los datos compartidos",
-      "Reducir el tamaño de los programas",
-      "Evitar el uso de la memoria RAM"
+      "Hashing con encadenamiento",
+      "Tablas de sondeo lineal",
+      "Matrices de adyacencia",
+      "Listas circulares"
     ],
-    "answer": "Mantener la consistencia de los datos compartidos"
+    "answer": "Hashing con encadenamiento"
   },
   {
-    "question": "¿Qué problema clásico de sincronización involucra un búfer de tamaño limitado y dos tipos de procesos?",
+    "question": "¿Cuál es una desventaja importante de las tablas hash respecto a la organización de la información?",
     "options": [
-      "Problema de los filósofos cenando",
-      "Problema del productor-consumidor",
-      "Problema de los lectores-escritores",
-      "Problema del barbero dormilón"
+      "Requieren recorrer todos los datos para buscar uno",
+      "No mantienen un orden secuencial natural de los elementos almacenados",
+      "Solo pueden almacenar números enteros",
+      "Utilizan obligatoriamente más memoria que un grafo denso"
     ],
-    "answer": "Problema del productor-consumidor"
+    "answer": "No mantienen un orden secuencial natural de los elementos almacenados"
   },
   {
-    "question": "¿Qué es la 'Inanición' (Starvation) en el contexto de sincronización?",
+    "question": "¿En qué área de la seguridad informática tienen una aplicación fundamental las funciones hash?",
     "options": [
-      "Falta de energía eléctrica",
-      "Situación donde un proceso espera indefinidamente por un recurso porque otros procesos siempre se le adelantan",
-      "Cuando se agota la memoria del sistema",
-      "Cuando el disco duro está lleno"
+      "En el renderizado de gráficos 3D",
+      "En el control de periféricos de hardware",
+      "En el almacenamiento de contraseñas",
+      "En la detección de hardware defectuoso"
     ],
-    "answer": "Situación donde un proceso espera indefinidamente por un recurso porque otros procesos siempre se le adelantan"
+    "answer": "En el almacenamiento de contraseñas"
   },
   {
-    "question": "¿Qué operación realiza 'signal()' (o V) en un semáforo?",
+    "question": "En el contexto de tablas hash, ¿qué caracteriza a una implementación estática?",
     "options": [
-      "Decrementa el valor del semáforo",
-      "Incrementa el valor del semáforo y despierta a un proceso en espera si lo hay",
-      "Elimina el semáforo",
-      "Bloquea al proceso que llama"
+      "Permite redimensionar la tabla dinámicamente",
+      "Siempre usa árboles balanceados en cada índice",
+      "Solo puede manejar datos de texto plano",
+      "Utiliza un tamaño fijo de arreglo definido desde el inicio"
     ],
-    "answer": "Incrementa el valor del semáforo y despierta a un proceso en espera si lo hay"
+    "answer": "Utiliza un tamaño fijo de arreglo definido desde el inicio"
   },
   {
-    "question": "¿Cuál de los siguientes NO es un mecanismo de sincronización?",
+    "question": "¿Qué elemento es crucial para que una tabla hash distribuya uniformemente las claves y evite concentraciones?",
     "options": [
-      "Paginación",
-      "Semáforo",
-      "Mutex",
-      "Monitor"
+      "Una función hash adecuada",
+      "Una pila (stack) de respaldo",
+      "Un recorrido en profundidad (DFS)",
+      "Un tamaño de memoria caché ilimitado"
     ],
-    "answer": "Paginación"
+    "answer": "Una función hash adecuada"
   },
   {
-    "question": "¿Por qué los monitores se consideran más fáciles de usar que los semáforos?",
+    "question": "¿Cuál es una posible desventaja del hashing con encadenamiento (tablas hash abiertas)?",
     "options": [
-      "Porque son más rápidos",
-      "Porque el compilador o el lenguaje gestionan la exclusión mutua automáticamente",
-      "Porque no usan memoria",
-      "Porque funcionan sin sistema operativo"
+      "Limita la cantidad máxima de elementos estrictamente al tamaño del arreglo",
+      "Incremento en el uso de memoria debido a las estructuras adicionales (listas enlazadas)",
+      "No permite eliminar elementos de la estructura",
+      "Genera agrupamiento (clustering) primario constante"
     ],
-    "answer": "Porque el compilador o el lenguaje gestionan la exclusión mutua automáticamente"
+    "answer": "Incremento en el uso de memoria debido a las estructuras adicionales (listas enlazadas)"
   },
   {
-    "question": "¿Qué riesgo tiene el uso incorrecto de un Mutex (por ejemplo, olvidar desbloquearlo)?",
+    "question": "Dentro de los métodos para tablas hash cerradas, ¿cuál busca la siguiente posición disponible de manera secuencial?",
     "options": [
-      "Fragmentación externa",
-      "Bloqueo permanente de otros hilos que intenten acceder al recurso (Deadlock/Hang)",
-      "Aumento de la velocidad del procesador",
-      "Creación de procesos zombie"
+      "Sondeo cuadrático",
+      "Doble dispersión",
+      "Encadenamiento",
+      "Sondeo lineal"
     ],
-    "answer": "Bloqueo permanente de otros hilos que intenten acceder al recurso (Deadlock/Hang)"
+    "answer": "Sondeo lineal"
   }
 ]

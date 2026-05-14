@@ -1,172 +1,202 @@
 [
   {
-    "question": "¿Qué proporciona la abstracción de la memoria según Tanenbaum y Bos (2015)?",
+    "question": "¿Cuál es la característica principal que define a un árbol binario respecto a sus nodos?",
     "options": [
-      "Un espacio físico fijo para cada proceso",
-      "Una visión lógica independiente de la estructura física del equipo",
-      "Un acceso directo del usuario al hardware",
-      "Una forma de desactivar la memoria virtual"
+      "Cada nodo puede tener un número ilimitado de hijos",
+      "Cada nodo puede tener como máximo dos hijos: uno izquierdo y uno derecho",
+      "Cada nodo debe estar conectado circularmente",
+      "Cada nodo debe tener obligatoriamente tres hijos"
     ],
-    "answer": "Una visión lógica independiente de la estructura física del equipo"
+    "answer": "Cada nodo puede tener como máximo dos hijos: uno izquierdo y uno derecho"
   },
   {
-    "question": "¿Qué técnica permite crear direcciones lógicas que luego se traducen en direcciones físicas?",
+    "question": "¿Cuál es el método más común utilizado para la transformación de árboles generales a árboles binarios?",
     "options": [
-      "Compilación estática",
-      "Paginación, segmentación o memoria virtual",
-      "Desfragmentación automática",
-      "Duplicación de memoria física"
+      "Representación 'hijo derecho - padre izquierdo'",
+      "Representación 'hijo izquierdo - hermano derecho'",
+      "Matriz de adyacencia",
+      "Sondeo cuadrático"
     ],
-    "answer": "Paginación, segmentación o memoria virtual"
+    "answer": "Representación 'hijo izquierdo - hermano derecho'"
   },
   {
-    "question": "¿Cuál es una de las ventajas principales de la abstracción de memoria?",
+    "question": "En la transformación de un árbol general a binario, ¿en qué se convierte el primer hijo de un nodo del árbol general?",
     "options": [
-      "Permite que todos los procesos compartan la misma dirección física",
-      "Evita que un proceso acceda a la memoria de otro",
-      "Reduce el tamaño de la memoria RAM",
-      "Elimina la necesidad de almacenamiento secundario"
+      "En su hermano derecho",
+      "En su padre",
+      "En la raíz del nuevo árbol",
+      "En su hijo izquierdo"
     ],
-    "answer": "Evita que un proceso acceda a la memoria de otro"
+    "answer": "En su hijo izquierdo"
   },
   {
-    "question": "¿Qué característica permite la ejecución de varios programas aprovechando mejor la memoria física?",
+    "question": "¿Qué orden de visita sigue el recorrido 'preorden' en un árbol binario?",
     "options": [
-      "Monoprogramación",
-      "Multiprogramación",
-      "Compilación dinámica",
-      "Canales DMA"
+      "Subárbol izquierdo, raíz, subárbol derecho",
+      "Subárbol izquierdo, subárbol derecho, raíz",
+      "Raíz, subárbol izquierdo, subárbol derecho",
+      "Raíz, subárbol derecho, subárbol izquierdo"
     ],
-    "answer": "Multiprogramación"
+    "answer": "Raíz, subárbol izquierdo, subárbol derecho"
   },
   {
-    "question": "¿Qué combina la memoria virtual?",
+    "question": "¿Qué orden de visita sigue el recorrido 'inorden' en un árbol binario?",
     "options": [
-      "Segmentación fija con registros",
-      "Memoria principal y secundaria",
-      "RAM con instrucciones del procesador",
-      "Inodos con directorios"
+      "Raíz, subárbol izquierdo, subárbol derecho",
+      "Subárbol izquierdo, raíz, subárbol derecho",
+      "Subárbol izquierdo, subárbol derecho, raíz",
+      "Subárbol derecho, raíz, subárbol izquierdo"
     ],
-    "answer": "Memoria principal y secundaria"
+    "answer": "Subárbol izquierdo, raíz, subárbol derecho"
   },
   {
-    "question": "¿Cuál es el objetivo de la organización jerárquica de la memoria?",
+    "question": "¿Qué mecanismo de programación suele utilizarse para implementar los recorridos en un árbol binario de forma lógica y eficiente?",
     "options": [
-      "Aumentar el tamaño de los directorios",
-      "Equilibrar velocidad, capacidad y costo",
-      "Eliminar la necesidad de memoria caché",
-      "Reducir el uso de almacenamiento secundario"
+      "Recursividad",
+      "Punteros triples",
+      "Tablas hash abiertas",
+      "Matrices simétricas"
     ],
-    "answer": "Equilibrar velocidad, capacidad y costo"
+    "answer": "Recursividad"
   },
   {
-    "question": "¿Qué tarea cumple la administración del almacenamiento?",
+    "question": "¿Cuál es la propiedad principal de organización de un Árbol Binario de Búsqueda (BST)?",
     "options": [
-      "Regular el uso del procesador",
-      "Gestionar la memoria principal y secundaria de forma eficiente",
-      "Abrir archivos automáticamente",
-      "Asignar permisos a usuarios sin intervención del kernel"
+      "Los valores menores y mayores se alternan en cada nivel",
+      "Los valores menores se almacenan en el subárbol izquierdo y los mayores en el derecho",
+      "El valor más grande siempre está en la raíz",
+      "Solo admite números pares en la izquierda e impares en la derecha"
     ],
-    "answer": "Gestionar la memoria principal y secundaria de forma eficiente"
+    "answer": "Los valores menores se almacenan en el subárbol izquierdo y los mayores en el derecho"
   },
   {
-    "question": "¿Qué método de asignación distribuye bloques de manera continua?",
+    "question": "¿Cuál es la complejidad promedio para la operación de búsqueda en un Árbol Binario de Búsqueda cuando está balanceado?",
     "options": [
-      "Asignación enlazada",
-      "Asignación indexada",
-      "Asignación contigua",
-      "Asignación aleatoria"
+      "O(1)",
+      "O(n)",
+      "O(log n)",
+      "O(n^2)"
     ],
-    "answer": "Asignación contigua"
+    "answer": "O(log n)"
   },
   {
-    "question": "¿Qué técnica mejora la tolerancia a fallos mediante almacenamiento redundante?",
+    "question": "¿Qué ocurre con la eficiencia de un Árbol Binario de Búsqueda en el peor de los casos (cuando está desbalanceado)?",
     "options": [
-      "Swap",
-      "RAID",
-      "Mapas de bits",
-      "Listas ligadas"
+      "La eficiencia mejora a O(1)",
+      "El árbol se convierte automáticamente en un montículo",
+      "Puede volverse ineficiente con un tiempo de O(n)",
+      "La complejidad se vuelve O(log n)"
     ],
-    "answer": "RAID"
+    "answer": "Puede volverse ineficiente con un tiempo de O(n)"
   },
   {
-    "question": "¿En qué consiste el swapping?",
+    "question": "¿Qué colores se utilizan en los nodos de un árbol rojo-negro para mantener su estructura equilibrada?",
     "options": [
-      "Crear copias de seguridad automáticas",
-      "Desplazar procesos completos a almacenamiento secundario temporalmente",
-      "Eliminar procesos inactivos",
-      "Convertir memoria virtual en física"
+      "Blanco y negro",
+      "Rojo y negro",
+      "Azul y rojo",
+      "Verde y negro"
     ],
-    "answer": "Desplazar procesos completos a almacenamiento secundario temporalmente"
+    "answer": "Rojo y negro"
   },
   {
-    "question": "¿Qué ventaja ofrece el swapping?",
+    "question": "¿Cuál es una regla fundamental respecto a la raíz en un árbol balanceado rojo-negro?",
     "options": [
-      "Evita la necesidad de usar memoria secundaria",
-      "Permite ejecutar programas que requieren más memoria que la disponible físicamente",
-      "Elimina la fragmentación interna",
-      "Inhabilita la memoria virtual"
+      "La raíz siempre debe ser roja",
+      "La raíz siempre debe ser negra",
+      "La raíz cambia de color en cada inserción",
+      "La raíz no tiene color"
     ],
-    "answer": "Permite ejecutar programas que requieren más memoria que la disponible físicamente"
+    "answer": "La raíz siempre debe ser negra"
   },
   {
-    "question": "¿Qué valor representa un bloque libre en el mapa de bits?",
+    "question": "¿Cuál de las siguientes es una restricción válida en un árbol rojo-negro?",
     "options": [
-      "1",
-      "0",
-      "2",
-      "Ninguno, depende del sistema"
+      "No pueden existir dos nodos negros consecutivos",
+      "No pueden existir dos nodos rojos consecutivos",
+      "Todos los nodos hoja deben ser rojos",
+      "El subárbol derecho solo puede tener nodos negros"
     ],
-    "answer": "0"
+    "answer": "No pueden existir dos nodos rojos consecutivos"
   },
   {
-    "question": "¿Qué valor representa un bloque ocupado en el mapa de bits?",
+    "question": "¿Qué propiedad de orden cumple específicamente un 'max-heap' (montículo máximo)?",
     "options": [
-      "0",
-      "1",
-      "2",
-      "8"
+      "Cada nodo padre es menor o igual que sus hijos",
+      "Cada nodo padre es mayor o igual que sus hijos",
+      "Los nodos hijos izquierdo y derecho deben ser iguales",
+      "Los valores impares van a la izquierda"
     ],
-    "answer": "1"
+    "answer": "Cada nodo padre es mayor o igual que sus hijos"
   },
   {
-    "question": "¿Cuál es una desventaja del manejo con mapa de bits en memorias grandes?",
+    "question": "¿Qué ventaja principal ofrece un montículo (heap) respecto al acceso del elemento más importante (máximo o mínimo)?",
     "options": [
-      "Consume demasiada memoria",
-      "Recorrer el mapa completo puede ser costoso en tiempo",
-      "No permite detectar bloques ocupados",
-      "No permite expandir archivos"
+      "Garantiza el acceso inmediato en tiempo constante O(1)",
+      "Permite acceso secuencial O(n)",
+      "Acceso en O(log n) recorriendo las hojas",
+      "Usa una tabla hash auxiliar"
     ],
-    "answer": "Recorrer el mapa completo puede ser costoso en tiempo"
+    "answer": "Garantiza el acceso inmediato en tiempo constante O(1)"
   },
   {
-    "question": "¿Cómo gestiona la memoria el método de listas ligadas?",
+    "question": "¿Qué sucede durante el proceso de inserción en un montículo (heap)?",
     "options": [
-      "Cada bloque libre contiene un puntero al siguiente",
-      "Requiere que todos los bloques sean contiguos",
-      "Solo funciona con asignación indexada",
-      "Almacena todos los punteros dentro de un único inodo"
+      "El elemento se inserta en la raíz directamente",
+      "Se crea un nuevo árbol y se unen ambos",
+      "El elemento se coloca en la última posición disponible y luego se ajusta hacia arriba (heapify up)",
+      "Se elimina el último elemento para hacer espacio"
     ],
-    "answer": "Cada bloque libre contiene un puntero al siguiente"
+    "answer": "El elemento se coloca en la última posición disponible y luego se ajusta hacia arriba (heapify up)"
   },
   {
-    "question": "¿Qué mantiene esta técnica para identificar el primer bloque libre?",
+    "question": "¿Qué tipo de árbol, mencionado en el documento, se utiliza ampliamente en sistemas de bases de datos?",
     "options": [
-      "Un registro en caché",
-      "Un puntero al inicio de la lista",
-      "Una tabla de índices global",
-      "Un mapa de bits fijo"
+      "Árboles rojo-negro",
+      "Montículos mínimos",
+      "Árboles B",
+      "Árboles AVL"
     ],
-    "answer": "Un puntero al inicio de la lista"
+    "answer": "Árboles B"
   },
   {
-    "question": "¿Cuál es una desventaja de las listas ligadas?",
+    "question": "¿Para qué tipo de datos y aplicaciones son empleados principalmente los árboles tipo 'tries'?",
     "options": [
-      "No se pueden usar en discos grandes",
-      "Pueden aumentar el tiempo de acceso al buscar bloques contiguos",
-      "Requieren mucha memoria física",
-      "No permiten liberar espacio"
+      "Para operaciones matriciales",
+      "Para organizar los datos por prefijos, útiles en manejo de cadenas y autocompletado",
+      "Para resolver el problema del camino más corto en grafos",
+      "Para el balanceo estricto de números enteros"
     ],
-    "answer": "Pueden aumentar el tiempo de acceso al buscar bloques contiguos"
+    "answer": "Para organizar los datos por prefijos, útiles en manejo de cadenas y autocompletado"
+  },
+  {
+    "question": "En las nociones de complejidad de las implementaciones, ¿qué afirman ser las medidas como O(n) y O(log n)?",
+    "options": [
+      "Herramientas teóricas, independientes del hardware y del lenguaje de programación",
+      "Tiempos exactos en milisegundos dependientes del procesador",
+      "Consumo exacto de bytes en memoria RAM",
+      "Medidas exclusivas para algoritmos de árboles"
+    ],
+    "answer": "Herramientas teóricas, independientes del hardware y del lenguaje de programación"
+  },
+  {
+    "question": "¿Qué desventaja tiene el uso de la recursividad en los recorridos de un árbol binario muy profundo?",
+    "options": [
+      "Pierde los datos si la raíz es nula",
+      "Convierte el árbol en un grafo cíclico",
+      "Puede implicar un mayor consumo de memoria en la pila de ejecución",
+      "Genera colisiones de hash"
+    ],
+    "answer": "Puede implicar un mayor consumo de memoria en la pila de ejecución"
+  },
+  {
+    "question": "¿Qué árboles mantienen un balance estricto a diferencia del equilibrio más flexible de los árboles rojo-negro?",
+    "options": [
+      "Árboles B",
+      "Árboles AVL",
+      "Tries",
+      "Montículos (Heaps)"
+    ],
+    "answer": "Árboles AVL"
   }
 ]

@@ -1,202 +1,202 @@
 [
   {
-    "question": "¿Qué significa IPC en el contexto de sistemas operativos?",
+    "question": "¿Cómo se define una lista en algoritmia?",
     "options": [
-      "Internet Protocol Control",
-      "Inter-Process Communication",
-      "Internal Process Core",
-      "Instruction Pointer Counter"
+      "Una estructura de datos no lineal jerárquica",
+      "Una estructura de datos lineal que permite almacenar un conjunto de elementos de manera ordenada",
+      "Un arreglo estático de tamaño inmutable",
+      "Un tipo de árbol binario de búsqueda"
     ],
-    "answer": "Inter-Process Communication"
+    "answer": "Una estructura de datos lineal que permite almacenar un conjunto de elementos de manera ordenada"
   },
   {
-    "question": "¿Cuál es la función principal de la IPC?",
+    "question": "¿Cuál es la ventaja principal de utilizar una especificación genérica para las listas?",
     "options": [
-      "Aumentar la velocidad del reloj del CPU",
-      "Permitir el intercambio de datos y sincronización entre procesos",
-      "Gestionar la memoria virtual del sistema",
-      "Controlar los drivers de video"
+      "Garantiza el uso de memoria contigua en todos los lenguajes",
+      "Permite enfocarse en el comportamiento lógico (qué hace) en lugar de los detalles internos (cómo lo hace)",
+      "Elimina la necesidad de utilizar punteros en la programación",
+      "Convierte automáticamente los datos a formato binario"
     ],
-    "answer": "Permitir el intercambio de datos y sincronización entre procesos"
+    "answer": "Permite enfocarse en el comportamiento lógico (qué hace) en lugar de los detalles internos (cómo lo hace)"
   },
   {
-    "question": "¿Cuál es el mecanismo de IPC más rápido?",
+    "question": "¿Qué característica fundamental tiene el tipo de dato genérico (T) en la especificación de una lista?",
     "options": [
-      "Tuberías (Pipes)",
-      "Colas de mensajes",
-      "Memoria compartida",
-      "Sockets"
+      "Fuerza a la lista a usar solo números enteros",
+      "Convierte la lista en un arreglo bidimensional",
+      "Permite trabajar con cualquier tipo de dato, haciéndola reutilizable en distintos contextos",
+      "Limita el tamaño máximo de la estructura de datos"
     ],
-    "answer": "Memoria compartida"
+    "answer": "Permite trabajar con cualquier tipo de dato, haciéndola reutilizable en distintos contextos"
   },
   {
-    "question": "¿Por qué la memoria compartida es el método más veloz?",
+    "question": "¿De qué partes principales se compone cada nodo en una lista simple enlazada?",
     "options": [
-      "Porque usa un protocolo de red especial",
-      "Porque evita la intervención del kernel en la transferencia de datos",
-      "Porque comprime los datos automáticamente",
-      "Porque usa la GPU en lugar de la CPU"
+      "Un dato y un enlace o puntero al siguiente nodo",
+      "Un dato, un puntero al anterior y un puntero al siguiente",
+      "Solo un puntero al siguiente nodo",
+      "Un índice numérico y un arreglo de datos"
     ],
-    "answer": "Porque evita la intervención del kernel en la transferencia de datos"
+    "answer": "Un dato y un enlace o puntero al siguiente nodo"
   },
   {
-    "question": "¿Qué riesgo principal presenta el uso de memoria compartida?",
+    "question": "En una lista simple enlazada, ¿a qué apunta el enlace del último nodo?",
     "options": [
-      "Condiciones de carrera si no hay sincronización",
-      "Pérdida de datos por red lenta",
-      "Bloqueo del kernel",
-      "Llenado del disco duro"
+      "Al primer nodo de la lista",
+      "Al nodo anterior",
+      "A un valor nulo (NULL)",
+      "Al índice cero de memoria"
     ],
-    "answer": "Condiciones de carrera si no hay sincronización"
+    "answer": "A un valor nulo (NULL)"
   },
   {
-    "question": "¿Qué característica define a una tubería (pipe) tradicional?",
+    "question": "¿Cuál es una desventaja de las listas simples enlazadas frente a los arreglos?",
     "options": [
-      "Es bidireccional y de acceso aleatorio",
-      "Es unidireccional y sigue el orden FIFO",
-      "Permite comunicación por red",
-      "Almacena mensajes con prioridades"
+      "No pueden cambiar su tamaño dinámicamente",
+      "No permiten el acceso directo a un elemento específico, se debe recorrer desde el inicio",
+      "Desperdician más memoria si no están completamente llenas",
+      "Son estructuras exclusivas para datos numéricos"
     ],
-    "answer": "Es unidireccional y sigue el orden FIFO"
+    "answer": "No permiten el acceso directo a un elemento específico, se debe recorrer desde el inicio"
   },
   {
-    "question": "¿Qué limitación tienen las tuberías anónimas?",
+    "question": "¿Cuántas partes principales contiene un nodo en una lista doblemente enlazada?",
     "options": [
-      "Solo funcionan entre procesos relacionados (padre-hijo)",
-      "Son muy lentas",
-      "No pueden transmitir texto",
-      "Requieren conexión a internet"
+      "Dos: un dato y un puntero",
+      "Tres: un dato, un puntero al nodo anterior y un puntero al nodo siguiente",
+      "Una: solo el dato",
+      "Cuatro: dato, índice, puntero anterior y puntero siguiente"
     ],
-    "answer": "Solo funcionan entre procesos relacionados (padre-hijo)"
+    "answer": "Tres: un dato, un puntero al nodo anterior y un puntero al nodo siguiente"
   },
   {
-    "question": "¿Qué llamada al sistema se usa en Unix para crear una tubería anónima?",
+    "question": "¿Qué tipo de recorrido facilita una lista doblemente enlazada gracias a su estructura de nodos?",
     "options": [
-      "socket()",
-      "mkfifo()",
-      "pipe()",
-      "shmget()"
+      "Solo recorrido desde el final hacia el inicio",
+      "Recorrido aleatorio sin índices",
+      "Recorrido en ambos sentidos (hacia adelante y hacia atrás)",
+      "Recorrido en forma de árbol binario"
     ],
-    "answer": "pipe()"
+    "answer": "Recorrido en ambos sentidos (hacia adelante y hacia atrás)"
   },
   {
-    "question": "¿Qué mecanismo de IPC permite la comunicación entre procesos no relacionados mediante un nombre en el sistema de archivos?",
+    "question": "¿Qué desventaja principal tiene la lista doblemente enlazada en comparación con la lista simple?",
     "options": [
-      "Tubería anónima",
-      "Tubería con nombre (Named Pipe / FIFO)",
-      "Señal",
-      "Semáforo"
+      "Solo permite almacenar números",
+      "No puede crecer de tamaño dinámicamente",
+      "Usa más memoria debido a que requiere dos punteros por nodo",
+      "Su acceso es obligatoriamente O(1)"
     ],
-    "answer": "Tubería con nombre (Named Pipe / FIFO)"
+    "answer": "Usa más memoria debido a que requiere dos punteros por nodo"
   },
   {
-    "question": "¿Qué ventaja ofrecen las colas de mensajes sobre las tuberías?",
+    "question": "¿Qué característica de conexión define principalmente a una lista circular?",
     "options": [
-      "Son más rápidas que la memoria compartida",
-      "Permiten comunicación estructurada con prioridades y tipos de mensaje",
-      "No consumen memoria del kernel",
-      "Son exclusivas de Windows"
+      "Cada nodo tiene más de dos hijos",
+      "Los nodos no usan punteros, sino índices de un arreglo",
+      "El último nodo no apunta a NULL, sino que se enlaza con el primer nodo formando un ciclo cerrado",
+      "La lista tiene un inicio y final absolutos inamovibles"
     ],
-    "answer": "Permiten comunicación estructurada con prioridades y tipos de mensaje"
+    "answer": "El último nodo no apunta a NULL, sino que se enlaza con el primer nodo formando un ciclo cerrado"
   },
   {
-    "question": "¿Qué define a la comunicación síncrona (bloqueante)?",
+    "question": "¿Para qué tipo de escenarios o aplicaciones resulta ideal el uso de listas circulares?",
     "options": [
-      "El emisor continúa inmediatamente después de enviar",
-      "El emisor espera hasta que el receptor reciba el mensaje",
-      "El mensaje se pierde si no hay receptor",
-      "Se usa solo en redes inalámbricas"
+      "Operaciones matemáticas complejas",
+      "Sistemas estáticos donde los datos no cambian nunca",
+      "Procesos donde se requiere rotar entre elementos repetitivamente, como asignación de turnos o buffers circulares",
+      "Evaluación de expresiones postfijas exclusivamente"
     ],
-    "answer": "El emisor espera hasta que el receptor reciba el mensaje"
+    "answer": "Procesos donde se requiere rotar entre elementos repetitivamente, como asignación de turnos o buffers circulares"
   },
   {
-    "question": "¿Qué define a la comunicación asíncrona (no bloqueante)?",
+    "question": "¿Cómo se almacenan los elementos de los arreglos (arrays) y vectores en la memoria del sistema computacional?",
     "options": [
-      "El emisor envía el mensaje y continúa su ejecución sin esperar",
-      "El sistema se detiene por completo",
-      "Requiere un cable físico dedicado",
-      "El receptor debe estar listo antes de enviar"
+      "En posiciones contiguas de memoria",
+      "De forma dispersa utilizando punteros triples",
+      "Exclusivamente en discos duros secundarios",
+      "En una estructura de árbol rojo-negro"
     ],
-    "answer": "El emisor envía el mensaje y continúa su ejecución sin esperar"
+    "answer": "En posiciones contiguas de memoria"
   },
   {
-    "question": "¿Qué mecanismo se utiliza para notificar eventos asíncronos como interrupciones (ej. Ctrl+C)?",
+    "question": "¿Por qué los arreglos y vectores destacan por ser muy eficientes en las operaciones de lectura?",
     "options": [
-      "Sockets",
-      "Señales (Signals)",
-      "Memoria Virtual",
-      "Archivos mapeados"
+      "Porque los datos siempre están ordenados alfabéticamente",
+      "Porque permiten acceder a cualquier elemento de forma directa mediante un índice numérico",
+      "Porque no usan memoria RAM",
+      "Porque usan dos punteros por cada dato almacenado"
     ],
-    "answer": "Señales (Signals)"
+    "answer": "Porque permiten acceder a cualquier elemento de forma directa mediante un índice numérico"
   },
   {
-    "question": "¿Qué mecanismo es la base de la comunicación cliente-servidor en redes?",
+    "question": "En contraste con los arreglos, ¿qué operación resulta más eficiente realizar en las listas enlazadas?",
     "options": [
-      "Pipes anónimos",
-      "Sockets",
-      "Memoria compartida local",
-      "Colas de mensajes locales"
+      "Búsqueda binaria de un elemento",
+      "Acceso directo a la mitad de la estructura",
+      "Insertar o eliminar elementos sin necesidad de mover (desplazar) los demás datos",
+      "Almacenamiento de matrices multidimensionales"
     ],
-    "answer": "Sockets"
+    "answer": "Insertar o eliminar elementos sin necesidad de mover (desplazar) los demás datos"
   },
   {
-    "question": "¿Qué función de Windows se utiliza para crear un objeto de memoria compartida?",
+    "question": "Según las nociones de complejidad de las operaciones, ¿cuál es el costo o complejidad temporal para acceder a un elemento en un arreglo?",
     "options": [
-      "CreatePipe",
-      "CreateFileMapping",
-      "OpenProcess",
-      "VirtualAlloc"
+      "O(n)",
+      "O(log n)",
+      "O(n^2)",
+      "O(1)"
     ],
-    "answer": "CreateFileMapping"
+    "answer": "O(1)"
   },
   {
-    "question": "¿Cuál es una función de Unix utilizada para enviar un mensaje a una cola?",
+    "question": "¿Cuál es la complejidad temporal (Big-O) de buscar o acceder a un elemento específico en una lista simple enlazada?",
     "options": [
-      "msgsnd()",
-      "pipe()",
-      "kill()",
-      "mmap()"
+      "O(1)",
+      "O(n)",
+      "O(log n)",
+      "O(n^2)"
     ],
-    "answer": "msgsnd()"
+    "answer": "O(n)"
   },
   {
-    "question": "¿Qué sucede con los datos en una tubería si no se leen?",
+    "question": "¿Qué evalúa principalmente la notación Big-O en las nociones de complejidad de las operaciones?",
     "options": [
-      "Se borran inmediatamente",
-      "Permanecen en el buffer del kernel hasta que se lean",
-      "Se envían al disco duro",
-      "Generan un error fatal"
+      "La exactitud de los resultados matemáticos de un algoritmo",
+      "La cantidad de líneas de código fuente en un programa",
+      "El comportamiento del algoritmo o costo computacional conforme crece el tamaño de los datos",
+      "El tipo de lenguaje de programación utilizado en el desarrollo"
     ],
-    "answer": "Permanecen en el buffer del kernel hasta que se lean"
+    "answer": "El comportamiento del algoritmo o costo computacional conforme crece el tamaño de los datos"
   },
   {
-    "question": "¿Qué señal se utiliza comúnmente para detener un proceso inmediatamente (Kill)?",
+    "question": "Dentro de las características de la especificación genérica, ¿a qué se refiere el concepto de 'Abstracción de la implementación'?",
     "options": [
-      "SIGINT",
-      "SIGKILL",
-      "SIGSTOP",
-      "SIGCONT"
+      "A que solo puede programarse en lenguaje C",
+      "A que establece el comportamiento de la lista sin depender de cómo está construida físicamente (arreglo o lista enlazada)",
+      "A que abstrae la memoria caché del procesador",
+      "A que no permite operaciones de eliminación"
     ],
-    "answer": "SIGKILL"
+    "answer": "A que establece el comportamiento de la lista sin depender de cómo está construida físicamente (arreglo o lista enlazada)"
   },
   {
-    "question": "¿Qué mecanismo de IPC actúa como intermediario activo gestionando los datos en el kernel?",
+    "question": "¿En qué área o aplicación práctica de la informática son comúnmente utilizadas las listas enlazadas?",
     "options": [
-      "Memoria compartida",
-      "Paso de mensajes (Colas)",
-      "Variables locales",
-      "Registros de CPU"
+      "Generación de gráficos por computadora",
+      "Gestión dinámica de memoria",
+      "Evaluación estática de compiladores",
+      "Cálculo de matrices tridimensionales"
     ],
-    "answer": "Paso de mensajes (Colas)"
+    "answer": "Gestión dinámica de memoria"
   },
   {
-    "question": "¿Qué protocolo es común en el uso de Sockets para comunicación fiable?",
+    "question": "¿Cómo se describe el tipo de acceso a los elementos dentro de una lista simple enlazada?",
     "options": [
-      "TCP/IP",
-      "USB",
-      "SATA",
-      "HDMI"
+      "Acceso directo",
+      "Acceso aleatorio",
+      "Acceso secuencial",
+      "Acceso indexado continuo"
     ],
-    "answer": "TCP/IP"
+    "answer": "Acceso secuencial"
   }
 ]

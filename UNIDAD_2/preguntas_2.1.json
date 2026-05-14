@@ -1,202 +1,202 @@
 [
   {
-    "question": "¿Qué es un proceso en el contexto de sistemas operativos?",
+    "question": "¿Qué principio sigue la estructura de datos conocida como pila? [cite: 2, 47]",
     "options": [
-      "Un programa en ejecución",
-      "Un archivo almacenado en disco",
-      "Un componente físico del procesador",
-      "Una rutina de la BIOS"
+      "FIFO (Primero en entrar, primero en salir)",
+      "LIFO (Último en entrar, primero en salir)",
+      "LILO (Último en entrar, último en salir)",
+      "Aleatorio"
     ],
-    "answer": "Un programa en ejecución"
+    "answer": "LIFO (Último en entrar, primero en salir)"
   },
   {
-    "question": "¿Qué estructura de datos utiliza el sistema operativo para controlar cada proceso?",
+    "question": "¿Qué significa el acrónimo LIFO en el contexto de una pila? [cite: 47]",
     "options": [
-      "Tabla de asignación de archivos (FAT)",
-      "Bloque de Control de Proceso (BCP)",
-      "Vector de interrupciones",
-      "Registro de segmento de código"
+      "First In, First Out",
+      "Last In, Last Out",
+      "Last In, First Out",
+      "First In, Last Out"
     ],
-    "answer": "Bloque de Control de Proceso (BCP)"
+    "answer": "Last In, First Out"
   },
   {
-    "question": "¿Qué parte de la memoria de un proceso almacena las variables locales y las llamadas a funciones?",
+    "question": "¿Cómo se clasifica la pila según su organización lógica? [cite: 15, 23]",
     "options": [
-      "Heap (Montículo)",
-      "Sección de Texto",
-      "Pila (Stack)",
-      "Sección de Datos"
+      "Estructura de datos no lineal",
+      "Estructura de datos jerárquica",
+      "Estructura de datos cíclica",
+      "Estructura de datos lineal"
     ],
-    "answer": "Pila (Stack)"
+    "answer": "Estructura de datos lineal"
   },
   {
-    "question": "¿Qué área de memoria de un proceso se utiliza para la asignación dinámica de memoria durante la ejecución?",
+    "question": "¿Qué operación básica de una pila inserta un elemento en la cima? [cite: 60]",
     "options": [
-      "Pila (Stack)",
-      "Heap (Montículo)",
-      "Registro acumulador",
-      "Código"
+      "pop()",
+      "push()",
+      "top()",
+      "isEmpty()"
     ],
-    "answer": "Heap (Montículo)"
+    "answer": "push()"
   },
   {
-    "question": "¿Qué llamada al sistema se utiliza comúnmente en entornos Unix para crear un nuevo proceso?",
+    "question": "¿Qué operación básica de una pila elimina y devuelve el elemento en la cima? [cite: 61]",
     "options": [
-      "exec()",
-      "fork()",
-      "start()",
-      "init()"
+      "push()",
+      "top()",
+      "pop()",
+      "peek()"
     ],
-    "answer": "fork()"
+    "answer": "pop()"
   },
   {
-    "question": "¿Cómo se denomina al proceso que crea a otro proceso mediante una llamada al sistema?",
+    "question": "¿Qué operación permite consultar el elemento en la cima sin eliminarlo de la pila? [cite: 62]",
     "options": [
-      "Proceso hijo",
-      "Proceso init",
-      "Proceso padre",
-      "Proceso zombie"
+      "pop()",
+      "push()",
+      "isEmpty()",
+      "top() o peek()"
     ],
-    "answer": "Proceso padre"
+    "answer": "top() o peek()"
   },
   {
-    "question": "¿En qué estado se encuentra un proceso que está esperando a que el planificador (scheduler) le asigne la CPU?",
+    "question": "¿Qué restricción fundamental tiene la especificación genérica de una pila con respecto a la extracción de datos? [cite: 65]",
     "options": [
-      "Nuevo",
-      "En Ejecución",
-      "Bloqueado",
-      "Listo"
+      "No se pueden insertar números",
+      "No se puede extraer un elemento si la pila está vacía",
+      "Solo se puede almacenar texto",
+      "Debe tener un tamaño infinito"
     ],
-    "answer": "Listo"
+    "answer": "No se puede extraer un elemento si la pila está vacía"
   },
   {
-    "question": "¿Qué evento provoca que un proceso pase del estado 'En Ejecución' al estado 'Bloqueado'?",
+    "question": "¿Qué caracteriza principalmente a la implementación estática de una pila? [cite: 73, 74]",
     "options": [
-      "Terminación del proceso",
-      "Solicitud de E/S o espera de un evento",
-      "Vencimiento del tiempo de CPU (quantum)",
-      "Creación de un proceso hijo"
+      "Utiliza memoria dinámica",
+      "Usa una estructura de tamaño fijo (como un arreglo)",
+      "El tamaño cambia durante la ejecución",
+      "Usa listas enlazadas"
     ],
-    "answer": "Solicitud de E/S o espera de un evento"
+    "answer": "Usa una estructura de tamaño fijo (como un arreglo)"
   },
   {
-    "question": "¿Qué información del BCP indica la dirección de la siguiente instrucción a ejecutar?",
+    "question": "¿Cuál de las siguientes es una ventaja destacada de la implementación dinámica de una pila? [cite: 85]",
     "options": [
-      "Identificador del proceso (PID)",
-      "Contador de Programa (PC)",
-      "Puntero de pila (Stack Pointer)",
-      "Registro de estado"
+      "Uso de tamaño fijo predefinido",
+      "No requiere manejo de punteros",
+      "Flexibilidad en el tamaño de la pila",
+      "Menor complejidad en la implementación"
     ],
-    "answer": "Contador de Programa (PC)"
+    "answer": "Flexibilidad en el tamaño de la pila"
   },
   {
-    "question": "¿Qué término describe el proceso de guardar el estado de un proceso actual y cargar el estado de otro?",
+    "question": "En una implementación dinámica, ¿dónde se almacena cada elemento de la pila? [cite: 78]",
     "options": [
-      "Interrupción de hardware",
-      "Conmutación de contexto",
-      "Paginación de memoria",
-      "Segmentación"
+      "En un arreglo fijo",
+      "En un nodo que contiene el dato y una referencia al siguiente nodo",
+      "En una matriz de adyacencia",
+      "En un archivo de texto"
     ],
-    "answer": "Conmutación de contexto"
+    "answer": "En un nodo que contiene el dato y una referencia al siguiente nodo"
   },
   {
-    "question": "¿Qué identificador único asigna el sistema operativo a cada proceso?",
+    "question": "¿Cuál es el orden de complejidad temporal de la operación push en una pila? [cite: 119]",
     "options": [
-      "MAC Address",
-      "Dirección IP",
-      "PID (Process ID)",
-      "UUID"
+      "O(n)",
+      "O(log n)",
+      "O(n^2)",
+      "O(1)"
     ],
-    "answer": "PID (Process ID)"
+    "answer": "O(1)"
   },
   {
-    "question": "¿Qué estado corresponde a un proceso que recién ha sido creado pero aún no ha sido admitido en el grupo de procesos ejecutables?",
+    "question": "¿Cuál es el orden de complejidad temporal de la operación pop en una pila? [cite: 120]",
     "options": [
-      "Listo",
-      "Nuevo",
-      "Bloqueado",
-      "Suspendido"
+      "O(1)",
+      "O(n)",
+      "O(log n)",
+      "O(n^2)"
     ],
-    "answer": "Nuevo"
+    "answer": "O(1)"
   },
   {
-    "question": "¿Cuál es la función principal del planificador (scheduler) de procesos?",
+    "question": "De acuerdo con sus aplicaciones, ¿en qué escenarios se utilizan comúnmente las pilas? [cite: 131]",
     "options": [
-      "Compilar el código fuente",
-      "Seleccionar qué proceso disponible se ejecutará en la CPU",
-      "Gestionar los permisos de archivos",
-      "Controlar los dispositivos USB"
+      "Bases de datos relacionales",
+      "Evaluación de expresiones matemáticas y recursividad",
+      "Creación de redes sociales",
+      "Algoritmos de enrutamiento GPS"
     ],
-    "answer": "Seleccionar qué proceso disponible se ejecutará en la CPU"
+    "answer": "Evaluación de expresiones matemáticas y recursividad"
   },
   {
-    "question": "¿Qué sucede con los recursos de un proceso cuando este pasa al estado 'Terminado'?",
+    "question": "¿Cómo se conoce a la forma de modelar la información donde los datos se almacenan, procesan y recuperan para dar solución a problemas reales? [cite: 8]",
     "options": [
-      "Se mantienen reservados indefinidamente",
-      "Se transfieren al proceso hijo",
-      "El sistema operativo los libera y reclama",
-      "Se guardan en el disco duro"
-    ],
-    "answer": "El sistema operativo los libera y reclama"
-  },
-  {
-    "question": "¿Qué abstracción fundamental proporciona el modelo de procesos al desarrollador?",
-    "options": [
-      "Un disco duro infinito",
-      "Una CPU virtual exclusiva para cada programa",
-      "Acceso directo al hardware gráfico",
-      "Redes de latencia cero"
-    ],
-    "answer": "Una CPU virtual exclusiva para cada programa"
-  },
-  {
-    "question": "¿Qué contiene la sección de 'Datos' en la imagen de memoria de un proceso?",
-    "options": [
-      "El código binario ejecutable",
-      "Variables globales y estáticas",
-      "Variables locales temporales",
-      "El BCP del proceso"
-    ],
-    "answer": "Variables globales y estáticas"
-  },
-  {
-    "question": "¿Qué mecanismo utiliza el kernel para gestionar la concurrencia y evitar conflictos en recursos compartidos?",
-    "options": [
-      "Sincronización (semáforos, mutex)",
-      "Desfragmentación",
       "Compresión de datos",
-      "Overclocking"
+      "Abstracción de datos",
+      "Encriptación",
+      "Desfragmentación"
     ],
-    "answer": "Sincronización (semáforos, mutex)"
+    "answer": "Abstracción de datos"
   },
   {
-    "question": "¿Qué sucede si un proceso en estado 'Listo' recibe la CPU por parte del despachador?",
+    "question": "¿Qué verifica la operación isEmpty() en la especificación genérica de una pila? [cite: 63]",
     "options": [
-      "Pasa al estado 'Bloqueado'",
-      "Pasa al estado 'Terminado'",
-      "Pasa al estado 'En Ejecución'",
-      "Se crea un nuevo hilo"
+      "Si la pila está llena",
+      "Si la pila tiene datos duplicados",
+      "Si la pila está vacía",
+      "Si la pila tiene tamaño estático"
     ],
-    "answer": "Pasa al estado 'En Ejecución'"
+    "answer": "Si la pila está vacía"
   },
   {
-    "question": "¿Por qué la conmutación de contexto se considera una sobrecarga (overhead) para el sistema?",
+    "question": "¿Qué tipo de dato puede almacenar una pila si se basa en un Tipo de dato genérico (T)? [cite: 57]",
     "options": [
-      "Porque consume mucha energía eléctrica",
-      "Porque el sistema no realiza trabajo útil para el usuario durante el cambio",
-      "Porque requiere reiniciar la computadora",
-      "Porque borra los archivos del usuario"
+      "Solo números enteros",
+      "Solo cadenas de texto",
+      "Cualquier tipo de elemento",
+      "Solo valores booleanos"
     ],
-    "answer": "Porque el sistema no realiza trabajo útil para el usuario durante el cambio"
+    "answer": "Cualquier tipo de elemento"
   },
   {
-    "question": "¿Qué incluye la 'Información de contabilidad' dentro del BCP?",
+    "question": "¿Cuál es una desventaja notable de la implementación dinámica de una pila? [cite: 87, 88]",
     "options": [
-      "El código fuente del programa",
-      "Tiempo de CPU utilizado y límites de tiempo",
-      "La lista de archivos MP3 del usuario",
-      "La configuración de la pantalla"
+      "Tamaño fijo inmodificable",
+      "Uso ineficiente de memoria al crecer",
+      "Mayor complejidad y requiere manejo de memoria dinámica",
+      "No permite usar el principio LIFO"
     ],
-    "answer": "Tiempo de CPU utilizado y límites de tiempo"
+    "answer": "Mayor complejidad y requiere manejo de memoria dinámica"
+  },
+  {
+    "question": "¿Qué problema principal evita la implementación dinámica respecto a la implementación estática? [cite: 98]",
+    "options": [
+      "La fragmentación de disco",
+      "El uso de punteros",
+      "El desbordamiento por tamaño fijo",
+      "El acceso a la cima"
+    ],
+    "answer": "El desbordamiento por tamaño fijo"
+  },
+  {
+    "question": "Además de las pilas, ¿qué otras estructuras son consideradas de organización lógica lineal? [cite: 21, 22, 24]",
+    "options": [
+      "Árboles y grafos",
+      "Arreglos, listas enlazadas y colas",
+      "Montículos y tablas hash",
+      "Árboles binarios y AVL"
+    ],
+    "answer": "Arreglos, listas enlazadas y colas"
+  },
+  {
+    "question": "¿Qué miden las nociones de complejidad de las operaciones en estructuras como las pilas? [cite: 110, 111]",
+    "options": [
+      "El análisis del costo computacional (tiempo y espacio) que implica ejecutar una operación",
+      "La dificultad para programar la estructura",
+      "El número de líneas de código fuente necesarias",
+      "La cantidad de variables globales utilizadas por el sistema"
+    ],
+    "answer": "El análisis del costo computacional (tiempo y espacio) que implica ejecutar una operación"
   }
 ]

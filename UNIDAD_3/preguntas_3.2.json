@@ -1,172 +1,202 @@
 [
   {
-    "question": "¿Qué permite la memoria virtual según Tanenbaum y Bos (2015)?",
+    "question": "¿Qué elementos principales conforman la estructura de un grafo?",
     "options": [
-      "Ejecutar aplicaciones sin cargar todo el programa en memoria principal",
-      "Eliminar la necesidad de almacenamiento secundario",
-      "Evitar el uso de la RAM",
-      "Compartir procesos entre usuarios"
+      "Nodos (vértices) y conexiones (aristas)",
+      "Raíz y hojas",
+      "Punteros triples y arreglos",
+      "Pilas y colas integradas"
     ],
-    "answer": "Ejecutar aplicaciones sin cargar todo el programa en memoria principal"
+    "answer": "Nodos (vértices) y conexiones (aristas)"
   },
   {
-    "question": "¿Cómo logra la memoria virtual simular un espacio continuo mayor al disponible?",
+    "question": "A diferencia de las estructuras lineales, ¿cómo representan los grafos las relaciones entre distintos elementos?",
     "options": [
-      "Duplicando la RAM físicamente",
-      "Uniendo memoria RAM con memoria secundaria",
-      "Usando solo memoria caché",
-      "Combinando registros con discos"
+      "De manera estricta y secuencial",
+      "De manera flexible y no lineal",
+      "De manera circular inmutable",
+      "En forma de pila estática"
     ],
-    "answer": "Uniendo memoria RAM con memoria secundaria"
+    "answer": "De manera flexible y no lineal"
   },
   {
-    "question": "¿Cómo se prepara un programa para funcionar con memoria virtual?",
+    "question": "¿Qué tipo de matriz se utiliza para representar de forma tabular las conexiones entre los vértices de un grafo?",
     "options": [
-      "Dividiéndolo en bloques del mismo tamaño",
-      "Eliminando las partes que no se usan",
-      "Guardándolo totalmente en memoria secundaria",
-      "Cargando siempre todas sus instrucciones"
+      "Matriz de adyacencia",
+      "Matriz identidad",
+      "Matriz de dispersión",
+      "Matriz tridimensional"
     ],
-    "answer": "Dividiéndolo en bloques del mismo tamaño"
+    "answer": "Matriz de adyacencia"
   },
   {
-    "question": "¿Qué técnica organiza la memoria en bloques de tamaño uniforme llamados marcos?",
+    "question": "¿En qué tipo de grafos la matriz de adyacencia suele ser simétrica?",
     "options": [
-      "Segmentación",
-      "Paginación",
-      "Swapping",
-      "Mapas de bits"
+      "En grafos ponderados",
+      "En grafos con pesos negativos",
+      "En grafos dirigidos",
+      "En grafos no dirigidos"
     ],
-    "answer": "Paginación"
+    "answer": "En grafos no dirigidos"
   },
   {
-    "question": "¿Qué elimina la paginación?",
+    "question": "¿Cuál es la principal desventaja de la representación matricial de un grafo?",
     "options": [
-      "La fragmentación interna",
-      "La fragmentación externa",
-      "El uso de memoria secundaria",
-      "La tabla de páginas"
+      "No permite grafos no dirigidos",
+      "Tiene un alto consumo de memoria, requiriendo un espacio de n^2 posiciones",
+      "Solo admite un máximo de 10 vértices",
+      "Es incapaz de representar conexiones entre nodos adyacentes"
     ],
-    "answer": "La fragmentación externa"
+    "answer": "Tiene un alto consumo de memoria, requiriendo un espacio de n^2 posiciones"
   },
   {
-    "question": "¿Qué módulo convierte direcciones lógicas en direcciones físicas durante la paginación?",
+    "question": "¿Para qué tipo de grafos resulta más eficiente en términos de memoria el uso de listas de adyacencia?",
     "options": [
-      "CPU",
-      "MMU",
-      "DMA",
-      "BIOS"
+      "Para grafos completamente densos",
+      "Para grafos con ciclos infinitos",
+      "Para grafos dispersos",
+      "Para matrices simétricas"
     ],
-    "answer": "MMU"
+    "answer": "Para grafos dispersos"
   },
   {
-    "question": "¿Qué tabla registra la relación entre páginas lógicas y marcos físicos?",
+    "question": "¿Qué desventaja presenta la lista de adyacencia frente a la matriz de adyacencia?",
     "options": [
-      "Tabla de segmentos",
-      "Tabla de paginación",
-      "TLB",
-      "Tabla hash"
+      "Consume más memoria que la matriz en grafos dispersos",
+      "Comprobar si existe una arista específica puede ser más lento",
+      "No permite recorrer los vecinos de un nodo",
+      "Requiere usar árboles rojo-negro"
     ],
-    "answer": "Tabla de paginación"
+    "answer": "Comprobar si existe una arista específica puede ser más lento"
   },
   {
-    "question": "¿Qué desventaja puede presentar la paginación?",
+    "question": "¿Qué algoritmo explora todos los nodos de manera ordenada por 'capas' o niveles?",
     "options": [
-      "Aumento del tiempo de búsqueda por accesos frecuentes a la tabla",
-      "Imposibilidad de usar memoria secundaria",
-      "Necesidad de memoria contigua",
-      "No se puede usar memoria virtual"
+      "Búsqueda en profundidad (DFS)",
+      "Algoritmo de Dijkstra",
+      "Algoritmo de Bellman-Ford",
+      "Búsqueda en amplitud (BFS)"
     ],
-    "answer": "Aumento del tiempo de búsqueda por accesos frecuentes a la tabla"
+    "answer": "Búsqueda en amplitud (BFS)"
   },
   {
-    "question": "¿Qué mecanismo acelera la traducción frecuente de direcciones?",
+    "question": "¿Qué estructura de datos auxiliar se utiliza fundamentalmente en el funcionamiento de la búsqueda en amplitud (BFS)?",
     "options": [
-      "Swap",
-      "TLB",
-      "RAID",
-      "Inodos"
+      "Una pila (stack)",
+      "Un montículo (heap)",
+      "Una cola (queue)",
+      "Una tabla hash cerrada"
     ],
-    "answer": "TLB"
+    "answer": "Una cola (queue)"
   },
   {
-    "question": "¿Qué indica el bit presente/ausente en una tabla de páginas?",
+    "question": "En grafos no ponderados, ¿qué garantiza encontrar la búsqueda en amplitud (BFS)?",
     "options": [
-      "Si el usuario tiene permisos de lectura",
-      "Si la página está en memoria principal o en disco",
-      "Si la página pertenece al kernel",
-      "Si la página ha sido modificada"
+      "El camino más largo posible",
+      "El camino más corto en términos de número de aristas",
+      "Todos los ciclos del grafo",
+      "El árbol de expansión máxima"
     ],
-    "answer": "Si la página está en memoria principal o en disco"
+    "answer": "El camino más corto en términos de número de aristas"
   },
   {
-    "question": "¿Qué representa el bit de modificación en una tabla de páginas?",
+    "question": "¿Qué algoritmo avanza por un camino lo más profundo posible antes de retroceder (backtracking)?",
     "options": [
-      "Si ha sido alterada desde su carga",
-      "Si ha sido eliminada",
-      "Si pertenece al segmento de pila",
-      "Si está asociada a un archivo"
+      "Búsqueda en amplitud (BFS)",
+      "Algoritmo de Kruskal",
+      "Búsqueda en profundidad (DFS)",
+      "Ordenamiento de burbuja"
     ],
-    "answer": "Si ha sido alterada desde su carga"
+    "answer": "Búsqueda en profundidad (DFS)"
   },
   {
-    "question": "¿Qué ocurre cuando una página requerida no está en memoria principal?",
+    "question": "¿Qué mecanismo se emplea habitualmente para implementar la búsqueda en profundidad (DFS)?",
     "options": [
-      "El proceso se bloquea permanentemente",
-      "Se produce un fallo de página",
-      "El sistema reinicia la ejecución",
-      "Se descarta la página"
+      "Una cola o un arreglo dinámico",
+      "Una pila (stack) o recursividad",
+      "Una matriz de adyacencia tridimensional",
+      "Un árbol AVL"
     ],
-    "answer": "Se produce un fallo de página"
+    "answer": "Una pila (stack) o recursividad"
   },
   {
-    "question": "¿Qué página reemplaza el algoritmo FIFO?",
+    "question": "¿Cuál es un uso común del algoritmo de Búsqueda en Profundidad (DFS) mencionado en el documento?",
     "options": [
-      "La más utilizada recientemente",
-      "La más antigua en memoria",
-      "La que no se usará en más tiempo",
-      "La más grande"
+      "Cálculo de rutas óptimas en GPS",
+      "Detección de ciclos, ordenamiento topológico y generación de laberintos",
+      "Balanceo de servidores web",
+      "Encriptación de contraseñas"
     ],
-    "answer": "La más antigua en memoria"
+    "answer": "Detección de ciclos, ordenamiento topológico y generación de laberintos"
   },
   {
-    "question": "¿Qué problema puede causar FIFO?",
+    "question": "¿Qué desventaja tiene el algoritmo DFS respecto a las distancias?",
     "options": [
-      "Fragmentación externa",
-      "Anomalía de Belady",
-      "Pérdida de direcciones lógicas",
-      "Duplicación de páginas"
+      "Ocupa excesiva memoria en comparación con BFS",
+      "No garantiza encontrar el camino más corto en grafos no ponderados",
+      "Solo funciona si todos los nodos tienen el mismo peso",
+      "No puede implementarse con recursividad"
     ],
-    "answer": "Anomalía de Belady"
+    "answer": "No garantiza encontrar el camino más corto en grafos no ponderados"
   },
   {
-    "question": "¿Qué página reemplaza el algoritmo LRU?",
+    "question": "¿Qué algoritmo se emplea comúnmente para encontrar la distancia más corta en grafos con pesos positivos?",
     "options": [
-      "La que no se usará por más tiempo",
-      "La menos usada recientemente",
-      "La más vieja del sistema",
-      "La primera del segmento"
+      "Algoritmo de Bellman-Ford",
+      "Algoritmo de Dijkstra",
+      "Búsqueda en Profundidad (DFS)",
+      "Sondeo lineal"
     ],
-    "answer": "La menos usada recientemente"
+    "answer": "Algoritmo de Dijkstra"
   },
   {
-    "question": "¿Qué ventaja tiene LRU?",
+    "question": "¿Qué algoritmo permite resolver el problema de la distancia más corta cuando existen pesos negativos en las conexiones?",
     "options": [
-      "Requiere menos memoria que FIFO",
-      "Su rendimiento se aproxima al óptimo",
-      "No necesita estructuras adicionales",
-      "Evita todos los fallos de página"
+      "Algoritmo de Bellman-Ford",
+      "Algoritmo de Dijkstra",
+      "Búsqueda en Amplitud (BFS)",
+      "Encadenamiento hash"
     ],
-    "answer": "Su rendimiento se aproxima al óptimo"
+    "answer": "Algoritmo de Bellman-Ford"
   },
   {
-    "question": "¿Qué característica hace que el algoritmo óptimo sea solo teórico?",
+    "question": "En la resolución del problema de la distancia más corta, ¿cuál es el objetivo principal de los algoritmos utilizados?",
     "options": [
-      "Es muy lento",
-      "Requiere conocer el futuro de las referencias",
-      "Solo funciona con SSD",
-      "No permite fallos de página"
+      "Minimizar el número de aristas o el costo total acumulado",
+      "Visitar todos los nodos repetidamente",
+      "Aumentar el peso de todas las aristas",
+      "Convertir el grafo en una tabla hash cerrada"
     ],
-    "answer": "Requiere conocer el futuro de las referencias"
+    "answer": "Minimizar el número de aristas o el costo total acumulado"
+  },
+  {
+    "question": "Dentro del área de la inteligencia artificial, ¿para qué son esenciales los grafos?",
+    "options": [
+      "Para diseñar el hardware de los procesadores",
+      "Para resolver problemas de búsqueda, planificación y toma de decisiones en entornos complejos",
+      "Para compilar el código fuente a lenguaje máquina",
+      "Para mostrar interfaces de usuario web"
+    ],
+    "answer": "Para resolver problemas de búsqueda, planificación y toma de decisiones en entornos complejos"
+  },
+  {
+    "question": "¿Qué variables específicas se consideran para expresar comúnmente las nociones de complejidad de las operaciones en un grafo?",
+    "options": [
+      "El número de vértices (V) y el número de aristas (E)",
+      "El tamaño del archivo y la velocidad del CPU",
+      "El número de ciclos y el nivel de recursividad (R)",
+      "El peso máximo y el factor de carga de colisiones"
+    ],
+    "answer": "El número de vértices (V) y el número de aristas (E)"
+  },
+  {
+    "question": "De acuerdo con sus aplicaciones prácticas, ¿en qué área ayudan los grafos a encontrar rutas óptimas?",
+    "options": [
+      "Sistemas de transporte",
+      "Edición de imágenes rasterizadas",
+      "Cálculo de impuestos",
+      "Evaluación de expresiones matemáticas postfijas"
+    ],
+    "answer": "Sistemas de transporte"
   }
 ]
