@@ -744,7 +744,9 @@
                 <div class="section-title">Listas simples enlazadas</div>
             </div>
             <div class="content">
-                <p>Son una estructura de datos lineal formada por nodos. Cada nodo contiene dos partes: un dato y un enlace o puntero que apunta al siguiente nodo de la lista. Se llaman “simples” porque cada nodo solo conoce la dirección del elemento que sigue.</p>
+                <p>Son una estructura de datos lineal formada por nodos. Cada nodo contiene dos partes: un dato y un enlace o puntero que apunta al siguiente nodo de la lista. Se llaman “simples” porque cada nodo, a través del puntero que contiene, conoce la dirección del siguiente nodo.
+                   Cabe mencionar que en una lista los nodos se encuentran enlazados a través de punteros y no como en un arreglo que las variables se encuentran representadas por un índice. Aunque en una lista se pueden implementar sus operaciones para el manejo de los nodos tomando en
+                   cuenta su posición dentro de la lista.</p>
                 <p>Su funcionamiento permite que los elementos no estén almacenados de manera continua en memoria, como ocurre en un arreglo. Gracias a ello, resulta más fácil agregar o eliminar elementos sin necesidad de mover todos los datos. La lista comienza con
                    un nodo llamado cabeza o inicio, y termina cuando el último nodo apunta a nulo.</p>
                 <h4>Las características principales son:</h4> 
@@ -850,8 +852,11 @@
                 <div class="section-title">Arreglos y vectores vs listas</div>
             </div>
             <div class="content">
-                <p>Los arreglos (arrays) y vectores son estructuras de datos lineales que almacenan elementos del mismo tipo en posiciones contiguas de memoria. Su principal característica es que permiten acceder a cualquier elemento de forma directa
-                   mediante un índice, lo que los hace muy eficientes en operaciones de lectura. Los vectores, en muchos lenguajes, representan una versión dinámica de los arreglos, ya que pueden cambiar su tamaño durante la ejecución.</p>
+                <p>Los arreglos (arrays) y vectores son estructuras de datos lineales que se forman con variables del mismo tipo de dato, cada variable se encuentra en posiciones contiguas de memoria. Su principal característica es que permiten acceder a cualquier elemento de forma directa
+                   mediante un índice, lo que los hace muy eficientes en operaciones de lectura. Los vectores, en muchos lenguajes, representan una versión dinámica de los arreglos, ya que pueden cambiar su tamaño durante la ejecución.
+                   En un arreglo o vector, considerando que todas las variables del arreglo ya contienen datos, no existe la operación de agregar una nueva variable ya que esto implicaría agregar un fragmento de memoria antes, en medio o al final de la memoria asignada para el arreglo, esto es básicamente 
+                   imposible ya que se esta hablando de la memoria RAM que es un elemento físico de la computadora y también un arreglo siempre va a ser de tamaño fijo, por otro lado, tampoco existe la operación de eliminar una variable del arreglo ya que es el mismo caso, esto implicaría quitar un fragmento
+                   de memoria física y unir las partes que quedarían.</p>
                 <p>Por otro lado, las listas enlazadas almacenan los elementos de forma no contigua en memoria y los conectan mediante punteros. Esto permite insertar o eliminar elementos sin necesidad de mover los demás, lo que resulta más eficiente en operaciones dinámicas. Sin embargo,
                    su acceso es secuencial, por lo que encontrar un elemento específico puede requerir recorrer toda la lista.</p>
                 <p>En comparación, los arreglos y vectores destacan por su rapidez en el acceso directo y simplicidad de implementación, mientras que las listas enlazadas ofrecen mayor flexibilidad en la gestión de datos. La elección entre estas estructuras depende del
@@ -917,9 +922,9 @@
 
                 <div class="figure-container">
                     <div class="figure-caption">Figura 39</div>
-                    <div class="figure-caption">Arreglos y vectores vs listas</div>
+                    <div class="figure-caption">Implementaciones y aplicaciones</div>
                     <div class="figura">
-                        <img src="FIGURA42.png" alt="Arreglos y vectores vs listas" class="imagen-figura1"/>
+                        <img src="FIGURA42.png" alt="Implementaciones y aplicaciones" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
