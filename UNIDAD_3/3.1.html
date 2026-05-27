@@ -701,7 +701,7 @@
                 <span>3. Estructuras de datos no lineales</span>
             </div>
             <h1>3. Estructuras de datos no lineales</h1>
-            <div class="subtitle">Los árboles binarios permiten organizar la información de forma jerárquica o interconectada.</div>            
+            <div class="subtitle">Se encarga de organizan la información de una forma multidimensional o jerárquica, lo que permite tener relaciones más complejas.</div>            
         </header>
         
         <div class="intro">
@@ -727,48 +727,35 @@
                 <div class="section-title">Transformación de árboles generales a binarios </div>
             </div>
             <div class="content">
-                <p>La transformación de árboles generales a árboles binarios es una técnica utilizada en las estructuras de datos para representar un árbol con cualquier número
-                   de hijos por nodo mediante una estructura binaria, en la cual cada nodo tiene como máximo dos hijos. Esta conversión conserva la información y la jerarquía del árbol original, cambiando únicamente su forma de representación para facilitar su implementación en sistemas computacionales.</p>
-                <p>El método más común para realizar esta transformación es la representación de “hijo izquierdo - hermano derecho”. En este enfoque, el primer hijo de un nodo en el árbol general se convierte en su hijo izquierdo en el árbol binario, mientras que sus hermanos se enlazan mediante
-                   punteros derechos. Esta técnica permite mantener la relación entre nodos y aplicar algoritmos de recorrido propios de los árboles binarios (Goodrich, Tamassia & Goldwasser, 2014).</p>
-                <p>Entre las principales ventajas de esta transformación se encuentra la optimización en el uso de memoria y la simplificación de algoritmos para el procesamiento de estructuras jerárquicas. No obstante, la interpretación visual puede resultar menos intuitiva en comparación con el árbol
-                   general original. A pesar de ello, su uso es frecuente en áreas como compiladores y sistemas de archivos, donde se requiere eficiencia y uniformidad en la representación de datos.</p>
-                <p></p>
-                <h4>Árbol general</h4>
-                <ul>
-                    <li>Tiene<strong>más de dos hijos por nodo (sin límite fijo).</strong></li>
-                    <li>Presenta una<strong>estructura flexible y adaptable.</strong></li>
-                    <li>Su implementación<strong>es más compleja (puede requerir listas o múltiples enlaces).</strong></li>
-                    <li>Se utiliza en<strong>estructuras jerárquicas reales como sistemas de archivos o organigramas.</strong></li>
-                    <li>No cuenta con recorridos estándar universales definidos.</li>
-                    <li>Su representación es<strong>más natural para problemas del mundo real.</strong></li>
-                </ul>
-
-                <h4>Árbol binario</h4>
-                <ul>
-                    <li>Tiene<strong> máximo dos hijos por nodo (izquierdo y derecho).</strong></li>
-                    <li>Presenta una<strong> estructura rígida y ordenada.</strong></li>
-                    <li>Su implementacion es <strong>más sencilla (dos referencias por nodo).</strong></li>
-                    <li>Permite recorridos definidos como<strong> preorden, inorden y postorden.</strong></li>
-                    <li>Se utiliza en<strong>algoritmos eficientes como búsqueda y ordenamiento.</strong></li>
-                    <li>Es base para estructuras como <strong>árboles AVL, heaps y árboles de búsqueda binaria.</strong></li>
-                </ul>
-
-                <p>Las diferencias entre un árbol general y árbol binario radica en la cantidad de hijos que puede tener cada nodo y en la forma en que se organiza su estructura: mientras que el árbol general permite que un nodo tenga cualquier número de hijos,
-                   ofreciendo mayor flexibilidad para representar jerarquías complejas, el árbol binario limita a cada nodo a un máximo de dos hijos (izquierdo y derecho), lo que lo hace más estructurado, sencillo de implementar y eficiente
-                   para aplicar algoritmos de búsqueda y recorrido.</p>
+                <p>Al hablar de un árbol general, en el contexto de estructuras de datos, nos referimos a una estructura no lineal que puede ser utilizada para representar y organizar jerárquicamente la información.</p>
+                <p>Considera el siguiente organigrama:</p>
 
                    <div class="figure-container">
-                    <div class="figure-caption">Figura 2</div>
+                    <div class="figure-caption">Organigrama_1</div>
                     <div class="figure-caption">Transformación de árboles generales a binarios</div>
                     <div class="figura">
                         <img src="FIGURA2.png" alt="Transformación de árboles generales a binarios" class="imagen-figura1"/>
                     </div>
-                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
+                    <div class="figure-caption">Nota: Imagen </div>
                 </div>
-                <p>Por lo que el árbol general como el árbol binario son estructuras fundamentales en la organización de datos, pero su elección depende del problema que se desea resolver. El árbol general destaca por su flexibilidad al permitir múltiples hijos,
-                   lo que lo hace ideal para representar jerarquías complejas del mundo real. Por otro lado, el árbol binario ofrece una estructura más limitada pero eficiente, facilitando la implementación de algoritmos y optimizando procesos como la búsqueda y
-                   el ordenamiento. En este sentido, comprender sus diferencias y ventajas permite seleccionar la estructura más adecuada, logrando soluciones más eficientes y bien organizadas en el desarrollo de sistemas.</p>
+                <p>Como podrás ver, en cada nivel se han dispuesto elementos que están relacionados entre sí y representan un objeto o concepto del mundo real, por lo tanto, pueden contener una etiqueta y/o información adicional. En el caso del árbol genealógico, los elementos
+                   básicos que lo constituyen son las personas integrantes de una familia que se relacionan por medio de un lazo familiar y en el caso del organigrama son personas que laboran en una empresa con una relación jerárquica jefe-empleado entre ellas.  A estos elementos
+                   los definiremos como Nodos y Vértices que unen los nodos, por lo tanto, un Árbol será entonces un conjunto de estos nodos/vértices.</p>
+                <p>De acuerdo con lo anterior, se estblece la identificación de: </p> 
+                <h3></h3>
+                <li>Un árbol puede estar vacío (No tener Nodos).</li>
+                <li>Un árbol no vacío puede constar de un solo elemento (Lo denominaremos nodo raíz).</li>
+                <li>Un árbol no vacío puede constar de un nodo raíz, conectado a otros nodos.</li> 
+
+                <p>Por lo que se se puede distinguir diferentes tipos de Nodos, como se muestra en la siguiente figura:</p> 
+
+                <div class="figure-container">
+                        <div class="figure-caption">Figura 2</div>
+                        <div class="figure-caption">Tipos de nodos en un árbol</div>
+                        <div class="figura">
+                            <img src="FIGURA2.png" alt="Tipos de nodos en un árbol" class="imagen-figura1"/>
+                        </div>
+                        <div class="figure-caption">Nota: </div>                
             </div>
         </div>
         
