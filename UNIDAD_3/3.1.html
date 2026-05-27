@@ -634,6 +634,10 @@
 
              <div class="nav-section">
                 <div class="nav-section-title">Contenido</div>
+                <a href="#seccion-3-1" class="nav-item" data-section="3-1">
+                    <i class="fas fa-sitemap"></i>
+                    3.1 Arboles binarios
+                </a>
                 <a href="#seccion-3-1-1" class="nav-item" data-section="3-1-1">
                     <i class="fas fa-sitemap"></i>
                     3.1.1 Transformación de árboles generales a binarios
@@ -694,28 +698,29 @@
                 <span>/</span>
                 <a href="index.html">Unidad 3</a>
                 <span>/</span>
-                <span>3.1 Árboles binarios</span>
+                <span>3. Estructuras de datos no lineales</span>
             </div>
-            <h1>3.1 Árboles binarios</h1>
+            <h1>3. Estructuras de datos no lineales</h1>
             <div class="subtitle">Los árboles binarios permiten organizar la información de forma jerárquica o interconectada.</div>            
         </header>
         
         <div class="intro">
-            <p>Los árboles binarios son una estructura de datos no lineal en la que cada elemento, llamado nodo, puede tener como máximo dos hijos: uno izquierdo y uno derecho. Esta organización jerárquica parte de un nodo principal conocido como raíz, desde el cual se derivan los demás nodos formando niveles.
-               Su diseño permite representar relaciones ordenadas y facilita la organización eficiente de la información en distintos sistemas computacionales (Weiss, 2014).</p>
-            <p>Una de las principales características de los árboles binarios es que permiten realizar operaciones de búsqueda, inserción y eliminación de manera eficiente, especialmente cuando están balanceados. En particular, el árbol binario de búsqueda organiza los datos de forma que los valores menores se
-               ubican a la izquierda y los mayores a la derecha, lo que reduce significativamente el tiempo de búsqueda en comparación con estructuras lineales.</p>
-            
-            <div class="figure-container">
-                <p class="figure-caption">Figura 1</p>
-                <p class="figure-caption">Árboles binarios</p>
-                <img src="FIGURA1.png" alt="Árboles binarios" class="imagen-figura1">
-                <p class="figure-caption">Nota: Imagen elaborada con IA</p>
+            <p> En la unidad previa revisamos las estructuras de datos lineales más utilizadas en el área de la computación, también, revisamos las características que tiene e hicimos una comparativa de la complejidad de sus operaciones para que en determinado momento el alumno pueda decidir cuál de ellas le es
+                más util para resolver un determinado problema. Ahora, vamos a revisar las estructuras de datos que no son lineales, como son los árboles, los montículos y los grafos, los cuales definen un orden jerárquico para almacenar la información, entonces que ventajas o desventajas nos puede acarrear esta forma de organización y para hacer esto estudiaremos como los podemos implementar en un programa computacional, además de analizar la complejidad de las operaciones y revisar algunas de sus implementaciones.</p>
+        </div>
+
+        <div class="section" id="seccion-3-1">
+            <div class="section-header">
+                <div class="section-number">3.1</div>
+                <div class="section-title">Árboles binarioss </div>
+            </div>
+            <div class="content">
+                <p>¿Alguna vez has visto o construido el árbol genealógico de tu familia?, o ¿has tenido oportunidad de ver el organigrama de una empresa? Habrás notado en ambos casos que la información se organiza por niveles, de forma jerárquica con base en ciertas reglas. Por ejemplo, para un árbol genealógico, piensa en un árbol invertido, los abuelos generalmente ocuparían el nivel más alto, es decir, en la raíz, los padres en el siguiente nivel y en el nivel más bajo, en las ramas, a los hijos. Pues bien, para poder
+                    tratar de forma computacional este tipo de disposición de la información, no basta con estructuras lineales como las que hemos visto hasta ahora, por lo que en este tema aprenderás nuevas formas de tratamiento de la información, que te permitirán trabajar con organizaciones de datos más dinámicas y complejas.</p>
+                <p>Comencemos con la definición de un árbol, sus elementos y características principales.</p>
             </div>
         </div>
 
-
-        
         <div class="section" id="seccion-3-1-1">
             <div class="section-header">
                 <div class="section-number">3.1.1</div>
