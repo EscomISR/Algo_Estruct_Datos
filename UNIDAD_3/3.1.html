@@ -747,7 +747,7 @@
                 <li>Un árbol no vacío puede constar de un solo elemento (Lo denominaremos nodo raíz).</li>
                 <li>Un árbol no vacío puede constar de un nodo raíz, conectado a otros nodos.</li> 
 
-                <p>Por lo que se se puede distinguir diferentes tipos de Nodos, como se muestra en la siguiente figura:</p> 
+                <p>Y también podemos distinguir diferentes tipos de nodos:</p> 
 
                 <div class="figure-container">
                         <div class="figure-caption">Figura 2</div>
@@ -782,8 +782,8 @@
             <p></p> 
             <br>             
 
-            <p>Hemos comentado que un árbol es un conjunto de Nodos y Vértices, por otro lado, sabemos también que existen relaciones entre estos Nodos, con ello encontraremos nuevas definiciones que te explicaremos a continuación:</p>
-                
+            <p>Hemos comentado que un árbol, es un conjunto de Nodos y Vértices, por otro lado, sabemos también que existen relaciones entre estos Nodos, con ello encontraremos nuevas definiciones que te explicaremos a continuación:</p>
+            <p>Observa el siguiente árbol compuesto por los nodos A,B,C,D,E,F,G Y H:</p>    
             </div>
                 </div>    
         </div>
@@ -794,11 +794,22 @@
                 <div class="section-title">Recorridos en un árbol binario</div>
             </div>
             <div class="content">
-                   <p>Los recorridos en un árbol binario son estrategias que permiten visitar cada nodo de manera ordenada para procesar la información almacenada. Estas técnicas son esenciales en la manipulación de estructuras jerárquicas, ya que facilitan operaciones como la búsqueda, evaluación y
-                      visualización de datos. Los recorridos más utilizados son preorden, inorden y postorden, los cuales se distinguen por el orden en que se visita la raíz en relación con sus subárboles (Tenenbaum, Langsam & Augenstein, 1990).</p>
-                   <p>En cuanto a su funcionamiento, el recorrido en preorden visita primero la raíz, después el subárbol izquierdo y finalmente el derecho; el inorden recorre primero el subárbol izquierdo, luego la raíz y al final el derecho; mientras que el postorden procesa primero ambos subárboles y
-                      deja la raíz al final. Estos recorridos suelen implementarse mediante recursividad, lo que permite recorrer toda la estructura de forma lógica y eficiente.</p>
+                     <p>Cuando se requiere acceder a los datos que se encuentran dentro de un árbol ya sea general o binario, se puede hacer mediante una secuencia lógica y metodológica de pasos, de tal forma que se puedan visitar todos los nodos y, por ende, procesar todos y cada uno de los datos, a esto se le denomina “recorrer” el árbol,
+                        de tal forma que si se está posicionado en un nodo cualquiera del árbol, mediante una operación de recorrido se puede: a. Descender a la rama izquierda, b. Descender a la rama derecha, o c. Procesar el dato (visitar el nodo).</p> 
+                     <p>El recorrido entonces es una operación repetitiva que puede construirse de forma recursiva, para construir la secuencia para recorrer el árbol, toma en cuenta que, por convención, se recorre el subárbol izquierdo antes que el derecho, y el tipo de orden de recorrido, está determinado por las siguientes operaciones generales: </p>               
+                        
+                <h3></h3>
+                <li>a. Preorden: Visitar el nodo antes de dirigirse al subárbol izquierdo. raíz -> rama izquierda -> rama derecha.</li>
+                <li>b. Inorden: Visitar el nodo después de recorrer el subárbol izquierdo, pero antes de recorrer el subárbol derecho. rama izquierda -> raíz -> rama derecha.</li>
+                <li>c. Postorden: Visitar el nodo después de recorrer ambos subárboles. rama izquierda -> rama derecha -> raíz.</li> 
 
+                <H3>Recorrido Preorden</H3>
+                <p> El recorrido Preorden consiste en: visitar primero la raíz del árbol-extraer dato, descender a la rama izquierda, si hay un nodo, descender al mismo – extraer dato, repetir la operación hasta que no existan más nodos en la rama izquierda (al encontrar null), cuando ocurra esto, subir un nivel y evaluar rama derecha, si hay un nodo,
+                    descender al mismo – extraer dato, repetir la operación y continuar hasta recorrer completamente el árbol.</p>
+                <P>Observa el siguiente ejemplo gráfico donde las flechas te indican el orden del recorrido:</P>
+                
+                
+                <P>AQUI VOY</P>
              <div class="content">
                 <p></p>
                  <div class="figure-container">
