@@ -818,7 +818,7 @@
                         <img src="FIGURA4.png" alt="Recorridos en un árbol binario" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
-                </div>
+                 </div>
 
                 <p>Como puedes observar, el orden de visita de los nodos del árbol a través del recorrido preorden es: A,B,D,E,C,G, y la implementación recursiva en código c, del recorrido preorden es como sigue:</p>
 
@@ -828,7 +828,7 @@
                     <div class="figure-caption">Figura 5</div>
                     <div class="figure-caption">Ejemplo de recorridos en un árbol binario en código</div>
                     <div class="figura">
-                        <img src="FIGURA4.png" alt="Ejemplo de recorridos en un árbol binario en código"/>
+                        <img src="FIGURA5.png" alt="Ejemplo de recorridos en un árbol binario en código"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
@@ -850,17 +850,19 @@
                     <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>               
                <p>Las flechas indican el orden de visita de los nodos: D,B,E,A,C,G, y la implementación recursiva en código c del recorrido inorden, es como sigue:</p>
-                 <div class="figure-container">
+
+            <div class="figure-container">
                     <div class="figure-caption">Figura 7</div>
-                    <div class="figure-caption">Recorrido Inorden</div>
+                    <div class="figure-caption">Ejemplo de recorridos Inorden en código  </div>
                     <div class="figura">
-                        <img src="FIGURA7.png" alt="Recorrido Inorden"/>
+                        <img src="FIGURA7.png" alt="Ejemplo de recorridos Inorden en código"/>
                     </div>
                     <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>               
                
              </div> 
-                                            
+             </div>
+             </div>                               
             </div>
 
         </div>
@@ -871,43 +873,37 @@
                 <div class="section-title">Árbol binario de búsqueda</div>
             </div>
             <div class="content">
-                    <p>Un árbol binario de búsqueda (BST) es una estructura de datos no lineal que organiza los elementos de forma jerárquica mediante nodos, donde cada nodo puede tener como máximo dos hijos. Su propiedad principal indica que los valores menores se almacenan en el subárbol izquierdo y los mayores en el derecho, lo que permite mantener los datos ordenados automáticamente y
-                       facilita su acceso dentro de los algoritmos (Sedgewick & Wayne, 2011). Esta característica lo convierte en una herramienta eficiente para el manejo de información.</p>
-                    <p>El funcionamiento del BST se basa en comparaciones sucesivas para realizar operaciones como búsqueda, inserción y eliminación. En la búsqueda, se inicia desde la raíz y se recorre hacia la izquierda o derecha según el valor; la inserción sigue el mismo principio hasta ubicar el nuevo elemento; y la eliminación puede implicar distintos casos dependiendo de la estructura del
-                       nodo eliminado. Cuando el árbol se encuentra balanceado, estas operaciones se ejecutan con gran eficiencia.</p>
-                    <p>La importancia del árbol binario de búsqueda radica en que permite optimizar el procesamiento de datos, logrando tiempos promedio de O(log n) en sus operaciones principales. Además, es la base de estructuras más avanzadas utilizadas en sistemas complejos, como bases de datos y motores de búsqueda, siendo esencial en el diseño de algoritmos eficientes</p>    
-                    
-                <h3>Sus principales caracteristicas son:</h3>
-                    <p>Estructura jerárquica compuesta por nodos enlazados.</p>    
-                    <p>Cada nodo tiene como máximo <strong>dos hijos (izquierdo y derecho).</strong> </p>    
-                    <p>Permite recorridos como <strong>inorden, preorden y postorden.</strong></p>    
-                    <p>Su eficiencia depende de si el árbol está <strong>balanceado o no.</strong></p>   
+                <p>Entre las operaciones básicas en cuanto a manejo de datos, se encuentra la búsqueda. Para abordar este problema, conocimos anteriormente, en la Unidad 1, algoritmos como el de búsqueda binaria, mediante el cual, se logra disminuir la complejidad de búsqueda de un elemento, sin embargo, esto aplica siempre y cuando los datos estuvieran ordenados, lo cual no siempre ocurre.
+                   Para resolver de una forma más eficiente esta problemática, se puede aprovechar la estructura de árbol binario, realizando algunos cambios en su implementación. Veamos sus características, construcción y utilidad.</p>
+                <p>El Árbol Binario de Búsqueda es un caso especial del Árbol Binario, tiene la peculiaridad de realizar las inserciones de datos siguiendo procedimientos específicos, de tal forma que tanto el ordenamiento como la búsqueda de sus datos, se realice de una forma muy eficiente. Así, para construir un Árbol Binario de Búsqueda, el procedimiento más importante para el acomodo de
+                   los Nodos es tomar en cuenta el valor que esté almacenado dentro de ellos, por ejemplo, hablando de un árbol cuyos nodos contienen valores numéricos, aquellos nodos con valores menores al contenido en el nodo raíz, siempre se ubicarán en el subárbol izquierdo y a su vez, aquellos nodos con valores mayores al contenido en el nodo raíz, se colocarán en el subárbol derecho.</p> 
 
-                    
-                <h3>Sus principales ventajas son:</h3>
-                    <p>Búsqueda eficiente en tiempo promedio <strog>O(log n).</strog></p>    
-                    <p>Mantiene los datos ordenados <strong>ordenados automáticamente.</strong> </p>    
-                    <p>Inserción y eliminación <strong>relativamente rápidas.</strong></p>    
-                    <p>Base para estructuras avanzadas como <strong>árboles AVL y rojo-negro.</strong></p>   
-                    <p>Útil en aplicaciones como <strong>bases de datos, compiladores y sistemas de búsqueda.</strong></p>
-                    
-                <h3>Sus Desventajas son:</h3>
-                    <p>Puede volverse ineficiente (O(n)) si el árbol está desbalanceado.</p>
-                    <p>Requiere operaciones adicionales para mantenerse balanceado.</p>
-                    <p>Implementación más compleja que estructuras lineales simples.</p>
-                    <p>Mayor consumo de memoria debido a punteros o referencias.</p>
-                    <p>El rendimiento depende del orden de inserción de los datos.</p>
+
 
              <div class="content">
                 <p></p>
                  <div class="figure-container">
-                    <div class="figure-caption">Figura 4</div>
+                    <div class="figure-caption">Figura 8</div>
                     <div class="figure-caption">Árbol binario de búsqueda</div>
                     <div class="figura">
-                        <img src="FIGURA4.png" alt="Árbol binario de búsqueda" class="imagen-figura1"/>
+                        <img src="FIGURA8.png" alt="Árbol binario de búsqueda" class="imagen-figura1"/>
                     </div>
                     <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
                 </div>
+
+                <p>Vamos a ejemplificar esto, considera la siguiente secuencia de números: 7, 9, 5, 1, 8, 10. La construcción del árbol binario correspondiente al insertar en el mismo dicha secuencia de números, se muestra a continuación:</p>
+
+                 <div class="figure-container">
+                    <div class="figure-caption">Figura 9</div>
+                    <div class="figure-caption">Árbol binario de búsqueda</div>
+                    <div class="figura">
+                        <img src="FIGURA8.png" alt="Árbol binario de búsqueda" class="imagen-figura1"/>
+                    </div>
+                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
+                </div>
+
+
+
             </div>
  
         </div> 
