@@ -17,6 +17,12 @@
             --success: #2ecc71;
             --warning: #f39c12;
             --card-bg: rgba(255, 255, 255, 0.05);
+            --azul: #3f73c9;
+            --azul-oscuro: #244a91;
+            --rojo: #e11d2e;
+            --gris: #f6f8fc;
+            --borde: #c9d3e6;
+            --texto: #1f2937;
         }
         
         * {
@@ -596,6 +602,224 @@
                 font-size: 1.2rem;
             }
         }
+        .arbol-animado {
+            max-width: 980px;
+            margin: 0 auto;
+            border: 1px solid var(--borde);
+            border-radius: 14px;
+            padding: 18px;
+            background: var(--gris);
+        }
+        .arbol-animado .nodo {
+            cursor: pointer;
+        }
+        .arbol-animado .nodo.seleccionado {
+            fill: #f59e0b !important;
+            stroke: #92400e !important;
+            animation: pulso .55s ease forwards;
+        }
+        .arbol-animado .intro-arbol {
+            color: #1f2937 !important;
+            opacity: 1 !important;
+        }
+        .arbol-animado #explicacion {
+            margin-top: 16px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: #f8fafc !important;
+            border-left: 5px solid #3f73c9 !important;
+            color: #1f2937 !important;
+            font-size: 15px;
+            line-height: 1.5;
+            opacity: 1 !important;
+        }
+        .arbol-animado #explicacion strong {
+            color: #111827 !important;
+        }
+        .arbol-animado h3 {
+            margin: 0 0 8px;
+            text-align: center;
+        }
+
+        .arbol-animado p {
+            line-height: 1.5;
+            margin: 8px 0 14px;
+            text-align: justify;
+        }
+
+        .layout-arbol {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 18px;
+            align-items: start;
+        }
+
+        .panel-grafo {
+            background: white;
+            border: 1px solid var(--borde);
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .panel-controles {
+            background: white;
+            border: 1px solid var(--borde);
+            border-radius: 12px;
+            padding: 14px;
+        }
+
+        .panel-controles h4 {
+            margin: 0 0 10px;
+        }
+
+        .botones {
+            display: grid;
+            gap: 8px;
+        }
+
+        .botones button {
+            cursor: pointer;
+            border: 1px solid #b9c6df;
+            border-radius: 10px;
+            background: #ffffff;
+            padding: 9px 10px;
+            font-size: 14px;
+            text-align: left;
+            transition: transform .15s ease, background .15s ease;
+        }
+
+        .botones button:hover {
+            background: #eef4ff;
+            transform: translateY(-1px);
+        }
+
+        .botones button.activo {
+            background: #dce9ff;
+            border-color: var(--azul);
+            font-weight: bold;
+        }
+
+        #explicacion {
+            min-height: 78px;
+            margin-top: 14px;
+            padding: 12px;
+            border-radius: 10px;
+            background: #f8fafc;
+            border-left: 4px solid var(--azul);
+            font-size: 14px;
+            line-height: 1.45;
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .arista {
+            stroke: var(--azul-oscuro);
+            stroke-width: 4;
+            stroke-linecap: round;
+            opacity: .85;
+            transition: stroke .3s ease, stroke-width .3s ease, opacity .3s ease;
+        }
+
+        .arista.resaltada {
+            stroke: var(--rojo);
+            stroke-width: 7;
+            opacity: 1;
+            stroke-dasharray: 900;
+            stroke-dashoffset: 900;
+            animation: dibujarArista .75s ease forwards;
+        }
+
+        .nodo {
+            fill: var(--azul);
+            stroke: var(--azul-oscuro);
+            stroke-width: 3;
+            transition: fill .3s ease, transform .3s ease;
+            transform-box: fill-box;
+            transform-origin: center;
+        }
+
+        .nodo.resaltado {
+            fill: var(--rojo);
+            stroke: #8f0f1a;
+            animation: pulso .55s ease forwards;
+        }
+
+        .nodo.oscuro {
+            fill: #0f2f63;
+            stroke: #08204a;
+        }
+
+        .etiqueta {
+            fill: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-anchor: middle;
+            dominant-baseline: central;
+            pointer-events: none;
+        }
+
+        .texto-svg {
+            fill: #111827;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .nivel-linea {
+            stroke: #64748b;
+            stroke-width: 2;
+            stroke-dasharray: 8 8;
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+
+        .nivel-linea.visible,
+        .nivel-texto.visible {
+            opacity: 1;
+        }
+
+        .nivel-texto {
+            fill: #334155;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+
+        .subarbol-zona {
+            fill: rgba(225, 29, 46, .08);
+            stroke: var(--rojo);
+            stroke-width: 3;
+            stroke-dasharray: 10 6;
+            opacity: 0;
+            transition: opacity .4s ease;
+        }
+
+        .subarbol-zona.visible {
+            opacity: 1;
+        }
+
+        @keyframes dibujarArista {
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes pulso {
+            0% { transform: scale(1); }
+            55% { transform: scale(1.18); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 820px) {
+            .layout-arbol {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -780,7 +1004,106 @@
             <br>             
 
             <p>Hemos comentado que un árbol, establece  a un conjunto de Nodos y Vértices, por otro lado, identificaras que existen relaciones entre ellos, como lo puedes observar en la siguiente imagen en donde se muestra el árbol compuesto por los nodos A,B,C,D,E,F,G Y H:</p>
+                
+            <div class="arbol-animado">
+                    <h3>Árbol compuesto por los nodos A, B, C, D, E, F, G y H</h3>
+                    <p class="intro-arbol">
+                        Da clic en cada concepto para observar de forma animada cómo se colorean los nodos
+                        y las ramas del árbol. También puedes seleccionar directamente un nodo inicial y un nodo final
+                        dentro del árbol para colorear el camino entre ellos.
+                    </p>
 
+                    <div class="layout-arbol">
+                        <div class="panel-grafo">
+                            <svg viewBox="0 0 760 500" aria-label="Árbol animado con nodos A, B, C, D, E, F, G y H">
+                                <!-- Zonas para subárboles -->
+                                <ellipse id="zonaIzquierda" class="subarbol-zona" cx="235" cy="255" rx="145" ry="160"></ellipse>
+                                <ellipse id="zonaDerecha" class="subarbol-zona" cx="515" cy="255" rx="190" ry="160"></ellipse>
+
+                                <!-- Líneas de nivel -->
+                                <line id="nivel0" class="nivel-linea" x1="80" y1="70" x2="680" y2="70"></line>
+                                <line id="nivel1" class="nivel-linea" x1="80" y1="190" x2="680" y2="190"></line>
+                                <line id="nivel2" class="nivel-linea" x1="80" y1="330" x2="680" y2="330"></line>
+
+                                <text id="nivelTexto0" class="nivel-texto" x="650" y="60">Nivel 0</text>
+                                <text id="nivelTexto1" class="nivel-texto" x="650" y="180">Nivel 1</text>
+                                <text id="nivelTexto2" class="nivel-texto" x="650" y="320">Nivel 2</text>
+
+                                <!-- Aristas -->
+                                <line id="AB" class="arista" x1="380" y1="80" x2="280" y2="190"></line>
+                                <line id="AC" class="arista" x1="380" y1="80" x2="480" y2="190"></line>
+                                <line id="BD" class="arista" x1="280" y1="190" x2="215" y2="330"></line>
+                                <line id="BE" class="arista" x1="280" y1="190" x2="305" y2="330"></line>
+                                <line id="CF" class="arista" x1="480" y1="190" x2="420" y2="330"></line>
+                                <line id="CG" class="arista" x1="480" y1="190" x2="505" y2="330"></line>
+                                <line id="CH" class="arista" x1="480" y1="190" x2="610" y2="330"></line>
+
+                                <!-- Nodos -->
+                                <g id="nodoA">
+                                    <circle id="A" class="nodo" cx="380" cy="80" r="32"></circle>
+                                    <text class="etiqueta" x="380" y="80">A</text>
+                                </g>
+
+                                <g id="nodoB">
+                                    <circle id="B" class="nodo" cx="280" cy="190" r="32"></circle>
+                                    <text class="etiqueta" x="280" y="190">B</text>
+                                </g>
+
+                                <g id="nodoC">
+                                    <circle id="C" class="nodo" cx="480" cy="190" r="32"></circle>
+                                    <text class="etiqueta" x="480" y="190">C</text>
+                                </g>
+
+                                <g id="nodoD">
+                                    <circle id="D" class="nodo" cx="215" cy="330" r="32"></circle>
+                                    <text class="etiqueta" x="215" y="330">D</text>
+                                </g>
+
+                                <g id="nodoE">
+                                    <circle id="E" class="nodo" cx="305" cy="330" r="32"></circle>
+                                    <text class="etiqueta" x="305" y="330">E</text>
+                                </g>
+
+                                <g id="nodoF">
+                                    <circle id="F" class="nodo" cx="420" cy="330" r="32"></circle>
+                                    <text class="etiqueta" x="420" y="330">F</text>
+                                </g>
+
+                                <g id="nodoG">
+                                    <circle id="G" class="nodo" cx="505" cy="330" r="32"></circle>
+                                    <text class="etiqueta" x="505" y="330">G</text>
+                                </g>
+
+                                <g id="nodoH">
+                                    <circle id="H" class="nodo" cx="610" cy="330" r="32"></circle>
+                                    <text class="etiqueta" x="610" y="330">H</text>
+                                </g>
+
+                                <text id="textoExtra" class="texto-svg" x="50" y="455"></text>
+                            </svg>
+                            <div id="explicacion">
+                                Selecciona una opción para comenzar la animación.
+                            </div>
+                        </div>
+
+                        <div class="panel-controles">
+                            <h4>Conceptos</h4>
+
+                            <div class="botones">
+                                <button data-demo="caminoAH">Camino de A a H</button>
+                                <button data-demo="caminoAE">Camino de A a E</button>
+                                <button data-demo="longitudAH">Longitud del camino A-H</button>
+                                <button data-demo="caminoCero">Camino de longitud cero</button>
+                                <button data-demo="gradoC">Grado de un nodo</button>
+                                <button data-demo="gradoArbol">Grado del árbol</button>
+                                <button data-demo="niveles">Nivel de los nodos</button>
+                                <button data-demo="profundidadE">Profundidad de E</button>
+                                <button data-demo="alturaC">Altura de C</button>
+                                <button data-demo="subarboles">Subárboles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
   
         </div>    
@@ -1240,6 +1563,250 @@
                 }
             }
         });
+        (function () {
+            const nodos = ["A", "B", "C", "D", "E", "F", "G", "H"];
+            const aristas = ["AB", "AC", "BD", "BE", "CF", "CG", "CH"];
+
+            const explicacion = document.getElementById("explicacion");
+            const textoExtra = document.getElementById("textoExtra");
+            const botones = document.querySelectorAll(".botones button");
+
+            const demos = {
+                caminoAH: {
+                    nodos: ["A", "C", "H"],
+                    aristas: ["AC", "CH"],
+                    texto: "Camino de A a H: A → C → H.",
+                    extra: "Un camino es una lista de ramas contiguas que van de un nodo a otro."
+                },
+                caminoAE: {
+                    nodos: ["A", "B", "E"],
+                    aristas: ["AB", "BE"],
+                    texto: "Camino de A a E: A → B → E.",
+                    extra: "Existe exactamente un camino entre la raíz y cada uno de los otros nodos en el árbol."
+                },
+                longitudAH: {
+                    nodos: ["A", "C", "H"],
+                    aristas: ["AC", "CH"],
+                    texto: "La longitud de un camino se obtiene por el número de nodos del camino menos uno o de forma equivalente, es el número de arcos que existen de un nodo a otro.",
+                    extra: "Longitud de A a H: 2"
+                },
+                caminoCero: {
+                    nodos: ["B"],
+                    aristas: [],
+                    texto: "Hay un camino de longitud cero de cualquier nodo a sí mismo.",
+                    extra: "Longitud de B a B: 0"
+                },
+                gradoC: {
+                    nodos: ["C", "F", "G", "H"],
+                    aristas: ["CF", "CG", "CH"],
+                    texto: "El grado de un Nodo es el número de ramas o de forma equivalente, número de hijos que parten de él.",
+                    extra: "Grado de C: 3"
+                },
+                gradoArbol: {
+                    nodos: ["C", "F", "G", "H"],
+                    aristas: ["CF", "CG", "CH"],
+                    texto: "El grado de un árbol es el grado máximo de los nodos del árbol.",
+                    extra: "El Grado máximo de los Nodos es 3, por lo tanto, el Árbol es de Grado 3"
+                },
+                niveles: {
+                    nodos: ["A", "B", "C", "D", "E", "F", "G", "H"],
+                    aristas: [],
+                    niveles: true,
+                    texto: "El nivel de un nodo es la longitud del camino que lo conecta al nodo raíz.",
+                    extra: "A: nivel 0 | B y C: nivel 1 | D, E, F, G y H: nivel 2"
+                },
+                profundidadE: {
+                    nodos: ["A", "B", "E"],
+                    aristas: ["AB", "BE"],
+                    texto: "La profundidad de un nodo n es el largo del camino entre la raíz del árbol y el nodo n. La profundidad de la raíz es siempre 0.",
+                    extra: "Profundidad de E: 2"
+                },
+                alturaC: {
+                    nodos: ["C", "F", "G", "H"],
+                    aristas: ["CF", "CG", "CH"],
+                    texto: "La altura de un nodo n es el máximo largo de camino desde n hasta alguna hoja. La altura de toda hoja es 0. La altura de un árbol tiene el mismo valor que la profundidad de la hoja más profunda. La altura de un árbol vacío es -1.",
+                    extra: "Altura de C: 1"
+                },
+                subarboles: {
+                    nodos: ["B", "D", "E", "C", "F", "G", "H"],
+                    aristas: ["BD", "BE", "CF", "CG", "CH"],
+                    subarboles: true,
+                    texto: "Un subárbol de un árbol es un subconjunto de nodos del árbol conectados por ramas del propio árbol.",
+                    extra: "Subárbol izquierdo: B-D-E | Subárbol derecho: C-F-G-H"
+                }
+            };
+
+            function limpiar() {
+                nodos.forEach(id => {
+                    const nodo = document.getElementById(id);
+                    nodo.classList.remove("resaltado", "oscuro", "seleccionado");
+                });
+
+                aristas.forEach(id => {
+                    const arista = document.getElementById(id);
+                    arista.classList.remove("resaltada");
+                    arista.style.animationDelay = "0s";
+                });
+
+                ["nivel0", "nivel1", "nivel2", "nivelTexto0", "nivelTexto1", "nivelTexto2"].forEach(id => {
+                    document.getElementById(id).classList.remove("visible");
+                });
+
+                document.getElementById("zonaIzquierda").classList.remove("visible");
+                document.getElementById("zonaDerecha").classList.remove("visible");
+
+                textoExtra.textContent = "";
+            }
+
+            function animar(demoNombre) {
+                limpiar();
+                // -------------------------------
+                // Modo interactivo: elegir nodo inicial y final
+                // -------------------------------
+
+                const conexiones = {
+                    A: ["B", "C"],
+                    B: ["A", "D", "E"],
+                    C: ["A", "F", "G", "H"],
+                    D: ["B"],
+                    E: ["B"],
+                    F: ["C"],
+                    G: ["C"],
+                    H: ["C"]
+                };
+
+                let nodoInicial = null;
+
+                function obtenerArista(a, b) {
+                    return document.getElementById(a + b) || document.getElementById(b + a);
+                }
+
+                function encontrarCamino(inicio, fin) {
+                    const cola = [[inicio]];
+                    const visitados = new Set();
+
+                    while (cola.length > 0) {
+                        const camino = cola.shift();
+                        const actual = camino[camino.length - 1];
+
+                        if (actual === fin) {
+                            return camino;
+                        }
+
+                        if (!visitados.has(actual)) {
+                            visitados.add(actual);
+
+                            conexiones[actual].forEach(vecino => {
+                                const nuevoCamino = [...camino, vecino];
+                                cola.push(nuevoCamino);
+                            });
+                        }
+                    }
+
+                    return [];
+                }
+
+                function animarCaminoLibre(camino) {
+                    limpiar();
+
+                    textoExtra.textContent = "Camino seleccionado: " + camino.join(" → ");
+
+                    explicacion.innerHTML = `
+                        <strong>Camino seleccionado:</strong><br>
+                        ${camino.join(" → ")}<br>
+                        Longitud del camino: ${camino.length - 1}
+                    `;
+
+                    camino.forEach((id, i) => {
+                        setTimeout(() => {
+                            document.getElementById(id).classList.add("resaltado");
+                        }, i * 350);
+                    });
+
+                    for (let i = 0; i < camino.length - 1; i++) {
+                        const arista = obtenerArista(camino[i], camino[i + 1]);
+
+                        if (arista) {
+                            setTimeout(() => {
+                                arista.classList.add("resaltada");
+                            }, (i + 1) * 350);
+                        }
+                    }
+                }
+
+                nodos.forEach(id => {
+                    document.getElementById(id).addEventListener("click", () => {
+                        botones.forEach(b => b.classList.remove("activo"));
+
+                        if (nodoInicial === null) {
+                            limpiar();
+
+                            nodoInicial = id;
+                            document.getElementById(id).classList.add("seleccionado");
+
+                            explicacion.innerHTML = `
+                                <strong>Nodo inicial seleccionado: ${id}</strong><br>
+                                Ahora selecciona el nodo final para colorear el camino.
+                            `;
+
+                            textoExtra.textContent = "Nodo inicial: " + id;
+                        } else {
+                            const nodoFinal = id;
+                            const camino = encontrarCamino(nodoInicial, nodoFinal);
+
+                            animarCaminoLibre(camino);
+
+                            nodoInicial = null;
+                        }
+                    });
+                });
+                botones.forEach(b => b.classList.toggle("activo", b.dataset.demo === demoNombre));
+
+                const demo = demos[demoNombre];
+                explicacion.innerHTML = "<strong>" + demo.texto + "</strong><br>" + demo.extra;
+                textoExtra.textContent = demo.extra;
+
+                demo.nodos.forEach((id, i) => {
+                    setTimeout(() => {
+                        document.getElementById(id).classList.add("resaltado");
+                    }, i * 350);
+                });
+
+                demo.aristas.forEach((id, i) => {
+                    setTimeout(() => {
+                        const arista = document.getElementById(id);
+                        arista.classList.add("resaltada");
+                        arista.style.animationDelay = "0s";
+                    }, (i + 1) * 350);
+                });
+
+                if (demoNombre === "caminoCero") {
+                    document.getElementById("B").classList.add("oscuro");
+                }
+
+                if (demo.niveles) {
+                    setTimeout(() => {
+                        ["nivel0", "nivel1", "nivel2", "nivelTexto0", "nivelTexto1", "nivelTexto2"].forEach(id => {
+                            document.getElementById(id).classList.add("visible");
+                        });
+                    }, 500);
+                }
+
+                if (demo.subarboles) {
+                    setTimeout(() => {
+                        document.getElementById("zonaIzquierda").classList.add("visible");
+                        document.getElementById("zonaDerecha").classList.add("visible");
+                    }, 500);
+                }
+            }
+
+            botones.forEach(boton => {
+                boton.addEventListener("click", () => animar(boton.dataset.demo));
+            });
+
+            // Animación inicial automática
+            animar("caminoAH");
+        })();
     </script>
 </body>
 </html>
