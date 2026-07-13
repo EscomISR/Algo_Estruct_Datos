@@ -1,1812 +1,2462 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3.1 Estructura de datos no lineales</title>
-    <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --gray: #95a5a6;
-            --success: #2ecc71;
-            --warning: #f39c12;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --azul: #3f73c9;
-            --azul-oscuro: #244a91;
-            --rojo: #e11d2e;
-            --gris: #f6f8fc;
-            --borde: #c9d3e6;
-            --texto: #1f2937;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #1a2a3a, #2c3e50);
-            color: var(--light);
-            min-height: 100vh;
-            line-height: 1.7;
-        }
+      :root {
+        --primary: #2c3e50;
+        --secondary: #3498db;
+        --accent: #e74c3c;
+        --light: #ecf0f1;
+        --dark: #2c3e50;
+        --gray: #95a5a6;
+        --success: #2ecc71;
+        --warning: #f39c12;
+        --card-bg: rgba(255, 255, 255, 0.05);
+        --azul: #3f73c9;
+        --azul-oscuro: #244a91;
+        --rojo: #e11d2e;
+        --gris: #f6f8fc;
+        --borde: #c9d3e6;
+        --texto: #1f2937;
+      }
 
-        .floating-home-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--secondary);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(52, 152, 219, 0.3);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            font-size: 1.5rem;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-        .floating-home-btn:hover {
-            background: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
-        }
+      body {
+        background: linear-gradient(135deg, #1a2a3a, #2c3e50);
+        color: var(--light);
+        min-height: 100vh;
+        line-height: 1.7;
+      }
 
+      .floating-home-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--secondary);
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(52, 152, 219, 0.3);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        font-size: 1.5rem;
+      }
+
+      .floating-home-btn:hover {
+        background: #2980b9;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
+      }
+
+      .sidebar-nav {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 280px;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 999;
+        transition: transform 0.3s ease;
+        transform: translateX(-100%);
+        overflow-y: auto;
+      }
+
+      .sidebar-nav.active {
+        transform: translateX(0);
+      }
+
+      .sidebar-header {
+        padding: 20px;
+        background: rgba(52, 152, 219, 0.1);
+        border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+      }
+
+      .sidebar-title {
+        font-size: 1.2rem;
+        color: var(--secondary);
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .sidebar-subtitle {
+        font-size: 0.9rem;
+        color: var(--gray);
+      }
+
+      .nav-sections {
+        padding: 20px 0;
+      }
+
+      .nav-section {
+        margin-bottom: 15px;
+      }
+
+      .nav-section-title {
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--secondary);
+        border-bottom: 1px solid rgba(52, 152, 219, 0.2);
+        margin-bottom: 10px;
+      }
+
+      .nav-item {
+        display: block;
+        padding: 12px 20px;
+        color: var(--light);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+      }
+
+      .nav-item:hover {
+        background: rgba(52, 152, 219, 0.1);
+        border-left-color: var(--secondary);
+        padding-left: 25px;
+      }
+
+      .nav-item.active {
+        background: rgba(52, 152, 219, 0.2);
+        border-left-color: var(--secondary);
+        color: var(--secondary);
+      }
+
+      .nav-item i {
+        margin-right: 10px;
+        width: 20px;
+        text-align: center;
+      }
+
+      .menu-toggle {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: var(--primary);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        z-index: 1001;
+        font-size: 1.2rem;
+      }
+
+      .menu-toggle:hover {
+        background: var(--secondary);
+        transform: translateY(-2px);
+      }
+
+      .menu-toggle.active {
+        background: var(--accent);
+      }
+
+      .reading-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        z-index: 998;
+      }
+
+      .reading-progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, var(--secondary), var(--success));
+        width: 0%;
+        transition: width 0.1s ease;
+      }
+
+      .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        transition:
+          margin-left 0.3s ease,
+          margin-right 0.3s ease;
+      }
+
+      header {
+        text-align: center;
+        padding: 40px 20px;
+        margin-bottom: 30px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .breadcrumb {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        color: var(--gray);
+        font-size: 1.1rem;
+      }
+
+      .breadcrumb a {
+        color: var(--secondary);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .breadcrumb a:hover {
+        color: white;
+        text-decoration: underline;
+      }
+
+      .breadcrumb span {
+        margin: 0 10px;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+        color: white;
+      }
+
+      .subtitle {
+        font-size: 1.8rem;
+        color: var(--secondary);
+        margin-bottom: 20px;
+        font-weight: 300;
+        text-align: center;
+      }
+
+      .intro {
+        max-width: 900px;
+        margin: 0 auto 40px;
+        padding: 25px;
+        background: var(--card-bg);
+        border-radius: 15px;
+        border-left: 4px solid var(--secondary);
+        text-align: justify;
+      }
+
+      .section {
+        background: var(--card-bg);
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 40px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        scroll-margin-top: 100px;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--secondary);
+      }
+
+      .section-number {
+        font-size: 2.2rem;
+        font-weight: bold;
+        color: var(--secondary);
+        margin-right: 15px;
+        min-width: 120px;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: white;
+      }
+
+      .content {
+        padding: 0 10px;
+      }
+
+      .content h3 {
+        font-size: 1.5rem;
+        color: var(--secondary);
+        margin: 30px 0 15px;
+        padding-left: 10px;
+        border-left: 3px solid var(--accent);
+      }
+
+      .content h4 {
+        font-size: 1.3rem;
+        color: var(--warning);
+        margin: 25px 0 12px;
+        padding-left: 8px;
+      }
+
+      .content p {
+        margin-bottom: 15px;
+        text-align: justify;
+      }
+
+      .content ul,
+      .content ol {
+        padding-left: 30px;
+        margin: 20px 0;
+      }
+
+      .content li {
+        margin-bottom: 12px;
+      }
+
+      .highlight {
+        background: rgba(231, 76, 60, 0.15);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: 500;
+      }
+
+      .citation {
+        font-style: italic;
+        color: var(--gray);
+        margin: 5px 0 15px 20px;
+        border-left: 2px solid var(--secondary);
+        padding-left: 10px;
+      }
+
+      .quote-box {
+        background: rgba(52, 152, 219, 0.1);
+        border-left: 4px solid var(--secondary);
+        padding: 20px;
+        margin: 25px 0;
+        border-radius: 8px;
+        font-style: italic;
+        color: var(--light);
+      }
+
+      .quote-box .citation {
+        border-left: none;
+        margin: 10px 0 0 0;
+        padding-left: 0;
+      }
+
+      .table-container {
+        max-width: 800px;
+        margin: 30px auto;
+        overflow-x: auto;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      th {
+        background: var(--primary);
+        color: white;
+        padding: 15px;
+        text-align: left;
+        font-weight: 600;
+      }
+
+      td {
+        padding: 12px 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      tr:nth-child(even) {
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .table-caption {
+        text-align: center;
+        padding: 10px;
+        color: var(--gray);
+        background: rgba(0, 0, 0, 0.3);
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+
+      .figure-container {
+        margin: 30px 0;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .imagen-figura1 {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+        border-radius: 8px;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        cursor: zoom-in;
+        transform-origin: center center;
+      }
+
+      /* Efecto al pasar el mouse */
+      .imagen-figura1:hover {
+        transform: scale(1.4);
+        border-radius: 8px;
+      }
+
+      .figure-placeholder {
+        width: 100%;
+        height: 300px;
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        margin: 15px 0;
+        color: var(--gray);
+        font-style: italic;
+        flex-direction: column;
+      }
+
+      .figure-placeholder i {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        color: var(--secondary);
+      }
+
+      .figure-caption {
+        color: var(--gray);
+        margin-top: 10px;
+      }
+
+      .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+      }
+
+      .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        background: var(--secondary);
+        color: white;
+        padding: 12px 25px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .nav-btn:hover {
+        background: #2980b9;
+        transform: translateY(-3px);
+      }
+
+      .nav-btn i {
+        margin: 0 8px;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 60px;
+        padding: 30px;
+        color: var(--gray);
+        font-size: 0.9rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .scroll-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: var(--accent);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        transition: all 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 999;
+      }
+
+      .scroll-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .scroll-to-top:hover {
+        background: #c0392b;
+        transform: translateY(-3px);
+      }
+
+      .activity-card {
+        background: rgba(46, 204, 113, 0.1);
+        border-radius: 15px;
+        padding: 30px;
+        margin: 40px 0;
+        border-left: 4px solid var(--success);
+        text-align: center;
+      }
+
+      .activity-title {
+        font-size: 1.8rem;
+        color: var(--success);
+        margin-bottom: 20px;
+      }
+
+      .activity-btn {
+        display: inline-block;
+        background: var(--success);
+        color: white;
+        padding: 15px 35px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 15px;
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+      }
+
+      .activity-btn:hover {
+        background: #27ae60;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+      }
+
+      @media (max-width: 768px) {
         .sidebar-nav {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 280px;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 999;
-            transition: transform 0.3s ease;
-            transform: translateX(-100%);
-            overflow-y: auto;
+          width: 100%;
         }
 
-        .sidebar-nav.active {
-            transform: translateX(0);
-        }
-
-        .sidebar-header {
-            padding: 20px;
-            background: rgba(52, 152, 219, 0.1);
-            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
-        }
-
-        .sidebar-title {
-            font-size: 1.2rem;
-            color: var(--secondary);
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .sidebar-subtitle {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-
-        .nav-sections {
-            padding: 20px 0;
-        }
-
-        .nav-section {
-            margin-bottom: 15px;
-        }
-
-        .nav-section-title {
-            padding: 10px 20px;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--secondary);
-            border-bottom: 1px solid rgba(52, 152, 219, 0.2);
-            margin-bottom: 10px;
-        }
-
-        .nav-item {
-            display: block;
-            padding: 12px 20px;
-            color: var(--light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border-left: 3px solid transparent;
-        }
-
-        .nav-item:hover {
-            background: rgba(52, 152, 219, 0.1);
-            border-left-color: var(--secondary);
-            padding-left: 25px;
-        }
-
-        .nav-item.active {
-            background: rgba(52, 152, 219, 0.2);
-            border-left-color: var(--secondary);
-            color: var(--secondary);
-        }
-
-        .nav-item i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-
-        .menu-toggle {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: var(--primary);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            z-index: 1001;
-            font-size: 1.2rem;
-        }
-
-        .menu-toggle:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-        }
-
-        .menu-toggle.active {
-            background: var(--accent);
-        }
-
-        .reading-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            z-index: 998;
-        }
-
-        .reading-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--secondary), var(--success));
-            width: 0%;
-            transition: width 0.1s ease;
-        }
-
-        .sidebar-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 998;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            transition: margin-left 0.3s ease, margin-right 0.3s ease;
-        }
-        
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 30px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .breadcrumb {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: var(--gray);
-            font-size: 1.1rem;
-        }
-        
-        .breadcrumb a {
-            color: var(--secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .breadcrumb a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-        
-        .breadcrumb span {
-            margin: 0 10px;
-        }
-        
         h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            color: white;
+          font-size: 2rem;
         }
-        
+
         .subtitle {
-            font-size: 1.8rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
-            font-weight: 300;
-            text-align: center;
+          font-size: 1.4rem;
         }
-        
-        .intro {
-            max-width: 900px;
-            margin: 0 auto 40px;
-            padding: 25px;
-            background: var(--card-bg);
-            border-radius: 15px;
-            border-left: 4px solid var(--secondary);
-            text-align: justify;
-        }
-        
-        .section {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            scroll-margin-top: 100px;
-        }
-        
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--secondary);
-        }
-        
-        .section-number {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: var(--secondary);
-            margin-right: 15px;
-            min-width: 120px;
-        }
-        
+
         .section-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: white;
-        }
-        
-        .content {
-            padding: 0 10px;
-        }
-        
-        .content h3 {
-            font-size: 1.5rem;
-            color: var(--secondary);
-            margin: 30px 0 15px;
-            padding-left: 10px;
-            border-left: 3px solid var(--accent);
+          font-size: 1.5rem;
         }
 
-        .content h4 {
-            font-size: 1.3rem;
-            color: var(--warning);
-            margin: 25px 0 12px;
-            padding-left: 8px;
-        }
-        
-        .content p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        
-        .content ul, .content ol {
-            padding-left: 30px;
-            margin: 20px 0;
-        }
-        
-        .content li {
-            margin-bottom: 12px;
-        }
-        
-        .highlight {
-            background: rgba(231, 76, 60, 0.15);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 500;
-        }
-        
-        .citation {
-            font-style: italic;
-            color: var(--gray);
-            margin: 5px 0 15px 20px;
-            border-left: 2px solid var(--secondary);
-            padding-left: 10px;
-        }
-        
-        .quote-box {
-            background: rgba(52, 152, 219, 0.1);
-            border-left: 4px solid var(--secondary);
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 8px;
-            font-style: italic;
-            color: var(--light);
-        }
-
-        .quote-box .citation {
-            border-left: none;
-            margin: 10px 0 0 0;
-            padding-left: 0;
-        }
-        
-        .table-container {
-            max-width: 800px;
-            margin: 30px auto;
-            overflow-x: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: rgba(0, 0, 0, 0.2);
-        }
-        
-        th {
-            background: var(--primary);
-            color: white;
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
-        }
-        
-        td {
-            padding: 12px 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        tr:nth-child(even) {
-            background: rgba(255, 255, 255, 0.03);
-        }
-        
-        .table-caption {
-            text-align: center;
-            padding: 10px;
-            color: var(--gray);
-            background: rgba(0, 0, 0, 0.3);
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
-        
-        .figure-container {
-            margin: 30px 0;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            overflow: hidden; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .imagen-figura1 {
-            max-width: 100%;
-            height: auto;
-            object-fit: contain; 
-            border-radius: 8px;
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: zoom-in;
-            transform-origin: center center;
-        }
-        
-        /* Efecto al pasar el mouse */
-        .imagen-figura1:hover {
-            transform: scale(1.4); 
-            border-radius: 8px;
-        }
-        
-        .figure-placeholder {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, #2c3e50, #34495e);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            margin: 15px 0;
-            color: var(--gray);
-            font-style: italic;
-            flex-direction: column;
-        }
-        
-        .figure-placeholder i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-        
-        .figure-caption {
-            color: var(--gray);
-            margin-top: 10px;
+        .section-number {
+          min-width: 100px;
+          font-size: 1.8rem;
         }
 
         .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
+          flex-direction: column;
+          gap: 15px;
         }
-        
+
         .nav-btn {
-            display: inline-flex;
-            align-items: center;
-            background: var(--secondary);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-btn:hover {
-            background: #2980b9;
-            transform: translateY(-3px);
-        }
-        
-        .nav-btn i {
-            margin: 0 8px;
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 30px;
-            color: var(--gray);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+          width: 100%;
+          text-align: center;
+          justify-content: center;
         }
 
-        .scroll-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--accent);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            z-index: 999;
+        .floating-home-btn {
+          width: 50px;
+          height: 50px;
+          font-size: 1.2rem;
         }
+      }
+      .arbol-animado {
+        max-width: 980px;
+        margin: 0 auto;
+        border: 1px solid var(--borde);
+        border-radius: 14px;
+        padding: 18px;
+        background: var(--gris);
+      }
+      .arbol-animado .nodo {
+        cursor: pointer;
+      }
+      .arbol-animado .nodo.seleccionado {
+        fill: #f59e0b !important;
+        stroke: #92400e !important;
+        animation: pulso 0.55s ease forwards;
+      }
+      .arbol-animado .intro-arbol {
+        color: #1f2937 !important;
+        opacity: 1 !important;
+      }
+      .arbol-animado #explicacion {
+        margin-top: 16px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: #f8fafc !important;
+        border-left: 5px solid #3f73c9 !important;
+        color: #1f2937 !important;
+        font-size: 15px;
+        line-height: 1.5;
+        opacity: 1 !important;
+      }
+      .arbol-animado #explicacion strong {
+        color: #111827 !important;
+      }
+      .arbol-animado h3 {
+        margin: 0 0 8px;
+        text-align: center;
+      }
 
-        .scroll-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
+      .arbol-animado p {
+        line-height: 1.5;
+        margin: 8px 0 14px;
+        text-align: justify;
+      }
 
-        .scroll-to-top:hover {
-            background: #c0392b;
-            transform: translateY(-3px);
-        }
-        
-        .activity-card {
-            background: rgba(46, 204, 113, 0.1);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 40px 0;
-            border-left: 4px solid var(--success);
-            text-align: center;
-        }
+      .layout-arbol {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 18px;
+        align-items: start;
+      }
 
-        .activity-title {
-            font-size: 1.8rem;
-            color: var(--success);
-            margin-bottom: 20px;
-        }
+      .panel-grafo {
+        background: white;
+        border: 1px solid var(--borde);
+        border-radius: 12px;
+        padding: 12px;
+      }
 
-        .activity-btn {
-            display: inline-block;
-            background: var(--success);
-            color: white;
-            padding: 15px 35px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-        }
+      .panel-controles {
+        background: white;
+        border: 1px solid var(--borde);
+        border-radius: 12px;
+        padding: 14px;
+      }
 
-        .activity-btn:hover {
-            background: #27ae60;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
-        }
+      .panel-controles h4 {
+        margin: 0 0 10px;
+      }
 
-        @media (max-width: 768px) {
-            .sidebar-nav {
-                width: 100%;
-            }
+      .botones {
+        display: grid;
+        gap: 8px;
+      }
 
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .subtitle {
-                font-size: 1.4rem;
-            }
-            
-            .section-title {
-                font-size: 1.5rem;
-            }
-            
-            .section-number {
-                min-width: 100px;
-                font-size: 1.8rem;
-            }
-            
-            .nav-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .nav-btn {
-                width: 100%;
-                text-align: center;
-                justify-content: center;
-            }
+      .botones button {
+        cursor: pointer;
+        border: 1px solid #b9c6df;
+        border-radius: 10px;
+        background: #ffffff;
+        padding: 9px 10px;
+        font-size: 14px;
+        text-align: left;
+        transition:
+          transform 0.15s ease,
+          background 0.15s ease;
+      }
 
-            .floating-home-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-        }
-        .arbol-animado {
-            max-width: 980px;
-            margin: 0 auto;
-            border: 1px solid var(--borde);
-            border-radius: 14px;
-            padding: 18px;
-            background: var(--gris);
-        }
-        .arbol-animado .nodo {
-            cursor: pointer;
-        }
-        .arbol-animado .nodo.seleccionado {
-            fill: #f59e0b !important;
-            stroke: #92400e !important;
-            animation: pulso .55s ease forwards;
-        }
-        .arbol-animado .intro-arbol {
-            color: #1f2937 !important;
-            opacity: 1 !important;
-        }
-        .arbol-animado #explicacion {
-            margin-top: 16px;
-            padding: 14px 16px;
-            border-radius: 12px;
-            background: #f8fafc !important;
-            border-left: 5px solid #3f73c9 !important;
-            color: #1f2937 !important;
-            font-size: 15px;
-            line-height: 1.5;
-            opacity: 1 !important;
-        }
-        .arbol-animado #explicacion strong {
-            color: #111827 !important;
-        }
-        .arbol-animado h3 {
-            margin: 0 0 8px;
-            text-align: center;
-        }
+      .botones button:hover {
+        background: #eef4ff;
+        transform: translateY(-1px);
+      }
 
-        .arbol-animado p {
-            line-height: 1.5;
-            margin: 8px 0 14px;
-            text-align: justify;
-        }
+      .botones button.activo {
+        background: #dce9ff;
+        border-color: var(--azul);
+        font-weight: bold;
+      }
 
+      #explicacion {
+        min-height: 78px;
+        margin-top: 14px;
+        padding: 12px;
+        border-radius: 10px;
+        background: #f8fafc;
+        border-left: 4px solid var(--azul);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      svg {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .arista {
+        stroke: var(--azul-oscuro);
+        stroke-width: 4;
+        stroke-linecap: round;
+        opacity: 0.85;
+        transition:
+          stroke 0.3s ease,
+          stroke-width 0.3s ease,
+          opacity 0.3s ease;
+      }
+
+      .arista.resaltada {
+        stroke: var(--rojo);
+        stroke-width: 7;
+        opacity: 1;
+        stroke-dasharray: 900;
+        stroke-dashoffset: 900;
+        animation: dibujarArista 0.75s ease forwards;
+      }
+
+      .nodo {
+        fill: var(--azul);
+        stroke: var(--azul-oscuro);
+        stroke-width: 3;
+        transition:
+          fill 0.3s ease,
+          transform 0.3s ease;
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+
+      .nodo.resaltado {
+        fill: var(--rojo);
+        stroke: #8f0f1a;
+        animation: pulso 0.55s ease forwards;
+      }
+
+      .nodo.oscuro {
+        fill: #0f2f63;
+        stroke: #08204a;
+      }
+
+      .etiqueta {
+        fill: white;
+        font-size: 20px;
+        font-weight: bold;
+        text-anchor: middle;
+        dominant-baseline: central;
+        pointer-events: none;
+      }
+
+      .texto-svg {
+        fill: #111827;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .nivel-linea {
+        stroke: #64748b;
+        stroke-width: 2;
+        stroke-dasharray: 8 8;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .nivel-linea.visible,
+      .nivel-texto.visible {
+        opacity: 1;
+      }
+
+      .nivel-texto {
+        fill: #334155;
+        font-size: 14px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .subarbol-zona {
+        fill: rgba(225, 29, 46, 0.08);
+        stroke: var(--rojo);
+        stroke-width: 3;
+        stroke-dasharray: 10 6;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .subarbol-zona.visible {
+        opacity: 1;
+      }
+
+      @keyframes dibujarArista {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      @keyframes pulso {
+        0% {
+          transform: scale(1);
+        }
+        55% {
+          transform: scale(1.18);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @media (max-width: 820px) {
         .layout-arbol {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 18px;
-            align-items: start;
+          grid-template-columns: 1fr;
         }
 
-        .panel-grafo {
-            background: white;
-            border: 1px solid var(--borde);
-            border-radius: 12px;
-            padding: 12px;
+        body {
+          padding: 12px;
         }
-
-        .panel-controles {
-            background: white;
-            border: 1px solid var(--borde);
-            border-radius: 12px;
-            padding: 14px;
-        }
-
-        .panel-controles h4 {
-            margin: 0 0 10px;
-        }
-
-        .botones {
-            display: grid;
-            gap: 8px;
-        }
-
-        .botones button {
-            cursor: pointer;
-            border: 1px solid #b9c6df;
-            border-radius: 10px;
-            background: #ffffff;
-            padding: 9px 10px;
-            font-size: 14px;
-            text-align: left;
-            transition: transform .15s ease, background .15s ease;
-        }
-
-        .botones button:hover {
-            background: #eef4ff;
-            transform: translateY(-1px);
-        }
-
-        .botones button.activo {
-            background: #dce9ff;
-            border-color: var(--azul);
-            font-weight: bold;
-        }
-
-        #explicacion {
-            min-height: 78px;
-            margin-top: 14px;
-            padding: 12px;
-            border-radius: 10px;
-            background: #f8fafc;
-            border-left: 4px solid var(--azul);
-            font-size: 14px;
-            line-height: 1.45;
-        }
-
-        svg {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .arista {
-            stroke: var(--azul-oscuro);
-            stroke-width: 4;
-            stroke-linecap: round;
-            opacity: .85;
-            transition: stroke .3s ease, stroke-width .3s ease, opacity .3s ease;
-        }
-
-        .arista.resaltada {
-            stroke: var(--rojo);
-            stroke-width: 7;
-            opacity: 1;
-            stroke-dasharray: 900;
-            stroke-dashoffset: 900;
-            animation: dibujarArista .75s ease forwards;
-        }
-
-        .nodo {
-            fill: var(--azul);
-            stroke: var(--azul-oscuro);
-            stroke-width: 3;
-            transition: fill .3s ease, transform .3s ease;
-            transform-box: fill-box;
-            transform-origin: center;
-        }
-
-        .nodo.resaltado {
-            fill: var(--rojo);
-            stroke: #8f0f1a;
-            animation: pulso .55s ease forwards;
-        }
-
-        .nodo.oscuro {
-            fill: #0f2f63;
-            stroke: #08204a;
-        }
-
-        .etiqueta {
-            fill: white;
-            font-size: 20px;
-            font-weight: bold;
-            text-anchor: middle;
-            dominant-baseline: central;
-            pointer-events: none;
-        }
-
-        .texto-svg {
-            fill: #111827;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .nivel-linea {
-            stroke: #64748b;
-            stroke-width: 2;
-            stroke-dasharray: 8 8;
-            opacity: 0;
-            transition: opacity .3s ease;
-        }
-
-        .nivel-linea.visible,
-        .nivel-texto.visible {
-            opacity: 1;
-        }
-
-        .nivel-texto {
-            fill: #334155;
-            font-size: 14px;
-            opacity: 0;
-            transition: opacity .3s ease;
-        }
-
-        .subarbol-zona {
-            fill: rgba(225, 29, 46, .08);
-            stroke: var(--rojo);
-            stroke-width: 3;
-            stroke-dasharray: 10 6;
-            opacity: 0;
-            transition: opacity .4s ease;
-        }
-
-        .subarbol-zona.visible {
-            opacity: 1;
-        }
-
-        @keyframes dibujarArista {
-            to { stroke-dashoffset: 0; }
-        }
-
-        @keyframes pulso {
-            0% { transform: scale(1); }
-            55% { transform: scale(1.18); }
-            100% { transform: scale(1); }
-        }
-
-        @media (max-width: 820px) {
-            .layout-arbol {
-                grid-template-columns: 1fr;
-            }
-
-            body {
-                padding: 12px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="reading-progress">
-        <div class="reading-progress-bar" id="progressBar"></div>
+      <div class="reading-progress-bar" id="progressBar"></div>
     </div>
 
     <button class="menu-toggle" id="menuToggle">
-        <i class="fas fa-bars"></i>
+      <i class="fas fa-bars"></i>
     </button>
 
-    <a href="index.html" class="floating-home-btn" title="Ir al índice de unidades">
-        <i class="fas fa-home"></i>
+    <a
+      href="index.html"
+      class="floating-home-btn"
+      title="Ir al índice de unidades"
+    >
+      <i class="fas fa-home"></i>
     </a>
 
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-   <nav class="sidebar-nav" id="sidebarNav">
-        <div class="sidebar-header">
-            <div class="sidebar-title">Estructura de datos no lineales</div>
-            <div class="sidebar-subtitle">Permiten organizar la información de forma jerárquica o interconectada</div>
+    <nav class="sidebar-nav" id="sidebarNav">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Estructura de datos no lineales</div>
+        <div class="sidebar-subtitle">
+          Permiten organizar la información de forma jerárquica o interconectada
         </div>
-        
-        <div class="nav-sections">
-            <div class="nav-section">
-                <div class="nav-section-title">Navegación</div>
-                <a href="#inicio" class="nav-item">
-                    <i class="fas fa-play-circle"></i>
-                    Inicio de la unidad
-                </a>
-                <a href="index.html" class="nav-item">
-                    <i class="fas fa-arrow-left"></i>
-                    Menú principal 3
-                </a>
-            </div>
+      </div>
 
-             <div class="nav-section">
-                <div class="nav-section-title">Contenido</div>
-                <a href="#seccion-3-1" class="nav-item" data-section="3-1">
-                    <i class="fas fa-sitemap"></i>
-                    3.1 Arboles binarios
-                </a>
-                <a href="#seccion-3-1-1" class="nav-item" data-section="3-1-1">
-                    <i class="fas fa-sitemap"></i>
-                    3.1.1 Transformación de árboles generales a binarios
-                </a>
-                <a href="#seccion-3-1-2" class="nav-item" data-section="3-1-2">
-                    <i class="fas fa-tasks"></i>
-                    3.1.2 Recorridos en un árbol binario
-                </a>
-                <a href="#seccion-3-1-3" class="nav-item" data-section="3-1-3">
-                    <i class="fas fa-exchange-alt"></i>
-                    3.1.3 Árbol binario de búsqueda
-                </a>
-                <a href="#seccion-3-1-4" class="nav-item" data-section="3-1-4">
-                    <i class="fas fa-th"></i>
-                    3.1.4 Árbol balanceado rojo-negro
-                </a>
-                <a href="#seccion-3-1-5" class="nav-item" data-section="3-1-5">
-                    <i class="fas fa-link"></i>
-                    3.1.5 Montículo
-                </a>
-                <a href="#seccion-3-1-6" class="nav-item" data-section="3-1-6">
-                    <i class="fas fa-link"></i>
-                    3.1.6 Implementaciones y aplicaciones
-                </a>
-                <a href="#seccion-3-1-7" class="nav-item" data-section="3-1-7">
-                    <i class="fas fa-link"></i>
-                    3.1.7 Nociones de complejidad de las implementaciones
-                </a>
-                <a href="#seccion-3-1-8" class="nav-item" data-section="3-1-8">
-                    <i class="fas fa-link"></i>
-                    3.1.8 Otros tipos de árboles
-                </a>
-                
-            </div>
-
-            <div class="nav-section">
-                <div class="nav-section-title">Recursos</div>
-                <a href="actividad_3_1.html" class="nav-item">
-                    <i class="fas fa-pencil-alt"></i>
-                    Actividad de aprendizaje
-                </a>
-                <a href="3.2.html" class="nav-item">
-                    <i class="fas fa-arrow-right"></i>
-                    Siguiente: Grafos
-                </a>
-            </div>
+      <div class="nav-sections">
+        <div class="nav-section">
+          <div class="nav-section-title">Navegación</div>
+          <a href="#inicio" class="nav-item">
+            <i class="fas fa-play-circle"></i>
+            Inicio de la unidad
+          </a>
+          <a href="index.html" class="nav-item">
+            <i class="fas fa-arrow-left"></i>
+            Menú principal 3
+          </a>
         </div>
+
+        <div class="nav-section">
+          <div class="nav-section-title">Contenido</div>
+          <a href="#seccion-3-1" class="nav-item" data-section="3-1">
+            <i class="fas fa-sitemap"></i>
+            3.1 Arboles binarios
+          </a>
+          <a href="#seccion-3-1-1" class="nav-item" data-section="3-1-1">
+            <i class="fas fa-sitemap"></i>
+            3.1.1 Transformación de árboles generales a binarios
+          </a>
+          <a href="#seccion-3-1-2" class="nav-item" data-section="3-1-2">
+            <i class="fas fa-tasks"></i>
+            3.1.2 Recorridos en un árbol binario
+          </a>
+          <a href="#seccion-3-1-3" class="nav-item" data-section="3-1-3">
+            <i class="fas fa-exchange-alt"></i>
+            3.1.3 Árbol binario de búsqueda
+          </a>
+          <a href="#seccion-3-1-4" class="nav-item" data-section="3-1-4">
+            <i class="fas fa-th"></i>
+            3.1.4 Árbol balanceado rojo-negro
+          </a>
+          <a href="#seccion-3-1-5" class="nav-item" data-section="3-1-5">
+            <i class="fas fa-link"></i>
+            3.1.5 Montículo
+          </a>
+          <a href="#seccion-3-1-6" class="nav-item" data-section="3-1-6">
+            <i class="fas fa-link"></i>
+            3.1.6 Implementaciones y aplicaciones
+          </a>
+          <a href="#seccion-3-1-7" class="nav-item" data-section="3-1-7">
+            <i class="fas fa-link"></i>
+            3.1.7 Nociones de complejidad de las implementaciones
+          </a>
+          <a href="#seccion-3-1-8" class="nav-item" data-section="3-1-8">
+            <i class="fas fa-link"></i>
+            3.1.8 Otros tipos de árboles
+          </a>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-section-title">Recursos</div>
+          <a href="actividad_3_1.html" class="nav-item">
+            <i class="fas fa-pencil-alt"></i>
+            Actividad de aprendizaje
+          </a>
+          <a href="3.2.html" class="nav-item">
+            <i class="fas fa-arrow-right"></i>
+            Siguiente: Grafos
+          </a>
+        </div>
+      </div>
     </nav>
 
     <button class="scroll-to-top" id="scrollToTop">
-        <i class="fas fa-chevron-up"></i>
+      <i class="fas fa-chevron-up"></i>
     </button>
 
     <div class="container">
-        <header id="inicio">
-            <div class="breadcrumb">
-                <a href="https://escomisr.github.io/Algo_Estruct_Datos/index.html"><i class="fas fa-home"></i> Inicio</a>
-                <span>/</span>
-                <a href="index.html">Unidad 3</a>
-                <span>/</span>
-                <span>3. Estructuras de datos no lineales</span>
-            </div>
-            <h1>3. Estructuras de datos no lineales</h1>
-            <div class="subtitle">Se encarga de organizan la información de una forma multidimensional o jerárquica, lo que permite tener relaciones más complejas.</div>            
-        </header>
-        
-        <div class="intro">
-            <p> En la unidad previa revisamos las estructuras de datos lineales más utilizadas en el área de la computación, también, revisamos las características que tiene e hicimos una comparativa de la complejidad de sus operaciones para que en determinado momento el alumno pueda decidir cuál de ellas le es
-                más util para resolver un determinado problema. Ahora, vamos a revisar las estructuras de datos que no son lineales, como son los árboles, los montículos y los grafos, los cuales definen un orden jerárquico para almacenar la información, entonces que ventajas o desventajas nos puede acarrear esta forma de organización y para hacer esto estudiaremos como los podemos implementar en un programa computacional, además de analizar la complejidad de las operaciones y revisar algunas de sus implementaciones.</p>
+      <header id="inicio">
+        <div class="breadcrumb">
+          <a href="https://escomisr.github.io/Algo_Estruct_Datos/index.html"
+            ><i class="fas fa-home"></i> Inicio</a
+          >
+          <span>/</span>
+          <a href="index.html">Unidad 3</a>
+          <span>/</span>
+          <span>3. Estructuras de datos no lineales</span>
         </div>
-
-        <div class="section" id="seccion-3-1">
-            <div class="section-header">
-                <div class="section-number">3.1</div>
-                <div class="section-title">Árboles binarios </div>
-            </div>
-            <div class="content">
-                <p>¿Alguna vez has visto o construido el árbol genealógico de tu familia?, o ¿has tenido oportunidad de ver el organigrama de una empresa? Habrás notado en ambos casos que la información se organiza por niveles, de forma jerárquica con base en ciertas reglas. Por ejemplo, para un árbol genealógico, piensa en un árbol invertido, los abuelos generalmente ocuparían el nivel más alto, es decir, en la raíz, los padres en el siguiente nivel y en el nivel más bajo, en las ramas, a los hijos. Pues bien, para poder
-                    tratar de forma computacional este tipo de disposición de la información, no basta con estructuras lineales como las que hemos visto hasta ahora, por lo que en este tema aprenderás nuevas formas de tratamiento de la información, que te permitirán trabajar con organizaciones de datos más dinámicas y complejas.</p>
-                <p>Comencemos con la definición de un árbol, sus elementos y características principales.</p>
-            </div>
+        <h1>3. Estructuras de datos no lineales</h1>
+        <div class="subtitle">
+          Se encarga de organizan la información de una forma multidimensional o
+          jerárquica, lo que permite tener relaciones más complejas.
         </div>
+      </header>
 
-        <div class="section" id="seccion-3-1-1">
-            <div class="section-header">
-                <div class="section-number">3.1.1</div>
-                <div class="section-title">Transformación de árboles generales a binarios </div>
-            </div>
-            <div class="content">
-                <p>Al hablar de un árbol general, en el contexto de estructuras de datos, nos referimos a una estructura no lineal que puede ser utilizada para representar y organizar jerárquicamente la información.</p>
-                <p>Considera el siguiente organigrama:</p>
+      <div class="intro">
+        <p>
+          En la unidad previa revisamos las estructuras de datos lineales más
+          utilizadas en el área de la computación, también, revisamos las
+          características que tiene e hicimos una comparativa de la complejidad
+          de sus operaciones para que en determinado momento el alumno pueda
+          decidir cuál de ellas le es más util para resolver un determinado
+          problema. Ahora, vamos a revisar las estructuras de datos que no son
+          lineales, como son los árboles, los montículos y los grafos, los
+          cuales definen un orden jerárquico para almacenar la información,
+          entonces que ventajas o desventajas nos puede acarrear esta forma de
+          organización y para hacer esto estudiaremos como los podemos
+          implementar en un programa computacional, además de analizar la
+          complejidad de las operaciones y revisar algunas de sus
+          implementaciones.
+        </p>
+      </div>
 
-                   <div class="figure-container">
-                    <div class="figure-caption">Organigrama_1</div>
-                    <div class="figure-caption">Transformación de árboles generales a binarios</div>
-                    <div class="figura">
-                        <img src="FIGURA1.png" alt="Transformación de árboles generales a binarios" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Elaboración propia </div>
-                </div>
-                <p>Como podrás ver, en cada nivel se han dispuesto elementos que están relacionados entre sí y representan un objeto o concepto del mundo real, por lo tanto, pueden contener una etiqueta y/o información adicional. En el caso del árbol genealógico, los elementos
-                   básicos que lo constituyen son las personas integrantes de una familia que se relacionan por medio de un lazo familiar y en el caso del organigrama son personas que laboran en una empresa con una relación jerárquica jefe-empleado entre ellas.  A estos elementos
-                   los definiremos como Nodos y Vértices que unen los nodos, por lo tanto, un Árbol será entonces un conjunto de estos nodos/vértices.</p>
-                <p>De acuerdo con lo anterior, se estblece la identificación de: </p> 
-                <h3></h3>
-                <li>Un árbol puede estar vacío (No tener Nodos).</li>
-                <li>Un árbol no vacío puede constar de un solo elemento (Lo denominaremos nodo raíz).</li>
-                <li>Un árbol no vacío puede constar de un nodo raíz, conectado a otros nodos.</li> 
-
-                <p>Y también podemos distinguir diferentes tipos de nodos:</p> 
-
-                <div class="figure-container">
-                        <div class="figure-caption">Figura 2</div>
-                        <div class="figure-caption">Tipos de nodos en un árbol</div>
-                        <div class="figura">
-                            <img src="FIGURA2.png" alt="Tipos de nodos en un árbol" class="imagen-figura1"/>
-                        </div>
-                        <div class="figure-caption">Nota: Elaboración propia </div>                
-            </div>
-            <P>Una vez que ya establecio en nodo, entonces ahora se planteara el de relación. Como comentamos en los ejemplos del árbol genealógico y del organigrama, los Nodos pueden tener alguna correspondencia entre ellos, observa el ejemplo siguiente:</P>
-
-                <div class="figure-container">
-                        <div class="figure-caption">Figura 3</div>
-                        <div class="figure-caption">Relación</div>
-                        <div class="figura">
-                            <img src="FIGURA3.png" alt="Relación" class="imagen-figura1"/>
-                        </div>
-                        <div class="figure-caption">Nota: Elaboración propia </div>  
-            <p></p>            
-            <p>Como podrás notar, la relación jerárquica entre un padre y sus hijos se ve representada mediante líneas que conectan al Nodo Padre con cada uno de los Nodos Hijos, a estas líneas se les denomina Arcos o Ramas.</p>
-            <p>De esta dependencia jerárquica se desprenden otros tipos de Nodos que también podrás encontrar en la literatura que consultes:</p> 
-
-                <div class="figure-container">
-                        <div class="figure-caption">Figura 4</div>
-                        <div class="figure-caption">Tipos de Nodos</div>
-                        <div class="figura">
-                            <img src="FIGURA4.png" alt="Tipos de nodos" class="imagen-figura1"/>
-                        </div>
-                        <div class="figure-caption">Nota: Elaboración propia </div>
-            <br>             
-
-            <p>Hemos comentado que un árbol, establece  a un conjunto de Nodos y Vértices, por otro lado, identificaras que existen relaciones entre ellos, como lo puedes observar en la siguiente imagen en donde se muestra el árbol compuesto por los nodos A,B,C,D,E,F,G Y H:</p>
-                
-            <div class="arbol-animado">
-                    <h3>Árbol compuesto por los nodos A, B, C, D, E, F, G y H</h3>
-                    <p class="intro-arbol">
-                        Da clic en cada concepto para observar de forma animada cómo se colorean los nodos
-                        y las ramas del árbol. También puedes seleccionar directamente un nodo inicial y un nodo final
-                        dentro del árbol para colorear el camino entre ellos.
-                    </p>
-
-                    <div class="layout-arbol">
-                        <div class="panel-grafo">
-                            <svg viewBox="0 0 760 500" aria-label="Árbol animado con nodos A, B, C, D, E, F, G y H">
-                                <!-- Zonas para subárboles -->
-                                <ellipse id="zonaIzquierda" class="subarbol-zona" cx="235" cy="255" rx="145" ry="160"></ellipse>
-                                <ellipse id="zonaDerecha" class="subarbol-zona" cx="515" cy="255" rx="190" ry="160"></ellipse>
-
-                                <!-- Líneas de nivel -->
-                                <line id="nivel0" class="nivel-linea" x1="80" y1="70" x2="680" y2="70"></line>
-                                <line id="nivel1" class="nivel-linea" x1="80" y1="190" x2="680" y2="190"></line>
-                                <line id="nivel2" class="nivel-linea" x1="80" y1="330" x2="680" y2="330"></line>
-
-                                <text id="nivelTexto0" class="nivel-texto" x="650" y="60">Nivel 0</text>
-                                <text id="nivelTexto1" class="nivel-texto" x="650" y="180">Nivel 1</text>
-                                <text id="nivelTexto2" class="nivel-texto" x="650" y="320">Nivel 2</text>
-
-                                <!-- Aristas -->
-                                <line id="AB" class="arista" x1="380" y1="80" x2="280" y2="190"></line>
-                                <line id="AC" class="arista" x1="380" y1="80" x2="480" y2="190"></line>
-                                <line id="BD" class="arista" x1="280" y1="190" x2="215" y2="330"></line>
-                                <line id="BE" class="arista" x1="280" y1="190" x2="305" y2="330"></line>
-                                <line id="CF" class="arista" x1="480" y1="190" x2="420" y2="330"></line>
-                                <line id="CG" class="arista" x1="480" y1="190" x2="505" y2="330"></line>
-                                <line id="CH" class="arista" x1="480" y1="190" x2="610" y2="330"></line>
-
-                                <!-- Nodos -->
-                                <g id="nodoA">
-                                    <circle id="A" class="nodo" cx="380" cy="80" r="32"></circle>
-                                    <text class="etiqueta" x="380" y="80">A</text>
-                                </g>
-
-                                <g id="nodoB">
-                                    <circle id="B" class="nodo" cx="280" cy="190" r="32"></circle>
-                                    <text class="etiqueta" x="280" y="190">B</text>
-                                </g>
-
-                                <g id="nodoC">
-                                    <circle id="C" class="nodo" cx="480" cy="190" r="32"></circle>
-                                    <text class="etiqueta" x="480" y="190">C</text>
-                                </g>
-
-                                <g id="nodoD">
-                                    <circle id="D" class="nodo" cx="215" cy="330" r="32"></circle>
-                                    <text class="etiqueta" x="215" y="330">D</text>
-                                </g>
-
-                                <g id="nodoE">
-                                    <circle id="E" class="nodo" cx="305" cy="330" r="32"></circle>
-                                    <text class="etiqueta" x="305" y="330">E</text>
-                                </g>
-
-                                <g id="nodoF">
-                                    <circle id="F" class="nodo" cx="420" cy="330" r="32"></circle>
-                                    <text class="etiqueta" x="420" y="330">F</text>
-                                </g>
-
-                                <g id="nodoG">
-                                    <circle id="G" class="nodo" cx="505" cy="330" r="32"></circle>
-                                    <text class="etiqueta" x="505" y="330">G</text>
-                                </g>
-
-                                <g id="nodoH">
-                                    <circle id="H" class="nodo" cx="610" cy="330" r="32"></circle>
-                                    <text class="etiqueta" x="610" y="330">H</text>
-                                </g>
-
-                                <text id="textoExtra" class="texto-svg" x="50" y="455"></text>
-                            </svg>
-                            <div id="explicacion">
-                                Selecciona una opción para comenzar la animación.
-                            </div>
-                        </div>
-
-                        <div class="panel-controles">
-                            <h4>Conceptos</h4>
-
-                            <div class="botones">
-                                <button data-demo="caminoAH">Camino de A a H</button>
-                                <button data-demo="caminoAE">Camino de A a E</button>
-                                <button data-demo="longitudAH">Longitud del camino A-H</button>
-                                <button data-demo="caminoCero">Camino de longitud cero</button>
-                                <button data-demo="gradoC">Grado de un nodo</button>
-                                <button data-demo="gradoArbol">Grado del árbol</button>
-                                <button data-demo="niveles">Nivel de los nodos</button>
-                                <button data-demo="profundidadE">Profundidad de E</button>
-                                <button data-demo="alturaC">Altura de C</button>
-                                <button data-demo="subarboles">Subárboles</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-  
-        </div>    
+      <div class="section" id="seccion-3-1">
+        <div class="section-header">
+          <div class="section-number">3.1</div>
+          <div class="section-title">Árboles binarios</div>
         </div>
-        
-        <div class="section" id="seccion-3-1-2">
-            <div class="section-header">
-                <div class="section-number">3.1.2</div>
-                <div class="section-title">Recorridos en un árbol binario</div>
+        <div class="content">
+          <p>
+            ¿Alguna vez has visto o construido el árbol genealógico de tu
+            familia?, o ¿has tenido oportunidad de ver el organigrama de una
+            empresa? Habrás notado en ambos casos que la información se organiza
+            por niveles, de forma jerárquica con base en ciertas reglas. Por
+            ejemplo, para un árbol genealógico, piensa en un árbol invertido,
+            los abuelos generalmente ocuparían el nivel más alto, es decir, en
+            la raíz, los padres en el siguiente nivel y en el nivel más bajo, en
+            las ramas, a los hijos. Pues bien, para poder tratar de forma
+            computacional este tipo de disposición de la información, no basta
+            con estructuras lineales como las que hemos visto hasta ahora, por
+            lo que en este tema aprenderás nuevas formas de tratamiento de la
+            información, que te permitirán trabajar con organizaciones de datos
+            más dinámicas y complejas.
+          </p>
+          <p>
+            Comencemos con la definición de un árbol, sus elementos y
+            características principales.
+          </p>
+        </div>
+      </div>
+
+      <div class="section" id="seccion-3-1-1">
+        <div class="section-header">
+          <div class="section-number">3.1.1</div>
+          <div class="section-title">
+            Transformación de árboles generales a binarios
+          </div>
+        </div>
+        <div class="content">
+          <p>
+            Al hablar de un árbol general, en el contexto de estructuras de
+            datos, nos referimos a una estructura no lineal que puede ser
+            utilizada para representar y organizar jerárquicamente la
+            información.
+          </p>
+          <p>Considera el siguiente organigrama:</p>
+
+          <div class="figure-container">
+            <div class="figure-caption">Organigrama_1</div>
+            <div class="figure-caption">
+              Transformación de árboles generales a binarios
             </div>
-            <div class="content">
-                     <p>Cuando se requiere acceder a los datos que se encuentran dentro de un árbol ya sea general o binario, se puede hacer mediante una secuencia lógica y metodológica de pasos, de tal forma que se puedan visitar todos los nodos y, por ende, procesar todos y cada uno de los datos, a esto se le denomina “recorrer” el árbol,
-                        de tal forma que si se está posicionado en un nodo cualquiera del árbol, mediante una operación de recorrido se puede: a. Descender a la rama izquierda, b. Descender a la rama derecha, o c. Procesar el dato (visitar el nodo).</p> 
-                     <p>El recorrido entonces es una operación repetitiva que puede construirse de forma recursiva, para construir la secuencia para recorrer el árbol, toma en cuenta que, por convención, se recorre el subárbol izquierdo antes que el derecho, y el tipo de orden de recorrido, está determinado por las siguientes operaciones generales: </p>               
-                        
-                <h3></h3>
-                <li>a. Preorden: Visitar el nodo antes de dirigirse al subárbol izquierdo. raíz -> rama izquierda -> rama derecha.</li>
-                <li>b. Inorden: Visitar el nodo después de recorrer el subárbol izquierdo, pero antes de recorrer el subárbol derecho. rama izquierda -> raíz -> rama derecha.</li>
-                <li>c. Postorden: Visitar el nodo después de recorrer ambos subárboles. rama izquierda -> rama derecha -> raíz.</li> 
+            <div class="figura">
+              <img
+                src="FIGURA1.png"
+                alt="Transformación de árboles generales a binarios"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            Como podrás ver, en cada nivel se han dispuesto elementos que están
+            relacionados entre sí y representan un objeto o concepto del mundo
+            real, por lo tanto, pueden contener una etiqueta y/o información
+            adicional. En el caso del árbol genealógico, los elementos básicos
+            que lo constituyen son las personas integrantes de una familia que
+            se relacionan por medio de un lazo familiar y en el caso del
+            organigrama son personas que laboran en una empresa con una relación
+            jerárquica jefe-empleado entre ellas. A estos elementos los
+            definiremos como Nodos y Vértices que unen los nodos, por lo tanto,
+            un Árbol será entonces un conjunto de estos nodos/vértices.
+          </p>
+          <p>De acuerdo con lo anterior, se estblece la identificación de:</p>
+          <h3></h3>
+          <li>Un árbol puede estar vacío (No tener Nodos).</li>
+          <li>
+            Un árbol no vacío puede constar de un solo elemento (Lo
+            denominaremos nodo raíz).
+          </li>
+          <li>
+            Un árbol no vacío puede constar de un nodo raíz, conectado a otros
+            nodos.
+          </li>
 
-                <H3>Recorrido Preorden</H3>
-                <p> El recorrido Preorden consiste en: visitar primero la raíz del árbol-extraer dato, descender a la rama izquierda, si hay un nodo, descender al mismo – extraer dato, repetir la operación hasta que no existan más nodos en la rama izquierda (al encontrar null), cuando ocurra esto, subir un nivel y evaluar rama derecha, si hay un nodo,
-                    descender al mismo – extraer dato, repetir la operación y continuar hasta recorrer completamente el árbol.</p>
-                <P>Observa el siguiente ejemplo gráfico donde las flechas te indican el orden del recorrido:</P>
-                
-                
-             <div class="content">
-                <p></p>
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 4a</div>
-                    <div class="figure-caption">Recorridos en un árbol binario</div>
-                    <div class="figura">
-                        <img src="FIGURA4a.png" alt="Recorridos en un árbol binario" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Elaboración propia</div>
-                 </div>
+          <p>Y también podemos distinguir diferentes tipos de nodos:</p>
 
-                <p>Como puedes observar, el orden de visita de los nodos del árbol a través del recorrido preorden es: A,B,D,E,C,G, y la implementación recursiva en código c, del recorrido preorden es como sigue:</p>
-            
-            <div class="content">
-                <p></p>
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 5</div>
-                    <div class="figure-caption">Ejemplo de recorridos en un árbol binario en código</div>
-                    <div class="figura">
-                        <img src="FIGURA5.png" alt="Ejemplo de recorridos en un árbol binario en código"/>
-                    </div>
-                    <div class="figure-caption">Nota: Elaboración propia</div>
-                </div>
-            </div>>
-                <H3>Recorrido Inorden</H3>
-                <p>El recorrido Inorden consiste descender a través de las subramas izquierdas hasta alcanzar la máxima profundidad, extraer dato, subir un nivel – extraer dato, evaluar subramas derechas, repetir la operación y
-                   continuar hasta recorrer completamente el árbol.</p>
+          <div class="figure-container">
+            <div class="figure-caption">Figura 2</div>
+            <div class="figure-caption">Tipos de nodos en un árbol</div>
+            <div class="figura">
+              <img
+                src="FIGURA2.png"
+                alt="Tipos de nodos en un árbol"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            Una vez que ya establecio en nodo, entonces ahora se planteara el de
+            relación. Como comentamos en los ejemplos del árbol genealógico y
+            del organigrama, los Nodos pueden tener alguna correspondencia entre
+            ellos, observa el ejemplo siguiente:
+          </p>
 
-               <p>Apóyate en el siguiente ejemplo gráfico para identificar con más claridad el recorrido:</p>
-
-            <div class="content">
-                <p></p>
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 6</div>
-                    <div class="figure-caption">Recorrido Inorden</div>
-                    <div class="figura">
-                        <img src="FIGURA6.png" alt="Recorrido Inorden"/>
-                    </div>
-                    <div class="figure-caption">Nota: Elaboración propia</div>
-                </div>               
-               <p>Las flechas indican el orden de visita de los nodos: D,B,E,A,C,G, y la implementación recursiva en código c del recorrido inorden, es como sigue:</p>
+          <div class="figure-container">
+            <div class="figure-caption">Figura 3</div>
+            <div class="figure-caption">Relación</div>
+            <div class="figura">
+              <img src="FIGURA3.png" alt="Relación" class="imagen-figura1" />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+            <p></p>
+            <p>
+              Como podrás notar, la relación jerárquica entre un padre y sus
+              hijos se ve representada mediante líneas que conectan al Nodo
+              Padre con cada uno de los Nodos Hijos, a estas líneas se les
+              denomina Arcos o Ramas.
+            </p>
+            <p>
+              De esta dependencia jerárquica se desprenden otros tipos de Nodos
+              que también podrás encontrar en la literatura que consultes:
+            </p>
 
             <div class="figure-container">
-                    <div class="figure-caption">Figura 7</div>
-                    <div class="figure-caption">Ejemplo de recorridos Inorden en código  </div>
-                    <div class="figura">
-                        <img src="FIGURA7.png" alt="Ejemplo de recorridos Inorden en código"/>
+              <div class="figure-caption">Figura 4</div>
+              <div class="figure-caption">Tipos de Nodos</div>
+              <div class="figura">
+                <img
+                  src="FIGURA4.png"
+                  alt="Tipos de nodos"
+                  class="imagen-figura1"
+                />
+              </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
+              <br />
+
+              <p>
+                Hemos comentado que un árbol, establece a un conjunto de Nodos y
+                Vértices, por otro lado, identificaras que existen relaciones
+                entre ellos, como lo puedes observar en la siguiente imagen en
+                donde se muestra el árbol compuesto por los nodos A,B,C,D,E,F,G
+                Y H:
+              </p>
+
+              <div class="arbol-animado">
+                <h3>Árbol compuesto por los nodos A, B, C, D, E, F, G y H</h3>
+                <p class="intro-arbol">
+                  Da clic en cada concepto para observar de forma animada cómo
+                  se colorean los nodos y las ramas del árbol. También puedes
+                  seleccionar directamente un nodo inicial y un nodo final
+                  dentro del árbol para colorear el camino entre ellos.
+                </p>
+
+                <div class="layout-arbol">
+                  <div class="panel-grafo">
+                    <svg
+                      viewBox="0 0 760 500"
+                      aria-label="Árbol animado con nodos A, B, C, D, E, F, G y H"
+                    >
+                      <!-- Zonas para subárboles -->
+                      <ellipse
+                        id="zonaIzquierda"
+                        class="subarbol-zona"
+                        cx="235"
+                        cy="255"
+                        rx="145"
+                        ry="160"
+                      ></ellipse>
+                      <ellipse
+                        id="zonaDerecha"
+                        class="subarbol-zona"
+                        cx="515"
+                        cy="255"
+                        rx="190"
+                        ry="160"
+                      ></ellipse>
+
+                      <!-- Líneas de nivel -->
+                      <line
+                        id="nivel0"
+                        class="nivel-linea"
+                        x1="80"
+                        y1="70"
+                        x2="680"
+                        y2="70"
+                      ></line>
+                      <line
+                        id="nivel1"
+                        class="nivel-linea"
+                        x1="80"
+                        y1="190"
+                        x2="680"
+                        y2="190"
+                      ></line>
+                      <line
+                        id="nivel2"
+                        class="nivel-linea"
+                        x1="80"
+                        y1="330"
+                        x2="680"
+                        y2="330"
+                      ></line>
+
+                      <text id="nivelTexto0" class="nivel-texto" x="650" y="60">
+                        Nivel 0
+                      </text>
+                      <text
+                        id="nivelTexto1"
+                        class="nivel-texto"
+                        x="650"
+                        y="180"
+                      >
+                        Nivel 1
+                      </text>
+                      <text
+                        id="nivelTexto2"
+                        class="nivel-texto"
+                        x="650"
+                        y="320"
+                      >
+                        Nivel 2
+                      </text>
+
+                      <!-- Aristas -->
+                      <line
+                        id="AB"
+                        class="arista"
+                        x1="380"
+                        y1="80"
+                        x2="280"
+                        y2="190"
+                      ></line>
+                      <line
+                        id="AC"
+                        class="arista"
+                        x1="380"
+                        y1="80"
+                        x2="480"
+                        y2="190"
+                      ></line>
+                      <line
+                        id="BD"
+                        class="arista"
+                        x1="280"
+                        y1="190"
+                        x2="215"
+                        y2="330"
+                      ></line>
+                      <line
+                        id="BE"
+                        class="arista"
+                        x1="280"
+                        y1="190"
+                        x2="305"
+                        y2="330"
+                      ></line>
+                      <line
+                        id="CF"
+                        class="arista"
+                        x1="480"
+                        y1="190"
+                        x2="420"
+                        y2="330"
+                      ></line>
+                      <line
+                        id="CG"
+                        class="arista"
+                        x1="480"
+                        y1="190"
+                        x2="505"
+                        y2="330"
+                      ></line>
+                      <line
+                        id="CH"
+                        class="arista"
+                        x1="480"
+                        y1="190"
+                        x2="610"
+                        y2="330"
+                      ></line>
+
+                      <!-- Nodos -->
+                      <g id="nodoA">
+                        <circle
+                          id="A"
+                          class="nodo"
+                          cx="380"
+                          cy="80"
+                          r="32"
+                        ></circle>
+                        <text class="etiqueta" x="380" y="80">A</text>
+                      </g>
+
+                      <g id="nodoB">
+                        <circle
+                          id="B"
+                          class="nodo"
+                          cx="280"
+                          cy="190"
+                          r="32"
+                        ></circle>
+                        <text class="etiqueta" x="280" y="190">B</text>
+                      </g>
+
+                      <g id="nodoC">
+                        <circle
+                          id="C"
+                          class="nodo"
+                          cx="480"
+                          cy="190"
+                          r="32"
+                        ></circle>
+                        <text class="etiqueta" x="480" y="190">C</text>
+                      </g>
+
+                      <g id="nodoD">
+                        <circle
+                          id="D"
+                          class="nodo"
+                          cx="215"
+                          cy="330"
+                          r="32"
+                        ></circle>
+                        <text class="etiqueta" x="215" y="330">D</text>
+                      </g>
+
+                      <g id="nodoE">
+                        <circle
+                          id="E"
+                          class="nodo"
+                          cx="305"
+                          cy="330"
+                          r="32"
+                        ></circle>
+                        <text class="etiqueta" x="305" y="330">E</text>
+                      </g>
+
+                      <g id="nodoF">
+                        <circle
+                          id="F"
+                          class="nodo"
+                          cx="420"
+                          cy="330"
+                          r="32"
+                        ></circle>
+                        <text class="etiqueta" x="420" y="330">F</text>
+                      </g>
+
+                      <g id="nodoG">
+                        <circle
+                          id="G"
+                          class="nodo"
+                          cx="505"
+                          cy="330"
+                          r="32"
+                        ></circle>
+                        <text class="etiqueta" x="505" y="330">G</text>
+                      </g>
+
+                      <g id="nodoH">
+                        <circle
+                          id="H"
+                          class="nodo"
+                          cx="610"
+                          cy="330"
+                          r="32"
+                        ></circle>
+                        <text class="etiqueta" x="610" y="330">H</text>
+                      </g>
+
+                      <text
+                        id="textoExtra"
+                        class="texto-svg"
+                        x="50"
+                        y="455"
+                      ></text>
+                    </svg>
+                    <div id="explicacion">
+                      Selecciona una opción para comenzar la animación.
                     </div>
-                    <div class="figure-caption">Nota: Elaboración propia</div>
-                </div>               
-               
-             </div> 
-             </div>
-             </div>                               
-            </div>
+                  </div>
 
+                  <div class="panel-controles">
+                    <h4>Conceptos</h4>
+
+                    <div class="botones">
+                      <button data-demo="caminoAH">Camino de A a H</button>
+                      <button data-demo="caminoAE">Camino de A a E</button>
+                      <button data-demo="longitudAH">
+                        Longitud del camino A-H
+                      </button>
+                      <button data-demo="caminoCero">
+                        Camino de longitud cero
+                      </button>
+                      <button data-demo="gradoC">Grado de un nodo</button>
+                      <button data-demo="gradoArbol">Grado del árbol</button>
+                      <button data-demo="niveles">Nivel de los nodos</button>
+                      <button data-demo="profundidadE">Profundidad de E</button>
+                      <button data-demo="alturaC">Altura de C</button>
+                      <button data-demo="subarboles">Subárboles</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        
-        <div class="section" id="seccion-3-1-3">
-            <div class="section-header">
-                <div class="section-number">3.1.3</div>
-                <div class="section-title">Árbol binario de búsqueda</div>
-            </div>
+
+        <div class="section" id="seccion-3-1-2">
+          <div class="section-header">
+            <div class="section-number">3.1.2</div>
+            <div class="section-title">Recorridos en un árbol binario</div>
+          </div>
+          <div class="content">
+            <p>
+              Cuando se requiere acceder a los datos que se encuentran dentro de
+              un árbol ya sea general o binario, se puede hacer mediante una
+              secuencia lógica y metodológica de pasos, de tal forma que se
+              puedan visitar todos los nodos y, por ende, procesar todos y cada
+              uno de los datos, a esto se le denomina “recorrer” el árbol, de
+              tal forma que si se está posicionado en un nodo cualquiera del
+              árbol, mediante una operación de recorrido se puede: a. Descender
+              a la rama izquierda, b. Descender a la rama derecha, o c. Procesar
+              el dato (visitar el nodo).
+            </p>
+            <p>
+              El recorrido entonces es una operación repetitiva que puede
+              construirse de forma recursiva, para construir la secuencia para
+              recorrer el árbol, toma en cuenta que, por convención, se recorre
+              el subárbol izquierdo antes que el derecho, y el tipo de orden de
+              recorrido, está determinado por las siguientes operaciones
+              generales:
+            </p>
+
+            <h3></h3>
+            <li>
+              a. Preorden: Visitar el nodo antes de dirigirse al subárbol
+              izquierdo. raíz -> rama izquierda -> rama derecha.
+            </li>
+            <li>
+              b. Inorden: Visitar el nodo después de recorrer el subárbol
+              izquierdo, pero antes de recorrer el subárbol derecho. rama
+              izquierda -> raíz -> rama derecha.
+            </li>
+            <li>
+              c. Postorden: Visitar el nodo después de recorrer ambos
+              subárboles. rama izquierda -> rama derecha -> raíz.
+            </li>
+
+            <h3>Recorrido Preorden</h3>
+            <p>
+              El recorrido Preorden consiste en: visitar primero la raíz del
+              árbol-extraer dato, descender a la rama izquierda, si hay un nodo,
+              descender al mismo – extraer dato, repetir la operación hasta que
+              no existan más nodos en la rama izquierda (al encontrar null),
+              cuando ocurra esto, subir un nivel y evaluar rama derecha, si hay
+              un nodo, descender al mismo – extraer dato, repetir la operación y
+              continuar hasta recorrer completamente el árbol.
+            </p>
+            <p>
+              Observa el siguiente ejemplo gráfico donde las flechas te indican
+              el orden del recorrido:
+            </p>
+
             <div class="content">
-                <p>Entre las operaciones básicas en cuanto a manejo de datos, se encuentra la búsqueda. Para abordar este problema, conocimos anteriormente, en la Unidad 1, algoritmos como el de búsqueda binaria, mediante el cual, se logra disminuir la complejidad de búsqueda de un elemento, sin embargo, esto aplica siempre y cuando los datos estuvieran ordenados, lo cual no siempre ocurre.
-                   Para resolver de una forma más eficiente esta problemática, se puede aprovechar la estructura de árbol binario, realizando algunos cambios en su implementación. Veamos sus características, construcción y utilidad.</p>
-                <p>El Árbol Binario de Búsqueda es un caso especial del Árbol Binario, tiene la peculiaridad de realizar las inserciones de datos siguiendo procedimientos específicos, de tal forma que tanto el ordenamiento como la búsqueda de sus datos, se realice de una forma muy eficiente. Así, para construir un Árbol Binario de Búsqueda, el procedimiento más importante para el acomodo de
-                   los Nodos es tomar en cuenta el valor que esté almacenado dentro de ellos, por ejemplo, hablando de un árbol cuyos nodos contienen valores numéricos, aquellos nodos con valores menores al contenido en el nodo raíz, siempre se ubicarán en el subárbol izquierdo y a su vez, aquellos nodos con valores mayores al contenido en el nodo raíz, se colocarán en el subárbol derecho.</p> 
+              <p></p>
+              <div class="figure-container">
+                <div class="figure-caption">Figura 4a</div>
+                <div class="figure-caption">Recorridos en un árbol binario</div>
+                <div class="figura">
+                  <img
+                    src="FIGURA4a.png"
+                    alt="Recorridos en un árbol binario"
+                    class="imagen-figura1"
+                  />
+                </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
+              </div>
 
+              <p>
+                Como puedes observar, el orden de visita de los nodos del árbol
+                a través del recorrido preorden es: A,B,D,E,C,G, y la
+                implementación recursiva en código c, del recorrido preorden es
+                como sigue:
+              </p>
 
-
-             <div class="content">
+              <div class="content">
                 <p></p>
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 8</div>
-                    <div class="figure-caption">Árbol binario de búsqueda</div>
-                    <div class="figura">
-                        <img src="FIGURA8.png" alt="Árbol binario de búsqueda" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
-                </div>
-
-                <p>Vamos a ejemplificar esto, considera la siguiente secuencia de números: 7, 9, 5, 1, 8, 10. La construcción del árbol binario correspondiente al insertar en el mismo dicha secuencia de números, se muestra a continuación:</p>
-
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 9</div>
-                    <div class="figure-caption">Árbol binario de búsqueda</div>
-                    <div class="figura">
-                        <img src="FIGURA8.png" alt="Árbol binario de búsqueda" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
-                </div>
-
-
-
-            </div>
- 
-        </div> 
-        </div>
-
-        <div class="section" id="seccion-3-1-4">
-            <div class="section-header">
-                <div class="section-number">3.1.4</div>
-                <div class="section-title">Árbol balanceado rojo-negro </div>
-            </div>
-            <div class="content">
-                    <p>Un árbol rojo-negro se considera como la estructura de datos derivada del árbol binario de búsqueda que se mantiene balanceada mediante reglas de color asignadas a sus nodos. En este tipo de árbol, cada nodo puede ser rojo o negro, la raíz siempre debe ser negra, no puede haber dos nodos rojos consecutivos y
-                       todos los caminos desde la raíz hasta las hojas deben contener la misma cantidad de nodos negros. Estas propiedades permiten controlar la altura del árbol y evitan que se deforme como una lista lineal, conservando así un comportamiento eficiente en las operaciones fundamentales</p>
-                    <p>Su funcionamiento del árbol rojo-negro se centra en conservar sus propiedades después de cada inserción o eliminación. Cuando se agrega un nuevo nodo, este normalmente se inserta como rojo y, si se rompe alguna regla, se corrige el árbol mediante rotaciones y recoloreos. En la eliminación ocurre algo similar,
-                       ya que puede ser necesario reorganizar la estructura para restablecer el equilibrio. Gracias a este mecanismo, el árbol mantiene una altura aproximadamente logarítmica, lo cual favorece que las operaciones de búsqueda, inserción y borrado se ejecuten con buen rendimiento</p>
-                    <p>La importancia del árbol rojo-negro radica en que ofrece una forma práctica de mantener ordenados los datos sin sacrificar eficiencia, incluso en el peor de los casos. Por esta razón, se utiliza como base en implementaciones de diccionarios, conjuntos, tablas asociativas y diversos componentes internos de bibliotecas y
-                       sistemas de software. Su estudio dentro de algoritmos y estructuras de datos resulta fundamental porque muestra cómo el balanceo automático mejora notablemente el desempeño de las operaciones sobre colecciones dinámicas de información (Goodrich et al., 2014).</p> 
-
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 5</div>
-                    <div class="figure-caption">Árbol balanceado rojo-negro</div>
-                    <div class="figura">
-                        <img src="FIGURA5.png" alt="Árbol balanceado rojo-negro" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
-                </div>
-                    <p>Se caracteriza por ser un árbol binario de búsqueda auto-balanceado que utiliza colores (rojo y negro) para mantener su estructura equilibrada. Entre sus propiedades principales destacan: la raíz siempre es negra, no pueden existir dos nodos rojos consecutivos y todos los caminos desde la raíz hasta las hojas
-                      contienen el mismo número de nodos negros. Estas reglas garantizan que el árbol mantenga una altura controlada y evitan que se degrade en estructuras ineficientes.</p>
-                    <p>Sus beneficios más relevantes se encuentra su capacidad para mantener un rendimiento eficiente en todas las operaciones básicas como búsqueda, inserción y eliminación, con una complejidad de O(log n) incluso en el peor de los casos. Además, permite un ordenamiento dinámico de los datos sin necesidad
-                      de reorganizaciones completas, lo que lo hace ideal para aplicaciones donde la información cambia constantemente. También reduce el riesgo de degradación que presentan otros árboles no balanceados.</p>
-                    <p>La importancia del árbol rojo-negro radica en su uso extendido dentro de la informática moderna, ya que sirve como base para implementar estructuras como diccionarios, conjuntos y tablas asociativas en múltiples lenguajes de programación. Asimismo, es utilizado en sistemas operativos y bases de datos debido
-                       a su eficiencia y estabilidad. Su estudio es fundamental en algoritmos y estructuras de datos porque demuestra cómo el balanceo automático mejora significativamente el rendimiento en el manejo de grandes volúmenes de información.</p>   
-            </div>
-        </div>   
-
-        <div class="section" id="seccion-3-1-5">
-            <div class="section-header">
-                <div class="section-number">3.1.5</div>
-                <div class="section-title">Montículo </div>
-            </div>
-            <div class="content">
-                    <p>Un montículo (heap) es una estructura de datos basada en un árbol binario completo que cumple una propiedad de orden específica. En un max-heap, cada nodo padre es mayor o igual que sus hijos, mientras que en un min-heap, el padre es menor o igual que sus hijos.
-                       Esta organización no mantiene un orden total como otras estructuras, pero sí garantiza que el elemento más importante (máximo o mínimo) se encuentre en la raíz, facilitando su acceso inmediato (Sahni, 2005).</p>
-                    <p>El funcionamiento del montículo se centra en mantener su propiedad mediante operaciones como inserción y eliminación. Cuando se inserta un nuevo elemento, este se coloca en la última posición disponible y luego se ajusta hacia arriba (heapify up). En la eliminación,
-                       generalmente se retira la raíz y se sustituye por el último elemento, reorganizándose hacia abajo (heapify down). Además, los montículos suelen implementarse mediante arreglos, lo que permite una representación eficiente sin necesidad de estructuras complejas.</p>
-                    <p>La importancia del montículo radica en su eficiencia para gestionar datos con prioridad, permitiendo operaciones en tiempo O(log n) y acceso al elemento principal en O(1). Es ampliamente utilizado en algoritmos como HeapSort, en colas de prioridad y en problemas
-                       de optimización dentro de grafos, como el algoritmo de Dijkstra. Por ello, constituye una estructura fundamental en el diseño de algoritmos eficientes.</p>
-
-                
-                     
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 6</div>
-                    <div class="figure-caption">Montículo</div>
-                    <div class="figura">
-                        <img src="FIGURA6.png" alt="Montículo" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
-                </div>
-                    <p>Su importancia radica en que garantiza un acceso inmediato al elemento más relevante (máximo o mínimo) en tiempo constante O(1), lo cual resulta esencial en aplicaciones como colas de prioridad, algoritmos de grafos (por ejemplo, Dijkstra) y sistemas operativos donde se
-                       requiere tomar decisiones rápidas basadas en prioridades. Además, su representación mediante arreglos optimiza el uso de memoria y facilita su implementación en distintos lenguajes de programación.</p>
-                    <p>Entre sus principales ventajas destaca su eficiencia en operaciones como inserción y eliminación, las cuales se realizan en tiempo O(log n) gracias a los procesos de reorganización (heapify). También permite ordenar datos de manera eficiente mediante algoritmos como HeapSort, y
-                       mantiene una estructura parcialmente ordenada sin necesidad de reorganizar todos los elementos. Estas características hacen del montículo una herramienta clave para el diseño de algoritmos eficientes, especialmente en problemas donde el rendimiento y la optimización son
-                       factores críticos (Sedgewick, 2011).</p>
-           </div>
-        </div>   
-
-        <div class="section" id="seccion-3-1-6">
-            <div class="section-header">
-                <div class="section-number">3.1.6</div>
-                <div class="section-title">Implementaciones y aplicaciones </div>
-            </div>
-            <div class="content">
-                    <p>Las implementaciones y aplicaciones en estructuras de datos se refieren a la manera en que estas se construyen y utilizan dentro de programas reales para resolver problemas específicos. La implementación consiste en traducir estructuras abstractas como listas, árboles o montículos
-                       a código ejecutable, definiendo cómo se almacenan los datos y cómo operan sus funciones. Por su parte, las aplicaciones muestran el uso de estas estructuras en contextos reales como bases de datos, sistemas operativos y software empresarial, donde permiten organizar la información
-                       de forma eficiente (Goodrich et al., 2014).</p>
-                    <p>La funcionalidad, las implementaciones permiten realizar operaciones como inserción, eliminación, búsqueda y recorrido de datos de manera eficiente según la estructura utilizada. Cada estructura se adapta a necesidades específicas; por ejemplo, los árboles optimizan búsquedas y
-                       los montículos gestionan prioridades. Esto permite desarrollar soluciones eficientes que mejoran el rendimiento de los sistemas y optimizan el uso de recursos computacionales.</p>
-                    <p>Entre sus características principales destacan su adaptabilidad a diferentes lenguajes de programación, su enfoque en la eficiencia y su capacidad para resolver problemas concretos. Además, permiten construir sistemas escalables y organizados, ya que cada estructura aporta ventajas particulares
-                       según el contexto de uso. Comprender sus implementaciones y aplicaciones es esencial para diseñar software robusto y eficiente en distintos entornos tecnológicos.</p>
-
-                
-                     
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 7</div>
-                    <div class="figure-caption">Implementaciones y aplicaciones</div>
-                    <div class="figura">
-                        <img src="FIGURA7.png" alt="Implementaciones y aplicaciones" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
-                </div>
-
-           </div>
-        </div>
-
-
-        <div class="section" id="seccion-3-1-7">
-            <div class="section-header">
-                <div class="section-number">3.1.7</div>
-                <div class="section-title">Nociones de complejidad de las implementaciones </div>
-            </div>
-            <div class="content">
-                    <p>se refieren al análisis del rendimiento de una estructura de datos o algoritmo en función de los recursos que utiliza, principalmente tiempo y memoria. Este análisis permite estimar cómo crece el costo de ejecución conforme aumenta el tamaño de los datos de entrada, utilizando
-                       notaciones como O(n), O(log n) o O(n²). Estas medidas describen el comportamiento teórico del algoritmo, lo que facilita comparar distintas soluciones de manera objetiva (Knuth, 2011).</p>
-                    <p>El funcionamiento de este análisis se basa en estudiar las operaciones fundamentales que realiza una implementación, como comparaciones, asignaciones o recorridos. A partir de ello, se determinan distintos escenarios como el mejor caso, el caso promedio y el peor caso, lo cual
-                       permite comprender de forma más completa el desempeño del algoritmo. Por ejemplo, algunas estructuras pueden operar en O(log n), mientras que otras requieren O(n) para realizar la misma tarea dependiendo de su organización.</p>
-                    <p>Entre sus características principales destacan que es una herramienta teórica, independiente del hardware y del lenguaje de programación, y fundamental para optimizar soluciones. Permite identificar ineficiencias, seleccionar la estructura de datos más adecuada y diseñar algoritmos
-                       escalables capaces de manejar grandes volúmenes de información sin afectar significativamente su rendimiento. Por ello, es un concepto clave en el desarrollo de software eficiente.</p>
-
-                
-                     
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 8</div>
-                    <div class="figure-caption">Nociones de complejidad de las implementaciones</div>
-                    <div class="figura">
-                        <img src="FIGURA8.png" alt="Nociones de complejidad de las implementaciones" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
-                </div>
-                    <p>Entre sus principales ventajas destaca que facilitan la selección de algoritmos más eficientes, permitiendo comparar distintas soluciones de manera objetiva. También ayudan a identificar cuellos de botella en los sistemas y favorecen el diseño de aplicaciones escalables, capaces de manejar
-                       grandes volúmenes de información. Gracias a este análisis, los desarrolladores pueden optimizar el rendimiento de sus programas y mejorar la calidad de sus implementaciones.</p>
-                    <p>Sin embargo, también presentan algunas desventajas, ya que se trata de un análisis teórico que no siempre refleja el comportamiento real en entornos específicos. Puede resultar complejo de comprender para quienes inician en el área, y no considera factores como el hardware, el lenguaje
-                       de programación o constantes ocultas en la implementación. Además, un algoritmo con buena complejidad no siempre es el más práctico en escenarios con pocos datos o cuando su implementación es demasiado compleja.</p>
-
-           </div>
-        </div>
-
-        <div class="section" id="seccion-3-1-8">
-            <div class="section-header">
-                <div class="section-number">3.1.8</div>
-                <div class="section-title">Otros tipos de árboles </div>
-            </div>
-            <div class="content">
-                    <p>Los otros tipos de árboles en estructuras de datos son variantes del árbol binario de búsqueda diseñadas para resolver problemas específicos y mejorar el rendimiento en distintos contextos. Entre los más utilizados se encuentran los árboles AVL, que mantienen un balance estricto; los árboles rojo-negro,
-                       que equilibran de forma más flexible; los árboles B, ampliamente usados en bases de datos; y los tries, empleados para el manejo de cadenas. Cada uno de estos árboles adapta su estructura para optimizar operaciones según el tipo de información y su aplicación.</p>
-                    <p>Entre sus principales características destaca que muchos de estos árboles son auto-balanceados, lo que garantiza eficiencia en operaciones como búsqueda, inserción y eliminación. Algunos, como los árboles B, permiten múltiples hijos por nodo, favoreciendo su uso en almacenamiento externo; mientras que otros,
-                       como los tries, organizan los datos por prefijos en lugar de valores numéricos. Estas estructuras están diseñadas para reducir la altura del árbol y mejorar el rendimiento general del sistema (Sahni, 2005).</p>
-                    <p>En cuanto a sus funciones, estos árboles permiten gestionar datos de forma eficiente en diversos escenarios: los árboles AVL y rojo-negro optimizan búsquedas en memoria, los árboles B se utilizan en sistemas de bases de datos y archivos, y los tries son clave en aplicaciones como autocompletado y
-                       procesamiento de texto. Su uso demuestra cómo la adaptación de estructuras permite resolver problemas complejos de manera eficiente.</p>
-
-                
-                     
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 9</div>
-                    <div class="figure-caption">Otros tipos de árboles</div>
-                    <div class="figura">
-                        <img src="FIGURA9.png" alt="Otros tipos de árboles" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Imagen generada por inteligencia artificial. Tomado de OpenAI (2026)</div>
-                </div>
-
-           </div>
-        </div>
-
-
-        <div class="section" id="video-material">
-            <div class="section-header">
-                <div class="section-number"><i class="fas fa-play-circle"></i></div>
-                <div class="section-title">Material Audiovisual</div>
-            </div>
-            <div class="content">
-                <p>Este video explica cómo funciona Estructura de datos no lineales PENDIENTE</p>
-                
                 <div class="figure-container">
-                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/7kfUmsBW4dA" title="Algoritmia en la estructura de datos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
-                    <div class="figure-caption">Salas, I. (2025, 26 de noviembre). <em>Pila</em> [Video]. https://www.youtube.com/watch?v=7kfUmsBW4dA</div>
+                  <div class="figure-caption">Figura 5</div>
+                  <div class="figure-caption">
+                    Ejemplo de recorridos en un árbol binario en código
+                  </div>
+                  <div class="figura">
+                    <img
+                      src="FIGURA5.png"
+                      alt="Ejemplo de recorridos en un árbol binario en código"
+                    />
+                  </div>
+                  <div class="figure-caption">Nota: Elaboración propia</div>
                 </div>
+              </div>
+              >
+              <h3>Recorrido Inorden</h3>
+              <p>
+                El recorrido Inorden consiste descender a través de las subramas
+                izquierdas hasta alcanzar la máxima profundidad, extraer dato,
+                subir un nivel – extraer dato, evaluar subramas derechas,
+                repetir la operación y continuar hasta recorrer completamente el
+                árbol.
+              </p>
+
+              <p>
+                Apóyate en el siguiente ejemplo gráfico para identificar con más
+                claridad el recorrido:
+              </p>
+
+              <div class="content">
+                <p></p>
+                <div class="figure-container">
+                  <div class="figure-caption">Figura 6</div>
+                  <div class="figure-caption">Recorrido Inorden</div>
+                  <div class="figura">
+                    <img src="FIGURA6.png" alt="Recorrido Inorden" />
+                  </div>
+                  <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+                <p>
+                  Las flechas indican el orden de visita de los nodos:
+                  D,B,E,A,C,G, y la implementación recursiva en código c del
+                  recorrido inorden, es como sigue:
+                </p>
+
+                <div class="figure-container">
+                  <div class="figure-caption">Figura 7</div>
+                  <div class="figure-caption">
+                    Ejemplo de recorridos Inorden en código
+                  </div>
+                  <div class="figura">
+                    <img
+                      src="FIGURA7.png"
+                      alt="Ejemplo de recorridos Inorden en código"
+                    />
+                  </div>
+                  <div class="figure-caption">Nota: Elaboración propia</div>
+                </div>
+              </div>
             </div>
-        </div>        
-
-        <div class="activity-card">
-            <div class="activity-title">Actividad de Aprendizaje 2.1: Pila</div>
-            <p>Evalúa tu comprensión sobre la pila, su estructura de datos, especificaciones, implementaciones, nociones de complejidad de las operaciones y sus aplicaciones.</p>
-            <a href="actividad_2_1.html" class="activity-btn">
-                <i class="fas fa-pencil-alt"></i> Realizar Actividad
-            </a>
+          </div>
         </div>
+      </div>
 
-        <div class="nav-buttons">
-            <a href="index.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Volver al Menú de Unidad</a>
-            <a href="https://escomisr.github.io/Algo_Estruct_Datos/Unidades.html" class="nav-btn"> Volver al Menu Principal<i class="fas fa-arrow-right"></i></a>
+      <div class="section" id="seccion-3-1-3">
+        <div class="section-header">
+          <div class="section-number">3.1.3</div>
+          <div class="section-title">Árbol binario de búsqueda</div>
         </div>
-        
-        <footer>
-            <p>Algoritmos almacena y recupera Datos (polilibro académico) - Unidad 1: Algoritmos fundamentales</p>
-            <p>Desarrollado para fines educativos - © 2026</p>
-        </footer>
+        <div class="content">
+          <p>
+            Entre las operaciones básicas en cuanto a manejo de datos, se
+            encuentra la búsqueda. Para abordar este problema, conocimos
+            anteriormente, en la Unidad 1, algoritmos como el de búsqueda
+            binaria, mediante el cual, se logra disminuir la complejidad de
+            búsqueda de un elemento, sin embargo, esto aplica siempre y cuando
+            los datos estuvieran ordenados, lo cual no siempre ocurre. Para
+            resolver de una forma más eficiente esta problemática, se puede
+            aprovechar la estructura de árbol binario, realizando algunos
+            cambios en su implementación. Veamos sus características,
+            construcción y utilidad.
+          </p>
+          <p>
+            El Árbol Binario de Búsqueda es un caso especial del Árbol Binario,
+            tiene la peculiaridad de realizar las inserciones de datos siguiendo
+            procedimientos específicos, de tal forma que tanto el ordenamiento
+            como la búsqueda de sus datos, se realice de una forma muy
+            eficiente. Así, para construir un Árbol Binario de Búsqueda, el
+            procedimiento más importante para el acomodo de los Nodos es tomar
+            en cuenta el valor que esté almacenado dentro de ellos, por ejemplo,
+            hablando de un árbol cuyos nodos contienen valores numéricos,
+            aquellos nodos con valores menores al contenido en el nodo raíz,
+            siempre se ubicarán en el subárbol izquierdo y a su vez, aquellos
+            nodos con valores mayores al contenido en el nodo raíz, se colocarán
+            en el subárbol derecho.
+          </p>
 
+          <div class="content">
+            <p></p>
+            <div class="figure-container">
+              <div class="figure-caption">Figura 8</div>
+              <div class="figure-caption">Árbol binario de búsqueda</div>
+              <div class="figura">
+                <img
+                  src="FIGURA8.png"
+                  alt="Árbol binario de búsqueda"
+                  class="imagen-figura1"
+                />
+              </div>
+              <div class="figure-caption">
+                Nota: Imagen generada por inteligencia artificial. Tomado de
+                OpenAI (2026)
+              </div>
+            </div>
+
+            <p>
+              Vamos a ejemplificar esto, considera la siguiente secuencia de
+              números: 7, 9, 5, 1, 8, 10. La construcción del árbol binario
+              correspondiente al insertar en el mismo dicha secuencia de
+              números, se muestra a continuación:
+            </p>
+
+            <div class="figure-container">
+              <div class="figure-caption">Figura 9</div>
+              <div class="figure-caption">Árbol binario de búsqueda</div>
+              <div class="figura">
+                <img
+                  src="FIGURA8.png"
+                  alt="Árbol binario de búsqueda"
+                  class="imagen-figura1"
+                />
+              </div>
+              <div class="figure-caption">
+                Nota: Imagen generada por inteligencia artificial. Tomado de
+                OpenAI (2026)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="seccion-3-1-4">
+        <div class="section-header">
+          <div class="section-number">3.1.4</div>
+          <div class="section-title">Árbol balanceado rojo-negro</div>
+        </div>
+        <div class="content">
+          <p>
+            Un árbol rojo-negro se considera como la estructura de datos
+            derivada del árbol binario de búsqueda que se mantiene balanceada
+            mediante reglas de color asignadas a sus nodos. En este tipo de
+            árbol, cada nodo puede ser rojo o negro, la raíz siempre debe ser
+            negra, no puede haber dos nodos rojos consecutivos y todos los
+            caminos desde la raíz hasta las hojas deben contener la misma
+            cantidad de nodos negros. Estas propiedades permiten controlar la
+            altura del árbol y evitan que se deforme como una lista lineal,
+            conservando así un comportamiento eficiente en las operaciones
+            fundamentales
+          </p>
+          <p>
+            Su funcionamiento del árbol rojo-negro se centra en conservar sus
+            propiedades después de cada inserción o eliminación. Cuando se
+            agrega un nuevo nodo, este normalmente se inserta como rojo y, si se
+            rompe alguna regla, se corrige el árbol mediante rotaciones y
+            recoloreos. En la eliminación ocurre algo similar, ya que puede ser
+            necesario reorganizar la estructura para restablecer el equilibrio.
+            Gracias a este mecanismo, el árbol mantiene una altura
+            aproximadamente logarítmica, lo cual favorece que las operaciones de
+            búsqueda, inserción y borrado se ejecuten con buen rendimiento
+          </p>
+          <p>
+            La importancia del árbol rojo-negro radica en que ofrece una forma
+            práctica de mantener ordenados los datos sin sacrificar eficiencia,
+            incluso en el peor de los casos. Por esta razón, se utiliza como
+            base en implementaciones de diccionarios, conjuntos, tablas
+            asociativas y diversos componentes internos de bibliotecas y
+            sistemas de software. Su estudio dentro de algoritmos y estructuras
+            de datos resulta fundamental porque muestra cómo el balanceo
+            automático mejora notablemente el desempeño de las operaciones sobre
+            colecciones dinámicas de información (Goodrich et al., 2014).
+          </p>
+
+          <div class="figure-container">
+            <div class="figure-caption">Figura 5</div>
+            <div class="figure-caption">Árbol balanceado rojo-negro</div>
+            <div class="figura">
+              <img
+                src="FIGURA5.png"
+                alt="Árbol balanceado rojo-negro"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">
+              Nota: Imagen generada por inteligencia artificial. Tomado de
+              OpenAI (2026)
+            </div>
+          </div>
+          <p>
+            Se caracteriza por ser un árbol binario de búsqueda auto-balanceado
+            que utiliza colores (rojo y negro) para mantener su estructura
+            equilibrada. Entre sus propiedades principales destacan: la raíz
+            siempre es negra, no pueden existir dos nodos rojos consecutivos y
+            todos los caminos desde la raíz hasta las hojas contienen el mismo
+            número de nodos negros. Estas reglas garantizan que el árbol
+            mantenga una altura controlada y evitan que se degrade en
+            estructuras ineficientes.
+          </p>
+          <p>
+            Sus beneficios más relevantes se encuentra su capacidad para
+            mantener un rendimiento eficiente en todas las operaciones básicas
+            como búsqueda, inserción y eliminación, con una complejidad de O(log
+            n) incluso en el peor de los casos. Además, permite un ordenamiento
+            dinámico de los datos sin necesidad de reorganizaciones completas,
+            lo que lo hace ideal para aplicaciones donde la información cambia
+            constantemente. También reduce el riesgo de degradación que
+            presentan otros árboles no balanceados.
+          </p>
+          <p>
+            La importancia del árbol rojo-negro radica en su uso extendido
+            dentro de la informática moderna, ya que sirve como base para
+            implementar estructuras como diccionarios, conjuntos y tablas
+            asociativas en múltiples lenguajes de programación. Asimismo, es
+            utilizado en sistemas operativos y bases de datos debido a su
+            eficiencia y estabilidad. Su estudio es fundamental en algoritmos y
+            estructuras de datos porque demuestra cómo el balanceo automático
+            mejora significativamente el rendimiento en el manejo de grandes
+            volúmenes de información.
+          </p>
+        </div>
+      </div>
+
+      <div class="section" id="seccion-3-1-5">
+        <div class="section-header">
+          <div class="section-number">3.1.5</div>
+          <div class="section-title">Montículo</div>
+        </div>
+        <div class="content">
+          <p>
+            Un montículo (heap) es una estructura de datos basada en un árbol
+            binario completo que cumple una propiedad de orden específica. En un
+            max-heap, cada nodo padre es mayor o igual que sus hijos, mientras
+            que en un min-heap, el padre es menor o igual que sus hijos. Esta
+            organización no mantiene un orden total como otras estructuras, pero
+            sí garantiza que el elemento más importante (máximo o mínimo) se
+            encuentre en la raíz, facilitando su acceso inmediato (Sahni, 2005).
+          </p>
+          <p>
+            El funcionamiento del montículo se centra en mantener su propiedad
+            mediante operaciones como inserción y eliminación. Cuando se inserta
+            un nuevo elemento, este se coloca en la última posición disponible y
+            luego se ajusta hacia arriba (heapify up). En la eliminación,
+            generalmente se retira la raíz y se sustituye por el último
+            elemento, reorganizándose hacia abajo (heapify down). Además, los
+            montículos suelen implementarse mediante arreglos, lo que permite
+            una representación eficiente sin necesidad de estructuras complejas.
+          </p>
+          <p>
+            La importancia del montículo radica en su eficiencia para gestionar
+            datos con prioridad, permitiendo operaciones en tiempo O(log n) y
+            acceso al elemento principal en O(1). Es ampliamente utilizado en
+            algoritmos como HeapSort, en colas de prioridad y en problemas de
+            optimización dentro de grafos, como el algoritmo de Dijkstra. Por
+            ello, constituye una estructura fundamental en el diseño de
+            algoritmos eficientes.
+          </p>
+
+          <div class="figure-container">
+            <div class="figure-caption">Figura 6</div>
+            <div class="figure-caption">Montículo</div>
+            <div class="figura">
+              <img src="FIGURA6.png" alt="Montículo" class="imagen-figura1" />
+            </div>
+            <div class="figure-caption">
+              Nota: Imagen generada por inteligencia artificial. Tomado de
+              OpenAI (2026)
+            </div>
+          </div>
+          <p>
+            Su importancia radica en que garantiza un acceso inmediato al
+            elemento más relevante (máximo o mínimo) en tiempo constante O(1),
+            lo cual resulta esencial en aplicaciones como colas de prioridad,
+            algoritmos de grafos (por ejemplo, Dijkstra) y sistemas operativos
+            donde se requiere tomar decisiones rápidas basadas en prioridades.
+            Además, su representación mediante arreglos optimiza el uso de
+            memoria y facilita su implementación en distintos lenguajes de
+            programación.
+          </p>
+          <p>
+            Entre sus principales ventajas destaca su eficiencia en operaciones
+            como inserción y eliminación, las cuales se realizan en tiempo O(log
+            n) gracias a los procesos de reorganización (heapify). También
+            permite ordenar datos de manera eficiente mediante algoritmos como
+            HeapSort, y mantiene una estructura parcialmente ordenada sin
+            necesidad de reorganizar todos los elementos. Estas características
+            hacen del montículo una herramienta clave para el diseño de
+            algoritmos eficientes, especialmente en problemas donde el
+            rendimiento y la optimización son factores críticos (Sedgewick,
+            2011).
+          </p>
+        </div>
+      </div>
+
+      <div class="section" id="seccion-3-1-6">
+        <div class="section-header">
+          <div class="section-number">3.1.6</div>
+          <div class="section-title">Implementaciones y aplicaciones</div>
+        </div>
+        <div class="content">
+          <p>
+            Las implementaciones y aplicaciones en estructuras de datos se
+            refieren a la manera en que estas se construyen y utilizan dentro de
+            programas reales para resolver problemas específicos. La
+            implementación consiste en traducir estructuras abstractas como
+            listas, árboles o montículos a código ejecutable, definiendo cómo se
+            almacenan los datos y cómo operan sus funciones. Por su parte, las
+            aplicaciones muestran el uso de estas estructuras en contextos
+            reales como bases de datos, sistemas operativos y software
+            empresarial, donde permiten organizar la información de forma
+            eficiente (Goodrich et al., 2014).
+          </p>
+          <p>
+            La funcionalidad, las implementaciones permiten realizar operaciones
+            como inserción, eliminación, búsqueda y recorrido de datos de manera
+            eficiente según la estructura utilizada. Cada estructura se adapta a
+            necesidades específicas; por ejemplo, los árboles optimizan
+            búsquedas y los montículos gestionan prioridades. Esto permite
+            desarrollar soluciones eficientes que mejoran el rendimiento de los
+            sistemas y optimizan el uso de recursos computacionales.
+          </p>
+          <p>
+            Entre sus características principales destacan su adaptabilidad a
+            diferentes lenguajes de programación, su enfoque en la eficiencia y
+            su capacidad para resolver problemas concretos. Además, permiten
+            construir sistemas escalables y organizados, ya que cada estructura
+            aporta ventajas particulares según el contexto de uso. Comprender
+            sus implementaciones y aplicaciones es esencial para diseñar
+            software robusto y eficiente en distintos entornos tecnológicos.
+          </p>
+
+          <div class="figure-container">
+            <div class="figure-caption">Figura 7</div>
+            <div class="figure-caption">Implementaciones y aplicaciones</div>
+            <div class="figura">
+              <img
+                src="FIGURA7.png"
+                alt="Implementaciones y aplicaciones"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">
+              Nota: Imagen generada por inteligencia artificial. Tomado de
+              OpenAI (2026)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="seccion-3-1-7">
+        <div class="section-header">
+          <div class="section-number">3.1.7</div>
+          <div class="section-title">
+            Nociones de complejidad de las implementaciones
+          </div>
+        </div>
+        <div class="content">
+          <p>
+            se refieren al análisis del rendimiento de una estructura de datos o
+            algoritmo en función de los recursos que utiliza, principalmente
+            tiempo y memoria. Este análisis permite estimar cómo crece el costo
+            de ejecución conforme aumenta el tamaño de los datos de entrada,
+            utilizando notaciones como O(n), O(log n) o O(n²). Estas medidas
+            describen el comportamiento teórico del algoritmo, lo que facilita
+            comparar distintas soluciones de manera objetiva (Knuth, 2011).
+          </p>
+          <p>
+            El funcionamiento de este análisis se basa en estudiar las
+            operaciones fundamentales que realiza una implementación, como
+            comparaciones, asignaciones o recorridos. A partir de ello, se
+            determinan distintos escenarios como el mejor caso, el caso promedio
+            y el peor caso, lo cual permite comprender de forma más completa el
+            desempeño del algoritmo. Por ejemplo, algunas estructuras pueden
+            operar en O(log n), mientras que otras requieren O(n) para realizar
+            la misma tarea dependiendo de su organización.
+          </p>
+          <p>
+            Entre sus características principales destacan que es una
+            herramienta teórica, independiente del hardware y del lenguaje de
+            programación, y fundamental para optimizar soluciones. Permite
+            identificar ineficiencias, seleccionar la estructura de datos más
+            adecuada y diseñar algoritmos escalables capaces de manejar grandes
+            volúmenes de información sin afectar significativamente su
+            rendimiento. Por ello, es un concepto clave en el desarrollo de
+            software eficiente.
+          </p>
+
+          <div class="figure-container">
+            <div class="figure-caption">Figura 8</div>
+            <div class="figure-caption">
+              Nociones de complejidad de las implementaciones
+            </div>
+            <div class="figura">
+              <img
+                src="FIGURA8.png"
+                alt="Nociones de complejidad de las implementaciones"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">
+              Nota: Imagen generada por inteligencia artificial. Tomado de
+              OpenAI (2026)
+            </div>
+          </div>
+          <p>
+            Entre sus principales ventajas destaca que facilitan la selección de
+            algoritmos más eficientes, permitiendo comparar distintas soluciones
+            de manera objetiva. También ayudan a identificar cuellos de botella
+            en los sistemas y favorecen el diseño de aplicaciones escalables,
+            capaces de manejar grandes volúmenes de información. Gracias a este
+            análisis, los desarrolladores pueden optimizar el rendimiento de sus
+            programas y mejorar la calidad de sus implementaciones.
+          </p>
+          <p>
+            Sin embargo, también presentan algunas desventajas, ya que se trata
+            de un análisis teórico que no siempre refleja el comportamiento real
+            en entornos específicos. Puede resultar complejo de comprender para
+            quienes inician en el área, y no considera factores como el
+            hardware, el lenguaje de programación o constantes ocultas en la
+            implementación. Además, un algoritmo con buena complejidad no
+            siempre es el más práctico en escenarios con pocos datos o cuando su
+            implementación es demasiado compleja.
+          </p>
+        </div>
+      </div>
+
+      <div class="section" id="seccion-3-1-8">
+        <div class="section-header">
+          <div class="section-number">3.1.8</div>
+          <div class="section-title">Otros tipos de árboles</div>
+        </div>
+        <div class="content">
+          <p>
+            Los otros tipos de árboles en estructuras de datos son variantes del
+            árbol binario de búsqueda diseñadas para resolver problemas
+            específicos y mejorar el rendimiento en distintos contextos. Entre
+            los más utilizados se encuentran los árboles AVL, que mantienen un
+            balance estricto; los árboles rojo-negro, que equilibran de forma
+            más flexible; los árboles B, ampliamente usados en bases de datos; y
+            los tries, empleados para el manejo de cadenas. Cada uno de estos
+            árboles adapta su estructura para optimizar operaciones según el
+            tipo de información y su aplicación.
+          </p>
+          <p>
+            Entre sus principales características destaca que muchos de estos
+            árboles son auto-balanceados, lo que garantiza eficiencia en
+            operaciones como búsqueda, inserción y eliminación. Algunos, como
+            los árboles B, permiten múltiples hijos por nodo, favoreciendo su
+            uso en almacenamiento externo; mientras que otros, como los tries,
+            organizan los datos por prefijos en lugar de valores numéricos.
+            Estas estructuras están diseñadas para reducir la altura del árbol y
+            mejorar el rendimiento general del sistema (Sahni, 2005).
+          </p>
+          <p>
+            En cuanto a sus funciones, estos árboles permiten gestionar datos de
+            forma eficiente en diversos escenarios: los árboles AVL y rojo-negro
+            optimizan búsquedas en memoria, los árboles B se utilizan en
+            sistemas de bases de datos y archivos, y los tries son clave en
+            aplicaciones como autocompletado y procesamiento de texto. Su uso
+            demuestra cómo la adaptación de estructuras permite resolver
+            problemas complejos de manera eficiente.
+          </p>
+
+          <div class="figure-container">
+            <div class="figure-caption">Figura 9</div>
+            <div class="figure-caption">Otros tipos de árboles</div>
+            <div class="figura">
+              <img
+                src="FIGURA9.png"
+                alt="Otros tipos de árboles"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">
+              Nota: Imagen generada por inteligencia artificial. Tomado de
+              OpenAI (2026)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="video-material">
+        <div class="section-header">
+          <div class="section-number"><i class="fas fa-play-circle"></i></div>
+          <div class="section-title">Material Audiovisual</div>
+        </div>
+        <div class="content">
+          <p>
+            Este video explica cómo funciona Estructura de datos no lineales
+            PENDIENTE
+          </p>
+
+          <div class="figure-container">
+            <iframe
+              width="100%"
+              height="450"
+              src="https://www.youtube.com/embed/7kfUmsBW4dA"
+              title="Algoritmia en la estructura de datos"
+              frameborder="0"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+                web-share;
+              "
+              allowfullscreen
+              style="border-radius: 5px; max-width: 100%"
+            ></iframe>
+            <div class="figure-caption">
+              Salas, I. (2025, 26 de noviembre). <em>Pila</em> [Video].
+              https://www.youtube.com/watch?v=7kfUmsBW4dA
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <div class="activity-title">Actividad de Aprendizaje 2.1: Pila</div>
+        <p>
+          Evalúa tu comprensión sobre la pila, su estructura de datos,
+          especificaciones, implementaciones, nociones de complejidad de las
+          operaciones y sus aplicaciones.
+        </p>
+        <a href="actividad_2_1.html" class="activity-btn">
+          <i class="fas fa-pencil-alt"></i> Realizar Actividad
+        </a>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="index.html" class="nav-btn"
+          ><i class="fas fa-arrow-left"></i> Volver al Menú de Unidad</a
+        >
+        <a
+          href="https://escomisr.github.io/Algo_Estruct_Datos/Unidades.html"
+          class="nav-btn"
+        >
+          Volver al Menu Principal<i class="fas fa-arrow-right"></i
+        ></a>
+      </div>
+
+      <footer>
+        <p>
+          Algoritmos almacena y recupera Datos (polilibro académico) - Unidad 1:
+          Algoritmos fundamentales
+        </p>
+        <p>Desarrollado para fines educativos - © 2026</p>
+      </footer>
     </div>
 
     <script>
-        let sidebarOpen = false;
+      let sidebarOpen = false;
 
-        const menuToggle = document.getElementById('menuToggle');
-        const sidebarNav = document.getElementById('sidebarNav');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
+      const menuToggle = document.getElementById("menuToggle");
+      const sidebarNav = document.getElementById("sidebarNav");
+      const sidebarOverlay = document.getElementById("sidebarOverlay");
 
-        function toggleSidebar() {
-            sidebarOpen = !sidebarOpen;
-            
-            if (sidebarOpen) {
-                sidebarNav.classList.add('active');
-                sidebarOverlay.classList.add('active');
-                menuToggle.classList.add('active');
-                menuToggle.innerHTML = '<i class="fas fa-times"></i>';
-                document.body.style.overflow = 'hidden';
-            } else {
-                sidebarNav.classList.remove('active');
-                sidebarOverlay.classList.remove('active');
-                menuToggle.classList.remove('active');
-                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                document.body.style.overflow = 'auto';
-            }
-            
-            updateContainerSpacing();
+      function toggleSidebar() {
+        sidebarOpen = !sidebarOpen;
+
+        if (sidebarOpen) {
+          sidebarNav.classList.add("active");
+          sidebarOverlay.classList.add("active");
+          menuToggle.classList.add("active");
+          menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+          document.body.style.overflow = "hidden";
+        } else {
+          sidebarNav.classList.remove("active");
+          sidebarOverlay.classList.remove("active");
+          menuToggle.classList.remove("active");
+          menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          document.body.style.overflow = "auto";
         }
 
-        menuToggle.addEventListener('click', toggleSidebar);
-        sidebarOverlay.addEventListener('click', toggleSidebar);
+        updateContainerSpacing();
+      }
 
-        document.querySelectorAll('.nav-item[data-section]').forEach(item => {
-            item.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    toggleSidebar();
-                }
-            });
+      menuToggle.addEventListener("click", toggleSidebar);
+      sidebarOverlay.addEventListener("click", toggleSidebar);
+
+      document.querySelectorAll(".nav-item[data-section]").forEach((item) => {
+        item.addEventListener("click", () => {
+          if (window.innerWidth <= 768) {
+            toggleSidebar();
+          }
+        });
+      });
+
+      function updateContainerSpacing() {
+        const container = document.querySelector(".container");
+
+        if (window.innerWidth <= 768) {
+          container.style.marginLeft = "20px";
+          container.style.marginRight = "20px";
+          container.style.padding = "10px";
+        } else if (sidebarOpen && window.innerWidth > 768) {
+          container.style.marginLeft = "370px";
+          container.style.marginRight = "90px";
+          container.style.padding = "20px";
+        } else {
+          container.style.marginLeft = "90px";
+          container.style.marginRight = "90px";
+          container.style.padding = "20px";
+        }
+      }
+
+      function updateActiveSection() {
+        const sections = document.querySelectorAll(".section");
+        const navItems = document.querySelectorAll(".nav-item[data-section]");
+        let currentSectionId = "";
+
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            currentSectionId = section.id;
+          }
         });
 
-        function updateContainerSpacing() {
-            const container = document.querySelector('.container');
-            
-            if (window.innerWidth <= 768) {
-                container.style.marginLeft = '20px';
-                container.style.marginRight = '20px';
-                container.style.padding = '10px';
-            } else if (sidebarOpen && window.innerWidth > 768) {
-                container.style.marginLeft = '370px';
-                container.style.marginRight = '90px';
-                container.style.padding = '20px';
-            } else {
-                container.style.marginLeft = '90px';
-                container.style.marginRight = '90px';
-                container.style.padding = '20px';
-            }
+        navItems.forEach((item) => {
+          const sectionId = "seccion-" + item.dataset.section;
+          if (sectionId === currentSectionId) {
+            item.classList.add("active");
+          } else {
+            item.classList.remove("active");
+          }
+        });
+      }
+
+      function updateReadingProgress() {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+      }
+
+      const scrollToTopBtn = document.getElementById("scrollToTop");
+
+      function toggleScrollToTopBtn() {
+        if (window.pageYOffset > 300) {
+          scrollToTopBtn.classList.add("visible");
+        } else {
+          scrollToTopBtn.classList.remove("visible");
         }
+      }
 
-        function updateActiveSection() {
-            const sections = document.querySelectorAll('.section');
-            const navItems = document.querySelectorAll('.nav-item[data-section]');
-            let currentSectionId = '';
+      scrollToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
 
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= 150 && rect.bottom >= 150) {
-                    currentSectionId = section.id;
-                }
-            });
+      window.addEventListener("scroll", () => {
+        updateActiveSection();
+        updateReadingProgress();
+        toggleScrollToTopBtn();
+      });
 
-            navItems.forEach(item => {
-                const sectionId = 'seccion-' + item.dataset.section;
-                if (sectionId === currentSectionId) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-        }
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
 
-        function updateReadingProgress() {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('progressBar').style.width = scrolled + '%';
-        }
-
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-
-        function toggleScrollToTopBtn() {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
-        }
-
-        scrollToTopBtn.addEventListener('click', () => {
+          if (target) {
+            const offsetTop = target.offsetTop - 100;
             window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+              top: offsetTop,
+              behavior: "smooth",
             });
+          }
         });
+      });
 
-        window.addEventListener('scroll', () => {
-            updateActiveSection();
-            updateReadingProgress();
-            toggleScrollToTopBtn();
-        });
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 768 && sidebarOpen) {
+          toggleSidebar();
+        }
+        updateContainerSpacing();
+      });
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                
-                if (target) {
-                    const offsetTop = target.offsetTop - 100;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+      document.addEventListener("DOMContentLoaded", function () {
+        updateActiveSection();
+        updateReadingProgress();
+        updateContainerSpacing();
+        if (window.innerWidth <= 768) {
+          sidebarNav.classList.remove("active");
+        }
+      });
 
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768 && sidebarOpen) {
-                toggleSidebar();
-            }
-            updateContainerSpacing();
-        });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && sidebarOpen) {
+          toggleSidebar();
+        }
+        if (e.key === "m" || e.key === "M") {
+          if (!e.ctrlKey && !e.altKey) {
+            toggleSidebar();
+          }
+        }
+      });
+      (function () {
+        const nodos = ["A", "B", "C", "D", "E", "F", "G", "H"];
+        const aristas = ["AB", "AC", "BD", "BE", "CF", "CG", "CH"];
 
-        document.addEventListener('DOMContentLoaded', function() {
-            updateActiveSection();
-            updateReadingProgress();
-            updateContainerSpacing();
-            if (window.innerWidth <= 768) {
-                sidebarNav.classList.remove('active');
-            }
-        });
+        const explicacion = document.getElementById("explicacion");
+        const textoExtra = document.getElementById("textoExtra");
+        const botones = document.querySelectorAll(".botones button");
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && sidebarOpen) {
-                toggleSidebar();
-            }
-            if (e.key === 'm' || e.key === 'M') {
-                if (!e.ctrlKey && !e.altKey) { 
-                    toggleSidebar();
-                }
-            }
-        });
-        (function () {
-            const nodos = ["A", "B", "C", "D", "E", "F", "G", "H"];
-            const aristas = ["AB", "AC", "BD", "BE", "CF", "CG", "CH"];
+        const demos = {
+          caminoAH: {
+            nodos: ["A", "C", "H"],
+            aristas: ["AC", "CH"],
+            texto: "Camino de A a H: A → C → H.",
+            extra:
+              "Un camino es una lista de ramas contiguas que van de un nodo a otro.",
+          },
+          caminoAE: {
+            nodos: ["A", "B", "E"],
+            aristas: ["AB", "BE"],
+            texto: "Camino de A a E: A → B → E.",
+            extra:
+              "Existe exactamente un camino entre la raíz y cada uno de los otros nodos en el árbol.",
+          },
+          longitudAH: {
+            nodos: ["A", "C", "H"],
+            aristas: ["AC", "CH"],
+            texto:
+              "La longitud de un camino se obtiene por el número de nodos del camino menos uno o de forma equivalente, es el número de arcos que existen de un nodo a otro.",
+            extra: "Longitud de A a H: 2",
+          },
+          caminoCero: {
+            nodos: ["B"],
+            aristas: [],
+            texto:
+              "Hay un camino de longitud cero de cualquier nodo a sí mismo.",
+            extra: "Longitud de B a B: 0",
+          },
+          gradoC: {
+            nodos: ["C", "F", "G", "H"],
+            aristas: ["CF", "CG", "CH"],
+            texto:
+              "El grado de un Nodo es el número de ramas o de forma equivalente, número de hijos que parten de él.",
+            extra: "Grado de C: 3",
+          },
+          gradoArbol: {
+            nodos: ["C", "F", "G", "H"],
+            aristas: ["CF", "CG", "CH"],
+            texto:
+              "El grado de un árbol es el grado máximo de los nodos del árbol.",
+            extra:
+              "El Grado máximo de los Nodos es 3, por lo tanto, el Árbol es de Grado 3",
+          },
+          niveles: {
+            nodos: ["A", "B", "C", "D", "E", "F", "G", "H"],
+            aristas: [],
+            niveles: true,
+            texto:
+              "El nivel de un nodo es la longitud del camino que lo conecta al nodo raíz.",
+            extra: "A: nivel 0 | B y C: nivel 1 | D, E, F, G y H: nivel 2",
+          },
+          profundidadE: {
+            nodos: ["A", "B", "E"],
+            aristas: ["AB", "BE"],
+            texto:
+              "La profundidad de un nodo n es el largo del camino entre la raíz del árbol y el nodo n. La profundidad de la raíz es siempre 0.",
+            extra: "Profundidad de E: 2",
+          },
+          alturaC: {
+            nodos: ["C", "F", "G", "H"],
+            aristas: ["CF", "CG", "CH"],
+            texto:
+              "La altura de un nodo n es el máximo largo de camino desde n hasta alguna hoja. La altura de toda hoja es 0. La altura de un árbol tiene el mismo valor que la profundidad de la hoja más profunda. La altura de un árbol vacío es -1.",
+            extra: "Altura de C: 1",
+          },
+          subarboles: {
+            nodos: ["B", "D", "E", "C", "F", "G", "H"],
+            aristas: ["BD", "BE", "CF", "CG", "CH"],
+            subarboles: true,
+            texto:
+              "Un subárbol de un árbol es un subconjunto de nodos del árbol conectados por ramas del propio árbol.",
+            extra: "Subárbol izquierdo: B-D-E | Subárbol derecho: C-F-G-H",
+          },
+        };
 
-            const explicacion = document.getElementById("explicacion");
-            const textoExtra = document.getElementById("textoExtra");
-            const botones = document.querySelectorAll(".botones button");
+        function limpiar() {
+          nodos.forEach((id) => {
+            const nodo = document.getElementById(id);
+            nodo.classList.remove("resaltado", "oscuro", "seleccionado");
+          });
 
-            const demos = {
-                caminoAH: {
-                    nodos: ["A", "C", "H"],
-                    aristas: ["AC", "CH"],
-                    texto: "Camino de A a H: A → C → H.",
-                    extra: "Un camino es una lista de ramas contiguas que van de un nodo a otro."
-                },
-                caminoAE: {
-                    nodos: ["A", "B", "E"],
-                    aristas: ["AB", "BE"],
-                    texto: "Camino de A a E: A → B → E.",
-                    extra: "Existe exactamente un camino entre la raíz y cada uno de los otros nodos en el árbol."
-                },
-                longitudAH: {
-                    nodos: ["A", "C", "H"],
-                    aristas: ["AC", "CH"],
-                    texto: "La longitud de un camino se obtiene por el número de nodos del camino menos uno o de forma equivalente, es el número de arcos que existen de un nodo a otro.",
-                    extra: "Longitud de A a H: 2"
-                },
-                caminoCero: {
-                    nodos: ["B"],
-                    aristas: [],
-                    texto: "Hay un camino de longitud cero de cualquier nodo a sí mismo.",
-                    extra: "Longitud de B a B: 0"
-                },
-                gradoC: {
-                    nodos: ["C", "F", "G", "H"],
-                    aristas: ["CF", "CG", "CH"],
-                    texto: "El grado de un Nodo es el número de ramas o de forma equivalente, número de hijos que parten de él.",
-                    extra: "Grado de C: 3"
-                },
-                gradoArbol: {
-                    nodos: ["C", "F", "G", "H"],
-                    aristas: ["CF", "CG", "CH"],
-                    texto: "El grado de un árbol es el grado máximo de los nodos del árbol.",
-                    extra: "El Grado máximo de los Nodos es 3, por lo tanto, el Árbol es de Grado 3"
-                },
-                niveles: {
-                    nodos: ["A", "B", "C", "D", "E", "F", "G", "H"],
-                    aristas: [],
-                    niveles: true,
-                    texto: "El nivel de un nodo es la longitud del camino que lo conecta al nodo raíz.",
-                    extra: "A: nivel 0 | B y C: nivel 1 | D, E, F, G y H: nivel 2"
-                },
-                profundidadE: {
-                    nodos: ["A", "B", "E"],
-                    aristas: ["AB", "BE"],
-                    texto: "La profundidad de un nodo n es el largo del camino entre la raíz del árbol y el nodo n. La profundidad de la raíz es siempre 0.",
-                    extra: "Profundidad de E: 2"
-                },
-                alturaC: {
-                    nodos: ["C", "F", "G", "H"],
-                    aristas: ["CF", "CG", "CH"],
-                    texto: "La altura de un nodo n es el máximo largo de camino desde n hasta alguna hoja. La altura de toda hoja es 0. La altura de un árbol tiene el mismo valor que la profundidad de la hoja más profunda. La altura de un árbol vacío es -1.",
-                    extra: "Altura de C: 1"
-                },
-                subarboles: {
-                    nodos: ["B", "D", "E", "C", "F", "G", "H"],
-                    aristas: ["BD", "BE", "CF", "CG", "CH"],
-                    subarboles: true,
-                    texto: "Un subárbol de un árbol es un subconjunto de nodos del árbol conectados por ramas del propio árbol.",
-                    extra: "Subárbol izquierdo: B-D-E | Subárbol derecho: C-F-G-H"
-                }
-            };
+          aristas.forEach((id) => {
+            const arista = document.getElementById(id);
+            arista.classList.remove("resaltada");
+            arista.style.animationDelay = "0s";
+          });
 
-            function limpiar() {
-                nodos.forEach(id => {
-                    const nodo = document.getElementById(id);
-                    nodo.classList.remove("resaltado", "oscuro", "seleccionado");
+          [
+            "nivel0",
+            "nivel1",
+            "nivel2",
+            "nivelTexto0",
+            "nivelTexto1",
+            "nivelTexto2",
+          ].forEach((id) => {
+            document.getElementById(id).classList.remove("visible");
+          });
+
+          document.getElementById("zonaIzquierda").classList.remove("visible");
+          document.getElementById("zonaDerecha").classList.remove("visible");
+
+          textoExtra.textContent = "";
+        }
+
+        function animar(demoNombre) {
+          limpiar();
+          // -------------------------------
+          // Modo interactivo: elegir nodo inicial y final
+          // -------------------------------
+
+          const conexiones = {
+            A: ["B", "C"],
+            B: ["A", "D", "E"],
+            C: ["A", "F", "G", "H"],
+            D: ["B"],
+            E: ["B"],
+            F: ["C"],
+            G: ["C"],
+            H: ["C"],
+          };
+
+          let nodoInicial = null;
+
+          function obtenerArista(a, b) {
+            return (
+              document.getElementById(a + b) || document.getElementById(b + a)
+            );
+          }
+
+          function encontrarCamino(inicio, fin) {
+            const cola = [[inicio]];
+            const visitados = new Set();
+
+            while (cola.length > 0) {
+              const camino = cola.shift();
+              const actual = camino[camino.length - 1];
+
+              if (actual === fin) {
+                return camino;
+              }
+
+              if (!visitados.has(actual)) {
+                visitados.add(actual);
+
+                conexiones[actual].forEach((vecino) => {
+                  const nuevoCamino = [...camino, vecino];
+                  cola.push(nuevoCamino);
                 });
-
-                aristas.forEach(id => {
-                    const arista = document.getElementById(id);
-                    arista.classList.remove("resaltada");
-                    arista.style.animationDelay = "0s";
-                });
-
-                ["nivel0", "nivel1", "nivel2", "nivelTexto0", "nivelTexto1", "nivelTexto2"].forEach(id => {
-                    document.getElementById(id).classList.remove("visible");
-                });
-
-                document.getElementById("zonaIzquierda").classList.remove("visible");
-                document.getElementById("zonaDerecha").classList.remove("visible");
-
-                textoExtra.textContent = "";
+              }
             }
 
-            function animar(demoNombre) {
-                limpiar();
-                // -------------------------------
-                // Modo interactivo: elegir nodo inicial y final
-                // -------------------------------
+            return [];
+          }
 
-                const conexiones = {
-                    A: ["B", "C"],
-                    B: ["A", "D", "E"],
-                    C: ["A", "F", "G", "H"],
-                    D: ["B"],
-                    E: ["B"],
-                    F: ["C"],
-                    G: ["C"],
-                    H: ["C"]
-                };
+          function animarCaminoLibre(camino) {
+            limpiar();
 
-                let nodoInicial = null;
+            textoExtra.textContent =
+              "Camino seleccionado: " + camino.join(" → ");
 
-                function obtenerArista(a, b) {
-                    return document.getElementById(a + b) || document.getElementById(b + a);
-                }
-
-                function encontrarCamino(inicio, fin) {
-                    const cola = [[inicio]];
-                    const visitados = new Set();
-
-                    while (cola.length > 0) {
-                        const camino = cola.shift();
-                        const actual = camino[camino.length - 1];
-
-                        if (actual === fin) {
-                            return camino;
-                        }
-
-                        if (!visitados.has(actual)) {
-                            visitados.add(actual);
-
-                            conexiones[actual].forEach(vecino => {
-                                const nuevoCamino = [...camino, vecino];
-                                cola.push(nuevoCamino);
-                            });
-                        }
-                    }
-
-                    return [];
-                }
-
-                function animarCaminoLibre(camino) {
-                    limpiar();
-
-                    textoExtra.textContent = "Camino seleccionado: " + camino.join(" → ");
-
-                    explicacion.innerHTML = `
+            explicacion.innerHTML = `
                         <strong>Camino seleccionado:</strong><br>
                         ${camino.join(" → ")}<br>
                         Longitud del camino: ${camino.length - 1}
                     `;
 
-                    camino.forEach((id, i) => {
-                        setTimeout(() => {
-                            document.getElementById(id).classList.add("resaltado");
-                        }, i * 350);
-                    });
+            camino.forEach((id, i) => {
+              setTimeout(() => {
+                document.getElementById(id).classList.add("resaltado");
+              }, i * 350);
+            });
 
-                    for (let i = 0; i < camino.length - 1; i++) {
-                        const arista = obtenerArista(camino[i], camino[i + 1]);
+            for (let i = 0; i < camino.length - 1; i++) {
+              const arista = obtenerArista(camino[i], camino[i + 1]);
 
-                        if (arista) {
-                            setTimeout(() => {
-                                arista.classList.add("resaltada");
-                            }, (i + 1) * 350);
-                        }
-                    }
-                }
+              if (arista) {
+                setTimeout(
+                  () => {
+                    arista.classList.add("resaltada");
+                  },
+                  (i + 1) * 350,
+                );
+              }
+            }
+          }
 
-                nodos.forEach(id => {
-                    document.getElementById(id).addEventListener("click", () => {
-                        botones.forEach(b => b.classList.remove("activo"));
+          nodos.forEach((id) => {
+            document.getElementById(id).addEventListener("click", () => {
+              botones.forEach((b) => b.classList.remove("activo"));
 
-                        if (nodoInicial === null) {
-                            limpiar();
+              if (nodoInicial === null) {
+                limpiar();
 
-                            nodoInicial = id;
-                            document.getElementById(id).classList.add("seleccionado");
+                nodoInicial = id;
+                document.getElementById(id).classList.add("seleccionado");
 
-                            explicacion.innerHTML = `
+                explicacion.innerHTML = `
                                 <strong>Nodo inicial seleccionado: ${id}</strong><br>
                                 Ahora selecciona el nodo final para colorear el camino.
                             `;
 
-                            textoExtra.textContent = "Nodo inicial: " + id;
-                        } else {
-                            const nodoFinal = id;
-                            const camino = encontrarCamino(nodoInicial, nodoFinal);
+                textoExtra.textContent = "Nodo inicial: " + id;
+              } else {
+                const nodoFinal = id;
+                const camino = encontrarCamino(nodoInicial, nodoFinal);
 
-                            animarCaminoLibre(camino);
+                animarCaminoLibre(camino);
 
-                            nodoInicial = null;
-                        }
-                    });
-                });
-                botones.forEach(b => b.classList.toggle("activo", b.dataset.demo === demoNombre));
-
-                const demo = demos[demoNombre];
-                explicacion.innerHTML = "<strong>" + demo.texto + "</strong><br>" + demo.extra;
-                textoExtra.textContent = demo.extra;
-
-                demo.nodos.forEach((id, i) => {
-                    setTimeout(() => {
-                        document.getElementById(id).classList.add("resaltado");
-                    }, i * 350);
-                });
-
-                demo.aristas.forEach((id, i) => {
-                    setTimeout(() => {
-                        const arista = document.getElementById(id);
-                        arista.classList.add("resaltada");
-                        arista.style.animationDelay = "0s";
-                    }, (i + 1) * 350);
-                });
-
-                if (demoNombre === "caminoCero") {
-                    document.getElementById("B").classList.add("oscuro");
-                }
-
-                if (demo.niveles) {
-                    setTimeout(() => {
-                        ["nivel0", "nivel1", "nivel2", "nivelTexto0", "nivelTexto1", "nivelTexto2"].forEach(id => {
-                            document.getElementById(id).classList.add("visible");
-                        });
-                    }, 500);
-                }
-
-                if (demo.subarboles) {
-                    setTimeout(() => {
-                        document.getElementById("zonaIzquierda").classList.add("visible");
-                        document.getElementById("zonaDerecha").classList.add("visible");
-                    }, 500);
-                }
-            }
-
-            botones.forEach(boton => {
-                boton.addEventListener("click", () => animar(boton.dataset.demo));
+                nodoInicial = null;
+              }
             });
+          });
+          botones.forEach((b) =>
+            b.classList.toggle("activo", b.dataset.demo === demoNombre),
+          );
 
-            // Animación inicial automática
-            animar("caminoAH");
-        })();
+          const demo = demos[demoNombre];
+          explicacion.innerHTML =
+            "<strong>" + demo.texto + "</strong><br>" + demo.extra;
+          textoExtra.textContent = demo.extra;
+
+          demo.nodos.forEach((id, i) => {
+            setTimeout(() => {
+              document.getElementById(id).classList.add("resaltado");
+            }, i * 350);
+          });
+
+          demo.aristas.forEach((id, i) => {
+            setTimeout(
+              () => {
+                const arista = document.getElementById(id);
+                arista.classList.add("resaltada");
+                arista.style.animationDelay = "0s";
+              },
+              (i + 1) * 350,
+            );
+          });
+
+          if (demoNombre === "caminoCero") {
+            document.getElementById("B").classList.add("oscuro");
+          }
+
+          if (demo.niveles) {
+            setTimeout(() => {
+              [
+                "nivel0",
+                "nivel1",
+                "nivel2",
+                "nivelTexto0",
+                "nivelTexto1",
+                "nivelTexto2",
+              ].forEach((id) => {
+                document.getElementById(id).classList.add("visible");
+              });
+            }, 500);
+          }
+
+          if (demo.subarboles) {
+            setTimeout(() => {
+              document.getElementById("zonaIzquierda").classList.add("visible");
+              document.getElementById("zonaDerecha").classList.add("visible");
+            }, 500);
+          }
+        }
+
+        botones.forEach((boton) => {
+          boton.addEventListener("click", () => animar(boton.dataset.demo));
+        });
+
+        // Animación inicial automática
+        animar("caminoAH");
+      })();
     </script>
-</body>
+  </body>
 </html>
