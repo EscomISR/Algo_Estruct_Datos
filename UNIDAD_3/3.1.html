@@ -9,1083 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <style>
-      :root {
-        --primary: #2c3e50;
-        --secondary: #3498db;
-        --accent: #e74c3c;
-        --light: #ecf0f1;
-        --dark: #2c3e50;
-        --gray: #95a5a6;
-        --success: #2ecc71;
-        --warning: #f39c12;
-        --card-bg: rgba(255, 255, 255, 0.05);
-        --azul: #3f73c9;
-        --azul-oscuro: #244a91;
-        --rojo: #e11d2e;
-        --gris: #f6f8fc;
-        --borde: #c9d3e6;
-        --texto: #1f2937;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-
-      body {
-        background: linear-gradient(135deg, #1a2a3a, #2c3e50);
-        color: var(--light);
-        min-height: 100vh;
-        line-height: 1.7;
-      }
-
-      .floating-home-btn {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: var(--secondary);
-        color: white;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        box-shadow: 0 4px 20px rgba(52, 152, 219, 0.3);
-        transition: all 0.3s ease;
-        z-index: 1000;
-        font-size: 1.5rem;
-      }
-
-      .floating-home-btn:hover {
-        background: #2980b9;
-        transform: translateY(-3px);
-        box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
-      }
-
-      .sidebar-nav {
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 280px;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.9);
-        backdrop-filter: blur(10px);
-        border-right: 1px solid rgba(255, 255, 255, 0.1);
-        z-index: 999;
-        transition: transform 0.3s ease;
-        transform: translateX(-100%);
-        overflow-y: auto;
-      }
-
-      .sidebar-nav.active {
-        transform: translateX(0);
-      }
-
-      .sidebar-header {
-        padding: 20px;
-        background: rgba(52, 152, 219, 0.1);
-        border-bottom: 1px solid rgba(52, 152, 219, 0.3);
-      }
-
-      .sidebar-title {
-        font-size: 1.2rem;
-        color: var(--secondary);
-        font-weight: 600;
-        margin-bottom: 5px;
-      }
-
-      .sidebar-subtitle {
-        font-size: 0.9rem;
-        color: var(--gray);
-      }
-
-      .nav-sections {
-        padding: 20px 0;
-      }
-
-      .nav-section {
-        margin-bottom: 15px;
-      }
-
-      .nav-section-title {
-        padding: 10px 20px;
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--secondary);
-        border-bottom: 1px solid rgba(52, 152, 219, 0.2);
-        margin-bottom: 10px;
-      }
-
-      .nav-item {
-        display: block;
-        padding: 12px 20px;
-        color: var(--light);
-        text-decoration: none;
-        transition: all 0.3s ease;
-        border-left: 3px solid transparent;
-      }
-
-      .nav-item:hover {
-        background: rgba(52, 152, 219, 0.1);
-        border-left-color: var(--secondary);
-        padding-left: 25px;
-      }
-
-      .nav-item.active {
-        background: rgba(52, 152, 219, 0.2);
-        border-left-color: var(--secondary);
-        color: var(--secondary);
-      }
-
-      .nav-item i {
-        margin-right: 10px;
-        width: 20px;
-        text-align: center;
-      }
-
-      .menu-toggle {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        background: var(--primary);
-        color: white;
-        width: 50px;
-        height: 50px;
-        border-radius: 8px;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
-        z-index: 1001;
-        font-size: 1.2rem;
-      }
-
-      .menu-toggle:hover {
-        background: var(--secondary);
-        transform: translateY(-2px);
-      }
-
-      .menu-toggle.active {
-        background: var(--accent);
-      }
-
-      .reading-progress {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.1);
-        z-index: 998;
-      }
-
-      .reading-progress-bar {
-        height: 100%;
-        background: linear-gradient(90deg, var(--secondary), var(--success));
-        width: 0%;
-        transition: width 0.1s ease;
-      }
-
-      .sidebar-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 998;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-      }
-
-      .sidebar-overlay.active {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-        transition:
-          margin-left 0.3s ease,
-          margin-right 0.3s ease;
-      }
-
-      header {
-        text-align: center;
-        padding: 40px 20px;
-        margin-bottom: 30px;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 15px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .breadcrumb {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-        color: var(--gray);
-        font-size: 1.1rem;
-      }
-
-      .breadcrumb a {
-        color: var(--secondary);
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-
-      .breadcrumb a:hover {
-        color: white;
-        text-decoration: underline;
-      }
-
-      .breadcrumb span {
-        margin: 0 10px;
-      }
-
-      h1 {
-        font-size: 2.8rem;
-        margin-bottom: 10px;
-        color: white;
-      }
-
-      .subtitle {
-        font-size: 1.8rem;
-        color: var(--secondary);
-        margin-bottom: 20px;
-        font-weight: 300;
-        text-align: center;
-      }
-
-      .intro {
-        max-width: 900px;
-        margin: 0 auto 40px;
-        padding: 25px;
-        background: var(--card-bg);
-        border-radius: 15px;
-        border-left: 4px solid var(--secondary);
-        text-align: justify;
-      }
-
-      .section {
-        background: var(--card-bg);
-        border-radius: 15px;
-        padding: 30px;
-        margin-bottom: 40px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        scroll-margin-top: 100px;
-      }
-
-      .section-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 25px;
-        padding-bottom: 15px;
-        border-bottom: 2px solid var(--secondary);
-      }
-
-      .section-number {
-        font-size: 2.2rem;
-        font-weight: bold;
-        color: var(--secondary);
-        margin-right: 15px;
-        min-width: 120px;
-      }
-
-      .section-title {
-        font-size: 1.8rem;
-        font-weight: 600;
-        color: white;
-      }
-
-      .content {
-        padding: 0 10px;
-      }
-
-      .content h3 {
-        font-size: 1.5rem;
-        color: var(--secondary);
-        margin: 30px 0 15px;
-        padding-left: 10px;
-        border-left: 3px solid var(--accent);
-      }
-
-      .content h4 {
-        font-size: 1.3rem;
-        color: var(--warning);
-        margin: 25px 0 12px;
-        padding-left: 8px;
-      }
-
-      .content p {
-        margin-bottom: 15px;
-        text-align: justify;
-      }
-
-      .content ul,
-      .content ol {
-        padding-left: 30px;
-        margin: 20px 0;
-      }
-
-      .content li {
-        margin-bottom: 12px;
-      }
-
-      .highlight {
-        background: rgba(231, 76, 60, 0.15);
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-weight: 500;
-      }
-
-      .citation {
-        font-style: italic;
-        color: var(--gray);
-        margin: 5px 0 15px 20px;
-        border-left: 2px solid var(--secondary);
-        padding-left: 10px;
-      }
-
-      .quote-box {
-        background: rgba(52, 152, 219, 0.1);
-        border-left: 4px solid var(--secondary);
-        padding: 20px;
-        margin: 25px 0;
-        border-radius: 8px;
-        font-style: italic;
-        color: var(--light);
-      }
-
-      .quote-box .citation {
-        border-left: none;
-        margin: 10px 0 0 0;
-        padding-left: 0;
-      }
-
-      .table-container {
-        max-width: 800px;
-        margin: 30px auto;
-        overflow-x: auto;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        background: rgba(0, 0, 0, 0.2);
-      }
-
-      th {
-        background: var(--primary);
-        color: white;
-        padding: 15px;
-        text-align: left;
-        font-weight: 600;
-      }
-
-      td {
-        padding: 12px 15px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      tr:nth-child(even) {
-        background: rgba(255, 255, 255, 0.03);
-      }
-
-      .table-caption {
-        text-align: center;
-        padding: 10px;
-        color: var(--gray);
-        background: rgba(0, 0, 0, 0.3);
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-      }
-
-      .figure-container {
-        margin: 30px 0;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 10px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-      }
-
-      .imagen-figura1 {
-        max-width: 100%;
-        height: auto;
-        object-fit: contain;
-        border-radius: 8px;
-        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        cursor: zoom-in;
-        transform-origin: center center;
-      }
-
-      /* Efecto al pasar el mouse */
-      .imagen-figura1:hover {
-        transform: scale(1.4);
-        border-radius: 8px;
-      }
-
-      .figure-placeholder {
-        width: 100%;
-        height: 300px;
-        background: linear-gradient(135deg, #2c3e50, #34495e);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px;
-        margin: 15px 0;
-        color: var(--gray);
-        font-style: italic;
-        flex-direction: column;
-      }
-
-      .figure-placeholder i {
-        font-size: 3rem;
-        margin-bottom: 15px;
-        color: var(--secondary);
-      }
-
-      .figure-caption {
-        color: var(--gray);
-        margin-top: 10px;
-      }
-
-      .nav-buttons {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 40px;
-      }
-
-      .nav-btn {
-        display: inline-flex;
-        align-items: center;
-        background: var(--secondary);
-        color: white;
-        padding: 12px 25px;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s ease;
-      }
-
-      .nav-btn:hover {
-        background: #2980b9;
-        transform: translateY(-3px);
-      }
-
-      .nav-btn i {
-        margin: 0 8px;
-      }
-
-      footer {
-        text-align: center;
-        margin-top: 60px;
-        padding: 30px;
-        color: var(--gray);
-        font-size: 0.9rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .scroll-to-top {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: var(--accent);
-        color: white;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
-        transition: all 0.3s ease;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 999;
-      }
-
-      .scroll-to-top.visible {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .scroll-to-top:hover {
-        background: #c0392b;
-        transform: translateY(-3px);
-      }
-
-      .activity-card {
-        background: rgba(46, 204, 113, 0.1);
-        border-radius: 15px;
-        padding: 30px;
-        margin: 40px 0;
-        border-left: 4px solid var(--success);
-        text-align: center;
-      }
-
-      .activity-title {
-        font-size: 1.8rem;
-        color: var(--success);
-        margin-bottom: 20px;
-      }
-
-      .activity-btn {
-        display: inline-block;
-        background: var(--success);
-        color: white;
-        padding: 15px 35px;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 600;
-        margin-top: 15px;
-        transition: all 0.3s ease;
-        font-size: 1.1rem;
-      }
-
-      .activity-btn:hover {
-        background: #27ae60;
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
-      }
-
-      @media (max-width: 768px) {
-        .sidebar-nav {
-          width: 100%;
-        }
-
-        h1 {
-          font-size: 2rem;
-        }
-
-        .subtitle {
-          font-size: 1.4rem;
-        }
-
-        .section-title {
-          font-size: 1.5rem;
-        }
-
-        .section-number {
-          min-width: 100px;
-          font-size: 1.8rem;
-        }
-
-        .nav-buttons {
-          flex-direction: column;
-          gap: 15px;
-        }
-
-        .nav-btn {
-          width: 100%;
-          text-align: center;
-          justify-content: center;
-        }
-
-        .floating-home-btn {
-          width: 50px;
-          height: 50px;
-          font-size: 1.2rem;
-        }
-      }
-      .arbol-animado {
-        max-width: 980px;
-        margin: 0 auto;
-        border: 1px solid var(--borde);
-        border-radius: 14px;
-        padding: 18px;
-        background: var(--gris);
-      }
-      .arbol-animado .nodo {
-        cursor: pointer;
-      }
-      .arbol-animado .nodo.seleccionado {
-        fill: #f59e0b !important;
-        stroke: #92400e !important;
-        animation: pulso 0.55s ease forwards;
-      }
-      .arbol-animado .intro-arbol {
-        color: #1f2937 !important;
-        opacity: 1 !important;
-      }
-      .arbol-animado #explicacion {
-        margin-top: 16px;
-        padding: 14px 16px;
-        border-radius: 12px;
-        background: #f8fafc !important;
-        border-left: 5px solid #3f73c9 !important;
-        color: #1f2937 !important;
-        font-size: 15px;
-        line-height: 1.5;
-        opacity: 1 !important;
-      }
-      .arbol-animado #explicacion strong {
-        color: #111827 !important;
-      }
-      .arbol-animado h3 {
-        margin: 0 0 8px;
-        text-align: center;
-      }
-
-      .arbol-animado p {
-        line-height: 1.5;
-        margin: 8px 0 14px;
-        text-align: justify;
-      }
-
-      .layout-arbol {
-        display: grid;
-        grid-template-columns: 1fr 300px;
-        gap: 18px;
-        align-items: start;
-      }
-
-      .panel-grafo {
-        background: white;
-        border: 1px solid var(--borde);
-        border-radius: 12px;
-        padding: 12px;
-      }
-
-      .panel-controles {
-        background: white;
-        border: 1px solid var(--borde);
-        border-radius: 12px;
-        padding: 14px;
-      }
-
-      .panel-controles h4 {
-        margin: 0 0 10px;
-      }
-
-      .botones {
-        display: grid;
-        gap: 8px;
-      }
-
-      .botones button {
-        cursor: pointer;
-        border: 1px solid #b9c6df;
-        border-radius: 10px;
-        background: #ffffff;
-        padding: 9px 10px;
-        font-size: 14px;
-        text-align: left;
-        transition:
-          transform 0.15s ease,
-          background 0.15s ease;
-      }
-
-      .botones button:hover {
-        background: #eef4ff;
-        transform: translateY(-1px);
-      }
-
-      .botones button.activo {
-        background: #dce9ff;
-        border-color: var(--azul);
-        font-weight: bold;
-      }
-
-      #explicacion {
-        min-height: 78px;
-        margin-top: 14px;
-        padding: 12px;
-        border-radius: 10px;
-        background: #f8fafc;
-        border-left: 4px solid var(--azul);
-        font-size: 14px;
-        line-height: 1.45;
-      }
-
-      svg {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      .arista {
-        stroke: var(--azul-oscuro);
-        stroke-width: 4;
-        stroke-linecap: round;
-        opacity: 0.85;
-        transition:
-          stroke 0.3s ease,
-          stroke-width 0.3s ease,
-          opacity 0.3s ease;
-      }
-
-      .arista.resaltada {
-        stroke: var(--rojo);
-        stroke-width: 7;
-        opacity: 1;
-        stroke-dasharray: 900;
-        stroke-dashoffset: 900;
-        animation: dibujarArista 0.75s ease forwards;
-      }
-
-      .nodo {
-        fill: var(--azul);
-        stroke: var(--azul-oscuro);
-        stroke-width: 3;
-        transition:
-          fill 0.3s ease,
-          transform 0.3s ease;
-        transform-box: fill-box;
-        transform-origin: center;
-      }
-
-      .nodo.resaltado {
-        fill: var(--rojo);
-        stroke: #8f0f1a;
-        animation: pulso 0.55s ease forwards;
-      }
-
-      .nodo.oscuro {
-        fill: #0f2f63;
-        stroke: #08204a;
-      }
-
-      .etiqueta {
-        fill: white;
-        font-size: 20px;
-        font-weight: bold;
-        text-anchor: middle;
-        dominant-baseline: central;
-        pointer-events: none;
-      }
-
-      .texto-svg {
-        fill: #111827;
-        font-size: 16px;
-        font-weight: bold;
-      }
-
-      .nivel-linea {
-        stroke: #64748b;
-        stroke-width: 2;
-        stroke-dasharray: 8 8;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .nivel-linea.visible,
-      .nivel-texto.visible {
-        opacity: 1;
-      }
-
-      .nivel-texto {
-        fill: #334155;
-        font-size: 14px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .subarbol-zona {
-        fill: rgba(225, 29, 46, 0.08);
-        stroke: var(--rojo);
-        stroke-width: 3;
-        stroke-dasharray: 10 6;
-        opacity: 0;
-        transition: opacity 0.4s ease;
-      }
-
-      .subarbol-zona.visible {
-        opacity: 1;
-      }
-
-      @keyframes dibujarArista {
-        to {
-          stroke-dashoffset: 0;
-        }
-      }
-
-      @keyframes pulso {
-        0% {
-          transform: scale(1);
-        }
-        55% {
-          transform: scale(1.18);
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      @media (max-width: 820px) {
-        .layout-arbol {
-          grid-template-columns: 1fr;
-        }
-
-        body {
-          padding: 12px;
-        }
-      }
-      /* Estilos para el bloque de Árbol Binario */
-      .contenido-arbol-binario {
-        background: transparent !important;
-      }
-
-      .contenido-arbol-binario p,
-      .contenido-arbol-binario li,
-      .contenido-arbol-binario a {
-        opacity: 1 !important;
-      }
-
-      .contenido-arbol-binario .texto-resaltado {
-        font-weight: bold;
-        font-style: italic;
-      }
-
-      .contenido-arbol-binario .titulo-codigo {
-        margin: 22px 0 10px;
-        padding: 6px 10px;
-        background: #e5e7eb;
-        color: #111827 !important;
-        font-weight: bold;
-        border-radius: 4px;
-      }
-
-      .contenido-arbol-binario pre {
-        background: #f8fafc;
-        color: #111827 !important;
-        border: 1px solid #cbd5e1;
-        border-radius: 8px;
-        padding: 14px;
-        overflow-x: auto;
-        white-space: pre-wrap;
-        font-family: Consolas, "Courier New", monospace;
-        font-size: 14px;
-        line-height: 1.5;
-      }
-
-      .contenido-arbol-binario code {
-        color: #111827 !important;
-      }
-
-      .contenido-arbol-binario .lista-caracteristicas {
-        margin-left: 24px;
-        line-height: 1.6;
-      }
-      .contenido-arbol-binario {
-        background: transparent !important;
-        background-color: transparent !important;
-        background-image: none !important;
-        box-shadow: none !important;
-        filter: none !important;
-        backdrop-filter: none !important;
-        opacity: 1 !important;
-      }
-
-      .contenido-arbol-binario p,
-      .contenido-arbol-binario li,
-      .contenido-arbol-binario a,
-      .contenido-arbol-binario strong {
-        background: transparent !important;
-        background-color: transparent !important;
-        background-image: none !important;
-        filter: none !important;
-        backdrop-filter: none !important;
-        opacity: 1 !important;
-        color: inherit !important;
-      }
-      .contenido-arbol-busqueda a {
-        overflow-wrap: anywhere;
-        word-break: break-word;
-      }
-
-      .contenido-arbol-busqueda .figura img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-      }
-
-      .contenido-arbol-busqueda .titulo-codigo {
-        margin: 22px 0 10px;
-        padding: 6px 10px;
-        background: #e5e7eb;
-        color: inherit !important;
-        font-weight: bold;
-        border-radius: 4px;
-      }
-
-      .contenido-arbol-busqueda pre {
-        background: #f8fafc;
-        color: #111827 !important;
-        border: 1px solid #cbd5e1;
-        border-radius: 8px;
-        padding: 14px;
-        overflow-x: auto;
-        white-space: pre-wrap;
-        font-family: Consolas, "Courier New", monospace;
-        font-size: 14px;
-        line-height: 1.5;
-      }
-      /* CSS extra para el bloque de árbol binario de búsqueda */
-      .contenido-arbol-busqueda a {
-        overflow-wrap: anywhere;
-        word-break: break-word;
-      }
-
-      .contenido-arbol-busqueda .figura img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-      }
-
-      .contenido-arbol-busqueda pre {
-        background: #f8fafc;
-        color: #111827 !important;
-        border: 1px solid #cbd5e1;
-        border-radius: 8px;
-        padding: 14px;
-        overflow-x: auto;
-        white-space: pre-wrap;
-        font-family: Consolas, "Courier New", monospace;
-        font-size: 14px;
-        line-height: 1.5;
-      }
-      /* Estilos para la sección 3.1.4 Árbol balanceado rojo-negro */
-      .contenido-rojo-negro {
-        background: transparent !important;
-        color: inherit;
-      }
-
-      .contenido-rojo-negro p,
-      .contenido-rojo-negro li,
-      .contenido-rojo-negro a,
-      .contenido-rojo-negro strong,
-      .contenido-rojo-negro em {
-        background: transparent !important;
-        opacity: 1 !important;
-      }
-
-      .contenido-rojo-negro a {
-        overflow-wrap: anywhere;
-        word-break: break-word;
-      }
-
-      .contenido-rojo-negro .subtitulo-contenido {
-        font-weight: bold;
-        font-style: italic;
-        margin: 22px 0 8px;
-      }
-
-      .contenido-rojo-negro .lista-rojo-negro,
-      .contenido-rojo-negro .lista-casos {
-        margin-left: 24px;
-        line-height: 1.65;
-      }
-
-      .contenido-rojo-negro .lista-casos li {
-        margin-bottom: 8px;
-      }
-
-      .contenido-rojo-negro .figure-container {
-        margin: 18px 0 24px;
-      }
-
-      .contenido-rojo-negro .figura img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-      }
-
-      .contenido-rojo-negro .nota-corta {
-        font-style: italic;
-      }
-      /* Estilos para las secciones 3.1.5 a 3.1.8 */
-      .contenido-arboles-corto {
-        background: transparent !important;
-        color: inherit;
-      }
-
-      .contenido-arboles-corto p,
-      .contenido-arboles-corto li,
-      .contenido-arboles-corto a,
-      .contenido-arboles-corto strong,
-      .contenido-arboles-corto em,
-      .contenido-arboles-corto span,
-      .contenido-arboles-corto div {
-        background: transparent !important;
-        opacity: 1 !important;
-      }
-
-      .contenido-arboles-corto a {
-        overflow-wrap: anywhere;
-        word-break: break-word;
-      }
-
-      .contenido-arboles-corto .subtitulo-contenido {
-        font-weight: bold;
-        margin: 18px 0 10px;
-      }
-
-      .contenido-arboles-corto .subtitulo-italica {
-        font-weight: bold;
-        font-style: italic;
-        margin: 18px 0 10px;
-      }
-
-      .contenido-arboles-corto .lista-arboles,
-      .contenido-arboles-corto .lista-arboles ul,
-      .contenido-arboles-corto .lista-arboles ol {
-        line-height: 1.7;
-      }
-
-      .contenido-arboles-corto .lista-arboles {
-        margin-left: 24px;
-      }
-
-      .contenido-arboles-corto .lista-arboles > li {
-        margin-bottom: 8px;
-      }
-
-      .contenido-arboles-corto .figure-container {
-        margin: 18px 0 24px;
-      }
-
-      .contenido-arboles-corto .figura img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-      }
-
-      .contenido-arboles-corto .diagrama-pre {
-        white-space: pre-wrap;
-        font-family: "Courier New", monospace;
-        line-height: 1.5;
-        background: rgba(255, 255, 255, 0.35) !important;
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        border-radius: 10px;
-        padding: 14px;
-        overflow-x: auto;
-      }
-    </style>
+    <link rel="stylesheet" href="3.1.css" />
   </head>
   <body>
     <div class="reading-progress">
@@ -1265,8 +189,8 @@
           </p>
           <p>Considera el siguiente organigrama:</p>
 
-          <div class="figure-container">
-            <div class="figure-caption">Organigrama_1</div>
+          <div class="figure-container figura-chica">
+            <div class="figure-caption">Figura 1</div>
             <div class="figure-caption">
               Transformación de árboles generales a binarios
             </div>
@@ -1305,7 +229,7 @@
 
           <p>Y también podemos distinguir diferentes tipos de nodos:</p>
 
-          <div class="figure-container">
+          <div class="figure-container figura-chica">
             <div class="figure-caption">Figura 2</div>
             <div class="figure-caption">Tipos de nodos en un árbol</div>
             <div class="figura">
@@ -1324,7 +248,7 @@
             ellos, observa el ejemplo siguiente:
           </p>
 
-          <div class="figure-container">
+          <div class="figure-container figura-chica">
             <div class="figure-caption">Figura 3</div>
             <div class="figure-caption">Relación</div>
             <div class="figura">
@@ -1343,7 +267,7 @@
               que también podrás encontrar en la literatura que consultes:
             </p>
 
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
               <div class="figure-caption">Figura 4</div>
               <div class="figure-caption">Tipos de Nodos</div>
               <div class="figura">
@@ -1654,7 +578,9 @@
               la figura siguiente:
             </p>
 
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 5</div>
+              <div class="figure-caption">Árbol Binario</div>
               <div class="figura">
                 <img
                   src="IMAGENES_UNIDAD_3/1_3.1.1.1.png"
@@ -1665,7 +591,7 @@
               <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
 
-            <p class="texto-resaltado">
+            <p>
               Ahora que has comprendido la lógica básica en la construcción de
               un árbol binario, te compartimos el algoritmo para el caso en el
               que requieras convertir un árbol general (Estructura de árbol
@@ -1674,30 +600,30 @@
               Hijos):
             </p>
 
-            <p class="texto-resaltado">
+            <p>
               Consideremos un árbol en general, los pasos por aplicar para
               lograr la conversión del árbol en general a un árbol binario son
               los siguientes:
             </p>
 
-            <p class="texto-resaltado">
+            <p class="cursiva">
               1. Deben enlazarse los hijos de cada nodo en forma horizontal,
               (los hermanos).
             </p>
 
-            <p class="texto-resaltado">
+            <p class="cursiva">
               2. Debe enlazarse en forma vertical el nodo padre con el hijo que
               se encuentra más a la izquierda; además debe eliminarse el vínculo
               de ese padre con el resto de sus hijos.
             </p>
 
-            <p class="texto-resaltado">
+            <p class="cursiva">
               3. Debe rotarse el diagrama resultante aproximadamente cuarenta y
               cinco grados hacia la izquierda; para obtener el árbol binario
               correspondiente.
             </p>
 
-            <p class="texto-resaltado">
+            <p>
               Referencia:<br />
               <a
                 href="https://www.sites.upiicsa.ipn.mx/estudiantes/academia_de_informatica/estructura_y_rd/docs/u3/Conversi%C3%B3n%20de%20%C3%A1rboles%20generales%20en%20%C3%A1rboles%20binarios.pdf"
@@ -1716,6 +642,7 @@
             <div class="titulo-codigo">
               Declarar un struct para almacenamiento de datos
             </div>
+            <div class="code-caption">Código 1</div>
 
             <pre><code>/* Código en c para declarar la estructura donde se van a almacenar los datos*/
 typedef struct datos
@@ -1724,9 +651,9 @@ typedef struct datos
  *los datos que se van a almacenar en cada nodo, por ejemplo: */
  int dato;
 }Datos;</code></pre>
-
+            <div class="code-caption">Elaboración propia</div>
             <div class="titulo-codigo">Declarar un nodo</div>
-
+            <div class="code-caption">Código 2</div>
             <pre><code>typedef struct nodo
 {
  /**Primer elemento de un nodo*/
@@ -1737,7 +664,7 @@ typedef struct datos
  struct nodo* izquierda;
  struct nodo* derecha;
 }Nodo;</code></pre>
-
+            <div class="code-caption">Elaboración propia</div>
             <p>
               La estructura se crea preparando la variable de tipo de dato
               struct Nodo, misma que contendrá un apartado para almacenar los
@@ -1755,7 +682,8 @@ typedef struct datos
               struct Nodo.
             </p>
 
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 6</div>
               <div class="figure-caption">
                 Referencias para poder enlazar nuevos nodos del tipo: struct
                 Nodo
@@ -1779,6 +707,7 @@ typedef struct datos
             </p>
 
             <div class="titulo-codigo">Crear un nodo</div>
+            <div class="code-caption">Código 3</div>
 
             <pre><code>/* Código en c para crear un nuevo nodo */
 struct Nodo *nuevoNodo(int dato) {
@@ -1787,8 +716,10 @@ struct Nodo *nuevoNodo(int dato) {
  nodo-&gt;izquierda = nodo-&gt;derecha = NULL;
  return nodo;
 }</code></pre>
-
-            <div class="figure-container">
+            <div class="code-caption">Elaboración propia</div>
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 7</div>
+              <div class="figure-caption">Nuevo nodo</div>
               <div class="figura">
                 <img
                   src="IMAGENES_UNIDAD_3/3_3.1.1.1.png"
@@ -1833,7 +764,7 @@ struct Nodo *nuevoNodo(int dato) {
               inserción por la izquierda, observa cuidadosamente el proceso
               apoyándote de la explicación gráfica.
             </p>
-
+            <div class="code-caption">Código 4</div>
             <pre><code>/* Código en c para insertar un nodo */
 void insertar(struct Nodo *nodo, int dato) {
  if (nodo-&gt;izquierda == NULL) {
@@ -1847,7 +778,7 @@ void insertar(struct Nodo *nodo, int dato) {
  insertar(nodo-&gt;izquierda, dato);
  }
  }</code></pre>
-
+            <div class="code-caption">Elaboración propia</div>
             <p>
               Supongamos que tenemos en memoria un árbol binario, donde ya se ha
               insertado un valor en la raíz (7). Ahora, lo que se desea es
@@ -1859,7 +790,11 @@ void insertar(struct Nodo *nodo, int dato) {
               la primera iteración), y el dato que se desea insertar:
             </p>
 
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 8</div>
+              <div class="figure-caption">
+                Explicación gráfica para insertar un nodo
+              </div>
               <div class="figura">
                 <img
                   src="IMAGENES_UNIDAD_3/4_3.1.1.1.png"
@@ -1956,8 +891,8 @@ void insertar(struct Nodo *nodo, int dato) {
 
           <div class="content">
             <p></p>
-            <div class="figure-container">
-              <div class="figure-caption">Figura 4a</div>
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 9</div>
               <div class="figure-caption">Recorridos en un árbol binario</div>
               <div class="figura">
                 <img
@@ -1977,8 +912,8 @@ void insertar(struct Nodo *nodo, int dato) {
 
             <div class="content">
               <p></p>
-              <div class="figure-container">
-                <div class="figure-caption">Figura 5</div>
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 10</div>
                 <div class="figure-caption">
                   Ejemplo de recorridos en un árbol binario en código
                 </div>
@@ -1986,6 +921,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   <img
                     src="FIGURA5.png"
                     alt="Ejemplo de recorridos en un árbol binario en código"
+                    class="imagen-figura1"
                   />
                 </div>
                 <div class="figure-caption">Nota: Elaboración propia</div>
@@ -2007,11 +943,15 @@ void insertar(struct Nodo *nodo, int dato) {
 
             <div class="content">
               <p></p>
-              <div class="figure-container">
-                <div class="figure-caption">Figura 6</div>
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 11</div>
                 <div class="figure-caption">Recorrido Inorden</div>
                 <div class="figura">
-                  <img src="FIGURA6.png" alt="Recorrido Inorden" />
+                  <img
+                    src="FIGURA6.png"
+                    alt="Recorrido Inorden"
+                    class="imagen-figura1"
+                  />
                 </div>
                 <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
@@ -2021,8 +961,8 @@ void insertar(struct Nodo *nodo, int dato) {
                 recorrido inorden, es como sigue:
               </p>
 
-              <div class="figure-container">
-                <div class="figure-caption">Figura 7</div>
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 12</div>
                 <div class="figure-caption">
                   Ejemplo de recorridos Inorden en código
                 </div>
@@ -2030,6 +970,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   <img
                     src="FIGURA7.png"
                     alt="Ejemplo de recorridos Inorden en código"
+                    class="imagen-figura1"
                   />
                 </div>
                 <div class="figure-caption">Nota: Elaboración propia</div>
@@ -2050,12 +991,14 @@ void insertar(struct Nodo *nodo, int dato) {
 
             <div class="content">
               <p></p>
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 13</div>
                 <div class="figure-caption">Recorrido Postorden</div>
                 <div class="figura">
                   <img
                     src="IMAGENES_UNIDAD_3/1_3.1.1.2.png"
                     alt="Recorrido Postorden"
+                    class="imagen-figura1"
                   />
                 </div>
                 <div class="figure-caption">Nota: Elaboración propia</div>
@@ -2066,7 +1009,8 @@ void insertar(struct Nodo *nodo, int dato) {
                 recorrido postorden, es como sigue:
               </p>
 
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 14</div>
                 <div class="figure-caption">
                   Ejemplo de recorridos Postorden en código
                 </div>
@@ -2074,6 +1018,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   <img
                     src="IMAGENES_UNIDAD_3/2_3.1.1.2.png"
                     alt="Ejemplo de recorridos Postorden en código"
+                    class="imagen-figura1"
                   />
                 </div>
                 <div class="figure-caption">Nota: Elaboración propia</div>
@@ -2118,8 +1063,8 @@ void insertar(struct Nodo *nodo, int dato) {
 
           <div class="content">
             <p></p>
-            <div class="figure-container">
-              <div class="figure-caption">Figura 8</div>
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 15</div>
               <div class="figure-caption">Árbol binario de búsqueda</div>
               <div class="figura">
                 <img
@@ -2128,10 +1073,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
-              <div class="figure-caption">
-                Nota: Imagen generada por inteligencia artificial. Tomado de
-                OpenAI (2026)
-              </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
 
             <p>
@@ -2141,8 +1083,8 @@ void insertar(struct Nodo *nodo, int dato) {
               números, se muestra a continuación:
             </p>
 
-            <div class="figure-container">
-              <div class="figure-caption">Figura 9</div>
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 16</div>
               <div class="figure-caption">Árbol binario de búsqueda</div>
               <div class="figura">
                 <img
@@ -2151,10 +1093,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
-              <div class="figure-caption">
-                Nota: Imagen generada por inteligencia artificial. Tomado de
-                OpenAI (2026)
-              </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <!-- INICIO: Contenido Árbol Binario de Búsqueda -->
 
@@ -2168,7 +1107,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 el primer elemento de la lista en ser ingresado
               </p>
 
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 17</div>
+                <div class="figure-caption">Nodo 7 como raíz</div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_01_nodo_7.png"
@@ -2176,6 +1117,7 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p>
@@ -2187,7 +1129,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 nuevo Nodo (9)”
               </p>
 
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 18</div>
+                <div class="figure-caption">Inserción del nodo 9</div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_02_insercion_9.png"
@@ -2195,6 +1139,7 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p>
@@ -2205,7 +1150,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 colocar ahí este nuevo Nodo (5)”
               </p>
 
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 19</div>
+                <div class="figure-caption">Inserción del nodo 5</div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_03_insercion_5.png"
@@ -2213,6 +1160,7 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p>
@@ -2229,7 +1177,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 colocar ahí este nuevo Nodo (1)”
               </p>
 
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 20</div>
+                <div class="figure-caption">Inserción del nodo 1</div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_04_insercion_1.png"
@@ -2237,6 +1187,7 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p>
@@ -2252,7 +1203,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 este nuevo Nodo (8)”
               </p>
 
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 21</div>
+                <div class="figure-caption">Inserción del nodo 8</div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_05_insercion_8.png"
@@ -2260,6 +1213,7 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p>
@@ -2275,7 +1229,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 otro Nodo, entonces puedes colocar ahí este nuevo Nodo (10)”
               </p>
 
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 22</div>
+                <div class="figure-caption">Inserción del nodo 10</div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_06_insercion_10.png"
@@ -2283,13 +1239,14 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p>
                 Veamos ahora la implementación, observa cuidadosamente el
                 proceso apoyándote de la explicación gráfica.
               </p>
-
+              <div class="code-caption">Código 5</div>
               <pre><code>/* Código en c para insertar un nodo */
 void insertar(struct Nodo *nodo, int dato) {
  if (dato &gt; nodo-&gt;dato) {
@@ -2308,7 +1265,7 @@ void insertar(struct Nodo *nodo, int dato) {
  }
  }
 }</code></pre>
-
+              <div class="code-caption">Elaboración propia</div>
               <p>
                 Para explicar el funcionamiento del código, supongamos que
                 tenemos en memoria un árbol binario, donde ya se han insertado
@@ -2316,7 +1273,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 insertar un nuevo valor en dicho árbol, presumamos el valor 3.
               </p>
 
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 23</div>
+                <div class="figure-caption">Paso 1 para insertar el dato 3</div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_07_paso_1_dato_3.png"
@@ -2324,16 +1283,19 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p>
                 La función insertar, recibe como parámetro el nodo actual (raíz
                 en la primera iteración), y el dato que se desea insertar:
               </p>
-
+              <div class="code-caption">Código 6</div>
               <pre><code>void insertar(struct Nodo *nodo, int dato)</code></pre>
-
-              <div class="figure-container">
+              <div class="code-caption">Elaboración propia</div>
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 24</div>
+                <div class="figure-caption">Paso 2 para insertar el dato 3</div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_08_paso_2_dato_3.png"
@@ -2341,9 +1303,14 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 25</div>
+                <div class="figure-caption">
+                  Pasos 3 a 6 para insertar el dato 3
+                </div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_09_pasos_3_6_dato_3.png"
@@ -2351,6 +1318,7 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p>
@@ -2389,9 +1357,11 @@ void insertar(struct Nodo *nodo, int dato) {
                 encontrar el número:
               </p>
 
-              <p>6 2 5 7 3 8</p>
-
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 26</div>
+                <div class="figure-caption">
+                  Búsqueda secuencial con seis iteraciones
+                </div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_10_busqueda_secuencial.png"
@@ -2399,6 +1369,7 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p>Por lo tanto, la complejidad en Notación Big O sería O(n)</p>
@@ -2411,9 +1382,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 Quicksort cuya complejidad en notación Big O es O(n log n)
               </p>
 
-              <p>2 3 5 6 7 8</p>
-
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 27</div>
+                <div class="figure-caption">Lista ordenada 2 3 5 6 7 8</div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_11_lista_ordenada.png"
@@ -2421,6 +1392,7 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p>
@@ -2435,9 +1407,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 número que esté ubicado a la mitad de la lista (5).
               </p>
 
-              <p>2 3 5 6 7 8</p>
-
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 28</div>
+                <div class="figure-caption">Búsqueda binaria iteración 1</div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_12_busqueda_binaria_iteracion_1.png"
@@ -2445,6 +1417,7 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p><strong>Iteración 2</strong></p>
@@ -2457,9 +1430,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 mitad de la nueva y reducida lista (7).
               </p>
 
-              <p>6 7 8</p>
-
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 29</div>
+                <div class="figure-caption">Búsqueda binaria iteración 2</div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_13_busqueda_binaria_iteracion_2.png"
@@ -2467,6 +1440,7 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p><strong>Iteración 3</strong></p>
@@ -2479,9 +1453,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 (8).
               </p>
 
-              <p>8</p>
-
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 30</div>
+                <div class="figure-caption">Búsqueda binaria iteración 3</div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_14_busqueda_binaria_iteracion_3.png"
@@ -2489,6 +1463,7 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p>
@@ -2508,7 +1483,11 @@ void insertar(struct Nodo *nodo, int dato) {
                 6 2 5 7 3 8, su representación gráfica sería la de la imagen:
               </p>
 
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 31</div>
+                <div class="figure-caption">
+                  Árbol binario de búsqueda con los valores 6 2 5 7 3 8
+                </div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_15_arbol_busqueda_6_2_5_7_3_8.png"
@@ -2516,6 +1495,7 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p>
@@ -2530,11 +1510,11 @@ void insertar(struct Nodo *nodo, int dato) {
                 cada iteración:
               </p>
 
-              <p><strong>Iteración 1</strong></p>
-              <p><strong>Iteración 2</strong></p>
-              <p><strong>Iteración 3</strong></p>
-
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 32</div>
+                <div class="figure-caption">
+                  Búsqueda del número 8 en el árbol binario de búsqueda
+                </div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_16_busqueda_8_en_arbol_iteraciones.png"
@@ -2542,6 +1522,7 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p>
@@ -2559,7 +1540,11 @@ void insertar(struct Nodo *nodo, int dato) {
 
               <p><strong>Otro ejemplo:</strong></p>
 
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 33</div>
+                <div class="figure-caption">
+                  Otro ejemplo de búsqueda en árbol
+                </div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_17_ejemplo_manzanas.png"
@@ -2567,6 +1552,7 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p>
@@ -2575,7 +1561,11 @@ void insertar(struct Nodo *nodo, int dato) {
                 al realizar los recorridos que ya vimos en el tema anterior.
               </p>
 
-              <div class="figure-container">
+              <div class="figure-container figura-chica">
+                <div class="figure-caption">Figura 34</div>
+                <div class="figure-caption">
+                  Recorridos del árbol binario de búsqueda
+                </div>
                 <div class="figura">
                   <img
                     src="imagenes_arbol_busqueda/bst_18_recorridos_arbol.png"
@@ -2583,6 +1573,7 @@ void insertar(struct Nodo *nodo, int dato) {
                     class="imagen-figura1"
                   />
                 </div>
+                <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
               <p>
@@ -2617,7 +1608,11 @@ void insertar(struct Nodo *nodo, int dato) {
               2,1,3,4,5,6,7 ¿Cuál sería la estructura resultante? Obsérvala en
               la siguiente figura:
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 35</div>
+              <div class="figure-caption">
+                Árbol resultante al insertar 2,1,3,4,5,6,7
+              </div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_01_arbol_degenerado.png"
@@ -2625,6 +1620,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               Como sabes, computacionalmente esto representa un gran problema
@@ -2635,7 +1631,9 @@ void insertar(struct Nodo *nodo, int dato) {
             <p>
               ¿Qué pasaría si reordenáramos la estructura? Cómo por ejemplo así:
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 36</div>
+              <div class="figure-caption">Árbol reordenado</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_02_arbol_reordenado.png"
@@ -2643,6 +1641,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               Con una estructura de datos como la de la figura, recuperaríamos
@@ -2670,7 +1669,11 @@ void insertar(struct Nodo *nodo, int dato) {
                 búsqueda en el árbol rojo-negro es O(log n).
               </li>
             </ul>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 37</div>
+              <div class="figure-caption">
+                Ejemplo de árbol rojo-negro con hojas nulas
+              </div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_03_propiedades_rojo_negro.png"
@@ -2678,6 +1681,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ul class="lista-rojo-negro">
               <li>
@@ -2687,7 +1691,11 @@ void insertar(struct Nodo *nodo, int dato) {
                 negros del subárbol cuya raíz es el nodo.
               </li>
             </ul>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 38</div>
+              <div class="figure-caption">
+                Altura y altura negra en el árbol rojo-negro
+              </div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_04_altura_y_altura_negra.png"
@@ -2695,13 +1703,16 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               Para todo nodo interno (que no sea hoja, es decir nulo), la altura
               negra de su hijo izquierdo es igual a la altura negra de su hijo
               derecho.
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 39</div>
+              <div class="figure-caption">Igualdad de altura negra</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_05_altura_negra_igual.png"
@@ -2709,6 +1720,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               Para conservar las propiedades mencionadas, al realizar las
@@ -2737,7 +1749,11 @@ void insertar(struct Nodo *nodo, int dato) {
             <ol class="lista-rojo-negro">
               <li>Desequilibrio izquierda-izquierda (LL)</li>
             </ol>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 40</div>
+              <div class="figure-caption">
+                Desequilibrio izquierda-izquierda
+              </div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_06_desequilibrio_ll.png"
@@ -2745,11 +1761,14 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ol class="lista-rojo-negro" start="2">
               <li>Desequilibrio derecha-derecha (RR)</li>
             </ol>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 41</div>
+              <div class="figure-caption">Desequilibrio derecha-derecha</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_07_desequilibrio_rr.png"
@@ -2757,11 +1776,14 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ol class="lista-rojo-negro" start="3">
               <li>Desequilibrio izquierda-derecha (LR)</li>
             </ol>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 42</div>
+              <div class="figure-caption">Desequilibrio izquierda-derecha</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_08_desequilibrio_lr.png"
@@ -2769,11 +1791,14 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ol class="lista-rojo-negro" start="4">
               <li>Desequilibrio derecha-izquierda (RL)</li>
             </ol>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 43</div>
+              <div class="figure-caption">Desequilibrio derecha-izquierda</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_09_desequilibrio_rl.png"
@@ -2781,6 +1806,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               Para poder transformar estos casos de desequilibrio a estados de
@@ -2792,14 +1818,13 @@ void insertar(struct Nodo *nodo, int dato) {
             <ol class="lista-rojo-negro">
               <li>
                 Si se presenta un desequilibrio RR o LL como en la figura
-                ejemplo:
+                ejemplo la rotación consiste en mover el primer nodo (A) hacia
+                abajo, para que el medio (B) quede en la parte superior:
               </li>
             </ol>
-            <p>
-              La rotación consiste en mover el primer nodo (A) hacia abajo, para
-              que el medio (B) quede en la parte superior.
-            </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 44</div>
+              <div class="figure-caption">Rotación simple RR o LL</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_10_rotacion_simple_rr_ll.png"
@@ -2807,12 +1832,17 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               En el caso que los nodos tengan descendientes, como en la
               siguiente figura:
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 45</div>
+              <div class="figure-caption">
+                Desequilibrio LL con descendientes
+              </div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_11_ll_con_descendientes.png"
@@ -2820,6 +1850,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               La rotación para este tipo de desequilibrio (LL), consiste en
@@ -2828,7 +1859,9 @@ void insertar(struct Nodo *nodo, int dato) {
               nodo que se convierte en padre (B) en el hijo izquierdo/derecho
               del nodo que se lleva hacia abajo (A).
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 46</div>
+              <div class="figure-caption">Rotación LL con descendientes</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_12_rotacion_ll_con_descendientes.png"
@@ -2836,11 +1869,14 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ol class="lista-rojo-negro" start="2">
               <li>La siguiente estructura muestra un desequilibrio LR</li>
             </ol>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 47</div>
+              <div class="figure-caption">Estructura con desequilibrio LR</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_13_estructura_lr.png"
@@ -2848,13 +1884,16 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>La rotación consiste en 2 etapas:</p>
             <p>
               a.&nbsp;&nbsp;&nbsp;&nbsp;Primero llevar el árbol al estado LL o
               RR
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 48</div>
+              <div class="figure-caption">Rotación LR etapa a</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_14_rotacion_lr_etapa_a.png"
@@ -2862,12 +1901,15 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               b.&nbsp;&nbsp;&nbsp;&nbsp;Después rotar como se vio anteriormente
               en el caso 1.
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 49</div>
+              <div class="figure-caption">Rotación LR etapa b</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_15_rotacion_lr_etapa_b.png"
@@ -2875,6 +1917,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               Cuando los nodos también tienen descendientes, el principio sigue
@@ -2882,7 +1925,9 @@ void insertar(struct Nodo *nodo, int dato) {
               nuevo padre (C) ocupan los lugares vacantes de los descendientes
               de los nodos secundarios (A y B).
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 50</div>
+              <div class="figure-caption">Rotación LR con descendientes</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_16_rotacion_lr_con_descendientes.png"
@@ -2890,6 +1935,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               Como ya comentamos, el árbol rojo-negro es una mejora del árbol
@@ -2906,7 +1952,9 @@ void insertar(struct Nodo *nodo, int dato) {
               que insertemos un nuevo nodo (D), se le asignará inicialmente el
               color rojo.
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 51</div>
+              <div class="figure-caption">Inserción del nodo D</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_17_insercion_nodo_d.png"
@@ -2914,6 +1962,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               En la figura anterior, podemos ver que el nuevo nodo (D) está
@@ -2945,7 +1994,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 proceso.
               </li>
             </ul>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 52</div>
+              <div class="figure-caption">Caso 1</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_18_caso_1_insercion_raiz.png"
@@ -2953,6 +2004,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ul class="lista-casos">
               <li>
@@ -2960,7 +2012,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 insertando “D” es rojo.
               </li>
             </ul>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 53</div>
+              <div class="figure-caption">Caso 2: tío rojo</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_19_caso_2_tio_rojo.png"
@@ -2968,13 +2022,16 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               En este caso, se cambia el color del abuelo “raíz” a rojo y al tío
               “C” de negro. Si el abuelo del nodo es la raíz, entonces el color
               del abuelo vuelve a pintarse de negro.
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 54</div>
+              <div class="figure-caption">Caso 2: recoloración</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_20_caso_2_recoloracion.png"
@@ -2982,6 +2039,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ul class="lista-casos">
               <li>
@@ -2990,7 +2048,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 desequilibró en LL o RR.
               </li>
             </ul>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 55</div>
+              <div class="figure-caption">Caso 3 inicial</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_21_caso_3_inicial.png"
@@ -2998,13 +2058,16 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               Realizamos la rotación haciendo que "D" tome el lugar de "B", y
               finalmente cambiamos el color del "antiguo" nodo abuelo a rojo y
               el nodo padre a negro.
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 56</div>
+              <div class="figure-caption">Caso 3: rotación y recoloración</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_22_caso_3_rotacion_y_recoloracion.png"
@@ -3012,6 +2075,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ul class="lista-casos">
               <li>
@@ -3020,7 +2084,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 se desequilibró en forma de RL o LR.
               </li>
             </ul>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 57</div>
+              <div class="figure-caption">Caso 4 inicial</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_23_caso_4_inicial.png"
@@ -3028,13 +2094,16 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               Primero se realiza una rotación de equilibrio, pero vemos que el
               árbol aún está en estado de desequilibrio ya que el descendiente
               “D” del nodo “E” es rojo.
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 58</div>
+              <div class="figure-caption">Caso 4: primera rotación</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_24_caso_4_primera_rotacion.png"
@@ -3042,12 +2111,15 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               Realizamos otra rotación (como en el Caso 3) y finalmente volvemos
               a pintar el "antiguo" abuelo de rojo y el padre de negro.
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 59</div>
+              <div class="figure-caption">Caso 4: segunda rotación</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_25_caso_4_segunda_rotacion.png"
@@ -3055,6 +2127,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ul class="lista-casos">
               <li>
@@ -3062,7 +2135,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 elemento insertado “E” son rojos
               </li>
             </ul>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 60</div>
+              <div class="figure-caption">Caso 5 inicial</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_26_caso_5_inicial.png"
@@ -3070,12 +2145,15 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               Repintamos a tío “D” y padre “C” de negro y al padre de ambos de
               rojo.
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 61</div>
+              <div class="figure-caption">Caso 5: recoloración</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_27_caso_5_recoloracion.png"
@@ -3083,6 +2161,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ul class="lista-casos">
               <li>
@@ -3090,7 +2169,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 izquierdo
               </li>
             </ul>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 62</div>
+              <div class="figure-caption">Caso 6 inicial</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_28_caso_6_inicial.png"
@@ -3098,12 +2179,15 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               Se realiza una rotación del padre “C” a raíz y se cambia el color
               a “C” y a “B”.
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 63</div>
+              <div class="figure-caption">Caso 6: rotación</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_29_caso_6_rotacion.png"
@@ -3111,6 +2195,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ul class="lista-casos">
               <li>
@@ -3119,7 +2204,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 estructura.
               </li>
             </ul>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 64</div>
+              <div class="figure-caption">Caso 7 inicial</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_30_caso_7_inicial.png"
@@ -3127,9 +2214,12 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>Se efectúa una rotación.</p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 65</div>
+              <div class="figure-caption">Caso 7: rotación</div>
               <div class="figura">
                 <img
                   src="imagenes_rojo_negro/rr_31_caso_7_rotacion.png"
@@ -3137,6 +2227,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               Es importante que evalúes en tu código cuando se presenten estos
@@ -3186,7 +2277,11 @@ void insertar(struct Nodo *nodo, int dato) {
                 tiene la posibilidad de estar incompleto.
               </li>
             </ul>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 66</div>
+              <div class="figure-caption">
+                Montículo como árbol binario completo
+              </div>
               <div class="figura">
                 <img
                   src="imagenes_secciones_3_1_5_a_3_1_8/s315_01_arbol_binario_completo.png"
@@ -3194,6 +2289,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ul class="lista-arboles">
               <li>
@@ -3202,7 +2298,9 @@ void insertar(struct Nodo *nodo, int dato) {
                 o decreciente.
               </li>
             </ul>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 67</div>
+              <div class="figure-caption">Montículo parcialmente ordenado</div>
               <div class="figura">
                 <img
                   src="imagenes_secciones_3_1_5_a_3_1_8/s315_02_monticulo_parcialmente_ordenado.png"
@@ -3210,6 +2308,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ul class="lista-arboles">
               <li>
@@ -3241,7 +2340,11 @@ void insertar(struct Nodo *nodo, int dato) {
                 almacenar los apuntadores a los nodos hijos.
               </li>
             </ul>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 68</div>
+              <div class="figure-caption">
+                Representación lineal del montículo e índices
+              </div>
               <div class="figura">
                 <img
                   src="imagenes_secciones_3_1_5_a_3_1_8/s315_03_representacion_array_indices.png"
@@ -3249,6 +2352,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               Y así obtenemos una propiedad interesante, para calcular los
@@ -3338,7 +2442,9 @@ void insertar(struct Nodo *nodo, int dato) {
               (máximo valor = máxima prioridad) y por ende, el primer elemento
               en salir es el elemento de mayor prioridad.
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 69</div>
+              <div class="figure-caption">Ejemplo de cola de prioridad</div>
               <div class="figura">
                 <img
                   src="imagenes_secciones_3_1_5_a_3_1_8/s316_01_cola_prioridad.png"
@@ -3346,6 +2452,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               Una de las formas de implementación de una cola de prioridad es
@@ -3358,7 +2465,9 @@ void insertar(struct Nodo *nodo, int dato) {
               propiedad de tener en cada nodo padre un valor mayor que el de
               cualquiera de sus nodos hijos.
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 70</div>
+              <div class="figure-caption">Montículo de máximos</div>
               <div class="figura">
                 <img
                   src="imagenes_secciones_3_1_5_a_3_1_8/s316_02_monticulo_maximos.png"
@@ -3366,6 +2475,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>Veamos qué pasaría al realizar las siguientes operaciones:</p>
             <ul class="lista-arboles">
@@ -3378,7 +2488,9 @@ void insertar(struct Nodo *nodo, int dato) {
               disponible en el montículo y subirá por la estructura mientras sea
               mayor a su padre.
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 71</div>
+              <div class="figure-caption">Inserción del 35 en el montículo</div>
               <div class="figura">
                 <img
                   src="imagenes_secciones_3_1_5_a_3_1_8/s316_03_insercion_35_pasos.png"
@@ -3386,8 +2498,13 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 72</div>
+              <div class="figure-caption">
+                Resultado final de la inserción del 35
+              </div>
               <div class="figura">
                 <img
                   src="imagenes_secciones_3_1_5_a_3_1_8/s316_04_insercion_35_resultado.png"
@@ -3395,6 +2512,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p class="subtitulo-italica">Eliminación del elemento máximo</p>
             <p>
@@ -3406,7 +2524,11 @@ void insertar(struct Nodo *nodo, int dato) {
               en el nodo actual es menor que uno de sus hijos, deberemos
               intercambiar su valor con el hijo más grande.
             </p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 73</div>
+              <div class="figure-caption">
+                Eliminación del 35: pasos iniciales
+              </div>
               <div class="figura">
                 <img
                   src="imagenes_secciones_3_1_5_a_3_1_8/s316_05_eliminacion_35_inicio.png"
@@ -3414,8 +2536,11 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 74</div>
+              <div class="figure-caption">Eliminación del 35: continuación</div>
               <div class="figura">
                 <img
                   src="imagenes_secciones_3_1_5_a_3_1_8/s316_06_eliminacion_35_continuacion.png"
@@ -3423,6 +2548,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p>
               Este tipo de estructuras tiene una aplicación muy importante en la
@@ -3788,7 +2914,9 @@ void insertar(struct Nodo *nodo, int dato) {
               muestro un ejemplo de un árbol B de orden 3:
             </p>
             <p>Raíz:</p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 75</div>
+              <div class="figure-caption">Ejemplo de árbol B de orden 3</div>
               <div class="figura">
                 <img
                   src="imagenes_secciones_3_1_5_a_3_1_8/s318_01_arbol_b_orden_3.png"
@@ -3796,6 +2924,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ul class="lista-arboles">
               <li>
@@ -3809,7 +2938,11 @@ void insertar(struct Nodo *nodo, int dato) {
             </ul>
             <p>Al añadir un valor 20, el árbol se reorganizará:</p>
             <p>Raíz:</p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 76</div>
+              <div class="figure-caption">
+                Árbol B reorganizado al insertar 20
+              </div>
               <div class="figura">
                 <img
                   src="imagenes_secciones_3_1_5_a_3_1_8/s318_02_arbol_b_reorganizado.png"
@@ -3817,6 +2950,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <p class="subtitulo-contenido">Árbol B+</p>
             <p>
@@ -4011,7 +3145,9 @@ void insertar(struct Nodo *nodo, int dato) {
             </p>
             <p>Estructura primordial:</p>
             <p>Raíz:</p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 77</div>
+              <div class="figure-caption">Ejemplo de árbol B+</div>
               <div class="figura">
                 <img
                   src="imagenes_secciones_3_1_5_a_3_1_8/s318_03_arbol_bmas_ejemplo.png"
@@ -4019,6 +3155,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ul class="lista-arboles">
               <li>
@@ -4028,7 +3165,11 @@ void insertar(struct Nodo *nodo, int dato) {
               </li>
             </ul>
             <p>Conexión entre páginas:</p>
-            <div class="figure-container">
+            <div class="figure-container figura-chica">
+              <div class="figure-caption">Figura 78</div>
+              <div class="figure-caption">
+                Conexión entre hojas del árbol B+
+              </div>
               <div class="figura">
                 <img
                   src="imagenes_secciones_3_1_5_a_3_1_8/s318_04_arbol_bmas_conexion_hojas.png"
@@ -4036,6 +3177,7 @@ void insertar(struct Nodo *nodo, int dato) {
                   class="imagen-figura1"
                 />
               </div>
+              <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ul class="lista-arboles">
               <li>
@@ -4312,7 +3454,7 @@ E   F          G   H</pre
             PENDIENTE
           </p>
 
-          <div class="figure-container">
+          <div class="figure-container figura-chica">
             <iframe
               width="100%"
               height="450"
@@ -4371,440 +3513,6 @@ E   F          G   H</pre
         <p>Desarrollado para fines educativos - © 2026</p>
       </footer>
     </div>
-
-    <script>
-      let sidebarOpen = false;
-
-      const menuToggle = document.getElementById("menuToggle");
-      const sidebarNav = document.getElementById("sidebarNav");
-      const sidebarOverlay = document.getElementById("sidebarOverlay");
-
-      function toggleSidebar() {
-        sidebarOpen = !sidebarOpen;
-
-        if (sidebarOpen) {
-          sidebarNav.classList.add("active");
-          sidebarOverlay.classList.add("active");
-          menuToggle.classList.add("active");
-          menuToggle.innerHTML = '<i class="fas fa-times"></i>';
-          document.body.style.overflow = "hidden";
-        } else {
-          sidebarNav.classList.remove("active");
-          sidebarOverlay.classList.remove("active");
-          menuToggle.classList.remove("active");
-          menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-          document.body.style.overflow = "auto";
-        }
-
-        updateContainerSpacing();
-      }
-
-      menuToggle.addEventListener("click", toggleSidebar);
-      sidebarOverlay.addEventListener("click", toggleSidebar);
-
-      document.querySelectorAll(".nav-item[data-section]").forEach((item) => {
-        item.addEventListener("click", () => {
-          if (window.innerWidth <= 768) {
-            toggleSidebar();
-          }
-        });
-      });
-
-      function updateContainerSpacing() {
-        const container = document.querySelector(".container");
-
-        if (window.innerWidth <= 768) {
-          container.style.marginLeft = "20px";
-          container.style.marginRight = "20px";
-          container.style.padding = "10px";
-        } else if (sidebarOpen && window.innerWidth > 768) {
-          container.style.marginLeft = "370px";
-          container.style.marginRight = "90px";
-          container.style.padding = "20px";
-        } else {
-          container.style.marginLeft = "90px";
-          container.style.marginRight = "90px";
-          container.style.padding = "20px";
-        }
-      }
-
-      function updateActiveSection() {
-        const sections = document.querySelectorAll(".section");
-        const navItems = document.querySelectorAll(".nav-item[data-section]");
-        let currentSectionId = "";
-
-        sections.forEach((section) => {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= 150 && rect.bottom >= 150) {
-            currentSectionId = section.id;
-          }
-        });
-
-        navItems.forEach((item) => {
-          const sectionId = "seccion-" + item.dataset.section;
-          if (sectionId === currentSectionId) {
-            item.classList.add("active");
-          } else {
-            item.classList.remove("active");
-          }
-        });
-      }
-
-      function updateReadingProgress() {
-        const winScroll =
-          document.body.scrollTop || document.documentElement.scrollTop;
-        const height =
-          document.documentElement.scrollHeight -
-          document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        document.getElementById("progressBar").style.width = scrolled + "%";
-      }
-
-      const scrollToTopBtn = document.getElementById("scrollToTop");
-
-      function toggleScrollToTopBtn() {
-        if (window.pageYOffset > 300) {
-          scrollToTopBtn.classList.add("visible");
-        } else {
-          scrollToTopBtn.classList.remove("visible");
-        }
-      }
-
-      scrollToTopBtn.addEventListener("click", () => {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      });
-
-      window.addEventListener("scroll", () => {
-        updateActiveSection();
-        updateReadingProgress();
-        toggleScrollToTopBtn();
-      });
-
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-
-          if (target) {
-            const offsetTop = target.offsetTop - 100;
-            window.scrollTo({
-              top: offsetTop,
-              behavior: "smooth",
-            });
-          }
-        });
-      });
-
-      window.addEventListener("resize", () => {
-        if (window.innerWidth > 768 && sidebarOpen) {
-          toggleSidebar();
-        }
-        updateContainerSpacing();
-      });
-
-      document.addEventListener("DOMContentLoaded", function () {
-        updateActiveSection();
-        updateReadingProgress();
-        updateContainerSpacing();
-        if (window.innerWidth <= 768) {
-          sidebarNav.classList.remove("active");
-        }
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && sidebarOpen) {
-          toggleSidebar();
-        }
-        if (e.key === "m" || e.key === "M") {
-          if (!e.ctrlKey && !e.altKey) {
-            toggleSidebar();
-          }
-        }
-      });
-      (function () {
-        const nodos = ["A", "B", "C", "D", "E", "F", "G", "H"];
-        const aristas = ["AB", "AC", "BD", "BE", "CF", "CG", "CH"];
-
-        const explicacion = document.getElementById("explicacion");
-        const textoExtra = document.getElementById("textoExtra");
-        const botones = document.querySelectorAll(".botones button");
-
-        const demos = {
-          caminoAH: {
-            nodos: ["A", "C", "H"],
-            aristas: ["AC", "CH"],
-            texto: "Camino de A a H: A → C → H.",
-            extra:
-              "Un camino es una lista de ramas contiguas que van de un nodo a otro.",
-          },
-          caminoAE: {
-            nodos: ["A", "B", "E"],
-            aristas: ["AB", "BE"],
-            texto: "Camino de A a E: A → B → E.",
-            extra:
-              "Existe exactamente un camino entre la raíz y cada uno de los otros nodos en el árbol.",
-          },
-          longitudAH: {
-            nodos: ["A", "C", "H"],
-            aristas: ["AC", "CH"],
-            texto:
-              "La longitud de un camino se obtiene por el número de nodos del camino menos uno o de forma equivalente, es el número de arcos que existen de un nodo a otro.",
-            extra: "Longitud de A a H: 2",
-          },
-          caminoCero: {
-            nodos: ["B"],
-            aristas: [],
-            texto:
-              "Hay un camino de longitud cero de cualquier nodo a sí mismo.",
-            extra: "Longitud de B a B: 0",
-          },
-          gradoC: {
-            nodos: ["C", "F", "G", "H"],
-            aristas: ["CF", "CG", "CH"],
-            texto:
-              "El grado de un Nodo es el número de ramas o de forma equivalente, número de hijos que parten de él.",
-            extra: "Grado de C: 3",
-          },
-          gradoArbol: {
-            nodos: ["C", "F", "G", "H"],
-            aristas: ["CF", "CG", "CH"],
-            texto:
-              "El grado de un árbol es el grado máximo de los nodos del árbol.",
-            extra:
-              "El Grado máximo de los Nodos es 3, por lo tanto, el Árbol es de Grado 3",
-          },
-          niveles: {
-            nodos: ["A", "B", "C", "D", "E", "F", "G", "H"],
-            aristas: [],
-            niveles: true,
-            texto:
-              "El nivel de un nodo es la longitud del camino que lo conecta al nodo raíz.",
-            extra: "A: nivel 0 | B y C: nivel 1 | D, E, F, G y H: nivel 2",
-          },
-          profundidadE: {
-            nodos: ["A", "B", "E"],
-            aristas: ["AB", "BE"],
-            texto:
-              "La profundidad de un nodo n es el largo del camino entre la raíz del árbol y el nodo n. La profundidad de la raíz es siempre 0.",
-            extra: "Profundidad de E: 2",
-          },
-          alturaC: {
-            nodos: ["C", "F", "G", "H"],
-            aristas: ["CF", "CG", "CH"],
-            texto:
-              "La altura de un nodo n es el máximo largo de camino desde n hasta alguna hoja. La altura de toda hoja es 0. La altura de un árbol tiene el mismo valor que la profundidad de la hoja más profunda. La altura de un árbol vacío es -1.",
-            extra: "Altura de C: 1",
-          },
-          subarboles: {
-            nodos: ["B", "D", "E", "C", "F", "G", "H"],
-            aristas: ["BD", "BE", "CF", "CG", "CH"],
-            subarboles: true,
-            texto:
-              "Un subárbol de un árbol es un subconjunto de nodos del árbol conectados por ramas del propio árbol.",
-            extra: "Subárbol izquierdo: B-D-E | Subárbol derecho: C-F-G-H",
-          },
-        };
-
-        function limpiar() {
-          nodos.forEach((id) => {
-            const nodo = document.getElementById(id);
-            nodo.classList.remove("resaltado", "oscuro", "seleccionado");
-          });
-
-          aristas.forEach((id) => {
-            const arista = document.getElementById(id);
-            arista.classList.remove("resaltada");
-            arista.style.animationDelay = "0s";
-          });
-
-          [
-            "nivel0",
-            "nivel1",
-            "nivel2",
-            "nivelTexto0",
-            "nivelTexto1",
-            "nivelTexto2",
-          ].forEach((id) => {
-            document.getElementById(id).classList.remove("visible");
-          });
-
-          document.getElementById("zonaIzquierda").classList.remove("visible");
-          document.getElementById("zonaDerecha").classList.remove("visible");
-
-          textoExtra.textContent = "";
-        }
-
-        function animar(demoNombre) {
-          limpiar();
-          // -------------------------------
-          // Modo interactivo: elegir nodo inicial y final
-          // -------------------------------
-
-          const conexiones = {
-            A: ["B", "C"],
-            B: ["A", "D", "E"],
-            C: ["A", "F", "G", "H"],
-            D: ["B"],
-            E: ["B"],
-            F: ["C"],
-            G: ["C"],
-            H: ["C"],
-          };
-
-          let nodoInicial = null;
-
-          function obtenerArista(a, b) {
-            return (
-              document.getElementById(a + b) || document.getElementById(b + a)
-            );
-          }
-
-          function encontrarCamino(inicio, fin) {
-            const cola = [[inicio]];
-            const visitados = new Set();
-
-            while (cola.length > 0) {
-              const camino = cola.shift();
-              const actual = camino[camino.length - 1];
-
-              if (actual === fin) {
-                return camino;
-              }
-
-              if (!visitados.has(actual)) {
-                visitados.add(actual);
-
-                conexiones[actual].forEach((vecino) => {
-                  const nuevoCamino = [...camino, vecino];
-                  cola.push(nuevoCamino);
-                });
-              }
-            }
-
-            return [];
-          }
-
-          function animarCaminoLibre(camino) {
-            limpiar();
-
-            textoExtra.textContent =
-              "Camino seleccionado: " + camino.join(" → ");
-
-            explicacion.innerHTML = `
-                        <strong>Camino seleccionado:</strong><br>
-                        ${camino.join(" → ")}<br>
-                        Longitud del camino: ${camino.length - 1}
-                    `;
-
-            camino.forEach((id, i) => {
-              setTimeout(() => {
-                document.getElementById(id).classList.add("resaltado");
-              }, i * 350);
-            });
-
-            for (let i = 0; i < camino.length - 1; i++) {
-              const arista = obtenerArista(camino[i], camino[i + 1]);
-
-              if (arista) {
-                setTimeout(
-                  () => {
-                    arista.classList.add("resaltada");
-                  },
-                  (i + 1) * 350,
-                );
-              }
-            }
-          }
-
-          nodos.forEach((id) => {
-            document.getElementById(id).addEventListener("click", () => {
-              botones.forEach((b) => b.classList.remove("activo"));
-
-              if (nodoInicial === null) {
-                limpiar();
-
-                nodoInicial = id;
-                document.getElementById(id).classList.add("seleccionado");
-
-                explicacion.innerHTML = `
-                                <strong>Nodo inicial seleccionado: ${id}</strong><br>
-                                Ahora selecciona el nodo final para colorear el camino.
-                            `;
-
-                textoExtra.textContent = "Nodo inicial: " + id;
-              } else {
-                const nodoFinal = id;
-                const camino = encontrarCamino(nodoInicial, nodoFinal);
-
-                animarCaminoLibre(camino);
-
-                nodoInicial = null;
-              }
-            });
-          });
-          botones.forEach((b) =>
-            b.classList.toggle("activo", b.dataset.demo === demoNombre),
-          );
-
-          const demo = demos[demoNombre];
-          explicacion.innerHTML =
-            "<strong>" + demo.texto + "</strong><br>" + demo.extra;
-          textoExtra.textContent = demo.extra;
-
-          demo.nodos.forEach((id, i) => {
-            setTimeout(() => {
-              document.getElementById(id).classList.add("resaltado");
-            }, i * 350);
-          });
-
-          demo.aristas.forEach((id, i) => {
-            setTimeout(
-              () => {
-                const arista = document.getElementById(id);
-                arista.classList.add("resaltada");
-                arista.style.animationDelay = "0s";
-              },
-              (i + 1) * 350,
-            );
-          });
-
-          if (demoNombre === "caminoCero") {
-            document.getElementById("B").classList.add("oscuro");
-          }
-
-          if (demo.niveles) {
-            setTimeout(() => {
-              [
-                "nivel0",
-                "nivel1",
-                "nivel2",
-                "nivelTexto0",
-                "nivelTexto1",
-                "nivelTexto2",
-              ].forEach((id) => {
-                document.getElementById(id).classList.add("visible");
-              });
-            }, 500);
-          }
-
-          if (demo.subarboles) {
-            setTimeout(() => {
-              document.getElementById("zonaIzquierda").classList.add("visible");
-              document.getElementById("zonaDerecha").classList.add("visible");
-            }, 500);
-          }
-        }
-
-        botones.forEach((boton) => {
-          boton.addEventListener("click", () => animar(boton.dataset.demo));
-        });
-
-        // Animación inicial automática
-        animar("caminoAH");
-      })();
-    </script>
+    <script src="3.1.js"></script>
   </body>
 </html>
