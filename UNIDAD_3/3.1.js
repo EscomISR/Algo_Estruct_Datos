@@ -182,8 +182,7 @@ document.addEventListener("keydown", (e) => {
     caminoCero: {
       nodos: ["B"],
       aristas: [],
-      texto:
-        "Hay un camino de longitud cero de cualquier nodo a sí mismo.",
+      texto: "Hay un camino de longitud cero de cualquier nodo a sí mismo.",
       extra: "Longitud de B a B: 0",
     },
     gradoC: {
@@ -196,8 +195,7 @@ document.addEventListener("keydown", (e) => {
     gradoArbol: {
       nodos: ["C", "F", "G", "H"],
       aristas: ["CF", "CG", "CH"],
-      texto:
-        "El grado de un árbol es el grado máximo de los nodos del árbol.",
+      texto: "El grado de un árbol es el grado máximo de los nodos del árbol.",
       extra:
         "El Grado máximo de los Nodos es 3, por lo tanto, el Árbol es de Grado 3",
     },
@@ -282,9 +280,7 @@ document.addEventListener("keydown", (e) => {
     let nodoInicial = null;
 
     function obtenerArista(a, b) {
-      return (
-        document.getElementById(a + b) || document.getElementById(b + a)
-      );
+      return document.getElementById(a + b) || document.getElementById(b + a);
     }
 
     function encontrarCamino(inicio, fin) {
@@ -315,8 +311,7 @@ document.addEventListener("keydown", (e) => {
     function animarCaminoLibre(camino) {
       limpiar();
 
-      textoExtra.textContent =
-        "Camino seleccionado: " + camino.join(" → ");
+      textoExtra.textContent = "Camino seleccionado: " + camino.join(" → ");
 
       explicacion.innerHTML = `
                   <strong>Camino seleccionado:</strong><br>
@@ -430,3 +425,25 @@ document.addEventListener("keydown", (e) => {
   // Animación inicial automática
   animar("caminoAH");
 })();
+document.addEventListener("DOMContentLoaded", () => {
+  const figuras = document.querySelectorAll(".figura");
+
+  figuras.forEach((figura) => {
+    // 1. Crear el contenedor del ícono
+    const iconWrapper = document.createElement("div");
+    iconWrapper.classList.add("icono-expandir");
+
+    // 2. Insertar un SVG de expansión simple
+    iconWrapper.innerHTML = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 3 21 3 21 9"></polyline>
+        <polyline points="9 21 3 21 3 15"></polyline>
+        <line x1="21" y1="3" x2="14" y2="10"></line>
+        <line x1="3" y1="21" x2="10" y2="14"></line>
+      </svg>
+    `;
+
+    // 3. Añadirlo al contenedor de la figura
+    figura.appendChild(iconWrapper);
+  });
+});

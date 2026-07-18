@@ -24,10 +24,22 @@
 }
 
 body {
+  counter-reset: figuras codigos;
   background: linear-gradient(135deg, #1a2a3a, #2c3e50);
   color: var(--light);
   min-height: 100vh;
   line-height: 1.7;
+}
+
+.codigos {
+  counter-increment: codigos;
+}
+
+.code-number::before {
+  content: "Código " counter(codigos);
+  display: flex;
+  margin-bottom: 6px;
+  justify-content: center;
 }
 
 .floating-home-btn {
@@ -413,22 +425,19 @@ tr:nth-child(even) {
   align-items: center;
   justify-content: center;
   position: relative;
+  counter-increment: figuras;
 }
-
+.figure-number::before {
+  content: "Figura " counter(figuras);
+}
 .imagen-figura1 {
   max-width: 100%;
   height: auto;
   object-fit: contain;
   border-radius: 8px;
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  cursor: zoom-in;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
   transform-origin: center center;
-}
-
-/* Efecto al pasar el mouse */
-.imagen-figura1:hover {
-  transform: scale(1.4);
-  border-radius: 8px;
 }
 
 .figure-placeholder {
@@ -1028,7 +1037,7 @@ svg {
 .contenido-arboles-corto em,
 .contenido-arboles-corto span,
 .contenido-arboles-corto div {
-  background: transparent !important;
+  background: transparent;
   opacity: 1 !important;
 }
 
@@ -1104,4 +1113,109 @@ svg {
 }
 .cursiva {
   font-style: italic;
+}
+/* Barra completa */
+.viewer-toolbar {
+  opacity: 1 !important;
+  padding: 10px 18px !important;
+  border-radius: 30px !important;
+  background: rgba(20, 20, 20, 0.85) !important;
+  backdrop-filter: blur(8px);
+
+  height: auto !important;
+}
+
+/* Lista de botones */
+.viewer-toolbar > ul {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important; /* Centra los botones en el eje horizontal */
+  width: 100% !important; /* Garantiza que el flexbox use toda la barra */
+  gap: 8px;
+  height: auto !important;
+}
+
+/* Cada botón */
+.viewer-toolbar > ul > li {
+  width: 52px !important;
+  height: 52px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  overflow: visible !important;
+}
+
+/* Iconos */
+.viewer-toolbar > ul > li::before {
+  transform: scale(1.35);
+}
+/* Botón de cerrar (tache) de Viewer.js */
+.viewer-close {
+  /* 1. Aumentar el tamaño del botón completo */
+  width: 52px !important; /* Igual que tus otros botones */
+  height: 52px !important; /* Igual que tus otros botones */
+
+  /* 2. Reposicionar (ajusta estos valores a tu gusto) */
+  top: 15px !important;
+  right: 15px !important; /* Generalmente está a la derecha */
+
+  /* 3. Estilo visual: Fondo oscuro para contraste */
+  background-color: rgba(20, 20, 20, 0.85) !important; /* Como tu barra */
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  opacity: 1 !important; /* Asegurar que no sea transparente */
+
+  /* 4. Estilo del icono 'X' */
+  font-size: 30px !important; /* Más grande */
+  color: #fff !important; /* Blanco puro */
+  line-height: 52px !important; /* Centrar verticalmente */
+
+  /* 5. Otros detalles */
+  border-radius: 50% !important; /* Redondo */
+  backdrop-filter: blur(8px); /* Efecto blur */
+  transition: background-color 0.15s ease !important;
+}
+
+/* Efecto hover (al pasar el ratón) */
+.viewer-close:hover {
+  background-color: rgba(20, 20, 20, 1) !important;
+}
+/* Prepara el contenedor padre para el posicionamiento absoluto del ícono */
+.figura {
+  position: relative !important;
+  display: inline-block !important; /* O block, si la imagen ya ocupa el 100% de la caja */
+}
+
+/* Estilos de la caja del ícono */
+.icono-expandir {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(20, 20, 20, 0.7) !important;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  backdrop-filter: blur(4px);
+
+  /* Crucial: Evita que el ícono intercepte el clic de Viewer.js */
+  pointer-events: none;
+
+  opacity: 0.7 !important;
+  transition: opacity 0.2s ease;
+}
+
+/* Tamaño del SVG interno */
+.icono-expandir svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* Efecto de foco al pasar el ratón por la imagen */
+.figura:hover .icono-expandir {
+  opacity: 1;
 }

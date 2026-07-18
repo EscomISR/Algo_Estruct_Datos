@@ -10,6 +10,13 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="3.1.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="visor.css" />
   </head>
   <body>
     <div class="reading-progress">
@@ -190,7 +197,7 @@
           <p>Considera el siguiente organigrama:</p>
 
           <div class="figure-container figura-chica">
-            <div class="figure-caption">Figura 1</div>
+            <div class="figure-number"></div>
             <div class="figure-caption">
               Transformación de árboles generales a binarios
             </div>
@@ -230,7 +237,7 @@
           <p>Y también podemos distinguir diferentes tipos de nodos:</p>
 
           <div class="figure-container figura-chica">
-            <div class="figure-caption">Figura 2</div>
+            <div class="figure-number"></div>
             <div class="figure-caption">Tipos de nodos en un árbol</div>
             <div class="figura">
               <img
@@ -249,7 +256,7 @@
           </p>
 
           <div class="figure-container figura-chica">
-            <div class="figure-caption">Figura 3</div>
+            <div class="figure-number"></div>
             <div class="figure-caption">Relación</div>
             <div class="figura">
               <img src="FIGURA3.png" alt="Relación" class="imagen-figura1" />
@@ -268,7 +275,7 @@
             </p>
 
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 4</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Tipos de Nodos</div>
               <div class="figura">
                 <img
@@ -552,9 +559,9 @@
             <div class="figure-caption">Nota: Elaboración propia</div>
           </div>
           <div class="contenido-arbol-binario">
-            <p class="texto-resaltado">Para saber más:</p>
+            <p>Para saber más:</p>
 
-            <p class="texto-resaltado">
+            <p>
               Un conjunto de árboles es llamado un bosque. Existe una pequeña
               diferencia entre un árbol y un bosque; si se elimina la raíz de un
               árbol se obtiene un bosque, y, recíprocamente, si se añade un nodo
@@ -570,16 +577,16 @@
             </p>
 
             <p>
-              El <strong>Árbol Binario</strong> es una estructura de datos que
-              se construye con la característica fundamental de que cada Nodo
-              del árbol (raíz o interno), puede tener como máximo 2 nodos de tal
-              forma que cada vez que se agreguen más nodos, el árbol mantenga su
-              estructura binaria original como se puede observar en el árbol de
-              la figura siguiente:
+              El Árbol Binario es una estructura de datos que se construye con
+              la característica fundamental de que cada Nodo del árbol (raíz o
+              interno), puede tener como máximo 2 nodos de tal forma que cada
+              vez que se agreguen más nodos, el árbol mantenga su estructura
+              binaria original como se puede observar en el árbol de la figura
+              siguiente:
             </p>
 
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 5</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Árbol Binario</div>
               <div class="figura">
                 <img
@@ -642,7 +649,7 @@
             <div class="titulo-codigo">
               Declarar un struct para almacenamiento de datos
             </div>
-            <div class="code-caption">Código 1</div>
+            <div class="code-number codigos"></div>
 
             <pre><code>/* Código en c para declarar la estructura donde se van a almacenar los datos*/
 typedef struct datos
@@ -653,7 +660,7 @@ typedef struct datos
 }Datos;</code></pre>
             <div class="code-caption">Elaboración propia</div>
             <div class="titulo-codigo">Declarar un nodo</div>
-            <div class="code-caption">Código 2</div>
+            <div class="code-number codigos"></div>
             <pre><code>typedef struct nodo
 {
  /**Primer elemento de un nodo*/
@@ -683,7 +690,7 @@ typedef struct datos
             </p>
 
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 6</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">
                 Referencias para poder enlazar nuevos nodos del tipo: struct
                 Nodo
@@ -707,7 +714,7 @@ typedef struct datos
             </p>
 
             <div class="titulo-codigo">Crear un nodo</div>
-            <div class="code-caption">Código 3</div>
+            <div class="code-number codigos"></div>
 
             <pre><code>/* Código en c para crear un nuevo nodo */
 struct Nodo *nuevoNodo(int dato) {
@@ -718,7 +725,7 @@ struct Nodo *nuevoNodo(int dato) {
 }</code></pre>
             <div class="code-caption">Elaboración propia</div>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 7</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Nuevo nodo</div>
               <div class="figura">
                 <img
@@ -764,7 +771,7 @@ struct Nodo *nuevoNodo(int dato) {
               inserción por la izquierda, observa cuidadosamente el proceso
               apoyándote de la explicación gráfica.
             </p>
-            <div class="code-caption">Código 4</div>
+            <div class="code-number codigos"></div>
             <pre><code>/* Código en c para insertar un nodo */
 void insertar(struct Nodo *nodo, int dato) {
  if (nodo-&gt;izquierda == NULL) {
@@ -791,7 +798,7 @@ void insertar(struct Nodo *nodo, int dato) {
             </p>
 
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 8</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">
                 Explicación gráfica para insertar un nodo
               </div>
@@ -820,11 +827,10 @@ void insertar(struct Nodo *nodo, int dato) {
                 se repite iterativamente siempre y cuando al descender por el
                 árbol, no existan nodos libres que permitan la inserción, por lo
                 tanto su construcción de forma recursiva es la manera más
-                eficiente de escribir el código, siendo:
-                <strong>nodo-&gt;derecha = nuevo</strong> y
-                <strong>nodo-&gt;izquierda = nuevo</strong> los casos base de la
-                función recursiva, es decir, la función deja de descender por el
-                árbol invocándose a sí misma, hasta que el valor que se desea
+                eficiente de escribir el código, siendo: nodo-&gt;derecha =
+                nuevo y nodo-&gt;izquierda = nuevo los casos base de la función
+                recursiva, es decir, la función deja de descender por el árbol
+                invocándose a sí misma, hasta que el valor que se desea
                 insertar, logra conformar un nuevo nodo dentro del árbol, en
                 otras palabras, hasta que encuentra un lugar disponible
                 (referencia null).
@@ -892,7 +898,7 @@ void insertar(struct Nodo *nodo, int dato) {
           <div class="content">
             <p></p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 9</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Recorridos en un árbol binario</div>
               <div class="figura">
                 <img
@@ -913,7 +919,7 @@ void insertar(struct Nodo *nodo, int dato) {
             <div class="content">
               <p></p>
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 10</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">
                   Ejemplo de recorridos en un árbol binario en código
                 </div>
@@ -927,7 +933,6 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
             </div>
-            >
             <h3>Recorrido Inorden</h3>
             <p>
               El recorrido Inorden consiste descender a través de las subramas
@@ -944,7 +949,7 @@ void insertar(struct Nodo *nodo, int dato) {
             <div class="content">
               <p></p>
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 11</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">Recorrido Inorden</div>
                 <div class="figura">
                   <img
@@ -962,7 +967,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 12</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">
                   Ejemplo de recorridos Inorden en código
                 </div>
@@ -992,7 +997,7 @@ void insertar(struct Nodo *nodo, int dato) {
             <div class="content">
               <p></p>
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 13</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">Recorrido Postorden</div>
                 <div class="figura">
                   <img
@@ -1010,7 +1015,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 14</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">
                   Ejemplo de recorridos Postorden en código
                 </div>
@@ -1064,7 +1069,7 @@ void insertar(struct Nodo *nodo, int dato) {
           <div class="content">
             <p></p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 15</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Árbol binario de búsqueda</div>
               <div class="figura">
                 <img
@@ -1084,7 +1089,7 @@ void insertar(struct Nodo *nodo, int dato) {
             </p>
 
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 16</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Árbol binario de búsqueda</div>
               <div class="figura">
                 <img
@@ -1108,7 +1113,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 17</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">Nodo 7 como raíz</div>
                 <div class="figura">
                   <img
@@ -1130,7 +1135,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 18</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">Inserción del nodo 9</div>
                 <div class="figura">
                   <img
@@ -1151,7 +1156,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 19</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">Inserción del nodo 5</div>
                 <div class="figura">
                   <img
@@ -1178,7 +1183,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 20</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">Inserción del nodo 1</div>
                 <div class="figura">
                   <img
@@ -1204,7 +1209,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 21</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">Inserción del nodo 8</div>
                 <div class="figura">
                   <img
@@ -1230,7 +1235,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 22</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">Inserción del nodo 10</div>
                 <div class="figura">
                   <img
@@ -1246,7 +1251,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 Veamos ahora la implementación, observa cuidadosamente el
                 proceso apoyándote de la explicación gráfica.
               </p>
-              <div class="code-caption">Código 5</div>
+              <div class="code-number codigos"></div>
               <pre><code>/* Código en c para insertar un nodo */
 void insertar(struct Nodo *nodo, int dato) {
  if (dato &gt; nodo-&gt;dato) {
@@ -1274,7 +1279,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 23</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">Paso 1 para insertar el dato 3</div>
                 <div class="figura">
                   <img
@@ -1290,11 +1295,11 @@ void insertar(struct Nodo *nodo, int dato) {
                 La función insertar, recibe como parámetro el nodo actual (raíz
                 en la primera iteración), y el dato que se desea insertar:
               </p>
-              <div class="code-caption">Código 6</div>
+              <div class="code-number codigos"></div>
               <pre><code>void insertar(struct Nodo *nodo, int dato)</code></pre>
               <div class="code-caption">Elaboración propia</div>
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 24</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">Paso 2 para insertar el dato 3</div>
                 <div class="figura">
                   <img
@@ -1307,7 +1312,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </div>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 25</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">
                   Pasos 3 a 6 para insertar el dato 3
                 </div>
@@ -1350,7 +1355,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 el problema:
               </p>
 
-              <p><strong>Solución 1:</strong></p>
+              <p>Solución 1:</p>
 
               <p>
                 Utilizando un algoritmo secuencial, ocuparías 6 iteraciones para
@@ -1358,7 +1363,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 26</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">
                   Búsqueda secuencial con seis iteraciones
                 </div>
@@ -1374,7 +1379,7 @@ void insertar(struct Nodo *nodo, int dato) {
 
               <p>Por lo tanto, la complejidad en Notación Big O sería O(n)</p>
 
-              <p><strong>Solución 2:</strong></p>
+              <p>Solución 2:</p>
 
               <p>
                 Utilizando un algoritmo de búsqueda binaria, habría primero que
@@ -1383,7 +1388,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 27</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">Lista ordenada 2 3 5 6 7 8</div>
                 <div class="figura">
                   <img
@@ -1400,7 +1405,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 iteraciones:
               </p>
 
-              <p><strong>Iteración 1</strong></p>
+              <p>Iteración 1</p>
 
               <p>
                 Primero evaluaríamos si nuestro número buscado (8) es mayor al
@@ -1408,7 +1413,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 28</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">Búsqueda binaria iteración 1</div>
                 <div class="figura">
                   <img
@@ -1420,7 +1425,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
-              <p><strong>Iteración 2</strong></p>
+              <p>Iteración 2</p>
 
               <p>
                 Como se cumple la condición, hay que continuar buscando en los
@@ -1431,7 +1436,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 29</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">Búsqueda binaria iteración 2</div>
                 <div class="figura">
                   <img
@@ -1443,7 +1448,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
 
-              <p><strong>Iteración 3</strong></p>
+              <p>Iteración 3</p>
 
               <p>
                 Como se cumple la condición, se continuará buscando en el lado
@@ -1454,7 +1459,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 30</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">Búsqueda binaria iteración 3</div>
                 <div class="figura">
                   <img
@@ -1476,7 +1481,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 log n).
               </p>
 
-              <p><strong>Solución 3:</strong></p>
+              <p>Solución 3:</p>
 
               <p>
                 Si se crea un Árbol binario de búsqueda con la lista de valores:
@@ -1484,7 +1489,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 31</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">
                   Árbol binario de búsqueda con los valores 6 2 5 7 3 8
                 </div>
@@ -1511,7 +1516,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 32</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">
                   Búsqueda del número 8 en el árbol binario de búsqueda
                 </div>
@@ -1538,10 +1543,10 @@ void insertar(struct Nodo *nodo, int dato) {
                 O(n).
               </p>
 
-              <p><strong>Otro ejemplo:</strong></p>
+              <p>Otro ejemplo:</p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 33</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">
                   Otro ejemplo de búsqueda en árbol
                 </div>
@@ -1562,7 +1567,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </p>
 
               <div class="figure-container figura-chica">
-                <div class="figure-caption">Figura 34</div>
+                <div class="figure-number"></div>
                 <div class="figure-caption">
                   Recorridos del árbol binario de búsqueda
                 </div>
@@ -1609,7 +1614,7 @@ void insertar(struct Nodo *nodo, int dato) {
               la siguiente figura:
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 35</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">
                 Árbol resultante al insertar 2,1,3,4,5,6,7
               </div>
@@ -1632,7 +1637,7 @@ void insertar(struct Nodo *nodo, int dato) {
               ¿Qué pasaría si reordenáramos la estructura? Cómo por ejemplo así:
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 36</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Árbol reordenado</div>
               <div class="figura">
                 <img
@@ -1670,7 +1675,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </li>
             </ul>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 37</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">
                 Ejemplo de árbol rojo-negro con hojas nulas
               </div>
@@ -1692,7 +1697,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </li>
             </ul>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 38</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">
                 Altura y altura negra en el árbol rojo-negro
               </div>
@@ -1711,7 +1716,7 @@ void insertar(struct Nodo *nodo, int dato) {
               derecho.
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 39</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Igualdad de altura negra</div>
               <div class="figura">
                 <img
@@ -1726,12 +1731,10 @@ void insertar(struct Nodo *nodo, int dato) {
               Para conservar las propiedades mencionadas, al realizar las
               operaciones de inserción y eliminación de nodos, existirán casos
               en que se necesite reestructurar el árbol, para lograrlo, será
-              necesaria la realización de procedimientos denominados
-              <strong>rotaciones</strong>, veamos en qué consisten.
+              necesaria la realización de procedimientos denominados rotaciones,
+              veamos en qué consisten.
             </p>
-            <p class="subtitulo-contenido">
-              Desequilibrio, balanceo y rotaciones
-            </p>
+            <p>Desequilibrio, balanceo y rotaciones</p>
             <p>
               Hemos visto que en una estructura árbol, existe la posibilidad de
               que los nodos puedan organizarse en cierto estado de
@@ -1750,7 +1753,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <li>Desequilibrio izquierda-izquierda (LL)</li>
             </ol>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 40</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">
                 Desequilibrio izquierda-izquierda
               </div>
@@ -1767,7 +1770,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <li>Desequilibrio derecha-derecha (RR)</li>
             </ol>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 41</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Desequilibrio derecha-derecha</div>
               <div class="figura">
                 <img
@@ -1782,7 +1785,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <li>Desequilibrio izquierda-derecha (LR)</li>
             </ol>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 42</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Desequilibrio izquierda-derecha</div>
               <div class="figura">
                 <img
@@ -1797,7 +1800,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <li>Desequilibrio derecha-izquierda (RL)</li>
             </ol>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 43</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Desequilibrio derecha-izquierda</div>
               <div class="figura">
                 <img
@@ -1823,7 +1826,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </li>
             </ol>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 44</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Rotación simple RR o LL</div>
               <div class="figura">
                 <img
@@ -1839,7 +1842,7 @@ void insertar(struct Nodo *nodo, int dato) {
               siguiente figura:
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 45</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">
                 Desequilibrio LL con descendientes
               </div>
@@ -1860,7 +1863,7 @@ void insertar(struct Nodo *nodo, int dato) {
               del nodo que se lleva hacia abajo (A).
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 46</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Rotación LL con descendientes</div>
               <div class="figura">
                 <img
@@ -1875,7 +1878,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <li>La siguiente estructura muestra un desequilibrio LR</li>
             </ol>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 47</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Estructura con desequilibrio LR</div>
               <div class="figura">
                 <img
@@ -1892,7 +1895,7 @@ void insertar(struct Nodo *nodo, int dato) {
               RR
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 48</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Rotación LR etapa a</div>
               <div class="figura">
                 <img
@@ -1908,7 +1911,7 @@ void insertar(struct Nodo *nodo, int dato) {
               en el caso 1.
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 49</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Rotación LR etapa b</div>
               <div class="figura">
                 <img
@@ -1926,7 +1929,7 @@ void insertar(struct Nodo *nodo, int dato) {
               de los nodos secundarios (A y B).
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 50</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Rotación LR con descendientes</div>
               <div class="figura">
                 <img
@@ -1944,7 +1947,7 @@ void insertar(struct Nodo *nodo, int dato) {
               de nodos, deberás aplicar las rotaciones vistas en este apartado,
               esto lo veremos a continuación.
             </p>
-            <p class="subtitulo-contenido">Inserción de un nodo</p>
+            <p>Inserción de un nodo</p>
             <p>
               La inserción de un nodo en un árbol rojo-negro, se realiza
               inicialmente de la misma forma que en un árbol binario de
@@ -1953,7 +1956,7 @@ void insertar(struct Nodo *nodo, int dato) {
               color rojo.
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 51</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Inserción del nodo D</div>
               <div class="figura">
                 <img
@@ -1983,19 +1986,18 @@ void insertar(struct Nodo *nodo, int dato) {
             <p>Hay varios escenarios que pueden suceder:</p>
             <ul class="lista-casos">
               <li>
-                <strong>Caso Trivial:</strong> Si el padre del nodo insertado es
-                negro, no se realiza ningún ajuste (el árbol es correcto).
+                Caso Trivial: Si el padre del nodo insertado es negro, no se
+                realiza ningún ajuste (el árbol es correcto).
               </li>
               <li>
-                <strong>Caso 1.</strong> El padre del nodo “D” no existe, esto
-                significa que el elemento que se inserta es la raíz del árbol,
-                por lo que se cambia el color de “D” a negro y se termina el
-                proceso, pero si el padre existe y es negro se termina el
-                proceso.
+                Caso 1. El padre del nodo “D” no existe, esto significa que el
+                elemento que se inserta es la raíz del árbol, por lo que se
+                cambia el color de “D” a negro y se termina el proceso, pero si
+                el padre existe y es negro se termina el proceso.
               </li>
             </ul>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 52</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Caso 1</div>
               <div class="figura">
                 <img
@@ -2008,12 +2010,12 @@ void insertar(struct Nodo *nodo, int dato) {
             </div>
             <ul class="lista-casos">
               <li>
-                <strong>Caso 2.</strong> El tío “C” del elemento que se está
-                insertando “D” es rojo.
+                Caso 2. El tío “C” del elemento que se está insertando “D” es
+                rojo.
               </li>
             </ul>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 53</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Caso 2: tío rojo</div>
               <div class="figura">
                 <img
@@ -2030,7 +2032,7 @@ void insertar(struct Nodo *nodo, int dato) {
               del abuelo vuelve a pintarse de negro.
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 54</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Caso 2: recoloración</div>
               <div class="figura">
                 <img
@@ -2043,13 +2045,13 @@ void insertar(struct Nodo *nodo, int dato) {
             </div>
             <ul class="lista-casos">
               <li>
-                <strong>Caso 3.</strong> El tío “C” del elemento insertado “F”
-                es negro, sin embargo, después de insertar en el árbol, este se
-                desequilibró en LL o RR.
+                Caso 3. El tío “C” del elemento insertado “F” es negro, sin
+                embargo, después de insertar en el árbol, este se desequilibró
+                en LL o RR.
               </li>
             </ul>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 55</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Caso 3 inicial</div>
               <div class="figura">
                 <img
@@ -2066,7 +2068,7 @@ void insertar(struct Nodo *nodo, int dato) {
               el nodo padre a negro.
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 56</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Caso 3: rotación y recoloración</div>
               <div class="figura">
                 <img
@@ -2079,13 +2081,13 @@ void insertar(struct Nodo *nodo, int dato) {
             </div>
             <ul class="lista-casos">
               <li>
-                <strong>Caso 4.</strong> El tío “C” del elemento insertado “E”
-                es negro, pero después de insertar dicho elemento “E” el árbol
-                se desequilibró en forma de RL o LR.
+                Caso 4. El tío “C” del elemento insertado “E” es negro, pero
+                después de insertar dicho elemento “E” el árbol se desequilibró
+                en forma de RL o LR.
               </li>
             </ul>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 57</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Caso 4 inicial</div>
               <div class="figura">
                 <img
@@ -2102,7 +2104,7 @@ void insertar(struct Nodo *nodo, int dato) {
               “D” del nodo “E” es rojo.
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 58</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Caso 4: primera rotación</div>
               <div class="figura">
                 <img
@@ -2118,7 +2120,7 @@ void insertar(struct Nodo *nodo, int dato) {
               a pintar el "antiguo" abuelo de rojo y el padre de negro.
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 59</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Caso 4: segunda rotación</div>
               <div class="figura">
                 <img
@@ -2131,12 +2133,12 @@ void insertar(struct Nodo *nodo, int dato) {
             </div>
             <ul class="lista-casos">
               <li>
-                <strong>Caso 5.</strong> Si el padre “C” y el tío “D” del
-                elemento insertado “E” son rojos
+                Caso 5. Si el padre “C” y el tío “D” del elemento insertado “E”
+                son rojos
               </li>
             </ul>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 60</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Caso 5 inicial</div>
               <div class="figura">
                 <img
@@ -2152,7 +2154,7 @@ void insertar(struct Nodo *nodo, int dato) {
               rojo.
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 61</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Caso 5: recoloración</div>
               <div class="figura">
                 <img
@@ -2164,13 +2166,10 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <ul class="lista-casos">
-              <li>
-                <strong>Caso 6.</strong> El elemento insertado “E” es un hijo
-                izquierdo
-              </li>
+              <li>Caso 6. El elemento insertado “E” es un hijo izquierdo</li>
             </ul>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 62</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Caso 6 inicial</div>
               <div class="figura">
                 <img
@@ -2186,7 +2185,7 @@ void insertar(struct Nodo *nodo, int dato) {
               a “C” y a “B”.
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 63</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Caso 6: rotación</div>
               <div class="figura">
                 <img
@@ -2199,13 +2198,12 @@ void insertar(struct Nodo *nodo, int dato) {
             </div>
             <ul class="lista-casos">
               <li>
-                <strong>Caso 7.</strong> El elemento insertado “E” tiene
-                descendientes, provocando un estado de desequilibrio de la
-                estructura.
+                Caso 7. El elemento insertado “E” tiene descendientes,
+                provocando un estado de desequilibrio de la estructura.
               </li>
             </ul>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 64</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Caso 7 inicial</div>
               <div class="figura">
                 <img
@@ -2218,7 +2216,7 @@ void insertar(struct Nodo *nodo, int dato) {
             </div>
             <p>Se efectúa una rotación.</p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 65</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Caso 7: rotación</div>
               <div class="figura">
                 <img
@@ -2240,16 +2238,6 @@ void insertar(struct Nodo *nodo, int dato) {
               Existen otro tipo de aplicaciones donde la estructura tipo árbol
               puede ayudar a eficientizar un proceso, veámosla en el siguiente
               tema.
-            </p>
-            <p>
-              Para mayor referencia y saber cómo se insertan o eliminan nodos en
-              un árbol rojo negro, se puede ir a la página
-              <a
-                href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html"
-                target="_blank"
-                >https://www.cs.usfca.edu/~galles/visualization/Algorithms.html</a
-              >
-              en el apartado red-black trees.
             </p>
           </div>
           <!-- FIN: Contenido para la sección 3.1.4 Árbol balanceado rojo-negro -->
@@ -2278,7 +2266,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </li>
             </ul>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 66</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">
                 Montículo como árbol binario completo
               </div>
@@ -2299,7 +2287,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </li>
             </ul>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 67</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Montículo parcialmente ordenado</div>
               <div class="figura">
                 <img
@@ -2341,7 +2329,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </li>
             </ul>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 68</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">
                 Representación lineal del montículo e índices
               </div>
@@ -2361,37 +2349,24 @@ void insertar(struct Nodo *nodo, int dato) {
             <ul class="lista-arboles">
               <li>
                 a) Para obtener el índice del hijo izquierdo, se multiplica el
-                índice (i) del nodo padre por dos y se suma uno:<br /><strong
-                  >Índice hijo izquierdo = 2*i+1</strong
-                >
+                índice (i) del nodo padre por dos y se suma uno:<br />Índice
+                hijo izquierdo = 2*i+1 >
               </li>
               <li>
                 b) Para obtener el índice del hijo derecho, se multiplica el
-                índice (i) del nodo padre por dos y se suma dos:<br /><strong
-                  >Índice hijo derecho = 2*i+2</strong
-                >
+                índice (i) del nodo padre por dos y se suma dos:<br />Índice
+                hijo derecho = 2*i+2
               </li>
               <li>
                 c) Para calcular el índice del nodo padre de cualquier nodo,
                 basta con tomar la parte entera de la división entre dos del
-                índice del nodo menos uno.<br /><strong
-                  >Índice padre de Nodo = (índice del nodo - 1) / 2</strong
-                >
+                índice del nodo menos uno.<br />Índice padre de Nodo = (índice
+                del nodo - 1) / 2
               </li>
             </ul>
             <p>
               Ya conoces varias propiedades de la estructura montículo, veamos a
               continuación en qué casos y cómo se puede aplicar esta estructura.
-            </p>
-            <p>
-              También puedes consultar la página
-              <a
-                href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html"
-                target="_blank"
-                >https://www.cs.usfca.edu/~galles/visualization/Algorithms.html</a
-              >
-              en el apartado “Heaps” para que tengas una referencia visual de
-              cómo se insertan o eliminan nodos de un montículo.
             </p>
           </div>
         </div>
@@ -2443,7 +2418,7 @@ void insertar(struct Nodo *nodo, int dato) {
               en salir es el elemento de mayor prioridad.
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 69</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Ejemplo de cola de prioridad</div>
               <div class="figura">
                 <img
@@ -2466,7 +2441,7 @@ void insertar(struct Nodo *nodo, int dato) {
               cualquiera de sus nodos hijos.
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 70</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Montículo de máximos</div>
               <div class="figura">
                 <img
@@ -2482,14 +2457,14 @@ void insertar(struct Nodo *nodo, int dato) {
               <li>Insertar un elemento en el montículo</li>
               <li>Eliminar el elemento máximo</li>
             </ul>
-            <p class="subtitulo-italica">Inserción</p>
+            <p>Inserción</p>
             <p>
               El elemento se agrega como un nodo en el siguiente espacio
               disponible en el montículo y subirá por la estructura mientras sea
               mayor a su padre.
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 71</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Inserción del 35 en el montículo</div>
               <div class="figura">
                 <img
@@ -2501,7 +2476,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 72</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">
                 Resultado final de la inserción del 35
               </div>
@@ -2514,7 +2489,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </div>
               <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
-            <p class="subtitulo-italica">Eliminación del elemento máximo</p>
+            <p>Eliminación del elemento máximo</p>
             <p>
               La eliminación del elemento máximo, implica eliminar la raíz del
               montículo pero es imprescindible mantener el orden de los nodos,
@@ -2525,7 +2500,7 @@ void insertar(struct Nodo *nodo, int dato) {
               intercambiar su valor con el hijo más grande.
             </p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 73</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">
                 Eliminación del 35: pasos iniciales
               </div>
@@ -2539,7 +2514,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 74</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Eliminación del 35: continuación</div>
               <div class="figura">
                 <img
@@ -2588,7 +2563,7 @@ void insertar(struct Nodo *nodo, int dato) {
               de búsqueda, árbol equilibrado rojo-negro y montículo,
               considerando tanto el mejor como el peor caso.
             </p>
-            <p class="subtitulo-contenido">Árbol de Búsqueda Binario</p>
+            <p>Árbol de Búsqueda Binario</p>
             <p>
               Recordando lo que se mencionó en la sección 3.1.3, el árbol
               binario de búsqueda es una estructura donde cada nodo tiene un
@@ -2600,9 +2575,7 @@ void insertar(struct Nodo *nodo, int dato) {
               nodo padre. Esta característica se aplica de forma recursiva a
               todos los nodos del árbol.
             </p>
-            <p class="subtitulo-contenido">
-              Complejidad en el escenario óptimo
-            </p>
+            <p>Complejidad en el escenario óptimo</p>
             <p>
               El caso óptimo en el árbol binario de búsqueda se presenta cuando
               este está perfectamente equilibrado, lo que indica que la altura
@@ -2610,7 +2583,7 @@ void insertar(struct Nodo *nodo, int dato) {
               complejidad para las operaciones de Búsqueda, Inserción y
               Eliminación es O(log n).
             </p>
-            <p class="subtitulo-contenido">Complejidad para el peor caso</p>
+            <p>Complejidad para el peor caso</p>
             <p>
               En el peor de los casos, el árbol puede ser considerado como una
               lista enlazada, lo que significa que cada nodo cuenta con un único
@@ -2621,7 +2594,7 @@ void insertar(struct Nodo *nodo, int dato) {
               complejidad de las operaciones de Búsqueda, Inserción y
               Eliminación es O(n).
             </p>
-            <p class="subtitulo-contenido">Árbol Balanceado Rojo-Negro</p>
+            <p>Árbol Balanceado Rojo-Negro</p>
             <p>
               Un árbol rojo-negro balanceado es una versión de árbol binario de
               búsqueda que garantiza que el árbol se mantenga equilibrado a
@@ -2629,7 +2602,7 @@ void insertar(struct Nodo *nodo, int dato) {
               que el árbol permanezca equilibrado con una altura que es
               logarítmica en función del número de nodos.
             </p>
-            <p class="subtitulo-contenido">Caso óptimo (Árbol equilibrado)</p>
+            <p>Caso óptimo (Árbol equilibrado)</p>
             <p>
               En un árbol rojo-negro, el equilibrio del árbol se mantiene de
               manera estricta debido a sus normas de color. Su altura permanece
@@ -2644,25 +2617,21 @@ void insertar(struct Nodo *nodo, int dato) {
               árbol se ajusta automáticamente mediante rotaciones para conservar
               su equilibrio.
             </p>
-            <p class="subtitulo-contenido">
-              Peor Escenario (Equilibrado por Naturaleza)
-            </p>
+            <p>Peor Escenario (Equilibrado por Naturaleza)</p>
             <p>
               El árbol rojo-negro siempre preserve un equilibrio, así que el
               caso más desfavorable sigue siendo O(log n). Independientemente de
               cuántas inserciones o eliminaciones se efectúen, el árbol nunca se
               desequilibra tanto como para llegar a una altura lineal.
             </p>
-            <p class="subtitulo-contenido">Montículo (Pila)</p>
+            <p>Montículo (Pila)</p>
             <p>
               El montículo (heap) es una forma de árbol completo que cumple con
               la característica de montículo. En un max heap, el valor de cada
               nodo es superior o igual al de sus hijos, mientras que en un min
               heap, el valor de cada nodo es inferior o igual al de sus hijos.
             </p>
-            <p class="subtitulo-contenido">
-              Óptimo Escenario (Operaciones en Montículo)
-            </p>
+            <p>Óptimo Escenario (Operaciones en Montículo)</p>
             <p>
               El escenario óptimo para un montículo se da cuando las acciones
               como la inserción o eliminación requieren una mínima cantidad de
@@ -2678,9 +2647,7 @@ void insertar(struct Nodo *nodo, int dato) {
               heap) consiste en trasladar el último nodo a la raíz y,
               posteriormente, “hundirlo” hacia abajo.
             </p>
-            <p class="subtitulo-contenido">
-              Peor Escenario (Montículo Desequilibrado)
-            </p>
+            <p>Peor Escenario (Montículo Desequilibrado)</p>
             <p>
               En un montículo, el peor escenario para la inserción y eliminación
               continúa siendo O(log n), ya que cada operación de subida o bajada
@@ -2699,7 +2666,7 @@ void insertar(struct Nodo *nodo, int dato) {
         </div>
         <div class="content">
           <div class="contenido-arboles-corto">
-            <p class="subtitulo-contenido">Árbol B</p>
+            <p>Árbol B</p>
             <p>
               El Árbol B es una forma de organización de datos que se ajusta
               automáticamente y es un tipo de árbol de búsqueda que se usa
@@ -2717,7 +2684,7 @@ void insertar(struct Nodo *nodo, int dato) {
               hijos, sino que puede tener múltiples, y las claves en los nodos
               permanecen ordenadas.
             </p>
-            <p class="subtitulo-contenido">Características del Árbol B:</p>
+            <p>Características del Árbol B:</p>
             <ul class="lista-arboles">
               <li>
                 Orden m del árbol: El árbol B cuenta con un parámetro conocido
@@ -2784,9 +2751,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 </ul>
               </li>
             </ul>
-            <p class="subtitulo-contenido">
-              Las operaciones fundamentales de un árbol B son:
-            </p>
+            <p>Las operaciones fundamentales de un árbol B son:</p>
             <ul class="lista-arboles">
               <li>
                 Inserción. La incorporación en un árbol B es un proceso ágil que
@@ -2866,7 +2831,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 </ul>
               </li>
             </ul>
-            <p class="subtitulo-contenido">Beneficios del Árbol B</p>
+            <p>Beneficios del Árbol B</p>
             <ul class="lista-arboles">
               <li>
                 Eficiencia en el almacenamiento en disco duro: Los árboles B son
@@ -2887,7 +2852,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 las búsquedas siempre se efectúen en tiempo logarítmico.
               </li>
             </ul>
-            <p class="subtitulo-contenido">Aplicaciones Típicas</p>
+            <p>Aplicaciones Típicas</p>
             <ul class="lista-arboles">
               <li>
                 Sistemas de bases de datos: Los árboles B forman la estructura
@@ -2915,7 +2880,7 @@ void insertar(struct Nodo *nodo, int dato) {
             </p>
             <p>Raíz:</p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 75</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Ejemplo de árbol B de orden 3</div>
               <div class="figura">
                 <img
@@ -2939,7 +2904,7 @@ void insertar(struct Nodo *nodo, int dato) {
             <p>Al añadir un valor 20, el árbol se reorganizará:</p>
             <p>Raíz:</p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 76</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">
                 Árbol B reorganizado al insertar 20
               </div>
@@ -2952,7 +2917,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </div>
               <div class="figure-caption">Nota: Elaboración propia</div>
             </div>
-            <p class="subtitulo-contenido">Árbol B+</p>
+            <p>Árbol B+</p>
             <p>
               El Árbol B+ representa una modificación del Árbol B, utilizado
               principalmente en sistemas de bases de datos y archivos, gracias a
@@ -2980,7 +2945,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 recorrido secuencial eficiente de los datos.
               </li>
             </ul>
-            <p class="subtitulo-contenido">Estructura de un Árbol B+</p>
+            <p>Estructura de un Árbol B+</p>
             <p>Nodos interiores:</p>
             <ul class="lista-arboles">
               <li>
@@ -3010,9 +2975,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 en secuencia sea sumamente eficaz.
               </li>
             </ul>
-            <p class="subtitulo-contenido">
-              Características principales del Árbol B+
-            </p>
+            <p>Características principales del Árbol B+</p>
             <ul class="lista-arboles">
               <li>
                 Balanceado: Similar al Árbol B, el Árbol B+ también es un árbol
@@ -3041,7 +3004,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 búsqueda.
               </li>
             </ul>
-            <p class="subtitulo-contenido">Acciones en el Árbol B+</p>
+            <p>Acciones en el Árbol B+</p>
             <ul class="lista-arboles">
               <li>
                 Inserción. El procedimiento de inserción en un Árbol B+ se
@@ -3109,7 +3072,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 </ul>
               </li>
             </ul>
-            <p class="subtitulo-contenido">Beneficios del Árbol B+</p>
+            <p>Beneficios del Árbol B+</p>
             <p>
               Eficiencia en búsquedas secuenciales: Gracias a la conexión entre
               las hojas, el Árbol B+ facilita un recorrido secuencial eficaz.
@@ -3137,7 +3100,7 @@ void insertar(struct Nodo *nodo, int dato) {
               de rango o para recorrer todas las claves de manera efectiva, sin
               la necesidad de reexplorar el árbol.
             </p>
-            <p class="subtitulo-contenido">Ejemplo de un Árbol B+</p>
+            <p>Ejemplo de un Árbol B+</p>
             <p>
               Analicemos un Árbol B+ de orden 3, en el que cada nodo puede
               contener hasta 2 claves y hasta 3 descendientes. Supongamos que
@@ -3146,7 +3109,7 @@ void insertar(struct Nodo *nodo, int dato) {
             <p>Estructura primordial:</p>
             <p>Raíz:</p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 77</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">Ejemplo de árbol B+</div>
               <div class="figura">
                 <img
@@ -3166,7 +3129,7 @@ void insertar(struct Nodo *nodo, int dato) {
             </ul>
             <p>Conexión entre páginas:</p>
             <div class="figure-container figura-chica">
-              <div class="figure-caption">Figura 78</div>
+              <div class="figure-number"></div>
               <div class="figure-caption">
                 Conexión entre hojas del árbol B+
               </div>
@@ -3186,7 +3149,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 el nodo con las claves 50, 60.
               </li>
             </ul>
-            <p class="subtitulo-contenido">Usos del Árbol B+</p>
+            <p>Usos del Árbol B+</p>
             <p>
               Bases de datos: El Árbol B+ se usa comúnmente en bases de datos
               relacionales para crear índices. Esto optimiza la rapidez de las
@@ -3205,7 +3168,7 @@ void insertar(struct Nodo *nodo, int dato) {
               donde la eficacia en la recuperación y almacenamiento de
               información es fundamental.
             </p>
-            <p class="subtitulo-contenido">Árbol de N elementos</p>
+            <p>Árbol de N elementos</p>
             <p>
               Un Árbol N-ario es una clase de estructura de datos donde cada
               nodo puede poseer hasta N hijos. Es una extensión de los árboles
@@ -3218,9 +3181,7 @@ void insertar(struct Nodo *nodo, int dato) {
               permite que un nodo tenga cualquier cantidad de hijos, siempre que
               no exceda el valor N.
             </p>
-            <p class="subtitulo-contenido">
-              Características esenciales del Árbol N-ario:
-            </p>
+            <p>Características esenciales del Árbol N-ario:</p>
             <ul class="lista-arboles">
               <li>
                 Raíz: Al igual que cualquier árbol, el árbol N-ario cuenta con
@@ -3242,7 +3203,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 nodo está determinada por el número de hijos que posee.
               </li>
             </ul>
-            <p class="subtitulo-contenido">Estructura de un Árbol N-ario</p>
+            <p>Estructura de un Árbol N-ario</p>
             <p>
               Un Árbol N-ario se conforma por una secuencia de nodos, y cada
               nodo posee:
@@ -3283,14 +3244,14 @@ E   F          G   H</pre
               Este es un Árbol N-ario con N = 3, donde cada nodo puede tener
               como máximo tres hijos.
             </p>
-            <p class="subtitulo-contenido">Acciones en un Árbol N-ario.</p>
+            <p>Acciones en un Árbol N-ario.</p>
             <p>
               Las acciones más frecuentes que se llevan a cabo en un Árbol
               N-ario son inserciones, búsquedas, eliminaciones y recorridos:
             </p>
             <p>
-              <strong>Inserción.</strong> La inserción en un Árbol N-ario se
-              lleva a cabo, por lo general, de la siguiente forma:
+              Inserción. La inserción en un Árbol N-ario se lleva a cabo, por lo
+              general, de la siguiente forma:
             </p>
             <ul class="lista-arboles">
               <li>
@@ -3306,8 +3267,8 @@ E   F          G   H</pre
               </li>
             </ul>
             <p>
-              <strong>Búsqueda.</strong> La exploración en un árbol N-ario se
-              lleva a cabo de forma recursiva:
+              Búsqueda. La exploración en un árbol N-ario se lleva a cabo de
+              forma recursiva:
             </p>
             <ul class="lista-arboles">
               <li>
@@ -3321,8 +3282,8 @@ E   F          G   H</pre
               </li>
             </ul>
             <p>
-              <strong>Eliminación.</strong> La supresión de un nodo en un Árbol
-              N-ario normalmente se lleva a cabo mediante estos pasos:
+              Eliminación. La supresión de un nodo en un Árbol N-ario
+              normalmente se lleva a cabo mediante estos pasos:
             </p>
             <ul class="lista-arboles">
               <li>Se intenta localizar el nodo que se desea eliminar.</li>
@@ -3338,8 +3299,8 @@ E   F          G   H</pre
               </li>
             </ul>
             <p>
-              <strong>Recorridos.</strong> Así como en otros árboles, se pueden
-              llevar a cabo diferentes tipos de recorridos en un árbol N-ario:
+              Recorridos. Así como en otros árboles, se pueden llevar a cabo
+              diferentes tipos de recorridos en un árbol N-ario:
             </p>
             <ul class="lista-arboles">
               <li>
@@ -3354,13 +3315,13 @@ E   F          G   H</pre
                 descendientes de la raíz), y así sucesivamente.
               </li>
             </ul>
-            <p><strong>Ejemplo de exploración en profundidad (DFS):</strong></p>
+            <p>Ejemplo de exploración en profundidad (DFS):</p>
             <p>Teniendo en cuenta el árbol mencionado anteriormente:</p>
             <p>
               El trayecto completo sería: A -&gt; B -&gt; E -&gt; F -&gt; C
               -&gt; D -&gt; G -&gt; H.
             </p>
-            <p class="subtitulo-contenido">Beneficios del Árbol N-ario</p>
+            <p>Beneficios del Árbol N-ario</p>
             <ul class="lista-arboles">
               <li>
                 Versatilidad: El Árbol N-ario ofrece una mayor versatilidad en
@@ -3382,7 +3343,7 @@ E   F          G   H</pre
                 ciertas circunstancias.
               </li>
             </ul>
-            <p class="subtitulo-contenido">Usos del Árbol N-ario</p>
+            <p>Usos del Árbol N-ario</p>
             <p>
               El Árbol N-ario cuenta con múltiples aplicaciones en informática,
               especialmente en campos que necesitan representar jerarquías o
@@ -3514,5 +3475,11 @@ E   F          G   H</pre
       </footer>
     </div>
     <script src="3.1.js"></script>
+    <script src="visor.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.js"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </body>
 </html>
