@@ -187,7 +187,7 @@
       "Demostrar que los números no se pueden sumar.",
       "Crear una base de datos de sumas."
     ],
-    "豆respuesta_correcta": "Asegurar que cada paso se haya ejecutado en el orden establecido."
+    "respuesta_correcta": "Asegurar que cada paso se haya ejecutado en el orden establecido."
   },
   {
     "pregunta": "¿Qué es el pseudocódigo según el apartado 1.1.2?",
