@@ -1,0 +1,112 @@
+[
+  {
+    "pregunta": "Marco, programador del área de sistemas de un almacén logístico, necesita un botón 'deshacer' que revierta primero el último movimiento de inventario registrado. ¿Qué principio de organización necesita?",
+    "opciones": ["LIFO (Último en entrar, primero en salir)", "FIFO (Primero en entrar, primero en salir)", "LILO (Último en entrar, último en salir)", "Aleatorio"],
+    "respuesta_correcta": "LIFO (Último en entrar, primero en salir)"
+  },
+  {
+    "pregunta": "Para agregar un movimiento nuevo al registro de 'deshacer', ¿qué operación básica de la pila debe usar Marco?",
+    "opciones": ["push()", "pop()", "enqueue()", "top()"],
+    "respuesta_correcta": "push()"
+  },
+  {
+    "pregunta": "Cuando el usuario presiona 'deshacer', el sistema debe quitar y recuperar el último movimiento registrado. ¿Qué operación de la pila ejecuta Marco?",
+    "opciones": ["pop()", "push()", "dequeue()", "isEmpty()"],
+    "respuesta_correcta": "pop()"
+  },
+  {
+    "pregunta": "Marco quiere mostrarle al usuario cuál sería el próximo movimiento en deshacerse, sin eliminarlo todavía del registro. ¿Qué operación de la pila usa?",
+    "opciones": ["top() o peek()", "pop()", "push()", "enqueue()"],
+    "respuesta_correcta": "top() o peek()"
+  },
+  {
+    "pregunta": "Marco implementa la pila de 'deshacer' con nodos enlazados dinámicamente en lugar de un arreglo de tamaño fijo. ¿Qué ventaja obtiene con esta decisión?",
+    "opciones": ["Flexibilidad en el tamaño de la pila", "Acceso directo a cualquier movimiento por índice", "No necesita manejar memoria en absoluto", "Elimina automáticamente los movimientos antiguos"],
+    "respuesta_correcta": "Flexibilidad en el tamaño de la pila"
+  },
+  {
+    "pregunta": "Si Marco implementa correctamente las operaciones de la pila de 'deshacer', ¿cuál es su complejidad temporal esperada?",
+    "opciones": ["O(1)", "O(n)", "O(n²)", "O(log n)"],
+    "respuesta_correcta": "O(1)"
+  },
+  {
+    "pregunta": "Los pedidos del almacén deben despacharse exactamente en el mismo orden en que llegaron. ¿Qué principio debe seguir la estructura que modela la fila de pedidos?",
+    "opciones": ["FIFO (Primero en entrar, primero en salir)", "LIFO (Último en entrar, primero en salir)", "Prioridad aleatoria", "Orden alfabético"],
+    "respuesta_correcta": "FIFO (Primero en entrar, primero en salir)"
+  },
+  {
+    "pregunta": "¿Cómo se llama la operación que usa Marco para registrar un nuevo pedido al final de la fila de despacho?",
+    "opciones": ["enqueue", "dequeue", "push", "pop"],
+    "respuesta_correcta": "enqueue"
+  },
+  {
+    "pregunta": "¿Cómo se llama la operación que usa Marco para atender y retirar el pedido más antiguo de la fila?",
+    "opciones": ["dequeue", "enqueue", "push", "top"],
+    "respuesta_correcta": "dequeue"
+  },
+  {
+    "pregunta": "Un cliente con contrato preferente debe despacharse antes que otros, aunque su pedido llegó después. ¿Qué variante de cola necesita implementar Marco?",
+    "opciones": ["Cola de prioridad", "Cola circular simple", "Pila de prioridad", "Lista doblemente enlazada"],
+    "respuesta_correcta": "Cola de prioridad"
+  },
+  {
+    "pregunta": "Si la fila de pedidos de Marco está implementada con un arreglo de tamaño fijo y llega a su límite de espacio, ¿qué problema ocurre al intentar registrar un pedido más?",
+    "opciones": ["Desbordamiento (overflow)", "Colisión", "Subdesbordamiento", "Fragmentación de memoria"],
+    "respuesta_correcta": "Desbordamiento (overflow)"
+  },
+  {
+    "pregunta": "Marco necesita un catálogo de productos donde cada producto tenga un enlace al siguiente, sin necesidad de reservar espacio fijo desde el inicio. ¿Qué estructura es la más adecuada?",
+    "opciones": ["Lista simple enlazada", "Tabla hash cerrada", "Cola de prioridad", "Arreglo estático"],
+    "respuesta_correcta": "Lista simple enlazada"
+  },
+  {
+    "pregunta": "Marco quiere que el catálogo se pueda recorrer tanto hacia adelante como hacia atrás desde la interfaz. ¿Qué estructura le conviene usar?",
+    "opciones": ["Lista doblemente enlazada", "Lista simple enlazada", "Pila", "Tabla hash abierta"],
+    "respuesta_correcta": "Lista doblemente enlazada"
+  },
+  {
+    "pregunta": "Para una sección de banners promocionales que debe repetirse en bucle sin fin dentro del catálogo, ¿qué estructura usaría Marco?",
+    "opciones": ["Lista circular", "Lista simple enlazada", "Cola de prioridad", "Tabla hash cerrada"],
+    "respuesta_correcta": "Lista circular"
+  },
+  {
+    "pregunta": "¿Qué desventaja tiene el catálogo de Marco al estar implementado como lista enlazada, frente a un arreglo, si necesita acceder directamente al producto número 500?",
+    "opciones": ["No permite acceso directo; hay que recorrer la lista desde el inicio", "Ocupa menos memoria que un arreglo", "No permite insertar productos nuevos", "Solo puede almacenar un tipo de dato"],
+    "respuesta_correcta": "No permite acceso directo; hay que recorrer la lista desde el inicio"
+  },
+  {
+    "pregunta": "¿Cuál es la complejidad temporal de buscar un producto específico dentro del catálogo si está implementado como lista simple enlazada?",
+    "opciones": ["O(n)", "O(1)", "O(log n)", "O(n²)"],
+    "respuesta_correcta": "O(n)"
+  },
+  {
+    "pregunta": "Marco quiere que un cliente encuentre un producto por su código SKU en tiempo prácticamente instantáneo, sin recorrer todo el catálogo. ¿Qué estructura le conviene usar?",
+    "opciones": ["Tabla hash", "Lista simple enlazada", "Pila", "Cola FIFO"],
+    "respuesta_correcta": "Tabla hash"
+  },
+  {
+    "pregunta": "¿Qué operación transforma el código SKU de un producto en una posición dentro del arreglo de la tabla hash?",
+    "opciones": ["Función hash", "Función de ordenamiento", "Recorrido secuencial", "Backtracking"],
+    "respuesta_correcta": "Función hash"
+  },
+  {
+    "pregunta": "Marco nota que dos productos con SKU distinto terminan generando el mismo índice dentro de la tabla hash. ¿Cómo se llama este problema?",
+    "opciones": ["Colisión", "Desbordamiento", "Subdesbordamiento", "Fragmentación"],
+    "respuesta_correcta": "Colisión"
+  },
+  {
+    "pregunta": "Para resolver las colisiones, Marco decide que cada posición de la tabla hash almacene una pequeña lista enlazada con los productos que comparten índice. ¿Qué técnica está usando?",
+    "opciones": ["Encadenamiento", "Direccionamiento abierto", "Sondeo lineal", "Backtracking"],
+    "respuesta_correcta": "Encadenamiento"
+  },
+  {
+    "pregunta": "En condiciones ideales, con una buena función hash y pocas colisiones, ¿qué complejidad temporal tienen las operaciones de búsqueda e inserción en la tabla hash de productos de Marco?",
+    "opciones": ["O(1)", "O(n)", "O(n²)", "O(log n)"],
+    "respuesta_correcta": "O(1)"
+  },
+  {
+    "pregunta": "Si Marco usa una función hash de mala calidad y muchos productos terminan colisionando en las mismas posiciones, ¿a qué complejidad se pueden degradar las operaciones de la tabla?",
+    "opciones": ["Lineal O(n)", "Constante O(1)", "Logarítmica O(log n)", "Nula, la tabla deja de funcionar"],
+    "respuesta_correcta": "Lineal O(n)"
+  }
+]
