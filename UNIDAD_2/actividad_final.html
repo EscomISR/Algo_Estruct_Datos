@@ -278,7 +278,7 @@
             <ul>
                 <li><strong>Misión:</strong> Ayuda a Marco respondiendo correctamente las preguntas del caso, que combinan los 4 temas de la unidad.</li>
                 <li><strong>Mecánica:</strong> Cada respuesta correcta hace 1 punto de daño al Inventario Descontrolado. Cada error suma un fallo.</li>
-                <li><strong>Victoria:</strong> Derrota al Inventario respondiendo correctamente las 8 preguntas de la ronda.</li>
+                <li><strong>Victoria:</strong> Derrota al Inventario respondiendo correctamente las 20 preguntas de la ronda.</li>
                 <li><strong>Derrota:</strong> Llegas a 3 errores antes de derrotarlo.</li>
                 <li>Puedes jugar varias veces: las preguntas se eligen al azar de un banco más grande, así que cada intento puede ser distinto.</li>
             </ul>
@@ -291,7 +291,7 @@
                 <div class="health-bar-container">
                     <div class="health-bar" id="healthBar" style="width: 100%;"></div>
                 </div>
-                <div class="health-text" id="healthText">8 / 8 HP</div>
+                <div class="health-text" id="healthText">20 / 20 HP</div>
             </div>
 
             <div class="player-stats">
@@ -358,7 +358,7 @@
 
     <script>
   let time = 0, attempts = 0, errors = 0, completed = 0;
-  let monsterHP = 8; const maxHP = 8; const maxErrors = 3;
+  let monsterHP = 20; const maxHP = 20; const maxErrors = 3;
   let gameOver = false, timerInterval, sidebarOpen = false;
   let selectedAnswers = {};
   let questions = [];
@@ -374,7 +374,7 @@
       }
 
       shuffleArray(allQuestionsRaw);
-      questions = allQuestionsRaw.slice(0, 8).map((q, idx) => {
+      questions = allQuestionsRaw.slice(0, 20).map((q, idx) => {
         const questionText = q.pregunta ?? q.question;
         const optionsOrig = q.opciones ?? q.options;
         const answerOrig  = q.respuesta_correcta ?? q.answer;
