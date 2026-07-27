@@ -1,0 +1,267 @@
+[
+  {
+    "id": 1,
+    "type": "opcion_multiple",
+    "question": "¿Qué principio sigue la pila como estructura de datos?",
+    "options": [
+      "LIFO (el último elemento en entrar es el primero en salir)",
+      "FIFO (el primero en entrar es el primero en salir)",
+      "Acceso aleatorio sin ningún orden"
+    ],
+    "answer": "LIFO (el último elemento en entrar es el primero en salir)"
+  },
+  {
+    "id": 2,
+    "type": "opcion_multiple",
+    "question": "¿Qué operación básica de la pila inserta un elemento en la cima?",
+    "options": [
+      "push()",
+      "enqueue()",
+      "dequeue()"
+    ],
+    "answer": "push()"
+  },
+  {
+    "id": 3,
+    "type": "opcion_multiple",
+    "question": "¿Qué operación básica de la pila elimina y devuelve el elemento de la cima?",
+    "options": [
+      "pop()",
+      "push()",
+      "top()"
+    ],
+    "answer": "pop()"
+  },
+  {
+    "id": 4,
+    "type": "opcion_multiple",
+    "question": "¿Qué operación permite consultar el elemento de la cima sin eliminarlo de la pila?",
+    "options": [
+      "top() o peek()",
+      "pop()",
+      "isEmpty()"
+    ],
+    "answer": "top() o peek()"
+  },
+  {
+    "id": 5,
+    "type": "opcion_multiple",
+    "question": "¿Qué caracteriza a la implementación estática de una pila?",
+    "options": [
+      "Usa una estructura de tamaño fijo, como un arreglo",
+      "Usa nodos enlazados de tamaño dinámico",
+      "No tiene ningún límite de elementos"
+    ],
+    "answer": "Usa una estructura de tamaño fijo, como un arreglo"
+  },
+  {
+    "id": 6,
+    "type": "opcion_multiple",
+    "question": "¿Cuál es la ventaja principal de la implementación dinámica de una pila?",
+    "options": [
+      "Flexibilidad en el tamaño de la pila",
+      "Menor consumo de memoria en todos los casos",
+      "Permite acceso directo a cualquier elemento"
+    ],
+    "answer": "Flexibilidad en el tamaño de la pila"
+  },
+  {
+    "id": 7,
+    "type": "opcion_multiple",
+    "question": "¿Cuál es la complejidad temporal de las operaciones push y pop bien implementadas?",
+    "options": [
+      "O(1)",
+      "O(n)",
+      "O(n²)"
+    ],
+    "answer": "O(1)"
+  },
+  {
+    "id": 8,
+    "type": "opcion_multiple",
+    "question": "¿En qué escenarios se utilizan comúnmente las pilas?",
+    "options": [
+      "Evaluación de expresiones matemáticas y control de la recursividad",
+      "Ordenamiento de grandes volúmenes de datos",
+      "Búsqueda balanceada en árboles"
+    ],
+    "answer": "Evaluación de expresiones matemáticas y control de la recursividad"
+  },
+  {
+    "id": 9,
+    "type": "opcion_multiple",
+    "question": "¿Qué verifica la operación isEmpty() de una pila?",
+    "options": [
+      "Si la pila está vacía",
+      "Si la pila alcanzó su capacidad máxima",
+      "Cuál es el elemento en la base"
+    ],
+    "answer": "Si la pila está vacía"
+  },
+  {
+    "id": 10,
+    "type": "verdadero_falso",
+    "statement": "La pila sigue el principio LIFO, donde el último elemento en entrar es el primero en salir.",
+    "answer": true
+  },
+  {
+    "id": 11,
+    "type": "verdadero_falso",
+    "statement": "En una pila es válido extraer un elemento aunque esté vacía, sin generar ningún error.",
+    "answer": false
+  },
+  {
+    "id": 12,
+    "type": "verdadero_falso",
+    "statement": "La implementación dinámica de una pila evita el problema de desbordamiento por tamaño fijo.",
+    "answer": true
+  },
+  {
+    "id": 13,
+    "type": "verdadero_falso",
+    "statement": "Las pilas, colas, arreglos y listas enlazadas se consideran estructuras de organización lógica no lineal.",
+    "answer": false
+  },
+  {
+    "id": 14,
+    "type": "verdadero_falso",
+    "statement": "En una implementación dinámica, cada elemento de la pila se almacena en un nodo con un dato y una referencia al siguiente nodo.",
+    "answer": true
+  },
+  {
+    "id": 15,
+    "type": "opcion_multiple",
+    "question": "¿Cuál es una desventaja notable de la implementación dinámica de una pila?",
+    "options": [
+      "Mayor complejidad y necesidad de manejar memoria dinámica",
+      "Un límite fijo e inevitable de elementos",
+      "Imposibilidad de insertar nuevos elementos"
+    ],
+    "answer": "Mayor complejidad y necesidad de manejar memoria dinámica"
+  },
+  {
+    "id": 16,
+    "type": "completar_oracion",
+    "question": "La pila es una estructura de datos que sigue el principio _____, donde el último elemento en entrar es el primero en _____.",
+    "wordBank": [
+      "LIFO",
+      "salir",
+      "FIFO",
+      "entrar",
+      "aleatorio"
+    ],
+    "answer": [
+      "LIFO",
+      "salir"
+    ]
+  },
+  {
+    "id": 17,
+    "type": "completar_oracion",
+    "question": "La operación _____ inserta un elemento en la cima de la pila, mientras que la operación _____ lo elimina y lo devuelve.",
+    "wordBank": [
+      "push",
+      "pop",
+      "enqueue",
+      "dequeue",
+      "top"
+    ],
+    "answer": [
+      "push",
+      "pop"
+    ]
+  },
+  {
+    "id": 18,
+    "type": "completar_oracion",
+    "question": "La implementación _____ de una pila usa una estructura de tamaño fijo, mientras que la implementación _____ usa nodos enlazados dinámicamente.",
+    "wordBank": [
+      "estática",
+      "dinámica",
+      "circular",
+      "genérica",
+      "lineal"
+    ],
+    "answer": [
+      "estática",
+      "dinámica"
+    ]
+  },
+  {
+    "id": 19,
+    "type": "completar_oracion",
+    "question": "Las operaciones push y pop, bien implementadas sobre una pila, tienen una complejidad temporal de _____.",
+    "wordBank": [
+      "O(1)",
+      "O(n)",
+      "O(n²)",
+      "O(log n)"
+    ],
+    "answer": [
+      "O(1)"
+    ]
+  },
+  {
+    "id": 20,
+    "type": "completar_oracion",
+    "question": "Las pilas se utilizan comúnmente para la evaluación de expresiones _____ y para controlar la _____ de un programa.",
+    "wordBank": [
+      "matemáticas",
+      "recursividad",
+      "estadísticas",
+      "memoria caché",
+      "concurrencia"
+    ],
+    "answer": [
+      "matemáticas",
+      "recursividad"
+    ]
+  },
+  {
+    "id": 21,
+    "type": "ordenar_oracion",
+    "question": "",
+    "segments": [
+      "La pila",
+      "es una estructura lineal",
+      "que organiza sus datos",
+      "bajo el principio LIFO."
+    ],
+    "answer": [
+      "La pila",
+      "es una estructura lineal",
+      "que organiza sus datos",
+      "bajo el principio LIFO."
+    ]
+  },
+  {
+    "id": 22,
+    "type": "ordenar_oracion",
+    "question": "",
+    "segments": [
+      "Para agregar un elemento a la pila",
+      "se utiliza la operación push,",
+      "ubicándolo en la cima."
+    ],
+    "answer": [
+      "Para agregar un elemento a la pila",
+      "se utiliza la operación push,",
+      "ubicándolo en la cima."
+    ]
+  },
+  {
+    "id": 23,
+    "type": "ordenar_oracion",
+    "question": "",
+    "segments": [
+      "La implementación dinámica",
+      "evita el desbordamiento",
+      "porque no depende de un tamaño fijo."
+    ],
+    "answer": [
+      "La implementación dinámica",
+      "evita el desbordamiento",
+      "porque no depende de un tamaño fijo."
+    ]
+  }
+]
