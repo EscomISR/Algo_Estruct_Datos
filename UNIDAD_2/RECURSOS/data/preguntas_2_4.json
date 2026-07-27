@@ -1,0 +1,270 @@
+[
+  {
+    "id": 1,
+    "type": "opcion_multiple",
+    "question": "¿Cuál es el propósito principal de una tabla hash como estructura de datos?",
+    "options": [
+      "Almacenar y recuperar información de forma muy rápida",
+      "Mantener los elementos siempre ordenados alfabéticamente",
+      "Evitar por completo el uso de memoria dinámica"
+    ],
+    "answer": "Almacenar y recuperar información de forma muy rápida"
+  },
+  {
+    "id": 2,
+    "type": "opcion_multiple",
+    "question": "¿Qué operación se aplica a una clave para transformarla en una posición dentro del arreglo de una tabla hash?",
+    "options": [
+      "Función hash",
+      "Función de ordenamiento",
+      "Recorrido secuencial"
+    ],
+    "answer": "Función hash"
+  },
+  {
+    "id": 3,
+    "type": "opcion_multiple",
+    "question": "Según su especificación genérica, ¿cómo organiza la información una tabla hash?",
+    "options": [
+      "En pares (clave, valor)",
+      "En una sola lista de valores sin claves",
+      "En una matriz bidimensional de datos"
+    ],
+    "answer": "En pares (clave, valor)"
+  },
+  {
+    "id": 4,
+    "type": "opcion_multiple",
+    "question": "¿Cómo se le llama al problema que ocurre cuando dos claves diferentes generan el mismo índice en la tabla hash?",
+    "options": [
+      "Colisión",
+      "Desbordamiento",
+      "Subdesbordamiento"
+    ],
+    "answer": "Colisión"
+  },
+  {
+    "id": 5,
+    "type": "opcion_multiple",
+    "question": "¿Qué técnicas principales se usan para resolver colisiones en una tabla hash?",
+    "options": [
+      "Encadenamiento y direccionamiento abierto",
+      "Ordenamiento y búsqueda binaria",
+      "Recursividad y backtracking"
+    ],
+    "answer": "Encadenamiento y direccionamiento abierto"
+  },
+  {
+    "id": 6,
+    "type": "opcion_multiple",
+    "question": "¿En qué técnica de resolución de colisiones cada posición de la tabla contiene una estructura adicional, como una lista enlazada?",
+    "options": [
+      "Encadenamiento",
+      "Direccionamiento abierto",
+      "Sondeo cuadrático"
+    ],
+    "answer": "Encadenamiento"
+  },
+  {
+    "id": 7,
+    "type": "opcion_multiple",
+    "question": "¿En qué variante de tabla hash los elementos se almacenan directamente dentro del arreglo principal, sin estructuras auxiliares?",
+    "options": [
+      "Tablas hash cerradas (direccionamiento abierto)",
+      "Tablas hash abiertas",
+      "Tablas hash distribuidas"
+    ],
+    "answer": "Tablas hash cerradas (direccionamiento abierto)"
+  },
+  {
+    "id": 8,
+    "type": "opcion_multiple",
+    "question": "¿Cuáles son los métodos de exploración más comunes en las tablas hash cerradas?",
+    "options": [
+      "Sondeo lineal, sondeo cuadrático y doble dispersión",
+      "Recorrido en profundidad y en anchura",
+      "Ordenamiento por mezcla y por burbuja"
+    ],
+    "answer": "Sondeo lineal, sondeo cuadrático y doble dispersión"
+  },
+  {
+    "id": 9,
+    "type": "opcion_multiple",
+    "question": "En condiciones ideales, ¿cuál es la complejidad de búsqueda, inserción y eliminación en una tabla hash?",
+    "options": [
+      "O(1)",
+      "O(n)",
+      "O(n²)"
+    ],
+    "answer": "O(1)"
+  },
+  {
+    "id": 10,
+    "type": "verdadero_falso",
+    "statement": "Una mala función hash o un factor de carga elevado incrementan la probabilidad de colisiones.",
+    "answer": true
+  },
+  {
+    "id": 11,
+    "type": "verdadero_falso",
+    "statement": "Las tablas hash mantienen siempre un orden secuencial natural de sus elementos almacenados.",
+    "answer": false
+  },
+  {
+    "id": 12,
+    "type": "verdadero_falso",
+    "statement": "Si ocurren muchas colisiones sin control, las operaciones de una tabla hash pueden degradarse a O(n).",
+    "answer": true
+  },
+  {
+    "id": 13,
+    "type": "verdadero_falso",
+    "statement": "Las funciones hash tienen una aplicación fundamental en el almacenamiento seguro de contraseñas.",
+    "answer": true
+  },
+  {
+    "id": 14,
+    "type": "verdadero_falso",
+    "statement": "El hashing con encadenamiento nunca requiere memoria adicional respecto a una tabla hash cerrada.",
+    "answer": false
+  },
+  {
+    "id": 15,
+    "type": "opcion_multiple",
+    "question": "¿Qué elemento es crucial para que una tabla hash distribuya uniformemente las claves y evite concentraciones?",
+    "options": [
+      "Una función hash adecuada",
+      "Un arreglo ordenado previamente",
+      "Un límite fijo de colisiones permitidas"
+    ],
+    "answer": "Una función hash adecuada"
+  },
+  {
+    "id": 16,
+    "type": "completar_oracion",
+    "question": "Una tabla hash organiza su información en pares (_____, _____), y usa una función hash para ubicarlos en el arreglo.",
+    "wordBank": [
+      "clave",
+      "valor",
+      "índice",
+      "nodo",
+      "puntero"
+    ],
+    "answer": [
+      "clave",
+      "valor"
+    ]
+  },
+  {
+    "id": 17,
+    "type": "completar_oracion",
+    "question": "Cuando dos claves generan el mismo índice en la tabla, ocurre una _____, que puede resolverse mediante _____.",
+    "wordBank": [
+      "colisión",
+      "encadenamiento",
+      "función hash",
+      "recursividad"
+    ],
+    "answer": [
+      "colisión",
+      "encadenamiento"
+    ]
+  },
+  {
+    "id": 18,
+    "type": "completar_oracion",
+    "question": "En condiciones ideales, las operaciones de una tabla hash tienen complejidad _____, pero pueden degradarse a _____ si hay demasiadas colisiones.",
+    "wordBank": [
+      "O(1)",
+      "O(n)",
+      "O(log n)",
+      "O(n²)"
+    ],
+    "answer": [
+      "O(1)",
+      "O(n)"
+    ]
+  },
+  {
+    "id": 19,
+    "type": "completar_oracion",
+    "question": "Las tablas hash _____ almacenan los elementos directamente en el arreglo, mientras que las tablas hash _____ usan una lista enlazada por posición.",
+    "wordBank": [
+      "cerradas",
+      "abiertas",
+      "circulares",
+      "dinámicas"
+    ],
+    "answer": [
+      "cerradas",
+      "abiertas"
+    ]
+  },
+  {
+    "id": 20,
+    "type": "completar_oracion",
+    "question": "Los métodos de exploración más comunes en tablas hash cerradas son el sondeo _____ y el sondeo _____.",
+    "wordBank": [
+      "lineal",
+      "cuadrático",
+      "binario",
+      "recursivo",
+      "ordenado"
+    ],
+    "answer": [
+      "lineal",
+      "cuadrático"
+    ]
+  },
+  {
+    "id": 21,
+    "type": "ordenar_oracion",
+    "question": "",
+    "segments": [
+      "Una tabla hash",
+      "utiliza una función hash",
+      "para transformar una clave",
+      "en una posición del arreglo."
+    ],
+    "answer": [
+      "Una tabla hash",
+      "utiliza una función hash",
+      "para transformar una clave",
+      "en una posición del arreglo."
+    ]
+  },
+  {
+    "id": 22,
+    "type": "ordenar_oracion",
+    "question": "",
+    "segments": [
+      "Cuando dos claves",
+      "generan el mismo índice,",
+      "se produce una colisión",
+      "que debe resolverse."
+    ],
+    "answer": [
+      "Cuando dos claves",
+      "generan el mismo índice,",
+      "se produce una colisión",
+      "que debe resolverse."
+    ]
+  },
+  {
+    "id": 23,
+    "type": "ordenar_oracion",
+    "question": "",
+    "segments": [
+      "En condiciones ideales,",
+      "buscar, insertar y eliminar",
+      "en una tabla hash",
+      "tiene complejidad O(1)."
+    ],
+    "answer": [
+      "En condiciones ideales,",
+      "buscar, insertar y eliminar",
+      "en una tabla hash",
+      "tiene complejidad O(1)."
+    ]
+  }
+]
