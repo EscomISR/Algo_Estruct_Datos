@@ -1,0 +1,266 @@
+[
+  {
+    "id": 1,
+    "type": "opcion_multiple",
+    "question": "¿Qué principio rige la organización y procesamiento de información en una cola?",
+    "options": [
+      "FIFO (el primero en entrar es el primero en salir)",
+      "LIFO (el último en entrar es el primero en salir)",
+      "Prioridad asignada de forma aleatoria"
+    ],
+    "answer": "FIFO (el primero en entrar es el primero en salir)"
+  },
+  {
+    "id": 2,
+    "type": "opcion_multiple",
+    "question": "¿Cómo se le llama al extremo de la cola por donde salen o se eliminan los elementos?",
+    "options": [
+      "Front (salida)",
+      "Rear (entrada)",
+      "Top (cima)"
+    ],
+    "answer": "Front (salida)"
+  },
+  {
+    "id": 3,
+    "type": "opcion_multiple",
+    "question": "¿Cómo se le denomina al extremo de la cola por donde ingresan los nuevos elementos?",
+    "options": [
+      "Rear (entrada o final)",
+      "Front (salida)",
+      "Base"
+    ],
+    "answer": "Rear (entrada o final)"
+  },
+  {
+    "id": 4,
+    "type": "opcion_multiple",
+    "question": "¿Cuál es la operación básica utilizada para insertar un elemento en una cola?",
+    "options": [
+      "enqueue",
+      "dequeue",
+      "push"
+    ],
+    "answer": "enqueue"
+  },
+  {
+    "id": 5,
+    "type": "opcion_multiple",
+    "question": "¿Cuál es la operación básica empleada para eliminar un elemento de una cola?",
+    "options": [
+      "dequeue",
+      "enqueue",
+      "pop"
+    ],
+    "answer": "dequeue"
+  },
+  {
+    "id": 6,
+    "type": "opcion_multiple",
+    "question": "En la implementación estática de una cola, ¿qué limitación se presenta cuando alcanza su capacidad máxima?",
+    "options": [
+      "Desbordamiento (overflow)",
+      "Subdesbordamiento",
+      "Colisión"
+    ],
+    "answer": "Desbordamiento (overflow)"
+  },
+  {
+    "id": 7,
+    "type": "opcion_multiple",
+    "question": "¿En qué variante de cola el elemento que sale primero depende de su nivel de importancia y no de su orden de llegada?",
+    "options": [
+      "Cola de prioridad",
+      "Cola circular simple",
+      "Pila de prioridad"
+    ],
+    "answer": "Cola de prioridad"
+  },
+  {
+    "id": 8,
+    "type": "opcion_multiple",
+    "question": "¿Qué estructura interna suele usarse en colas de prioridad para acceder rápidamente al elemento prioritario?",
+    "options": [
+      "Montículos (heaps)",
+      "Tablas hash",
+      "Listas doblemente enlazadas"
+    ],
+    "answer": "Montículos (heaps)"
+  },
+  {
+    "id": 9,
+    "type": "opcion_multiple",
+    "question": "Cuando una cola lineal se implementa de forma eficiente, ¿cuál suele ser la complejidad de enqueue y dequeue?",
+    "options": [
+      "O(1)",
+      "O(n)",
+      "O(n²)"
+    ],
+    "answer": "O(1)"
+  },
+  {
+    "id": 10,
+    "type": "verdadero_falso",
+    "statement": "El principio FIFO garantiza que los elementos se procesen en el mismo orden en que llegaron.",
+    "answer": true
+  },
+  {
+    "id": 11,
+    "type": "verdadero_falso",
+    "statement": "Eliminar un elemento de una cola vacía se conoce como subdesbordamiento.",
+    "answer": true
+  },
+  {
+    "id": 12,
+    "type": "verdadero_falso",
+    "statement": "En una cola de prioridad, el orden de llegada siempre determina quién sale primero.",
+    "answer": false
+  },
+  {
+    "id": 13,
+    "type": "verdadero_falso",
+    "statement": "Una aplicación común de las colas en sistemas operativos es la gestión de procesos que esperan el CPU.",
+    "answer": true
+  },
+  {
+    "id": 14,
+    "type": "verdadero_falso",
+    "statement": "La implementación estática de una cola, si no reutiliza los espacios liberados al inicio, puede desperdiciar memoria.",
+    "answer": true
+  },
+  {
+    "id": 15,
+    "type": "opcion_multiple",
+    "question": "¿Cuál es un ejemplo clásico del uso de colas en el manejo de estructuras de entrada/salida?",
+    "options": [
+      "Los trabajos de impresión enviados a una impresora",
+      "El deshacer de un editor de texto",
+      "La evaluación de expresiones aritméticas"
+    ],
+    "answer": "Los trabajos de impresión enviados a una impresora"
+  },
+  {
+    "id": 16,
+    "type": "completar_oracion",
+    "question": "Una cola sigue el principio _____, en el que el primer elemento en entrar es el primero en _____.",
+    "wordBank": [
+      "FIFO",
+      "salir",
+      "LIFO",
+      "entrar",
+      "prioridad"
+    ],
+    "answer": [
+      "FIFO",
+      "salir"
+    ]
+  },
+  {
+    "id": 17,
+    "type": "completar_oracion",
+    "question": "El elemento se inserta por el extremo llamado _____, y se elimina por el extremo llamado _____.",
+    "wordBank": [
+      "rear",
+      "front",
+      "top",
+      "base",
+      "cima"
+    ],
+    "answer": [
+      "rear",
+      "front"
+    ]
+  },
+  {
+    "id": 18,
+    "type": "completar_oracion",
+    "question": "La operación _____ agrega un elemento al final de la cola, mientras que _____ retira el elemento más antiguo.",
+    "wordBank": [
+      "enqueue",
+      "dequeue",
+      "push",
+      "pop",
+      "top"
+    ],
+    "answer": [
+      "enqueue",
+      "dequeue"
+    ]
+  },
+  {
+    "id": 19,
+    "type": "completar_oracion",
+    "question": "Cuando la capacidad máxima de una cola estática se alcanza, ocurre un _____; si se intenta eliminar de una cola vacía, ocurre un _____.",
+    "wordBank": [
+      "desbordamiento",
+      "subdesbordamiento",
+      "colisión",
+      "desplazamiento"
+    ],
+    "answer": [
+      "desbordamiento",
+      "subdesbordamiento"
+    ]
+  },
+  {
+    "id": 20,
+    "type": "completar_oracion",
+    "question": "Las colas se utilizan en los sistemas operativos para la gestión de _____ que esperan el _____.",
+    "wordBank": [
+      "procesos",
+      "CPU",
+      "archivos",
+      "disco duro",
+      "monitor"
+    ],
+    "answer": [
+      "procesos",
+      "CPU"
+    ]
+  },
+  {
+    "id": 21,
+    "type": "ordenar_oracion",
+    "question": "",
+    "segments": [
+      "Una cola",
+      "organiza sus elementos",
+      "bajo el principio FIFO."
+    ],
+    "answer": [
+      "Una cola",
+      "organiza sus elementos",
+      "bajo el principio FIFO."
+    ]
+  },
+  {
+    "id": 22,
+    "type": "ordenar_oracion",
+    "question": "",
+    "segments": [
+      "El elemento nuevo",
+      "se agrega por el extremo rear",
+      "mediante la operación enqueue."
+    ],
+    "answer": [
+      "El elemento nuevo",
+      "se agrega por el extremo rear",
+      "mediante la operación enqueue."
+    ]
+  },
+  {
+    "id": 23,
+    "type": "ordenar_oracion",
+    "question": "",
+    "segments": [
+      "Las colas de prioridad",
+      "no dependen del orden de llegada,",
+      "sino del nivel de importancia de cada elemento."
+    ],
+    "answer": [
+      "Las colas de prioridad",
+      "no dependen del orden de llegada,",
+      "sino del nivel de importancia de cada elemento."
+    ]
+  }
+]

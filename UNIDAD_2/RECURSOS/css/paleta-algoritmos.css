@@ -1,0 +1,16 @@
+:root {
+    --primary: #2c3e50;
+    --secondary: #3498db;
+    --accent: #e74c3c;
+    --light: #ecf0f1;
+    --dark: #1a2a3a;
+    --gray: #95a5a6;
+    --success: #2ecc71;
+    --warning: #f39c12;
+    --case-color: #3498db;
+    --card-border: rgba(52, 152, 219, 0.24);
+    --card-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+    --card-bg: linear-gradient(135deg, rgba(44, 62, 80, 0.78), rgba(26, 42, 58, 0.58));
+    --quiz-correct: #2ecc71;
+    --quiz-incorrect: #e74c3c;
+}
