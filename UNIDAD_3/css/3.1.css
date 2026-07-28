@@ -30,6 +30,9 @@ body {
   min-height: 100vh;
   line-height: 1.7;
 }
+body.tema-3-2 {
+  counter-reset: figuras 78 codigos 0;
+}
 
 .codigos {
   counter-increment: codigos;
@@ -277,7 +280,28 @@ h1 {
   border-left: 4px solid var(--secondary);
   text-align: justify;
 }
-
+.intro-tema-3-2 {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  padding: 25px;
+  background: var(--card-bg);
+  border-radius: 15px;
+  border-left: 4px solid var(--secondary);
+  text-align: justify;
+}
+.intro-tema-3-2 ul {
+  padding-left: 2rem;
+  list-style-position: outside; 
+  margin-bottom: 1rem;
+}
+.sangria-li {
+  padding-left: 2rem;
+  list-style-position: inside;
+  list-style-type: "◇ ";
+}
+.sangria-ul {
+  list-style-type: none;
+}
 .section {
   background: var(--card-bg);
   border-radius: 15px;

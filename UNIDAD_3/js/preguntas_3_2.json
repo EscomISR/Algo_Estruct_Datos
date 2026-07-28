@@ -1,0 +1,280 @@
+[
+  {
+    "id": 1,
+    "type": "opcion_multiple",
+    "question": "¿Qué estructura de datos es idónea para almacenar los vértices que faltan por procesar en una Búsqueda en Amplitud (BEA)?",
+    "options": ["Una cola", "Una pila", "Una lista doblemente enlazada"],
+    "answer": "Una cola"
+  },
+  {
+    "id": 2,
+    "type": "opcion_multiple",
+    "question": "¿Cuál es la complejidad temporal y espacial de la Búsqueda en Profundidad (DFS) implementada con una lista de adyacencia?",
+    "options": ["O(V + E)", "O(V^2)", "O(n^2)"],
+    "answer": "O(V + E)"
+  },
+  {
+    "id": 3,
+    "type": "opcion_multiple",
+    "question": "¿Qué estructura de datos es idónea para almacenar los vértices en espera dado que se va regresando por los niveles del grafo en la Búsqueda en Profundidad (BEP)?",
+    "options": ["Una pila", "Una cola", "Un arreglo bidimensional"],
+    "answer": "Una pila"
+  },
+  {
+    "id": 4,
+    "type": "opcion_multiple",
+    "question": "En un grafo ponderado representado con matriz de adyacencia, ¿qué valor se asigna por convención si no existe adyacencia entre dos vértices?",
+    "options": [
+      "Un valor muy grande",
+      "El número cero",
+      "Un valor infinito negativo"
+    ],
+    "answer": "Un valor muy grande"
+  },
+  {
+    "id": 5,
+    "type": "opcion_multiple",
+    "question": "¿En qué concepto matemático se fundamenta el algoritmo de Dijkstra para calcular rutas óptimas?",
+    "options": [
+      "El principio de optimalidad",
+      "La heurística A estrella (A*)",
+      "La complejidad espacial dispersa"
+    ],
+    "answer": "El principio de optimalidad"
+  },
+  {
+    "id": 6,
+    "type": "opcion_multiple",
+    "question": "¿Qué propiedad obligatoria presenta la matriz de adyacencia que representa a un grafo no dirigido?",
+    "options": [
+      "Es una matriz simétrica",
+      "Es una matriz asimétrica",
+      "Es un vector unidimensional bidireccional"
+    ],
+    "answer": "Es una matriz simétrica"
+  },
+  {
+    "id": 7,
+    "type": "opcion_multiple",
+    "question": "Para un grafo que presenta una estructura escasa (con pocos arcos en comparación con sus vértices), ¿qué complejidad temporal tiene la implementación simple del algoritmo de Dijkstra con matrices de adyacencia?",
+    "options": ["O(n^2)", "O(V + E)", "O(log n)"],
+    "answer": "O(n^2)"
+  },
+  {
+    "id": 8,
+    "type": "completar_oracion",
+    "question": "Un grafo es _____ cuando existe un camino entre un par de vértices, y no lo es si no existe ese camino.",
+    "wordBank": ["conexo", "acíclico", "dirigido"],
+    "answer": ["conexo"]
+  },
+  {
+    "id": 9,
+    "type": "completar_oracion",
+    "question": "Si las aristas de un grafo tienen un costo o un peso asociado, entonces el grafo se denomina _____.",
+    "wordBank": ["ponderado", "simétrico", "binario"],
+    "answer": ["ponderado"]
+  },
+  {
+    "id": 10,
+    "type": "completar_oracion",
+    "question": "Para representar un grafo simple en una matriz de adyacencia, se dice que la matriz es _____, donde el uno representa conexión y el cero que no hay arista.",
+    "wordBank": ["binaria", "escasa", "dinámica"],
+    "answer": ["binaria"]
+  },
+  {
+    "id": 11,
+    "type": "completar_oracion",
+    "question": "El algoritmo de _____ permite hallar el camino de costo mínimo desde un nodo inicial a todos los otros nodos del grafo.",
+    "wordBank": ["Dijkstra", "Floyd-Warshall", "A estrella"],
+    "answer": ["Dijkstra"]
+  },
+  {
+    "id": 12,
+    "type": "completar_oracion",
+    "question": "En un grafo de tipo _____, no existe ningún ciclo entre los vértices.",
+    "wordBank": ["acíclico", "ponderado", "conexo"],
+    "answer": ["acíclico"]
+  },
+  {
+    "id": 13,
+    "type": "completar_oracion",
+    "question": "La _____ de adyacencia es más eficiente en memoria y tiempo para representar grafos dispersos porque solo reserva memoria para aristas existentes.",
+    "wordBank": ["lista", "matriz", "cola"],
+    "answer": ["lista"]
+  },
+  {
+    "id": 14,
+    "type": "completar_oracion",
+    "question": "En la Búsqueda en _____, se explora el primer vértice adjunto que se presente en cada nivel, dejando los restantes pendientes para exploración futura.",
+    "wordBank": ["profundidad", "amplitud", "anchura"],
+    "answer": ["profundidad"]
+  },
+  {
+    "id": 15,
+    "type": "verdadero_falso",
+    "statement": "Una matriz de adyacencia es más eficiente para grafos densos y cuando se necesita verificar rápidamente la existencia de aristas.",
+    "answer": true
+  },
+  {
+    "id": 16,
+    "type": "verdadero_falso",
+    "statement": "La complejidad espacial de la Búsqueda en Amplitud implementada mediante una matriz de adyacencia es O(V+E).",
+    "answer": false
+  },
+  {
+    "id": 17,
+    "type": "verdadero_falso",
+    "statement": "El algoritmo de Dijkstra muestra una alta eficiencia y optimización de rendimiento cuando el grafo presenta una estructura escasa con pocos arcos.",
+    "answer": true
+  },
+  {
+    "id": 18,
+    "type": "verdadero_falso",
+    "statement": "En redes P2P donde los nodos tienen la misma importancia y la conexión es bidireccional, es idóneo modelarlas utilizando un grafo no dirigido.",
+    "answer": true
+  },
+  {
+    "id": 19,
+    "type": "verdadero_falso",
+    "statement": "Una desventaja de la representación por listas de adyacencia es que el número de vértices del grafo no puede cambiar en tiempo de ejecución.",
+    "answer": false
+  },
+  {
+    "id": 20,
+    "type": "verdadero_falso",
+    "statement": "La longitud de un camino en un grafo ponderado está determinada por el conteo total de vértices que lo componen, ignorando sus pesos.",
+    "answer": false
+  },
+  {
+    "id": 21,
+    "type": "verdadero_falso",
+    "statement": "El recorrido DFS (Búsqueda en Profundidad) y el BFS (Búsqueda en Amplitud) comparten exactamente la misma complejidad temporal y espacial en sus respectivas representaciones.",
+    "answer": true
+  },
+  {
+    "id": 22,
+    "type": "ordenar_oracion",
+    "segments": [
+      "y un conjunto de aristas",
+      "que está representada por",
+      "Un grafo es una estructura de datos no lineal",
+      "que conectan los vértices.",
+      "un conjunto de vértices o nodos"
+    ],
+    "answer": [
+      "Un grafo es una estructura de datos no lineal",
+      "que está representada por",
+      "un conjunto de vértices o nodos",
+      "y un conjunto de aristas",
+      "que conectan los vértices."
+    ]
+  },
+  {
+    "id": 23,
+    "type": "ordenar_oracion",
+    "segments": [
+      "cuando se utiliza para modelar",
+      "grafos con estructura dispersa.",
+      "una lista de adyacencia es más eficiente",
+      "La representación del grafo mediante",
+      "en memoria y tiempo"
+    ],
+    "answer": [
+      "La representación del grafo mediante",
+      "una lista de adyacencia es más eficiente",
+      "en memoria y tiempo",
+      "cuando se utiliza para modelar",
+      "grafos con estructura dispersa."
+    ]
+  },
+  {
+    "id": 24,
+    "type": "ordenar_oracion",
+    "segments": [
+      "se recorre en un solo sentido.",
+      "de un nodo a otro",
+      "En un grafo dirigido,",
+      "lo que significa que un camino",
+      "las aristas tienen una dirección,"
+    ],
+    "answer": [
+      "En un grafo dirigido,",
+      "las aristas tienen una dirección,",
+      "lo que significa que un camino",
+      "de un nodo a otro",
+      "se recorre en un solo sentido."
+    ]
+  },
+  {
+    "id": 25,
+    "type": "ordenar_oracion",
+    "segments": [
+      "El algoritmo de Dijkstra halla",
+      "basándose en el principio de optimalidad.",
+      "el camino de costo mínimo",
+      "a todos los otros nodos",
+      "desde un nodo inicial"
+    ],
+    "answer": [
+      "El algoritmo de Dijkstra halla",
+      "el camino de costo mínimo",
+      "desde un nodo inicial",
+      "a todos los otros nodos",
+      "basándose en el principio de optimalidad."
+    ]
+  },
+  {
+    "id": 26,
+    "type": "ordenar_oracion",
+    "segments": [
+      "es cuadrática en función de los vértices.",
+      "La complejidad temporal y espacial",
+      "una matriz de adyacencia",
+      "cuando se implementa utilizando",
+      "de la Búsqueda en Profundidad"
+    ],
+    "answer": [
+      "La complejidad temporal y espacial",
+      "de la Búsqueda en Profundidad",
+      "cuando se implementa utilizando",
+      "una matriz de adyacencia",
+      "es cuadrática en función de los vértices."
+    ]
+  },
+  {
+    "id": 27,
+    "type": "ordenar_oracion",
+    "segments": [
+      "La Búsqueda en Amplitud",
+      "utilizando una cola para almacenar",
+      "por procesar en el grafo.",
+      "los vértices que aún faltan",
+      "explora todas las aristas adyacentes"
+    ],
+    "answer": [
+      "La Búsqueda en Amplitud",
+      "explora todas las aristas adyacentes",
+      "utilizando una cola para almacenar",
+      "los vértices que aún faltan",
+      "por procesar en el grafo."
+    ]
+  },
+  {
+    "id": 28,
+    "type": "ordenar_oracion",
+    "segments": [
+      "aseguran que dicha matriz",
+      "que representa a un grafo no dirigido,",
+      "En la matriz de adyacencia",
+      "cuente con la propiedad de ser simétrica.",
+      "las conexiones bidireccionales"
+    ],
+    "answer": [
+      "En la matriz de adyacencia",
+      "que representa a un grafo no dirigido,",
+      "las conexiones bidireccionales",
+      "aseguran que dicha matriz",
+      "cuente con la propiedad de ser simétrica."
+    ]
+  }
+]
