@@ -354,8 +354,8 @@
 
   function renderTrueFalseQuestion(question) {
     const choices = [
-      { label: 'Verdadero', value: true },
-      { label: 'Falso', value: false }
+      { letter: 'a)', label: 'Verdadero', value: true },
+      { letter: 'b)', label: 'Falso', value: false }
     ];
     const selectedAnswer = selectedAnswers[getQuestionKey(question)];
     const disabled = gameOver ? ' disabled' : '';
@@ -368,7 +368,7 @@
           const feedbackClass = getFeedbackClass(question, choice.value);
           return `
             <button type="button" class="option true-false-choice${stateClass}${feedbackClass}" data-action="select-true-false" data-question-id="${escapeHtml(question.id)}" data-value="${choice.value}" role="radio" aria-checked="${selected}"${disabled}>
-              <span class="option-letter"><i class="fas ${choice.value ? 'fa-check' : 'fa-xmark'}" aria-hidden="true"></i></span>
+              <span class="option-letter">${choice.letter}</span>
               <span class="option-text">${choice.label}</span>
             </button>
           `;
