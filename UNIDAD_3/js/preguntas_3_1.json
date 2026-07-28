@@ -1,0 +1,282 @@
+[
+  {
+    "id": 1,
+    "type": "opcion_multiple",
+    "question": "¿Qué tipo de recorrido de un árbol binario visita el nodo raíz antes de dirigirse al subárbol izquierdo y luego al derecho?",
+    "options": ["Preorden", "Inorden", "Postorden"],
+    "answer": "Preorden"
+  },
+  {
+    "id": 2,
+    "type": "opcion_multiple",
+    "question": "¿Cuál es la complejidad algorítmica para el peor de los casos en la operación de búsqueda de un árbol binario de búsqueda no balanceado?",
+    "options": ["O(n)", "O(log n)", "O(n log n)"],
+    "answer": "O(n)"
+  },
+  {
+    "id": 3,
+    "type": "opcion_multiple",
+    "question": "En la estructura de un montículo, ¿cuál es la fórmula matemática para obtener el índice del nodo padre dado el índice 'i' de un nodo hijo?",
+    "options": ["(i - 1) / 2", "2 * i + 1", "2 * i + 2"],
+    "answer": "(i - 1) / 2"
+  },
+  {
+    "id": 4,
+    "type": "opcion_multiple",
+    "question": "¿Qué propiedad estructural es indispensable para que un árbol sea considerado un árbol rojo-negro válido?",
+    "options": [
+      "Todo camino de la raíz a cualquier hoja pasa por el mismo número de nodos negros.",
+      "La raíz del árbol debe ser obligatoriamente de color rojo.",
+      "Todo nodo de color negro debe tener exclusivamente dos hijos de color rojo."
+    ],
+    "answer": "Todo camino de la raíz a cualquier hoja pasa por el mismo número de nodos negros."
+  },
+  {
+    "id": 5,
+    "type": "opcion_multiple",
+    "question": "¿Cuál es una de las principales diferencias operativas entre un Árbol B y un Árbol B+?",
+    "options": [
+      "En el Árbol B+ solo las hojas albergan los valores de los datos reales y están conectadas secuencialmente.",
+      "En el Árbol B los nodos internos almacenan datos reales pero las hojas no guardan ninguna clave.",
+      "El Árbol B+ permite insertar un número infinito de hijos en cada nodo sin realizar procesos de balanceo."
+    ],
+    "answer": "En el Árbol B+ solo las hojas albergan los valores de los datos reales y están conectadas secuencialmente."
+  },
+  {
+    "id": 6,
+    "type": "opcion_multiple",
+    "question": "En un árbol N-ario, si N = 3, ¿qué restricción estructural aplica directamente sobre sus nodos?",
+    "options": [
+      "Cada nodo puede tener como máximo tres hijos o descendientes.",
+      "El árbol en su totalidad solo puede alcanzar una profundidad máxima de tres niveles.",
+      "Cada nodo interno está obligado a almacenar exactamente tres claves de búsqueda."
+    ],
+    "answer": "Cada nodo puede tener como máximo tres hijos o descendientes."
+  },
+  {
+    "id": 7,
+    "type": "opcion_multiple",
+    "question": "¿Qué estado de desequilibrio en un árbol requiere una reestructuración basada en rotaciones de dos etapas (primero llevar a estado LL o RR y luego rotar como caso 1)?",
+    "options": [
+      "Desequilibrio izquierda-derecha (LR) o derecha-izquierda (RL)",
+      "Desequilibrio izquierda-izquierda (LL)",
+      "Desequilibrio derecha-derecha (RR)"
+    ],
+    "answer": "Desequilibrio izquierda-derecha (LR) o derecha-izquierda (RL)"
+  },
+  {
+    "id": 8,
+    "type": "completar_oracion",
+    "question": "Un _____ es una estructura de datos no lineal que se utiliza para organizar jerárquicamente la información mediante un conjunto de nodos y vértices.",
+    "wordBank": ["árbol", "grafo", "montículo"],
+    "answer": ["árbol"]
+  },
+  {
+    "id": 9,
+    "type": "completar_oracion",
+    "question": "La longitud de un _____ se calcula obteniendo el número de nodos transcurridos menos uno al viajar de un vértice a otro.",
+    "wordBank": ["camino", "grado", "nivel"],
+    "answer": ["camino"]
+  },
+  {
+    "id": 10,
+    "type": "completar_oracion",
+    "question": "Un _____ es un árbol binario que se llena por niveles estrictamente de arriba hacia abajo y de izquierda a derecha.",
+    "wordBank": ["montículo", "bosque", "subárbol"],
+    "answer": ["montículo"]
+  },
+  {
+    "id": 11,
+    "type": "completar_oracion",
+    "question": "Los vértices que se encuentran ubicados en los niveles intermedios de una estructura jerárquica se denominan nodos _____.",
+    "wordBank": ["internos", "hojas", "raíz"],
+    "answer": ["internos"]
+  },
+  {
+    "id": 12,
+    "type": "completar_oracion",
+    "question": "En una cola de _____, el orden lógico de los elementos atiende o extrae los nodos con mayor jerarquía en vez de seguir un estricto orden de llegada.",
+    "wordBank": ["prioridad", "búsqueda", "recorrido"],
+    "answer": ["prioridad"]
+  },
+  {
+    "id": 13,
+    "type": "completar_oracion",
+    "question": "Al eliminar el nodo raíz de un árbol general se obtiene una estructura fragmentada compuesta de varios árboles que se conoce como _____.",
+    "wordBank": ["bosque", "camino", "grafo"],
+    "answer": ["bosque"]
+  },
+  {
+    "id": 14,
+    "type": "completar_oracion",
+    "question": "Para recuperar el estado de balanceo tras realizar inserciones o eliminaciones, el árbol rojo-negro aplica procedimientos de transformación llamados _____.",
+    "wordBank": ["rotaciones", "fusiones", "extracciones"],
+    "answer": ["rotaciones"]
+  },
+  {
+    "id": 15,
+    "type": "verdadero_falso",
+    "statement": "El recorrido Inorden aplicado a un Árbol Binario de Búsqueda permite extraer los datos de forma secuencial y ordenada ascendentemente sin usar algoritmos de ordenamiento adicionales.",
+    "answer": true
+  },
+  {
+    "id": 16,
+    "type": "verdadero_falso",
+    "statement": "El árbol rojo-negro puede llegar a tener una complejidad lineal de búsqueda O(n) si los elementos son insertados de manera totalmente ordenada.",
+    "answer": false
+  },
+  {
+    "id": 17,
+    "type": "verdadero_falso",
+    "statement": "En la estructura de un Árbol B de grado m, sus respectivos nodos hoja tienen como límite la capacidad de almacenar hasta un máximo de m-1 claves.",
+    "answer": true
+  },
+  {
+    "id": 18,
+    "type": "verdadero_falso",
+    "statement": "Una ventaja del Árbol B+ es que sus nodos internos no almacenan datos reales duplicados, funcionando exclusivamente como claves de guía para agilizar la búsqueda.",
+    "answer": true
+  },
+  {
+    "id": 19,
+    "type": "verdadero_falso",
+    "statement": "Debido a su necesidad de descender hasta los nodos terminales, el recorrido algorítmico de un árbol se construye comúnmente de manera recursiva en lugar de iterativa.",
+    "answer": true
+  },
+  {
+    "id": 20,
+    "type": "verdadero_falso",
+    "statement": "En un montículo organizado como 'Max Heap' (orden creciente de máximos), el valor de cualquier nodo siempre será menor o igual que los valores de sus nodos hijos.",
+    "answer": false
+  },
+  {
+    "id": 21,
+    "type": "verdadero_falso",
+    "statement": "Dentro de la jerarquía de un árbol binario, el nodo considerado como la raíz de toda la estructura se localiza invariablemente en el nivel cero.",
+    "answer": true
+  },
+  {
+    "id": 22,
+    "type": "ordenar_oracion",
+    "segments": [
+      "una estructura donde los nodos",
+      "con valores menores van al subárbol izquierdo",
+      "y los valores mayores al subárbol derecho.",
+      "El Árbol Binario de Búsqueda es"
+    ],
+    "answer": [
+      "El Árbol Binario de Búsqueda es",
+      "una estructura donde los nodos",
+      "con valores menores van al subárbol izquierdo",
+      "y los valores mayores al subárbol derecho."
+    ]
+  },
+  {
+    "id": 23,
+    "type": "ordenar_oracion",
+    "segments": [
+      "manteniendo el mismo número de nodos negros",
+      "Un árbol rojo-negro asegura",
+      "en todo camino desde la raíz",
+      "hasta cualquier nodo hoja.",
+      "el equilibrio de su estructura"
+    ],
+    "answer": [
+      "Un árbol rojo-negro asegura",
+      "el equilibrio de su estructura",
+      "manteniendo el mismo número de nodos negros",
+      "en todo camino desde la raíz",
+      "hasta cualquier nodo hoja."
+    ]
+  },
+  {
+    "id": 24,
+    "type": "ordenar_oracion",
+    "segments": [
+      "es el primero en salir.",
+      "implementada sobre un montículo,",
+      "el elemento que posee",
+      "En una Cola de Prioridad",
+      "la prioridad más alta"
+    ],
+    "answer": [
+      "En una Cola de Prioridad",
+      "implementada sobre un montículo,",
+      "el elemento que posee",
+      "la prioridad más alta",
+      "es el primero en salir."
+    ]
+  },
+  {
+    "id": 25,
+    "type": "ordenar_oracion",
+    "segments": [
+      "del hijo izquierdo en un montículo,",
+      "Para calcular el índice",
+      "y sumarle un uno.",
+      "se debe multiplicar el índice",
+      "del nodo padre por dos"
+    ],
+    "answer": [
+      "Para calcular el índice",
+      "del hijo izquierdo en un montículo,",
+      "se debe multiplicar el índice",
+      "del nodo padre por dos",
+      "y sumarle un uno."
+    ]
+  },
+  {
+    "id": 26,
+    "type": "ordenar_oracion",
+    "segments": [
+      "y se enlazan de forma secuencial",
+      "En la estructura del Árbol B+,",
+      "para optimizar y facilitar",
+      "las hojas almacenan los datos reales",
+      "el recorrido rápido de la información."
+    ],
+    "answer": [
+      "En la estructura del Árbol B+,",
+      "las hojas almacenan los datos reales",
+      "y se enlazan de forma secuencial",
+      "para optimizar y facilitar",
+      "el recorrido rápido de la información."
+    ]
+  },
+  {
+    "id": 27,
+    "type": "ordenar_oracion",
+    "segments": [
+      "el contenido del nodo raíz.",
+      "y extraer los datos de ambos subárboles",
+      "antes de subir y procesar",
+      "consiste en descender para evaluar",
+      "El recorrido Postorden en un árbol"
+    ],
+    "answer": [
+      "El recorrido Postorden en un árbol",
+      "consiste en descender para evaluar",
+      "y extraer los datos de ambos subárboles",
+      "antes de subir y procesar",
+      "el contenido del nodo raíz."
+    ]
+  },
+  {
+    "id": 28,
+    "type": "ordenar_oracion",
+    "segments": [
+      "permitiendo que cada nodo padre",
+      "porque organiza la información",
+      "La estructura del Árbol N-ario",
+      "proporciona gran flexibilidad",
+      "tenga hasta N hijos descendientes."
+    ],
+    "answer": [
+      "La estructura del Árbol N-ario",
+      "proporciona gran flexibilidad",
+      "porque organiza la información",
+      "permitiendo que cada nodo padre",
+      "tenga hasta N hijos descendientes."
+    ]
+  }
+]

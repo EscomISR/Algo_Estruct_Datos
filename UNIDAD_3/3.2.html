@@ -1,1069 +1,1221 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3.2 Grafos</title>
-    <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --gray: #95a5a6;
-            --success: #2ecc71;
-            --warning: #f39c12;
-            --card-bg: rgba(255, 255, 255, 0.05);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #1a2a3a, #2c3e50);
-            color: var(--light);
-            min-height: 100vh;
-            line-height: 1.7;
-        }
-
-        .floating-home-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--secondary);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(52, 152, 219, 0.3);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            font-size: 1.5rem;
-        }
-
-        .floating-home-btn:hover {
-            background: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
-        }
-
-        .sidebar-nav {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 280px;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 999;
-            transition: transform 0.3s ease;
-            transform: translateX(-100%);
-            overflow-y: auto;
-        }
-
-        .sidebar-nav.active {
-            transform: translateX(0);
-        }
-
-        .sidebar-header {
-            padding: 20px;
-            background: rgba(52, 152, 219, 0.1);
-            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
-        }
-
-        .sidebar-title {
-            font-size: 1.2rem;
-            color: var(--secondary);
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .sidebar-subtitle {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-
-        .nav-sections {
-            padding: 20px 0;
-        }
-
-        .nav-section {
-            margin-bottom: 15px;
-        }
-
-        .nav-section-title {
-            padding: 10px 20px;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--secondary);
-            border-bottom: 1px solid rgba(52, 152, 219, 0.2);
-            margin-bottom: 10px;
-        }
-
-        .nav-item {
-            display: block;
-            padding: 12px 20px;
-            color: var(--light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border-left: 3px solid transparent;
-        }
-
-        .nav-item:hover {
-            background: rgba(52, 152, 219, 0.1);
-            border-left-color: var(--secondary);
-            padding-left: 25px;
-        }
-
-        .nav-item.active {
-            background: rgba(52, 152, 219, 0.2);
-            border-left-color: var(--secondary);
-            color: var(--secondary);
-        }
-
-        .nav-item i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-
-        .menu-toggle {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: var(--primary);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            z-index: 1001;
-            font-size: 1.2rem;
-        }
-
-        .menu-toggle:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-        }
-
-        .menu-toggle.active {
-            background: var(--accent);
-        }
-
-        .reading-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            z-index: 998;
-        }
-
-        .reading-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--secondary), var(--success));
-            width: 0%;
-            transition: width 0.1s ease;
-        }
-
-        .sidebar-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 998;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            transition: margin-left 0.3s ease, margin-right 0.3s ease;
-        }
-        
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 30px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .breadcrumb {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: var(--gray);
-            font-size: 1.1rem;
-        }
-        
-        .breadcrumb a {
-            color: var(--secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .breadcrumb a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-        
-        .breadcrumb span {
-            margin: 0 10px;
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            color: white;
-        }
-        
-        .subtitle {
-            font-size: 1.8rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
-            font-weight: 300;
-            text-align: center;
-        }
-        
-        .intro {
-            max-width: 900px;
-            margin: 0 auto 40px;
-            padding: 25px;
-            background: var(--card-bg);
-            border-radius: 15px;
-            border-left: 4px solid var(--secondary);
-            text-align: justify;
-        }
-        
-        .section {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            scroll-margin-top: 100px;
-        }
-        
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--secondary);
-        }
-        
-        .section-number {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: var(--secondary);
-            margin-right: 15px;
-            min-width: 120px;
-        }
-        
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: white;
-        }
-        
-        .content {
-            padding: 0 10px;
-        }
-        
-        .content h3 {
-            font-size: 1.5rem;
-            color: var(--secondary);
-            margin: 30px 0 15px;
-            padding-left: 10px;
-            border-left: 3px solid var(--accent);
-        }
-
-        .content h4 {
-            font-size: 1.3rem;
-            color: var(--warning);
-            margin: 25px 0 12px;
-            padding-left: 8px;
-        }
-        
-        .content p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        
-        .content ul, .content ol {
-            padding-left: 30px;
-            margin: 20px 0;
-        }
-        
-        .content li {
-            margin-bottom: 12px;
-        }
-        
-        .highlight {
-            background: rgba(231, 76, 60, 0.15);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 500;
-        }
-        
-        .citation {
-            font-style: italic;
-            color: var(--gray);
-            margin: 5px 0 15px 20px;
-            border-left: 2px solid var(--secondary);
-            padding-left: 10px;
-        }
-        
-        .quote-box {
-            background: rgba(52, 152, 219, 0.1);
-            border-left: 4px solid var(--secondary);
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 8px;
-            font-style: italic;
-            color: var(--light);
-        }
-
-        .quote-box .citation {
-            border-left: none;
-            margin: 10px 0 0 0;
-            padding-left: 0;
-        }
-        
-        .table-container {
-            max-width: 800px;
-            margin: 30px auto;
-            overflow-x: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: rgba(0, 0, 0, 0.2);
-        }
-        
-        th {
-            background: var(--primary);
-            color: white;
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
-        }
-        
-        td {
-            padding: 12px 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        tr:nth-child(even) {
-            background: rgba(255, 255, 255, 0.03);
-        }
-        
-        .table-caption {
-            text-align: center;
-            padding: 10px;
-            color: var(--gray);
-            background: rgba(0, 0, 0, 0.3);
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
-
-        .figure-container {
-            margin: 30px 0;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            overflow: hidden; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .imagen-figura1 {
-            max-width: 100%;
-            height: auto;
-            object-fit: contain; 
-            border-radius: 8px;
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: zoom-in;
-            transform-origin: center center;
-        }
-        
-        /* Efecto al pasar el mouse */
-        .imagen-figura1:hover {
-            transform: scale(1.4); 
-            border-radius: 8px;
-        }
-        
-        .figure-placeholder {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, #2c3e50, #34495e);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            margin: 15px 0;
-            color: var(--gray);
-            font-style: italic;
-            flex-direction: column;
-        }
-        
-        .figure-placeholder i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-        
-        .figure-caption {
-            color: var(--gray);
-            margin-top: 10px;
-        }
-        
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-        }
-        
-        .nav-btn {
-            display: inline-flex;
-            align-items: center;
-            background: var(--secondary);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-btn:hover {
-            background: #2980b9;
-            transform: translateY(-3px);
-        }
-        
-        .nav-btn i {
-            margin: 0 8px;
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 30px;
-            color: var(--gray);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .scroll-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--accent);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            z-index: 999;
-        }
-
-        .scroll-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-to-top:hover {
-            background: #c0392b;
-            transform: translateY(-3px);
-        }
-
-        .activity-card {
-            background: rgba(46, 204, 113, 0.1);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 40px 0;
-            border-left: 4px solid var(--success);
-            text-align: center;
-        }
-
-        .activity-title {
-            font-size: 1.8rem;
-            color: var(--success);
-            margin-bottom: 20px;
-        }
-
-        .activity-btn {
-            display: inline-block;
-            background: var(--success);
-            color: white;
-            padding: 15px 35px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-        }
-
-        .activity-btn:hover {
-            background: #27ae60;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
-        }
-        
-        @media (max-width: 768px) {
-            .sidebar-nav {
-                width: 100%;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .subtitle {
-                font-size: 1.4rem;
-            }
-            
-            .section-title {
-                font-size: 1.5rem;
-            }
-            
-            .section-number {
-                min-width: 100px;
-                font-size: 1.8rem;
-            }
-            
-            .nav-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .nav-btn {
-                width: 100%;
-                text-align: center;
-                justify-content: center;
-            }
-
-            .floating-home-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-        }
-    </style>
-</head>
-<body>
+    <link rel="icon" type="image/png" href="../IMAGENES/logoescom.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/3.1.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/visor.css" />
+  </head>
+  <body class="tema-3-2">
     <div class="reading-progress">
-        <div class="reading-progress-bar" id="progressBar"></div>
+      <div class="reading-progress-bar" id="progressBar"></div>
     </div>
 
     <button class="menu-toggle" id="menuToggle">
-        <i class="fas fa-bars"></i>
+      <i class="fas fa-bars"></i>
     </button>
 
-    <a href="index.html" class="floating-home-btn" title="Ir al índice de unidades">
-        <i class="fas fa-home"></i>
+    <a
+      href="index.html"
+      class="floating-home-btn"
+      title="Ir al índice de unidades"
+    >
+      <i class="fas fa-home"></i>
     </a>
 
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <nav class="sidebar-nav" id="sidebarNav">
-        <div class="sidebar-header">
-            <div class="sidebar-title">3.2 Grafos</div>
-            <div class="sidebar-subtitle">Los grafos en los modelos matemáticos establecen en su capacidad para representar de manera clara y estructurada las relaciones entre elementos dentro de un sistema.</div>
+      <div class="sidebar-header">
+        <div class="sidebar-title">3.2 Grafos</div>
+        <div class="sidebar-subtitle">
+          Los grafos en los modelos matemáticos establecen en su capacidad para
+          representar de manera clara y estructurada las relaciones entre
+          elementos dentro de un sistema.
         </div>
-        
-        <div class="nav-sections">
-            <div class="nav-section">
-                <div class="nav-section-title">Navegación</div>
-                <a href="#inicio" class="nav-item">
-                    <i class="fas fa-rocket"></i> Inicio del Tema
-                </a>
-                <a href="index.html" class="nav-item">
-                    <i class="fas fa-arrow-left"></i> Menú de Unidad 3
-                </a>
-            </div>
+      </div>
 
-            <div class="nav-section">
-                <div class="nav-section-title">Contenido</div>
-                <a href="#seccion-3-2-1" class="nav-item" data-section="3-2-1">
-                    <i class="fas fa-book"></i> 3.2.1 Representaciones matriciales y basadas en listas
-                </a>
-                <a href="#seccion-3-2-2" class="nav-item" data-section="3-2-2">
-                    <i class="fas fa-cogs"></i> 3.2.2 Búsqueda en amplitud
-                </a>
-                <a href="#seccion-3-2-3" class="nav-item" data-section="3-2-3">
-                    <i class="fas fa-layer-group"></i> 3.2.3 Búsqueda en profundidad
-                </a>
-                <a href="#seccion-3-2-4" class="nav-item" data-section="3-2-4">
-                    <i class="fas fa-layer-group"></i> 3.2.4 Distancia más corta
-                </a>
-                <a href="#seccion-3-2-5" class="nav-item" data-section="3-2-5">
-                    <i class="fas fa-layer-group"></i> 3.2.5 Implementaciones y aplicaciones 
-                </a>
-                <a href="#seccion-3-2-6" class="nav-item" data-section="3-2-6">
-                    <i class="fas fa-layer-group"></i> 3.2.6 Nociones de complejidad de los algoritmos sobre grafos
-                </a>
-            </div>
-
-            <div class="nav-section">
-                <div class="nav-section-title">Recursos</div>
-                <a href="actividad_3.2.html" class="nav-item">
-                    <i class="fas fa-tasks"></i> Actividad de aprendizaje
-                </a>
-             </div>
+      <div class="nav-sections">
+        <div class="nav-section">
+          <div class="nav-section-title">Navegación</div>
+          <a href="index.html" class="nav-item">
+            <i class="fas fa-rocket"></i> Inicio del Tema
+          </a>
+          <a href="index.html" class="nav-item">
+            <i class="fas fa-arrow-left"></i> Menú de Unidad 3
+          </a>
         </div>
+
+        <div class="nav-section">
+          <div class="nav-section-title">Contenido</div>
+          <a href="#seccion-3-2-1" class="nav-item" data-section="3-2-1">
+            <i class="fas fa-book"></i> 3.2.1 Representaciones matriciales y
+            basadas en listas
+          </a>
+          <a href="#seccion-3-2-2" class="nav-item" data-section="3-2-2">
+            <i class="fas fa-cogs"></i> 3.2.2 Búsqueda en amplitud
+          </a>
+          <a href="#seccion-3-2-3" class="nav-item" data-section="3-2-3">
+            <i class="fas fa-layer-group"></i> 3.2.3 Búsqueda en profundidad
+          </a>
+          <a href="#seccion-3-2-4" class="nav-item" data-section="3-2-4">
+            <i class="fas fa-layer-group"></i> 3.2.4 Distancia más corta
+          </a>
+          <a href="#seccion-3-2-5" class="nav-item" data-section="3-2-5">
+            <i class="fas fa-layer-group"></i> 3.2.5 Implementaciones y
+            aplicaciones
+          </a>
+          <a href="#seccion-3-2-6" class="nav-item" data-section="3-2-6">
+            <i class="fas fa-layer-group"></i> 3.2.6 Nociones de complejidad de
+            los algoritmos sobre grafos
+          </a>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-section-title">Recursos</div>
+          <a href="actividad_3_2.html" class="nav-item">
+            <i class="fas fa-tasks"></i> Actividad de aprendizaje
+          </a>
+        </div>
+      </div>
     </nav>
 
     <button class="scroll-to-top" id="scrollToTop">
-        <i class="fas fa-chevron-up"></i>
+      <i class="fas fa-chevron-up"></i>
     </button>
 
     <div class="container">
-        <header id="inicio">
-            <div class="breadcrumb">
-                <a href="https://escomisr.github.io/Algo_Estruct_Datos/index.html"><i class="fas fa-home"></i> Inicio</a>
-                <span>/</span>
-                <a href="index.html">Unidad 3</a>
-                <span>/</span>
-                <span>3.2 Grafos</span>
-            </div>
-            <h1>3.2 Grafos</h1>
-            <div class="subtitle">Los grafos en los modelos matemáticos establecen en su capacidad para representar de manera clara y estructurada las relaciones entre elementos dentro de un sistema.</div>
-        </header>
-        
-        
-        <div class="intro">
-            <p>Los grafos constituyen una de las estructuras fundamentales dentro de la algoritmia y las estructuras de datos, ya que permiten representar relaciones entre distintos elementos de manera flexible y no lineal. A diferencia de
-               otras estructuras más simples, los grafos están formados por nodos (vértices) y conexiones (aristas), lo que facilita modelar situaciones donde los datos están interconectados, como redes sociales, sistemas de transporte o
-               redes de comunicación. Esta capacidad de representar relaciones complejas los convierte en una herramienta esencial para comprender y analizar problemas del mundo real (Sedgewick & Wayne, 2011).</p>
-            <div class="figure-container">
-                    <div class="figure-caption">Figura 10</div>
-                    <div class="figure-caption">Grafos</div>
-                    <div class="figura">
-                        <img src="FIGURA10.png" alt="Grafos" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Elaboración propia</div>
-                </div>  
-
+      <header id="inicio">
+        <div class="breadcrumb">
+          <a href="../index.html"><i class="fas fa-home"></i> Inicio</a>
+          <span>/</span>
+          <a href="index.html">Unidad 3</a>
+          <span>/</span>
+          <span>3.2 Grafos</span>
         </div>
-           
-        
-        <div class="section" id="seccion-3-2-1">
-            <div class="section-header">
-                <div class="section-number">3.2.1</div>
-                <div class="section-title">Representaciones matriciales y basadas en listas</div>
-            </div>
-            <div class="content">
-                <p>Las representaciones matriciales en grafos se basan en el uso de una matriz de adyacencia, donde las filas y columnas representan los vértices del grafo, y cada celda indica si existe o no una conexión entre dos nodos. En grafos no dirigidos,
-                   la matriz suele ser simétrica, mientras que en grafos dirigidos los valores pueden variar según la dirección de la arista.</p>
-                <p>Esta representación es especialmente útil cuando el grafo es denso, ya que permite verificar rápidamente si existe una conexión entre dos vértices en tiempo constante. Sin embargo, su principal desventaja es el alto consumo de memoria,
-                   ya que requiere un espacio de n2 posiciones, incluso si hay pocas conexiones (Cormen et al., 2009).</p>   
- 
-        <div class="figure-container">
-                    <div class="figure-caption">Figura 11</div>
-                    <div class="figure-caption">Representaciones matriciales y basadas en listas</div>
-                    <div class="figura">
-                        <img src="FIGURA11.png" alt="Representaciones matriciales y basadas en listas" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Elaboración propia</div>
-                </div>     
- 
-                <p>Las representaciones basadas en listas utilizan listas de adyacencia, donde cada vértice almacena una lista de los nodos a los que está conectado. Este enfoque resulta más eficiente en términos de memoria cuando el grafo es disperso,
-                   ya que solo se almacenan las conexiones existentes. Además, facilita recorrer los vecinos de un nodo de manera eficiente, lo que es clave en algoritmos como BFS y DFS. No obstante, comprobar si existe una arista específica puede ser
-                   más lento en comparación con la matriz. En conjunto, la elección entre ambas representaciones depende del tipo de grafo y de las operaciones que se requieran realizar (Goodrich et al., 2014).</p>
-                <p></p> 
-            </div>
+        <h1>3.2 Grafos</h1>
+        <div class="subtitle">
+          Los grafos en los modelos matemáticos establecen en su capacidad para
+          representar de manera clara y estructurada las relaciones entre
+          elementos dentro de un sistema.
         </div>
-                     
- 
-        <div class="section" id="seccion-3-2-2">
-            <div class="section-header">
-                <div class="section-number">3.2.2</div>
-                <div class="section-title">Búsqueda en amplitud</div>
-            </div>
-            <div class="content">
-                <p>Según Cormen et al., 2009, la búsqueda en amplitud (BFS, por sus siglas en inglés) es un algoritmo utilizado en grafos para recorrer o explorar todos los nodos de manera ordenada, comenzando desde un nodo inicial y visitando primero
-                   todos sus vecinos más cercanos antes de avanzar a niveles más profundos. Es decir, explora el grafo por “capas” o niveles, lo que permite analizar la estructura de conexiones de forma progresiva. Este método es ampliamente utilizado
-                   en problemas donde se requiere encontrar la distancia mínima en grafos no ponderados.</p>
-                
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 12</div>
-                    <div class="figure-caption">Búsqueda en amplitud</div>
-                    <div class="figura">
-                        <img src="FIGURA12.png" alt="Búsqueda en amplitud" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Elaboración propia</div>
-                 </div>
-             </div> 
-                <p>El funcionamiento de BFS se basa en el uso de una cola (queue) como estructura auxiliar. Primero se visita el nodo inicial, luego se agregan sus vecinos a la cola, y posteriormente se van procesando en el mismo orden en
-                   que fueron insertados. A medida que se visita cada nodo, se marcan como explorados para evitar repeticiones. Este proceso continúa hasta que todos los nodos alcanzables han sido recorridos, garantizando que los nodos más
-                   cercanos al inicio se visiten antes que los más lejanos.</p>
-                <p>Entre sus principales características, la búsqueda en amplitud garantiza encontrar el camino más corto en términos de número de aristas en grafos no ponderados, lo que la hace muy útil en aplicaciones como rutas, redes y juegos.
-                   Sin embargo, puede requerir mayor uso de memoria debido al almacenamiento de nodos en la cola. A pesar de ello, su simplicidad y eficiencia la convierten en uno de los algoritmos fundamentales en la teoría de grafos y
-                   en el diseño de soluciones computacionales (Goodrich et al., 2014).</p>
+      </header>
+      <div class="intro-tema-3-2">
+        <p>
+          Un grafo es una estructura de datos no lineal que está representada
+          por un conjunto de vértices o nodos y un conjunto de aristas o arcos
+          que conectan los vértices.
+        </p>
+        <p>Los grafos contienen características como:</p>
+        <ul>
+          <li>
+            Un nodo representa un punto inicial o un punto final en el grafo.
+          </li>
+          <li>
+            Las aristas trazan caminos en el grafo y permiten llevar de un nodo
+            a otro.
+          </li>
+          <li>
+            Dado que las aristas representan caminos, entonces, se conocen dos
+            tipos de grafos:
+          </li>
+          <li class="sangria-li">
+            Grafos dirigidos: donde las aristas tienen una dirección, es decir,
+            un camino de un nodo A a un nodo B solo se pueden recorrer en una
+            sola dirección.
+          </li>
+          <li class="sangria-li">
+            Grafos no dirigidos: las aristas no tienen una dirección, por lo
+            tanto, un camino de un nodo A a un nodo B se puede recorrer en ambas
+            direcciones.
+          </li>
+          <li>
+            Si las aristas tienen un costo o un peso asociado, entonces, el
+            grafo se dice que es ponderado.
+          </li>
+          <li>
+            Un grafo es conexo cuando existe un camino entre un par de vértices
+            o no conexo si no existe ese camino.
+          </li>
+          <li>
+            En un grafo se pueden formar ciclos y un ciclo es cuando existe
+            mínimo un camino que inicia y finaliza en un mismo vértice.
+          </li>
+          <li>
+            Y un grafo puede ser acíclico cuando no existe ningún ciclo entre
+            los vértices.
+          </li>
+        </ul>
+        <p>Formalmente un grafo se puede definir cómo un conjunto G = (V, A)</p>
+        <p>Donde:</p>
+        <ul>
+          <li>V es el conjunto de vértices o nodos que componen al grafo.</li>
+          <li>
+            A es el conjunto de aristas o arcos que unen pares de vértices.
+          </li>
+        </ul>
+        <p>(Tomas H. Cormen, Introduction to algorithms, 3rt edition).</p>
+        <p>Camino en un grafo</p>
+        <p>
+          Un camino en un grafo es aquel que va de un nodo o vértice V0 a Vn que
+          pasa por n vértices y estos vértices están unidos por n-1 aristas, por
+          lo que se puede decir, que la longitud del camino es la cantidad de
+          aristas que lo forman. En un grafo ponderado, la longitud del camino
+          está determinado por la suma de los pesos de las aristas que forman el
+          camino.
+        </p>
+      </div>
 
-        </div> 
-
-       <div class="section" id="seccion-3-2-3">
-            <div class="section-header">
-                <div class="section-number">3.2.3</div>
-                <div class="section-title"> Búsqueda en profundidad</div>
-            </div>
-            <div class="content">
-                <p>La búsqueda en profundidad (DFS, Depth-First Search) es un algoritmo utilizado en grafos que explora los nodos siguiendo un camino lo más profundo posible antes de retroceder. A partir de un nodo inicial, el algoritmo avanza
-                   hacia uno de sus vecinos y continúa descendiendo por ese camino hasta que no puede avanzar más; en ese momento, regresa (backtracking) para explorar otras rutas disponibles. Este enfoque permite recorrer
-                   completamente un grafo o árbol, siendo muy útil para analizar su estructura (Cormen et al., 2009).</p>
-                <p>El funcionamiento de DFS se basa en el uso de una pila (stack), que puede implementarse de forma explícita o mediante recursividad. El algoritmo visita un nodo, lo marca como explorado y continúa con el siguiente,
-                   este proceso se repite hasta llegar a un nodo sin vecinos disponibles. Luego, el algoritmo retrocede al nodo anterior para explorar otros caminos pendientes. Este mecanismo de exploración permite recorrer todos
-                   los nodos alcanzables del grafo de manera sistemática.</p>
-                <p></p>
-                    <div class="figure-container">
-                        <div class="figure-caption">Figura 13</div>
-                        <div class="figure-caption">Búsqueda en profundidad</div>
-                        <div class="figura">
-                            <img src="FIGURA13.png" alt="Búsqueda en profundidad" class="imagen-figura1"/>
-                        </div>
-                        <div class="figure-caption">Nota: Elaboración propia</div>
-                    </div>
-                <p>Entre sus características, la búsqueda en profundidad es eficiente en memoria en comparación con BFS, ya que no necesita almacenar todos los nodos de un nivel. Además, es ampliamente utilizada en problemas como detección de ciclos,
-                   ordenamiento topológico y generación de laberintos. Sin embargo, no garantiza encontrar el camino más corto en grafos no ponderados. A pesar de ello, DFS es un algoritmo fundamental en la teoría de grafos por su simplicidad y versatilidad.</p>
-
-            <div class="section" id="video-material">
-            <div class="section-header">
-                <div class="section-number"><i class="fas fa-play-circle"></i></div>
-                <div class="section-title">Material Audiovisual</div>
-            </div>
-            <div class="content">
-                <p>A continuación, se explican la funcionalidad de los grafos, búsqueda en amplitud y profundidad</p>
-                
-                <div class="figure-container">
-                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/vDe8e0W8Cps" title="Modelos multihilos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
-                    <div class="figure-caption">Salas, I. (2025, 24 de noviembre). <em>Modelo multi-hilo</em> [Video]. YouTube. https://www.youtube.com/watch?v=vDe8e0W8Cps</div>
-                </div>
-            </div>
-        </div>  
-            </div>
-       </div>
-
-       <div class="section" id="seccion-3-2-4">
-            <div class="section-header">
-                <div class="section-number">3.2.4</div>
-                <div class="section-title"> Distancia más corta</div>
-            </div>
-            <div class="content">
-                <p>La distancia más corta en grafos es un problema central en la algoritmia que consiste en determinar el camino óptimo entre dos nodos, ya sea minimizando el número de aristas o el costo total cuando existen pesos asociados. Esta noción permite modelar
-                   situaciones reales como rutas de transporte, flujo de información o conexiones en redes, facilitando la toma de decisiones eficientes dentro de sistemas complejos (Sedgewick & Wayne, 2011).</p>
-                <p>Para resolver este problema, se emplean algoritmos especializados como el algoritmo de Dijkstra, que permite encontrar el camino más corto desde un nodo origen hacia todos los demás en grafos con pesos positivos. Asimismo, el algoritmo de Bellman-Ford
-                   amplía esta capacidad al permitir trabajar con pesos negativos, lo que resulta útil en escenarios más complejos donde existen variaciones en los costos de las conexiones.</p>
-
-                   <div class="figure-container">
-                        <div class="figure-caption">Figura 14</div>
-                        <div class="figure-caption">Distancia más corta</div>
-                        <div class="figura">
-                            <img src="FIGURA14.png" alt="Distancia más corta" class="imagen-figura1"/>
-                        </div>
-                        <div class="figure-caption">Nota: Elaboración propia</div>
-                    </div>
-                 <p>Desde el punto de vista funcional, estos algoritmos analizan múltiples rutas posibles y seleccionan aquella que minimiza el costo acumulado, garantizando resultados óptimos bajo ciertas condiciones. Este proceso implica comparar distancias, actualizar
-                    valores y recorrer el grafo de manera sistemática, lo que convierte al problema de la distancia más corta en una herramienta clave para la optimización computacional (Kleinberg & Tardos, 2006).</p>
-                 <p>Por lo que la distancia más corta tiene aplicaciones directas en áreas como la logística, las telecomunicaciones, la inteligencia artificial y los sistemas de navegación. Su estudio permite mejorar la eficiencia en el uso de recursos, reducir tiempos de
-                    operación y resolver problemas complejos de manera estructurada. Por ello, es considerada una de las aplicaciones más relevantes de la teoría de grafos dentro de la ciencia de la computación.</p>
-                   
-
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 15</div>
-                    <div class="figure-caption">Ventajas y desventajas de la distancia más corta</div>
-                    <div class="figura">
-                        <img src="FIGURA15.png" alt="Ventajas y desventajas de la distancia más corta" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Elaboración propia</div>
-                  </div>
-             </div> 
-        </div> 
-
-        <div class="section" id="seccion-3-2-5">
-            <div class="section-header">
-                <div class="section-number">3.2.5</div>
-                <div class="section-title">Implementaciones y aplicaciones</div>
-            </div>
-            <div class="content">
-                <p>Las implementaciones de grafos en algoritmia hacen referencia a la manera en que estas estructuras se representan dentro de un sistema computacional para poder ser manipuladas mediante algoritmos.
-                   Las formas más comunes son la matriz de adyacencia y la lista de adyacencia, cada una adecuada según el tipo de problema: la matriz facilita el acceso directo a las conexiones, mientras que la
-                   lista optimiza el uso de memoria en grafos dispersos. Estas representaciones permiten ejecutar de forma eficiente algoritmos fundamentales para el análisis de grafos (Weiss, 2014).</p>
-                <p>Sus aplicaciones, los grafos son utilizados en múltiples áreas como las redes de computadoras, donde modelan la interconexión de dispositivos; en sistemas de transporte,
-                   para encontrar rutas óptimas; y en bases de datos o redes sociales, para analizar relaciones entre entidades. Además, en el ámbito de la inteligencia artificial, los grafos son esenciales para resolver
-                   problemas de búsqueda, planificación y toma de decisiones en entornos complejos (Tanenbaum & Van Steen, 2007).</p>
-                <p></p>
-
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 16</div>
-                    <div class="figure-caption">Implementaciones y aplicaciones</div>
-                    <div class="figura">
-                        <img src="FIGURA16.png" alt="Implementaciones y aplicaciones" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Elaboración propia</div>
-                </div>
-                <p>Es por ello que su funcionalidad de los grafos radica en su capacidad para representar y analizar relaciones entre distintos elementos mediante nodos y aristas. Esta estructura permite
-                   modelar sistemas complejos donde los datos no siguen un orden lineal, facilitando la implementación de algoritmos como BFS, DFS o Dijkstra para recorrer, buscar o encontrar rutas óptimas. Gracias a ello, los grafos permiten resolver problemas relacionados con conectividad, caminos mínimos y organización de datos de forma eficiente.</p>
-                <p>Los grafos permiten que los sistemas sean más inteligentes y eficientes, ya que pueden adaptarse a cambios y analizar múltiples posibilidades antes de ejecutar una acción. Esto es clave en áreas como la inteligencia artificial, donde los grafos ayudan a modelar conocimiento, o en sistemas distribuidos, donde optimizan la comunicación
-                   entre múltiples dispositivos. En conjunto, los grafos actúan como una base estructural que permite a los sistemas operar de manera organizada, dinámica y eficiente.</p>
-             </div> 
-        </div> 
-       <div class="section" id="seccion-3-2-6">
-            <div class="section-header">
-                <div class="section-number">3.2.6</div>
-                <div class="section-title">Nociones de complejidad de las operaciones</div>
-            </div>
-            <div class="content">
-                <p>Las nociones de complejidad de los algoritmos sobre grafos se refieren al análisis del tiempo y espacio que requieren los algoritmos para procesar estructuras de grafos. Este análisis se expresa comúnmente mediante la notación Big-O, considerando el número de vértices (V) y aristas (E).</p>
-                <p>Se caracterizan por analizar el rendimiento en función de dos elementos principales: el número de vértices (V) y el número de aristas (E). Esto permite medir con mayor precisión el comportamiento del algoritmo en estructuras no lineales, donde las conexiones influyen directamente en el tiempo de ejecución. A diferencia de otras estructuras,
-                   en los grafos no solo importa la cantidad de datos, sino también cómo están interconectados, lo que hace que su análisis sea más completo y representativo.</p>
-                <p>La complejidad en grafos se distingue por su enfoque en la eficiencia y escalabilidad, lo que permite seleccionar el algoritmo más adecuado según el tamaño y la densidad del grafo. Esta característica es fundamental en aplicaciones reales, donde se manejan grandes volúmenes de información, ya que un análisis adecuado evita el uso excesivo de
-                   recursos y mejora el rendimiento general del sistema. Por ello, comprender estas nociones es clave para diseñar soluciones óptimas y eficientes en la práctica computacional (Kleinberg & Tardos, 2006).</p>
-
-
-                 <div class="figure-container">
-                    <div class="figure-caption">Figura 17</div>
-                    <div class="figure-caption">Nociones de complejidad de las operaciones</div>
-                    <div class="figura">
-                        <img src="FIGURA17.png" alt="Nociones de complejidad de las operaciones" class="imagen-figura1"/>
-                    </div>
-                    <div class="figure-caption">Nota: Elaboración propia</div>
-                </div>
-             </div>
- 
-        </div> 
-
-        <div class="section" id="video-material">
-            <div class="section-header">
-                <div class="section-number"><i class="fas fa-play-circle"></i></div>
-                <div class="section-title">Material Audiovisual</div>
-            </div>
-            <div class="content">
-                <p>A continuación, se explican la funcionalidad de los grafos distancia corta</p>
-                
-                 <div class="figure-container">
-                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/oQAtQaTTyOE" title="Modelos multihilos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 5px; max-width: 100%;"></iframe>
-                    <div class="figure-caption">Salas, I. (2025, 24 de noviembre). <em>Modelo multi-hilo</em> [Video]. YouTube. https://www.youtube.com/watch?v=oQAtQaTTyOE</div>
-                </div>
-            </div>
-        </div>  
- 
-        <div class="activity-card">
-            <div class="activity-title">Actividad de Aprendizaje 3.2: Grafos</div>
-            <p>Evalúa tu comprensión sobre colas y sus características.</p>
-            <a href="actividad_3_2.html" class="activity-btn">
-                <i class="fas fa-pencil-alt"></i> Realizar Actividad
-            </a>
+      <div class="section" id="seccion-3-2-1">
+        <div class="section-header">
+          <div class="section-number">3.2.1</div>
+          <div class="section-title">
+            Representaciones matriciales y basadas en listas
+          </div>
         </div>
-        
-        <div class="nav-buttons">
-            <a href="3.1.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Anterior: 3.1 Árboles binarios</a>
-            <a href="index.html" class="nav-btn">Volver al Menu Principal<i class="fas fa-arrow-right"></i></a>
+        <div class="content">
+          <p>
+            Para representar un grafo puede utilizar una matriz o un conjunto de
+            de listas, ambos llamados de adyacencia. Esta representación sirve
+            para identificar la conexión que existe entre los nodos y así poder
+            identificar si hay uno o varios caminos de un nodo a otro.
+          </p>
+          <p>Matriz de adyacencia</p>
+          <p>
+            Es una matriz que representa la conexión entre un par de vértices,
+            será una matriz cuadrada de n x n, es decir, en las columnas y filas
+            aparecerán los identificadores de cada vértice, por lo que, si
+            queremos representar un grafo simple, entonces se dice que la matriz
+            es binaria, donde el uno representa que hay una arista que une dos
+            nodos y el cero que no hay arista. En caso de que el grafo sea
+            ponderado entonces en la matriz aparecerán los pesos de las aristas
+            que unen nodos.
+          </p>
+          <p>
+            Si el grafo es no dirigido, entonces se va a crear una matriz
+            simétrica, donde abajo y arriba de la diagonal principal aparecerán
+            los mismos datos, dicho de otra forma, se mostrarán las conexiones
+            bidireccionales entre los nodos.
+          </p>
+          <p>
+            En caso de que el grafo sea dirigido y no ponderado, entonces,
+            aparecerá un uno indicando que un nodo tiene conexión con otro nodo,
+            pero no viceversa.
+          </p>
+          <p>
+            Esta estructura tiene como ventaja que la construcción de dicha
+            representación y las operaciones sobre la misma se implementan de
+            forma muy sencilla y el acceso a algún dato también se realiza con
+            facilidad. Sin embargo, tiene el inconveniente que el número de
+            vértices del grafo no puede cambiar y si hay muchos vértices y pocas
+            aristas (a &lt;&lt; n2) no se hace un uso eficiente de la memoria ya
+            que se obtiene una matriz escasa.
+          </p>
+          <p>
+            Como ya mencionamos, la representación de un grafo mediante una
+            matriz de adyacencia es una técnica muy eficiente, veamos cómo
+            construirla a partir de un Grafo No Dirigido. En la siguiente
+            figura, se puede observar un grafo consistente en 4 (n) vértices
+            (a,b,c,d).
+          </p>
+          <div class="figure-container">
+            <div class="figure-number"></div>
+            <div class="figure-caption">Grafo no dirigido</div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/matriz_no_dirigido_grafo.png"
+                alt="Grafo no dirigido"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            El primer paso, consiste en construir una matriz de n x n, siendo n
+            el número de vértices totales del grafo, en el ejemplo, la cantidad
+            de vértices es 4, por lo que la matriz correspondiente será de 4
+            filas x 4 columnas y además cuenta con la propiedad de ser
+            simétrica, para indicar que existe una adyacencia, es decir una
+            arista del vértice vi al vértice vj, se deberá colocar un número 1 y
+            un número 0 en otro caso, esto es:
+          </p>
+          <p>
+            Sea |V| = n y V = {v1 … vn}, la matriz de adyacencia será una matriz
+            de tamaño n x n, o sea |V| x |V|, donde cada arista será:
+          </p>
+          <div class="figure-container figura-mediana">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Matriz de adyacencia de un grafo no dirigido
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/matriz_no_dirigido_tabla.png"
+                alt="Matriz de adyacencia de un grafo no dirigido"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            En esta representación tendremos que reservar al menos n2 espacios
+            de memoria para la información de las aristas y las operaciones
+            relacionadas con el grafo implicarán, habitualmente, recorrer toda
+            la matriz, con lo que el orden de las operaciones será, en el peor
+            de los casos, cuadrático.
+          </p>
+          <p>
+            Para representar mediante una matriz de adyacencia un grafo dirigido
+            como el que se muestra a continuación:
+          </p>
+          <div class="figure-container">
+            <div class="figure-number"></div>
+            <div class="figure-caption">Grafo dirigido</div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/matriz_dirigido_grafo.png"
+                alt="Grafo dirigido"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            Se seguiría el mismo procedimiento que con un grafo no dirigido, con
+            la diferencia de que la adyacencia se indica sólo cuando un vértice
+            tenga dirección o sentido hacia otro. En el ejemplo a continuación,
+            en la matriz se llena la casilla correspondiente a la arista que va
+            del vértice d al b y no del vértice b al d, obteniendo una matriz
+            asimétrica.
+          </p>
+          <div class="figure-container figura-mediana">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Matriz de adyacencia de un grafo dirigido
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/matriz_dirigido_tabla.png"
+                alt="Matriz de adyacencia de un grafo dirigido"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            En el caso que el grafo además estuviera ponderado, como en el
+            ejemplo siguiente:
+          </p>
+          <div class="figure-container">
+            <div class="figure-number"></div>
+            <div class="figure-caption">Grafo ponderado dirigido</div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/matriz_ponderado_grafo.png"
+                alt="Grafo ponderado dirigido"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            Se seguiría el mismo procedimiento de construcción de la matriz y
+            dentro de las casillas se incluye la ponderación. En el caso de no
+            existir adyacencia, por convención se indica un valor muy grande ya
+            que se busca que no coincida con ningún posible valor en las aristas
+            del grafo.
+          </p>
+          <div class="figure-container figura-mediana">
+            <div class="figure-number"></div>
+            <div class="figure-caption">Matriz de adyacencia ponderada</div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/matriz_ponderado_tabla.png"
+                alt="Matriz de adyacencia ponderada"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>Lista de Adyacencia</p>
+          <p>
+            Comentamos anteriormente que una Matriz de Adyacencia tiene como
+            desventaja la deficiente administración de la memoria y el poco
+            dinamismo que existe si se requieren agregar más vértices, por esta
+            razón, se puede aprovechar la estructura de datos lista enlazada ya
+            que ofrece una solución dinámica y eficiente en lo que respecta a
+            manejo de memoria. A través de una lista enlazada, se puede crear un
+            vector dinámico que indexe los vértices y almacenar a su vez las
+            aristas en listas dinámicas, veamos su implementación.
+          </p>
+          <p>
+            A continuación, tenemos un grafo consistente en 4 (n) vértices
+            (a,b,c,d).
+          </p>
+          <div class="figure-container">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Grafo no dirigido para lista de adyacencia
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/lista_no_dirigido_grafo.png"
+                alt="Grafo no dirigido para lista de adyacencia"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            El primer paso para la implementación consiste en construir un
+            arreglo de listas enlazadas, una para cada vértice, lo que significa
+            que se deba reservar memoria para los n vértices del grafo y cada
+            nodo de la lista debe permitir a su vez almacenar las aristas
+            correspondientes, es decir, la lista correspondiente al vértice v,
+            contiene todos los vértices adyacentes a él.
+          </p>
+          <div class="figure-container figura-mediana">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Representación no dirigida mediante lista de adyacencia
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/lista_no_dirigido_representacion.png"
+                alt="Representación no dirigida mediante lista de adyacencia"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            Veamos el caso de un grafo dirigido como el de la siguiente figura:
+          </p>
+          <div class="figure-container">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Grafo dirigido para lista de adyacencia
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/lista_dirigido_grafo.png"
+                alt="Grafo dirigido para lista de adyacencia"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            Si comparamos la lista de adyacencia con la correspondiente matriz
+            de adyacencia, observaremos que, en el caso de la lista, únicamente
+            se reserva la memoria para las aristas que tengan correspondencia
+            entre vértices.
+          </p>
+          <div class="figure-container figura-mediana">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Lista de adyacencia de un grafo dirigido
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/lista_dirigido_representacion.png"
+                alt="Lista de adyacencia de un grafo dirigido"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            Y en contraposición, en la matriz de adyacencia vemos que, aunque no
+            se utilice la referencia, es decir, no existan aristas que conecten
+            algunos vértices, los espacios en memoria si deben ser reservados,
+            por lo que como mencionamos anteriormente, en el caso de un grafo
+            con un gran número de vértices, si se tienen pocas conexiones, se
+            estarán reservando localidades de memoria que nunca estarán en uso.
+            Observa la matriz para que puedas dimensionar esto.
+          </p>
+          <div class="figure-container figura-mediana">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Matriz de adyacencia del mismo grafo dirigido
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/lista_dirigido_matriz.png"
+                alt="Matriz de adyacencia del mismo grafo dirigido"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            Finalmente, si se desea representar un grafo etiquetado o ponderado,
+            como el siguiente:
+          </p>
+          <div class="figure-container">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Grafo ponderado para lista de adyacencia
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/lista_ponderado_grafo.png"
+                alt="Grafo ponderado para lista de adyacencia"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            La correspondiente lista de adyacencia deberá almacenar en cada
+            referencia, la ponderación o etiqueta de la arista como se muestra a
+            continuación.
+          </p>
+          <div class="figure-container figura-mediana">
+            <div class="figure-number"></div>
+            <div class="figure-caption">Lista de adyacencia ponderada</div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/lista_ponderado_representacion.png"
+                alt="Lista de adyacencia ponderada"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            Un aspecto muy importante de la estructura tipo grafo es que, a
+            partir de la misma, nos podemos plantear el problema; ¿qué otros
+            vértices del grafo son alcanzables desde cierto vértice? Dar
+            respuesta a esta pregunta puede llevarnos a dos tipos de
+            implementaciones: Recorrido y Búsqueda.
+          </p>
+          <p>
+            El recorrido de un grafo consiste en que partir de un vértice dado y
+            visitar todos los vértices restantes de manera ordenada y
+            sistemática, moviéndose por las aristas. El recorrido se aplica para
+            grafos dirigidos y no dirigidos.
+          </p>
+          <p>
+            El problema de búsqueda en un grafo consiste en buscar un elemento
+            (vértice) que cumpla una determinada condición dentro de un conjunto
+            de posibilidades (aristas) dado, lo que se puede denominar “espacio
+            de búsqueda” (todos los vértices del grafo). Esto se puede expresar
+            más formalmente como: Dado un grafo G, un vértice inicial v1 y un
+            vértice final vf, una búsqueda consiste en la exploración a través
+            de las aristas en el grafo partiendo de v1, para encontrar todos los
+            vértices en G para los cuales hay una ruta a partir de v1 hasta vf.
+          </p>
+          <p>
+            La búsqueda de una ruta entre dos vértices considera la posibilidad
+            de encontrar un camino que conecte dichos vértices, en algunos
+            problemas el propósito también es encontrar la ruta con el menor
+            costo posible entre dos puntos dados. Entre los algoritmos para
+            resolver estos problemas, se encuentran Búsqueda en Amplitud,
+            Búsqueda en Profundidad y Dijkstra.
+          </p>
+          <p>
+            Imaginemos el caso en el que se tienen algunos pueblos colindantes
+            en alguna región, estos pueblos se encuentran conectados a través de
+            caminos por los cuales se pueden transitar entre ellos. En ocasiones
+            se necesita a partir de un pueblo en específico ir en busca de otro,
+            y no se cuenta con más información al respecto. En este tipo de
+            problema se puede explorar a ciegas los caminos sistemáticamente
+            siguiendo un orden o una estrategia hasta que se llegue al pueblo
+            deseado, llevando en el proceso el registro de los pueblos visitados
+            para evitar regresar y dar vueltas en circulo. Este problema se
+            puede resolver empleando Grafos y los dos tipos de búsqueda:
+          </p>
+          <ul>
+            <li>Búsqueda en amplitud</li>
+            <li>Búsqueda en profundidad</li>
+          </ul>
+          <p>En las siguientes secciones se describen estos algoritmos.</p>
         </div>
-       
-       <footer>
-            <p>Algoritmos almacena y recupera Datos (polilibro académico) - Unidad 3: Algoritmos fundamentales</p>
-            <p>Desarrollado para fines educativos - © 2026</p>
-        </footer>
+      </div>
+
+      <div class="section" id="seccion-3-2-2">
+        <div class="section-header">
+          <div class="section-number">3.2.2</div>
+          <div class="section-title">Búsqueda en amplitud - BEA</div>
+        </div>
+        <div class="content">
+          <p>
+            La búsqueda en amplitud va explorando todas las aristas que emanan
+            de cada vértice en busca del vértice deseado, en el caso que el
+            vértice a donde se llega no coincide se marca como visitado para no
+            considerarlo más como alternativa en la búsqueda. Este procedimiento
+            se repite para cada vértice hasta que se llegue al destino o se haya
+            recorrido por completo el grafo, lo que significa que el nodo
+            buscado no forma parte de este. Dado la forma en que se va
+            explorando las aristas de cada vértice es idóneo emplear una cola
+            para almacenar los vértices que faltan por procesar. Como resultado
+            del proceso de la búsqueda se va formando un árbol n-ario el cual
+            representa el recorrido realizado para llegar al nodo destino. A
+            continuación, se muestra el seudocódigo de la búsqueda en amplitud:
+          </p>
+          <p>Entradas:</p>
+          <ul>
+            <li>Grafo G.</li>
+            <li>Vértice V de partida</li>
+          </ul>
+          <ul class="sangria-ul">
+            <li>1. Marcar el vértice V de partida como visitado.</li>
+            <li>2. Encolar el vértice V de partida.</li>
+            <li>3. Realizar pasos 4 y 5 hasta que la cola este vacía.</li>
+            <li>
+              4. Desencolar el nodo W e ir a todos los vértices adjuntos a W.
+            </li>
+            <li>
+              5. Encolar los vértices adjuntos a W que no hayan sido marcados
+              como visitados y marcar esos vértices. Adicionalmente conectar
+              dichos vértices con W para ir formando el árbol de búsqueda.
+            </li>
+            <li>6. Regresar el Árbol de búsqueda.</li>
+          </ul>
+          <p>
+            En seguida se muestra la ejecución de la búsqueda en amplitud sobre
+            un grafo de prueba.
+          </p>
+          <div class="figure-container figura-grande">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Ejecución de la búsqueda en amplitud, inicio e iteraciones 1 y 2
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/bfs_pasos_1_2.png"
+                alt="Ejecución de la búsqueda en amplitud, inicio e iteraciones 1 y 2"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <div class="figure-container figura-grande">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Ejecución de la búsqueda en amplitud, iteraciones 3, 4 y fin del
+              recorrido
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/bfs_pasos_3_4.png"
+                alt="Ejecución de la búsqueda en amplitud, iteraciones 3, 4 y fin del recorrido"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>A continuación, se muestra la ejecución del ejemplo anterior:</p>
+          <div class="figure-container figura-mediana">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Resultado textual del ejemplo de búsqueda en amplitud
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/bfs_ejecucion_texto.png"
+                alt="Resultado textual del ejemplo de búsqueda en amplitud"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            Como observamos se confirma los resultados presentados en la
+            ejecución del grafo de prueba.
+          </p>
+        </div>
+      </div>
+
+      <div class="section" id="seccion-3-2-3">
+        <div class="section-header">
+          <div class="section-number">3.2.3</div>
+          <div class="section-title">Búsqueda en profundidad - BEP</div>
+        </div>
+        <div class="content">
+          <p>
+            En la Búsqueda en profundidad se va explorando el primer vértice
+            adjunto que se presente en cada nivel del grafo, dejando como
+            pendientes los restantes para su exploración futura. Al igual que en
+            la búsqueda por amplitud se debe ir marcando de los vértices
+            visitados para evitar ciclos. Cuando se haya llegado al último nivel
+            del grafo, se va regresando por los niveles anteriores, repitiendo
+            el proceso con los vértices que quedaron pendientes hasta recorrer
+            en su totalidad el grafo o se llegue al vértice deseado. En este
+            caso la estructura de datos idónea para almacenar los vértices en
+            espera es una pila, dado que se va regresando por los niveles del
+            grafo.
+          </p>
+          <p>
+            A continuación, se muestra el seudocódigo de la búsqueda en
+            profundidad:
+          </p>
+          <p>Entradas:</p>
+          <ul>
+            <li>Grafo G</li>
+            <li>Vértice V de partida</li>
+          </ul>
+          <ul class="sangria-ul">
+            <li>1. Marcar el vértice V de partida como visitado.</li>
+            <li>2. Apilar el vértice V de partida.</li>
+            <li>3. Realizar pasos 4 y 5 hasta que la pila este vacía.</li>
+            <li>4. Hacer una copia W del nodo de la cima de la pila.</li>
+            <li>
+              5. Si existe ir al primer vértice Z adjunto a W, marcar Z como
+              visitado y conectar Z con W en el árbol de búsqueda. De lo
+              contrario desapilar el vértice de la pila.
+            </li>
+            <li>6. Regresar el Árbol de búsqueda.</li>
+          </ul>
+          <p>
+            En seguida se muestra la ejecución de la búsqueda en profundidad
+            sobre un grafo de prueba.
+          </p>
+          <div class="figure-container figura-grande">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Ejecución de la búsqueda en profundidad, iteraciones 1 y 2
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/dfs_pasos_1_2.png"
+                alt="Ejecución de la búsqueda en profundidad, iteraciones 1 y 2"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <div class="figure-container figura-grande">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Ejecución de la búsqueda en profundidad, iteración 3
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/dfs_paso_3.png"
+                alt="Ejecución de la búsqueda en profundidad, iteración 3"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <div class="figure-container figura-grande">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Ejecución de la búsqueda en profundidad, iteraciones 4 y 5
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/dfs_pasos_4_5.png"
+                alt="Ejecución de la búsqueda en profundidad, iteraciones 4 y 5"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <div class="figure-container figura-grande">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Ejecución de la búsqueda en profundidad, iteraciones 6 y 7
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/dfs_pasos_6_7.png"
+                alt="Ejecución de la búsqueda en profundidad, iteraciones 6 y 7"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <div class="figure-container figura-mediana">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Fin del recorrido de la búsqueda en profundidad
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/dfs_paso_8.png"
+                alt="Fin del recorrido de la búsqueda en profundidad"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>A continuación, se muestra la ejecución del ejemplo anterior:</p>
+          <div class="figure-container figura-mediana">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Resultado textual del ejemplo de búsqueda en profundidad
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/dfs_ejecucion_texto.png"
+                alt="Resultado textual del ejemplo de búsqueda en profundidad"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            Como observamos se confirma los resultados presentados en la
+            ejecución del ejemplo anterior.
+          </p>
+        </div>
+      </div>
+
+      <div class="section" id="seccion-3-2-4">
+        <div class="section-header">
+          <div class="section-number">3.2.4</div>
+          <div class="section-title">Distancia más corta</div>
+        </div>
+        <div class="content">
+          <p>Algoritmo de Dijkstra</p>
+          <p>
+            Dado un grafo en el que se han asignado diferentes pesos a los
+            arcos, se define el camino de costo mínimo de un vértice u a otro v
+            como aquel en el que la suma de los pesos de los arcos es la más
+            baja entre todos los caminos posibles de u a v. El algoritmo de
+            Dijkstra es un método eficiente que permite hallar el camino de
+            costo mínimo desde un nodo inicial a todos los otros nodos del
+            grafo. Fue creado por el neerlandés Edsger Dijkstra en 1959.
+          </p>
+          <p>
+            La base en la que se fundamenta este algoritmo es el principio de
+            optimalidad, esto es el trayecto más corto entre los vértices u y v
+            incluye el vértice w, entonces la sección del camino que va de w a v
+            debe ser el más corto de entre todos los caminos que van de w a v
+            (Imagen).
+          </p>
+          <div class="figure-container figura-mediana">
+            <div class="figure-number"></div>
+            <div class="figure-caption">Principio de optimalidad</div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/dijkstra_principio_optimalidad.png"
+                alt="Principio de optimalidad"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            Así, se van desarrollando de manera sucesiva los caminos de menor
+            costo desde un vértice de inicio hacia cada uno de los vértices del
+            grafo, y se emplean los caminos obtenidos como parte de los nuevos
+            caminos. La complejidad del algoritmo de Dijkstra varía según la
+            implementación que se aplique. En una implementación simple
+            utilizando matrices de adyacencia, la complejidad es O(n²). Este
+            algoritmo muestra una alta eficiencia cuando el grafo presenta una
+            estructura escasa (con pocos arcos en comparación con la cantidad de
+            vértices), lo que optimiza su rendimiento.
+          </p>
+          <div class="figure-container figura-mediana">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Notación básica del algoritmo de Dijkstra
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/dijkstra_notacion.png"
+                alt="Notación básica del algoritmo de Dijkstra"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <div class="figure-container figura-grande">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Procedimiento del algoritmo de Dijkstra
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/dijkstra_procedimiento.png"
+                alt="Procedimiento del algoritmo de Dijkstra"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>Ejemplo:</p>
+          <div class="figure-container figura-mediana">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Grafo ponderado de ejemplo y matriz de costos
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/dijkstra_grafo_inicial_y_matriz.png"
+                alt="Grafo ponderado de ejemplo y matriz de costos"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <div class="figure-container figura-grande">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Ejemplo del algoritmo de Dijkstra, paso 1
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/dijkstra_paso1.png"
+                alt="Ejemplo del algoritmo de Dijkstra, paso 1"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <div class="figure-container figura-grande">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Ejemplo del algoritmo de Dijkstra, pasos 2 y 3
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/dijkstra_paso2_3.png"
+                alt="Ejemplo del algoritmo de Dijkstra, pasos 2 y 3"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <div class="figure-container figura-grande">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Ejemplo del algoritmo de Dijkstra, paso 4
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/dijkstra_paso4.png"
+                alt="Ejemplo del algoritmo de Dijkstra, paso 4"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <div class="figure-container figura-grande">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Ejemplo del algoritmo de Dijkstra, paso 5
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/dijkstra_paso5.png"
+                alt="Ejemplo del algoritmo de Dijkstra, paso 5"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <div class="figure-container figura-grande">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Ejemplo del algoritmo de Dijkstra, pasos 6 y 7
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/dijkstra_paso6_7.png"
+                alt="Ejemplo del algoritmo de Dijkstra, pasos 6 y 7"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <div class="figure-container figura-grande">
+            <div class="figure-number"></div>
+            <div class="figure-caption">
+              Resultado final del algoritmo de Dijkstra
+            </div>
+            <div class="figura">
+              <img
+                src="assets/img/3.2/dijkstra_paso8_11_resultado.png"
+                alt="Resultado final del algoritmo de Dijkstra"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="seccion-3-2-5">
+        <div class="section-header">
+          <div class="section-number">3.2.5</div>
+          <div class="section-title">Implementaciones y aplicaciones</div>
+        </div>
+        <div class="content">
+          <p>
+            Los grafos son ampliamente utilizados en áreas de la computación
+            como:
+          </p>
+          <p>1. Redes de Computadoras</p>
+          <p>
+            Se utilizan para modelar la red de computadoras donde los nodos
+            representan dispositivos como routers, swiches u otras computadoras
+            y las aristas representan las conexiones que hay entre estos
+            dispositivos que puede ser de forma cableada o inalámbricas, las
+            conexiones pueden tener un costo o un peso.
+          </p>
+          <p>Por ejemplo:</p>
+          <p>
+            a) Redes peer to peer o P2P los dispositivos o nodos tienen la misma
+            importancia y la conexión entre ellos es bidireccional, es decir,
+            como un grafo no dirigido. El principal uso de este tipo de redes es
+            la compartición de archivos y el grafo podría representar los nodos
+            o computadoras que contienen el mismo recurso y a través de un
+            algoritmo como el de Dijkstra se puede calcular la distancia más
+            corta entre una computadora y otra para que el costo de compartir el
+            recurso sea el mínimo.
+          </p>
+          <p>
+            b) En redes jerárquicas, los grafos pueden son ponderados y
+            dirigidos, donde se puede utilizar el algoritmo de Dijkstra para
+            calcular la distancia más rápida entre dos nodos o el de
+            Floyd-Warshall para calcular las rutas óptimas entre todos los nodos
+            para enviar paquetes o información entre los distintos dispositivos
+            que forman parte de la red. Los protocolos de enrutamiento de
+            mensajes OSPF (Open Shortest Path First) y BGP (Border Gateway
+            Protocol) son ejemplos claros donde los ISP o proveedores de
+            servicio de internet los utilizan para calcular el costo de la
+            transmisión de un dispositivo a otro.
+          </p>
+          <p>2. Sistemas de Transporte</p>
+          <p>
+            Google Maps u aplicaciones similares utilizan los grafos para trazar
+            rutas optimas de viaje de un punto a otro. Aquí los nodos
+            representan puntos de inicio y llegada como son: casas, unidades
+            habitacionales, estaciones de tren o autobuses, aeropuertos, etc., y
+            las aristas representan carreteras, vías férreas o caminos de
+            terracería. Se puede utilizar el algoritmo de Dijkstra para calcular
+            la ruta más corta entre dos puntos o el algoritmo de A* o A estrella
+            que utiliza heurísticas para optimizar la búsqueda de la ruta más
+            corta entre dos puntos.
+          </p>
+          <p>
+            Como podemos darnos cuenta, los grafos son ampliamente utilizados
+            para resolver problemas donde existen múltiples puntos y diferentes
+            caminos para llegar a ellos. Dado que la complejidad de calcular las
+            distintas rutas que hay entre dos puntos y el coste de recorrer
+            estos caminos varia de una ruta a otra es muy alta, por lo tanto, se
+            utilizan algoritmos como el de Dijkstra, Floyd-Warshall o A* para
+            que en un tiempo computacionalmente razonable se calculen las rutas
+            óptimas con un mínimo costo.
+          </p>
+          <p>
+            Las implementaciones de los grafos son las búsquedas en amplitud y
+            profundidad y el algoritmo de la distancia más corta desarrollados
+            en los temas 3.2.2, 3.2.3 y 3.2.4.
+          </p>
+        </div>
+      </div>
+
+      <div class="section" id="seccion-3-2-6">
+        <div class="section-header">
+          <div class="section-number">3.2.6</div>
+          <div class="section-title">
+            Nociones de complejidad de los algoritmos sobre grafos
+          </div>
+        </div>
+        <div class="content">
+          <p>
+            Nociones de complejidad de los algoritmos de Búsqueda en Profundidad
+            (DFS) y Búsqueda en Amplitud (BFS) en el contexto de grafos.
+          </p>
+          <p>
+            La complejidad de un algoritmo en grafos depende de dos factores
+            principales:
+          </p>
+          <ul class="sangria-ul">
+            <li>
+              1. El número de vértices (VV): Representa los nodos del grafo.
+            </li>
+            <li>
+              2. El número de aristas (EE): Representa las conexiones entre los
+              nodos.
+            </li>
+          </ul>
+          <p>
+            Además, la complejidad también depende de la representación del
+            grafo (matriz de adyacencia o lista de adyacencia).
+          </p>
+          <p>Complejidad de la Búsqueda en Profundidad (DFS)</p>
+          <p>
+            El DFS recorre todos los vértices y aristas del grafo. Su
+            complejidad varía según la representación del grafo:
+          </p>
+          <ul>
+            <li>
+              Con matriz de adyacencia: Para cada vértice, se revisan todos los
+              demás vértices para ver si hay una arista. Esto se debe a que,
+              para cada vértice, se recorre toda una fila de la matriz (de
+              tamaño V). Por lo que su complejidad temporal es O(V2)O(V2). Y su
+              complejidad espacial es O(V2)O(V2) (para almacenar la matriz).
+            </li>
+            <li>
+              Con lista de adyacencia: Solo se recorren las aristas existentes,
+              por lo que se visita cada vértice una vez (O(V)O(V)) y cada arista
+              una vez (O(E)O(E)). Esto nos da una complejidad temporal
+              O(V+E)O(V+E) y una complejidad espacial O(V+E)O(V+E) (para
+              almacenar la lista de adyacencia).
+            </li>
+          </ul>
+          <p>Complejidad de la Búsqueda en Amplitud (BFS)</p>
+          <p>
+            El BFS también recorre todos los vértices y aristas del grafo, pero
+            lo hace nivel por nivel. Su complejidad también depende de la
+            representación del grafo:
+          </p>
+          <ul>
+            <li>
+              Con matriz de adyacencia: Al igual que el DFS, para cada vértice,
+              se revisan todos los demás vértices. Tanto su complejidad temporal
+              como su complejidad espacial es: O(V2)O(V2).
+            </li>
+            <li>
+              Con lista de adyacencia: Solo se recorren las aristas existentes,
+              es decir se visita cada vértice una vez (O(V)O(V)) y cada arista
+              una vez (O(E)O(E)), por lo que su complejidad temporal y espacial
+              es O(V+E)O(V+E) (para almacenar la lista de adyacencia).
+            </li>
+          </ul>
+          <p>Comparación de complejidades</p>
+          <table class="tabla-grafos-complejidad">
+            <thead>
+              <tr>
+                <th>Algoritmo</th>
+                <th>Representación</th>
+                <th>Complejidad Temporal</th>
+                <th>Complejidad Espacial</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>DFS</td>
+                <td>Matriz de adyacencia</td>
+                <td>O(V2)O(V2)</td>
+                <td>O(V2)O(V2)</td>
+              </tr>
+              <tr>
+                <td>DFS</td>
+                <td>Lista de adyacencia</td>
+                <td>O(V+E)O(V+E)</td>
+                <td>O(V+E)O(V+E)</td>
+              </tr>
+              <tr>
+                <td>BFS</td>
+                <td>Matriz de adyacencia</td>
+                <td>O(V2)O(V2)</td>
+                <td>O(V2)O(V2)</td>
+              </tr>
+              <tr>
+                <td>BFS</td>
+                <td>Lista de adyacencia</td>
+                <td>O(V+E)O(V+E)</td>
+                <td>O(V+E)O(V+E)</td>
+              </tr>
+            </tbody>
+          </table>
+          <ul>
+            <li>
+              DFS y BFS tienen la misma complejidad temporal y espacial en ambas
+              representaciones.
+            </li>
+            <li>
+              La lista de adyacencia es más eficiente en memoria y tiempo para
+              grafos dispersos.
+            </li>
+            <li>
+              La matriz de adyacencia es más eficiente para grafos densos y
+              cuando se necesita verificar rápidamente la existencia de aristas.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section" id="video-material">
+        <div class="section-header">
+          <div class="section-number"><i class="fas fa-play-circle"></i></div>
+          <div class="section-title">Material Audiovisual</div>
+        </div>
+        <div class="content">
+          <p>
+            A continuación, se explican la funcionalidad de los grafos distancia
+            corta
+          </p>
+
+          <div class="figure-container">
+            <iframe
+              width="100%"
+              height="450"
+              src="https://www.youtube.com/embed/oQAtQaTTyOE"
+              title="Modelos multihilos"
+              frameborder="0"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+                web-share;
+              "
+              allowfullscreen
+              style="border-radius: 5px; max-width: 100%"
+            ></iframe>
+            <div class="figure-caption">
+              Salas, I. (2025, 24 de noviembre).
+              <em>Modelo multi-hilo</em> [Video]. YouTube.
+              https://www.youtube.com/watch?v=oQAtQaTTyOE
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <div class="activity-title">Actividad de Aprendizaje 3.2: Grafos</div>
+        <p>Evalúa tu comprensión sobre colas y sus características.</p>
+        <a href="actividad_3_2.html" class="activity-btn">
+          <i class="fas fa-pencil-alt"></i> Realizar Actividad
+        </a>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="3.1.html" class="nav-btn"
+          ><i class="fas fa-arrow-left"></i> Anterior: 3.1 Árboles binarios</a
+        >
+        <a href="index.html" class="nav-btn"
+          >Volver al Menu Principal<i class="fas fa-arrow-right"></i
+        ></a>
+      </div>
+
+      <footer>
+        <p>
+          Algoritmos almacena y recupera Datos (polilibro académico) - Unidad 3:
+          Algoritmos fundamentales
+        </p>
+        <p>Desarrollado para fines educativos - © 2026</p>
+      </footer>
     </div>
-
-    <script>
-        let sidebarOpen = false;
-
-        const menuToggle = document.getElementById('menuToggle');
-        const sidebarNav = document.getElementById('sidebarNav');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-
-        function toggleSidebar() {
-            sidebarOpen = !sidebarOpen;
-            
-            if (sidebarOpen) {
-                sidebarNav.classList.add('active');
-                sidebarOverlay.classList.add('active');
-                menuToggle.classList.add('active');
-                menuToggle.innerHTML = '<i class="fas fa-times"></i>';
-                document.body.style.overflow = 'hidden';
-            } else {
-                sidebarNav.classList.remove('active');
-                sidebarOverlay.classList.remove('active');
-                menuToggle.classList.remove('active');
-                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                document.body.style.overflow = 'auto';
-            }
-            
-            updateContainerSpacing();
-        }
-
-        menuToggle.addEventListener('click', toggleSidebar);
-        sidebarOverlay.addEventListener('click', toggleSidebar);
-
-        document.querySelectorAll('.nav-item[data-section]').forEach(item => {
-            item.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    toggleSidebar();
-                }
-            });
-        });
-
-        function updateContainerSpacing() {
-            const container = document.querySelector('.container');
-            
-            if (window.innerWidth <= 768) {
-                container.style.marginLeft = '20px';
-                container.style.marginRight = '20px';
-                container.style.padding = '10px';
-            } else if (sidebarOpen && window.innerWidth > 768) {
-                container.style.marginLeft = '370px';
-                container.style.marginRight = '90px';
-                container.style.padding = '20px';
-            } else {
-                container.style.marginLeft = '90px';
-                container.style.marginRight = '90px';
-                container.style.padding = '20px';
-            }
-        }
-
-        function updateActiveSection() {
-            const sections = document.querySelectorAll('.section');
-            const navItems = document.querySelectorAll('.nav-item[data-section]');
-            let currentSectionId = '';
-
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= 150 && rect.bottom >= 150) {
-                    currentSectionId = section.id;
-                }
-            });
-
-            navItems.forEach(item => {
-                const sectionId = 'seccion-' + item.dataset.section;
-                if (sectionId === currentSectionId) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-        }
-
-        function updateReadingProgress() {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('progressBar').style.width = scrolled + '%';
-        }
-
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-
-        function toggleScrollToTopBtn() {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
-        }
-
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        window.addEventListener('scroll', () => {
-            updateActiveSection();
-            updateReadingProgress();
-            toggleScrollToTopBtn();
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                
-                if (target) {
-                    const offsetTop = target.offsetTop - 100;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768 && sidebarOpen) {
-                toggleSidebar();
-            }
-            updateContainerSpacing();
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            updateActiveSection();
-            updateReadingProgress();
-            updateContainerSpacing();
-            if (window.innerWidth <= 768) {
-                sidebarNav.classList.remove('active');
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && sidebarOpen) {
-                toggleSidebar();
-            }
-            if (e.key === 'm' || e.key === 'M') {
-                if (!e.ctrlKey && !e.altKey) { 
-                    toggleSidebar();
-                }
-            }
-        });
-    </script>
-</body>
+    <script src="js/3.1.js"></script>
+    <script src="js/visor.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.js"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
 </html>

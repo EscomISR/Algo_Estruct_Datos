@@ -38,19 +38,14 @@ document.querySelectorAll(".nav-item[data-section]").forEach((item) => {
 function updateContainerSpacing() {
   const container = document.querySelector(".container");
 
-  if (window.innerWidth <= 768) {
-    container.style.marginLeft = "20px";
-    container.style.marginRight = "20px";
-    container.style.padding = "10px";
-  } else if (sidebarOpen && window.innerWidth > 768) {
-    container.style.marginLeft = "370px";
-    container.style.marginRight = "90px";
-    container.style.padding = "20px";
-  } else {
-    container.style.marginLeft = "90px";
-    container.style.marginRight = "90px";
-    container.style.padding = "20px";
+  if (!container) {
+    return;
   }
+
+  container.classList.toggle(
+    "sidebar-abierto",
+    sidebarOpen && window.innerWidth > 768,
+  );
 }
 
 function updateActiveSection() {

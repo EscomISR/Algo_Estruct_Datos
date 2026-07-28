@@ -9,14 +9,14 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="3.1.css" />
+    <link rel="stylesheet" href="css/3.1.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.css"
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="visor.css" />
+    <link rel="stylesheet" href="css/visor.css" />
   </head>
   <body>
     <div class="reading-progress">
@@ -48,7 +48,7 @@
       <div class="nav-sections">
         <div class="nav-section">
           <div class="nav-section-title">Navegación</div>
-          <a href="#inicio" class="nav-item">
+          <a href="index.html" class="nav-item">
             <i class="fas fa-play-circle"></i>
             Inicio de la unidad
           </a>
@@ -119,15 +119,13 @@
     <div class="container">
       <header id="inicio">
         <div class="breadcrumb">
-          <a href="https://escomisr.github.io/Algo_Estruct_Datos/index.html"
-            ><i class="fas fa-home"></i> Inicio</a
-          >
+          <a href="../index.html"><i class="fas fa-home"></i> Inicio</a>
           <span>/</span>
           <a href="index.html">Unidad 3</a>
           <span>/</span>
-          <span>3. Árboles binarios</span>
+          <span>3.1 Árboles binarios</span>
         </div>
-        <h1>3. Árboles binarios</h1>
+        <h1>3.1 Árboles binarios</h1>
         <div class="subtitle">
           Se encarga de organizan la información de una forma multidimensional o
           jerárquica, lo que permite tener relaciones más complejas.
@@ -203,7 +201,7 @@
             </div>
             <div class="figura">
               <img
-                src="FIGURA1.png"
+                src="assets/img/FIGURA1.png"
                 alt="Transformación de árboles generales a binarios"
                 class="imagen-figura1"
               />
@@ -241,7 +239,7 @@
             <div class="figure-caption">Tipos de nodos en un árbol</div>
             <div class="figura">
               <img
-                src="FIGURA2.png"
+                src="assets/img/FIGURA2.png"
                 alt="Tipos de nodos en un árbol"
                 class="imagen-figura1"
               />
@@ -259,7 +257,11 @@
             <div class="figure-number"></div>
             <div class="figure-caption">Relación</div>
             <div class="figura">
-              <img src="FIGURA3.png" alt="Relación" class="imagen-figura1" />
+              <img
+                src="assets/img/FIGURA3.png"
+                alt="Relación"
+                class="imagen-figura1"
+              />
             </div>
             <div class="figure-caption">Nota: Elaboración propia</div>
             <p></p>
@@ -279,7 +281,7 @@
               <div class="figure-caption">Tipos de Nodos</div>
               <div class="figura">
                 <img
-                  src="FIGURA4.png"
+                  src="assets/img/FIGURA4.png"
                   alt="Tipos de nodos"
                   class="imagen-figura1"
                 />
@@ -590,7 +592,7 @@
               <div class="figure-caption">Árbol Binario</div>
               <div class="figura">
                 <img
-                  src="IMAGENES_UNIDAD_3/1_3.1.1.1.png"
+                  src="assets/img/1_3.1.1.1.png"
                   alt="Árbol Binario"
                   class="imagen-figura1"
                 />
@@ -628,16 +630,6 @@
               3. Debe rotarse el diagrama resultante aproximadamente cuarenta y
               cinco grados hacia la izquierda; para obtener el árbol binario
               correspondiente.
-            </p>
-
-            <p>
-              Referencia:<br />
-              <a
-                href="https://www.sites.upiicsa.ipn.mx/estudiantes/academia_de_informatica/estructura_y_rd/docs/u3/Conversi%C3%B3n%20de%20%C3%A1rboles%20generales%20en%20%C3%A1rboles%20binarios.pdf"
-                target="_blank"
-              >
-                Consultar documento de referencia
-              </a>
             </p>
 
             <p>
@@ -697,7 +689,7 @@ typedef struct datos
               </div>
               <div class="figura">
                 <img
-                  src="IMAGENES_UNIDAD_3/2_3.1.1.1.png"
+                  src="assets/img/2_3.1.1.1.png"
                   alt="Referencias para enlazar nuevos nodos"
                   class="imagen-figura1"
                 />
@@ -729,7 +721,7 @@ struct Nodo *nuevoNodo(int dato) {
               <div class="figure-caption">Nuevo nodo</div>
               <div class="figura">
                 <img
-                  src="IMAGENES_UNIDAD_3/3_3.1.1.1.png"
+                  src="assets/img/3_3.1.1.1.png"
                   alt="Nuevo nodo"
                   class="imagen-figura1"
                 />
@@ -804,7 +796,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </div>
               <div class="figura">
                 <img
-                  src="IMAGENES_UNIDAD_3/4_3.1.1.1.png"
+                  src="assets/img/4_3.1.1.1.png"
                   alt="Explicación gráfica para insertar un nodo"
                   class="imagen-figura1"
                 />
@@ -902,7 +894,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Recorridos en un árbol binario</div>
               <div class="figura">
                 <img
-                  src="FIGURA4a.png"
+                  src="assets/img/FIGURA4a.png"
                   alt="Recorridos en un árbol binario"
                   class="imagen-figura1"
                 />
@@ -925,7 +917,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 </div>
                 <div class="figura">
                   <img
-                    src="FIGURA5.png"
+                    src="assets/img/FIGURA5.png"
                     alt="Ejemplo de recorridos en un árbol binario en código"
                     class="imagen-figura1"
                   />
@@ -953,7 +945,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Recorrido Inorden</div>
                 <div class="figura">
                   <img
-                    src="FIGURA6.png"
+                    src="assets/img/FIGURA6.png"
                     alt="Recorrido Inorden"
                     class="imagen-figura1"
                   />
@@ -973,7 +965,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 </div>
                 <div class="figura">
                   <img
-                    src="FIGURA7.png"
+                    src="assets/img/FIGURA7.png"
                     alt="Ejemplo de recorridos Inorden en código"
                     class="imagen-figura1"
                   />
@@ -1001,7 +993,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Recorrido Postorden</div>
                 <div class="figura">
                   <img
-                    src="IMAGENES_UNIDAD_3/1_3.1.1.2.png"
+                    src="assets/img/1_3.1.1.2.png"
                     alt="Recorrido Postorden"
                     class="imagen-figura1"
                   />
@@ -1021,7 +1013,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 </div>
                 <div class="figura">
                   <img
-                    src="IMAGENES_UNIDAD_3/2_3.1.1.2.png"
+                    src="assets/img/2_3.1.1.2.png"
                     alt="Ejemplo de recorridos Postorden en código"
                     class="imagen-figura1"
                   />
@@ -1073,7 +1065,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Árbol binario de búsqueda</div>
               <div class="figura">
                 <img
-                  src="FIGURA8.png"
+                  src="assets/img/FIGURA8.png"
                   alt="Árbol binario de búsqueda"
                   class="imagen-figura1"
                 />
@@ -1093,7 +1085,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Árbol binario de búsqueda</div>
               <div class="figura">
                 <img
-                  src="FIGURA9.png"
+                  src="assets/img/FIGURA9.png"
                   alt="Árbol binario de búsqueda"
                   class="imagen-figura1"
                 />
@@ -1117,7 +1109,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Nodo 7 como raíz</div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_01_nodo_7.png"
+                    src="assets/img/bst_01_nodo_7.png"
                     alt="Nodo 7 como raíz"
                     class="imagen-figura1"
                   />
@@ -1139,7 +1131,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Inserción del nodo 9</div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_02_insercion_9.png"
+                    src="assets/img/bst_02_insercion_9.png"
                     alt="Inserción del nodo 9"
                     class="imagen-figura1"
                   />
@@ -1160,7 +1152,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Inserción del nodo 5</div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_03_insercion_5.png"
+                    src="assets/img/bst_03_insercion_5.png"
                     alt="Inserción del nodo 5"
                     class="imagen-figura1"
                   />
@@ -1187,7 +1179,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Inserción del nodo 1</div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_04_insercion_1.png"
+                    src="assets/img/bst_04_insercion_1.png"
                     alt="Inserción del nodo 1"
                     class="imagen-figura1"
                   />
@@ -1213,7 +1205,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Inserción del nodo 8</div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_05_insercion_8.png"
+                    src="assets/img/bst_05_insercion_8.png"
                     alt="Inserción del nodo 8"
                     class="imagen-figura1"
                   />
@@ -1239,7 +1231,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Inserción del nodo 10</div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_06_insercion_10.png"
+                    src="assets/img/bst_06_insercion_10.png"
                     alt="Inserción del nodo 10"
                     class="imagen-figura1"
                   />
@@ -1283,7 +1275,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Paso 1 para insertar el dato 3</div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_07_paso_1_dato_3.png"
+                    src="assets/img/bst_07_paso_1_dato_3.png"
                     alt="Paso 1 para insertar el dato 3"
                     class="imagen-figura1"
                   />
@@ -1303,7 +1295,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Paso 2 para insertar el dato 3</div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_08_paso_2_dato_3.png"
+                    src="assets/img/bst_08_paso_2_dato_3.png"
                     alt="Paso 2 para insertar el dato 3"
                     class="imagen-figura1"
                   />
@@ -1318,26 +1310,13 @@ void insertar(struct Nodo *nodo, int dato) {
                 </div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_09_pasos_3_6_dato_3.png"
+                    src="assets/img/bst_09_pasos_3_6_dato_3.png"
                     alt="Pasos 3 a 6 para insertar el dato 3"
                     class="imagen-figura1"
                   />
                 </div>
                 <div class="figure-caption">Nota: Elaboración propia</div>
               </div>
-
-              <p>
-                También puedes consultar la página
-                <a
-                  href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html"
-                  target="_blank"
-                >
-                  https://www.cs.usfca.edu/~galles/visualization/Algorithms.html
-                </a>
-                en el apartado “Binary Search Trees” para que tengas una
-                referencia visual de cómo se insertan o eliminan nodos de un
-                árbol binario de búsqueda.
-              </p>
 
               <p>
                 Como podrás notar, la operación de inserción en un árbol binario
@@ -1369,7 +1348,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 </div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_10_busqueda_secuencial.png"
+                    src="assets/img/bst_10_busqueda_secuencial.png"
                     alt="Búsqueda secuencial con seis iteraciones"
                     class="imagen-figura1"
                   />
@@ -1392,7 +1371,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Lista ordenada 2 3 5 6 7 8</div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_11_lista_ordenada.png"
+                    src="assets/img/bst_11_lista_ordenada.png"
                     alt="Lista ordenada 2 3 5 6 7 8"
                     class="imagen-figura1"
                   />
@@ -1417,7 +1396,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Búsqueda binaria iteración 1</div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_12_busqueda_binaria_iteracion_1.png"
+                    src="assets/img/bst_12_busqueda_binaria_iteracion_1.png"
                     alt="Búsqueda binaria iteración 1"
                     class="imagen-figura1"
                   />
@@ -1440,7 +1419,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Búsqueda binaria iteración 2</div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_13_busqueda_binaria_iteracion_2.png"
+                    src="assets/img/bst_13_busqueda_binaria_iteracion_2.png"
                     alt="Búsqueda binaria iteración 2"
                     class="imagen-figura1"
                   />
@@ -1463,7 +1442,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 <div class="figure-caption">Búsqueda binaria iteración 3</div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_14_busqueda_binaria_iteracion_3.png"
+                    src="assets/img/bst_14_busqueda_binaria_iteracion_3.png"
                     alt="Búsqueda binaria iteración 3"
                     class="imagen-figura1"
                   />
@@ -1495,7 +1474,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 </div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_15_arbol_busqueda_6_2_5_7_3_8.png"
+                    src="assets/img/bst_15_arbol_busqueda_6_2_5_7_3_8.png"
                     alt="Árbol binario de búsqueda con los valores 6 2 5 7 3 8"
                     class="imagen-figura1"
                   />
@@ -1522,7 +1501,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 </div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_16_busqueda_8_en_arbol_iteraciones.png"
+                    src="assets/img/bst_16_busqueda_8_en_arbol_iteraciones.png"
                     alt="Búsqueda del número 8 en el árbol binario de búsqueda"
                     class="imagen-figura1"
                   />
@@ -1552,7 +1531,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 </div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_17_ejemplo_manzanas.png"
+                    src="assets/img/bst_17_ejemplo_manzanas.png"
                     alt="Otro ejemplo de búsqueda en árbol"
                     class="imagen-figura1"
                   />
@@ -1573,7 +1552,7 @@ void insertar(struct Nodo *nodo, int dato) {
                 </div>
                 <div class="figura">
                   <img
-                    src="imagenes_arbol_busqueda/bst_18_recorridos_arbol.png"
+                    src="assets/img/bst_18_recorridos_arbol.png"
                     alt="Recorridos del árbol binario de búsqueda"
                     class="imagen-figura1"
                   />
@@ -1620,7 +1599,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_01_arbol_degenerado.png"
+                  src="assets/img/rr_01_arbol_degenerado.png"
                   alt="Árbol resultante al insertar 2,1,3,4,5,6,7"
                   class="imagen-figura1"
                 />
@@ -1641,7 +1620,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Árbol reordenado</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_02_arbol_reordenado.png"
+                  src="assets/img/rr_02_arbol_reordenado.png"
                   alt="Árbol reordenado"
                   class="imagen-figura1"
                 />
@@ -1681,7 +1660,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_03_propiedades_rojo_negro.png"
+                  src="assets/img/rr_03_propiedades_rojo_negro.png"
                   alt="Ejemplo de árbol rojo-negro con hojas nulas"
                   class="imagen-figura1"
                 />
@@ -1703,7 +1682,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_04_altura_y_altura_negra.png"
+                  src="assets/img/rr_04_altura_y_altura_negra.png"
                   alt="Altura y altura negra en el árbol rojo-negro"
                   class="imagen-figura1"
                 />
@@ -1720,7 +1699,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Igualdad de altura negra</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_05_altura_negra_igual.png"
+                  src="assets/img/rr_05_altura_negra_igual.png"
                   alt="Igualdad de altura negra"
                   class="imagen-figura1"
                 />
@@ -1759,7 +1738,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_06_desequilibrio_ll.png"
+                  src="assets/img/rr_06_desequilibrio_ll.png"
                   alt="Desequilibrio izquierda-izquierda"
                   class="imagen-figura1"
                 />
@@ -1774,7 +1753,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Desequilibrio derecha-derecha</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_07_desequilibrio_rr.png"
+                  src="assets/img/rr_07_desequilibrio_rr.png"
                   alt="Desequilibrio derecha-derecha"
                   class="imagen-figura1"
                 />
@@ -1789,7 +1768,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Desequilibrio izquierda-derecha</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_08_desequilibrio_lr.png"
+                  src="assets/img/rr_08_desequilibrio_lr.png"
                   alt="Desequilibrio izquierda-derecha"
                   class="imagen-figura1"
                 />
@@ -1804,7 +1783,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Desequilibrio derecha-izquierda</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_09_desequilibrio_rl.png"
+                  src="assets/img/rr_09_desequilibrio_rl.png"
                   alt="Desequilibrio derecha-izquierda"
                   class="imagen-figura1"
                 />
@@ -1830,7 +1809,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Rotación simple RR o LL</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_10_rotacion_simple_rr_ll.png"
+                  src="assets/img/rr_10_rotacion_simple_rr_ll.png"
                   alt="Rotación simple RR o LL"
                   class="imagen-figura1"
                 />
@@ -1848,7 +1827,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_11_ll_con_descendientes.png"
+                  src="assets/img/rr_11_ll_con_descendientes.png"
                   alt="Desequilibrio LL con descendientes"
                   class="imagen-figura1"
                 />
@@ -1867,7 +1846,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Rotación LL con descendientes</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_12_rotacion_ll_con_descendientes.png"
+                  src="assets/img/rr_12_rotacion_ll_con_descendientes.png"
                   alt="Rotación LL con descendientes"
                   class="imagen-figura1"
                 />
@@ -1882,7 +1861,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Estructura con desequilibrio LR</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_13_estructura_lr.png"
+                  src="assets/img/rr_13_estructura_lr.png"
                   alt="Estructura con desequilibrio LR"
                   class="imagen-figura1"
                 />
@@ -1899,7 +1878,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Rotación LR etapa a</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_14_rotacion_lr_etapa_a.png"
+                  src="assets/img/rr_14_rotacion_lr_etapa_a.png"
                   alt="Rotación LR etapa a"
                   class="imagen-figura1"
                 />
@@ -1915,7 +1894,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Rotación LR etapa b</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_15_rotacion_lr_etapa_b.png"
+                  src="assets/img/rr_15_rotacion_lr_etapa_b.png"
                   alt="Rotación LR etapa b"
                   class="imagen-figura1"
                 />
@@ -1933,7 +1912,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Rotación LR con descendientes</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_16_rotacion_lr_con_descendientes.png"
+                  src="assets/img/rr_16_rotacion_lr_con_descendientes.png"
                   alt="Rotación LR con descendientes"
                   class="imagen-figura1"
                 />
@@ -1960,7 +1939,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Inserción del nodo D</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_17_insercion_nodo_d.png"
+                  src="assets/img/rr_17_insercion_nodo_d.png"
                   alt="Inserción del nodo D"
                   class="imagen-figura1"
                 />
@@ -2001,7 +1980,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Caso 1</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_18_caso_1_insercion_raiz.png"
+                  src="assets/img/rr_18_caso_1_insercion_raiz.png"
                   alt="Caso 1"
                   class="imagen-figura1"
                 />
@@ -2019,7 +1998,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Caso 2: tío rojo</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_19_caso_2_tio_rojo.png"
+                  src="assets/img/rr_19_caso_2_tio_rojo.png"
                   alt="Caso 2: tío rojo"
                   class="imagen-figura1"
                 />
@@ -2036,7 +2015,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Caso 2: recoloración</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_20_caso_2_recoloracion.png"
+                  src="assets/img/rr_20_caso_2_recoloracion.png"
                   alt="Caso 2: recoloración"
                   class="imagen-figura1"
                 />
@@ -2055,7 +2034,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Caso 3 inicial</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_21_caso_3_inicial.png"
+                  src="assets/img/rr_21_caso_3_inicial.png"
                   alt="Caso 3 inicial"
                   class="imagen-figura1"
                 />
@@ -2072,7 +2051,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Caso 3: rotación y recoloración</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_22_caso_3_rotacion_y_recoloracion.png"
+                  src="assets/img/rr_22_caso_3_rotacion_y_recoloracion.png"
                   alt="Caso 3: rotación y recoloración"
                   class="imagen-figura1"
                 />
@@ -2091,7 +2070,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Caso 4 inicial</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_23_caso_4_inicial.png"
+                  src="assets/img/rr_23_caso_4_inicial.png"
                   alt="Caso 4 inicial"
                   class="imagen-figura1"
                 />
@@ -2108,7 +2087,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Caso 4: primera rotación</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_24_caso_4_primera_rotacion.png"
+                  src="assets/img/rr_24_caso_4_primera_rotacion.png"
                   alt="Caso 4: primera rotación"
                   class="imagen-figura1"
                 />
@@ -2124,7 +2103,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Caso 4: segunda rotación</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_25_caso_4_segunda_rotacion.png"
+                  src="assets/img/rr_25_caso_4_segunda_rotacion.png"
                   alt="Caso 4: segunda rotación"
                   class="imagen-figura1"
                 />
@@ -2142,7 +2121,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Caso 5 inicial</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_26_caso_5_inicial.png"
+                  src="assets/img/rr_26_caso_5_inicial.png"
                   alt="Caso 5 inicial"
                   class="imagen-figura1"
                 />
@@ -2158,7 +2137,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Caso 5: recoloración</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_27_caso_5_recoloracion.png"
+                  src="assets/img/rr_27_caso_5_recoloracion.png"
                   alt="Caso 5: recoloración"
                   class="imagen-figura1"
                 />
@@ -2173,7 +2152,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Caso 6 inicial</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_28_caso_6_inicial.png"
+                  src="assets/img/rr_28_caso_6_inicial.png"
                   alt="Caso 6 inicial"
                   class="imagen-figura1"
                 />
@@ -2189,7 +2168,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Caso 6: rotación</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_29_caso_6_rotacion.png"
+                  src="assets/img/rr_29_caso_6_rotacion.png"
                   alt="Caso 6: rotación"
                   class="imagen-figura1"
                 />
@@ -2207,7 +2186,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Caso 7 inicial</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_30_caso_7_inicial.png"
+                  src="assets/img/rr_30_caso_7_inicial.png"
                   alt="Caso 7 inicial"
                   class="imagen-figura1"
                 />
@@ -2220,7 +2199,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Caso 7: rotación</div>
               <div class="figura">
                 <img
-                  src="imagenes_rojo_negro/rr_31_caso_7_rotacion.png"
+                  src="assets/img/rr_31_caso_7_rotacion.png"
                   alt="Caso 7: rotación"
                   class="imagen-figura1"
                 />
@@ -2272,7 +2251,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </div>
               <div class="figura">
                 <img
-                  src="imagenes_secciones_3_1_5_a_3_1_8/s315_01_arbol_binario_completo.png"
+                  src="assets/img/s315_01_arbol_binario_completo.png"
                   alt="Montículo como árbol binario completo"
                   class="imagen-figura1"
                 />
@@ -2291,7 +2270,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Montículo parcialmente ordenado</div>
               <div class="figura">
                 <img
-                  src="imagenes_secciones_3_1_5_a_3_1_8/s315_02_monticulo_parcialmente_ordenado.png"
+                  src="assets/img/s315_02_monticulo_parcialmente_ordenado.png"
                   alt="Montículo parcialmente ordenado"
                   class="imagen-figura1"
                 />
@@ -2335,7 +2314,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </div>
               <div class="figura">
                 <img
-                  src="imagenes_secciones_3_1_5_a_3_1_8/s315_03_representacion_array_indices.png"
+                  src="assets/img/s315_03_representacion_array_indices.png"
                   alt="Representación lineal del montículo e índices"
                   class="imagen-figura1"
                 />
@@ -2422,7 +2401,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Ejemplo de cola de prioridad</div>
               <div class="figura">
                 <img
-                  src="imagenes_secciones_3_1_5_a_3_1_8/s316_01_cola_prioridad.png"
+                  src="assets/img/s316_01_cola_prioridad.png"
                   alt="Ejemplo de cola de prioridad"
                   class="imagen-figura1"
                 />
@@ -2445,7 +2424,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Montículo de máximos</div>
               <div class="figura">
                 <img
-                  src="imagenes_secciones_3_1_5_a_3_1_8/s316_02_monticulo_maximos.png"
+                  src="assets/img/s316_02_monticulo_maximos.png"
                   alt="Montículo de máximos"
                   class="imagen-figura1"
                 />
@@ -2468,7 +2447,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Inserción del 35 en el montículo</div>
               <div class="figura">
                 <img
-                  src="imagenes_secciones_3_1_5_a_3_1_8/s316_03_insercion_35_pasos.png"
+                  src="assets/img/s316_03_insercion_35_pasos.png"
                   alt="Inserción del 35 en el montículo"
                   class="imagen-figura1"
                 />
@@ -2482,7 +2461,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </div>
               <div class="figura">
                 <img
-                  src="imagenes_secciones_3_1_5_a_3_1_8/s316_04_insercion_35_resultado.png"
+                  src="assets/img/s316_04_insercion_35_resultado.png"
                   alt="Resultado final de la inserción del 35"
                   class="imagen-figura1"
                 />
@@ -2506,7 +2485,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </div>
               <div class="figura">
                 <img
-                  src="imagenes_secciones_3_1_5_a_3_1_8/s316_05_eliminacion_35_inicio.png"
+                  src="assets/img/s316_05_eliminacion_35_inicio.png"
                   alt="Eliminación del 35: pasos iniciales"
                   class="imagen-figura1"
                 />
@@ -2518,7 +2497,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Eliminación del 35: continuación</div>
               <div class="figura">
                 <img
-                  src="imagenes_secciones_3_1_5_a_3_1_8/s316_06_eliminacion_35_continuacion.png"
+                  src="assets/img/s316_06_eliminacion_35_continuacion.png"
                   alt="Eliminación del 35: continuación"
                   class="imagen-figura1"
                 />
@@ -2884,7 +2863,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Ejemplo de árbol B de orden 3</div>
               <div class="figura">
                 <img
-                  src="imagenes_secciones_3_1_5_a_3_1_8/s318_01_arbol_b_orden_3.png"
+                  src="assets/img/s318_01_arbol_b_orden_3.png"
                   alt="Ejemplo de árbol B de orden 3"
                   class="imagen-figura1"
                 />
@@ -2910,7 +2889,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </div>
               <div class="figura">
                 <img
-                  src="imagenes_secciones_3_1_5_a_3_1_8/s318_02_arbol_b_reorganizado.png"
+                  src="assets/img/s318_02_arbol_b_reorganizado.png"
                   alt="Árbol B reorganizado al insertar 20"
                   class="imagen-figura1"
                 />
@@ -3113,7 +3092,7 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="figure-caption">Ejemplo de árbol B+</div>
               <div class="figura">
                 <img
-                  src="imagenes_secciones_3_1_5_a_3_1_8/s318_03_arbol_bmas_ejemplo.png"
+                  src="assets/img/s318_03_arbol_bmas_ejemplo.png"
                   alt="Ejemplo de árbol B+"
                   class="imagen-figura1"
                 />
@@ -3135,7 +3114,7 @@ void insertar(struct Nodo *nodo, int dato) {
               </div>
               <div class="figura">
                 <img
-                  src="imagenes_secciones_3_1_5_a_3_1_8/s318_04_arbol_bmas_conexion_hojas.png"
+                  src="assets/img/s318_04_arbol_bmas_conexion_hojas.png"
                   alt="Conexión entre hojas del árbol B+"
                   class="imagen-figura1"
                 />
@@ -3443,13 +3422,15 @@ E   F          G   H</pre
       </div>
 
       <div class="activity-card">
-        <div class="activity-title">Actividad de Aprendizaje 2.1: Pila</div>
+        <div class="activity-title">
+          Actividad de Aprendizaje 3.1: Árboles binarios
+        </div>
         <p>
           Evalúa tu comprensión sobre la pila, su estructura de datos,
           especificaciones, implementaciones, nociones de complejidad de las
           operaciones y sus aplicaciones.
         </p>
-        <a href="actividad_2_1.html" class="activity-btn">
+        <a href="actividad_3_1.html" class="activity-btn">
           <i class="fas fa-pencil-alt"></i> Realizar Actividad
         </a>
       </div>
@@ -3458,11 +3439,8 @@ E   F          G   H</pre
         <a href="index.html" class="nav-btn"
           ><i class="fas fa-arrow-left"></i> Volver al Menú de Unidad</a
         >
-        <a
-          href="https://escomisr.github.io/Algo_Estruct_Datos/Unidades.html"
-          class="nav-btn"
-        >
-          Volver al Menu Principal<i class="fas fa-arrow-right"></i
+        <a href="3.2.html" class="nav-btn">
+          Continuar a 3.2 Grafos<i class="fas fa-arrow-right"></i
         ></a>
       </div>
 
@@ -3474,8 +3452,8 @@ E   F          G   H</pre
         <p>Desarrollado para fines educativos - © 2026</p>
       </footer>
     </div>
-    <script src="3.1.js"></script>
-    <script src="visor.js"></script>
+    <script src="js/3.1.js"></script>
+    <script src="js/visor.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.js"
       crossorigin="anonymous"
