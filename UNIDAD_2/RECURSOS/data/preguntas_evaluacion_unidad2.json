@@ -1,0 +1,479 @@
+[
+  {
+    "id": 1,
+    "type": "opcion_multiple",
+    "category": "Comprensión del caso",
+    "question": "¿Qué problema motivó a Marco a modernizar el sistema de inventario del Almacén Central?",
+    "options": [
+      "El manejo en papel y hojas de cálculo generaba errores y demoras en movimientos, pedidos, catálogo y búsquedas.",
+      "El almacén no tenía suficiente personal para operar.",
+      "El sistema anterior ya usaba tablas hash para todo."
+    ],
+    "answer": "El manejo en papel y hojas de cálculo generaba errores y demoras en movimientos, pedidos, catálogo y búsquedas.",
+    "explanation": "El contexto del caso señala que la operación manual era la causa principal del caos que Marco buscó resolver."
+  },
+  {
+    "id": 2,
+    "type": "opcion_multiple",
+    "category": "Comprensión del caso",
+    "question": "¿Cuál fue el objetivo principal del análisis que realizó Marco?",
+    "options": [
+      "Determinar qué estructura de datos reduce el tiempo de cada operación y resuelve correctamente cada problema.",
+      "Aumentar el número de empleados del almacén.",
+      "Eliminar por completo el uso de bases de datos."
+    ],
+    "answer": "Determinar qué estructura de datos reduce el tiempo de cada operación y resuelve correctamente cada problema.",
+    "explanation": "El objetivo e hipótesis del caso plantean comparar el desempeño de las estructuras frente al método anterior."
+  },
+  {
+    "id": 3,
+    "type": "opcion_multiple",
+    "category": "Selección de estructuras",
+    "question": "¿Qué estructura de datos implementó Marco para el botón de 'deshacer' movimientos?",
+    "options": [
+      "Una pila (LIFO).",
+      "Una cola (FIFO).",
+      "Una tabla hash."
+    ],
+    "answer": "Una pila (LIFO).",
+    "explanation": "Deshacer requiere revertir primero el último movimiento, lo cual corresponde al principio LIFO de una pila."
+  },
+  {
+    "id": 4,
+    "type": "opcion_multiple",
+    "category": "Selección de estructuras",
+    "question": "¿Qué estructura utilizó Marco para garantizar que los pedidos se despacharan en el mismo orden en que llegaron?",
+    "options": [
+      "Una cola (FIFO).",
+      "Una pila (LIFO).",
+      "Una lista circular."
+    ],
+    "answer": "Una cola (FIFO).",
+    "explanation": "El despacho en el mismo orden de llegada corresponde al principio FIFO propio de las colas."
+  },
+  {
+    "id": 5,
+    "type": "opcion_multiple",
+    "category": "Selección de estructuras",
+    "question": "¿Qué estructura permitió a Marco recorrer el catálogo de productos en ambos sentidos desde la interfaz?",
+    "options": [
+      "Una lista doblemente enlazada.",
+      "Una pila.",
+      "Una tabla hash cerrada."
+    ],
+    "answer": "Una lista doblemente enlazada.",
+    "explanation": "El recorrido en ambos sentidos requiere punteros al nodo anterior y siguiente, propios de la lista doblemente enlazada."
+  },
+  {
+    "id": 6,
+    "type": "opcion_multiple",
+    "category": "Selección de estructuras",
+    "question": "¿Qué estructura implementó Marco para localizar productos por código SKU casi de forma instantánea?",
+    "options": [
+      "Una tabla hash.",
+      "Una lista simple enlazada.",
+      "Una pila."
+    ],
+    "answer": "Una tabla hash.",
+    "explanation": "La búsqueda casi instantánea por clave es la ventaja principal de una tabla hash bien implementada."
+  },
+  {
+    "id": 7,
+    "type": "opcion_multiple",
+    "category": "Comprensión del caso",
+    "question": "Según el procedimiento del caso, ¿cómo evaluó Marco el desempeño de cada estructura?",
+    "options": [
+      "Cronometrando 500 operaciones de cada tipo y comparándolas contra el método anterior.",
+      "Preguntando la opinión de los clientes del almacén.",
+      "Contando cuántas líneas de código tenía cada estructura."
+    ],
+    "answer": "Cronometrando 500 operaciones de cada tipo y comparándolas contra el método anterior.",
+    "explanation": "El procedimiento describe la cronometración de 500 operaciones por estructura como método de evaluación."
+  },
+  {
+    "id": 8,
+    "type": "opcion_multiple",
+    "category": "Comprensión del caso",
+    "question": "¿Cuál fue el método anterior que Marco tomó como comparación al modernizar el sistema?",
+    "options": [
+      "Búsquedas lineales sobre hojas de cálculo.",
+      "Un sistema ya basado en tablas hash.",
+      "Un sistema basado únicamente en colas de prioridad."
+    ],
+    "answer": "Búsquedas lineales sobre hojas de cálculo.",
+    "explanation": "El procedimiento indica que el método anterior se basaba en búsquedas lineales sobre hojas de cálculo."
+  },
+  {
+    "id": 9,
+    "type": "seleccion_multiple",
+    "category": "Selección de estructuras",
+    "instruction": "Selecciona todas las respuestas correctas.",
+    "question": "¿Cuáles de las siguientes son operaciones básicas de una pila?",
+    "options": [
+      "push()",
+      "pop()",
+      "top() o peek()",
+      "enqueue()",
+      "dequeue()"
+    ],
+    "answer": [
+      "push()",
+      "pop()",
+      "top() o peek()"
+    ],
+    "explanation": "push, pop y top/peek son las operaciones fundamentales de una pila; enqueue y dequeue pertenecen a la cola."
+  },
+  {
+    "id": 10,
+    "type": "seleccion_multiple",
+    "category": "Selección de estructuras",
+    "instruction": "Selecciona todas las respuestas correctas.",
+    "question": "¿Cuáles de las siguientes técnicas se utilizan para resolver colisiones en una tabla hash?",
+    "options": [
+      "Encadenamiento",
+      "Sondeo lineal",
+      "Sondeo cuadrático",
+      "Ordenamiento por burbuja",
+      "Recursividad"
+    ],
+    "answer": [
+      "Encadenamiento",
+      "Sondeo lineal",
+      "Sondeo cuadrático"
+    ],
+    "explanation": "El encadenamiento y los métodos de direccionamiento abierto (sondeo lineal y cuadrático) resuelven las colisiones."
+  },
+  {
+    "id": 11,
+    "type": "seleccion_multiple",
+    "category": "Conclusiones y recomendaciones",
+    "instruction": "Selecciona todas las respuestas correctas.",
+    "question": "De acuerdo con los resultados, ¿qué acciones podrían recomendarse para reducir las fallas del sistema?",
+    "options": [
+      "Mejorar la función hash utilizada en la tabla de productos.",
+      "Revisar el manejo de colisiones en la tabla hash.",
+      "Eliminar por completo el catálogo de productos.",
+      "Dejar de medir el tiempo de las operaciones.",
+      "Optimizar el recorrido de la lista del catálogo."
+    ],
+    "answer": [
+      "Mejorar la función hash utilizada en la tabla de productos.",
+      "Revisar el manejo de colisiones en la tabla hash.",
+      "Optimizar el recorrido de la lista del catálogo."
+    ],
+    "explanation": "Estas acciones atacan directamente los motivos de falla reportados en la gráfica de motivos y en la tabla de resultados."
+  },
+  {
+    "id": 12,
+    "type": "seleccion_multiple",
+    "category": "Conclusiones y recomendaciones",
+    "instruction": "Selecciona todas las respuestas correctas.",
+    "question": "¿Cuáles de las siguientes conclusiones son consistentes con los datos obtenidos por Marco?",
+    "options": [
+      "La tabla hash tuvo el mejor porcentaje de operaciones dentro del tiempo objetivo.",
+      "La lista enlazada mostró el porcentaje más bajo de éxito.",
+      "Todas las estructuras tuvieron exactamente el mismo desempeño.",
+      "Ninguna estructura superó al método anterior."
+    ],
+    "answer": [
+      "La tabla hash tuvo el mejor porcentaje de operaciones dentro del tiempo objetivo.",
+      "La lista enlazada mostró el porcentaje más bajo de éxito."
+    ],
+    "explanation": "La tabla de resultados confirma que la tabla hash (96.0 %) tuvo el mejor desempeño y la lista enlazada (73.0 %) el más bajo."
+  },
+  {
+    "id": 13,
+    "type": "interpretar_datos",
+    "category": "Complejidad y eficiencia",
+    "resourceId": "tabla_resultados",
+    "question": "Según la tabla de resultados, ¿qué estructura tuvo el mayor porcentaje de operaciones dentro del tiempo objetivo?",
+    "options": [
+      "Tabla hash (96.0 %).",
+      "Pila (92.0 %).",
+      "Lista enlazada (73.0 %)."
+    ],
+    "answer": "Tabla hash (96.0 %).",
+    "explanation": "La tabla de resultados muestra que la tabla hash alcanzó el porcentaje más alto, 96.0 %."
+  },
+  {
+    "id": 14,
+    "type": "interpretar_datos",
+    "category": "Complejidad y eficiencia",
+    "resourceId": "tabla_resultados",
+    "question": "¿Cuál fue el tiempo promedio de respuesta de la lista enlazada usada para el catálogo?",
+    "options": [
+      "35 ms.",
+      "8 ms.",
+      "3 ms."
+    ],
+    "answer": "35 ms.",
+    "explanation": "La fila de la lista enlazada en la tabla de resultados indica un tiempo promedio de 35 ms."
+  },
+  {
+    "id": 15,
+    "type": "interpretar_datos",
+    "category": "Interpretación de datos",
+    "resourceId": "grafica_motivos",
+    "question": "Según la gráfica de motivos de falla, ¿cuál fue el motivo más frecuente entre las operaciones que no cumplieron el tiempo objetivo?",
+    "options": [
+      "Recorrido secuencial largo.",
+      "Colisión no resuelta.",
+      "Desbordamiento."
+    ],
+    "answer": "Recorrido secuencial largo.",
+    "explanation": "La gráfica de motivos muestra que el recorrido secuencial largo fue el motivo más reportado, con 42 %."
+  },
+  {
+    "id": 16,
+    "type": "interpretar_datos",
+    "category": "Interpretación de datos",
+    "resourceId": "tabla_contingencia",
+    "question": "Según la tabla de contingencia, ¿cuántas operaciones con la tabla hash resultaron con error?",
+    "options": [
+      "20.",
+      "40.",
+      "70."
+    ],
+    "answer": "20.",
+    "explanation": "La fila de la tabla hash en la tabla de contingencia indica 20 operaciones con error, de un total de 500."
+  },
+  {
+    "id": 17,
+    "type": "clasificar",
+    "category": "Interpretación de datos",
+    "instruction": "Clasifica cada afirmación según su función.",
+    "categories": [
+      "Resultado",
+      "Interpretación",
+      "Recomendación"
+    ],
+    "items": [
+      {
+        "text": "La tabla hash alcanzó 96.0 % de operaciones dentro del tiempo objetivo.",
+        "category": "Resultado"
+      },
+      {
+        "text": "El recorrido secuencial de la lista enlazada es lo que más limita el desempeño del catálogo.",
+        "category": "Interpretación"
+      },
+      {
+        "text": "Se podría agregar una tabla hash auxiliar para acelerar la búsqueda dentro del catálogo.",
+        "category": "Recomendación"
+      }
+    ],
+    "explanation": "El resultado presenta un dato medido, la interpretación explica su causa y la recomendación propone una acción de mejora."
+  },
+  {
+    "id": 18,
+    "type": "clasificar",
+    "category": "Interpretación de datos",
+    "instruction": "Clasifica cada estructura según el principio de organización que utiliza.",
+    "categories": [
+      "LIFO",
+      "FIFO",
+      "Acceso por clave"
+    ],
+    "items": [
+      {
+        "text": "Pila de deshacer movimientos",
+        "category": "LIFO"
+      },
+      {
+        "text": "Cola de despacho de pedidos",
+        "category": "FIFO"
+      },
+      {
+        "text": "Tabla hash de búsqueda de productos",
+        "category": "Acceso por clave"
+      }
+    ],
+    "explanation": "Cada estructura se asocia con el principio que define su comportamiento: LIFO, FIFO o acceso directo por clave."
+  },
+  {
+    "id": 19,
+    "type": "clasificar",
+    "category": "Interpretación de datos",
+    "instruction": "Clasifica cada operación según la estructura de datos a la que pertenece.",
+    "categories": [
+      "Pila",
+      "Cola",
+      "Tabla hash"
+    ],
+    "items": [
+      {
+        "text": "push()",
+        "category": "Pila"
+      },
+      {
+        "text": "enqueue()",
+        "category": "Cola"
+      },
+      {
+        "text": "put() / get()",
+        "category": "Tabla hash"
+      }
+    ],
+    "explanation": "push pertenece a la pila, enqueue a la cola, y put/get son operaciones típicas de una tabla hash."
+  },
+  {
+    "id": 20,
+    "type": "clasificar",
+    "category": "Interpretación de datos",
+    "instruction": "Clasifica cada motivo de falla según la estructura de datos más relacionada con ese problema.",
+    "categories": [
+      "Lista enlazada",
+      "Tabla hash"
+    ],
+    "items": [
+      {
+        "text": "Recorrido secuencial largo",
+        "category": "Lista enlazada"
+      },
+      {
+        "text": "Colisión no resuelta",
+        "category": "Tabla hash"
+      },
+      {
+        "text": "Función hash deficiente",
+        "category": "Tabla hash"
+      }
+    ],
+    "explanation": "El recorrido secuencial largo afecta principalmente a la lista enlazada, mientras que las colisiones y la función hash son problemas propios de las tablas hash."
+  },
+  {
+    "id": 21,
+    "type": "identificar_error",
+    "category": "Análisis crítico",
+    "scenario": "Un compañero de Marco afirma: 'Como la tabla hash tuvo 96 % de éxito, ya no es necesario revisar ningún otro motivo de falla en el sistema.'",
+    "question": "¿Cuál es el error principal en esta afirmación?",
+    "options": [
+      "Ignora que otras estructuras, como la lista enlazada, tuvieron un desempeño considerablemente menor.",
+      "La tabla hash en realidad tuvo el peor desempeño de todas las estructuras.",
+      "El 96 % de éxito significa que la tabla hash falló casi siempre."
+    ],
+    "answer": "Ignora que otras estructuras, como la lista enlazada, tuvieron un desempeño considerablemente menor.",
+    "explanation": "La tabla de resultados muestra que la lista enlazada (73.0 %) requiere atención adicional, aunque la tabla hash haya tenido buen desempeño."
+  },
+  {
+    "id": 22,
+    "type": "identificar_error",
+    "category": "Análisis crítico",
+    "scenario": "En su reporte, Marco concluye: 'Como usamos una pila para deshacer movimientos, el sistema nunca podrá tener errores en esa función.'",
+    "question": "¿Cuál es el error principal en esta conclusión?",
+    "options": [
+      "Los datos muestran que la pila también tuvo un 8 % de operaciones fuera del tiempo objetivo, por lo que no está libre de fallas.",
+      "Las pilas nunca pueden implementarse de forma dinámica.",
+      "La operación de deshacer no puede implementarse con una pila."
+    ],
+    "answer": "Los datos muestran que la pila también tuvo un 8 % de operaciones fuera del tiempo objetivo, por lo que no está libre de fallas.",
+    "explanation": "La tabla de resultados muestra 40 de 500 operaciones con error en la pila, así que la afirmación de 'nunca' no es correcta."
+  },
+  {
+    "id": 23,
+    "type": "identificar_error",
+    "category": "Análisis crítico",
+    "scenario": "Un reporte afirma: 'El estudio de Marco demuestra que la lista enlazada es una mala estructura de datos en cualquier contexto.'",
+    "question": "¿Cuál es el error principal en esta afirmación?",
+    "options": [
+      "El caso solo evaluó el desempeño de la lista enlazada en el catálogo de este almacén, no en cualquier contexto posible.",
+      "La lista enlazada tuvo el mejor desempeño de todas las estructuras evaluadas.",
+      "Las listas enlazadas no permiten insertar ni eliminar elementos."
+    ],
+    "answer": "El caso solo evaluó el desempeño de la lista enlazada en el catálogo de este almacén, no en cualquier contexto posible.",
+    "explanation": "Las limitaciones del caso señalan que las pruebas se hicieron en un solo almacén y con datos específicos, no en todos los contextos posibles."
+  },
+  {
+    "id": 24,
+    "type": "identificar_error",
+    "category": "Análisis crítico",
+    "scenario": "Marco reporta: 'Como la tabla hash es la más rápida en promedio, siempre debe usarse en lugar de cualquier otra estructura.'",
+    "question": "¿Cuál es el error principal en esta afirmación?",
+    "options": [
+      "Ignora que cada estructura se eligió según el problema que resuelve (por ejemplo, deshacer requiere LIFO, no acceso por clave).",
+      "La tabla hash fue la estructura con peor desempeño según los datos.",
+      "Las tablas hash no permiten buscar productos por código."
+    ],
+    "answer": "Ignora que cada estructura se eligió según el problema que resuelve (por ejemplo, deshacer requiere LIFO, no acceso por clave).",
+    "explanation": "El objetivo del caso fue elegir la estructura adecuada para cada problema, no usar siempre la misma sin importar el contexto."
+  },
+  {
+    "id": 25,
+    "type": "ordenar_proceso",
+    "category": "Conclusiones y recomendaciones",
+    "instruction": "Ordena el proceso general que siguió Marco para modernizar el sistema.",
+    "segments": [
+      "Identificar el problema de cada área del almacén",
+      "Elegir la estructura de datos adecuada para cada problema",
+      "Implementar y cronometrar las operaciones",
+      "Comparar los resultados contra el método anterior",
+      "Documentar conclusiones y recomendaciones"
+    ],
+    "answer": [
+      "Identificar el problema de cada área del almacén",
+      "Elegir la estructura de datos adecuada para cada problema",
+      "Implementar y cronometrar las operaciones",
+      "Comparar los resultados contra el método anterior",
+      "Documentar conclusiones y recomendaciones"
+    ],
+    "explanation": "Primero se identifica el problema, luego se elige y se implementa la estructura, se mide su desempeño y finalmente se documentan las conclusiones."
+  },
+  {
+    "id": 26,
+    "type": "ordenar_proceso",
+    "category": "Comprensión del caso",
+    "instruction": "Ordena correctamente los pasos para deshacer un movimiento usando la pila de Marco.",
+    "segments": [
+      "Verificar que la pila de movimientos no esté vacía",
+      "Consultar el último movimiento con top() o peek()",
+      "Eliminar ese movimiento con pop()",
+      "Revertir el efecto del movimiento en el inventario"
+    ],
+    "answer": [
+      "Verificar que la pila de movimientos no esté vacía",
+      "Consultar el último movimiento con top() o peek()",
+      "Eliminar ese movimiento con pop()",
+      "Revertir el efecto del movimiento en el inventario"
+    ],
+    "explanation": "Antes de deshacer se valida que existan movimientos, se consulta el último, se elimina de la pila y se revierte su efecto."
+  },
+  {
+    "id": 27,
+    "type": "ordenar_proceso",
+    "category": "Conclusiones y recomendaciones",
+    "instruction": "Ordena el proceso para atender un pedido en la cola de despacho.",
+    "segments": [
+      "El pedido llega y se agrega al final con enqueue()",
+      "El pedido espera su turno en la fila",
+      "Se retira el pedido más antiguo con dequeue()",
+      "El pedido se despacha al cliente"
+    ],
+    "answer": [
+      "El pedido llega y se agrega al final con enqueue()",
+      "El pedido espera su turno en la fila",
+      "Se retira el pedido más antiguo con dequeue()",
+      "El pedido se despacha al cliente"
+    ],
+    "explanation": "La cola sigue el principio FIFO: el pedido entra, espera su turno y se despacha en el orden en que llegó."
+  },
+  {
+    "id": 28,
+    "type": "ordenar_proceso",
+    "category": "Comprensión del caso",
+    "instruction": "Ordena el proceso para buscar un producto en la tabla hash del catálogo.",
+    "segments": [
+      "Se recibe el código SKU del producto",
+      "Se aplica la función hash al código",
+      "Se calcula la posición dentro del arreglo",
+      "Se verifica si existe colisión y se resuelve si es necesario",
+      "Se recupera el producto almacenado en esa posición"
+    ],
+    "answer": [
+      "Se recibe el código SKU del producto",
+      "Se aplica la función hash al código",
+      "Se calcula la posición dentro del arreglo",
+      "Se verifica si existe colisión y se resuelve si es necesario",
+      "Se recupera el producto almacenado en esa posición"
+    ],
+    "explanation": "La búsqueda en una tabla hash sigue este flujo: se recibe la clave, se aplica la función hash, se ubica la posición, se resuelven colisiones si las hay, y se recupera el valor."
+  }
+]

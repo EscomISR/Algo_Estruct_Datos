@@ -1,0 +1,198 @@
+{
+  "id": "caso_almacen_central",
+  "title": "Modernización del sistema de inventario del Almacén Central",
+  "summary": "Marco, del área de sistemas del Almacén Central, documentó cómo distintas estructuras de datos resolvieron los problemas del inventario, comparando su desempeño frente al método anterior basado en hojas de cálculo.",
+  "sections": [
+    {
+      "id": "contexto",
+      "title": "Contexto",
+      "icon": "fa-warehouse",
+      "content": "El Almacén Central gestionaba sus movimientos de inventario, sus pedidos, su catálogo de productos y sus búsquedas por código de forma manual y en hojas de cálculo. Esto generaba errores frecuentes y demoras notables en la operación diaria, por lo que Marco propuso modernizar el sistema con estructuras de datos adecuadas para cada problema."
+    },
+    {
+      "id": "objetivo",
+      "title": "Objetivo e hipótesis",
+      "icon": "fa-bullseye",
+      "content": "El objetivo fue determinar qué estructura de datos reduce el tiempo de respuesta y resuelve correctamente cada problema del almacén: deshacer movimientos, despachar pedidos en orden, mantener el catálogo de productos y buscar productos por código. La hipótesis planteó que usar la estructura adecuada para cada problema reduciría el tiempo promedio de respuesta frente al método anterior."
+    },
+    {
+      "id": "poblacion",
+      "title": "Alcance del sistema",
+      "icon": "fa-boxes-stacked",
+      "content": "El sistema evaluado maneja el catálogo completo del almacén, con miles de productos activos y cientos de movimientos de inventario y pedidos diarios. Para las pruebas se seleccionó una muestra de 500 operaciones representativas de cada una de las 4 funciones del sistema: deshacer movimientos, despacho de pedidos, gestión del catálogo y búsqueda de productos."
+    },
+    {
+      "id": "instrumento",
+      "title": "Instrumento de medición",
+      "icon": "fa-stopwatch",
+      "content": "Se utilizó un registro automático del tiempo de respuesta (en milisegundos) de cada operación, capturado durante una semana de pruebas con datos reales del almacén. Se estableció como tiempo objetivo un umbral máximo aceptable por tipo de operación, definido junto con el equipo de sistemas."
+    },
+    {
+      "id": "procedimiento",
+      "title": "Procedimiento",
+      "icon": "fa-list-check",
+      "content": "Se implementaron las 4 estructuras elegidas por Marco (pila, cola, lista doblemente enlazada y tabla hash) y se cronometraron 500 operaciones de cada tipo. Los resultados se compararon contra el método anterior, basado en búsquedas lineales sobre hojas de cálculo. Cada operación se registró como exitosa (dentro del tiempo objetivo) o con error (fuera del tiempo objetivo o con resultado incorrecto)."
+    },
+    {
+      "id": "analisis",
+      "title": "Plan de análisis",
+      "icon": "fa-chart-column",
+      "content": "Las operaciones se clasificaron por estructura de datos y se calculó el porcentaje de operaciones dentro del tiempo objetivo y el tiempo promedio de respuesta de cada una. Además, se elaboró una tabla de contingencia entre la estructura utilizada y el resultado de la prueba (exitosa o con error), y se identificaron los motivos principales de las fallas reportadas."
+    },
+    {
+      "id": "limitaciones",
+      "title": "Posibles limitaciones",
+      "icon": "fa-triangle-exclamation",
+      "content": "Las pruebas se realizaron en un solo almacén y con datos de una temporada específica de operación. No se evaluó el comportamiento del sistema bajo condiciones de máxima concurrencia (muchos usuarios simultáneos), por lo que los resultados no pueden generalizarse a cualquier escenario de uso."
+    }
+  ],
+  "resources": [
+    {
+      "id": "tabla_resultados",
+      "type": "table",
+      "title": "Resultados por estructura de datos",
+      "description": "Desempeño de cada estructura sobre 500 operaciones evaluadas.",
+      "columns": [
+        "Estructura",
+        "Operaciones evaluadas",
+        "Dentro del tiempo objetivo",
+        "Porcentaje dentro del objetivo",
+        "Tiempo promedio de respuesta"
+      ],
+      "rows": [
+        [
+          "Pila (deshacer)",
+          "500",
+          "460",
+          "92.0 %",
+          "8 ms"
+        ],
+        [
+          "Cola (despacho)",
+          "500",
+          "430",
+          "86.0 %",
+          "12 ms"
+        ],
+        [
+          "Lista enlazada (catálogo)",
+          "500",
+          "365",
+          "73.0 %",
+          "35 ms"
+        ],
+        [
+          "Tabla hash (búsqueda)",
+          "500",
+          "480",
+          "96.0 %",
+          "3 ms"
+        ],
+        [
+          "Total",
+          "2000",
+          "1735",
+          "86.75 %",
+          "14.5 ms"
+        ]
+      ]
+    },
+    {
+      "id": "grafica_control",
+      "type": "bar",
+      "title": "Porcentaje de operaciones dentro del tiempo objetivo",
+      "description": "Comparación del desempeño de cada estructura de datos.",
+      "unit": "%",
+      "max": 100,
+      "bars": [
+        {
+          "label": "Pila",
+          "value": 92
+        },
+        {
+          "label": "Cola",
+          "value": 86
+        },
+        {
+          "label": "Lista",
+          "value": 73
+        },
+        {
+          "label": "Tabla hash",
+          "value": 96
+        }
+      ]
+    },
+    {
+      "id": "grafica_motivos",
+      "type": "bar",
+      "title": "Motivo principal de fallas reportadas",
+      "description": "Distribución porcentual entre las 265 operaciones que no cumplieron el tiempo objetivo.",
+      "unit": "%",
+      "max": 50,
+      "bars": [
+        {
+          "label": "Recorrido secuencial largo",
+          "value": 42
+        },
+        {
+          "label": "Colisión no resuelta",
+          "value": 28
+        },
+        {
+          "label": "Función hash deficiente",
+          "value": 18
+        },
+        {
+          "label": "Desbordamiento",
+          "value": 12
+        }
+      ]
+    },
+    {
+      "id": "tabla_contingencia",
+      "type": "table",
+      "title": "Tabla de contingencia: estructura y resultado de la prueba",
+      "description": "Distribución de las 2000 operaciones evaluadas según la estructura y su resultado.",
+      "columns": [
+        "Estructura",
+        "Exitosa",
+        "Con error",
+        "Total"
+      ],
+      "rows": [
+        [
+          "Pila",
+          "460",
+          "40",
+          "500"
+        ],
+        [
+          "Cola",
+          "430",
+          "70",
+          "500"
+        ],
+        [
+          "Lista enlazada",
+          "365",
+          "135",
+          "500"
+        ],
+        [
+          "Tabla hash",
+          "480",
+          "20",
+          "500"
+        ],
+        [
+          "Total",
+          "1735",
+          "265",
+          "2000"
+        ]
+      ]
+    }
+  ],
+  "resultsNarrative": "La tabla hash fue la estructura con mejor desempeño (96.0 % dentro del tiempo objetivo, con un tiempo promedio de 3 ms), mientras que la lista enlazada usada para el catálogo mostró el porcentaje más bajo (73.0 %) y el motivo de falla más frecuente fue el recorrido secuencial largo. La pila y la cola tuvieron un desempeño intermedio, ambas por encima del 85 % dentro del tiempo objetivo."
+}
