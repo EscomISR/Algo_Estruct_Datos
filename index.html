@@ -7,6 +7,68 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="IMAGENES/logoescom.jpeg">
     <style>
+/* --- ESTILOS ESPECÍFICOS PARA EL MODAL DEL GLOSARIO --- */
+        #glosarioModal .modal-container {
+            background: linear-gradient(135deg, #231244, #1a2a3a);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 750px;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            overflow: hidden;
+            color: #ecf0f1;
+        }
+
+        #glosarioModal .modal-header {
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        #glosarioModal .modal-header h2 { color: #fff; font-size: 1.4rem; margin: 0; font-weight: 600; }
+        #glosarioModal .modal-close { 
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff; 
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer; 
+            font-size: 1.2rem;
+            transition: 0.2s;
+        }
+        #glosarioModal .modal-close:hover { background: #e74c3c; transform: scale(1.05); }
+
+        #glosarioModal .modal-tabs {
+            display: flex;
+            background: rgba(0,0,0,0.25);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        #glosarioModal .tab-btn {
+            flex: 1;
+            padding: 14px;
+            background: transparent;
+            border: none;
+            color: #a29bfe;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+        #glosarioModal .tab-btn:hover { background: rgba(255,255,255,0.05); color: #fff; }
+        #glosarioModal .tab-btn.active { background: rgba(52, 152, 219, 0.2); color: #fff; border-bottom: 3px solid #3498db; }
+
+        #glosarioModal .modal-body { padding: 25px; overflow-y: auto; text-align: justify; }
+        #glosarioModal .unit-content { display: none; }
+        #glosarioModal .unit-content.active { display: block; }
+        #glosarioModal .unit-content p { margin-bottom: 14px; line-height: 1.6; font-size: 0.95rem; }
+        #glosarioModal .unit-content p strong { color: #3498db; font-weight: 600; }
+
+
         /* Modal Overlay */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -513,10 +575,7 @@
     </style>
 </head>
 <body>
-<div class="card">
-    <div class="card-icon"><i class="fas fa-book"></i></div>
-    <div class="card-title">Glosario de términos</div>
-</div>
+
 
     <main class="container">
         <section class="hero-section">
@@ -531,6 +590,13 @@
                 <img src="IMAGENES/ESCOMB.png" alt="ESCOM">
             </div>
         </section>
+
+<!-- TARJETA DEL GLOSARIO -->
+            <div class="card" onclick="openGlosarioModal()">
+                <div class="card-header"><div class="card-icon gradient-7"><i class="fas fa-book"></i></div><h3 class="card-title">Glosario de términos</h3></div>
+                <div class="card-content"><p class="card-description">Conceptos clave divididos por unidades.</p></div>
+            </div>
+
 
         <div class="card-container">
             <div class="card" data-modal="prefacio">
@@ -1148,9 +1214,80 @@
             </div>
         </div>
     </div>
+<!-- MODAL DEL GLOSARIO (VENTANA FLOTANTE POR UNIDADES) -->
+    <div class="modal-overlay" id="glosarioModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2><i class="fas fa-book"></i> Glosario de términos</h2>
+                <button class="modal-close" onclick="closeGlosarioModal()">&times;</button>
+            </div>
+            
+            <div class="modal-tabs">
+                <button class="tab-btn active" onclick="switchUnit('u1', this)">Unidad 1</button>
+                <button class="tab-btn" onclick="switchUnit('u2', this)">Unidad 2</button>
+                <button class="tab-btn" onclick="switchUnit('u3', this)">Unidad 3</button>
+            </div>
 
+            <div class="modal-body">
+                <!-- UNIDAD 1 -->
+                <div id="u1" class="unit-content active">
+                    <p><strong>Abstracción:</strong> Proceso de simplificar la representación de un problema o sistema, considerando solo aspectos relevantes.</p>
+                    <p><strong>Algoritmo:</strong> Conjunto finito, ordenado y bien definido de instrucciones para resolver un problema.</p>
+                    <p><strong>Algoritmo de búsqueda:</strong> Establece un procedimiento lógico paso a paso para ubicar un dato concreto.</p>
+                    <p><strong>Algoritmo de ordenamiento:</strong> Reorganiza los elementos de un listado en un orden específico.</p>
+                    <p><strong>Algoritmo voraz (greedy):</strong> Toma la mejor decisión disponible en el momento presente sin considerar consecuencias futuras.</p>
+                    <p><strong>Búsqueda binaria:</strong> Localiza un elemento dentro de una colección ordenada dividiendo repetidamente el conjunto a la mitad.</p>
+                    <p><strong>Búsqueda indexada:</strong> Utiliza una estructura auxiliar llamada índice para localizar información más rápido.</p>
+                    <p><strong>Búsqueda secuencial:</strong> Recorre uno a uno los elementos de una lista hasta encontrar el dato.</p>
+                    <p><strong>Determinístico:</strong> Con los mismos datos de entrada, siempre obtiene los mismos resultados.</p>
+                    <p><strong>Notación Big-O:</strong> Métrica utilizada para medir la eficiencia de un algoritmo conforme crecen los datos.</p>
+                    <p><strong>Ordenamiento de burbuja:</strong> Compara pares consecutivos e intercambia posiciones si están en orden incorrecto.</p>
+                    <p><strong>Ordenamiento por inserción:</strong> Toma el primer elemento como referencia y desplaza cada elemento a su posición.</p>
+                    <p><strong>Ordenamiento por mezcla (Merge Sort):</strong> Divide la lista, ordena cada parte y las mezcla en orden correcto.</p>
+                    <p><strong>Programación por vuelta atrás (Backtracking):</strong> Explora soluciones paso a paso, retrocediendo cuando no conduce a una solución válida.</p>
+                    <p><strong>Pseudocódigo:</strong> Representación abstracta y simplificada de las etapas de un algoritmo.</p>
+                    <p><strong>Tipo de Dato Abstracto (TDA):</strong> Define un conjunto de datos y sus operaciones sin mostrar la implementación interna.</p>
+                </div>
+
+                <!-- UNIDAD 2 -->
+                <div id="u2" class="unit-content">
+                    <p><strong>Abstracción de datos:</strong> Forma de modelar información almacenada y procesada sin depender de detalles internos.</p>
+                    <p><strong>Cima:</strong> Extremo de la pila donde se insertan y eliminan los elementos.</p>
+                    <p><strong>Cola (Queue):</strong> Estructura de datos lineal basada en el principio FIFO.</p>
+                    <p><strong>Colisión:</strong> Situación donde dos claves diferentes generan el mismo índice en una tabla hash.</p>
+                    <p><strong>Desbordamiento (Overflow):</strong> Error al intentar insertar un elemento en una estructura llena.</p>
+                    <p><strong>Estructura de datos lineal:</strong> Organización donde los elementos se disponen secuencialmente.</p>
+                    <p><strong>FIFO (First In, First Out):</strong> El primer elemento en entrar es el primero en salir.</p>
+                    <p><strong>LIFO (Last In, First Out):</strong> El último elemento en entrar es el primero en salir.</p>
+                    <p><strong>Lista enlazada:</strong> Estructura formada por nodos unidos mediante punteros o enlaces.</p>
+                    <p><strong>Pila (Stack):</strong> Estructura de datos lineal basada en el principio LIFO.</p>
+                    <p><strong>Subdesbordamiento (Underflow):</strong> Error al intentar eliminar un elemento de una estructura vacía.</p>
+                    <p><strong>Tabla Hash:</strong> Estructura que almacena pares (clave, valor) para un acceso rápido a la información.</p>
+                </div>
+
+                <!-- UNIDAD 3 -->
+                <div id="u3" class="unit-content">
+                    <p><strong>Altura de un nodo:</strong> Máximo largo de camino desde un nodo hasta alguna hoja[cite: 1].</p>
+                    <p><strong>Árbol:</strong> Estructura no lineal que organiza jerárquicamente información mediante nodos y vértices[cite: 1].</p>
+                    <p><strong>Árbol Binario:</strong> Estructura en la que cada nodo puede poseer como máximo dos hijos[cite: 1].</p>
+                    <p><strong>Árbol Binario de Búsqueda:</strong> Árbol estructurado donde menores van a la izquierda y mayores a la derecha[cite: 1].</p>
+                    <p><strong>Búsqueda en Amplitud (BEA):</strong> Recorrido de grafo mediante una cola explorando progresivamente por niveles[cite: 1].</p>
+                    <p><strong>Búsqueda en Profundidad (BEP):</strong> Recorrido de grafo mediante una pila descendiendo al máximo antes de retroceder[cite: 1].</p>
+                    <p><strong>Dijkstra:</strong> Algoritmo para calcular trayectos más cortos en un grafo ponderado[cite: 1].</p>
+                    <p><strong>Grafo:</strong> Estructura no lineal conformada por vértices conectados mediante arcos o aristas[cite: 1].</p>
+                    <p><strong>Lista de adyacencia:</strong> Representación dinámica que almacena conexiones usando listas enlazadas[cite: 1].</p>
+                    <p><strong>Matriz de adyacencia:</strong> Arreglo cuadrado bidimensional para representar conexiones entre pares de vértices[cite: 1].</p>
+                    <p><strong>Nodo raíz:</strong> El primer elemento constituyente de un árbol ubicado en el nivel cero[cite: 1].</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <script> 
-
+document.getElementById('glosarioModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeGlosarioModal();
+    }
+});
         function openGlosarioModal() {
     document.getElementById('glosarioModal').classList.add('active');
     document.body.style.overflow = 'hidden';
