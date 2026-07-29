@@ -347,8 +347,8 @@
   let time = 0;
   let attempts = 0;
   let errors = 0;
-  let monsterHP = 8;
-  const maxHP = 8;
+  let monsterHP = 20;
+  const maxHP = 20;
   const maxErrors = 3;
   let gameOver = false;
   let timerInterval;
@@ -361,87 +361,64 @@
   // FUNCIÓN PARA INICIAR EL JUEGO (JSON ES/EN)
   // ========================
   async function initGame() {
-    const container = document.getElementById('questionsContainer');
-
-    try {
-      // Cargar preguntas desde archivo JSON externo
-      const response = await fetch('preguntas_1.4.json');
-      if (!response.ok) {
-        throw new Error(`No se pudo cargar preguntas_1.4.json (HTTP ${response.status})`);
-      }
-      const allQuestionsRaw = await response.json();
-
-      // Validación básica
-      if (!Array.isArray(allQuestionsRaw) || allQuestionsRaw.length === 0) {
-        throw new Error('El JSON no contiene un arreglo de preguntas.');
-      }
-
-      // Mezclar y seleccionar 8 preguntas aleatorias
-      shuffleArray(allQuestionsRaw);
-      questions = allQuestionsRaw.slice(0, 8).map((q, idx) => {
-        // Adaptar claves en español/inglés
-        const questionText = q.pregunta ?? q.question ?? q.text;
-        const optionsOrig = q.opciones ?? q.options;
-        const answerOrig  = q.respuesta_correcta ?? q.answer;
-
-        if (!questionText || !Array.isArray(optionsOrig) || !answerOrig) {
-          throw new Error(`Pregunta ${idx + 1} con formato inválido (faltan campos).`);
-        }
-
-        // Barajar opciones y ubicar índice correcto
-        const optionsShuffled = shuffleArray([...optionsOrig]);
-        const norm = s => String(s).trim();
-        let correctIndex = optionsShuffled.findIndex(o => norm(o) === norm(answerOrig));
-
-        if (correctIndex === -1) {
-          throw new Error(
-            `La respuesta no coincide con ninguna opción en: "${questionText.substring(0, 60)}..."`
-          );
-        }
-
-        return {
-          question: questionText,
-          options: optionsShuffled,
-          correct: correctIndex
-        };
-      });
-
-      // Limpiar el contenedor y renderizar preguntas
-      container.innerHTML = '';
-      questions.forEach((q, index) => {
-        const questionDiv = document.createElement('div');
-        questionDiv.className = 'question';
-        questionDiv.innerHTML = `
-          <div class="question-number">Desafío ${index + 1}</div>
-          <div class="question-text">${q.question}</div>
-          <div class="options">
-            ${q.options.map((option, optIndex) => `
-              <div class="option" onclick="selectOption(${index}, ${optIndex})" id="q${index}opt${optIndex}">
-                <div class="option-letter">${String.fromCharCode(97 + optIndex)})</div>
-                <div class="option-text">${option}</div>
-              </div>
-            `).join('')}
-          </div>
-        `;
-        container.appendChild(questionDiv);
-      });
-
-      // Reiniciar estado y arrancar temporizador
-      time = attempts = errors = completed = 0;
-      monsterHP = maxHP;
-      selectedAnswers = {};
-      updateUI();
-      clearInterval(timerInterval);
-      startTimer();
-
-    } catch (err) {
-      console.error(err);
-      container.innerHTML = `
-        <div class="question">
-          ⚠️ <strong>Error al cargar preguntas:</strong><br>${err.message}
-        </div>`;
+  const container = document.getElementById('questionsContainer');
+  try {
+    const response = await fetch('preguntas_1.4.json');
+    if (!response.ok) throw new Error(`No se pudo cargar preguntas_1.4.json (HTTP ${response.status})`);
+    const allQuestionsRaw = await response.json();
+    if (!Array.isArray(allQuestionsRaw) || allQuestionsRaw.length === 0) {
+      throw new Error('El JSON no contiene un arreglo de preguntas.');
     }
+
+    // Barajamos y tomamos 20 preguntas del banco
+    shuffleArray(allQuestionsRaw);
+    questions = allQuestionsRaw.slice(0, 20).map((q, idx) => {
+      const questionText = q.pregunta ?? q.question;
+      const optionsOrig = q.opciones ?? q.options;
+      const answerOrig  = q.respuesta_correcta ?? q.answer;
+      if (!questionText || !Array.isArray(optionsOrig) || !answerOrig) {
+        throw new Error(`Pregunta ${idx + 1} con formato inválido.`);
+      }
+      const optionsShuffled = shuffleArray([...optionsOrig]);
+      const norm = s => String(s).trim();
+      let correctIndex = optionsShuffled.findIndex(o => norm(o) === norm(answerOrig));
+      if (correctIndex === -1) {
+        throw new Error(`La respuesta no coincide con ninguna opción en: "${questionText.substring(0, 60)}..."`);
+      }
+      return { question: questionText, options: optionsShuffled, correct: correctIndex };
+    });
+
+    container.innerHTML = '';
+    questions.forEach((q, index) => {
+      const div = document.createElement('div');
+      div.className = 'question';
+      div.innerHTML = `
+        <div class="question-number">Desafío ${index + 1}</div>
+        <div class="question-text">${q.question}</div>
+        <div class="options">
+          ${q.options.map((option, optIndex) => `
+            <div class="option" onclick="selectOption(${index}, ${optIndex})" id="q${index}opt${optIndex}">
+              <div class="option-letter">${String.fromCharCode(97 + optIndex)})</div>
+              <div class="option-text">${option}</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      container.appendChild(div);
+    });
+
+    time = attempts = errors = completed = 0;
+    monsterHP = maxHP;
+    selectedAnswers = {};
+    updateUI();
+    clearInterval(timerInterval);
+    startTimer();
+
+  } catch (err) {
+    console.error(err);
+    container.innerHTML = `<div class="question">⚠️ <strong>Error al cargar preguntas:</strong><br>${err.message}</div>`;
   }
+}
 
   // ========================
   // UTIL: MEZCLAR ARRAY (Fisher-Yates)
