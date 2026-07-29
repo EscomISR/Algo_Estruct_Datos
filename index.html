@@ -591,11 +591,7 @@
             </div>
         </section>
 
-<!-- TARJETA DEL GLOSARIO -->
-            <div class="card" onclick="openGlosarioModal()">
-                <div class="card-header"><div class="card-icon gradient-7"><i class="fas fa-book"></i></div><h3 class="card-title">Glosario de términos</h3></div>
-                <div class="card-content"><p class="card-description">Conceptos clave divididos por unidades.</p></div>
-            </div>
+
 
 
         <div class="card-container">
@@ -614,6 +610,12 @@
                     <p class="card-description">Evaluación de conocimientos previos.</p>
                 </div>
             </div>
+<!-- TARJETA DEL GLOSARIO -->
+            <div class="card" onclick="openGlosarioModal()">
+                <div class="card-header"><div class="card-icon gradient-7"><i class="fas fa-book"></i></div><h3 class="card-title">Glosario de términos</h3></div>
+                <div class="card-content"><p class="card-description">Conceptos clave divididos por unidades.</p></div>
+            </div>
+
             <div class="card" data-modal="Encuadre">
                 <div class="card-header"><div class="card-icon gradient-2"><i class="fas fa-compass"></i></div><h3 class="card-title">Contenido</h3></div>
                 <div class="card-content"><p class="card-description">Propósito y estructura de la unidad de aprendizaje.</p></div>
@@ -1214,7 +1216,7 @@
             </div>
         </div>
     </div>
-<!-- MODAL DEL GLOSARIO (VENTANA FLOTANTE POR UNIDADES) -->
+<!-- 1. MODAL DEL GLOSARIO EN HTML -->
     <div class="modal-overlay" id="glosarioModal">
         <div class="modal-container">
             <div class="modal-header">
@@ -1282,222 +1284,130 @@
             </div>
         </div>
     </div>
-    <script> 
-document.getElementById('glosarioModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeGlosarioModal();
-    }
-});
+
+    <!-- SCRIPT ÚNICO Y UNIFICADO -->
+    <script>
+        // --- FUNCIONES DEL GLOSARIO FLOTANTE ---
         function openGlosarioModal() {
-    document.getElementById('glosarioModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeGlosarioModal() {
-    document.getElementById('glosarioModal').classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
-
-function switchUnit(unitId, btn) {
-    document.querySelectorAll('.unit-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-    
-    document.getElementById(unitId).classList.add('active');
-    btn.classList.add('active');
-}
-    // --- MANEJO DEL MODAL ---
-    const modalContainer = document.getElementById('modal-container');
-    const modalCloseButton = document.getElementById('modal-close-button');
-    const cardsWithModal = document.querySelectorAll('.card[data-modal]');
-
-    // Función para abrir el modal
-    function openModal(modalId) {
-        // Oculta todas las secciones del modal
-        document.querySelectorAll('.modal-section').forEach(section => section.classList.remove('active'));
-        
-        // Muestra la sección correcta
-        const activeSection = document.getElementById(`modal-${modalId}`);
-        if (activeSection) {
-            activeSection.classList.add('active');
-            modalContainer.classList.add('show');
-            document.body.style.overflow = 'hidden'; // Evita el scroll del fondo
-        }
-    }
-
-    // Función para cerrar el modal
-    function closeModal() {
-        modalContainer.classList.remove('show');
-        document.body.style.overflow = 'auto'; // Restaura el scroll
-    }
-
-    // Asigna el evento click a cada tarjeta que abre un modal
-    cardsWithModal.forEach(card => {
-        card.addEventListener('click', () => {
-            const modalId = card.getAttribute('data-modal');
-            openModal(modalId);
-        });
-    });
-    
-    // Asigna los eventos para cerrar el modal
-    modalCloseButton.addEventListener('click', closeModal);
-    modalContainer.addEventListener('click', e => {
-        // Cierra el modal si se hace clic en el fondo oscuro
-        if (e.target === modalContainer) {
-            closeModal();
-        }
-    });
-
-    // --- EFECTO 3D HOVER (SOLO PARA DESKTOP) ---
-    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-    
-    // Solo aplica el efecto 3D si NO es un dispositivo táctil
-    if (!isTouchDevice) {
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateY = (x - centerX) / 25;
-                const rotateX = (centerY - y) / 25;
-                
-                const maxRotation = 8;
-                const clampedRotateX = Math.max(Math.min(rotateX, maxRotation), -maxRotation);
-                const clampedRotateY = Math.max(Math.min(rotateY, maxRotation), -maxRotation);
-                
-                card.style.transform = `perspective(1200px) 
-                                      rotateX(${clampedRotateX}deg) 
-                                      rotateY(${clampedRotateY}deg) 
-                                      translateY(-8px)
-                                      scale(1.02)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1200px) rotateX(0) rotateY(0) translateY(0) scale(1)';
-            });
-        });
-    }
-
-    // --- MANEJO DE ACORDEÓN (SI APLICA) Y CLICS EXTERNOS ---
-    document.addEventListener('click', (e) => {
-        const allCards = document.querySelectorAll('.card');
-        let isClickInsideACard = false;
-        
-        allCards.forEach(card => {
-            if (card.contains(e.target)) {
-                isClickInsideACard = true;
+            const modal = document.getElementById('glosarioModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
-        });
-        
-        if (!isClickInsideACard) {
-            allCards.forEach(card => {
-                card.classList.remove('active'); // Cierra los acordeones (si los hubiera)
+        }
+
+        function closeGlosarioModal() {
+            const modal = document.getElementById('glosarioModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function switchUnit(unitId, btn) {
+            document.querySelectorAll('.unit-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            const targetUnit = document.getElementById(unitId);
+            if (targetUnit) {
+                targetUnit.classList.add('active');
+                btn.classList.add('active');
+            }
+        }
+
+        const glosarioModalEl = document.getElementById('glosarioModal');
+        if (glosarioModalEl) {
+            glosarioModalEl.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeGlosarioModal();
+                }
             });
         }
-    });
 
-    // --- LÓGICA DEL REPRODUCTOR DE VIDEO ---
-    const videoOverlay = document.getElementById('video-player-overlay');
-    const videoFrame = document.getElementById('main-video-frame');
+        // --- MANEJO DE MODALES GENERALES DEL MENÚ ---
+        const modalContainer = document.getElementById('modal-container');
+        const modalCloseButton = document.getElementById('modal-close-button');
+        const cardsWithModal = document.querySelectorAll('.card[data-modal]');
 
-    function playVideo(videoId) {
-        // Construir la URL de embed de YouTube
-        const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-        videoFrame.src = embedUrl;
-        
-        // Mostrar el modal del reproductor
-        videoOverlay.classList.add('show');
-    }
-
-    function closeVideoPlayer() {
-        // Ocultar el modal
-        videoOverlay.classList.remove('show');
-        // Detener el video limpiando el src
-        videoFrame.src = '';
-    }
-
-    // Cerrar si se hace clic fuera del video
-    videoOverlay.addEventListener('click', (e) => {
-        if (e.target === videoOverlay) {
-            closeVideoPlayer();
+        function openModal(modalId) {
+            document.querySelectorAll('.modal-section').forEach(section => section.classList.remove('active'));
+            const activeSection = document.getElementById(`modal-${modalId}`);
+            if (activeSection) {
+                activeSection.classList.add('active');
+                if (modalContainer) modalContainer.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
         }
-    });
 
-</script>
-<!-- Modal del Glosario -->
-<div class="modal-overlay" id="glosarioModal">
-    <div class="modal-container">
-        <div class="modal-header">
-            <h2><i class="fas fa-book"></i> Glosario de términos</h2>
-            <button class="modal-close" onclick="closeGlosarioModal()">&times;</button>
-        </div>
-        
-        <!-- Pestañas por Unidad -->
-        <div class="modal-tabs">
-            <button class="tab-btn active" onclick="switchUnit('u1', this)">Unidad 1</button>
-            <button class="tab-btn" onclick="switchUnit('u2', this)">Unidad 2</button>
-            <button class="tab-btn" onclick="switchUnit('u3', this)">Unidad 3</button>
-        </div>
+        function closeModal() {
+            if (modalContainer) {
+                modalContainer.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        }
 
-        <div class="modal-body">
-            <!-- UNIDAD 1 -->
-            <div id="u1" class="unit-content active">
-                <p><strong>Abstracción:</strong> Proceso de simplificar la representación de un problema o sistema, considerando solo los aspectos más relevantes y dejando de lado los detalles innecesarios.</p>
-                <p><strong>Algoritmo:</strong> Conjunto finito, ordenado y bien definido de instrucciones que permite resolver un problema o realizar una tarea específica.</p>
-                <p><strong>Algoritmo de búsqueda:</strong> Algoritmo que establece un procedimiento lógico paso a paso para ubicar un dato concreto dentro de un grupo amplio de información.</p>
-                <p><strong>Algoritmo de ordenamiento:</strong> Algoritmo que reorganiza los elementos de un listado en un orden específico, ascendente o descendente.</p>
-                <p><strong>Algoritmo voraz (greedy):</strong> Algoritmo que sigue la estrategia de tomar la mejor decisión disponible en el momento presente, sin considerar las consecuencias futuras.</p>
-                <p><strong>Búsqueda binaria:</strong> Algoritmo que localiza un elemento dentro de una colección ordenada dividiendo repetidamente el conjunto a la mitad y comparando el valor buscado con el elemento central.</p>
-                <p><strong>Búsqueda indexada:</strong> Método que utiliza una estructura auxiliar llamada índice para localizar información más rápido, consultando primero el bloque probable y buscando después solo dentro de ese bloque.</p>
-                <p><strong>Búsqueda secuencial:</strong> Algoritmo que recorre uno a uno los elementos de una lista hasta encontrar el dato buscado o terminar el recorrido; no requiere que los datos estén ordenados.</p>
-                <p><strong>Determinístico:</strong> Característica de un algoritmo por la cual, con los mismos datos de entrada, siempre se obtienen los mismos resultados.</p>
-                <p><strong>Notación Big-O:</strong> Métrica utilizada para medir la eficiencia de un algoritmo, estimando cómo crece el número de operaciones necesarias conforme aumenta la cantidad de datos.</p>
-                <p><strong>Ordenamiento de burbuja:</strong> Algoritmo que compara pares de elementos consecutivos e intercambia su posición cuando están en el orden incorrecto, haciendo que los valores más grandes "suban" hacia el final de la lista.</p>
-                <p><strong>Ordenamiento por inserción:</strong> Algoritmo que toma el primer elemento como referencia y desplaza cada elemento siguiente hacia la posición que le corresponde.</p>
-                <p><strong>Ordenamiento por mezcla (Merge Sort):</strong> Algoritmo que divide la lista en partes más pequeñas hasta llegar a elementos individuales, ordena cada parte y luego las mezcla nuevamente.</p>
-                <p><strong>Programación por vuelta atrás (Backtracking):</strong> Técnica que explora las posibles soluciones de un problema paso a paso, retrocediendo al punto anterior cuando una decisión no conduce a una solución válida.</p>
-                <p><strong>Pseudocódigo:</strong> Recurso que permite representar de manera abstracta y simplificada las etapas y los pasos que un algoritmo debe seguir, sin usar la sintaxis de un lenguaje específico.</p>
-                <p><strong>Tipo de Dato Abstracto (TDA):</strong> Forma de definir un conjunto de datos junto con las operaciones que pueden realizarse sobre ellos, sin mostrar la manera en que están implementados internamente.</p>
-            </div>
+        cardsWithModal.forEach(card => {
+            card.addEventListener('click', () => {
+                const modalId = card.getAttribute('data-modal');
+                openModal(modalId);
+            });
+        });
 
-            <!-- UNIDAD 2 -->
-            <div id="u2" class="unit-content">
-                <p><strong>Abstracción de datos:</strong> Forma de modelar información en la que los datos se almacenan, procesan y recuperan para dar solución a problemas reales, sin depender de los detalles internos de implementación.</p>
-                <p><strong>Cima:</strong> Extremo de la pila donde se insertan y eliminan los elementos.</p>
-                <p><strong>Cola (Queue):</strong> Estructura de datos lineal que organiza sus elementos bajo el principio FIFO.</p>
-                <p><strong>Colisión:</strong> Situación en la que dos claves diferentes generan el mismo índice dentro de una tabla hash.</p>
-                <p><strong>Desbordamiento (Overflow):</strong> Error que ocurre cuando se intenta insertar un elemento en una estructura estática que ya alcanzó su capacidad máxima.</p>
-                <p><strong>Estructura de datos lineal:</strong> Organización lógica en la que los elementos se disponen uno después del otro, de forma secuencial.</p>
-                <p><strong>FIFO (First In, First Out):</strong> Principio en el que el primer elemento en entrar a la estructura es el primero en salir.</p>
-                <p><strong>LIFO (Last In, First Out):</strong> Principio en el que el último elemento en entrar a la estructura es el primero en salir.</p>
-                <p><strong>Lista enlazada:</strong> Estructura de datos lineal formada por nodos compuestos por un dato y uno o más punteros o enlaces.</p>
-                <p><strong>Pila (Stack):</strong> Estructura de datos lineal que organiza sus elementos bajo el principio LIFO.</p>
-                <p><strong>Subdesbordamiento (Underflow):</strong> Error que ocurre cuando se intenta eliminar un elemento de una estructura que está vacía.</p>
-                <p><strong>Tabla Hash:</strong> Estructura de datos que almacena información en pares (clave, valor) y permite un acceso rápido a los elementos.</p>
-            </div>
+        if (modalCloseButton) modalCloseButton.addEventListener('click', closeModal);
+        if (modalContainer) {
+            modalContainer.addEventListener('click', e => {
+                if (e.target === modalContainer) closeModal();
+            });
+        }
 
-            <!-- UNIDAD 3 -->
-            <div id="u3" class="unit-content">
-                <p><strong>Altura de un nodo:</strong> Máximo largo de camino desde un nodo hasta alguna hoja[cite: 1].</p>
-                <p><strong>Árbol:</strong> Estructura de datos no lineal que se utiliza para organizar jerárquicamente la información mediante un conjunto de nodos y vértices[cite: 1].</p>
-                <p><strong>Árbol Binario:</strong> Estructura de datos construida bajo la característica fundamental de que cada nodo puede poseer como máximo dos nodos hijos[cite: 1].</p>
-                <p><strong>Árbol Binario de Búsqueda:</strong> Caso particular del árbol binario donde los menores a la raíz se ubican a la izquierda y los mayores a la derecha[cite: 1].</p>
-                <p><strong>Búsqueda en Amplitud (BEA):</strong> Recorrido de grafo implementado con una cola que explora progresivamente todas las aristas de cada nivel[cite: 1].</p>
-                <p><strong>Búsqueda en Profundidad (BEP):</strong> Recorrido de grafo implementado mediante una pila que desciende lo máximo posible antes de retroceder[cite: 1].</p>
-                <p><strong>Dijkstra:</strong> Algoritmo que calcula los trayectos más cortos posibles desde un nodo inicial hacia todos los demás dentro de un grafo ponderado[cite: 1].</p>
-                <p><strong>Grafo:</strong> Estructura de datos no lineal conformada por una colección de vértices o nodos integrados mediante arcos o aristas[cite: 1].</p>
-                <p><strong>Lista de adyacencia:</strong> Representación en memoria dinámica que registra los vértices de un grafo y almacena sus aristas en listas enlazadas[cite: 1].</p>
-                <p><strong>Matriz de adyacencia:</strong> Arreglo cuadrado bidimensional usado para marcar las conexiones entre pares de vértices de un grafo[cite: 1].</p>
-                <p><strong>Nodo raíz:</strong> Ubicado en el nivel cero, es el primer elemento constituyente de un árbol desde donde parten todas las ramas[cite: 1].</p>
-            </div>
-        </div>
-    </div>
-</div>
+        // --- EFECTO 3D HOVER (DESKTOP) ---
+        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+        if (!isTouchDevice) {
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateY = (x - centerX) / 25;
+                    const rotateX = (centerY - y) / 25;
+                    const maxRotation = 8;
+                    const clampedRotateX = Math.max(Math.min(rotateX, maxRotation), -maxRotation);
+                    const clampedRotateY = Math.max(Math.min(rotateY, maxRotation), -maxRotation);
+                    
+                    card.style.transform = `perspective(1200px) rotateX(${clampedRotateX}deg) rotateY(${clampedRotateY}deg) translateY(-8px) scale(1.02)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1200px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+                });
+            });
+        }
 
+        // --- REPRODUCTOR DE VIDEO ---
+        const videoOverlay = document.getElementById('video-player-overlay');
+        const videoFrame = document.getElementById('main-video-frame');
 
+        function playVideo(videoId) {
+            if (videoFrame && videoOverlay) {
+                videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                videoOverlay.classList.add('show');
+            }
+        }
 
+        function closeVideoPlayer() {
+            if (videoOverlay && videoFrame) {
+                videoOverlay.classList.remove('show');
+                videoFrame.src = '';
+            }
+        }
+
+        if (videoOverlay) {
+            videoOverlay.addEventListener('click', (e) => {
+                if (e.target === videoOverlay) closeVideoPlayer();
+            });
+        }
+    </script>
 </body>
 </html>
