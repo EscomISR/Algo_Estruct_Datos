@@ -247,7 +247,7 @@
             <div class="figure-caption">Nota: Elaboración propia</div>
           </div>
           <p>
-            Una vez que ya establecio en nodo, entonces ahora se planteara el de
+            Una vez que ya estableció el nodo, entonces ahora se planteará el de
             relación. Como comentamos en los ejemplos del árbol genealógico y
             del organigrama, los Nodos pueden tener alguna correspondencia entre
             ellos, observa el ejemplo siguiente:
@@ -264,296 +264,284 @@
               />
             </div>
             <div class="figure-caption">Nota: Elaboración propia</div>
-            <p></p>
-            <p>
-              Como podrás notar, la relación jerárquica entre un padre y sus
-              hijos se ve representada mediante líneas que conectan al Nodo
-              Padre con cada uno de los Nodos Hijos, a estas líneas se les
-              denomina Arcos o Ramas.
-            </p>
-            <p>
-              De esta dependencia jerárquica se desprenden otros tipos de Nodos
-              que también podrás encontrar en la literatura que consultes:
-            </p>
+          </div>
+          <p>
+            Como podrás notar, la relación jerárquica entre un padre y sus hijos
+            se ve representada mediante líneas que conectan al Nodo Padre con
+            cada uno de los Nodos Hijos, a estas líneas se les denomina Arcos o
+            Ramas.
+          </p>
+          <p>
+            De esta dependencia jerárquica se desprenden otros tipos de Nodos
+            que también podrás encontrar en la literatura que consultes:
+          </p>
 
-            <div class="figure-container figura-chica">
-              <div class="figure-number"></div>
-              <div class="figure-caption">Tipos de Nodos</div>
-              <div class="figura">
-                <img
-                  src="assets/img/FIGURA4.png"
-                  alt="Tipos de nodos"
-                  class="imagen-figura1"
-                />
-              </div>
-              <div class="figure-caption">Nota: Elaboración propia</div>
-              <br />
-
-              <p>
-                Hemos comentado que un árbol, establece a un conjunto de Nodos y
-                Vértices, por otro lado, identificaras que existen relaciones
-                entre ellos, como lo puedes observar en la siguiente imagen en
-                donde se muestra el árbol compuesto por los nodos A,B,C,D,E,F,G
-                Y H:
+          <div class="figure-container figura-chica">
+            <div class="figure-number"></div>
+            <div class="figure-caption">Tipos de Nodos</div>
+            <div class="figura">
+              <img
+                src="assets/img/FIGURA4.png"
+                alt="Tipos de nodos"
+                class="imagen-figura1"
+              />
+            </div>
+            <div class="figure-caption">Nota: Elaboración propia</div>
+          </div>
+          <p>
+            Hemos comentado que un árbol, establece a un conjunto de Nodos y
+            Vértices, por otro lado, identificaras que existen relaciones entre
+            ellos, como lo puedes observar en la siguiente imagen en donde se
+            muestra el árbol compuesto por los nodos A,B,C,D,E,F,G Y H:
+          </p>
+          <div class="figure-container figura-chica">
+            <div class="figure-number"></div>
+            <div class="arbol-animado">
+              <h3>Árbol compuesto por los nodos A, B, C, D, E, F, G y H</h3>
+              <p class="intro-arbol">
+                Da clic en cada concepto para observar de forma animada cómo se
+                colorean los nodos y las ramas del árbol. También puedes
+                seleccionar directamente un nodo inicial y un nodo final dentro
+                del árbol para colorear el camino entre ellos.
               </p>
 
-              <div class="arbol-animado">
-                <h3>Árbol compuesto por los nodos A, B, C, D, E, F, G y H</h3>
-                <p class="intro-arbol">
-                  Da clic en cada concepto para observar de forma animada cómo
-                  se colorean los nodos y las ramas del árbol. También puedes
-                  seleccionar directamente un nodo inicial y un nodo final
-                  dentro del árbol para colorear el camino entre ellos.
-                </p>
+              <div class="layout-arbol">
+                <div class="panel-grafo">
+                  <svg
+                    viewBox="0 0 760 500"
+                    aria-label="Árbol animado con nodos A, B, C, D, E, F, G y H"
+                  >
+                    <!-- Zonas para subárboles -->
+                    <ellipse
+                      id="zonaIzquierda"
+                      class="subarbol-zona"
+                      cx="235"
+                      cy="255"
+                      rx="145"
+                      ry="160"
+                    ></ellipse>
+                    <ellipse
+                      id="zonaDerecha"
+                      class="subarbol-zona"
+                      cx="515"
+                      cy="255"
+                      rx="190"
+                      ry="160"
+                    ></ellipse>
 
-                <div class="layout-arbol">
-                  <div class="panel-grafo">
-                    <svg
-                      viewBox="0 0 760 500"
-                      aria-label="Árbol animado con nodos A, B, C, D, E, F, G y H"
-                    >
-                      <!-- Zonas para subárboles -->
-                      <ellipse
-                        id="zonaIzquierda"
-                        class="subarbol-zona"
-                        cx="235"
-                        cy="255"
-                        rx="145"
-                        ry="160"
-                      ></ellipse>
-                      <ellipse
-                        id="zonaDerecha"
-                        class="subarbol-zona"
-                        cx="515"
-                        cy="255"
-                        rx="190"
-                        ry="160"
-                      ></ellipse>
+                    <!-- Líneas de nivel -->
+                    <line
+                      id="nivel0"
+                      class="nivel-linea"
+                      x1="80"
+                      y1="70"
+                      x2="680"
+                      y2="70"
+                    ></line>
+                    <line
+                      id="nivel1"
+                      class="nivel-linea"
+                      x1="80"
+                      y1="190"
+                      x2="680"
+                      y2="190"
+                    ></line>
+                    <line
+                      id="nivel2"
+                      class="nivel-linea"
+                      x1="80"
+                      y1="330"
+                      x2="680"
+                      y2="330"
+                    ></line>
 
-                      <!-- Líneas de nivel -->
-                      <line
-                        id="nivel0"
-                        class="nivel-linea"
-                        x1="80"
-                        y1="70"
-                        x2="680"
-                        y2="70"
-                      ></line>
-                      <line
-                        id="nivel1"
-                        class="nivel-linea"
-                        x1="80"
-                        y1="190"
-                        x2="680"
-                        y2="190"
-                      ></line>
-                      <line
-                        id="nivel2"
-                        class="nivel-linea"
-                        x1="80"
-                        y1="330"
-                        x2="680"
-                        y2="330"
-                      ></line>
+                    <text id="nivelTexto0" class="nivel-texto" x="650" y="60">
+                      Nivel 0
+                    </text>
+                    <text id="nivelTexto1" class="nivel-texto" x="650" y="180">
+                      Nivel 1
+                    </text>
+                    <text id="nivelTexto2" class="nivel-texto" x="650" y="320">
+                      Nivel 2
+                    </text>
 
-                      <text id="nivelTexto0" class="nivel-texto" x="650" y="60">
-                        Nivel 0
-                      </text>
-                      <text
-                        id="nivelTexto1"
-                        class="nivel-texto"
-                        x="650"
-                        y="180"
-                      >
-                        Nivel 1
-                      </text>
-                      <text
-                        id="nivelTexto2"
-                        class="nivel-texto"
-                        x="650"
-                        y="320"
-                      >
-                        Nivel 2
-                      </text>
+                    <!-- Aristas -->
+                    <line
+                      id="AB"
+                      class="arista"
+                      x1="380"
+                      y1="80"
+                      x2="280"
+                      y2="190"
+                    ></line>
+                    <line
+                      id="AC"
+                      class="arista"
+                      x1="380"
+                      y1="80"
+                      x2="480"
+                      y2="190"
+                    ></line>
+                    <line
+                      id="BD"
+                      class="arista"
+                      x1="280"
+                      y1="190"
+                      x2="215"
+                      y2="330"
+                    ></line>
+                    <line
+                      id="BE"
+                      class="arista"
+                      x1="280"
+                      y1="190"
+                      x2="305"
+                      y2="330"
+                    ></line>
+                    <line
+                      id="CF"
+                      class="arista"
+                      x1="480"
+                      y1="190"
+                      x2="420"
+                      y2="330"
+                    ></line>
+                    <line
+                      id="CG"
+                      class="arista"
+                      x1="480"
+                      y1="190"
+                      x2="505"
+                      y2="330"
+                    ></line>
+                    <line
+                      id="CH"
+                      class="arista"
+                      x1="480"
+                      y1="190"
+                      x2="610"
+                      y2="330"
+                    ></line>
 
-                      <!-- Aristas -->
-                      <line
-                        id="AB"
-                        class="arista"
-                        x1="380"
-                        y1="80"
-                        x2="280"
-                        y2="190"
-                      ></line>
-                      <line
-                        id="AC"
-                        class="arista"
-                        x1="380"
-                        y1="80"
-                        x2="480"
-                        y2="190"
-                      ></line>
-                      <line
-                        id="BD"
-                        class="arista"
-                        x1="280"
-                        y1="190"
-                        x2="215"
-                        y2="330"
-                      ></line>
-                      <line
-                        id="BE"
-                        class="arista"
-                        x1="280"
-                        y1="190"
-                        x2="305"
-                        y2="330"
-                      ></line>
-                      <line
-                        id="CF"
-                        class="arista"
-                        x1="480"
-                        y1="190"
-                        x2="420"
-                        y2="330"
-                      ></line>
-                      <line
-                        id="CG"
-                        class="arista"
-                        x1="480"
-                        y1="190"
-                        x2="505"
-                        y2="330"
-                      ></line>
-                      <line
-                        id="CH"
-                        class="arista"
-                        x1="480"
-                        y1="190"
-                        x2="610"
-                        y2="330"
-                      ></line>
+                    <!-- Nodos -->
+                    <g id="nodoA">
+                      <circle
+                        id="A"
+                        class="nodo"
+                        cx="380"
+                        cy="80"
+                        r="32"
+                      ></circle>
+                      <text class="etiqueta" x="380" y="80">A</text>
+                    </g>
 
-                      <!-- Nodos -->
-                      <g id="nodoA">
-                        <circle
-                          id="A"
-                          class="nodo"
-                          cx="380"
-                          cy="80"
-                          r="32"
-                        ></circle>
-                        <text class="etiqueta" x="380" y="80">A</text>
-                      </g>
+                    <g id="nodoB">
+                      <circle
+                        id="B"
+                        class="nodo"
+                        cx="280"
+                        cy="190"
+                        r="32"
+                      ></circle>
+                      <text class="etiqueta" x="280" y="190">B</text>
+                    </g>
 
-                      <g id="nodoB">
-                        <circle
-                          id="B"
-                          class="nodo"
-                          cx="280"
-                          cy="190"
-                          r="32"
-                        ></circle>
-                        <text class="etiqueta" x="280" y="190">B</text>
-                      </g>
+                    <g id="nodoC">
+                      <circle
+                        id="C"
+                        class="nodo"
+                        cx="480"
+                        cy="190"
+                        r="32"
+                      ></circle>
+                      <text class="etiqueta" x="480" y="190">C</text>
+                    </g>
 
-                      <g id="nodoC">
-                        <circle
-                          id="C"
-                          class="nodo"
-                          cx="480"
-                          cy="190"
-                          r="32"
-                        ></circle>
-                        <text class="etiqueta" x="480" y="190">C</text>
-                      </g>
+                    <g id="nodoD">
+                      <circle
+                        id="D"
+                        class="nodo"
+                        cx="215"
+                        cy="330"
+                        r="32"
+                      ></circle>
+                      <text class="etiqueta" x="215" y="330">D</text>
+                    </g>
 
-                      <g id="nodoD">
-                        <circle
-                          id="D"
-                          class="nodo"
-                          cx="215"
-                          cy="330"
-                          r="32"
-                        ></circle>
-                        <text class="etiqueta" x="215" y="330">D</text>
-                      </g>
+                    <g id="nodoE">
+                      <circle
+                        id="E"
+                        class="nodo"
+                        cx="305"
+                        cy="330"
+                        r="32"
+                      ></circle>
+                      <text class="etiqueta" x="305" y="330">E</text>
+                    </g>
 
-                      <g id="nodoE">
-                        <circle
-                          id="E"
-                          class="nodo"
-                          cx="305"
-                          cy="330"
-                          r="32"
-                        ></circle>
-                        <text class="etiqueta" x="305" y="330">E</text>
-                      </g>
+                    <g id="nodoF">
+                      <circle
+                        id="F"
+                        class="nodo"
+                        cx="420"
+                        cy="330"
+                        r="32"
+                      ></circle>
+                      <text class="etiqueta" x="420" y="330">F</text>
+                    </g>
 
-                      <g id="nodoF">
-                        <circle
-                          id="F"
-                          class="nodo"
-                          cx="420"
-                          cy="330"
-                          r="32"
-                        ></circle>
-                        <text class="etiqueta" x="420" y="330">F</text>
-                      </g>
+                    <g id="nodoG">
+                      <circle
+                        id="G"
+                        class="nodo"
+                        cx="505"
+                        cy="330"
+                        r="32"
+                      ></circle>
+                      <text class="etiqueta" x="505" y="330">G</text>
+                    </g>
 
-                      <g id="nodoG">
-                        <circle
-                          id="G"
-                          class="nodo"
-                          cx="505"
-                          cy="330"
-                          r="32"
-                        ></circle>
-                        <text class="etiqueta" x="505" y="330">G</text>
-                      </g>
+                    <g id="nodoH">
+                      <circle
+                        id="H"
+                        class="nodo"
+                        cx="610"
+                        cy="330"
+                        r="32"
+                      ></circle>
+                      <text class="etiqueta" x="610" y="330">H</text>
+                    </g>
 
-                      <g id="nodoH">
-                        <circle
-                          id="H"
-                          class="nodo"
-                          cx="610"
-                          cy="330"
-                          r="32"
-                        ></circle>
-                        <text class="etiqueta" x="610" y="330">H</text>
-                      </g>
-
-                      <text
-                        id="textoExtra"
-                        class="texto-svg"
-                        x="50"
-                        y="455"
-                      ></text>
-                    </svg>
-                    <div id="explicacion">
-                      Selecciona una opción para comenzar la animación.
-                    </div>
+                    <text
+                      id="textoExtra"
+                      class="texto-svg"
+                      x="50"
+                      y="455"
+                    ></text>
+                  </svg>
+                  <div id="explicacion">
+                    Selecciona una opción para comenzar la animación.
                   </div>
+                </div>
 
-                  <div class="panel-controles">
-                    <h4>Conceptos</h4>
+                <div class="panel-controles">
+                  <h4>Conceptos</h4>
 
-                    <div class="botones">
-                      <button data-demo="caminoAH">Camino de A a H</button>
-                      <button data-demo="caminoAE">Camino de A a E</button>
-                      <button data-demo="longitudAH">
-                        Longitud del camino A-H
-                      </button>
-                      <button data-demo="caminoCero">
-                        Camino de longitud cero
-                      </button>
-                      <button data-demo="gradoC">Grado de un nodo</button>
-                      <button data-demo="gradoArbol">Grado del árbol</button>
-                      <button data-demo="niveles">Nivel de los nodos</button>
-                      <button data-demo="profundidadE">Profundidad de E</button>
-                      <button data-demo="alturaC">Altura de C</button>
-                      <button data-demo="subarboles">Subárboles</button>
-                    </div>
+                  <div class="botones">
+                    <button data-demo="caminoAH">Camino de A a H</button>
+                    <button data-demo="caminoAE">Camino de A a E</button>
+                    <button data-demo="longitudAH">
+                      Longitud del camino A-H
+                    </button>
+                    <button data-demo="caminoCero">
+                      Camino de longitud cero
+                    </button>
+                    <button data-demo="gradoC">Grado de un nodo</button>
+                    <button data-demo="gradoArbol">Grado del árbol</button>
+                    <button data-demo="niveles">Nivel de los nodos</button>
+                    <button data-demo="profundidadE">Profundidad de E</button>
+                    <button data-demo="alturaC">Altura de C</button>
+                    <button data-demo="subarboles">Subárboles</button>
                   </div>
                 </div>
               </div>
