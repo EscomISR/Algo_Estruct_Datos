@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1,
+    "type": "opcion_multiple",
+    "category": "Algoritmia",
+    "question": "Antes de programar la solución para la app de la biblioteca, Ana escribe los pasos en español simple para que su equipo los entienda. ¿Qué herramienta está usando?",
+    "options": ["Pseudocódigo", "Un algoritmo voraz", "Búsqueda binaria", "Notación Big-O"],
+    "answer": "Pseudocódigo",
+    "explanation": "El pseudocódigo describe los pasos de un algoritmo en lenguaje natural estructurado, sin depender de un lenguaje de programación específico."
+  },
+  {
+    "id": 2,
+    "type": "opcion_multiple",
+    "category": "Algoritmia",
+    "question": "El profesor le pide a Ana que su algoritmo, con los mismos libros de entrada, siempre entregue el mismo resultado. ¿Qué característica del algoritmo le está exigiendo?",
+    "options": ["Que sea determinístico", "Que sea probabilístico", "Que sea voraz", "Que sea no lineal"],
+    "answer": "Que sea determinístico",
+    "explanation": "Un algoritmo determinístico produce siempre la misma salida ante la misma entrada."
+  },
+  {
+    "id": 3,
+    "type": "opcion_multiple",
+    "category": "Algoritmia",
+    "question": "Ana decide representar la colección de libros como una TDA donde cada libro tiene un único libro anterior y uno siguiente en el estante. ¿Qué tipo de TDA es?",
+    "options": ["Lineal", "No lineal", "Voraz", "Probabilístico"],
+    "answer": "Lineal",
+    "explanation": "Una estructura donde cada elemento tiene un único predecesor y un único sucesor corresponde a un TDA lineal."
+  },
+  {
+    "id": 4,
+    "type": "opcion_multiple",
+    "category": "Ordenamiento",
+    "question": "La biblioteca recibió 500 libros nuevos sin ningún orden. Ana necesita ordenarlos por número de folio antes de guardarlos. ¿Qué tipo de algoritmo necesita usar primero?",
+    "options": ["Un algoritmo de ordenamiento", "Un algoritmo de búsqueda", "Un algoritmo de exploración exhaustiva", "Un algoritmo probabilístico"],
+    "answer": "Un algoritmo de ordenamiento",
+    "explanation": "Para organizar un conjunto de datos desordenado según un criterio (el folio) se requiere un algoritmo de ordenamiento."
+  },
+  {
+    "id": 5,
+    "type": "ordenar_proceso",
+    "category": "Ordenamiento",
+    "instruction": "Ordena los pasos que siguió Ana para ordenar los 500 libros nuevos con Merge Sort.",
+    "segments": [
+      "Dividir el conjunto de 500 libros en grupos más pequeños",
+      "Ordenar cada grupo pequeño por separado",
+      "Mezclar los grupos ordenados comparando sus elementos",
+      "Repetir la mezcla hasta obtener un único grupo ordenado por folio"
+    ],
+    "answer": [
+      "Dividir el conjunto de 500 libros en grupos más pequeños",
+      "Ordenar cada grupo pequeño por separado",
+      "Mezclar los grupos ordenados comparando sus elementos",
+      "Repetir la mezcla hasta obtener un único grupo ordenado por folio"
+    ],
+    "explanation": "Merge Sort sigue el principio de divide y vencerás: divide, ordena cada parte, y mezcla los resultados hasta obtener el conjunto completo ordenado."
+  },
+  {
+    "id": 6,
+    "type": "ordenar_proceso",
+    "category": "Ordenamiento",
+    "instruction": "Ordena los pasos del ordenamiento por inserción que aplicó Ana con los libros nuevos.",
+    "segments": [
+      "Tomar el siguiente libro sin ordenar",
+      "Comparar su folio con los libros ya ordenados, de derecha a izquierda",
+      "Desplazar los libros con folio mayor una posición a la derecha",
+      "Insertar el libro en la posición correcta dentro de la parte ordenada"
+    ],
+    "answer": [
+      "Tomar el siguiente libro sin ordenar",
+      "Comparar su folio con los libros ya ordenados, de derecha a izquierda",
+      "Desplazar los libros con folio mayor una posición a la derecha",
+      "Insertar el libro en la posición correcta dentro de la parte ordenada"
+    ],
+    "explanation": "El ordenamiento por inserción toma cada elemento, lo compara con la parte ya ordenada, desplaza lo necesario y lo inserta en su lugar correcto."
+  },
+  {
+    "id": 7,
+    "type": "ordenar_proceso",
+    "category": "Búsqueda",
+    "instruction": "Ordena los pasos que sigue Ana al aplicar búsqueda binaria para encontrar el folio 342.",
+    "segments": [
+      "Tomar el libro central del rango de estantería ordenado",
+      "Comparar el folio 342 con el folio del libro central",
+      "Descartar la mitad del rango donde no puede estar el folio buscado",
+      "Repetir el proceso sobre la mitad restante hasta encontrar el folio 342"
+    ],
+    "answer": [
+      "Tomar el libro central del rango de estantería ordenado",
+      "Comparar el folio 342 con el folio del libro central",
+      "Descartar la mitad del rango donde no puede estar el folio buscado",
+      "Repetir el proceso sobre la mitad restante hasta encontrar el folio 342"
+    ],
+    "explanation": "La búsqueda binaria compara con el elemento central, descarta la mitad donde el valor no puede estar, y repite sobre la mitad restante."
+  },
+  {
+    "id": 8,
+    "type": "ordenar_proceso",
+    "category": "Exploración y vuelta atrás",
+    "instruction": "Ordena los pasos del proceso de backtracking que usó Ana para armar el horario de estudio.",
+    "segments": [
+      "Asignar un horario tentativo a la siguiente materia",
+      "Verificar si ese horario genera un empalme con las materias ya asignadas",
+      "Si hay empalme, deshacer la asignación y probar otro horario",
+      "Si no hay empalme, continuar con la siguiente materia hasta completar el horario"
+    ],
+    "answer": [
+      "Asignar un horario tentativo a la siguiente materia",
+      "Verificar si ese horario genera un empalme con las materias ya asignadas",
+      "Si hay empalme, deshacer la asignación y probar otro horario",
+      "Si no hay empalme, continuar con la siguiente materia hasta completar el horario"
+    ],
+    "explanation": "El backtracking asigna, verifica la validez, retrocede ante un conflicto y avanza cuando la asignación es válida, hasta completar la solución."
+  },
+  {
+    "id": 9,
+    "type": "seleccion_multiple",
+    "category": "Ordenamiento",
+    "instruction": "Selecciona todas las respuestas correctas.",
+    "question": "¿Cuáles de los siguientes son algoritmos de ordenamiento que consideró o usó Ana para los 500 libros nuevos?",
+    "options": [
+      "Ordenamiento de burbuja",
+      "Ordenamiento por inserción",
+      "Ordenamiento por mezcla (Merge Sort)",
+      "Búsqueda binaria",
+      "Búsqueda indexada"
+    ],
+    "answer": [
+      "Ordenamiento de burbuja",
+      "Ordenamiento por inserción",
+      "Ordenamiento por mezcla (Merge Sort)"
+    ],
+    "explanation": "Ana comparó burbuja, inserción y Merge Sort como estrategias de ordenamiento; búsqueda binaria e indexada son algoritmos de búsqueda, no de ordenamiento."
+  },
+  {
+    "id": 10,
+    "type": "seleccion_multiple",
+    "category": "Búsqueda",
+    "instruction": "Selecciona todas las respuestas correctas.",
+    "question": "¿Cuáles de las siguientes son técnicas de búsqueda que Ana implementó o consideró para el catálogo?",
+    "options": [
+      "Búsqueda binaria",
+      "Búsqueda secuencial",
+      "Búsqueda indexada",
+      "Ordenamiento por selección",
+      "Backtracking"
+    ],
+    "answer": [
+      "Búsqueda binaria",
+      "Búsqueda secuencial",
+      "Búsqueda indexada"
+    ],
+    "explanation": "Binaria, secuencial e indexada son las tres técnicas de búsqueda que Ana evaluó; ordenamiento por selección y backtracking pertenecen a otros temas."
+  },
+  {
+    "id": 11,
+    "type": "seleccion_multiple",
+    "category": "Algoritmia",
+    "instruction": "Selecciona todas las respuestas correctas.",
+    "question": "¿Cuáles de las siguientes son características o principios de los algoritmos que aplicó Ana en su proyecto?",
+    "options": [
+      "Determinismo",
+      "Limitación (finitud)",
+      "Abstracción",
+      "Empalme de horarios",
+      "Búsqueda indexada"
+    ],
+    "answer": [
+      "Determinismo",
+      "Limitación (finitud)",
+      "Abstracción"
+    ],
+    "explanation": "Determinismo, finitud y abstracción son principios generales de los algoritmos y TDA; las otras opciones corresponden a problemas específicos, no a principios."
+  },
+  {
+    "id": 12,
+    "type": "seleccion_multiple",
+    "category": "Exploración y vuelta atrás",
+    "instruction": "Selecciona todas las respuestas correctas.",
+    "question": "¿Cuáles de las siguientes afirmaciones sobre el backtracking que usó Ana son correctas?",
+    "options": [
+      "Regresa a un paso anterior cuando un camino no puede llevar a una solución válida",
+      "Ahorra trabajo frente a probar todas las combinaciones sin control",
+      "Es exactamente igual a la búsqueda binaria",
+      "Se usó para armar el horario de estudio sin empalmes",
+      "Solo puede aplicarse a problemas de ordenamiento"
+    ],
+    "answer": [
+      "Regresa a un paso anterior cuando un camino no puede llevar a una solución válida",
+      "Ahorra trabajo frente a probar todas las combinaciones sin control",
+      "Se usó para armar el horario de estudio sin empalmes"
+    ],
+    "explanation": "El backtracking descarta caminos inválidos y retrocede para probar otra opción; no es lo mismo que la búsqueda binaria ni se limita a problemas de ordenamiento."
+  },
+  {
+    "id": 13,
+    "type": "interpretar_datos",
+    "category": "Búsqueda",
+    "question": "¿Cuál es la complejidad de la búsqueda binaria que usó Ana para encontrar el folio 342?",
+    "options": ["O(log n)", "O(n)", "O(n²)", "O(1)"],
+    "answer": "O(log n)",
+    "explanation": "Al descartar la mitad de los elementos en cada paso, la búsqueda binaria tiene complejidad logarítmica, O(log n)."
+  },
+  {
+    "id": 14,
+    "type": "interpretar_datos",
+    "category": "Búsqueda",
+    "question": "¿Qué recurso adicional necesita Ana para que la búsqueda indexada funcione, en comparación con la búsqueda secuencial?",
+    "options": ["Memoria adicional para guardar el índice", "Un procesador más rápido", "Más libros físicos", "Una conexión a internet"],
+    "answer": "Memoria adicional para guardar el índice",
+    "explanation": "La búsqueda indexada intercambia memoria extra (para el índice) por mayor velocidad de búsqueda."
+  },
+  {
+    "id": 15,
+    "type": "interpretar_datos",
+    "category": "Búsqueda",
+    "question": "Al final del proyecto, Ana compara el tiempo que tardarían su búsqueda secuencial O(n) contra su búsqueda binaria O(log n) si la biblioteca creciera a un millón de libros. ¿Qué algoritmo sería más eficiente en ese escenario?",
+    "options": ["La búsqueda binaria O(log n)", "La búsqueda secuencial O(n)", "Ambos tardarían exactamente lo mismo", "Ninguno, porque el tamaño de datos no afecta la eficiencia"],
+    "answer": "La búsqueda binaria O(log n)",
+    "explanation": "Conforme crece n, O(log n) crece mucho más lento que O(n), por lo que la búsqueda binaria resulta más eficiente en catálogos grandes."
+  },
+  {
+    "id": 16,
+    "type": "interpretar_datos",
+    "category": "Exploración y vuelta atrás",
+    "question": "Si Ana tuviera que armar el horario probando literalmente todas las combinaciones posibles sin descartar ninguna anticipadamente, ¿con qué tipo de complejidad se asociaría frecuentemente ese proceso?",
+    "options": ["Exponencial o factorial", "Constante", "Logarítmica", "Lineal"],
+    "answer": "Exponencial o factorial",
+    "explanation": "La exploración exhaustiva sin poda suele crecer de forma exponencial o factorial respecto al número de elementos a combinar."
+  },
+  {
+    "id": 17,
+    "type": "clasificar",
+    "category": "Ordenamiento",
+    "instruction": "Clasifica cada técnica según el tema de la Unidad 1 al que pertenece.",
+    "categories": ["Ordenamiento", "Búsqueda", "Exploración y vuelta atrás"],
+    "items": [
+      { "text": "Ordenamiento por mezcla (Merge Sort)", "category": "Ordenamiento" },
+      { "text": "Búsqueda indexada", "category": "Búsqueda" },
+      { "text": "Backtracking", "category": "Exploración y vuelta atrás" }
+    ],
+    "explanation": "Merge Sort pertenece al ordenamiento, la búsqueda indexada al tema de búsqueda, y el backtracking a la exploración con vuelta atrás."
+  },
+  {
+    "id": 18,
+    "type": "clasificar",
+    "category": "Algoritmia",
+    "instruction": "Clasifica cada concepto según lo que describe.",
+    "categories": ["Principio de algoritmia", "Algoritmo de ordenamiento", "Algoritmo de búsqueda"],
+    "items": [
+      { "text": "Abstracción", "category": "Principio de algoritmia" },
+      { "text": "Ordenamiento por inserción", "category": "Algoritmo de ordenamiento" },
+      { "text": "Búsqueda secuencial", "category": "Algoritmo de búsqueda" }
+    ],
+    "explanation": "La abstracción es un principio general de la algoritmia, mientras que inserción y búsqueda secuencial son algoritmos concretos de sus respectivos temas."
+  },
+  {
+    "id": 19,
+    "type": "clasificar",
+    "category": "Ordenamiento",
+    "instruction": "Clasifica cada algoritmo de ordenamiento según su estrategia principal.",
+    "categories": ["Comparación e intercambio de pares", "Inserción en posición", "Divide y vencerás"],
+    "items": [
+      { "text": "Ordenamiento de burbuja", "category": "Comparación e intercambio de pares" },
+      { "text": "Ordenamiento por inserción", "category": "Inserción en posición" },
+      { "text": "Ordenamiento por mezcla (Merge Sort)", "category": "Divide y vencerás" }
+    ],
+    "explanation": "Burbuja compara e intercambia pares consecutivos, inserción desplaza cada elemento a su posición, y Merge Sort divide el problema en partes más pequeñas."
+  },
+  {
+    "id": 20,
+    "type": "clasificar",
+    "category": "Búsqueda",
+    "instruction": "Clasifica cada técnica de búsqueda según su característica principal.",
+    "categories": ["Requiere datos ordenados", "No requiere datos ordenados", "Usa una estructura auxiliar"],
+    "items": [
+      { "text": "Búsqueda binaria", "category": "Requiere datos ordenados" },
+      { "text": "Búsqueda secuencial", "category": "No requiere datos ordenados" },
+      { "text": "Búsqueda indexada", "category": "Usa una estructura auxiliar" }
+    ],
+    "explanation": "La búsqueda binaria necesita datos ordenados, la secuencial funciona sin orden, y la indexada se apoya en una estructura auxiliar de índice."
+  },
+  {
+    "id": 21,
+    "type": "identificar_error",
+    "category": "Búsqueda",
+    "scenario": "Un compañero le dice a Ana: 'Da igual si los libros están ordenados o no, la búsqueda binaria funciona siempre igual de bien.'",
+    "question": "¿Cuál es el error principal en esta afirmación?",
+    "options": ["Ignora que la búsqueda binaria requiere que los libros estén ordenados por folio para funcionar correctamente", "La búsqueda binaria en realidad nunca requiere orden previo", "La búsqueda binaria es siempre más lenta que la secuencial", "La búsqueda binaria solo funciona con menos de 10 libros"],
+    "answer": "Ignora que la búsqueda binaria requiere que los libros estén ordenados por folio para funcionar correctamente",
+    "explanation": "La búsqueda binaria depende de que los datos estén ordenados; sin esa condición, dividir a la mitad no garantiza descartar la mitad correcta."
+  },
+  {
+    "id": 22,
+    "type": "identificar_error",
+    "category": "Exploración y vuelta atrás",
+    "scenario": "Un compañero afirma: 'El backtracking que usó Ana es exactamente lo mismo que probar todas las combinaciones sin control, no tiene ninguna ventaja.'",
+    "question": "¿Cuál es el error principal en esta afirmación?",
+    "options": ["Ignora que el backtracking descarta caminos inválidos antes de seguir avanzando, ahorrando trabajo frente a la exploración exhaustiva pura", "El backtracking siempre es más lento que probar todas las combinaciones", "El backtracking nunca encuentra una solución válida", "La exploración exhaustiva nunca prueba combinaciones inválidas"],
+    "answer": "Ignora que el backtracking descarta caminos inválidos antes de seguir avanzando, ahorrando trabajo frente a la exploración exhaustiva pura",
+    "explanation": "La ventaja del backtracking es podar caminos que ya se sabe que no llevarán a una solución, evitando explorar combinaciones innecesarias."
+  },
+  {
+    "id": 23,
+    "type": "identificar_error",
+    "category": "Ordenamiento",
+    "scenario": "Un compañero afirma: 'Como el ordenamiento de burbuja es el más simple de programar, siempre es la mejor opción para ordenar cualquier cantidad de libros.'",
+    "question": "¿Cuál es el error principal en esta afirmación?",
+    "options": ["Ignora que algoritmos como Merge Sort son más eficientes que la burbuja al crecer el número de libros", "El ordenamiento de burbuja no puede ordenar folios numéricos", "El ordenamiento de burbuja es un algoritmo de búsqueda, no de ordenamiento", "La simplicidad de un algoritmo garantiza que sea el más rápido"],
+    "answer": "Ignora que algoritmos como Merge Sort son más eficientes que la burbuja al crecer el número de libros",
+    "explanation": "La simplicidad de implementación no implica eficiencia; para volúmenes grandes de datos, Merge Sort tiene una complejidad más controlada que la burbuja."
+  },
+  {
+    "id": 24,
+    "type": "identificar_error",
+    "category": "Algoritmia",
+    "scenario": "Un compañero afirma: 'La notación Big-O que usó Ana mide directamente cuántos segundos tardará el programa en la computadora de la biblioteca.'",
+    "question": "¿Cuál es el error principal en esta afirmación?",
+    "options": ["Big-O mide cómo crece el número de operaciones respecto al tamaño de los datos, no el tiempo exacto en un hardware específico", "Big-O solo se puede usar en algoritmos de búsqueda", "Big-O mide el número de líneas de código del programa", "Big-O no tiene relación con la eficiencia de los algoritmos"],
+    "answer": "Big-O mide cómo crece el número de operaciones respecto al tamaño de los datos, no el tiempo exacto en un hardware específico",
+    "explanation": "La notación Big-O describe el crecimiento del número de operaciones en función del tamaño de la entrada, independientemente del hardware."
+  }
+]
