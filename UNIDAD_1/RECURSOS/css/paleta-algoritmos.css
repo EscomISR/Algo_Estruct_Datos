@@ -1,0 +1,23 @@
+:root {
+    --primary: #2c3e50;
+    --secondary: #3498db;
+    --accent: #e74c3c;
+    --light: #ecf0f1;
+    --dark: #1a2a3a;
+    --gray: #95a5a6;
+    --success: #2ecc71;
+    --warning: #f39c12;
+    --case-color: #3498db;
+    --card-border: rgba(52, 152, 219, 0.24);
+    --card-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+    --card-bg: linear-gradient(135deg, rgba(52, 152, 219, 0.16), rgba(44, 62, 80, 0.62));
+    --quiz-correct: #2ecc71;
+    --quiz-incorrect: #e74c3c;
+    --intro-border: #3498db;
+    --submenu-bg: rgba(52, 152, 219, 0.14);
+    --soft-panel: rgba(52, 152, 219, 0.10);
+    --page-bg: linear-gradient(135deg, #1a2a3a 0%, #22303f 48%, #2c3e50 100%);
+    --scroll-track: rgba(26, 42, 58, 0.95);
+    --scroll-thumb: #3498db;
+    --scroll-thumb-hover: #5dade2;
+}
