@@ -1,0 +1,404 @@
+{
+  "version": 1,
+  "modoPrueba": true,
+  "titulo": "Examen diagnóstico",
+  "descripcion": "Banco de reactivos del examen diagnóstico de Algoritmos y Estructuras de Datos.",
+  "configuracion": {
+    "mostrarResultado": true,
+    "mezclarPreguntas": false,
+    "mezclarOpciones": false,
+    "endpointEnvio": ""
+  },
+  "preguntas": [
+    {
+      "id": "diagnostico-01",
+      "numero": 1,
+      "tipo": "opcion-multiple",
+      "enunciado": "Un estudiante necesita describir, paso a paso y sin utilizar todavía un lenguaje de programación, cómo calcular el promedio de una lista de calificaciones. ¿Qué recurso es el más adecuado para representar ese procedimiento?",
+      "obligatoria": true,
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Un pseudocódigo"
+        },
+        {
+          "id": "b",
+          "texto": "Una tabla hash"
+        },
+        {
+          "id": "c",
+          "texto": "Un árbol binario"
+        },
+        {
+          "id": "d",
+          "texto": "Una matriz de adyacencia"
+        }
+      ],
+      "respuestaCorrecta": "a"
+    },
+    {
+      "id": "diagnostico-02",
+      "numero": 2,
+      "tipo": "opcion-multiple",
+      "enunciado": "Si el tiempo de ejecución de un algoritmo crece aproximadamente de forma proporcional al número de datos de entrada n, ¿qué orden de complejidad describe mejor su comportamiento?",
+      "obligatoria": true,
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "O(1)"
+        },
+        {
+          "id": "b",
+          "texto": "O(log n)"
+        },
+        {
+          "id": "c",
+          "texto": "O(n)"
+        },
+        {
+          "id": "d",
+          "texto": "O(n²)"
+        }
+      ],
+      "respuestaCorrecta": "c"
+    },
+    {
+      "id": "diagnostico-03",
+      "numero": 3,
+      "tipo": "opcion-multiple",
+      "enunciado": "Se tiene una lista de números completamente desordenada y se desea ordenarla comparando pares de elementos adyacentes e intercambiándolos cuando están en el orden incorrecto. ¿Qué algoritmo se está describiendo?",
+      "obligatoria": true,
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Ordenamiento por burbuja"
+        },
+        {
+          "id": "b",
+          "texto": "Búsqueda binaria"
+        },
+        {
+          "id": "c",
+          "texto": "Ordenamiento por mezcla"
+        },
+        {
+          "id": "d",
+          "texto": "Búsqueda indexada"
+        }
+      ],
+      "respuestaCorrecta": "a"
+    },
+    {
+      "id": "diagnostico-04",
+      "numero": 4,
+      "tipo": "opcion-multiple",
+      "enunciado": "Andrea debe localizar un número dentro de un arreglo que ya está ordenado. En cada paso compara con el elemento central y descarta la mitad donde sabe que el dato no puede encontrarse. ¿Qué técnica está utilizando?",
+      "obligatoria": true,
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Búsqueda secuencial"
+        },
+        {
+          "id": "b",
+          "texto": "Búsqueda binaria"
+        },
+        {
+          "id": "c",
+          "texto": "Exploración exhaustiva"
+        },
+        {
+          "id": "d",
+          "texto": "Ordenamiento por selección"
+        }
+      ],
+      "respuestaCorrecta": "b"
+    },
+    {
+      "id": "diagnostico-05",
+      "numero": 5,
+      "tipo": "opcion-multiple",
+      "enunciado": "Para resolver un rompecabezas, un programa prueba una alternativa, avanza mientras sea válida y, cuando llega a una decisión imposible, regresa a una decisión anterior para intentar otra opción. ¿Qué estrategia describe este comportamiento?",
+      "obligatoria": true,
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Programación por vuelta atrás (backtracking)"
+        },
+        {
+          "id": "b",
+          "texto": "Búsqueda binaria"
+        },
+        {
+          "id": "c",
+          "texto": "Tabla hash"
+        },
+        {
+          "id": "d",
+          "texto": "Ordenamiento por inserción"
+        }
+      ],
+      "respuestaCorrecta": "a"
+    },
+    {
+      "id": "diagnostico-06",
+      "numero": 6,
+      "tipo": "opcion-multiple",
+      "enunciado": "Una aplicación permite deshacer las acciones realizadas por el usuario, empezando siempre por la última acción ejecutada. ¿Qué estructura de datos corresponde mejor a este comportamiento?",
+      "obligatoria": true,
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Pila"
+        },
+        {
+          "id": "b",
+          "texto": "Cola"
+        },
+        {
+          "id": "c",
+          "texto": "Grafo"
+        },
+        {
+          "id": "d",
+          "texto": "Árbol B+"
+        }
+      ],
+      "respuestaCorrecta": "a"
+    },
+    {
+      "id": "diagnostico-07",
+      "numero": 7,
+      "tipo": "opcion-multiple",
+      "enunciado": "En una fila de impresión, los documentos deben atenderse en el mismo orden en que fueron enviados. ¿Qué estructura de datos representa mejor esta situación?",
+      "obligatoria": true,
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Cola"
+        },
+        {
+          "id": "b",
+          "texto": "Pila"
+        },
+        {
+          "id": "c",
+          "texto": "Árbol binario de búsqueda"
+        },
+        {
+          "id": "d",
+          "texto": "Montículo de máximos"
+        }
+      ],
+      "respuestaCorrecta": "a"
+    },
+    {
+      "id": "diagnostico-08",
+      "numero": 8,
+      "tipo": "opcion-multiple",
+      "enunciado": "Un programa necesita almacenar una colección cuyo tamaño cambia constantemente y donde insertar o eliminar elementos sin desplazar todos los demás sea una operación frecuente. ¿Qué estructura puede resultar especialmente apropiada?",
+      "obligatoria": true,
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Lista enlazada"
+        },
+        {
+          "id": "b",
+          "texto": "Arreglo de tamaño fijo"
+        },
+        {
+          "id": "c",
+          "texto": "Matriz de adyacencia"
+        },
+        {
+          "id": "d",
+          "texto": "Pseudocódigo"
+        }
+      ],
+      "respuestaCorrecta": "a"
+    },
+    {
+      "id": "diagnostico-09",
+      "numero": 9,
+      "tipo": "opcion-multiple",
+      "enunciado": "Una tienda desea encontrar rápidamente un producto a partir de una clave única, como su código SKU. ¿Qué estructura está diseñada para asociar una clave con una posición mediante una función?",
+      "obligatoria": true,
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Tabla hash"
+        },
+        {
+          "id": "b",
+          "texto": "Cola circular"
+        },
+        {
+          "id": "c",
+          "texto": "Pila dinámica"
+        },
+        {
+          "id": "d",
+          "texto": "Árbol N-ario"
+        }
+      ],
+      "respuestaCorrecta": "a"
+    },
+    {
+      "id": "diagnostico-10",
+      "numero": 10,
+      "tipo": "opcion-multiple",
+      "enunciado": "En un árbol binario de búsqueda, ¿dónde se colocan normalmente los valores menores que el valor almacenado en un nodo?",
+      "obligatoria": true,
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "En el subárbol izquierdo"
+        },
+        {
+          "id": "b",
+          "texto": "En el subárbol derecho"
+        },
+        {
+          "id": "c",
+          "texto": "Siempre en la raíz"
+        },
+        {
+          "id": "d",
+          "texto": "En cualquier posición disponible"
+        }
+      ],
+      "respuestaCorrecta": "a"
+    },
+    {
+      "id": "diagnostico-11",
+      "numero": 11,
+      "tipo": "opcion-multiple",
+      "enunciado": "Un sistema operativo debe atender primero el proceso con mayor prioridad, independientemente del orden exacto en que llegaron los procesos. ¿Qué estructura de la Unidad 3 puede utilizarse para implementar eficientemente esta idea?",
+      "obligatoria": true,
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Un montículo (heap)"
+        },
+        {
+          "id": "b",
+          "texto": "Una lista simplemente enlazada sin ordenar"
+        },
+        {
+          "id": "c",
+          "texto": "Una pila"
+        },
+        {
+          "id": "d",
+          "texto": "Una búsqueda secuencial"
+        }
+      ],
+      "respuestaCorrecta": "a"
+    },
+    {
+      "id": "diagnostico-12",
+      "numero": 12,
+      "tipo": "opcion-multiple",
+      "enunciado": "Una red de computadoras se modela con dispositivos conectados entre sí mediante enlaces. ¿Qué estructura de datos representa naturalmente este tipo de relaciones?",
+      "obligatoria": true,
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Grafo"
+        },
+        {
+          "id": "b",
+          "texto": "Pila"
+        },
+        {
+          "id": "c",
+          "texto": "Arreglo ordenado"
+        },
+        {
+          "id": "d",
+          "texto": "Tabla de verdad"
+        }
+      ],
+      "respuestaCorrecta": "a"
+    },
+    {
+      "id": "diagnostico-13",
+      "numero": 13,
+      "tipo": "opcion-multiple",
+      "enunciado": "En un recorrido de grafo se exploran primero todos los vértices vecinos del nodo inicial antes de avanzar al siguiente nivel. ¿Qué algoritmo se está utilizando?",
+      "obligatoria": true,
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Búsqueda en amplitud (BFS/BEA)"
+        },
+        {
+          "id": "b",
+          "texto": "Búsqueda en profundidad (DFS/BEP)"
+        },
+        {
+          "id": "c",
+          "texto": "Ordenamiento por mezcla"
+        },
+        {
+          "id": "d",
+          "texto": "Búsqueda binaria"
+        }
+      ],
+      "respuestaCorrecta": "a"
+    },
+    {
+      "id": "diagnostico-14",
+      "numero": 14,
+      "tipo": "opcion-multiple",
+      "enunciado": "En un recorrido de grafo se sigue una ruta tan profundamente como sea posible antes de retroceder para explorar otras alternativas. ¿Qué algoritmo corresponde a esta estrategia?",
+      "obligatoria": true,
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Búsqueda en profundidad (DFS/BEP)"
+        },
+        {
+          "id": "b",
+          "texto": "Búsqueda en amplitud (BFS/BEA)"
+        },
+        {
+          "id": "c",
+          "texto": "Ordenamiento por selección"
+        },
+        {
+          "id": "d",
+          "texto": "Tabla hash abierta"
+        }
+      ],
+      "respuestaCorrecta": "a"
+    },
+    {
+      "id": "diagnostico-15",
+      "numero": 15,
+      "tipo": "opcion-multiple",
+      "enunciado": "Una aplicación de mapas conoce varias rutas entre ciudades y el costo o distancia de cada carretera. Si se necesita encontrar el camino de menor costo desde una ciudad origen hacia las demás, ¿qué algoritmo es una opción clásica para resolver el problema cuando los pesos no son negativos?",
+      "obligatoria": true,
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Algoritmo de Dijkstra"
+        },
+        {
+          "id": "b",
+          "texto": "Ordenamiento de burbuja"
+        },
+        {
+          "id": "c",
+          "texto": "Búsqueda secuencial"
+        },
+        {
+          "id": "d",
+          "texto": "Recorrido Inorden"
+        }
+      ],
+      "respuestaCorrecta": "a"
+    }
+  ]
+}
