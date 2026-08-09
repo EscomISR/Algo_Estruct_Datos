@@ -1041,10 +1041,10 @@
           </p>
           <ul class="sangria-ul">
             <li>
-              1. El número de vértices (VV): Representa los nodos del grafo.
+              1. El número de vértices (V): Representa los nodos del grafo.
             </li>
             <li>
-              2. El número de aristas (EE): Representa las conexiones entre los
+              2. El número de aristas (E): Representa las conexiones entre los
               nodos.
             </li>
           </ul>
@@ -1062,14 +1062,14 @@
               Con matriz de adyacencia: Para cada vértice, se revisan todos los
               demás vértices para ver si hay una arista. Esto se debe a que,
               para cada vértice, se recorre toda una fila de la matriz (de
-              tamaño V). Por lo que su complejidad temporal es O(V2)O(V2). Y su
-              complejidad espacial es O(V2)O(V2) (para almacenar la matriz).
+              tamaño V). Por lo que su complejidad temporal es O(V2). Y su
+              complejidad espacial es O(V2) (para almacenar la matriz).
             </li>
             <li>
               Con lista de adyacencia: Solo se recorren las aristas existentes,
-              por lo que se visita cada vértice una vez (O(V)O(V)) y cada arista
-              una vez (O(E)O(E)). Esto nos da una complejidad temporal
-              O(V+E)O(V+E) y una complejidad espacial O(V+E)O(V+E) (para
+              por lo que se visita cada vértice una vez (V) y cada arista
+              una vez O(E). Esto nos da una complejidad temporal
+              O(V+E) y una complejidad espacial O(V+E) (para
               almacenar la lista de adyacencia).
             </li>
           </ul>
@@ -1083,13 +1083,13 @@
             <li>
               Con matriz de adyacencia: Al igual que el DFS, para cada vértice,
               se revisan todos los demás vértices. Tanto su complejidad temporal
-              como su complejidad espacial es: O(V2)O(V2).
+              como su complejidad espacial es: O(V2).
             </li>
             <li>
               Con lista de adyacencia: Solo se recorren las aristas existentes,
-              es decir se visita cada vértice una vez (O(V)O(V)) y cada arista
-              una vez (O(E)O(E)), por lo que su complejidad temporal y espacial
-              es O(V+E)O(V+E) (para almacenar la lista de adyacencia).
+              es decir se visita cada vértice una vez O(V) y cada arista
+              una vez O(E), por lo que su complejidad temporal y espacial
+              es O(V+E) para almacenar la lista de adyacencia.
             </li>
           </ul>
           <p>Comparación de complejidades</p>
@@ -1106,26 +1106,26 @@
               <tr>
                 <td>DFS</td>
                 <td>Matriz de adyacencia</td>
-                <td>O(V2)O(V2)</td>
-                <td>O(V2)O(V2)</td>
+                <td>O(V2)</td>
+                <td>O(V2)</td>
               </tr>
               <tr>
                 <td>DFS</td>
                 <td>Lista de adyacencia</td>
-                <td>O(V+E)O(V+E)</td>
-                <td>O(V+E)O(V+E)</td>
+                <td>O(V+E)</td>
+                <td>O(V+E)</td>
               </tr>
               <tr>
                 <td>BFS</td>
                 <td>Matriz de adyacencia</td>
-                <td>O(V2)O(V2)</td>
-                <td>O(V2)O(V2)</td>
+                <td>O(V2)</td>
+                <td>O(V2)</td>
               </tr>
               <tr>
                 <td>BFS</td>
                 <td>Lista de adyacencia</td>
-                <td>O(V+E)O(V+E)</td>
-                <td>O(V+E)O(V+E)</td>
+                <td>O(V+E)</td>
+                <td>O(V+E)</td>
               </tr>
             </tbody>
           </table>
