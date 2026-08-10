@@ -196,9 +196,6 @@
 
           <div class="figure-container figura-chica">
             <div class="figure-number"></div>
-            <div class="figure-caption">
-              Árboles generales a binarios
-            </div>
             <div class="figura">
               <img
                 src="assets/img/FIGURA1.png"
@@ -255,7 +252,6 @@
 
           <div class="figure-container figura-chica">
             <div class="figure-number"></div>
-            <div class="figure-caption">Relación</div>
             <div class="figura">
               <img
                 src="assets/img/FIGURA3.png"
@@ -879,7 +875,6 @@ void insertar(struct Nodo *nodo, int dato) {
             <p></p>
             <div class="figure-container figura-chica">
               <div class="figure-number"></div>
-              <div class="figure-caption">Recorridos en un árbol binario</div>
               <div class="figura">
                 <img
                   src="assets/img/FIGURA4a.png"
@@ -900,9 +895,6 @@ void insertar(struct Nodo *nodo, int dato) {
               <p></p>
               <div class="figure-container figura-chica">
                 <div class="figure-number"></div>
-                <div class="figure-caption">
-                  Ejemplo de recorridos en un árbol binario en código
-                </div>
                 <div class="figura">
                   <img
                     src="assets/img/FIGURA5.png"
@@ -930,7 +922,6 @@ void insertar(struct Nodo *nodo, int dato) {
               <p></p>
               <div class="figure-container figura-chica">
                 <div class="figure-number"></div>
-                <div class="figure-caption">Recorrido Inorden</div>
                 <div class="figura">
                   <img
                     src="assets/img/FIGURA6.png"
@@ -948,9 +939,6 @@ void insertar(struct Nodo *nodo, int dato) {
 
               <div class="figure-container figura-chica">
                 <div class="figure-number"></div>
-                <div class="figure-caption">
-                  Ejemplo de recorridos Inorden en código
-                </div>
                 <div class="figura">
                   <img
                     src="assets/img/FIGURA7.png"
@@ -1050,7 +1038,6 @@ void insertar(struct Nodo *nodo, int dato) {
             <p></p>
             <div class="figure-container figura-chica">
               <div class="figure-number"></div>
-              <div class="figure-caption">Árbol binario de búsqueda</div>
               <div class="figura">
                 <img
                   src="assets/img/FIGURA8.png"
@@ -1234,21 +1221,26 @@ void insertar(struct Nodo *nodo, int dato) {
               <div class="code-number codigos"></div>
               <pre><code>/* Código en c para insertar un nodo */
 void insertar(struct Nodo *nodo, int dato) {
- if (dato &gt; nodo-&gt;dato) {
- if (nodo-&gt;derecha == NULL) {
- nuevo = nuevoNodo(dato);
- nodo-&gt;derecha = nuevo;
- } else {
- insertar(nodo-&gt;derecha, dato);
- }
- } else {
- if (nodo-&gt;izquierda == NULL) {
- nuevo = nuevoNodo(dato);
- nodo-&gt;izquierda = nuevo;
- } else {
- insertar(nodo-&gt;izquierda, dato);
- }
- }
+  if (nodo == NULL) {
+    nodo = nuevoNodo(dato);
+    return;
+  }
+
+  if (dato &gt; nodo-&gt;dato) {
+    if (nodo-&gt;derecha == NULL) {
+      nuevo = nuevoNodo(dato);
+      nodo-&gt;derecha = nuevo;
+    } else {
+      insertar(nodo-&gt;derecha, dato);
+    }
+  } else {
+    if (nodo-&gt;izquierda == NULL) {
+      nuevo = nuevoNodo(dato);
+      nodo-&gt;izquierda = nuevo;
+    } else {
+      insertar(nodo-&gt;izquierda, dato);
+    }
+  }
 }</code></pre>
               <div class="code-caption">Elaboración propia</div>
               <p>
