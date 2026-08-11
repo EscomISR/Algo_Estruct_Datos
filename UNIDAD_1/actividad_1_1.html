@@ -215,6 +215,7 @@
 
 <script>
 // ============ BANCO DE 20 PREGUNTAS (4 tipos mezclados) ============
+// ============ BANCO DE 20 PREGUNTAS (4 tipos mezclados) ============
 const questions = [
   { type:"mc", text:"¿Qué es un algoritmo?", options:["Un conjunto finito y ordenado de instrucciones para resolver un problema","Un lenguaje de programación específico","Un tipo de estructura de datos no lineal","Un dispositivo de hardware para procesar datos"], correct:0 },
   { type:"mc", text:"¿Cuál de las siguientes NO es una característica esperada de un algoritmo?", options:["Exactitud","Limitación (finitud)","Determinístico","Aleatoriedad obligatoria"], correct:3 },
@@ -269,7 +270,7 @@ function renderQuestions(){
         if (q.type === 'mc' || q.type === 'fill') {
             inner += `<div class="options" id="opts-${i}">`;
             q.options.forEach((opt, j) => {
-                inner += `<div class="option" id="q${i}opt${j}" onclick="selectOption(${i}, ${j}, 'single')">
+                inner += `<div class="option" id="q${i}opt${j}" onclick="selectOption(${i}, ${j})">
                     <div class="option-letter">${String.fromCharCode(97+j)})</div><div>${opt}</div>
                 </div>`;
             });
@@ -283,7 +284,7 @@ function renderQuestions(){
             const shuffled = shuffle(q.words);
             orderState[i] = { bank: shuffled, answer: [] };
             inner += `<div class="order-answer" id="order-answer-${i}"></div>
-                       <div class="order-hint">Da clic en las palabras en el orden correcto. Puedes hacer clic en una palabra ya usada (en el recuadro de arriba) para quitarla.</div>
+                       <div class="order-hint">Da clic en las palabras en el orden correcto. Puedes hacer clic en una palabra ya usada para quitarla.</div>
                        <div class="order-bank" id="order-bank-${i}"></div>`;
         }
 
@@ -297,16 +298,24 @@ function renderQuestions(){
 function selectOption(qIndex, optIndex){
     if (evaluated) return;
     const q = questions[qIndex];
-    for (let j=0; j<q.options.length; j++) document.getElementById(`q${qIndex}opt${j}`).classList.remove('selected');
-    document.getElementById(`q${qIndex}opt${optIndex}`).classList.add('selected');
+    for (let j=0; j<q.options.length; j++) {
+        const el = document.getElementById(`q${qIndex}opt${j}`);
+        if (el) el.classList.remove('selected');
+    }
+    const target = document.getElementById(`q${qIndex}opt${optIndex}`);
+    if (target) target.classList.add('selected');
     userAnswers[qIndex] = optIndex;
 }
 
 function selectTF(qIndex, value){
     if (evaluated) return;
-    document.getElementById(`q${qIndex}optV`).classList.remove('selected');
-    document.getElementById(`q${qIndex}optF`).classList.remove('selected');
-    document.getElementById(value ? `q${qIndex}optV` : `q${qIndex}optF`).classList.add('selected');
+    const vEl = document.getElementById(`q${qIndex}optV`);
+    const fEl = document.getElementById(`q${qIndex}optF`);
+    if (vEl) vEl.classList.remove('selected');
+    if (fEl) fEl.classList.remove('selected');
+    
+    const target = value ? vEl : fEl;
+    if (target) target.classList.add('selected');
     userAnswers[qIndex] = value;
 }
 
@@ -314,6 +323,8 @@ function renderOrderWidget(qIndex){
     const state = orderState[qIndex];
     const bankEl = document.getElementById(`order-bank-${qIndex}`);
     const answerEl = document.getElementById(`order-answer-${qIndex}`);
+    if (!bankEl || !answerEl) return;
+    
     bankEl.innerHTML = '';
     answerEl.innerHTML = '';
 
@@ -337,7 +348,11 @@ function renderOrderWidget(qIndex){
         chip.onclick = () => {
             if (evaluated) return;
             state.answer.splice(pos, 1);
-            userAnswers[qIndex] = state.answer.map(i2 => state.bank[i2]);
+            if (state.answer.length === 0) {
+                delete userAnswers[qIndex];
+            } else {
+                userAnswers[qIndex] = state.answer.map(i2 => state.bank[i2]);
+            }
             renderOrderWidget(qIndex);
         };
         answerEl.appendChild(chip);
@@ -359,21 +374,32 @@ function startTimer(){
 function updateTimerDisplay(){
     const m = Math.floor(timeLeftSeconds/60).toString().padStart(2,'0');
     const s = (timeLeftSeconds%60).toString().padStart(2,'0');
-    document.getElementById('timeLeft').textContent = `${m}:${s}`;
+    const display = document.getElementById('timeLeft');
+    if (display) display.textContent = `${m}:${s}`;
+    
     const bar = document.getElementById('timerBar');
-    bar.classList.toggle('warning', timeLeftSeconds <= 120 && timeLeftSeconds > 60);
-    bar.classList.toggle('danger', timeLeftSeconds <= 60);
+    if (bar) {
+        bar.classList.toggle('warning', timeLeftSeconds <= 120 && timeLeftSeconds > 60);
+        bar.classList.toggle('danger', timeLeftSeconds <= 60);
+    }
 }
 
 function tryEvaluate(){
-    const unanswered = questions.length - Object.keys(userAnswers).length;
-    if (unanswered > 0) {
+    let answeredCount = 0;
+    questions.forEach((q, i) => {
+        if (userAnswers[i] !== undefined) answeredCount++;
+    });
+
+    if (answeredCount < questions.length) {
         document.getElementById('confirmModal').classList.add('show');
     } else {
         evaluate(false);
     }
 }
-function closeModal(){ document.getElementById('confirmModal').classList.remove('show'); }
+
+function closeModal(){ 
+    document.getElementById('confirmModal').classList.remove('show'); 
+}
 
 function evaluate(fromModal){
     closeModal();
@@ -389,19 +415,25 @@ function evaluate(fromModal){
         if (q.type === 'mc' || q.type === 'fill') {
             q.options.forEach((opt, j) => {
                 const el = document.getElementById(`q${i}opt${j}`);
-                el.classList.remove('selected');
-                if (j === q.correct) el.classList.add('correct');
-                else if (j === user) el.classList.add('incorrect');
+                if (el) {
+                    el.classList.remove('selected');
+                    if (j === q.correct) el.classList.add('correct');
+                    else if (j === user) el.classList.add('incorrect');
+                }
             });
-            isCorrect = user === q.correct;
+            isCorrect = (user === q.correct);
         } else if (q.type === 'tf') {
             const vEl = document.getElementById(`q${i}optV`);
             const fEl = document.getElementById(`q${i}optF`);
-            vEl.classList.remove('selected'); fEl.classList.remove('selected');
-            if (q.correct === true) vEl.classList.add('correct'); else fEl.classList.add('correct');
-            if (user === true && q.correct !== true) vEl.classList.add('incorrect');
-            if (user === false && q.correct !== false) fEl.classList.add('incorrect');
-            isCorrect = user === q.correct;
+            if (vEl) vEl.classList.remove('selected'); 
+            if (fEl) fEl.classList.remove('selected');
+            
+            if (q.correct === true && vEl) vEl.classList.add('correct'); 
+            if (q.correct === false && fEl) fEl.classList.add('correct');
+            
+            if (user === true && q.correct !== true && vEl) vEl.classList.add('incorrect');
+            if (user === false && q.correct !== false && fEl) fEl.classList.add('incorrect');
+            isCorrect = (user === q.correct);
         } else if (q.type === 'order') {
             const userArr = Array.isArray(user) ? user : [];
             isCorrect = JSON.stringify(userArr) === JSON.stringify(q.correct);
@@ -414,16 +446,20 @@ function evaluate(fromModal){
 
     const scorePct = Math.round((correctCount / questions.length) * 100);
     const banner = document.getElementById('resultBanner');
-    banner.classList.add('show');
-    if (scorePct >= 70) {
-        banner.classList.add('pass');
-        banner.innerHTML = `<i class="fas fa-trophy"></i> ¡Aprobado! ${correctCount}/${questions.length} correctas (${scorePct}%)`;
-    } else {
-        banner.classList.add('fail');
-        banner.innerHTML = `<i class="fas fa-redo"></i> ${correctCount}/${questions.length} correctas (${scorePct}%). Te recomendamos repasar el tema e intentar de nuevo.`;
+    if (banner) {
+        banner.classList.add('show');
+        if (scorePct >= 70) {
+            banner.classList.add('pass');
+            banner.innerHTML = `<i class="fas fa-trophy"></i> ¡Aprobado! ${correctCount}/${questions.length} correctas (${scorePct}%)`;
+        } else {
+            banner.classList.add('fail');
+            banner.innerHTML = `<i class="fas fa-redo"></i> ${correctCount}/${questions.length} correctas (${scorePct}%). Te recomendamos repasar el tema e intentar de nuevo.`;
+        }
+        banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-    document.getElementById('lastScore').textContent = `${scorePct}%`;
-    banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    const scoreDisplay = document.getElementById('lastScore');
+    if (scoreDisplay) scoreDisplay.textContent = `${scorePct}%`;
 }
 
 function resetQuiz(){
@@ -432,8 +468,13 @@ function resetQuiz(){
     timeLeftSeconds = 10 * 60;
     evaluated = false;
     clearInterval(timerInterval);
-    document.getElementById('resultBanner').classList.remove('show','pass','fail');
-    document.getElementById('resultBanner').innerHTML = '';
+    
+    const banner = document.getElementById('resultBanner');
+    if (banner) {
+        banner.classList.remove('show','pass','fail');
+        banner.innerHTML = '';
+    }
+    
     document.getElementById('startScreen').style.display = 'block';
     document.getElementById('timerBar').style.display = 'none';
     document.getElementById('actionButtons').style.display = 'none';
