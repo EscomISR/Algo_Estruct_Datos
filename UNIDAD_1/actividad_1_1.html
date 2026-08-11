@@ -208,13 +208,12 @@
             <p>Hay preguntas sin responder. Si continúas, se contarán como incorrectas. ¿Deseas evaluar ahora?</p>
             <div class="modal-actions">
                 <button class="btn btn-secondary" onclick="closeModal()"><i class="fas fa-pen"></i> Seguir respondiendo</button>
-                <button class="btn btn-success" onclick="evaluate(true)"><i class="fas fa-check"></i> Evaluar respuestas</button>
+                <button class="btn btn-success" onclick="procesarEvaluacion(true)"><i class="fas fa-check"></i> Evaluar respuestas</button>
             </div>
         </div>
     </div>
 
 <script>
-// ============ BANCO DE 20 PREGUNTAS (4 tipos mezclados) ============
 // ============ BANCO DE 20 PREGUNTAS (4 tipos mezclados) ============
 const questions = [
   { type:"mc", text:"¿Qué es un algoritmo?", options:["Un conjunto finito y ordenado de instrucciones para resolver un problema","Un lenguaje de programación específico","Un tipo de estructura de datos no lineal","Un dispositivo de hardware para procesar datos"], correct:0 },
@@ -366,7 +365,7 @@ function startTimer(){
         updateTimerDisplay();
         if (timeLeftSeconds <= 0){
             clearInterval(timerInterval);
-            evaluate(true);
+            procesarEvaluacion(true);
         }
     }, 1000);
 }
@@ -393,7 +392,7 @@ function tryEvaluate(){
     if (answeredCount < questions.length) {
         document.getElementById('confirmModal').classList.add('show');
     } else {
-        evaluate(false);
+        procesarEvaluacion(false);
     }
 }
 
@@ -401,7 +400,7 @@ function closeModal(){
     document.getElementById('confirmModal').classList.remove('show'); 
 }
 
-function evaluate(fromModal){
+function procesarEvaluacion(fromModal){
     closeModal();
     if (evaluated) return;
     evaluated = true;
