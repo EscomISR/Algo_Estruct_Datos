@@ -20,6 +20,37 @@
     };
 
     let exam = null;
+    let examSource = null;
+
+    function shuffle(items) {
+        const shuffled = [...items];
+        for (let index = shuffled.length - 1; index > 0; index -= 1) {
+            const randomIndex = Math.floor(Math.random() * (index + 1));
+            [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+        }
+        return shuffled;
+    }
+
+    function prepareExam() {
+        const requestedAmount = Number(examSource.configuracion?.cantidadPreguntas);
+        const amount = Number.isInteger(requestedAmount) && requestedAmount > 0
+            ? Math.min(requestedAmount, examSource.preguntas.length)
+            : examSource.preguntas.length;
+        const questionPool = examSource.configuracion?.mezclarPreguntas
+            ? shuffle(examSource.preguntas)
+            : [...examSource.preguntas];
+
+        exam = {
+            ...examSource,
+            preguntas: questionPool.slice(0, amount)
+        };
+
+        const fragment = document.createDocumentFragment();
+        exam.preguntas.forEach((question, index) => {
+            fragment.append(renderQuestion(question, index));
+        });
+        elements.questions.replaceChildren(fragment);
+    }
 
     function showError(message) {
         elements.loading.hidden = true;
@@ -55,7 +86,7 @@
         const heading = document.createElement('h5');
         heading.id = headingId;
         heading.className = 'diagnostic-question-title';
-        heading.textContent = `${question.numero ?? index + 1}. ${question.enunciado}`;
+        heading.textContent = `${index + 1}. ${question.enunciado}`;
         if (question.obligatoria !== false) {
             const required = document.createElement('span');
             required.className = 'diagnostic-required';
@@ -148,10 +179,7 @@
 
     function resetExam() {
         elements.form.reset();
-        elements.questions.querySelectorAll('.diagnostic-character-count').forEach(counter => {
-            const textarea = counter.previousElementSibling;
-            counter.textContent = `0 / ${textarea.maxLength}`;
-        });
+        prepareExam();
         elements.result.hidden = true;
         elements.form.hidden = false;
         elements.message.textContent = '';
@@ -188,18 +216,14 @@
         try {
             const response = await fetch(root.dataset.questionFile, { cache: 'no-store' });
             if (!response.ok) throw new Error(`Error HTTP ${response.status}`);
-            exam = validateExam(await response.json());
+            examSource = validateExam(await response.json());
 
-            if (exam.preguntas.length === 0) {
+            if (examSource.preguntas.length === 0) {
                 showError('El examen está preparado, pero el banco de preguntas todavía está vacío.');
                 return;
             }
 
-            const fragment = document.createDocumentFragment();
-            exam.preguntas.forEach((question, index) => {
-                fragment.append(renderQuestion(question, index));
-            });
-            elements.questions.replaceChildren(fragment);
+            prepareExam();
             elements.loading.hidden = true;
             elements.form.hidden = false;
             updateProgress();
