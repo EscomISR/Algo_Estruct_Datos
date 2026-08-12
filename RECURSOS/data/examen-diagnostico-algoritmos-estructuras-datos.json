@@ -5,7 +5,8 @@
   "descripcion": "Banco de reactivos del examen diagnóstico de Algoritmos y Estructuras de Datos.",
   "configuracion": {
     "mostrarResultado": true,
-    "mezclarPreguntas": false,
+    "cantidadPreguntas": 12,
+    "mezclarPreguntas": true,
     "mezclarOpciones": false,
     "endpointEnvio": ""
   },
@@ -170,7 +171,7 @@
       "id": "diagnostico-07",
       "numero": 7,
       "tipo": "opcion-multiple",
-      "enunciado": "En una fila de impresión, los documentos deben atenderse en el mismo orden en que fueron enviados. ¿Qué estructura de datos representa mejor esta situación?",
+      "enunciado": "En una impresora, los documentos deben imprimirse en el mismo orden en que fueron enviados. ¿Qué estructura de datos representa mejor esta situación?",
       "obligatoria": true,
       "opciones": [
         {
