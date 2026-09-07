@@ -270,7 +270,12 @@
             <button class="btn btn-secondary" onclick="resetBattle()"><i class="fas fa-redo"></i> Nueva Batalla</button>
             <button class="btn btn-secondary" onclick="showSolutions()"><i class="fas fa-lightbulb"></i> Ver Respuestas</button>
         </div>
-
+<button class="btn btn-secondary" type="button"
+    onclick="typeof descargarResultadosPDF === 'function'
+        ? descargarResultadosPDF()
+        : alert('No se cargó generar-pdf-resultados.js')">
+    <i class="fas fa-file-pdf"></i> Descargar resultados PDF
+</button>
         <div class="game-status" id="gameStatus"></div>
         </div>
 
@@ -472,5 +477,6 @@
         if(window.innerWidth<=768){sidebarNav.classList.remove('active')}
         });
     </script>
+    <script src="./generar-pdf-resultados.js"></script>
     </body>
     </html>

@@ -632,7 +632,167 @@
     $('readingProgressBar').style.width = `${Math.min(100, (scrollTop / scrollable) * 100)}%`;
     $('scrollToTop').classList.toggle('show', scrollTop > 420);
   }
+function descargarResultadosFinalPDF() {
+  if (!window.jspdf?.jsPDF) {
+    alert('No se cargó la librería para generar el PDF.');
+    return;
+  }
 
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+  const margen = 16;
+  const ancho = pdf.internal.pageSize.getWidth();
+  const alto = pdf.internal.pageSize.getHeight();
+  const contenido = ancho - (margen * 2);
+  const limite = alto - margen;
+  const total = questions.length;
+  const correctas = questions.filter(isCorrect).length;
+  const sinResponder = questions.filter(q => !isAnswered(q)).length;
+  const incorrectas = total - correctas - sinResponder;
+  let y = 0;
+
+  const limpiar = valor =>
+    String(valor ?? '')
+      .replace(/→/g, ' -> ')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+  function encabezado() {
+    pdf.setFillColor(30, 64, 175);
+    pdf.rect(0, 0, ancho, 22, 'F');
+
+    pdf.setTextColor(255, 255, 255);
+    pdf.setFont('helvetica', 'bold');
+    pdf.setFontSize(15);
+    pdf.text('Resultados de la actividad final', margen, 13);
+
+    pdf.setFont('helvetica', 'normal');
+    pdf.setFontSize(8);
+    pdf.text(new Date().toLocaleDateString('es-MX'), ancho - margen, 13, { align: 'right' });
+
+    y = 32;
+  }
+
+  function nuevaPagina() {
+    pdf.addPage();
+    encabezado();
+  }
+
+  function espacio(altura) {
+    if (y + altura > limite) nuevaPagina();
+  }
+
+  function titulo(texto) {
+    espacio(12);
+    pdf.setTextColor(30, 64, 175);
+    pdf.setFont('helvetica', 'bold');
+    pdf.setFontSize(13);
+    pdf.text(texto, margen, y);
+    y += 3;
+
+    pdf.setDrawColor(191, 219, 254);
+    pdf.line(margen, y, ancho - margen, y);
+    y += 6;
+  }
+
+  function linea(etiqueta, valor) {
+    const prefijo = `${etiqueta}: `;
+    pdf.setFont('helvetica', 'bold');
+    pdf.setFontSize(10);
+
+    const anchoPrefijo = pdf.getTextWidth(prefijo);
+    const lineas = pdf.splitTextToSize(limpiar(valor), contenido - anchoPrefijo);
+
+    lineas.forEach((texto, indice) => {
+      espacio(4.5);
+
+      if (indice === 0) {
+        pdf.setTextColor(30, 64, 175);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text(prefijo, margen, y);
+      }
+
+      pdf.setTextColor(31, 41, 55);
+      pdf.setFont('helvetica', 'normal');
+      pdf.text(texto, margen + anchoPrefijo, y);
+      y += 4.5;
+    });
+  }
+
+  function preguntaPDF(question, index) {
+    const respondida = isAnswered(question);
+    const correcta = isCorrect(question);
+    const estado = !respondida
+      ? 'Sin responder'
+      : correcta ? 'Correcta' : 'Incorrecta';
+
+    const enunciado = limpiar(question.question || question.instruction);
+    const usuario = limpiar(formatAnswer(question, answers.get(question.id)));
+    const correctaTexto = limpiar(formatAnswer(question, correctAnswerFor(question), true));
+    const explicacion = limpiar(question.explanation || 'Sin explicación disponible.');
+
+    const lineas = [
+      ...pdf.splitTextToSize(enunciado, contenido - 8),
+      ...pdf.splitTextToSize(`Tu respuesta: ${usuario}`, contenido - 8),
+      ...pdf.splitTextToSize(`Respuesta correcta: ${correctaTexto}`, contenido - 8),
+      ...pdf.splitTextToSize(`Explicación: ${explicacion}`, contenido - 8)
+    ];
+
+    const alturaLinea = 4.1;
+    const alturaCaja = 12 + (lineas.length * alturaLinea);
+
+    espacio(alturaCaja);
+
+    const color = correcta
+      ? [22, 163, 74]
+      : respondida ? [220, 38, 38] : [100, 116, 139];
+
+    pdf.setFillColor(248, 250, 252);
+    pdf.setDrawColor(...color);
+    pdf.roundedRect(margen, y, contenido, alturaCaja, 1.5, 1.5, 'FD');
+
+    y += 5;
+    pdf.setTextColor(...color);
+    pdf.setFont('helvetica', 'bold');
+    pdf.setFontSize(9);
+    pdf.text(`Pregunta ${index + 1} - ${estado}`, margen + 4, y);
+
+    y += alturaLinea;
+    pdf.setTextColor(31, 41, 55);
+    pdf.setFont('helvetica', 'normal');
+    pdf.text(lineas, margen + 4, y);
+
+    y += (lineas.length * alturaLinea) + 3;
+  }
+
+  encabezado();
+
+  pdf.setFillColor(239, 246, 255);
+  pdf.setDrawColor(147, 197, 253);
+  pdf.roundedRect(margen, y, contenido, 28, 2, 2, 'FD');
+
+  pdf.setTextColor(30, 64, 175);
+  pdf.setFont('helvetica', 'bold');
+  pdf.setFontSize(10);
+  pdf.text('Calificación', ancho / 2, y + 8, { align: 'center' });
+
+  pdf.setFontSize(25);
+  pdf.text(`${$('gradeValue').textContent.trim()} / 10`, ancho / 2, y + 18, { align: 'center' });
+
+  y += 38;
+
+  titulo('Resumen');
+  linea('Preguntas', total);
+  linea('Correctas', correctas);
+  linea('Incorrectas', incorrectas);
+  linea('Sin responder', sinResponder);
+
+  titulo('Detalle de respuestas');
+  questions.forEach(preguntaPDF);
+
+  pdf.save('Resultados_Actividad_Final.pdf');
+}
   questionCard.addEventListener('change', handleQuestionChange);
   questionCard.addEventListener('click', handleQuestionClick);
   $('questionDots').addEventListener('click', event => {
@@ -644,6 +804,7 @@
   $('evaluateFinalBtn').addEventListener('click', requestEvaluation);
   $('startEvaluationBtn').addEventListener('click', startEvaluation);
   $('retryEvaluationBtn').addEventListener('click', returnToCase);
+  $('downloadPdfBtn')?.addEventListener('click', descargarResultadosFinalPDF);
   $('consultCaseBtn').addEventListener('click', openCaseDrawer);
   $('closeCaseDrawerBtn').addEventListener('click', closeCaseDrawer);
   $('caseDrawerOverlay').addEventListener('click', event => {

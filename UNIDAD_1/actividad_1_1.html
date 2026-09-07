@@ -183,6 +183,12 @@
         </div>
 
         <div class="result-banner" id="resultBanner"></div>
+     <!-- BOTÓN PDF -->
+        <div style="text-align: center; margin-bottom: 20px;">
+    <button id="btnDescargarPDF" class="btn" onclick="generarPDFActividad()" style="display: none; background: #e74c3c; color: white; margin: 0 auto; cursor: pointer;">
+        <i class="fas fa-file-pdf"></i> Descargar Resultados PDF
+    </button>
+        </div>
 
         <div id="quizArea"></div>
 
@@ -455,6 +461,7 @@ function procesarEvaluacion(fromModal){
             banner.innerHTML = `<i class="fas fa-redo"></i> ${correctCount}/${questions.length} correctas (${scorePct}%). Te recomendamos repasar el tema e intentar de nuevo.`;
         }
         banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.getElementById('btnDescargarPDF').style.display = 'inline-flex';
     }
     
     const scoreDisplay = document.getElementById('lastScore');
@@ -479,7 +486,48 @@ function resetQuiz(){
     document.getElementById('actionButtons').style.display = 'none';
     document.getElementById('quizArea').style.display = 'none';
     document.getElementById('quizArea').innerHTML = '';
+    document.getElementById('btnDescargarPDF').style.display = 'none';
 }
+</script>
+<!-- SCRIPT PARA PDF CORREGIDO -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+    function generarPDFActividad() {
+        const elemento = document.querySelector('.container'); 
+        const botonesNav = document.querySelector('.nav-buttons');
+        const botonDescarga = document.getElementById('btnDescargarPDF');
+        
+        botonesNav.style.display = 'none';
+        botonDescarga.style.display = 'none';
+
+        // Forzar estilos temporales para impresión limpia en PDF (fondo blanco, texto oscuro)
+        const originalBg = elemento.style.background;
+        const originalColor = elemento.style.color;
+        elemento.style.background = '#ffffff';
+        elemento.style.color = '#2c3e50';
+
+        // Ajustar textos oscuros internos temporalmente para que se lean bien
+        const textos = elemento.querySelectorAll('.question-text, h1, .subtitle, .meta-card .value, .meta-card .label');
+        textos.forEach(el => el.style.color = '#2c3e50');
+
+        const opciones = {
+            margin:       [10, 10, 10, 10],
+            filename:     'Evaluacion_Actividad_1_1.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        html2pdf().set(opciones).from(elemento).save().then(() => {
+            // Restaurar estilos originales en la vista web
+            elemento.style.background = originalBg;
+            elemento.style.color = originalColor;
+            textos.forEach(el => el.style.color = '');
+
+            botonesNav.style.display = 'flex';
+            botonDescarga.style.display = 'inline-flex';
+        });
+    }
 </script>
 </body>
 </html>
