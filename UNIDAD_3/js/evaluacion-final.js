@@ -165,6 +165,11 @@
       caseData = loadedCase;
       baseQuestions = loadedQuestions;
       renderCaseContent($("casePresentation"), "case");
+      document.dispatchEvent(
+        new CustomEvent("actividad-final:caso-cargado", {
+          detail: caseData,
+        }),
+      );
 
       loadingState.classList.add("is-hidden");
       introScreen.classList.remove("is-hidden");
@@ -750,6 +755,63 @@
       </details>`;
       })
       .join("");
+    document.dispatchEvent(
+      new CustomEvent("actividad-final:resultados-listos", {
+        detail: {
+          caseTitle: caseData.title,
+          generatedAt: new Date().toISOString(),
+          summary: {
+            grade: grade.toFixed(1),
+            percentage: percentage.toFixed(1),
+            correct,
+            incorrect,
+            unanswered,
+            total: questions.length,
+            elapsedSeconds,
+            elapsedText: formatDuration(elapsedSeconds),
+            timeExpired,
+          },
+          categories: performanceCategories.map((category) => {
+            const categoryQuestions = questions.filter(
+              (question) => question.category === category,
+            );
+            return {
+              category,
+              correct: categoryQuestions.filter(isCorrect).length,
+              total: categoryQuestions.length,
+            };
+          }),
+          responses: questions.map((question, index) => ({
+            number: index + 1,
+            type: typeMeta[question.type]?.label || question.type,
+            category: question.category,
+            scenario: question.scenario || "",
+            question:
+              question.question ||
+              question.instruction ||
+              "Clasifica los elementos.",
+            instruction:
+              question.instruction && question.instruction !== question.question
+                ? question.instruction
+                : "",
+            userAnswer: formatAnswer(question, answers.get(question.id)),
+            correctAnswer: formatAnswer(
+              question,
+              correctAnswerFor(question),
+              true,
+            ),
+            explanation: question.explanation,
+            resourceTitle: question.resourceId
+              ? caseData.resources.find(
+                  (resource) => resource.id === question.resourceId,
+                )?.title || ""
+              : "",
+            answered: isAnswered(question),
+            correct: isCorrect(question),
+          })),
+        },
+      }),
+    );
 
     window.scrollTo({ top: 0, behavior: "smooth" });
   }

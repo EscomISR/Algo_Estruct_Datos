@@ -593,6 +593,27 @@ h1 {
   gap: 22px;
 }
 
+.start-actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn-pdf {
+  border-color: #b91c1c;
+  background: #b91c1c;
+  color: #fff;
+}
+
+.btn-pdf:hover:not(:disabled),
+.btn-pdf:focus-visible:not(:disabled) {
+  border-color: #991b1b;
+  background: #991b1b;
+  color: #fff;
+}
+
 .btn {
   min-height: 46px;
   padding: 11px 19px;
@@ -1474,10 +1495,16 @@ footer {
   }
 
   .start-panel .btn,
+  .start-actions,
   .section-heading .btn,
   .toolbar-actions,
   .toolbar-actions .btn {
     width: 100%;
+  }
+
+  .start-actions {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   .toolbar-actions {

@@ -378,13 +378,25 @@
                 información sin perder tus respuestas.
               </p>
             </div>
-            <button
-              class="btn btn-primary btn-large"
-              id="startEvaluationBtn"
-              type="button"
-            >
-              <i class="fas fa-play" aria-hidden="true"></i> Iniciar actividad
-            </button>
+            <div class="start-actions">
+              <button
+                class="btn btn-pdf btn-large"
+                id="downloadCasePdfBtn"
+                type="button"
+                disabled
+              >
+                <i class="fas fa-file-pdf" aria-hidden="true"></i> Descargar
+                caso en PDF
+              </button>
+              <button
+                class="btn btn-primary btn-large"
+                id="startEvaluationBtn"
+                type="button"
+              >
+                <i class="fas fa-play" aria-hidden="true"></i> Iniciar
+                actividad
+              </button>
+            </div>
           </div>
         </section>
 
@@ -498,6 +510,15 @@
           </section>
           <div class="results-actions">
             <button
+              class="btn btn-pdf btn-large"
+              id="downloadResultsPdfBtn"
+              type="button"
+              disabled
+            >
+              <i class="fas fa-file-pdf" aria-hidden="true"></i> Descargar
+              resultados PDF
+            </button>
+            <button
               class="btn btn-primary btn-large"
               id="retryEvaluationBtn"
               type="button"
@@ -605,6 +626,7 @@
     </div>
 
     <script src="js/evaluacion-final.js"></script>
+    <script src="generar-pdf-resultados.js"></script>
     <script src="js/copiar-texto-plano.js"></script>
   </body>
 </html>
