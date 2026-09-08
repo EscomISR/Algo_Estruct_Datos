@@ -320,6 +320,12 @@
                 <button class="btn btn-secondary" onclick="showSolutions()">
                     <i class="fas fa-lightbulb"></i> Ver Respuestas
                 </button>
+                <button class="btn btn-secondary" type="button"
+    onclick="typeof descargarResultadosPDF === 'function'
+        ? descargarResultadosPDF()
+        : alert('No se cargó generar-pdf-resultados.js')">
+    <i class="fas fa-file-pdf"></i> Descargar resultados PDF
+</button>
             </div>
 
             <div class="game-status" id="gameStatus"></div>
@@ -617,6 +623,6 @@
   window.addEventListener('scroll', () => { updateReadingProgress(); toggleFloatingButtons(); });
   window.addEventListener('resize', () => { updateContainerSpacing(); });
 </script>
-
+<script src="./generar-pdf-resultados.js"></script>
 </body>
 </html>

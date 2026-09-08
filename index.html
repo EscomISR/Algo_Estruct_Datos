@@ -157,57 +157,62 @@
             background: rgb(5, 52, 96);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
         }
         
         .hero-content {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: minmax(7rem, 10.5rem) minmax(0, 1fr) minmax(7rem, 10.5rem);
+            grid-template-areas: "ipn title escom";
+            gap: clamp(1rem, 3vw, 2.75rem);
             align-items: center;
             text-align: center;
             color: white;
             margin-bottom: 3rem;
-            flex-wrap: wrap;
         }
 
-        /* Estilos base para las imágenes del hero */
-        .hero-content img {
-            margin: 1rem;
+        .hero-content > * {
+            min-width: 0;
+        }
+
+        .hero-logo,
+        .hero-banner {
+            display: block;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
             transition: all 0.3s ease;
         }
 
-        /* Logo IPN (Primera imagen) */
-        .hero-content img:first-of-type {
-            height: 8rem;
+        .hero-logo {
+            justify-self: center;
+            margin: 0;
         }
 
-        /* Logo EST (Última imagen) */
-        .hero-content img:last-of-type {
-            height: 7rem;
+        .hero-logo-ipn {
+            grid-area: ipn;
+            width: clamp(6rem, 13vw, 9.35rem);
         }
-        
-        @media (min-width: 768px) {
-            .hero-content img {
-                margin: 0 2rem;
-            }
-            .hero-content img:first-of-type {
-                height: 12rem;
-            }
-            .hero-content img:last-of-type {
-                height: 7rem;
-            }
+
+        .hero-logo-escom {
+            grid-area: escom;
+            width: clamp(6.5rem, 15vw, 10.7rem);
+        }
+
+        .hero-title {
+            grid-area: title;
+        }
+
+        .hero-banner {
+            width: min(80%, 38rem);
+            margin: 0 auto 1rem;
         }
 
         .hero-title h1 {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: bold;
             line-height: 1.2;
             margin-bottom: 1.5rem;
-        }
-        
-        @media (min-width: 768px) {
-            .hero-title h1 {
-                font-size: 3rem;
-            }
         }
         
         .hero-title h1 .highlight {
@@ -224,6 +229,82 @@
         .hero-description {
             font-size: 1.2rem;
             opacity: 0.9;
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .hero-section {
+                padding: 32px 18px;
+            }
+
+            .hero-content {
+                grid-template-columns: minmax(5.5rem, 8rem) minmax(0, 1fr) minmax(5.5rem, 8rem);
+                gap: clamp(0.75rem, 2vw, 1.5rem);
+            }
+
+            .hero-logo-ipn {
+                width: clamp(5.5rem, 13vw, 7.5rem);
+            }
+
+            .hero-logo-escom {
+                width: clamp(6rem, 14vw, 8rem);
+            }
+
+            .hero-title h1 {
+                font-size: clamp(1.75rem, 4.2vw, 2.35rem);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .hero-section {
+                padding: 24px 14px;
+                margin-top: 12px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas:
+                    "ipn escom"
+                    "title title";
+                column-gap: 2rem;
+                row-gap: 1.25rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-logo-ipn,
+            .hero-logo-escom {
+                width: auto;
+                height: 5.5rem;
+            }
+
+            .hero-title h1 {
+                font-size: clamp(1.65rem, 7vw, 2.15rem);
+                margin-bottom: 1rem;
+            }
+
+            .hero-title .subtitle {
+                font-size: clamp(1.05rem, 4.6vw, 1.35rem);
+            }
+
+            .hero-banner {
+                width: min(92%, 30rem);
+            }
+
+            .hero-description {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero-content {
+                column-gap: 1rem;
+            }
+
+            .hero-logo-ipn,
+            .hero-logo-escom {
+                height: 4.75rem;
+            }
         }
 
         .card-container {
@@ -585,14 +666,13 @@
     <main class="container">
         <section class="hero-section">
             <div class="hero-content">
-                <img src="IMAGENES/IPNb.png" alt="IPN Logo">
+                <img class="hero-logo hero-logo-ipn" src="IMAGENES/IPNb.png?v=2" alt="IPN Logo">
                 <div class="hero-title">
                     <h1><span class="highlight">Instituto Politécnico Nacional</span><br><span class="subtitle">Escuela Superior de Cómputo</span></h1>
-                    <!-- <p class="hero-description">Algoritmos almacena y recupera Datos. <strong> -->
-                    <img src="Título1.png" width="80%" height="70%">
-                    <br>Polilibro académico <br>Unidad de aprendizaje Algoritmos y estructuras de datos</p>
+                    <img class="hero-banner" src="Título1.png" width="80%" height="70%" alt="Algoritmos almacena y recupera datos">
+                    <p class="hero-description">Polilibro académico <br>Unidad de aprendizaje Algoritmos y estructuras de datos</p>
                 </div>
-                <img src="IMAGENES/ESCOMB.png" alt="ESCOM">
+                <img class="hero-logo hero-logo-escom" src="IMAGENES/ESCOMB.png?v=2" alt="ESCOM">
             </div>
         </section>
 
@@ -615,35 +695,15 @@
                     <p class="card-description">Evaluación de conocimientos previos.</p>
                 </div>
             </div>
-<!-- TARJETA DEL GLOSARIO -->
-            <div class="card" onclick="openGlosarioModal()">
-                <div class="card-header"><div class="card-icon gradient-7"><i class="fas fa-book"></i></div><h3 class="card-title">Glosario de términos</h3></div>
-                <div class="card-content"><p class="card-description">Conceptos clave divididos por unidades.</p></div>
-            </div>
-
-            <div class="card" data-modal="Encuadre">
-                <div class="card-header"><div class="card-icon gradient-2"><i class="fas fa-compass"></i></div><h3 class="card-title">Contenido</h3></div>
-                <div class="card-content"><p class="card-description">Propósito y estructura de la unidad de aprendizaje.</p></div>
-            </div>
-            
-             <div class="card" data-modal="programa">
-                <div class="card-header"><div class="card-icon gradient-3"><i class="fas fa-file-alt"></i></div><h3 class="card-title">Programa</h3></div>
-                <div class="card-content"><p class="card-description">Programa sintético de la unidad de aprendizaje.</p></div>
-            </div>
             <div class="card" data-modal="Introducción">
                 <div class="card-header"><div class="card-icon gradient-4"><i class="fas fa-lightbulb"></i></div><h3 class="card-title">Introducción</h3></div>
                 <div class="card-content"><p class="card-description">Contexto y relevancia.</p></div>
             </div>
-
-            <div class="card" data-modal="creadores">
-                <div class="card-header"><div class="card-icon gradient-5"><i class="fas fa-users"></i></div><h3 class="card-title">Creadores</h3></div>
-                <div class="card-content"><p class="card-description">Información sobre los autores.</p></div>
+            <div class="card" data-modal="programa">
+                <div class="card-header"><div class="card-icon gradient-3"><i class="fas fa-file-alt"></i></div><h3 class="card-title">Programa académico</h3></div>
+                <div class="card-content"><p class="card-description">Programa académico de la unidad de aprendizaje.</p></div>
             </div>
-            <div class="card" data-modal="colaboradores">
-                <div class="card-header"><div class="card-icon gradient-7"><i class="fas fa-hands-helping"></i></div><h3 class="card-title">Colaboradores</h3></div>
-                <div class="card-content"><p class="card-description">Equipo de desarrollo y agradecimientos.</p></div>
-            </div>
-             <div class="card" data-modal="metodologia">
+            <div class="card" data-modal="metodologia">
                 <div class="card-header"><div class="card-icon gradient-8"><i class="fas fa-sitemap"></i></div><h3 class="card-title">Metodología</h3></div>
                 <div class="card-content"><p class="card-description">Estrategia y métodos de aprendizaje.</p></div>
             </div>
@@ -652,13 +712,27 @@
                 <div class="card-header"><div class="card-icon gradient-6"><i class="fas fa-gamepad"></i></div><h3 class="card-title">Agenda de actividades</h3></div>
                 <div class="card-content"><p class="card-description">Ejercicios y dinámicas de aprendizaje.</p></div>
             </div>
-
-          
+<!-- TARJETA DEL GLOSARIO -->
+            <div class="card" onclick="openGlosarioModal()">
+                <div class="card-header"><div class="card-icon gradient-7"><i class="fas fa-book"></i></div><h3 class="card-title">Glosario de términos</h3></div>
+                <div class="card-content"><p class="card-description">Conceptos clave divididos por unidades.</p></div>
+            </div>
             <div class="card" data-modal="licencia">
                 <div class="card-header"><div class="card-icon gradient-1"><i class="fab fa-creative-commons"></i></div><h3 class="card-title">Licencia Creative Commons</h3></div>
                 <div class="card-content"><p class="card-description">Términos de uso y licenciamiento del recurso.</p></div>
             </div>
-
+            <div class="card" data-modal="creadores">
+                <div class="card-header"><div class="card-icon gradient-5"><i class="fas fa-users"></i></div><h3 class="card-title">Creadores</h3></div>
+                <div class="card-content"><p class="card-description">Información sobre los autores.</p></div>
+            </div>
+            <div class="card" data-modal="colaboradores">
+                <div class="card-header"><div class="card-icon gradient-7"><i class="fas fa-hands-helping"></i></div><h3 class="card-title">Colaboradores</h3></div>
+                <div class="card-content"><p class="card-description">Equipo de desarrollo y agradecimientos.</p></div>
+            </div>
+            <div class="card" data-modal="Encuadre">
+                <div class="card-header"><div class="card-icon gradient-2"><i class="fas fa-compass"></i></div><h3 class="card-title">Contenido</h3></div>
+                <div class="card-content"><p class="card-description">Propósito y estructura de la unidad de aprendizaje.</p></div>
+            </div>
             </div> <section class="cta-section">
             <a href="Unidades.html" class="cta-button">
                 <span>Explorar unidades temáticas</span>
