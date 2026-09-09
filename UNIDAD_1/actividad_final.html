@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+descargarenun<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -273,6 +273,26 @@
                         <i class="fas fa-play" aria-hidden="true"></i> Iniciar actividad
                     </button>
                 </div>
+                <div style="margin: 20px 0; text-align: center;">
+    <button
+        class="btn"
+        id="downloadCaseBtn"
+        type="button"
+        style="
+            background: #d82b25;
+            color: white;
+            cursor: pointer;
+            border-radius: 20px;
+            padding: 12px 25px;
+            font-weight: bold;
+            border: none;
+            font-size: 1rem;
+        ">
+        <i class="fas fa-file-pdf"></i>
+        Descargar Enunciado del Caso (PDF)
+    </button>
+</div>
+</div>
             </section>
 
             <section id="evaluationScreen" class="is-hidden" aria-labelledby="evaluationTitle">
@@ -568,6 +588,188 @@ function generarPDFFinal() {
 }
 </script>
 </body>
+
 </html>
+<script>
+document.getElementById('downloadCaseBtn').addEventListener('click', descargarCasoPDF);
+
+function descargarCasoPDF() {
+
+    if (!window.jspdf || !window.jspdf.jsPDF) {
+        alert('No se pudo cargar jsPDF.');
+        return;
+    }
+
+    const elementoCaso = document.getElementById('casePresentation');
+
+    if (!elementoCaso || !elementoCaso.innerText.trim()) {
+        alert('No se encontró el contenido del caso.');
+        return;
+    }
+
+    const { jsPDF } = window.jspdf;
+
+    const doc = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
+    });
+
+    const margen = 18;
+    const anchoPagina = doc.internal.pageSize.getWidth();
+    const altoPagina = doc.internal.pageSize.getHeight();
+    const anchoTexto = anchoPagina - (margen * 2);
+
+    let y = 20;
+
+    // ===== ENCABEZADO =====
+
+    doc.setFillColor(30, 64, 175);
+    doc.rect(0, 0, anchoPagina, 25, 'F');
+
+    doc.setTextColor(255, 255, 255);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(17);
+
+    doc.text(
+        'Actividad final - Unidad 1',
+        margen,
+        11
+    );
+
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'normal');
+
+    doc.text(
+        'El Archivista Caótico',
+        margen,
+        18
+    );
+
+    y = 35;
+
+    // ===== TÍTULO =====
+
+    doc.setTextColor(30, 64, 175);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(15);
+
+    doc.text(
+        'Enunciado del caso',
+        margen,
+        y
+    );
+
+    y += 8;
+
+    doc.setDrawColor(30, 64, 175);
+    doc.line(
+        margen,
+        y,
+        anchoPagina - margen,
+        y
+    );
+
+    y += 8;
+
+    // ===== CONTENIDO =====
+
+    const contenido = elementoCaso.innerText
+        .split('\n')
+        .map(texto => texto.trim())
+        .filter(Boolean);
+
+    doc.setTextColor(31, 41, 55);
+
+    contenido.forEach(parrafo => {
+
+        const esTitulo =
+            parrafo.length < 80 &&
+            !parrafo.endsWith('.') &&
+            !parrafo.endsWith(':');
+
+        if (esTitulo) {
+
+            doc.setFont(
+                'helvetica',
+                'bold'
+            );
+
+            doc.setFontSize(11);
+
+        } else {
+
+            doc.setFont(
+                'helvetica',
+                'normal'
+            );
+
+            doc.setFontSize(10);
+        }
+
+        const lineas = doc.splitTextToSize(
+            parrafo,
+            anchoTexto
+        );
+
+        const altura =
+            lineas.length * 5;
+
+        if (
+            y + altura >
+            altoPagina - 18
+        ) {
+
+            doc.addPage();
+
+            y = 20;
+        }
+
+        doc.text(
+            lineas,
+            margen,
+            y
+        );
+
+        y += altura + 4;
+    });
+
+    // ===== PIE DE PÁGINA =====
+
+    const paginas =
+        doc.internal.getNumberOfPages();
+
+    for (
+        let pagina = 1;
+        pagina <= paginas;
+        pagina++
+    ) {
+
+        doc.setPage(pagina);
+
+        doc.setFontSize(8);
+        doc.setTextColor(
+            100,
+            100,
+            100
+        );
+
+        doc.text(
+            `Página ${pagina} de ${paginas}`,
+            anchoPagina / 2,
+            altoPagina - 8,
+            {
+                align: 'center'
+            }
+        );
+    }
+
+    // ===== DESCARGA =====
+
+    doc.save(
+        'Enunciado_Caso_Final_Unidad_1.pdf'
+    );
+}
+</script>
 </body>
 </html>
