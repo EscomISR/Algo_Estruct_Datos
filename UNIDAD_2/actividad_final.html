@@ -246,6 +246,12 @@
                         <i class="fas fa-play" aria-hidden="true"></i> Iniciar actividad
                     </button>
                 </div>
+                <!-- BOTÓN PDF DEL CASO -->
+                <div style="margin: 20px 0; text-align: center;">
+                    <button class="btn" id="downloadCaseBtn" type="button" style="background: #d82b25; color: white; cursor: pointer; border-radius: 20px; padding: 12px 25px; font-weight: bold; border: none; font-size: 1rem;">
+                        <i class="fas fa-file-pdf"></i> Descargar Enunciado del Caso (PDF)
+                    </button>
+                </div>
             </section>
 
             <section id="evaluationScreen" class="is-hidden" aria-labelledby="evaluationTitle">
@@ -319,6 +325,10 @@
                     <a class="btn btn-secondary btn-large" href="index.html">
                         <i class="fas fa-book-open" aria-hidden="true"></i> Volver a la Unidad 2
                     </a>
+                    <!-- BOTÓN PDF DE RESULTADOS -->
+                    <button class="btn btn-large" id="downloadPdfBtn" type="button" style="background:#e74c3c; color:#fff; border:none; cursor:pointer; border-radius:30px; padding:12px 25px; font-weight:bold;">
+                        <i class="fas fa-file-pdf"></i> Descargar resultados PDF
+                    </button>
                 </div>
             </section>
         </main>
@@ -365,5 +375,216 @@
 
     <script src="RECURSOS/js/evaluacion-final.js"></script>
     <script src="RECURSOS/js/copiar-texto-plano.js"></script>
+    <!-- LIBRERÍA PDF -->
+    <script src="https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    
+    <!-- LÓGICA DE GENERACIÓN DE PDF -->
+    <script>
+    // 1. DESCARGA DE RESULTADOS
+    document.getElementById('downloadPdfBtn')?.addEventListener('click', generarPDFFinal);
+
+    function generarPDFFinal() {
+        if (!window.jspdf || !window.jspdf.jsPDF) {
+            alert('No se cargó la librería para generar el PDF.');
+            return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+        const margen = 16;
+        const anchoPagina = doc.internal.pageSize.getWidth();
+        const altoPagina = doc.internal.pageSize.getHeight();
+        const anchoContenido = anchoPagina - (margen * 2);
+        const limiteInferior = altoPagina - margen;
+        let y = 0;
+
+        const texto = (id) => document.getElementById(id)?.innerText.trim() || 'Sin información';
+
+        function encabezado() {
+            doc.setFillColor(30, 64, 175);
+            doc.rect(0, 0, anchoPagina, 22, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(16);
+            doc.text('Resultados de la actividad - Unidad 2', margen, 13);
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(8);
+            doc.text(new Date().toLocaleDateString('es-MX'), anchoPagina - margen, 13, { align: 'right' });
+            y = 32;
+        }
+
+        function nuevaPagina() {
+            doc.addPage();
+            encabezado();
+        }
+
+        function comprobarEspacio(altura) {
+            if (y + altura > limiteInferior) {
+                nuevaPagina();
+            }
+        }
+
+        function titulo(tituloStr) {
+            comprobarEspacio(12);
+            doc.setTextColor(30, 64, 175);
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(14);
+            doc.text(tituloStr, margen, y);
+            y += 3;
+            doc.setDrawColor(191, 219, 254);
+            doc.line(margen, y, anchoPagina - margen, y);
+            y += 6;
+        }
+
+        function agregarTexto(contenido, tamanio = 10) {
+            const parrafos = String(contenido).split(/\n+/).map(linea => linea.trim()).filter(Boolean);
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(31, 41, 55);
+            doc.setFontSize(tamanio);
+            const alturaLinea = tamanio * 0.45;
+
+            parrafos.forEach(parrafo => {
+                const lineas = doc.splitTextToSize(parrafo, anchoContenido);
+                lineas.forEach(linea => {
+                    comprobarEspacio(alturaLinea);
+                    doc.text(linea, margen, y);
+                    y += alturaLinea;
+                });
+                y += 1.5;
+            });
+        }
+
+        function agregarPregunta(contenido) {
+            const limpio = String(contenido).replace(/\s+/g, ' ').trim();
+            const lineas = doc.splitTextToSize(limpio, anchoContenido - 8);
+            const alturaLinea = 4.2;
+            const alturaCaja = Math.max(12, (lineas.length * alturaLinea) + 8);
+            const espacioDisponible = altoPagina - (margen * 2) - 22;
+
+            if (alturaCaja > espacioDisponible) {
+                agregarTexto(limpio, 9);
+                return;
+            }
+            comprobarEspacio(alturaCaja);
+            doc.setFillColor(248, 250, 252);
+            doc.setDrawColor(37, 99, 235);
+            doc.roundedRect(margen, y, anchoContenido, alturaCaja, 1.5, 1.5, 'FD');
+            doc.setTextColor(31, 41, 55);
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(9);
+            doc.text(lineas, margen + 4, y + 5);
+            y += alturaCaja + 3;
+        }
+
+        encabezado();
+        doc.setFillColor(239, 246, 255);
+        doc.setDrawColor(147, 197, 253);
+        doc.roundedRect(margen, y, anchoContenido, 30, 2, 2, 'FD');
+        doc.setTextColor(30, 64, 175);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(10);
+        doc.text('Calificación obtenida', anchoPagina / 2, y + 8, { align: 'center' });
+        doc.setFontSize(26);
+        doc.text(texto('gradeValue'), anchoPagina / 2, y + 18, { align: 'center' });
+        doc.setTextColor(31, 41, 55);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(9);
+        const mensaje = doc.splitTextToSize(texto('resultsMessage'), anchoContenido - 12);
+        doc.text(mensaje, anchoPagina / 2, y + 25, { align: 'center' });
+        y += 40;
+
+        titulo('Resumen');
+        agregarTexto(texto('resultsSummary'));
+        titulo('Desempeño por categoría');
+        agregarTexto(texto('categoryPerformance'));
+        titulo('Revisión de respuestas');
+
+        const preguntas = document.querySelectorAll('#questionReview > *');
+        if (preguntas.length === 0) {
+            agregarTexto('No hay respuestas para mostrar.');
+        } else {
+            preguntas.forEach(pregunta => {
+                agregarPregunta(pregunta.innerText);
+            });
+        }
+        doc.save('Resultados_Caso_Final_Unidad_2.pdf');
+    }
+
+    // 2. DESCARGA DE ENUNCIADO DEL CASO
+    document.getElementById('downloadCaseBtn')?.addEventListener('click', descargarCasoPDF);
+
+    function descargarCasoPDF() {
+        if (!window.jspdf || !window.jspdf.jsPDF) {
+            alert('No se pudo cargar jsPDF.');
+            return;
+        }
+
+        const elementoCaso = document.getElementById('casePresentation');
+        if (!elementoCaso || !elementoCaso.innerText.trim()) {
+            alert('No se encontró el contenido del caso.');
+            return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+        const margen = 18;
+        const anchoPagina = doc.internal.pageSize.getWidth();
+        const altoPagina = doc.internal.pageSize.getHeight();
+        const anchoTexto = anchoPagina - (margen * 2);
+        let y = 20;
+
+        doc.setFillColor(30, 64, 175);
+        doc.rect(0, 0, anchoPagina, 25, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(17);
+        doc.text('Actividad final - Unidad 2', margen, 11);
+        doc.setFontSize(11);
+        doc.setFont('helvetica', 'normal');
+        doc.text('El Inventario Descontrolado', margen, 18);
+        y = 35;
+
+        doc.setTextColor(30, 64, 175);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(15);
+        doc.text('Enunciado del caso', margen, y);
+        y += 8;
+        doc.setDrawColor(30, 64, 175);
+        doc.line(margen, y, anchoPagina - margen, y);
+        y += 8;
+
+        const contenido = elementoCaso.innerText.split('\n').map(texto => texto.trim()).filter(Boolean);
+        doc.setTextColor(31, 41, 55);
+
+        contenido.forEach(parrafo => {
+            const esTitulo = parrafo.length < 80 && !parrafo.endsWith('.') && !parrafo.endsWith(':');
+            if (esTitulo) {
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(11);
+            } else {
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(10);
+            }
+
+            const lineas = doc.splitTextToSize(parrafo, anchoTexto);
+            const altura = lineas.length * 5;
+            if (y + altura > altoPagina - 18) {
+                doc.addPage();
+                y = 20;
+            }
+            doc.text(lineas, margen, y);
+            y += altura + 4;
+        });
+
+        const paginas = doc.internal.getNumberOfPages();
+        for (let pagina = 1; pagina <= paginas; pagina++) {
+            doc.setPage(pagina);
+            doc.setFontSize(8);
+            doc.setTextColor(100, 100, 100);
+            doc.text(`Página ${pagina} de ${paginas}`, anchoPagina / 2, altoPagina - 8, { align: 'center' });
+        }
+        doc.save('Enunciado_Caso_Final_Unidad_2.pdf');
+    }
+    </script>
 </body>
 </html>
